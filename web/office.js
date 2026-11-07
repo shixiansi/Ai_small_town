@@ -642,11 +642,17 @@
     });
   }
 
-  /* 路灯地灯圈（v32）：夜里路灯周围亮——两档暖色椭圆，画在夜间遮罩之上，随昼夜重建 */
+  /* 路灯地灯圈 + 花园小径（v32）：画在夜间遮罩之上（depth 59500），随昼夜重建 */
   function buildLampGlows(s) {
     if (s.lampGlows) { s.lampGlows.destroy(); }
     var night = isNightHour();
     var g = s.add.graphics().setDepth(59500);
+    // 花园小径：横带（与街道主路同带）+ 竖支路连 x25 门洞 gap[20,22]——白天夜里都要可见（路不能被遮罩吃掉）
+    var gx0 = 26.5 * TILE, gx1 = 38.5 * TILE;
+    g.fillStyle(0xc9b48a, 1);
+    g.fillRect(gx0, WALL_H + 8.8 * TILE, gx1 - gx0, TILE * 1.4);
+    g.fillRect(20.2 * TILE, WALL_H + 10.2 * TILE, 1.6 * TILE, 12 * TILE);
+    // 路灯暖光圈：夜里亮
     (s.mapdata.furniture || []).forEach(function (f) {
       if (f.a !== "street-lamp") return;
       var lx = f.x * TILE + 24, ly = WALL_H + f.y * TILE + 30;
@@ -944,10 +950,8 @@
     for (var gy2 = 0; gy2 < ROWS; gy2++)
       for (var gx2 = 27; gx2 < 38; gx2++)
         if ((gx2 + gy2) % 2 === 0) g.fillRect(gx2 * TILE, WALL_H + gy2 * TILE, TILE, TILE);
-    g.fillStyle(0xc9b48a, 1);  // 花园小径（横带与街道主路同带）
-    g.fillRect(gx0, WALL_H + 8.8 * TILE, gx1 - gx0, TILE * 1.4);
-    // 竖支路：连 x25 墙门洞 gap[20,22]（办公室侧门出来正对小径）
-    g.fillRect(20.2 * TILE, WALL_H + 10.2 * TILE, 1.6 * TILE, 12 * TILE);
+    // 花园小径移至独立层（buildGardenPaths，画在夜间遮罩之上——评审：路要连门口）
+
     // 小镇街道 (cols 39-55)：石板路（v24 回字形东侧全高）
     var tx0 = 38.5 * TILE, tx1 = 55.5 * TILE;
     g.fillStyle(0x7c7e8c, 1); g.fillRect(tx0, WALL_H, tx1 - tx0, H - WALL_H);
