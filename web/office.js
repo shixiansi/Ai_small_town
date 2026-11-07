@@ -804,21 +804,14 @@
     });
   }
 
-  /* 路灯地灯圈 + 花园小径（v32）：画在夜间遮罩之上（depth 59500），随昼夜重建 */
+  /* 路灯地灯圈（v35 路网重设计）：本层只画灯，不再画路——
+   * 室内走廊/门径与花园小径全部移除（房间回归纯净地板，鱼走 A* 不依赖画的路），
+   * 户外道路只在 buildRoom 街道段：主路 + 通往各家门洞的门径。
+   * 灯圈画在夜间遮罩之上（depth 59500），随昼夜重建 */
   function buildLampGlows(s) {
     if (s.lampGlows) { s.lampGlows.destroy(); }
     var night = isNightHour();
     var g = s.add.graphics().setDepth(59500);
-    // 路网（v34）：走廊横带 rows15.2 + 三条竖门径（卧室门 4.9 / 办公室门 12.9 / 厨房门 20.2）+ 花园路网
-    g.fillStyle(0xc9b48a, 1);
-    g.fillRect(TILE, WALL_H + 15.2 * TILE, 24 * TILE, TILE * 1.5);          // 走廊横带（cols 1-25）
-    [[4.9, 9], [12.9, 9], [20.2, 9]].forEach(function (v) {                  // 三条竖门径（门→走廊）
-      g.fillRect(v[0] * TILE, WALL_H + v[1] * TILE, 1.6 * TILE, (15.2 - v[1]) * TILE + 30);
-    });
-    var gx0 = 26.5 * TILE, gx1 = 38.5 * TILE;
-    g.fillRect(gx0, WALL_H + 8.8 * TILE, gx1 - gx0, TILE * 1.4);            // 花园横径
-    g.fillRect(25.2 * TILE, WALL_H + 19.8 * TILE, 2.6 * TILE, 1.8 * TILE);  // D6 门洞连接段
-    g.fillRect(30.6 * TILE, WALL_H + 9.6 * TILE, 1.7 * TILE, 11.6 * TILE);  // 花园竖径（连横带与 D6）
     // 路灯暖光圈：夜里亮
     (s.mapdata.furniture || []).forEach(function (f) {
       if (f.a !== "street-lamp") return;
@@ -1110,14 +1103,13 @@
     for (var y = 0; y < ROWS; y++)
       for (var x = 0; x < COLS; x++)
         if ((x + y) % 2 === 0) g.fillRect(x * TILE, WALL_H + y * TILE, TILE, TILE);
-    // 户外花园 (cols 27-37)：草地+小径（v24 回字形，东侧全高）
+    // 户外花园 (cols 27-37)：纯草地（v35 路网重设计：花园小径删除，草皮直通街道主路）
     var gx0 = 26.5 * TILE, gx1 = 38.5 * TILE;
     g.fillStyle(0x6e9453, 1); g.fillRect(gx0, WALL_H, gx1 - gx0, H - WALL_H);
     g.fillStyle(0x6b8f50, 1);
     for (var gy2 = 0; gy2 < ROWS; gy2++)
       for (var gx2 = 27; gx2 < 38; gx2++)
         if ((gx2 + gy2) % 2 === 0) g.fillRect(gx2 * TILE, WALL_H + gy2 * TILE, TILE, TILE);
-    // 花园小径移至独立层（buildGardenPaths，画在夜间遮罩之上——评审：路要连门口）
 
     // 小镇街道 (cols 39-55)：石板路（v24 回字形东侧全高）
     var tx0 = 38.5 * TILE, tx1 = 55.5 * TILE;
@@ -1142,11 +1134,18 @@
     drawHomeFloor(39.6, 45.4, 0x8a6a4a, 0x846545);   // 喵酱家：暖木地板
     drawHomeFloor(45.6, 50.4, 0xb59a6e, 0xb0936a);   // 村长家：暖黄地砖
     drawHomeFloor(50.6, 55.4, 0x7d88a0, 0x79839a);   // 博士家：蓝灰地毯
-    // 屋前小径（v32 对齐门口）：从房子底（y9.8=主路南缘）向南伸到活动带 y15，x 与房门对齐
-    var paths = [[42.2, 22], [48.5, 34], [53.4, 22]];
-    paths.forEach(function (pt) {
+    /* 道路系统（v35 重设计）：整张世界只保留小镇街道一张路网——
+     * 1) 街心主路（上面已画）：暖石板横穿 cols 38.5-55.5，北缘 y8.6 贴房子南缘
+     * 2) 门径：从 map.walls y19 横墙的门洞（gap）动态推导——向北接到主路南缘 y9.8，
+     *    向南铺出门洞 1.4 格当迎宾垫。另一个窗口调整邻居家布局/挪门洞时，
+     *    小径自动跟着 gap 走，不会再出现「路对不上门口」。
+     * 3) 花园一侧不再画路：草皮直通主路西端（土路肩相接），花园回归纯草地 */
+    (s.mapdata.walls || []).forEach(function (wl) {
+      if (wl.x0 === undefined || wl.y !== 19 || !wl.gap) return;   // 只要 y19 这排屋前横墙的门洞
       g.fillStyle(0xb3a184, 1);
-      g.fillRect(pt[0] * TILE - pt[1] / 2, WALL_H + 9.8 * TILE, pt[1], (15 - 9.8) * TILE + 20);
+      var cL = wl.gap[0] * TILE, cW = (wl.gap[1] - wl.gap[0] + 1) * TILE;
+      g.fillRect(cL, WALL_H + 9.8 * TILE, cW, (19 - 9.8) * TILE);   // 主路南缘 → 门洞北缘
+      g.fillRect(cL - 3, WALL_H + 19 * TILE, cW + 6, 1.4 * TILE);   // 门外迎宾垫
     });
     // 卫浴瓷砖（北排 cols 10-16, rows 1-15 全高）+ 厨房地砖（cols 16.5-25 淡暖灰，材质分区）
     g.fillStyle(0x8e9ca6, 1);
