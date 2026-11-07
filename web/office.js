@@ -181,7 +181,7 @@
     this.load.off("loaderror", onLoadError);
     this.load.on("loaderror", onLoadError);
     this.load.json("manifest", "assets/manifest.json?v=62612ac6");
-    this.load.json("mapdata", "map.json?v=9728d7fd");
+    this.load.json("mapdata", "map.json?v=603a960e");
   };
   SceneBoot.prototype.create = function () {
     var manifest = this.cache.json.get("manifest");
@@ -785,12 +785,16 @@
     if (s.lampGlows) { s.lampGlows.destroy(); }
     var night = isNightHour();
     var g = s.add.graphics().setDepth(59500);
-    // 花园小径（v33 修正）：横带 + L 形连 x25 门洞（门洞在墙 cols25 rows20-22 → 连接段横穿 cols25-28 → 竖径 cols 30.5-32 连到花园横径）
-    var gx0 = 26.5 * TILE, gx1 = 38.5 * TILE;
+    // 路网（v34）：走廊横带 rows15.2 + 三条竖门径（卧室门 4.9 / 办公室门 12.9 / 厨房门 20.2）+ 花园路网
     g.fillStyle(0xc9b48a, 1);
-    g.fillRect(gx0, WALL_H + 8.8 * TILE, gx1 - gx0, TILE * 1.4);
-    g.fillRect(24.6 * TILE, WALL_H + 19.9 * TILE, 3.4 * TILE, 2.2 * TILE);   // 门洞连接段（横）
-    g.fillRect(30.4 * TILE, WALL_H + 9.4 * TILE, 1.8 * TILE, 12 * TILE);   // 花园竖径（连横带与连接段）
+    g.fillRect(TILE, WALL_H + 15.2 * TILE, 24 * TILE, TILE * 1.5);          // 走廊横带（cols 1-25）
+    [[4.9, 9], [12.9, 9], [20.2, 9]].forEach(function (v) {                  // 三条竖门径（门→走廊）
+      g.fillRect(v[0] * TILE, WALL_H + v[1] * TILE, 1.6 * TILE, (15.2 - v[1]) * TILE + 30);
+    });
+    var gx0 = 26.5 * TILE, gx1 = 38.5 * TILE;
+    g.fillRect(gx0, WALL_H + 8.8 * TILE, gx1 - gx0, TILE * 1.4);            // 花园横径
+    g.fillRect(25.2 * TILE, WALL_H + 19.8 * TILE, 2.6 * TILE, 1.8 * TILE);  // D6 门洞连接段
+    g.fillRect(30.6 * TILE, WALL_H + 9.6 * TILE, 1.7 * TILE, 11.6 * TILE);  // 花园竖径（连横带与 D6）
     // 路灯暖光圈：夜里亮
     (s.mapdata.furniture || []).forEach(function (f) {
       if (f.a !== "street-lamp") return;
