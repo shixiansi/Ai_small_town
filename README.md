@@ -1025,3 +1025,12 @@ setLights 里 lightPools/moonPool 改为 no-op 对象保持兼容。验收：白
 ### v32b "暗色滤镜"根因修复（用户截图反馈）
 全屏 ambient 遮罩的 **alpha 语义反了**：`updateAmbient` 里写的是 `setAlpha(1 - ambientCur)`，而 ambientTarget 被设为 0（取消滤镜）后 cur→0 → alpha→**1.0 全屏黑**——"取消滤镜"反而变成"永久蒙黑"。
 修正：alpha = ambientCur（cur 即不透明度，target 恒 0 = 无滤镜）。开灯房间原色、关灯房间由 roomOverlays 黑遮罩压暗、暗角只管四角——"蒙一层"感消失。
+
+## v33 路网对齐 + 户外天黑 + 路灯（2026-11-07）
+
+用户指出"路没连到门口，AI 家的路对着墙"+ 户外天黑 + 路灯：
+
+1. **大门对齐**：map.door tx 2→12——办公室主入口与横墙 gap[12,13] 同一开口（之前大门画在实心墙上，鱼根本进不来）
+2. **路网连通**：花园竖支路（cols 20.2-21.8, rows 10-22）连 x25 墙门洞 gap[20,22]；花园横径 y8.8 与街道主路同带——办公室→走廊→花园→街道全程有路
+3. **户外天黑**：roomOverlays 加 `outdoor` 遮罩（花园+街道 cols 26.5-55.5），夜里 0.45 压暗、白天 0——按真实时间 isNightHour() 联动
+4. **路灯**：5 盏 street-lamp，夜里每盏下方两档暖色椭圆光圈（depth 59500 在夜间遮罩之上），白天自动消失；昼夜切换随 applyRoomLights 重建
