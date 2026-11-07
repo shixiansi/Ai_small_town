@@ -588,6 +588,8 @@
     moon.room = "office";
     s.moonPool = moon;
 
+    buildLampGlows(s);   // 路灯地灯圈（夜里亮，随昼夜重建）
+
     /* 每房间暗色遮罩（v31 用户反馈：开关只影响本房间亮度）
      * office: rows 16-29 / bedroom: cols 1-9 rows 1-14 / bath: cols 10-15 rows 1-14 / kitchen: cols 17-25 rows 1-14 */
     s.roomOverlays = {};
@@ -640,6 +642,22 @@
     });
   }
 
+  /* 路灯地灯圈（v32）：夜里路灯周围亮——两档暖色椭圆，画在夜间遮罩之上，随昼夜重建 */
+  function buildLampGlows(s) {
+    if (s.lampGlows) { s.lampGlows.destroy(); }
+    var night = isNightHour();
+    var g = s.add.graphics().setDepth(59500);
+    (s.mapdata.furniture || []).forEach(function (f) {
+      if (f.a !== "street-lamp") return;
+      var lx = f.x * TILE + 24, ly = WALL_H + f.y * TILE + 30;
+      g.fillStyle(0xe8c87a, night ? 0.30 : 0);
+      g.fillEllipse(lx, ly, 4.6 * TILE, 3.2 * TILE);
+      g.fillStyle(0xf2d998, night ? 0.38 : 0);
+      g.fillEllipse(lx, ly, 2.8 * TILE, 2.0 * TILE);
+    });
+    s.lampGlows = g;
+  }
+
   function setLights(s, on) {
     /* 兼容入口：一次性设置全部房间灯（旧调用点），实际亮度走 applyRoomLights */
     lightsOn = on;
@@ -664,8 +682,9 @@
       var rl = roomLights[p.room] !== false;
       s.tweens.add({ targets: p, alpha: rl ? p.poolAlpha : 0, duration: 600 });
     });
-    // 窗外昼夜按真实时间（与灯解耦）——重绘窗户
+    // 窗外昼夜按真实时间（与灯解耦）——重绘窗户 + 路灯亮圈随昼夜重建
     redrawWindow();
+    buildLampGlows(s);
   }
 
   function redrawWindow() {
