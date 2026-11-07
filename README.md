@@ -1004,3 +1004,15 @@ setLights 里 lightPools/moonPool 改为 no-op 对象保持兼容。验收：白
 
 ### v30 补充 2（同日晚）—— "绿框"真凶
 用户截图与无头截图出现"绿色方框+阶梯对角线"。逐层排查（隐藏 props/各 depth graphics/暗角/环境遮罩/白 tint 全部无效）后用 **textures.get('lightpool').getSourceImage() 读纹理像素**定位：lightpool 纹理 = **32×32 纯绿（Phaser __MISSING 贴图）**——`makeLightTexture(s)` 调用在 v31 重构 buildLights 时被误删，`textures.get('lightpool')` 找不到 key 返回 MISSING 绿色贴图冒充光池。补回调用后纹理恢复正常 (255,243,214)、绿框消失（办公室内 0 绿像素），暖光池柔和生效。
+
+## v31b 分房间灯光系统（2026-11-07 深夜）
+
+用户反馈四项全部落地：
+
+1. **每房间一个灯开关**（办公室/卧室/卫浴/厨房 4 个开关贴各自上墙），点击只切换本房间亮度——`applyRoomLights()` 按房间 tween 暗色遮罩与灯池
+2. **窗外昼夜按真实时间**（北京时间 18-6 点为夜），与灯开关解耦；开灯房间的玻璃有反光提亮+窗棂十字（不再"黑洞"）
+3. **AI 自主开关灯**：清醒态开办公室灯（厨房按做饭时段开）、卫浴/卧室关；睡觉态只开卧室灯（18-23 点），深夜全关；washing 临时开卫浴
+4. 分房间暗色遮罩（office/bedroom/bath/kitchen 四块矩形，depth 59000），开关切换 600ms 渐变
+5. 修复：旧单开关残留引用（swLever）导致的 ReferenceError
+
+实测：办公室亮+北排暗（同屏对比）、夜窗有月+窗棂、门禁 19/19、git 自动快照 2 个。
