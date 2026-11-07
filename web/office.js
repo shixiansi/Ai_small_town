@@ -653,10 +653,11 @@
     // 各房间遮罩：开灯=ADD 暖提亮片 0.20；关灯=黑遮罩 0.55（切换含 blend/颜色，不能用 tween 渐变 blend——直接 set + alpha tween）
     Object.keys(s.roomOverlays).forEach(function (key) {
       var ov = s.roomOverlays[key];
-      var lit = roomLights[key];
+      var isOutdoor = key === "outdoor";
+      var lit = isOutdoor ? !isNightHour() : roomLights[key];
       ov.blendMode = lit ? Phaser.BlendModes.ADD : Phaser.BlendModes.NORMAL;
       ov.fillColor = lit ? 0xffe4b8 : 0x0a1020;
-      s.tweens.add({ targets: ov, alpha: lit ? 0 : 0.60, duration: 600 });
+      s.tweens.add({ targets: ov, alpha: isOutdoor ? (lit ? 0 : 0.45) : (lit ? 0 : 0.60), duration: 600 });
     });
     // 灯池分房间
     (s.lightPools || []).forEach(function (p) {
@@ -924,8 +925,8 @@
     for (var gy2 = 0; gy2 < ROWS; gy2++)
       for (var gx2 = 27; gx2 < 38; gx2++)
         if ((gx2 + gy2) % 2 === 0) g.fillRect(gx2 * TILE, WALL_H + gy2 * TILE, TILE, TILE);
-    g.fillStyle(0xc9b48a, 1);  // 小径
-    g.fillRect(gx0, WALL_H + 13 * TILE, gx1 - gx0, TILE * 1.4);
+    g.fillStyle(0xc9b48a, 1);  // 花园小径（与街道主路同一水平带，动线连续）
+    g.fillRect(gx0, WALL_H + 8.8 * TILE, gx1 - gx0, TILE * 1.4);
     // 小镇街道 (cols 39-55)：石板路（v24 回字形东侧全高）
     var tx0 = 38.5 * TILE, tx1 = 55.5 * TILE;
     g.fillStyle(0x7c7e8c, 1); g.fillRect(tx0, WALL_H, tx1 - tx0, H - WALL_H);
@@ -936,11 +937,11 @@
     // 街心主路：暖石板横穿
     g.fillStyle(0xb3a184, 1);
     g.fillRect(tx0, WALL_H + 8.6 * TILE, tx1 - tx0, TILE * 1.2);
-    // 屋前小径（主次分明）
+    // 屋前小径（v32 对齐门口）：从房子底（y9.8=主路南缘）向南伸到活动带 y15，x 与房门对齐
     var paths = [[42.2, 22], [48.5, 34], [53.4, 22]];
     paths.forEach(function (pt) {
       g.fillStyle(0xb3a184, 1);
-      g.fillRect(pt[0] * TILE - pt[1] / 2, WALL_H + 3.8 * TILE, pt[1], 4.6 * TILE - 3.8 * TILE + 22);
+      g.fillRect(pt[0] * TILE - pt[1] / 2, WALL_H + 9.8 * TILE, pt[1], (15 - 9.8) * TILE + 20);
     });
     // 卫浴瓷砖（北排 cols 10-16, rows 1-15 全高）+ 厨房地砖（cols 16.5-25 淡暖灰，材质分区）
     g.fillStyle(0x8e9ca6, 1);
