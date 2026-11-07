@@ -1021,3 +1021,7 @@ setLights 里 lightPools/moonPool 改为 no-op 对象保持兼容。验收：白
 - 夜间基础环境暗度 0.42 → 0.38（白天 0.12 → 0.10）
 - 开灯房间 ADD 暖提亮片 alpha 0.20 → 0.34、色 #FFE4B8——开灯房间与关灯房间对比更明显，开灯侧明亮可辨
 - 修复一个隐藏 bug：ambientTarget 无人更新（旧 setLights 重构时删掉了赋值），导致全局遮罩恒定 60% 黑——现在按真实时间昼夜动态设置
+
+### v32b "暗色滤镜"根因修复（用户截图反馈）
+全屏 ambient 遮罩的 **alpha 语义反了**：`updateAmbient` 里写的是 `setAlpha(1 - ambientCur)`，而 ambientTarget 被设为 0（取消滤镜）后 cur→0 → alpha→**1.0 全屏黑**——"取消滤镜"反而变成"永久蒙黑"。
+修正：alpha = ambientCur（cur 即不透明度，target 恒 0 = 无滤镜）。开灯房间原色、关灯房间由 roomOverlays 黑遮罩压暗、暗角只管四角——"蒙一层"感消失。
