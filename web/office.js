@@ -785,11 +785,12 @@
     if (s.lampGlows) { s.lampGlows.destroy(); }
     var night = isNightHour();
     var g = s.add.graphics().setDepth(59500);
-    // 花园小径：横带（与街道主路同带）+ 竖支路连 x25 门洞 gap[20,22]——白天夜里都要可见（路不能被遮罩吃掉）
+    // 花园小径（v33 修正）：横带 + L 形连 x25 门洞（门洞在墙 cols25 rows20-22 → 连接段横穿 cols25-28 → 竖径 cols 30.5-32 连到花园横径）
     var gx0 = 26.5 * TILE, gx1 = 38.5 * TILE;
     g.fillStyle(0xc9b48a, 1);
     g.fillRect(gx0, WALL_H + 8.8 * TILE, gx1 - gx0, TILE * 1.4);
-    g.fillRect(20.2 * TILE, WALL_H + 10.2 * TILE, 1.6 * TILE, 12 * TILE);
+    g.fillRect(25 * TILE, WALL_H + 19.9 * TILE, 3.2 * TILE, 2.2 * TILE);   // 门洞连接段（横）
+    g.fillRect(30.4 * TILE, WALL_H + 9.4 * TILE, 1.8 * TILE, 12 * TILE);   // 花园竖径（连横带与连接段）
     // 路灯暖光圈：夜里亮
     (s.mapdata.furniture || []).forEach(function (f) {
       if (f.a !== "street-lamp") return;
@@ -1844,9 +1845,12 @@
     stallB:    { name: "水果摊", desc: "今天的橙子很新鲜——猫爪印数量：2。" },
     townWell:  { name: "镇口水井", desc: "据说扔硬币能许愿。博士说是伪科学，但还是扔了。" },
     townBench: { name: "街边长椅", desc: "喵酱的地盘。坐之前要跟它打招呼。" },
-    homeCat:   { name: "喵酱家", desc: "门垫上永远有鱼干渣。主人是只好脾气的橘猫。" },
-    homeChief: { name: "村长家", desc: "水豚村长的宅子，门口的灯是全镇最亮的。" },
-    homeDoc:   { name: "博士家", desc: "章鱼博士的研究所，窗户里贴满潮汐表。" }
+    homeCat:   { name: "喵酱家", desc: "门垫上永远有鱼干渣。主人是只好脾气的橘猫。点击房子可以进去串门。",
+      dyn: function () { return npcHomeState("cat") === "home" ? "● 喵酱在家（点房子进屋）" : "○ 喵酱出门遛弯了"; } },
+    homeChief: { name: "村长家", desc: "水豚村长的宅子，门口的灯是全镇最亮的。点击房子可以进去串门。",
+      dyn: function () { return npcHomeState("chief") === "home" ? "● 村长在家（点房子进屋）" : "○ 村长在镇上转悠"; } },
+    homeDoc:   { name: "博士家", desc: "章鱼博士的研究所，窗户里贴满潮汐表。点击房子可以进去串门。",
+      dyn: function () { return npcHomeState("doc") === "home" ? "● 博士在家（点房子进屋）" : "○ 博士去海边观测了"; } }
   };
   /* 看书内容表：AI 的书架（内容随书随机） */
   var BOOKS = [
@@ -2116,6 +2120,7 @@
   }
   function walkLocalTo(gx, gy, act) {
     unsit();   // 本地动作开始前先起身，避免上一轮瘫坐的 scale/深度/角度带进走路
+    exitNeighborHome();   // 新行为开始 = 串门结束（视角回到小镇，鱼走自己的路）
     if (localActTimer) { clearTimeout(localActTimer); localActTimer = null; }
     var path = astar(px2tx(fish.x), px2ty(fish.y), gx, gy);
     // 旧版还要求 path.length>=2，鱼恰好已在目标格时整条本地行为静默哑火（连气泡都没有）
@@ -2134,6 +2139,7 @@
   function arriveLocal() {
     // 本地小动作的数值回报（真相在 hub，这里是触发增量；方案 §1.2）
     if (curPlan && curPlan.statFill) postStatDelta(curPlan.statFill);
+    if (curPlan && curPlan.visit) { arriveVisit(); return; }   // 点邻居房屋 → 进屋串门
 
     fishState = "acting";
     fish.face(curPlan.face || "s");
@@ -2197,6 +2203,26 @@
       var gx = px2tx(p.worldX), gy = px2ty(p.worldY);
       if (gx < 0 || gy < 0 || gx >= COLS || gy >= ROWS) return;
       if (fishState === "acting" && curPlan && !curPlan.local) return;
+      // 点邻居房屋 = 进屋串门（优先级最高：房屋比信息卡更"想被点到"）
+      var homeHit = null, homeD = Infinity;
+      NEIGHBOR_HOMES.forEach(function (h) {
+        var hp = s.hostMap[h.home];
+        if (!hp) return;
+        // 命中判定取房屋 bbox 中心（房子大、锚点在门口），距离用切比雪夫
+        var hx = hp.x, hy = hp.y - (hp.bbox[3] * (hp.scale || 1)) / 2;
+        var d = Math.max(Math.abs(hx - p.worldX), Math.abs(hy - p.worldY));
+        if (d < radius * 1.6 && d < homeD) { homeD = d; homeHit = h; }
+      });
+      if (homeHit) {
+        if (visitingHome === homeHit) {
+          // 已经在这家里：再点 = 出屋
+          exitNeighborHome();
+          showBubble("先出来吧", "idle");
+          startIdleLife(3000);
+          return;
+        }
+        if (enterNeighborHome(s, homeHit)) return;
+      }
       // 干预点：家具本身就在阻挡格里，必须先判热点再判 grid，否则永远点不中
       var hotspots = [
         { host: "gramoA",  state: "listening", verb: "听音乐" },
@@ -2914,7 +2940,7 @@
       localAct: function (key, instant) {
         var e = findLocalEvent(key);
         if (!e || !scene || !fish) return false;
-        stopIdleLife(); unsit();
+        stopIdleLife(); unsit(); exitNeighborHome();
         noteLocalEvent(e.key);
         goLocal(e.zone, localText(e), e.act, e.face, !!instant, statFillFor(e.key));
         startIdleLife(9000);
@@ -2983,6 +3009,7 @@
         return {
           ready: !!scene,
           fishState: fishState,
+          visiting: visitingHome ? visitingHome.id : null,   // 正在串门哪户（调试走查用）
           localEvent: lastLocalKey,
           fish: fish ? { x: Math.round(fish.x), y: Math.round(fish.y), face: fish.lastFace, sitting: !!fish.sitting } : null,
           sprite: fish && fish.bodySpr ? {
