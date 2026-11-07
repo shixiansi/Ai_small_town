@@ -611,7 +611,7 @@
     ctx.fillStyle = "#0a1020";
     ctx.fillRect(0, 0, W, H);
     cv.refresh();
-    ambient = s.add.image(0, 0, "ambientcv").setOrigin(0).setDepth(60000).setAlpha(1 - ambientCur);
+    ambient = s.add.image(0, 0, "ambientcv").setOrigin(0).setDepth(60000).setAlpha(ambientCur);
     ambientTarget = 0;   // 全屏滤镜取消（v32）：关灯房间的暗度由 roomOverlays 黑遮罩承担，开灯房间显示原色——不再有"蒙一层"感
 
     // 每房间一个灯开关（v31 用户反馈：开关只影响本房间）
