@@ -14,6 +14,8 @@
   "use strict";
 
   var TILE = 48;
+  /* 分房间灯光（v31）：每房间独立开关；AI 侧经 hub stats.lights 覆盖（睡觉只开卧室灯/睡前全关） */
+  var roomLights = { office: true, bedroom: false, kitchen: false, bath: false };
   var COLS = 56, ROWS = 30, WALL_H = 48;   // 56x30：南排=办公室(0-24, rows16-29)；北排=卧室(2-9)/卫浴(11-15)；东侧=花园(27-37)/街道(39-55) 全高
   // 三扇窗：办公室主窗在 map.window；卧室窗/卫浴高窗在这里（x 格, 宽格, 高 px）
   var EXTRA_WINDOWS = [[3.3, 2, WALL_H - 22], [11.8, 1.4, WALL_H - 26]];
@@ -557,29 +559,50 @@
     // 灯光表达（v33 恢复 ADD 光晕池，用户拍板；α 压低避免刺眼）
     s.lightPools = [];
     var poolDefs = [
-      { x: 9.0,  y: 21.4, r: 2.6, a: 0.22, tint: 0xffe2a8 },   // 主工位
-      { x: 11.4, y: 21.2, r: 2.0, a: 0.16, tint: 0xffe2a8 },   // 木桌
-      { x: 20.5, y: 21.4, r: 2.2, a: 0.18, tint: 0xffedd0 },   // 产出簇
-      { x: 4.5,  y: 27.8, r: 2.0, a: 0.16, tint: 0xffe2a8 },   // 休息簇
+      { x: 9.0,  y: 21.4, r: 2.6, a: 0.22, tint: 0xffe2a8, room: "office" },   // 主工位
+      { x: 11.4, y: 21.2, r: 2.0, a: 0.16, tint: 0xffe2a8, room: "office" },   // 木桌
+      { x: 20.5, y: 21.4, r: 2.2, a: 0.18, tint: 0xffedd0, room: "office" },   // 产出簇
+      { x: 4.5,  y: 27.8, r: 2.0, a: 0.16, tint: 0xffe2a8, room: "office" },   // 休息簇
+      { x: 5.0,  y: 4.0,  r: 2.0, a: 0.20, tint: 0xffe2a8, room: "bedroom" },  // 卧室床头灯
+      { x: 12.7, y: 3.2,  r: 1.8, a: 0.18, tint: 0xffe2a8, room: "bath" },     // 卫浴镜前灯
+      { x: 20.5, y: 3.2,  r: 2.0, a: 0.18, tint: 0xffe2a8, room: "kitchen" },  // 厨房操作台灯
     ];
     poolDefs.forEach(function (d) {
       var img = s.add.image(d.x * TILE, WALL_H + d.y * TILE, lightPoolTex)
         .setBlendMode(Phaser.BlendModes.ADD)
         .setDisplaySize(d.r * TILE * 2, d.r * TILE * 2)
-        .setAlpha(lightsOn ? d.a : 0)
+        .setAlpha(roomLights[d.room] ? d.a : 0)
         .setTint(d.tint || 0xffe2a8)
         .setDepth(50000);
       img.poolAlpha = d.a;
+      img.room = d.room;
       s.lightPools.push(img);
     });
-    // 窗边冷光（柔和）
+    // 窗边冷光（柔和）——主窗在办公室南墙上方
     var moon = s.add.image((s.mapdata.window.tx + 1) * TILE, WALL_H + 16.6 * TILE, lightPoolTex)
       .setBlendMode(Phaser.BlendModes.ADD)
       .setDisplaySize(4.5 * TILE, 6 * TILE)
-      .setAlpha(lightsOn ? 0.14 : 0.22)
+      .setAlpha(roomLights.office ? 0.14 : 0.05)
       .setDepth(49999)
       .setTint(0xbfddf5);
+    moon.room = "office";
     s.moonPool = moon;
+
+    /* 每房间暗色遮罩（v31 用户反馈：开关只影响本房间亮度）
+     * office: rows 16-29 / bedroom: cols 1-9 rows 1-14 / bath: cols 10-15 rows 1-14 / kitchen: cols 17-25 rows 1-14 */
+    s.roomOverlays = {};
+    var roomRects = {
+      office:  [0, 15 * TILE, 26 * TILE, H - 15 * TILE],
+      bedroom: [TILE, WALL_H + TILE, 9 * TILE, 14 * TILE - TILE],
+      bath:    [10 * TILE, WALL_H + TILE, 6 * TILE, 14 * TILE - TILE],
+      kitchen: [16.5 * TILE, WALL_H + TILE, 9 * TILE, 14 * TILE - TILE]
+    };
+    Object.keys(roomRects).forEach(function (key) {
+      var r0 = roomRects[key];
+      var ov = s.add.rectangle(r0[0], r0[1], r0[2], r0[3], 0x0a1020)
+        .setOrigin(0).setDepth(59000).setAlpha(roomLights[key] ? 0 : 0.62);
+      s.roomOverlays[key] = ov;
+    });
 
     // 环境遮罩：一张全屏黑色 image，alpha 由 ambientCur 驱动
     var cv = s.textures.createCanvas("ambientcv", W, H);
@@ -589,43 +612,56 @@
     cv.refresh();
     ambient = s.add.image(0, 0, "ambientcv").setOrigin(0).setDepth(60000).setAlpha(1 - ambientCur);
 
-    // 墙上开关（door 右侧，加大点击区）
-    var swx = (s.mapdata.door.tx + s.mapdata.door.tw) * TILE + 30;
-    var swy = WALL_H * 0.45;
-    var swPlate = s.add.rectangle(swx, swy, 18, 28, 0xe8e4da).setStrokeStyle(2, 0x5c5648).setDepth(60001).setInteractive({ useHandCursor: true });
-    var swLever = s.add.rectangle(swx, swy + (lightsOn ? -5 : 5), 10, 10, lightsOn ? 0xf5b942 : 0x8a8578).setDepth(60002);
-    swPlate.setData("hint", "灯开关");
-    s.switchY = swy;
-    // 悬停提示
-    swPlate.on("pointerover", function () { swPlate.setScale(1.12); });
-    swPlate.on("pointerout", function () { swPlate.setScale(1); });
-    swPlate.on("pointerdown", function () {
-      lightsManual = true;
-      setLights(s, !lightsOn);
-      swLever.y = swy + (lightsOn ? -4 : 4);
-      swLever.fillColor = lightsOn ? 0xf5b942 : 0x8a8578;
+    // 每房间一个灯开关（v31 用户反馈：开关只影响本房间）
+    // 位置：贴各房间上墙右侧；switchDefs [房间, x格, 说明]
+    var switchDefs = [
+      { room: "office",  x: 24.2, hint: "办公室灯" },
+      { room: "bedroom", x: 8.6,  hint: "卧室灯" },
+      { room: "bath",    x: 15.2, hint: "卫浴灯" },
+      { room: "kitchen", x: 24.4, hint: "厨房灯" }
+    ];
+    s.roomSwitches = [];
+    switchDefs.forEach(function (sd) {
+      var sy = WALL_H * 0.45;
+      var plate = s.add.rectangle(sd.x * TILE, sy, 18, 28, 0xe8e4da).setStrokeStyle(2, 0x5c5648).setDepth(60001).setInteractive({ useHandCursor: true });
+      var lever = s.add.rectangle(sd.x * TILE, sy + (roomLights[sd.room] ? -5 : 5), 10, 10, roomLights[sd.room] ? 0xf5b942 : 0x8a8578).setDepth(60002);
+      plate.setData("hint", sd.hint);
+      plate.on("pointerover", function () { plate.setScale(1.12); });
+      plate.on("pointerout", function () { plate.setScale(1); });
+      plate.on("pointerdown", function () {
+        roomLights[sd.room] = !roomLights[sd.room];
+        lever.y = sy + (roomLights[sd.room] ? -5 : 5);
+        lever.fillColor = roomLights[sd.room] ? 0xf5b942 : 0x8a8578;
+        applyRoomLights(scene);
+      });
+      s.roomSwitches.push({ plate: plate, lever: lever, room: sd.room });
     });
     s.switchLever = swLever;
     s.switchPlate = swPlate;
   }
 
   function setLights(s, on) {
-    var wasOn = lightsOn;
+    /* 兼容入口：一次性设置全部房间灯（旧调用点），实际亮度走 applyRoomLights */
     lightsOn = on;
-    ambientTarget = on ? 1.0 : 0.60;   // 关灯 = 40% 暗色遮罩，家具剪影仍可辨
-    s.lightPools.forEach(function (p) {
-      s.tweens.add({ targets: p, alpha: on ? p.poolAlpha : 0.35, duration: 600 });   // 关灯时亮阶保留 35%（夜灯感）
+    roomLights.office = on; roomLights.bedroom = on; roomLights.kitchen = on; roomLights.bath = on;
+    applyRoomLights(s);
+  }
+
+  /* 分房间灯光（v31 用户反馈：每房间一个开关只影响本房间；AI 夜间自主开关部分灯） */
+  function applyRoomLights(s) {
+    if (!s || !s.roomOverlays) return;
+    // 各房间暗色遮罩 alpha：开灯 0（亮）/ 关灯 0.62（剪影可辨）
+    Object.keys(s.roomOverlays).forEach(function (key) {
+      var target = roomLights[key] ? 0 : 0.62;
+      s.tweens.add({ targets: s.roomOverlays[key], alpha: target, duration: 600 });
     });
-    // 窗光：夜里冷亮阶更强、白天弱（graphics 无 tint，直接两档 alpha）
-    s.tweens.add({ targets: s.moonPool, alpha: on ? 0.45 : 0.8, duration: 600 });
-    // 吊灯灯泡亮/灭
-    (s.ceilingLamps || []).forEach(function (l) {
-      l.bulb.fillColor = on ? 0xfff2c0 : 0x6a6155;
+    // 灯池分房间（office 池组/bath 池组）
+    (s.lightPools || []).forEach(function (p) {
+      var rl = roomLights[p.room] !== false;
+      s.tweens.add({ targets: p, alpha: rl ? p.poolAlpha : 0, duration: 600 });
     });
-    // 开关杆颜色即时反映
-    if (s.switchLever) s.switchLever.fillColor = on ? 0xf5b942 : 0x8a8578;
-    // 窗外天空昼夜重绘（状态切换才重绘）
-    if (wasOn !== on && scene) redrawWindow();
+    // 窗外昼夜按真实时间（与灯解耦）——重绘窗户
+    redrawWindow();
   }
 
   function redrawWindow() {
@@ -636,9 +672,11 @@
     var win = scene.mapdata.window;
     drawWindowSky(scene, g, win.tx * TILE, 8, win.tw * TILE, WALL_H - 18);
     EXTRA_WINDOWS.forEach(function (w2) {
-      drawWindowSky(scene, g, w2[0] * TILE, 8, w2[1] * TILE, w2[2]);
+      var rk = w2[0] < 8 ? "bedroom" : "bath";
+      drawWindowSky(scene, g, w2[0] * TILE, 8, w2[1] * TILE, w2[2], rk);
       g.lineStyle(3, 0x5c6a80, 1); g.strokeRect(w2[0] * TILE, 8, w2[1] * TILE, w2[2]);
       g.lineBetween(w2[0] * TILE + w2[1] * TILE / 2, 8, w2[0] * TILE + w2[1] * TILE / 2, 8 + w2[2]);
+      g.lineBetween(w2[0] * TILE, 8 + w2[2] / 2, w2[0] * TILE + w2[1] * TILE, 8 + w2[2] / 2);
     });
     g.lineStyle(3, 0x5c6a80, 1); g.strokeRect(win.tx * TILE, 8, win.tw * TILE, WALL_H - 18);
     g.lineBetween(win.tx * TILE + win.tw * TILE / 2, 8, win.tx * TILE + win.tw * TILE / 2, 8 + WALL_H - 18);
@@ -945,14 +983,17 @@
     var win = s.mapdata.window;
     var wx = win.tx * TILE, wy = 8, ww = win.tw * TILE, wh = WALL_H - 18;
     // 窗户底色由昼夜驱动（drawWindowSky 每帧/状态变化时重绘）
-    drawWindowSky(s, g, wx, wy, ww, wh);
+    drawWindowSky(s, g, wx, wy, ww, wh, "office");
     g.lineStyle(3, 0x5c6a80, 1); g.strokeRect(wx, wy, ww, wh);
     g.lineBetween(wx + ww / 2, wy, wx + ww / 2, wy + wh);
     // 卧室窗 + 卫浴高窗（v24 房间比例改造：每个居住房间都有窗）
+    // EXTRA_WINDOWS: [卧室窗(office 北排西侧), 卫浴窗] —— 房间归属按 x 判定
     EXTRA_WINDOWS.forEach(function (w2) {
-      drawWindowSky(s, g, w2[0] * TILE, 8, w2[1] * TILE, w2[2]);
+      var rk = w2[0] < 8 ? "bedroom" : "bath";
+      drawWindowSky(s, g, w2[0] * TILE, 8, w2[1] * TILE, w2[2], rk);
       g.lineStyle(3, 0x5c6a80, 1); g.strokeRect(w2[0] * TILE, 8, w2[1] * TILE, w2[2]);
       g.lineBetween(w2[0] * TILE + w2[1] * TILE / 2, 8, w2[0] * TILE + w2[1] * TILE / 2, 8 + w2[2]);
+      g.lineBetween(w2[0] * TILE, 8 + w2[2] / 2, w2[0] * TILE + w2[1] * TILE, 8 + w2[2] / 2);
     });
     g.lineStyle(2, 0x4a4033, 1); g.strokeRect(1, 1, W - 2, H - 2);
     // 地毯已移除（用户反馈太丑）；灯光=ADD 光晕池（柔和暖光）
@@ -1008,8 +1049,29 @@
     });
   }
 
-  function drawWindowSky(s, g, wx, wy, ww, wh) {
-    var night = !lightsOn;
+  function isNightHour() {   // 北京时间 18:00-6:00 = 夜（窗外昼夜按真实时间，与灯开关解耦——评审 v31 用户反馈）
+    var bj = new Date(Date.now() + 8 * 3600 * 1000).getUTCHours();
+    return bj >= 18 || bj < 6;
+  }
+  function drawWindowSky(s, g, wx, wy, ww, wh, roomKey) {
+    var night = isNightHour();
+    // 室内开灯时玻璃反光微亮（避免"墙上黑洞"——v31 用户反馈），夜里窗色也比纯黑亮两档
+    if (roomKey && roomLights[roomKey]) {
+      g.fillStyle(night ? 0x2a3348 : 0x8fc3e8, 1); g.fillRect(wx, wy, ww, wh);
+      if (night) {
+        g.fillStyle(0x41506e, 1); g.fillRect(wx, wy, ww, wh);
+        g.fillStyle(0xf4f1ea, 1); g.fillCircle(wx + ww - 16, wy + wh / 2, 6);
+        g.fillStyle(0x2a3348, 1); g.fillCircle(wx + ww - 13, wy + wh / 2 - 2, 5);
+        g.lineStyle(2, 0x8492ac, 1);
+        g.lineBetween(wx + ww / 2, wy, wx + ww / 2, wy + wh);
+        g.lineBetween(wx, wy + wh / 2, wx + ww, wy + wh / 2);
+        return;
+      }
+      g.lineStyle(2, 0x8492ac, 1);
+      g.lineBetween(wx + ww / 2, wy, wx + ww / 2, wy + wh);
+      g.lineBetween(wx, wy + wh / 2, wx + ww, wy + wh / 2);
+      return;
+    }
     if (weather === "rainy") {
       g.fillStyle(0x5a6a80, 1); g.fillRect(wx, wy, ww, wh);
       g.lineStyle(1, 0xaec6de, 0.7);
@@ -1228,7 +1290,17 @@
     updateStatusbar(rawState, taskText, st.detail || "");
     // 灯光自动模式：睡觉/未开灯 → 关灯；上班干活 → 开灯（手动开关被下一次真实事件重置为自动）
     lightsManual = false;
-    setLights(scene, cfg.mood !== "sleeping");
+    // AI 自主开关灯（v31 用户反馈）：按状态点亮对应房间的灯，不是全开/全关
+    var h = bjHour();
+    if (cfg.mood === "sleeping") {
+      roomLights.office = false; roomLights.kitchen = false; roomLights.bath = false;
+      roomLights.bedroom = (h >= 18 || h < 23);   // 睡前开卧室灯，深夜全关
+    } else {
+      roomLights.office = true; roomLights.kitchen = (h >= 6 && h < 10) || (h >= 17 && h < 21);
+      roomLights.bath = false;                     // 清醒时段卫浴默认关（washing 状态时临时开）
+      roomLights.bedroom = false;
+    }
+    applyRoomLights(scene);
     unsit();   // 起身：同时取消未走完的坐席 tween，避免新状态把鱼又拉回沙发
     fish.setBadge(cfg.mood === "error" ? "#e03131" :
       cfg.mood === "sleeping" ? "#4c6ef5" :
