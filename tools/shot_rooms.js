@@ -5,7 +5,7 @@ const path = require("path");
 const fs = require("fs");
 const pw = require(path.join("/tmp/node_modules/playwright-core"));
 
-const BASE = "http://127.0.0.1:4322";
+const BASE = process.env.SHOT_BASE || "http://127.0.0.1:4322";
 const OUT = process.argv[2] || "/root/项目/news-site/logs/office-road-shots";
 const TAG = process.argv[3] || "";
 fs.mkdirSync(OUT, { recursive: true });
@@ -21,8 +21,8 @@ fs.mkdirSync(OUT, { recursive: true });
   page.on("pageerror", e => errors.push("pageerror: " + e.message));
   page.on("console", m => { if (m.type() === "error") errors.push("console: " + m.text()); });
 
-  await page.goto(BASE + "/?debug=1", { waitUntil: "load" });
-  await page.waitForFunction(() => !!(window.__office && window.__office.sceneRef && window.__office.sceneRef.mapdata), null, { timeout: 25000 });
+  await page.goto(BASE.replace(/\/$/, "") + "/office/?debug=1", { waitUntil: "load", timeout: 30000 });
+  await page.waitForFunction(() => !!(window.__office && window.__office.sceneRef && window.__office.sceneRef.mapdata), null, { timeout: 110000 });
   await page.waitForTimeout(2600);
 
   async function shoot(name, fn) {
