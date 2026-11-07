@@ -599,11 +599,9 @@
     };
     Object.keys(roomRects).forEach(function (key) {
       var r0 = roomRects[key];
-      // 开灯=ADD 暖色提亮片（抵消夜间环境暗度）；关灯=黑色遮罩 0.55
-      var lit = roomLights[key];
-      var ov = s.add.rectangle(r0[0], r0[1], r0[2], r0[3], lit ? 0xffd9a0 : 0x0a1020)
-        .setOrigin(0).setDepth(59000).setAlpha(lit ? 0.20 : 0.55);
-      ov.blendMode = lit ? Phaser.BlendModes.ADD : Phaser.BlendModes.NORMAL;
+      // 开灯=无遮罩（原色）；关灯=黑色遮罩
+      var ov = s.add.rectangle(r0[0], r0[1], r0[2], r0[3], 0x0a1020)
+        .setOrigin(0).setDepth(59000).setAlpha(roomLights[key] ? 0 : 0.60);
       s.roomOverlays[key] = ov;
     });
 
@@ -614,7 +612,7 @@
     ctx.fillRect(0, 0, W, H);
     cv.refresh();
     ambient = s.add.image(0, 0, "ambientcv").setOrigin(0).setDepth(60000).setAlpha(1 - ambientCur);
-    ambientTarget = isNightHour() ? 0.38 : 0.10;   // 白天几乎全亮，夜里有基础暗度（开灯房间靠 roomOverlays 逆操作提亮）
+    ambientTarget = 0;   // 全屏滤镜取消（v32）：关灯房间的暗度由 roomOverlays 黑遮罩承担，开灯房间显示原色——不再有"蒙一层"感
 
     // 每房间一个灯开关（v31 用户反馈：开关只影响本房间）
     // 位置：贴各房间上墙右侧；switchDefs [房间, x格, 说明]
@@ -658,7 +656,7 @@
       var lit = roomLights[key];
       ov.blendMode = lit ? Phaser.BlendModes.ADD : Phaser.BlendModes.NORMAL;
       ov.fillColor = lit ? 0xffe4b8 : 0x0a1020;
-      s.tweens.add({ targets: ov, alpha: lit ? 0.34 : 0.55, duration: 600 });
+      s.tweens.add({ targets: ov, alpha: lit ? 0 : 0.60, duration: 600 });
     });
     // 灯池分房间
     (s.lightPools || []).forEach(function (p) {
