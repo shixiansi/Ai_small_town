@@ -1,0 +1,1209 @@
+{
+  "frames": [
+    {
+      "duration": 83,
+      "filename": "clock-desk-selout-32_Ring_South_00.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Ring",
+        "degrees": 0.0,
+        "id": "f7aa154d2865b079",
+        "index": 0,
+        "pivot": {
+          "x": 16,
+          "y": 25
+        },
+        "side": "South",
+        "tag": "Ring_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "clock-desk-selout-32_Ring_South_01.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 32,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Ring",
+        "degrees": 0.0,
+        "id": "2eda6026e7e3dfe8",
+        "index": 1,
+        "pivot": {
+          "x": 16,
+          "y": 25
+        },
+        "side": "South",
+        "tag": "Ring_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "clock-desk-selout-32_Ring_South_02.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 64,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Ring",
+        "degrees": 0.0,
+        "id": "01ffe9f6e0fa834c",
+        "index": 2,
+        "pivot": {
+          "x": 16,
+          "y": 25
+        },
+        "side": "South",
+        "tag": "Ring_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "clock-desk-selout-32_Ring_South_03.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 96,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Ring",
+        "degrees": 0.0,
+        "id": "dbdced7ab40a679b",
+        "index": 3,
+        "pivot": {
+          "x": 16,
+          "y": 25
+        },
+        "side": "South",
+        "tag": "Ring_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "clock-desk-selout-32_Ring_Southeast_00.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 32
+      },
+      "pixor": {
+        "action": "Ring",
+        "degrees": 45.0,
+        "id": "0c14b5bb1ccaaa6a",
+        "index": 0,
+        "pivot": {
+          "x": 16,
+          "y": 25
+        },
+        "side": "Southeast",
+        "tag": "Ring_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "clock-desk-selout-32_Ring_Southeast_01.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 32,
+        "y": 32
+      },
+      "pixor": {
+        "action": "Ring",
+        "degrees": 45.0,
+        "id": "8ddb14abdc2bf20f",
+        "index": 1,
+        "pivot": {
+          "x": 16,
+          "y": 25
+        },
+        "side": "Southeast",
+        "tag": "Ring_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "clock-desk-selout-32_Ring_Southeast_02.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 64,
+        "y": 32
+      },
+      "pixor": {
+        "action": "Ring",
+        "degrees": 45.0,
+        "id": "9820d6c1b3e3d8fb",
+        "index": 2,
+        "pivot": {
+          "x": 16,
+          "y": 25
+        },
+        "side": "Southeast",
+        "tag": "Ring_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "clock-desk-selout-32_Ring_Southeast_03.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 96,
+        "y": 32
+      },
+      "pixor": {
+        "action": "Ring",
+        "degrees": 45.0,
+        "id": "9a95a8c08e881bac",
+        "index": 3,
+        "pivot": {
+          "x": 16,
+          "y": 25
+        },
+        "side": "Southeast",
+        "tag": "Ring_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "clock-desk-selout-32_Ring_East_00.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 64
+      },
+      "pixor": {
+        "action": "Ring",
+        "degrees": 90.0,
+        "id": "4bb08b2e46e9ca70",
+        "index": 0,
+        "pivot": {
+          "x": 16,
+          "y": 25
+        },
+        "side": "East",
+        "tag": "Ring_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "clock-desk-selout-32_Ring_East_01.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 32,
+        "y": 64
+      },
+      "pixor": {
+        "action": "Ring",
+        "degrees": 90.0,
+        "id": "334f9c3429632501",
+        "index": 1,
+        "pivot": {
+          "x": 16,
+          "y": 25
+        },
+        "side": "East",
+        "tag": "Ring_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "clock-desk-selout-32_Ring_East_02.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 64,
+        "y": 64
+      },
+      "pixor": {
+        "action": "Ring",
+        "degrees": 90.0,
+        "id": "602bc3c6faca3215",
+        "index": 2,
+        "pivot": {
+          "x": 16,
+          "y": 25
+        },
+        "side": "East",
+        "tag": "Ring_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "clock-desk-selout-32_Ring_East_03.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 96,
+        "y": 64
+      },
+      "pixor": {
+        "action": "Ring",
+        "degrees": 90.0,
+        "id": "f7ff0fe81465bf8e",
+        "index": 3,
+        "pivot": {
+          "x": 16,
+          "y": 25
+        },
+        "side": "East",
+        "tag": "Ring_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "clock-desk-selout-32_Ring_Northeast_00.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 96
+      },
+      "pixor": {
+        "action": "Ring",
+        "degrees": 135.0,
+        "id": "a6395071dace3374",
+        "index": 0,
+        "pivot": {
+          "x": 16,
+          "y": 25
+        },
+        "side": "Northeast",
+        "tag": "Ring_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "clock-desk-selout-32_Ring_Northeast_01.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 32,
+        "y": 96
+      },
+      "pixor": {
+        "action": "Ring",
+        "degrees": 135.0,
+        "id": "e9bab5933e3243f5",
+        "index": 1,
+        "pivot": {
+          "x": 16,
+          "y": 25
+        },
+        "side": "Northeast",
+        "tag": "Ring_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "clock-desk-selout-32_Ring_Northeast_02.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 64,
+        "y": 96
+      },
+      "pixor": {
+        "action": "Ring",
+        "degrees": 135.0,
+        "id": "e4317cd385f0c821",
+        "index": 2,
+        "pivot": {
+          "x": 16,
+          "y": 25
+        },
+        "side": "Northeast",
+        "tag": "Ring_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "clock-desk-selout-32_Ring_Northeast_03.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 96,
+        "y": 96
+      },
+      "pixor": {
+        "action": "Ring",
+        "degrees": 135.0,
+        "id": "9d4a28400fc4c8a2",
+        "index": 3,
+        "pivot": {
+          "x": 16,
+          "y": 25
+        },
+        "side": "Northeast",
+        "tag": "Ring_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "clock-desk-selout-32_Ring_North_00.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 128
+      },
+      "pixor": {
+        "action": "Ring",
+        "degrees": 180.0,
+        "id": "eff4741d54a07dd7",
+        "index": 0,
+        "pivot": {
+          "x": 16,
+          "y": 25
+        },
+        "side": "North",
+        "tag": "Ring_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "clock-desk-selout-32_Ring_North_01.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 32,
+        "y": 128
+      },
+      "pixor": {
+        "action": "Ring",
+        "degrees": 180.0,
+        "id": "45ce9781678a9e32",
+        "index": 1,
+        "pivot": {
+          "x": 16,
+          "y": 25
+        },
+        "side": "North",
+        "tag": "Ring_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "clock-desk-selout-32_Ring_North_02.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 64,
+        "y": 128
+      },
+      "pixor": {
+        "action": "Ring",
+        "degrees": 180.0,
+        "id": "4467158419fea19e",
+        "index": 2,
+        "pivot": {
+          "x": 16,
+          "y": 25
+        },
+        "side": "North",
+        "tag": "Ring_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "clock-desk-selout-32_Ring_North_03.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 96,
+        "y": 128
+      },
+      "pixor": {
+        "action": "Ring",
+        "degrees": 180.0,
+        "id": "88536e8173154e45",
+        "index": 3,
+        "pivot": {
+          "x": 16,
+          "y": 25
+        },
+        "side": "North",
+        "tag": "Ring_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "clock-desk-selout-32_Ring_Northwest_00.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 160
+      },
+      "pixor": {
+        "action": "Ring",
+        "degrees": 225.0,
+        "id": "9ce7d79f0051b9da",
+        "index": 0,
+        "pivot": {
+          "x": 16,
+          "y": 25
+        },
+        "side": "Northwest",
+        "tag": "Ring_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "clock-desk-selout-32_Ring_Northwest_01.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 32,
+        "y": 160
+      },
+      "pixor": {
+        "action": "Ring",
+        "degrees": 225.0,
+        "id": "a269bd979edcb09f",
+        "index": 1,
+        "pivot": {
+          "x": 16,
+          "y": 25
+        },
+        "side": "Northwest",
+        "tag": "Ring_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "clock-desk-selout-32_Ring_Northwest_02.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 64,
+        "y": 160
+      },
+      "pixor": {
+        "action": "Ring",
+        "degrees": 225.0,
+        "id": "b0edce270f748eeb",
+        "index": 2,
+        "pivot": {
+          "x": 16,
+          "y": 25
+        },
+        "side": "Northwest",
+        "tag": "Ring_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "clock-desk-selout-32_Ring_Northwest_03.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 96,
+        "y": 160
+      },
+      "pixor": {
+        "action": "Ring",
+        "degrees": 225.0,
+        "id": "cc5a7a17c35d0b3c",
+        "index": 3,
+        "pivot": {
+          "x": 16,
+          "y": 25
+        },
+        "side": "Northwest",
+        "tag": "Ring_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "clock-desk-selout-32_Ring_West_00.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 192
+      },
+      "pixor": {
+        "action": "Ring",
+        "degrees": 270.0,
+        "id": "f447b9d1022b9e6e",
+        "index": 0,
+        "pivot": {
+          "x": 16,
+          "y": 25
+        },
+        "side": "West",
+        "tag": "Ring_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "clock-desk-selout-32_Ring_West_01.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 32,
+        "y": 192
+      },
+      "pixor": {
+        "action": "Ring",
+        "degrees": 270.0,
+        "id": "f58b9560edd0d3d3",
+        "index": 1,
+        "pivot": {
+          "x": 16,
+          "y": 25
+        },
+        "side": "West",
+        "tag": "Ring_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "clock-desk-selout-32_Ring_West_02.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 64,
+        "y": 192
+      },
+      "pixor": {
+        "action": "Ring",
+        "degrees": 270.0,
+        "id": "3cf6b2ab913cb3e7",
+        "index": 2,
+        "pivot": {
+          "x": 16,
+          "y": 25
+        },
+        "side": "West",
+        "tag": "Ring_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "clock-desk-selout-32_Ring_West_03.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 96,
+        "y": 192
+      },
+      "pixor": {
+        "action": "Ring",
+        "degrees": 270.0,
+        "id": "e3ac2c4080aea290",
+        "index": 3,
+        "pivot": {
+          "x": 16,
+          "y": 25
+        },
+        "side": "West",
+        "tag": "Ring_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "clock-desk-selout-32_Ring_Southwest_00.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 224
+      },
+      "pixor": {
+        "action": "Ring",
+        "degrees": 315.0,
+        "id": "928a2e8f2f1c7004",
+        "index": 0,
+        "pivot": {
+          "x": 16,
+          "y": 25
+        },
+        "side": "Southwest",
+        "tag": "Ring_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "clock-desk-selout-32_Ring_Southwest_01.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 32,
+        "y": 224
+      },
+      "pixor": {
+        "action": "Ring",
+        "degrees": 315.0,
+        "id": "8f380eba96635565",
+        "index": 1,
+        "pivot": {
+          "x": 16,
+          "y": 25
+        },
+        "side": "Southwest",
+        "tag": "Ring_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "clock-desk-selout-32_Ring_Southwest_02.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 64,
+        "y": 224
+      },
+      "pixor": {
+        "action": "Ring",
+        "degrees": 315.0,
+        "id": "cb70856e2a615871",
+        "index": 2,
+        "pivot": {
+          "x": 16,
+          "y": 25
+        },
+        "side": "Southwest",
+        "tag": "Ring_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "clock-desk-selout-32_Ring_Southwest_03.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 96,
+        "y": 224
+      },
+      "pixor": {
+        "action": "Ring",
+        "degrees": 315.0,
+        "id": "1f0956ea15a84e12",
+        "index": 3,
+        "pivot": {
+          "x": 16,
+          "y": 25
+        },
+        "side": "Southwest",
+        "tag": "Ring_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    }
+  ],
+  "meta": {
+    "app": "Pixor",
+    "format": "I8",
+    "frameTags": [
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 0,
+        "name": "Ring_South",
+        "to": 3
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 4,
+        "name": "Ring_Southeast",
+        "to": 7
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 8,
+        "name": "Ring_East",
+        "to": 11
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 12,
+        "name": "Ring_Northeast",
+        "to": 15
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 16,
+        "name": "Ring_North",
+        "to": 19
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 20,
+        "name": "Ring_Northwest",
+        "to": 23
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 24,
+        "name": "Ring_West",
+        "to": 27
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 28,
+        "name": "Ring_Southwest",
+        "to": 31
+      }
+    ],
+    "image": "clock-desk-selout-32.png",
+    "layers": [
+      {
+        "blendMode": "normal",
+        "name": "final",
+        "opacity": 255
+      }
+    ],
+    "pixor": {
+      "cell": {
+        "h": 32,
+        "w": 32
+      },
+      "pivot": {
+        "x": 16,
+        "y": 25
+      },
+      "sides": {
+        "East": 90.0,
+        "North": 180.0,
+        "Northeast": 135.0,
+        "Northwest": 225.0,
+        "South": 0.0,
+        "Southeast": 45.0,
+        "Southwest": 315.0,
+        "West": 270.0
+      }
+    },
+    "scale": "1",
+    "size": {
+      "h": 256,
+      "w": 128
+    },
+    "slices": [
+      {
+        "color": "#0000ffff",
+        "keys": [
+          {
+            "bounds": {
+              "h": 32,
+              "w": 32,
+              "x": 0,
+              "y": 0
+            },
+            "frame": 0,
+            "pivot": {
+              "x": 16,
+              "y": 25
+            }
+          }
+        ],
+        "name": "pivot"
+      }
+    ],
+    "version": "2.0.1"
+  }
+}

@@ -1,0 +1,1171 @@
+{
+ "room": {
+  "cols": 56,
+  "rows": 30,
+  "tile": 48,
+  "wallH": 48
+ },
+ "door": {
+  "tx": 2,
+  "tw": 2
+ },
+ "window": {
+  "tx": 15,
+  "tw": 2
+ },
+ "furniture": [
+  {
+   "a": "plant-office",
+   "x": 1.5,
+   "y": 19.2
+  },
+  {
+   "a": "blackboard",
+   "x": 6.0,
+   "y": 17.1,
+   "id": "blackboardA"
+  },
+  {
+   "a": "cabinet",
+   "x": 23.6,
+   "y": 1.9,
+   "id": "cabA"
+  },
+  {
+   "a": "globe-desk",
+   "on": "cabA",
+   "dx": 0,
+   "dy": 2
+  },
+  {
+   "a": "bookshelf-office",
+   "x": 8.5,
+   "y": 17.1,
+   "id": "shelfA"
+  },
+  {
+   "a": "bookshelf-office",
+   "x": 8.2,
+   "y": 19.6
+  },
+  {
+   "a": "bookshelf-office",
+   "x": 12.0,
+   "y": 17.2
+  },
+  {
+   "a": "whiteboard",
+   "x": 13.8,
+   "y": 17.1,
+   "id": "whiteboardA"
+  },
+  {
+   "a": "filing-cabinet",
+   "x": 18.6,
+   "y": 17.9,
+   "id": "fileA"
+  },
+  {
+   "a": "trophy-cup",
+   "x": 20.6,
+   "y": 17.6,
+   "o": true
+  },
+  {
+   "a": "locker",
+   "x": 20.6,
+   "y": 17.1
+  },
+  {
+   "a": "plant-office",
+   "x": 22.5,
+   "y": 17.9
+  },
+  {
+   "a": "office-desk",
+   "x": 9.0,
+   "y": 21.0,
+   "id": "desk"
+  },
+  {
+   "a": "computer",
+   "on": "desk",
+   "dx": 0,
+   "dy": 2
+  },
+  {
+   "a": "desk-lamp",
+   "on": "desk",
+   "dx": -16,
+   "dy": 4
+  },
+  {
+   "a": "pencil-cup",
+   "on": "desk",
+   "dx": 14,
+   "dy": 3
+  },
+  {
+   "a": "office-chair",
+   "x": 9.0,
+   "y": 22.4,
+   "id": "chairA",
+   "frame": 24
+  },
+  {
+   "a": "dining-table",
+   "x": 19.0,
+   "y": 6.4,
+   "id": "tableA"
+  },
+  {
+   "a": "laptop",
+   "on": "tableA",
+   "dx": -1,
+   "dy": 9
+  },
+  {
+   "a": "paper-stack",
+   "x": 10.3,
+   "y": 21.5,
+   "o": true
+  },
+  {
+   "a": "printer",
+   "x": 21.8,
+   "y": 21.0,
+   "id": "printA"
+  },
+  {
+   "a": "paper-stack",
+   "x": 20.6,
+   "y": 20.6,
+   "o": true
+  },
+  {
+   "a": "book-stack",
+   "x": 17.5,
+   "y": 22.5,
+   "o": true
+  },
+  {
+   "a": "cabinet",
+   "x": 24.2,
+   "y": 20.6,
+   "id": "cabB"
+  },
+  {
+   "a": "book-stack",
+   "on": "cabB",
+   "dx": 0,
+   "dy": 2
+  },
+  {
+   "a": "water-cooler",
+   "x": 1.4,
+   "y": 26.8
+  },
+  {
+   "a": "floor-lamp",
+   "x": 1.3,
+   "y": 29.4
+  },
+  {
+   "a": "sofa",
+   "x": 2.6,
+   "y": 27.6,
+   "id": "sofaA"
+  },
+  {
+   "a": "sofa",
+   "x": 5.6,
+   "y": 27.6
+  },
+  {
+   "a": "open-book",
+   "on": "sofaA",
+   "dx": 0,
+   "dy": 10
+  },
+  {
+   "a": "round-table",
+   "x": 5.0,
+   "y": 28.9,
+   "id": "tableB"
+  },
+  {
+   "a": "coffee-mug",
+   "on": "tableB",
+   "dx": 0,
+   "dy": 8
+  },
+  {
+   "a": "plant-office",
+   "x": 1.2,
+   "y": 24.2
+  },
+  {
+   "a": "phone-desk",
+   "on": "woodA",
+   "dx": 0,
+   "dy": 3
+  },
+  {
+   "a": "chair",
+   "x": 4.6,
+   "y": 22.6,
+   "frame": 3
+  },
+  {
+   "a": "school-desk",
+   "x": 19.5,
+   "y": 21.0,
+   "id": "schA"
+  },
+  {
+   "a": "book-stack",
+   "on": "schA",
+   "dx": 0,
+   "dy": 3
+  },
+  {
+   "a": "desk-wood",
+   "x": 11.2,
+   "y": 21.0,
+   "id": "woodA"
+  },
+  {
+   "a": "double-bed",
+   "x": 5.0,
+   "y": 3.0,
+   "id": "bedA",
+   "sc": 1.15
+  },
+  {
+   "a": "wardrobe",
+   "x": 2.3,
+   "y": 2.5,
+   "id": "wardA"
+  },
+  {
+   "a": "nightstand",
+   "x": 3.4,
+   "y": 2.8,
+   "id": "bedstandA",
+   "sc": 0.9
+  },
+  {
+   "a": "desk-lamp",
+   "on": "bedstandA",
+   "dx": 0,
+   "dy": 2
+  },
+  {
+   "a": "curtains",
+   "x": 5.0,
+   "y": 1.4,
+   "sc": 1.0,
+   "wall": true
+  },
+  {
+   "a": "chair",
+   "x": 5.0,
+   "y": 5.0,
+   "frame": 3
+  },
+  {
+   "a": "bathtub",
+   "x": 12.7,
+   "y": 2.5,
+   "id": "bathA",
+   "sc": 1.0
+  },
+  {
+   "a": "toilet",
+   "x": 14.1,
+   "y": 2.4
+  },
+  {
+   "a": "sink",
+   "x": 11.1,
+   "y": 2.2,
+   "id": "sinkA",
+   "wall": true
+  },
+  {
+   "a": "mirror",
+   "x": 11.1,
+   "y": 1.6,
+   "sc": 0.9,
+   "wall": true
+  },
+  {
+   "a": "fridge",
+   "x": 17.5,
+   "y": 2.2,
+   "id": "fridgeA"
+  },
+  {
+   "a": "stove-kitchen",
+   "x": 19.3,
+   "y": 2.2,
+   "id": "stoveA"
+  },
+  {
+   "a": "kitchen-counter",
+   "x": 21.6,
+   "y": 2.1,
+   "id": "counterA",
+   "sc": 0.95
+  },
+  {
+   "a": "fruit-bowl",
+   "on": "counterA",
+   "dx": -14,
+   "dy": 4,
+   "sc": 0.8
+  },
+  {
+   "a": "kettle",
+   "on": "counterA",
+   "dx": 12,
+   "dy": 4,
+   "sc": 0.9
+  },
+  {
+   "a": "armchair",
+   "x": 20.8,
+   "y": 27.0,
+   "id": "armA",
+   "sc": 1.05
+  },
+  {
+   "a": "nightstand",
+   "x": 11.2,
+   "y": 17.3,
+   "id": "shoecabA",
+   "sc": 0.85
+  },
+  {
+   "a": "mailbox",
+   "x": 6.6,
+   "y": 17.6,
+   "wall": true
+  },
+  {
+   "a": "plant-office",
+   "x": 8.3,
+   "y": 7.8
+  },
+  {
+   "a": "nightstand",
+   "x": 7.1,
+   "y": 2.8,
+   "sc": 0.85
+  },
+  {
+   "a": "nightstand",
+   "x": 14.3,
+   "y": 7.4,
+   "sc": 0.85,
+   "id": "bathcabA"
+  },
+  {
+   "a": "plant-office",
+   "x": 11.2,
+   "y": 9.5,
+   "sc": 0.9
+  },
+  {
+   "a": "oak-tree",
+   "x": 47.5,
+   "y": 9.4,
+   "sc": 1.0
+  },
+  {
+   "a": "bench-park",
+   "x": 49.4,
+   "y": 10.8,
+   "id": "benchA"
+  },
+  {
+   "a": "street-lamp",
+   "x": 45.2,
+   "y": 15.0
+  },
+  {
+   "a": "bush",
+   "x": 46.2,
+   "y": 12.4,
+   "o": true,
+   "sc": 0.9
+  },
+  {
+   "a": "flowers",
+   "x": 48.8,
+   "y": 12.8,
+   "o": true,
+   "sc": 0.8
+  },
+  {
+   "a": "fence-picket",
+   "x": 45.3,
+   "y": 7.6,
+   "o": true,
+   "wall": true
+  },
+  {
+   "a": "fence-picket",
+   "x": 54.8,
+   "y": 7.6,
+   "o": true,
+   "wall": true
+  },
+  {
+   "a": "market-stall",
+   "x": 46.8,
+   "y": 16.4,
+   "o": true,
+   "id": "stallA"
+  },
+  {
+   "a": "stall-fruit",
+   "x": 50.8,
+   "y": 16.6,
+   "o": true,
+   "id": "stallB"
+  },
+  {
+   "a": "coin",
+   "on": "stallB",
+   "dx": 0,
+   "dy": 6,
+   "sc": 0.6
+  },
+  {
+   "a": "sign-inn",
+   "x": 44.7,
+   "y": 13.6,
+   "o": true,
+   "wall": true
+  },
+  {
+   "a": "potion-shelf",
+   "x": 14.4,
+   "y": 2.1,
+   "wall": true
+  },
+  {
+   "a": "crown-cushion",
+   "x": 14.2,
+   "y": 8.0,
+   "o": true,
+   "id": "rechargeA",
+   "sc": 1.0
+  },
+  {
+   "a": "gramophone",
+   "x": 1.5,
+   "y": 25.8,
+   "id": "gramoA"
+  },
+  {
+   "a": "arcade-cabinet",
+   "x": 9.2,
+   "y": 29.2,
+   "id": "arcadeA"
+  },
+  {
+   "a": "crown-cushion",
+   "x": 21.6,
+   "y": 29.6,
+   "o": true,
+   "sc": 0.9
+  },
+  {
+   "a": "cottage",
+   "x": 42.2,
+   "y": 8.8,
+   "o": true,
+   "id": "homeCat",
+   "sc": 1.0
+  },
+  {
+   "a": "house-modern",
+   "x": 48.5,
+   "y": 9.0,
+   "o": true,
+   "id": "homeChief",
+   "sc": 1.0
+  },
+  {
+   "a": "farmhouse",
+   "x": 53.4,
+   "y": 9.6,
+   "o": true,
+   "id": "homeDoc",
+   "sc": 1.0
+  },
+  {
+   "a": "well",
+   "x": 46.6,
+   "y": 15.8,
+   "id": "townWell",
+   "sc": 1.0
+  },
+  {
+   "a": "street-lamp",
+   "x": 53.0,
+   "y": 12.4
+  },
+  {
+   "a": "street-lamp",
+   "x": 52.0,
+   "y": 13.6
+  },
+  {
+   "a": "bench-park",
+   "x": 50.8,
+   "y": 17.2,
+   "id": "townBench"
+  },
+  {
+   "a": "flowers",
+   "x": 43.2,
+   "y": 13.8,
+   "o": true,
+   "sc": 0.8
+  },
+  {
+   "a": "bush",
+   "x": 53.6,
+   "y": 14.0,
+   "o": true,
+   "sc": 0.85
+  },
+  {
+   "a": "sign-inn",
+   "x": 41.3,
+   "y": 13.8,
+   "o": true,
+   "sc": 0.9,
+   "wall": true
+  },
+  {
+   "a": "nightstand",
+   "x": 7.9,
+   "y": 2.8,
+   "sc": 0.85
+  },
+  {
+   "a": "plant-office",
+   "x": 1.9,
+   "y": 8.2,
+   "sc": 0.9
+  },
+  {
+   "a": "flowers",
+   "x": 17.2,
+   "y": 10.8,
+   "o": true,
+   "sc": 0.8
+  },
+  {
+   "a": "bush",
+   "x": 24.0,
+   "y": 10.6,
+   "o": true,
+   "sc": 0.8
+  },
+  {
+   "a": "oak-tree",
+   "x": 28.5,
+   "y": 5.5
+  },
+  {
+   "a": "oak-tree",
+   "x": 33.0,
+   "y": 7.0,
+   "sc": 0.85
+  },
+  {
+   "a": "oak-tree",
+   "x": 36.0,
+   "y": 5.5,
+   "sc": 0.9
+  },
+  {
+   "a": "bench-park",
+   "x": 30.5,
+   "y": 11.0,
+   "id": "gardenBench1"
+  },
+  {
+   "a": "bench-park",
+   "x": 35.5,
+   "y": 12.5,
+   "id": "gardenBench2"
+  },
+  {
+   "a": "flowers",
+   "x": 28.0,
+   "y": 9.5,
+   "o": true,
+   "sc": 0.8
+  },
+  {
+   "a": "flowers",
+   "x": 31.5,
+   "y": 9.0,
+   "o": true,
+   "sc": 0.8
+  },
+  {
+   "a": "flowers",
+   "x": 35.5,
+   "y": 9.5,
+   "o": true,
+   "sc": 0.75
+  },
+  {
+   "a": "flowers",
+   "x": 30.0,
+   "y": 13.5,
+   "o": true,
+   "sc": 0.8
+  },
+  {
+   "a": "well",
+   "x": 33.5,
+   "y": 12.5,
+   "id": "gardenWell"
+  },
+  {
+   "a": "street-lamp",
+   "x": 28.0,
+   "y": 12.0
+  },
+  {
+   "a": "fence-picket",
+   "x": 27.2,
+   "y": 2.0,
+   "o": true,
+   "wall": true
+  },
+  {
+   "a": "fence-picket",
+   "x": 37.8,
+   "y": 2.0,
+   "o": true,
+   "wall": true
+  },
+  {
+   "a": "oak-tree",
+   "x": 28.0,
+   "y": 19.0,
+   "sc": 0.95
+  },
+  {
+   "a": "oak-tree",
+   "x": 35.5,
+   "y": 20.0,
+   "sc": 0.9
+  },
+  {
+   "a": "flowers",
+   "x": 31.0,
+   "y": 21.5,
+   "o": true,
+   "sc": 0.8
+  },
+  {
+   "a": "flowers",
+   "x": 36.0,
+   "y": 24.0,
+   "o": true,
+   "sc": 0.8
+  },
+  {
+   "a": "bench-park",
+   "x": 30.0,
+   "y": 25.0,
+   "id": "gardenBench3"
+  },
+  {
+   "a": "street-lamp",
+   "x": 34.0,
+   "y": 26.0
+  },
+  {
+   "a": "fence-picket",
+   "x": 27.2,
+   "y": 28.0,
+   "wall": true
+  },
+  {
+   "a": "fence-picket",
+   "x": 37.8,
+   "y": 28.0,
+   "wall": true
+  },
+  {
+   "a": "cabinet",
+   "x": 18.0,
+   "y": 1.7
+  },
+  {
+   "a": "nightstand",
+   "x": 22.6,
+   "y": 2.0,
+   "sc": 0.85,
+   "id": "kitchCab2"
+  },
+  {
+   "a": "sink",
+   "x": 23.0,
+   "y": 5.2,
+   "sc": 0.95,
+   "id": "kitchSink"
+  },
+  {
+   "a": "fruit-bowl",
+   "x": 21.0,
+   "y": 6.0,
+   "o": true,
+   "sc": 0.7
+  },
+  {
+   "a": "plant-office",
+   "x": 17.0,
+   "y": 6.8,
+   "sc": 0.9
+  },
+  {
+   "a": "book-stack",
+   "x": 24.2,
+   "y": 6.6,
+   "sc": 0.5
+  },
+  {
+   "a": "nightstand",
+   "x": 12.8,
+   "y": 6.8,
+   "sc": 0.8,
+   "id": "bathCab2"
+  },
+  {
+   "a": "coffee-mug",
+   "x": 12.8,
+   "y": 6.2,
+   "on": "bathCab2",
+   "dx": 0,
+   "dy": 2,
+   "sc": 0.8
+  },
+  {
+   "a": "plant-office",
+   "x": 15.2,
+   "y": 6.8,
+   "sc": 0.85
+  },
+  {
+   "a": "book-stack",
+   "x": 10.9,
+   "y": 6.6,
+   "sc": 0.5
+  }
+ ],
+ "zones": {
+  "desk": {
+   "label": "工位",
+   "anchor": [
+    9.0,
+    23.6
+   ],
+   "face": "n",
+   "expect": [
+    "office-desk",
+    "computer",
+    "office-chair"
+   ],
+   "sit": {
+    "host": "chairA",
+    "dx": 0,
+    "dy": -14
+   }
+  },
+  "window": {
+   "label": "窗边",
+   "anchor": [
+    3.3,
+    4.4
+   ],
+   "face": "n",
+   "feature": "window"
+  },
+  "library": {
+   "label": "书架",
+   "anchor": [
+    10.7,
+    18.2
+   ],
+   "face": "n",
+   "expect": [
+    "bookshelf-office"
+   ]
+  },
+  "tools": {
+   "label": "设计台",
+   "anchor": [
+    19.5,
+    23.2
+   ],
+   "face": "n",
+   "expect": [
+    "school-desk",
+    "book-stack"
+   ]
+  },
+  "screen": {
+   "label": "看板",
+   "anchor": [
+    13.8,
+    18.9
+   ],
+   "face": "n",
+   "expect": [
+    "whiteboard"
+   ]
+  },
+  "printer": {
+   "label": "打印机",
+   "anchor": [
+    21.8,
+    22.8
+   ],
+   "face": "n",
+   "expect": [
+    "printer"
+   ]
+  },
+  "dining": {
+   "label": "餐桌",
+   "anchor": [
+    19.0,
+    8.2
+   ],
+   "face": "n",
+   "expect": [
+    "dining-table",
+    "laptop"
+   ],
+   "sit": {
+    "host": "tableA",
+    "dx": 0,
+    "dy": -14,
+    "face": "n"
+   }
+  },
+  "tea": {
+   "label": "茶水台",
+   "anchor": [
+    3.4,
+    28.8
+   ],
+   "face": "n",
+   "expect": [
+    "round-table",
+    "coffee-mug"
+   ]
+  },
+  "sofa": {
+   "label": "沙发",
+   "anchor": [
+    3.4,
+    28.8
+   ],
+   "face": "s",
+   "expect": [
+    "sofa"
+   ],
+   "sit": {
+    "host": "sofaA",
+    "dx": 0,
+    "dy": -2,
+    "lounge": true
+   }
+  },
+  "door": {
+   "label": "大门",
+   "anchor": [
+    12.5,
+    17.5
+   ],
+   "face": "s",
+   "feature": "door"
+  },
+  "mail": {
+   "label": "信箱",
+   "anchor": [
+    6.4,
+    18.2
+   ],
+   "face": "n",
+   "expect": [
+    "mailbox"
+   ]
+  },
+  "board": {
+   "anchor": [
+    4.5,
+    18.3
+   ],
+   "face": "s",
+   "decorative": true,
+   "label": "任务板",
+   "expect": [
+    "blackboard"
+   ]
+  },
+  "bed": {
+   "anchor": [
+    5.0,
+    5.6
+   ],
+   "face": "n",
+   "sit": {
+    "host": "bedA",
+    "dx": 0,
+    "dy": -16,
+    "lounge": true,
+    "face": "s"
+   },
+   "label": "卧室床",
+   "expect": [
+    "double-bed",
+    "chair"
+   ]
+  },
+  "washup": {
+   "anchor": [
+    11.1,
+    4.0
+   ],
+   "face": "n",
+   "label": "洗手台",
+   "expect": [
+    "sink",
+    "mirror"
+   ]
+  },
+  "cook": {
+   "anchor": [
+    19.3,
+    4.0
+   ],
+   "face": "n",
+   "label": "灶台",
+   "expect": [
+    "stove-kitchen",
+    "kitchen-counter"
+   ]
+  },
+  "fridge": {
+   "anchor": [
+    17.5,
+    4.0
+   ],
+   "face": "n",
+   "label": "冰箱",
+   "expect": [
+    "fridge"
+   ]
+  },
+  "relax": {
+   "anchor": [
+    20.8,
+    28.4
+   ],
+   "face": "s",
+   "sit": {
+    "host": "armA",
+    "dx": 0,
+    "dy": -10,
+    "lounge": true
+   },
+   "label": "单人沙发",
+   "expect": [
+    "armchair"
+   ]
+  },
+  "wardrobe": {
+   "anchor": [
+    2.3,
+    4.0
+   ],
+   "face": "n",
+   "label": "衣柜",
+   "expect": [
+    "wardrobe"
+   ]
+  },
+  "garden": {
+   "anchor": [
+    31.5,
+    12.0
+   ],
+   "face": "n",
+   "label": "花园",
+   "expect": [
+    "bench-park",
+    "flowers",
+    "oak-tree"
+   ]
+  },
+  "stroll": {
+   "anchor": [
+    30.5,
+    12.4
+   ],
+   "face": "s",
+   "label": "花园长椅",
+   "expect": [
+    "flowers",
+    "bench-park"
+   ],
+   "sit": {
+    "host": "gardenBench1",
+    "dx": 0,
+    "dy": -8,
+    "lounge": false,
+    "face": "n"
+   }
+  },
+  "market": {
+   "anchor": [
+    50.8,
+    18.2
+   ],
+   "face": "n",
+   "label": "小镇市集",
+   "expect": [
+    "stall-fruit",
+    "market-stall"
+   ]
+  },
+  "recover": {
+   "anchor": [
+    14.2,
+    9.4
+   ],
+   "face": "n",
+   "sit": {
+    "host": "rechargeA",
+    "dx": 0,
+    "dy": -8
+   },
+   "label": "充电角",
+   "expect": [
+    "crown-cushion"
+   ]
+  },
+  "arcade": {
+   "anchor": [
+    7.6,
+    29.4
+   ],
+   "face": "n",
+   "label": "街机",
+   "expect": [
+    "arcade-cabinet"
+   ]
+  },
+  "town": {
+   "anchor": [
+    46.6,
+    17.4
+   ],
+   "face": "s"
+  },
+  "npc_cat": {
+   "anchor": [
+    43.6,
+    11.4
+   ],
+   "face": "s"
+  },
+  "npc_chief": {
+   "anchor": [
+    47.6,
+    11.4
+   ],
+   "face": "s"
+  },
+  "npc_doc": {
+   "anchor": [
+    54.6,
+    11.4
+   ],
+   "face": "s"
+  },
+  "town_bench": {
+   "anchor": [
+    50.8,
+    18.4
+   ],
+   "face": "n",
+   "sit": {
+    "host": "townBench",
+    "dx": 0,
+    "dy": -6
+   }
+  },
+  "balcony": {
+   "anchor": [
+    20.5,
+    11.4
+   ],
+   "face": "n",
+   "label": "走廊阳台",
+   "decorative": false
+  }
+ },
+ "walls": [
+  {
+   "x": 10,
+   "y": 1,
+   "h": 14,
+   "gap": [
+    5,
+    7
+   ]
+  },
+  {
+   "y": 15,
+   "x0": 1,
+   "x1": 25,
+   "gap": [
+    12,
+    13
+   ]
+  },
+  {
+   "x": 25,
+   "y": 0,
+   "h": 30,
+   "gap": [
+    20,
+    22
+   ]
+  },
+  {
+   "x": 16,
+   "y": 1,
+   "h": 14,
+   "gap": [
+    6,
+    8
+   ]
+  }
+ ]
+}

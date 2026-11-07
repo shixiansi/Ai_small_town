@@ -1,0 +1,2297 @@
+{
+  "frames": [
+    {
+      "duration": 83,
+      "filename": "office-chair-selout-48_Spin_South_00.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 0.0,
+        "id": "b75858bced171fa9",
+        "index": 0,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "South",
+        "tag": "Spin_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "office-chair-selout-48_Spin_South_01.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 48,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 0.0,
+        "id": "d486fa62cf5cc938",
+        "index": 1,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "South",
+        "tag": "Spin_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "office-chair-selout-48_Spin_South_02.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 96,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 0.0,
+        "id": "2d83c7a93645353c",
+        "index": 2,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "South",
+        "tag": "Spin_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "office-chair-selout-48_Spin_South_03.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 144,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 0.0,
+        "id": "12171bb8825cb8eb",
+        "index": 3,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "South",
+        "tag": "Spin_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "office-chair-selout-48_Spin_South_04.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 192,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 0.0,
+        "id": "503b043814000c87",
+        "index": 4,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "South",
+        "tag": "Spin_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "office-chair-selout-48_Spin_South_05.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 240,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 0.0,
+        "id": "3a2ab7652264f97b",
+        "index": 5,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "South",
+        "tag": "Spin_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "office-chair-selout-48_Spin_South_06.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 288,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 0.0,
+        "id": "69a9b9b64b600150",
+        "index": 6,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "South",
+        "tag": "Spin_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "office-chair-selout-48_Spin_South_07.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 336,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 0.0,
+        "id": "e24cb00a797c04aa",
+        "index": 7,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "South",
+        "tag": "Spin_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "office-chair-selout-48_Spin_Southeast_00.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 48
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 45.0,
+        "id": "95f344414e3c73da",
+        "index": 0,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "Southeast",
+        "tag": "Spin_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "office-chair-selout-48_Spin_Southeast_01.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 48,
+        "y": 48
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 45.0,
+        "id": "9b752a39ecc76a9f",
+        "index": 1,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "Southeast",
+        "tag": "Spin_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "office-chair-selout-48_Spin_Southeast_02.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 96,
+        "y": 48
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 45.0,
+        "id": "a9f93ac95d5f48eb",
+        "index": 2,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "Southeast",
+        "tag": "Spin_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "office-chair-selout-48_Spin_Southeast_03.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 144,
+        "y": 48
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 45.0,
+        "id": "c565e6ba1147c53c",
+        "index": 3,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "Southeast",
+        "tag": "Spin_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "office-chair-selout-48_Spin_Southeast_04.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 192,
+        "y": 48
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 45.0,
+        "id": "afab830a83e8c50c",
+        "index": 4,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "Southeast",
+        "tag": "Spin_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "office-chair-selout-48_Spin_Southeast_05.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 240,
+        "y": 48
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 45.0,
+        "id": "3731c18c6eb54598",
+        "index": 5,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "Southeast",
+        "tag": "Spin_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "office-chair-selout-48_Spin_Southeast_06.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 288,
+        "y": 48
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 45.0,
+        "id": "a674bf3660a0a523",
+        "index": 6,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "Southeast",
+        "tag": "Spin_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "office-chair-selout-48_Spin_Southeast_07.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 336,
+        "y": 48
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 45.0,
+        "id": "e1dd76f8ea20e91d",
+        "index": 7,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "Southeast",
+        "tag": "Spin_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "office-chair-selout-48_Spin_East_00.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 96
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 90.0,
+        "id": "9651e1874ae9bba0",
+        "index": 0,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "East",
+        "tag": "Spin_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "office-chair-selout-48_Spin_East_01.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 48,
+        "y": 96
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 90.0,
+        "id": "c9c216d549aba9d1",
+        "index": 1,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "East",
+        "tag": "Spin_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "office-chair-selout-48_Spin_East_02.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 96,
+        "y": 96
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 90.0,
+        "id": "594f449e89a69f05",
+        "index": 2,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "East",
+        "tag": "Spin_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "office-chair-selout-48_Spin_East_03.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 144,
+        "y": 96
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 90.0,
+        "id": "d9735df8c9a9b3de",
+        "index": 3,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "East",
+        "tag": "Spin_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "office-chair-selout-48_Spin_East_04.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 192,
+        "y": 96
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 90.0,
+        "id": "a1911061953aa0aa",
+        "index": 4,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "East",
+        "tag": "Spin_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "office-chair-selout-48_Spin_East_05.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 240,
+        "y": 96
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 90.0,
+        "id": "9d5349b1709c030e",
+        "index": 5,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "East",
+        "tag": "Spin_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "office-chair-selout-48_Spin_East_06.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 288,
+        "y": 96
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 90.0,
+        "id": "2cccd84255504c31",
+        "index": 6,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "East",
+        "tag": "Spin_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "office-chair-selout-48_Spin_East_07.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 336,
+        "y": 96
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 90.0,
+        "id": "0ac1e497e099dd33",
+        "index": 7,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "East",
+        "tag": "Spin_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "office-chair-selout-48_Spin_Northeast_00.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 144
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 135.0,
+        "id": "23e911a1f5dce684",
+        "index": 0,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "Northeast",
+        "tag": "Spin_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "office-chair-selout-48_Spin_Northeast_01.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 48,
+        "y": 144
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 135.0,
+        "id": "2096f1cd5d23cbe5",
+        "index": 1,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "Northeast",
+        "tag": "Spin_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "office-chair-selout-48_Spin_Northeast_02.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 96,
+        "y": 144
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 135.0,
+        "id": "820cb2d7336cf1f1",
+        "index": 2,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "Northeast",
+        "tag": "Spin_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "office-chair-selout-48_Spin_Northeast_03.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 144,
+        "y": 144
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 135.0,
+        "id": "d5a584531eb3e792",
+        "index": 3,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "Northeast",
+        "tag": "Spin_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "office-chair-selout-48_Spin_Northeast_04.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 192,
+        "y": 144
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 135.0,
+        "id": "0a2c988ea8bdf9f6",
+        "index": 4,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "Northeast",
+        "tag": "Spin_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "office-chair-selout-48_Spin_Northeast_05.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 240,
+        "y": 144
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 135.0,
+        "id": "1305c2971d376ba2",
+        "index": 5,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "Northeast",
+        "tag": "Spin_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "office-chair-selout-48_Spin_Northeast_06.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 288,
+        "y": 144
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 135.0,
+        "id": "aa0d8205c3d3f32d",
+        "index": 6,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "Northeast",
+        "tag": "Spin_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "office-chair-selout-48_Spin_Northeast_07.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 336,
+        "y": 144
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 135.0,
+        "id": "551a8bbc45da6f0f",
+        "index": 7,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "Northeast",
+        "tag": "Spin_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "office-chair-selout-48_Spin_North_00.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 192
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 180.0,
+        "id": "37314ccd6fc3cda7",
+        "index": 0,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "North",
+        "tag": "Spin_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "office-chair-selout-48_Spin_North_01.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 48,
+        "y": 192
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 180.0,
+        "id": "740d9a52a0a89b62",
+        "index": 1,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "North",
+        "tag": "Spin_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "office-chair-selout-48_Spin_North_02.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 96,
+        "y": 192
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 180.0,
+        "id": "2004211f58a89b2e",
+        "index": 2,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "North",
+        "tag": "Spin_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "office-chair-selout-48_Spin_North_03.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 144,
+        "y": 192
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 180.0,
+        "id": "144eff76a95da1b5",
+        "index": 3,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "North",
+        "tag": "Spin_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "office-chair-selout-48_Spin_North_04.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 192,
+        "y": 192
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 180.0,
+        "id": "5bf56a97907df72d",
+        "index": 4,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "North",
+        "tag": "Spin_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "office-chair-selout-48_Spin_North_05.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 240,
+        "y": 192
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 180.0,
+        "id": "0895b08c33391d59",
+        "index": 5,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "North",
+        "tag": "Spin_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "office-chair-selout-48_Spin_North_06.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 288,
+        "y": 192
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 180.0,
+        "id": "bc1481207567fdf6",
+        "index": 6,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "North",
+        "tag": "Spin_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "office-chair-selout-48_Spin_North_07.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 336,
+        "y": 192
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 180.0,
+        "id": "6467dd60c23d42d0",
+        "index": 7,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "North",
+        "tag": "Spin_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "office-chair-selout-48_Spin_Northwest_00.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 240
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 225.0,
+        "id": "ec5366b7a131468a",
+        "index": 0,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "Northwest",
+        "tag": "Spin_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "office-chair-selout-48_Spin_Northwest_01.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 48,
+        "y": 240
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 225.0,
+        "id": "990b182221b1c0af",
+        "index": 1,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "Northwest",
+        "tag": "Spin_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "office-chair-selout-48_Spin_Northwest_02.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 96,
+        "y": 240
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 225.0,
+        "id": "8d20a10ea0dc1c5b",
+        "index": 2,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "Northwest",
+        "tag": "Spin_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "office-chair-selout-48_Spin_Northwest_03.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 144,
+        "y": 240
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 225.0,
+        "id": "5236c58c249e3c8c",
+        "index": 3,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "Northwest",
+        "tag": "Spin_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "office-chair-selout-48_Spin_Northwest_04.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 192,
+        "y": 240
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 225.0,
+        "id": "8b91cde761031dbc",
+        "index": 4,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "Northwest",
+        "tag": "Spin_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "office-chair-selout-48_Spin_Northwest_05.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 240,
+        "y": 240
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 225.0,
+        "id": "8fa527d079a4dc48",
+        "index": 5,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "Northwest",
+        "tag": "Spin_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "office-chair-selout-48_Spin_Northwest_06.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 288,
+        "y": 240
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 225.0,
+        "id": "629e157ead8ba7f3",
+        "index": 6,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "Northwest",
+        "tag": "Spin_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "office-chair-selout-48_Spin_Northwest_07.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 336,
+        "y": 240
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 225.0,
+        "id": "6d3fbb96560a56cd",
+        "index": 7,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "Northwest",
+        "tag": "Spin_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "office-chair-selout-48_Spin_West_00.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 288
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 270.0,
+        "id": "aaf9fba7417ced7e",
+        "index": 0,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "West",
+        "tag": "Spin_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "office-chair-selout-48_Spin_West_01.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 48,
+        "y": 288
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 270.0,
+        "id": "00d184b0c0732ec3",
+        "index": 1,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "West",
+        "tag": "Spin_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "office-chair-selout-48_Spin_West_02.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 96,
+        "y": 288
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 270.0,
+        "id": "fdb8fef009e36c77",
+        "index": 2,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "West",
+        "tag": "Spin_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "office-chair-selout-48_Spin_West_03.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 144,
+        "y": 288
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 270.0,
+        "id": "643a1b8f1ac35400",
+        "index": 3,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "West",
+        "tag": "Spin_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "office-chair-selout-48_Spin_West_04.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 192,
+        "y": 288
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 270.0,
+        "id": "101e2b086ea44008",
+        "index": 4,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "West",
+        "tag": "Spin_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "office-chair-selout-48_Spin_West_05.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 240,
+        "y": 288
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 270.0,
+        "id": "25c96def5687fafc",
+        "index": 5,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "West",
+        "tag": "Spin_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "office-chair-selout-48_Spin_West_06.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 288,
+        "y": 288
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 270.0,
+        "id": "0b422caae726222f",
+        "index": 6,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "West",
+        "tag": "Spin_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "office-chair-selout-48_Spin_West_07.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 336,
+        "y": 288
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 270.0,
+        "id": "6f85cc1528969139",
+        "index": 7,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "West",
+        "tag": "Spin_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "office-chair-selout-48_Spin_Southwest_00.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 336
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 315.0,
+        "id": "6f16cd08368077d4",
+        "index": 0,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "Southwest",
+        "tag": "Spin_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "office-chair-selout-48_Spin_Southwest_01.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 48,
+        "y": 336
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 315.0,
+        "id": "d6565ca6ec321455",
+        "index": 1,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "Southwest",
+        "tag": "Spin_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "office-chair-selout-48_Spin_Southwest_02.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 96,
+        "y": 336
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 315.0,
+        "id": "d45b878ddbe886c1",
+        "index": 2,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "Southwest",
+        "tag": "Spin_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "office-chair-selout-48_Spin_Southwest_03.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 144,
+        "y": 336
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 315.0,
+        "id": "a016087d16522442",
+        "index": 3,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "Southwest",
+        "tag": "Spin_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "office-chair-selout-48_Spin_Southwest_04.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 192,
+        "y": 336
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 315.0,
+        "id": "79824a7b6eef1706",
+        "index": 4,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "Southwest",
+        "tag": "Spin_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "office-chair-selout-48_Spin_Southwest_05.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 240,
+        "y": 336
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 315.0,
+        "id": "aa14996219220d32",
+        "index": 5,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "Southwest",
+        "tag": "Spin_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "office-chair-selout-48_Spin_Southwest_06.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 288,
+        "y": 336
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 315.0,
+        "id": "71f76a7ba0c2499d",
+        "index": 6,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "Southwest",
+        "tag": "Spin_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "office-chair-selout-48_Spin_Southwest_07.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 336,
+        "y": 336
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 315.0,
+        "id": "cffe153d9c114d1f",
+        "index": 7,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "Southwest",
+        "tag": "Spin_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    }
+  ],
+  "meta": {
+    "app": "Pixor",
+    "format": "I8",
+    "frameTags": [
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 0,
+        "name": "Spin_South",
+        "to": 7
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 8,
+        "name": "Spin_Southeast",
+        "to": 15
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 16,
+        "name": "Spin_East",
+        "to": 23
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 24,
+        "name": "Spin_Northeast",
+        "to": 31
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 32,
+        "name": "Spin_North",
+        "to": 39
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 40,
+        "name": "Spin_Northwest",
+        "to": 47
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 48,
+        "name": "Spin_West",
+        "to": 55
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 56,
+        "name": "Spin_Southwest",
+        "to": 63
+      }
+    ],
+    "image": "office-chair-selout-48.png",
+    "layers": [
+      {
+        "blendMode": "normal",
+        "name": "final",
+        "opacity": 255
+      }
+    ],
+    "pixor": {
+      "cell": {
+        "h": 48,
+        "w": 48
+      },
+      "pivot": {
+        "x": 24,
+        "y": 37
+      },
+      "sides": {
+        "East": 90.0,
+        "North": 180.0,
+        "Northeast": 135.0,
+        "Northwest": 225.0,
+        "South": 0.0,
+        "Southeast": 45.0,
+        "Southwest": 315.0,
+        "West": 270.0
+      }
+    },
+    "scale": "1",
+    "size": {
+      "h": 384,
+      "w": 384
+    },
+    "slices": [
+      {
+        "color": "#0000ffff",
+        "keys": [
+          {
+            "bounds": {
+              "h": 48,
+              "w": 48,
+              "x": 0,
+              "y": 0
+            },
+            "frame": 0,
+            "pivot": {
+              "x": 24,
+              "y": 37
+            }
+          }
+        ],
+        "name": "pivot"
+      }
+    ],
+    "version": "2.0.1"
+  }
+}

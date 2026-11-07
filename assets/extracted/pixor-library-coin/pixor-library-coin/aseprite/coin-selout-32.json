@@ -1,0 +1,2297 @@
+{
+  "frames": [
+    {
+      "duration": 83,
+      "filename": "coin-selout-32_spin_South_00.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "pixor": {
+        "action": "spin",
+        "degrees": 0.0,
+        "id": "8799a1fa9d6e50fc",
+        "index": 0,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "South",
+        "tag": "spin_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "coin-selout-32_spin_South_01.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 32,
+        "y": 0
+      },
+      "pixor": {
+        "action": "spin",
+        "degrees": 0.0,
+        "id": "bb56dcfae0adf87d",
+        "index": 1,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "South",
+        "tag": "spin_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "coin-selout-32_spin_South_02.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 64,
+        "y": 0
+      },
+      "pixor": {
+        "action": "spin",
+        "degrees": 0.0,
+        "id": "9ce9b03d0695d969",
+        "index": 2,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "South",
+        "tag": "spin_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "coin-selout-32_spin_South_03.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 96,
+        "y": 0
+      },
+      "pixor": {
+        "action": "spin",
+        "degrees": 0.0,
+        "id": "9595ad033146d51a",
+        "index": 3,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "South",
+        "tag": "spin_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "coin-selout-32_spin_South_04.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 128,
+        "y": 0
+      },
+      "pixor": {
+        "action": "spin",
+        "degrees": 0.0,
+        "id": "b462f94e0450021e",
+        "index": 4,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "South",
+        "tag": "spin_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "coin-selout-32_spin_South_05.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 160,
+        "y": 0
+      },
+      "pixor": {
+        "action": "spin",
+        "degrees": 0.0,
+        "id": "4a2e1bf29d0f363a",
+        "index": 5,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "South",
+        "tag": "spin_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "coin-selout-32_spin_South_06.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 192,
+        "y": 0
+      },
+      "pixor": {
+        "action": "spin",
+        "degrees": 0.0,
+        "id": "c48536313b40eea5",
+        "index": 6,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "South",
+        "tag": "spin_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "coin-selout-32_spin_South_07.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 224,
+        "y": 0
+      },
+      "pixor": {
+        "action": "spin",
+        "degrees": 0.0,
+        "id": "6e8877f52fff2c27",
+        "index": 7,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "South",
+        "tag": "spin_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "coin-selout-32_spin_Southeast_00.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 32
+      },
+      "pixor": {
+        "action": "spin",
+        "degrees": 45.0,
+        "id": "df82f032a2a3e253",
+        "index": 0,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "Southeast",
+        "tag": "spin_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "coin-selout-32_spin_Southeast_01.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 32,
+        "y": 32
+      },
+      "pixor": {
+        "action": "spin",
+        "degrees": 45.0,
+        "id": "de3f14a2b6feacee",
+        "index": 1,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "Southeast",
+        "tag": "spin_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "coin-selout-32_spin_Southeast_02.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 64,
+        "y": 32
+      },
+      "pixor": {
+        "action": "spin",
+        "degrees": 45.0,
+        "id": "675c96034dd012a2",
+        "index": 2,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "Southeast",
+        "tag": "spin_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "coin-selout-32_spin_Southeast_03.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 96,
+        "y": 32
+      },
+      "pixor": {
+        "action": "spin",
+        "degrees": 45.0,
+        "id": "ae43ea96c3fc1221",
+        "index": 3,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "Southeast",
+        "tag": "spin_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "coin-selout-32_spin_Southeast_04.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 128,
+        "y": 32
+      },
+      "pixor": {
+        "action": "spin",
+        "degrees": 45.0,
+        "id": "f088b404fa09f651",
+        "index": 4,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "Southeast",
+        "tag": "spin_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "coin-selout-32_spin_Southeast_05.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 160,
+        "y": 32
+      },
+      "pixor": {
+        "action": "spin",
+        "degrees": 45.0,
+        "id": "04460f40d74e4655",
+        "index": 5,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "Southeast",
+        "tag": "spin_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "coin-selout-32_spin_Southeast_06.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 192,
+        "y": 32
+      },
+      "pixor": {
+        "action": "spin",
+        "degrees": 45.0,
+        "id": "4f1313aa0045238a",
+        "index": 6,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "Southeast",
+        "tag": "spin_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "coin-selout-32_spin_Southeast_07.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 224,
+        "y": 32
+      },
+      "pixor": {
+        "action": "spin",
+        "degrees": 45.0,
+        "id": "65161bcec94b0cd4",
+        "index": 7,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "Southeast",
+        "tag": "spin_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "coin-selout-32_spin_East_00.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 64
+      },
+      "pixor": {
+        "action": "spin",
+        "degrees": 90.0,
+        "id": "48e8922d14499bcf",
+        "index": 0,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "East",
+        "tag": "spin_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "coin-selout-32_spin_East_01.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 32,
+        "y": 64
+      },
+      "pixor": {
+        "action": "spin",
+        "degrees": 90.0,
+        "id": "897f0b3fe331d1aa",
+        "index": 1,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "East",
+        "tag": "spin_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "coin-selout-32_spin_East_02.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 64,
+        "y": 64
+      },
+      "pixor": {
+        "action": "spin",
+        "degrees": 90.0,
+        "id": "169677ab4c161db6",
+        "index": 2,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "East",
+        "tag": "spin_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "coin-selout-32_spin_East_03.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 96,
+        "y": 64
+      },
+      "pixor": {
+        "action": "spin",
+        "degrees": 90.0,
+        "id": "78435b0b9fa6af0d",
+        "index": 3,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "East",
+        "tag": "spin_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "coin-selout-32_spin_East_04.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 128,
+        "y": 64
+      },
+      "pixor": {
+        "action": "spin",
+        "degrees": 90.0,
+        "id": "5b526d3e6da07a65",
+        "index": 4,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "East",
+        "tag": "spin_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "coin-selout-32_spin_East_05.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 160,
+        "y": 64
+      },
+      "pixor": {
+        "action": "spin",
+        "degrees": 90.0,
+        "id": "9e88071788ec16e1",
+        "index": 5,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "East",
+        "tag": "spin_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "coin-selout-32_spin_East_06.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 192,
+        "y": 64
+      },
+      "pixor": {
+        "action": "spin",
+        "degrees": 90.0,
+        "id": "0a3f47d908f1e8de",
+        "index": 6,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "East",
+        "tag": "spin_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "coin-selout-32_spin_East_07.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 224,
+        "y": 64
+      },
+      "pixor": {
+        "action": "spin",
+        "degrees": 90.0,
+        "id": "7bb9559839129638",
+        "index": 7,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "East",
+        "tag": "spin_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "coin-selout-32_spin_Northeast_00.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 96
+      },
+      "pixor": {
+        "action": "spin",
+        "degrees": 135.0,
+        "id": "a9e0aa161dfabba5",
+        "index": 0,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "Northeast",
+        "tag": "spin_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "coin-selout-32_spin_Northeast_01.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 32,
+        "y": 96
+      },
+      "pixor": {
+        "action": "spin",
+        "degrees": 135.0,
+        "id": "a5efa1ee47e07cc4",
+        "index": 1,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "Northeast",
+        "tag": "spin_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "coin-selout-32_spin_Northeast_02.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 64,
+        "y": 96
+      },
+      "pixor": {
+        "action": "spin",
+        "degrees": 135.0,
+        "id": "d0a30dd586ae9a00",
+        "index": 2,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "Northeast",
+        "tag": "spin_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "coin-selout-32_spin_Northeast_03.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 96,
+        "y": 96
+      },
+      "pixor": {
+        "action": "spin",
+        "degrees": 135.0,
+        "id": "6a21f13675ceb277",
+        "index": 3,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "Northeast",
+        "tag": "spin_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "coin-selout-32_spin_Northeast_04.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 128,
+        "y": 96
+      },
+      "pixor": {
+        "action": "spin",
+        "degrees": 135.0,
+        "id": "a2cc7856e182ef8b",
+        "index": 4,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "Northeast",
+        "tag": "spin_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "coin-selout-32_spin_Northeast_05.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 160,
+        "y": 96
+      },
+      "pixor": {
+        "action": "spin",
+        "degrees": 135.0,
+        "id": "a27979f5bc486b57",
+        "index": 5,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "Northeast",
+        "tag": "spin_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "coin-selout-32_spin_Northeast_06.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 192,
+        "y": 96
+      },
+      "pixor": {
+        "action": "spin",
+        "degrees": 135.0,
+        "id": "a7284a070f1b4524",
+        "index": 6,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "Northeast",
+        "tag": "spin_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "coin-selout-32_spin_Northeast_07.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 224,
+        "y": 96
+      },
+      "pixor": {
+        "action": "spin",
+        "degrees": 135.0,
+        "id": "77ba6e31cb49301e",
+        "index": 7,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "Northeast",
+        "tag": "spin_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "coin-selout-32_spin_North_00.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 128
+      },
+      "pixor": {
+        "action": "spin",
+        "degrees": 180.0,
+        "id": "b7aad725b7157d52",
+        "index": 0,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "North",
+        "tag": "spin_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "coin-selout-32_spin_North_01.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 32,
+        "y": 128
+      },
+      "pixor": {
+        "action": "spin",
+        "degrees": 180.0,
+        "id": "9f1f6142fb0bcc77",
+        "index": 1,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "North",
+        "tag": "spin_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "coin-selout-32_spin_North_02.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 64,
+        "y": 128
+      },
+      "pixor": {
+        "action": "spin",
+        "degrees": 180.0,
+        "id": "a237e703b19b8ec3",
+        "index": 2,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "North",
+        "tag": "spin_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "coin-selout-32_spin_North_03.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 96,
+        "y": 128
+      },
+      "pixor": {
+        "action": "spin",
+        "degrees": 180.0,
+        "id": "daed11facd1d96c4",
+        "index": 3,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "North",
+        "tag": "spin_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "coin-selout-32_spin_North_04.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 128,
+        "y": 128
+      },
+      "pixor": {
+        "action": "spin",
+        "degrees": 180.0,
+        "id": "952592e2d7315054",
+        "index": 4,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "North",
+        "tag": "spin_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "coin-selout-32_spin_North_05.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 160,
+        "y": 128
+      },
+      "pixor": {
+        "action": "spin",
+        "degrees": 180.0,
+        "id": "072e75105c697830",
+        "index": 5,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "North",
+        "tag": "spin_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "coin-selout-32_spin_North_06.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 192,
+        "y": 128
+      },
+      "pixor": {
+        "action": "spin",
+        "degrees": 180.0,
+        "id": "a0be17ea5778dddb",
+        "index": 6,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "North",
+        "tag": "spin_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "coin-selout-32_spin_North_07.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 224,
+        "y": 128
+      },
+      "pixor": {
+        "action": "spin",
+        "degrees": 180.0,
+        "id": "2465ae00bcf36895",
+        "index": 7,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "North",
+        "tag": "spin_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "coin-selout-32_spin_Northwest_00.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 160
+      },
+      "pixor": {
+        "action": "spin",
+        "degrees": 225.0,
+        "id": "85ae6f9700da4acf",
+        "index": 0,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "Northwest",
+        "tag": "spin_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "coin-selout-32_spin_Northwest_01.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 32,
+        "y": 160
+      },
+      "pixor": {
+        "action": "spin",
+        "degrees": 225.0,
+        "id": "c644e8a9cfc280aa",
+        "index": 1,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "Northwest",
+        "tag": "spin_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "coin-selout-32_spin_Northwest_02.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 64,
+        "y": 160
+      },
+      "pixor": {
+        "action": "spin",
+        "degrees": 225.0,
+        "id": "535c551538a6ccb6",
+        "index": 2,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "Northwest",
+        "tag": "spin_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "coin-selout-32_spin_Northwest_03.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 96,
+        "y": 160
+      },
+      "pixor": {
+        "action": "spin",
+        "degrees": 225.0,
+        "id": "b50938758c375e0d",
+        "index": 3,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "Northwest",
+        "tag": "spin_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "coin-selout-32_spin_Northwest_04.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 128,
+        "y": 160
+      },
+      "pixor": {
+        "action": "spin",
+        "degrees": 225.0,
+        "id": "98184aa85a312965",
+        "index": 4,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "Northwest",
+        "tag": "spin_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "coin-selout-32_spin_Northwest_05.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 160,
+        "y": 160
+      },
+      "pixor": {
+        "action": "spin",
+        "degrees": 225.0,
+        "id": "db4de481757cc5e1",
+        "index": 5,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "Northwest",
+        "tag": "spin_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "coin-selout-32_spin_Northwest_06.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 192,
+        "y": 160
+      },
+      "pixor": {
+        "action": "spin",
+        "degrees": 225.0,
+        "id": "47052542f58297de",
+        "index": 6,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "Northwest",
+        "tag": "spin_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "coin-selout-32_spin_Northwest_07.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 224,
+        "y": 160
+      },
+      "pixor": {
+        "action": "spin",
+        "degrees": 225.0,
+        "id": "b87f330225a34538",
+        "index": 7,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "Northwest",
+        "tag": "spin_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "coin-selout-32_spin_West_00.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 192
+      },
+      "pixor": {
+        "action": "spin",
+        "degrees": 270.0,
+        "id": "3b53fadc9069f57d",
+        "index": 0,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "West",
+        "tag": "spin_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "coin-selout-32_spin_West_01.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 32,
+        "y": 192
+      },
+      "pixor": {
+        "action": "spin",
+        "degrees": 270.0,
+        "id": "0796bfdc4d2a4dfc",
+        "index": 1,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "West",
+        "tag": "spin_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "coin-selout-32_spin_West_02.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 64,
+        "y": 192
+      },
+      "pixor": {
+        "action": "spin",
+        "degrees": 270.0,
+        "id": "d8e897c5ef661e78",
+        "index": 2,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "West",
+        "tag": "spin_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "coin-selout-32_spin_West_03.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 96,
+        "y": 192
+      },
+      "pixor": {
+        "action": "spin",
+        "degrees": 270.0,
+        "id": "87f17834a25e245f",
+        "index": 3,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "West",
+        "tag": "spin_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "coin-selout-32_spin_West_04.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 128,
+        "y": 192
+      },
+      "pixor": {
+        "action": "spin",
+        "degrees": 270.0,
+        "id": "de281538561d5c93",
+        "index": 4,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "West",
+        "tag": "spin_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "coin-selout-32_spin_West_05.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 160,
+        "y": 192
+      },
+      "pixor": {
+        "action": "spin",
+        "degrees": 270.0,
+        "id": "9ca692ad82b96fcf",
+        "index": 5,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "West",
+        "tag": "spin_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "coin-selout-32_spin_West_06.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 192,
+        "y": 192
+      },
+      "pixor": {
+        "action": "spin",
+        "degrees": 270.0,
+        "id": "e6fc06ca5f40e79c",
+        "index": 6,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "West",
+        "tag": "spin_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "coin-selout-32_spin_West_07.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 224,
+        "y": 192
+      },
+      "pixor": {
+        "action": "spin",
+        "degrees": 270.0,
+        "id": "f4371cff2f01fa76",
+        "index": 7,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "West",
+        "tag": "spin_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "coin-selout-32_spin_Southwest_00.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 224
+      },
+      "pixor": {
+        "action": "spin",
+        "degrees": 315.0,
+        "id": "10590ce8fb2efbb9",
+        "index": 0,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "Southwest",
+        "tag": "spin_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "coin-selout-32_spin_Southwest_01.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 32,
+        "y": 224
+      },
+      "pixor": {
+        "action": "spin",
+        "degrees": 315.0,
+        "id": "cdd9dac6c50660a8",
+        "index": 1,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "Southwest",
+        "tag": "spin_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "coin-selout-32_spin_Southwest_02.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 64,
+        "y": 224
+      },
+      "pixor": {
+        "action": "spin",
+        "degrees": 315.0,
+        "id": "08136cbf220e488c",
+        "index": 2,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "Southwest",
+        "tag": "spin_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "coin-selout-32_spin_Southwest_03.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 96,
+        "y": 224
+      },
+      "pixor": {
+        "action": "spin",
+        "degrees": 315.0,
+        "id": "42fd48419e4c285b",
+        "index": 3,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "Southwest",
+        "tag": "spin_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "coin-selout-32_spin_Southwest_04.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 128,
+        "y": 224
+      },
+      "pixor": {
+        "action": "spin",
+        "degrees": 315.0,
+        "id": "163434008e8a5e97",
+        "index": 4,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "Southwest",
+        "tag": "spin_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "coin-selout-32_spin_Southwest_05.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 160,
+        "y": 224
+      },
+      "pixor": {
+        "action": "spin",
+        "degrees": 315.0,
+        "id": "968a62b94334ee4b",
+        "index": 5,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "Southwest",
+        "tag": "spin_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "coin-selout-32_spin_Southwest_06.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 192,
+        "y": 224
+      },
+      "pixor": {
+        "action": "spin",
+        "degrees": 315.0,
+        "id": "2b8142378a28ab40",
+        "index": 6,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "Southwest",
+        "tag": "spin_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "coin-selout-32_spin_Southwest_07.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 224,
+        "y": 224
+      },
+      "pixor": {
+        "action": "spin",
+        "degrees": 315.0,
+        "id": "405339b9377046ba",
+        "index": 7,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "Southwest",
+        "tag": "spin_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    }
+  ],
+  "meta": {
+    "app": "Pixor",
+    "format": "I8",
+    "frameTags": [
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 0,
+        "name": "spin_South",
+        "to": 7
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 8,
+        "name": "spin_Southeast",
+        "to": 15
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 16,
+        "name": "spin_East",
+        "to": 23
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 24,
+        "name": "spin_Northeast",
+        "to": 31
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 32,
+        "name": "spin_North",
+        "to": 39
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 40,
+        "name": "spin_Northwest",
+        "to": 47
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 48,
+        "name": "spin_West",
+        "to": 55
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 56,
+        "name": "spin_Southwest",
+        "to": 63
+      }
+    ],
+    "image": "coin-selout-32.png",
+    "layers": [
+      {
+        "blendMode": "normal",
+        "name": "final",
+        "opacity": 255
+      }
+    ],
+    "pixor": {
+      "cell": {
+        "h": 32,
+        "w": 32
+      },
+      "pivot": {
+        "x": 16,
+        "y": 30
+      },
+      "sides": {
+        "East": 90.0,
+        "North": 180.0,
+        "Northeast": 135.0,
+        "Northwest": 225.0,
+        "South": 0.0,
+        "Southeast": 45.0,
+        "Southwest": 315.0,
+        "West": 270.0
+      }
+    },
+    "scale": "1",
+    "size": {
+      "h": 256,
+      "w": 256
+    },
+    "slices": [
+      {
+        "color": "#0000ffff",
+        "keys": [
+          {
+            "bounds": {
+              "h": 32,
+              "w": 32,
+              "x": 0,
+              "y": 0
+            },
+            "frame": 0,
+            "pivot": {
+              "x": 16,
+              "y": 30
+            }
+          }
+        ],
+        "name": "pivot"
+      }
+    ],
+    "version": "2.0.1"
+  }
+}

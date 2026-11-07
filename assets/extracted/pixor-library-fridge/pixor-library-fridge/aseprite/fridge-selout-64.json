@@ -1,0 +1,1753 @@
+{
+  "frames": [
+    {
+      "duration": 83,
+      "filename": "fridge-selout-64_Open_South_00.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 0.0,
+        "id": "dcd2be64ae74d4de",
+        "index": 0,
+        "pivot": {
+          "x": 32,
+          "y": 43
+        },
+        "side": "South",
+        "tag": "Open_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "fridge-selout-64_Open_South_01.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 64,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 0.0,
+        "id": "885871e694d6ce23",
+        "index": 1,
+        "pivot": {
+          "x": 32,
+          "y": 43
+        },
+        "side": "South",
+        "tag": "Open_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "fridge-selout-64_Open_South_02.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 128,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 0.0,
+        "id": "207e4fd16e3da517",
+        "index": 2,
+        "pivot": {
+          "x": 32,
+          "y": 43
+        },
+        "side": "South",
+        "tag": "Open_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "fridge-selout-64_Open_South_03.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 192,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 0.0,
+        "id": "99b141f32fb4dca0",
+        "index": 3,
+        "pivot": {
+          "x": 32,
+          "y": 43
+        },
+        "side": "South",
+        "tag": "Open_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "fridge-selout-64_Open_South_04.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 256,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 0.0,
+        "id": "b6850fe80a682568",
+        "index": 4,
+        "pivot": {
+          "x": 32,
+          "y": 43
+        },
+        "side": "South",
+        "tag": "Open_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "fridge-selout-64_Open_South_05.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 320,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 0.0,
+        "id": "8b0ec72bd89f229c",
+        "index": 5,
+        "pivot": {
+          "x": 32,
+          "y": 43
+        },
+        "side": "South",
+        "tag": "Open_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "fridge-selout-64_Open_Southeast_00.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 64
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 45.0,
+        "id": "b7e72b80b999f291",
+        "index": 0,
+        "pivot": {
+          "x": 32,
+          "y": 43
+        },
+        "side": "Southeast",
+        "tag": "Open_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "fridge-selout-64_Open_Southeast_01.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 64,
+        "y": 64
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 45.0,
+        "id": "af33ce31612489e0",
+        "index": 1,
+        "pivot": {
+          "x": 32,
+          "y": 43
+        },
+        "side": "Southeast",
+        "tag": "Open_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "fridge-selout-64_Open_Southeast_02.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 128,
+        "y": 64
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 45.0,
+        "id": "43835122237aa8e4",
+        "index": 2,
+        "pivot": {
+          "x": 32,
+          "y": 43
+        },
+        "side": "Southeast",
+        "tag": "Open_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "fridge-selout-64_Open_Southeast_03.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 192,
+        "y": 64
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 45.0,
+        "id": "482cd3ac5edac363",
+        "index": 3,
+        "pivot": {
+          "x": 32,
+          "y": 43
+        },
+        "side": "Southeast",
+        "tag": "Open_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "fridge-selout-64_Open_Southeast_04.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 256,
+        "y": 64
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 45.0,
+        "id": "8168068197f49cdf",
+        "index": 4,
+        "pivot": {
+          "x": 32,
+          "y": 43
+        },
+        "side": "Southeast",
+        "tag": "Open_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "fridge-selout-64_Open_Southeast_05.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 320,
+        "y": 64
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 45.0,
+        "id": "ddbc3fd2110f0ba3",
+        "index": 5,
+        "pivot": {
+          "x": 32,
+          "y": 43
+        },
+        "side": "Southeast",
+        "tag": "Open_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "fridge-selout-64_Open_East_00.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 128
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 90.0,
+        "id": "ce3e4305cef363b1",
+        "index": 0,
+        "pivot": {
+          "x": 32,
+          "y": 43
+        },
+        "side": "East",
+        "tag": "Open_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "fridge-selout-64_Open_East_01.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 64,
+        "y": 128
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 90.0,
+        "id": "882c38351f9bd880",
+        "index": 1,
+        "pivot": {
+          "x": 32,
+          "y": 43
+        },
+        "side": "East",
+        "tag": "Open_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "fridge-selout-64_Open_East_02.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 128,
+        "y": 128
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 90.0,
+        "id": "82b616a42318de44",
+        "index": 2,
+        "pivot": {
+          "x": 32,
+          "y": 43
+        },
+        "side": "East",
+        "tag": "Open_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "fridge-selout-64_Open_East_03.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 192,
+        "y": 128
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 90.0,
+        "id": "4a00ebad0796d643",
+        "index": 3,
+        "pivot": {
+          "x": 32,
+          "y": 43
+        },
+        "side": "East",
+        "tag": "Open_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "fridge-selout-64_Open_East_04.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 256,
+        "y": 128
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 90.0,
+        "id": "c2b070806e6d407f",
+        "index": 4,
+        "pivot": {
+          "x": 32,
+          "y": 43
+        },
+        "side": "East",
+        "tag": "Open_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "fridge-selout-64_Open_East_05.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 320,
+        "y": 128
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 90.0,
+        "id": "1cef055410ad4103",
+        "index": 5,
+        "pivot": {
+          "x": 32,
+          "y": 43
+        },
+        "side": "East",
+        "tag": "Open_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "fridge-selout-64_Open_Northeast_00.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 192
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 135.0,
+        "id": "e984ecf92b69d637",
+        "index": 0,
+        "pivot": {
+          "x": 32,
+          "y": 43
+        },
+        "side": "Northeast",
+        "tag": "Open_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "fridge-selout-64_Open_Northeast_01.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 64,
+        "y": 192
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 135.0,
+        "id": "1ba0e5dfec066a92",
+        "index": 1,
+        "pivot": {
+          "x": 32,
+          "y": 43
+        },
+        "side": "Northeast",
+        "tag": "Open_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "fridge-selout-64_Open_Northeast_02.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 128,
+        "y": 192
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 135.0,
+        "id": "5427c7894955853e",
+        "index": 2,
+        "pivot": {
+          "x": 32,
+          "y": 43
+        },
+        "side": "Northeast",
+        "tag": "Open_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "fridge-selout-64_Open_Northeast_03.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 192,
+        "y": 192
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 135.0,
+        "id": "6692535a2a764ee5",
+        "index": 3,
+        "pivot": {
+          "x": 32,
+          "y": 43
+        },
+        "side": "Northeast",
+        "tag": "Open_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "fridge-selout-64_Open_Northeast_04.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 256,
+        "y": 192
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 135.0,
+        "id": "2f426cf5f604aebd",
+        "index": 4,
+        "pivot": {
+          "x": 32,
+          "y": 43
+        },
+        "side": "Northeast",
+        "tag": "Open_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "fridge-selout-64_Open_Northeast_05.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 320,
+        "y": 192
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 135.0,
+        "id": "228950b6b596ff29",
+        "index": 5,
+        "pivot": {
+          "x": 32,
+          "y": 43
+        },
+        "side": "Northeast",
+        "tag": "Open_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "fridge-selout-64_Open_North_00.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 256
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 180.0,
+        "id": "dd442d8e0e2afd90",
+        "index": 0,
+        "pivot": {
+          "x": 32,
+          "y": 43
+        },
+        "side": "North",
+        "tag": "Open_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "fridge-selout-64_Open_North_01.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 64,
+        "y": 256
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 180.0,
+        "id": "e321db68def081a1",
+        "index": 1,
+        "pivot": {
+          "x": 32,
+          "y": 43
+        },
+        "side": "North",
+        "tag": "Open_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "fridge-selout-64_Open_North_02.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 128,
+        "y": 256
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 180.0,
+        "id": "c36dc9d254e6da75",
+        "index": 2,
+        "pivot": {
+          "x": 32,
+          "y": 43
+        },
+        "side": "North",
+        "tag": "Open_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "fridge-selout-64_Open_North_03.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 192,
+        "y": 256
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 180.0,
+        "id": "eddfbb1e8fa7f96e",
+        "index": 3,
+        "pivot": {
+          "x": 32,
+          "y": 43
+        },
+        "side": "North",
+        "tag": "Open_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "fridge-selout-64_Open_North_04.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 256,
+        "y": 256
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 180.0,
+        "id": "a2ecb85ccec8f79a",
+        "index": 4,
+        "pivot": {
+          "x": 32,
+          "y": 43
+        },
+        "side": "North",
+        "tag": "Open_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "fridge-selout-64_Open_North_05.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 320,
+        "y": 256
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 180.0,
+        "id": "bb01cee67695f9be",
+        "index": 5,
+        "pivot": {
+          "x": 32,
+          "y": 43
+        },
+        "side": "North",
+        "tag": "Open_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "fridge-selout-64_Open_Northwest_00.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 320
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 225.0,
+        "id": "ba4b38f349589b25",
+        "index": 0,
+        "pivot": {
+          "x": 32,
+          "y": 43
+        },
+        "side": "Northwest",
+        "tag": "Open_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "fridge-selout-64_Open_Northwest_01.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 64,
+        "y": 320
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 225.0,
+        "id": "b65a30cb733e5c44",
+        "index": 1,
+        "pivot": {
+          "x": 32,
+          "y": 43
+        },
+        "side": "Northwest",
+        "tag": "Open_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "fridge-selout-64_Open_Northwest_02.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 128,
+        "y": 320
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 225.0,
+        "id": "bbd0525c6fc15680",
+        "index": 2,
+        "pivot": {
+          "x": 32,
+          "y": 43
+        },
+        "side": "Northwest",
+        "tag": "Open_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "fridge-selout-64_Open_Northwest_03.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 192,
+        "y": 320
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 225.0,
+        "id": "554f35bd5ee16ef7",
+        "index": 3,
+        "pivot": {
+          "x": 32,
+          "y": 43
+        },
+        "side": "Northwest",
+        "tag": "Open_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "fridge-selout-64_Open_Northwest_04.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 256,
+        "y": 320
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 225.0,
+        "id": "b33707340ce0cf0b",
+        "index": 4,
+        "pivot": {
+          "x": 32,
+          "y": 43
+        },
+        "side": "Northwest",
+        "tag": "Open_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "fridge-selout-64_Open_Northwest_05.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 320,
+        "y": 320
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 225.0,
+        "id": "8da6be7ca55b27d7",
+        "index": 5,
+        "pivot": {
+          "x": 32,
+          "y": 43
+        },
+        "side": "Northwest",
+        "tag": "Open_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "fridge-selout-64_Open_West_00.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 384
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 270.0,
+        "id": "aa27bb2d7f9da373",
+        "index": 0,
+        "pivot": {
+          "x": 32,
+          "y": 43
+        },
+        "side": "West",
+        "tag": "Open_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "fridge-selout-64_Open_West_01.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 64,
+        "y": 384
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 270.0,
+        "id": "16453a7272d2dc8e",
+        "index": 1,
+        "pivot": {
+          "x": 32,
+          "y": 43
+        },
+        "side": "West",
+        "tag": "Open_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "fridge-selout-64_Open_West_02.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 128,
+        "y": 384
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 270.0,
+        "id": "d3ad175635acfd02",
+        "index": 2,
+        "pivot": {
+          "x": 32,
+          "y": 43
+        },
+        "side": "West",
+        "tag": "Open_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "fridge-selout-64_Open_West_03.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 192,
+        "y": 384
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 270.0,
+        "id": "5195c6be87d04201",
+        "index": 3,
+        "pivot": {
+          "x": 32,
+          "y": 43
+        },
+        "side": "West",
+        "tag": "Open_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "fridge-selout-64_Open_West_04.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 256,
+        "y": 384
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 270.0,
+        "id": "288ed9d4b5de25f1",
+        "index": 4,
+        "pivot": {
+          "x": 32,
+          "y": 43
+        },
+        "side": "West",
+        "tag": "Open_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "fridge-selout-64_Open_West_05.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 320,
+        "y": 384
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 270.0,
+        "id": "2e268838a16ff4b5",
+        "index": 5,
+        "pivot": {
+          "x": 32,
+          "y": 43
+        },
+        "side": "West",
+        "tag": "Open_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "fridge-selout-64_Open_Southwest_00.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 448
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 315.0,
+        "id": "05f5fc96308f1053",
+        "index": 0,
+        "pivot": {
+          "x": 32,
+          "y": 43
+        },
+        "side": "Southwest",
+        "tag": "Open_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "fridge-selout-64_Open_Southwest_01.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 64,
+        "y": 448
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 315.0,
+        "id": "04b2210644e9daee",
+        "index": 1,
+        "pivot": {
+          "x": 32,
+          "y": 43
+        },
+        "side": "Southwest",
+        "tag": "Open_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "fridge-selout-64_Open_Southwest_02.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 128,
+        "y": 448
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 315.0,
+        "id": "8dcfa266dbbb40a2",
+        "index": 2,
+        "pivot": {
+          "x": 32,
+          "y": 43
+        },
+        "side": "Southwest",
+        "tag": "Open_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "fridge-selout-64_Open_Southwest_03.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 192,
+        "y": 448
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 315.0,
+        "id": "d4b6f6fa51e74021",
+        "index": 3,
+        "pivot": {
+          "x": 32,
+          "y": 43
+        },
+        "side": "Southwest",
+        "tag": "Open_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "fridge-selout-64_Open_Southwest_04.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 256,
+        "y": 448
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 315.0,
+        "id": "16fbc06887f52451",
+        "index": 4,
+        "pivot": {
+          "x": 32,
+          "y": 43
+        },
+        "side": "Southwest",
+        "tag": "Open_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "fridge-selout-64_Open_Southwest_05.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 320,
+        "y": 448
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 315.0,
+        "id": "2ab91ba465397455",
+        "index": 5,
+        "pivot": {
+          "x": 32,
+          "y": 43
+        },
+        "side": "Southwest",
+        "tag": "Open_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    }
+  ],
+  "meta": {
+    "app": "Pixor",
+    "format": "I8",
+    "frameTags": [
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 0,
+        "name": "Open_South",
+        "to": 5
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 6,
+        "name": "Open_Southeast",
+        "to": 11
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 12,
+        "name": "Open_East",
+        "to": 17
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 18,
+        "name": "Open_Northeast",
+        "to": 23
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 24,
+        "name": "Open_North",
+        "to": 29
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 30,
+        "name": "Open_Northwest",
+        "to": 35
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 36,
+        "name": "Open_West",
+        "to": 41
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 42,
+        "name": "Open_Southwest",
+        "to": 47
+      }
+    ],
+    "image": "fridge-selout-64.png",
+    "layers": [
+      {
+        "blendMode": "normal",
+        "name": "final",
+        "opacity": 255
+      }
+    ],
+    "pixor": {
+      "cell": {
+        "h": 64,
+        "w": 64
+      },
+      "pivot": {
+        "x": 32,
+        "y": 43
+      },
+      "sides": {
+        "East": 90.0,
+        "North": 180.0,
+        "Northeast": 135.0,
+        "Northwest": 225.0,
+        "South": 0.0,
+        "Southeast": 45.0,
+        "Southwest": 315.0,
+        "West": 270.0
+      }
+    },
+    "scale": "1",
+    "size": {
+      "h": 512,
+      "w": 384
+    },
+    "slices": [
+      {
+        "color": "#0000ffff",
+        "keys": [
+          {
+            "bounds": {
+              "h": 64,
+              "w": 64,
+              "x": 0,
+              "y": 0
+            },
+            "frame": 0,
+            "pivot": {
+              "x": 32,
+              "y": 43
+            }
+          }
+        ],
+        "name": "pivot"
+      }
+    ],
+    "version": "2.0.1"
+  }
+}

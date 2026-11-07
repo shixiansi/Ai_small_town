@@ -1,0 +1,2297 @@
+{
+  "frames": [
+    {
+      "duration": 83,
+      "filename": "arcade-cabinet-selout-48_Play_South_00.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Play",
+        "degrees": 0.0,
+        "id": "760638c1f262068c",
+        "index": 0,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "South",
+        "tag": "Play_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "arcade-cabinet-selout-48_Play_South_01.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 48,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Play",
+        "degrees": 0.0,
+        "id": "62466d8bc87fc72d",
+        "index": 1,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "South",
+        "tag": "Play_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "arcade-cabinet-selout-48_Play_South_02.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 96,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Play",
+        "degrees": 0.0,
+        "id": "7e4bd8ebcb82b9b9",
+        "index": 2,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "South",
+        "tag": "Play_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "arcade-cabinet-selout-48_Play_South_03.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 144,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Play",
+        "degrees": 0.0,
+        "id": "1022d9ed6ef5108a",
+        "index": 3,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "South",
+        "tag": "Play_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "arcade-cabinet-selout-48_Play_South_04.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 192,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Play",
+        "degrees": 0.0,
+        "id": "9db2353b926957ee",
+        "index": 4,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "South",
+        "tag": "Play_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "arcade-cabinet-selout-48_Play_South_05.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 240,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Play",
+        "degrees": 0.0,
+        "id": "92e2eabecd4a5dca",
+        "index": 5,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "South",
+        "tag": "Play_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "arcade-cabinet-selout-48_Play_South_06.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 288,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Play",
+        "degrees": 0.0,
+        "id": "ed566103760eaf15",
+        "index": 6,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "South",
+        "tag": "Play_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "arcade-cabinet-selout-48_Play_South_07.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 336,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Play",
+        "degrees": 0.0,
+        "id": "b8f0251bfd5fe737",
+        "index": 7,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "South",
+        "tag": "Play_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "arcade-cabinet-selout-48_Play_Southeast_00.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 48
+      },
+      "pixor": {
+        "action": "Play",
+        "degrees": 45.0,
+        "id": "e24567249b3f3423",
+        "index": 0,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "Southeast",
+        "tag": "Play_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "arcade-cabinet-selout-48_Play_Southeast_01.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 48,
+        "y": 48
+      },
+      "pixor": {
+        "action": "Play",
+        "degrees": 45.0,
+        "id": "36bfb3a2b4dd3ade",
+        "index": 1,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "Southeast",
+        "tag": "Play_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "arcade-cabinet-selout-48_Play_Southeast_02.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 96,
+        "y": 48
+      },
+      "pixor": {
+        "action": "Play",
+        "degrees": 45.0,
+        "id": "e80898cfff0094f2",
+        "index": 2,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "Southeast",
+        "tag": "Play_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "arcade-cabinet-selout-48_Play_Southeast_03.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 144,
+        "y": 48
+      },
+      "pixor": {
+        "action": "Play",
+        "degrees": 45.0,
+        "id": "270e6c7f34df30d1",
+        "index": 3,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "Southeast",
+        "tag": "Play_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "arcade-cabinet-selout-48_Play_Southeast_04.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 192,
+        "y": 48
+      },
+      "pixor": {
+        "action": "Play",
+        "degrees": 45.0,
+        "id": "c128fe654fcb6ba1",
+        "index": 4,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "Southeast",
+        "tag": "Play_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "arcade-cabinet-selout-48_Play_Southeast_05.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 240,
+        "y": 48
+      },
+      "pixor": {
+        "action": "Play",
+        "degrees": 45.0,
+        "id": "428209b26ac38ca5",
+        "index": 5,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "Southeast",
+        "tag": "Play_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "arcade-cabinet-selout-48_Play_Southeast_06.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 288,
+        "y": 48
+      },
+      "pixor": {
+        "action": "Play",
+        "degrees": 45.0,
+        "id": "c82aef73cc91d43a",
+        "index": 6,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "Southeast",
+        "tag": "Play_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "arcade-cabinet-selout-48_Play_Southeast_07.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 336,
+        "y": 48
+      },
+      "pixor": {
+        "action": "Play",
+        "degrees": 45.0,
+        "id": "3e2d03f8c89ed424",
+        "index": 7,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "Southeast",
+        "tag": "Play_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "arcade-cabinet-selout-48_Play_East_00.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 96
+      },
+      "pixor": {
+        "action": "Play",
+        "degrees": 90.0,
+        "id": "18c2103b256e665f",
+        "index": 0,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "East",
+        "tag": "Play_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "arcade-cabinet-selout-48_Play_East_01.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 48,
+        "y": 96
+      },
+      "pixor": {
+        "action": "Play",
+        "degrees": 90.0,
+        "id": "a66362eb6413141a",
+        "index": 1,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "East",
+        "tag": "Play_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "arcade-cabinet-selout-48_Play_East_02.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 96,
+        "y": 96
+      },
+      "pixor": {
+        "action": "Play",
+        "degrees": 90.0,
+        "id": "43387ecf04169346",
+        "index": 2,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "East",
+        "tag": "Play_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "arcade-cabinet-selout-48_Play_East_03.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 144,
+        "y": 96
+      },
+      "pixor": {
+        "action": "Play",
+        "degrees": 90.0,
+        "id": "cc2492e3137a377d",
+        "index": 3,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "East",
+        "tag": "Play_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "arcade-cabinet-selout-48_Play_East_04.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 192,
+        "y": 96
+      },
+      "pixor": {
+        "action": "Play",
+        "degrees": 90.0,
+        "id": "5983198c0b568875",
+        "index": 4,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "East",
+        "tag": "Play_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "arcade-cabinet-selout-48_Play_East_05.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 240,
+        "y": 96
+      },
+      "pixor": {
+        "action": "Play",
+        "degrees": 90.0,
+        "id": "1cea105343cd7431",
+        "index": 5,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "East",
+        "tag": "Play_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "arcade-cabinet-selout-48_Play_East_06.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 288,
+        "y": 96
+      },
+      "pixor": {
+        "action": "Play",
+        "degrees": 90.0,
+        "id": "8d7081c25f192b0e",
+        "index": 6,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "East",
+        "tag": "Play_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "arcade-cabinet-selout-48_Play_East_07.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 336,
+        "y": 96
+      },
+      "pixor": {
+        "action": "Play",
+        "degrees": 90.0,
+        "id": "cb9a03fdd9a7d908",
+        "index": 7,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "East",
+        "tag": "Play_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "arcade-cabinet-selout-48_Play_Northeast_00.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 144
+      },
+      "pixor": {
+        "action": "Play",
+        "degrees": 135.0,
+        "id": "bbd2e3747a6067d5",
+        "index": 0,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "Northeast",
+        "tag": "Play_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "arcade-cabinet-selout-48_Play_Northeast_01.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 48,
+        "y": 144
+      },
+      "pixor": {
+        "action": "Play",
+        "degrees": 135.0,
+        "id": "549353d5c4aecb54",
+        "index": 1,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "Northeast",
+        "tag": "Play_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "arcade-cabinet-selout-48_Play_Northeast_02.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 96,
+        "y": 144
+      },
+      "pixor": {
+        "action": "Play",
+        "degrees": 135.0,
+        "id": "ebd980598c321630",
+        "index": 2,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "Northeast",
+        "tag": "Play_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "arcade-cabinet-selout-48_Play_Northeast_03.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 144,
+        "y": 144
+      },
+      "pixor": {
+        "action": "Play",
+        "degrees": 135.0,
+        "id": "ca323146d4293587",
+        "index": 3,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "Northeast",
+        "tag": "Play_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "arcade-cabinet-selout-48_Play_Northeast_04.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 192,
+        "y": 144
+      },
+      "pixor": {
+        "action": "Play",
+        "degrees": 135.0,
+        "id": "c9b480f12432763b",
+        "index": 4,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "Northeast",
+        "tag": "Play_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "arcade-cabinet-selout-48_Play_Northeast_05.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 240,
+        "y": 144
+      },
+      "pixor": {
+        "action": "Play",
+        "degrees": 135.0,
+        "id": "1d137b456cadf8c7",
+        "index": 5,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "Northeast",
+        "tag": "Play_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "arcade-cabinet-selout-48_Play_Northeast_06.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 288,
+        "y": 144
+      },
+      "pixor": {
+        "action": "Play",
+        "degrees": 135.0,
+        "id": "27d89268bbeb9ef4",
+        "index": 6,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "Northeast",
+        "tag": "Play_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "arcade-cabinet-selout-48_Play_Northeast_07.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 336,
+        "y": 144
+      },
+      "pixor": {
+        "action": "Play",
+        "degrees": 135.0,
+        "id": "f425fd417e1188ce",
+        "index": 7,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "Northeast",
+        "tag": "Play_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "arcade-cabinet-selout-48_Play_North_00.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 192
+      },
+      "pixor": {
+        "action": "Play",
+        "degrees": 180.0,
+        "id": "cbda26143a4f6d02",
+        "index": 0,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "North",
+        "tag": "Play_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "arcade-cabinet-selout-48_Play_North_01.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 48,
+        "y": 192
+      },
+      "pixor": {
+        "action": "Play",
+        "degrees": 180.0,
+        "id": "d37fae0ccf1cb547",
+        "index": 1,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "North",
+        "tag": "Play_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "arcade-cabinet-selout-48_Play_North_02.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 96,
+        "y": 192
+      },
+      "pixor": {
+        "action": "Play",
+        "degrees": 180.0,
+        "id": "a254c9eb84401373",
+        "index": 2,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "North",
+        "tag": "Play_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "arcade-cabinet-selout-48_Play_North_03.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 144,
+        "y": 192
+      },
+      "pixor": {
+        "action": "Play",
+        "degrees": 180.0,
+        "id": "a07ef2c2d9501d14",
+        "index": 3,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "North",
+        "tag": "Play_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "arcade-cabinet-selout-48_Play_North_04.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 192,
+        "y": 192
+      },
+      "pixor": {
+        "action": "Play",
+        "degrees": 180.0,
+        "id": "0b76365f6e418e84",
+        "index": 4,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "North",
+        "tag": "Play_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "arcade-cabinet-selout-48_Play_North_05.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 240,
+        "y": 192
+      },
+      "pixor": {
+        "action": "Play",
+        "degrees": 180.0,
+        "id": "9872e086dfa354a0",
+        "index": 5,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "North",
+        "tag": "Play_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "arcade-cabinet-selout-48_Play_North_06.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 288,
+        "y": 192
+      },
+      "pixor": {
+        "action": "Play",
+        "degrees": 180.0,
+        "id": "58bbf8b262f306ab",
+        "index": 6,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "North",
+        "tag": "Play_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "arcade-cabinet-selout-48_Play_North_07.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 336,
+        "y": 192
+      },
+      "pixor": {
+        "action": "Play",
+        "degrees": 180.0,
+        "id": "927de04a382e4b85",
+        "index": 7,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "North",
+        "tag": "Play_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "arcade-cabinet-selout-48_Play_Northwest_00.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 240
+      },
+      "pixor": {
+        "action": "Play",
+        "degrees": 225.0,
+        "id": "8dbef70dacc6629f",
+        "index": 0,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "Northwest",
+        "tag": "Play_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "arcade-cabinet-selout-48_Play_Northwest_01.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 48,
+        "y": 240
+      },
+      "pixor": {
+        "action": "Play",
+        "degrees": 225.0,
+        "id": "883d11150e3b6bda",
+        "index": 1,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "Northwest",
+        "tag": "Play_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "arcade-cabinet-selout-48_Play_Northwest_02.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 96,
+        "y": 240
+      },
+      "pixor": {
+        "action": "Play",
+        "degrees": 225.0,
+        "id": "9470da751a40ec86",
+        "index": 2,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "Northwest",
+        "tag": "Play_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "arcade-cabinet-selout-48_Play_Northwest_03.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 144,
+        "y": 240
+      },
+      "pixor": {
+        "action": "Play",
+        "degrees": 225.0,
+        "id": "4e3d60e0c886573d",
+        "index": 3,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "Northwest",
+        "tag": "Play_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "arcade-cabinet-selout-48_Play_Northwest_04.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 192,
+        "y": 240
+      },
+      "pixor": {
+        "action": "Play",
+        "degrees": 225.0,
+        "id": "a3bcc7b0cd81e835",
+        "index": 4,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "Northwest",
+        "tag": "Play_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "arcade-cabinet-selout-48_Play_Northwest_05.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 240,
+        "y": 240
+      },
+      "pixor": {
+        "action": "Play",
+        "degrees": 225.0,
+        "id": "c36263a3243b3c71",
+        "index": 5,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "Northwest",
+        "tag": "Play_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "arcade-cabinet-selout-48_Play_Northwest_06.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 288,
+        "y": 240
+      },
+      "pixor": {
+        "action": "Play",
+        "degrees": 225.0,
+        "id": "70d94fc4f940ccce",
+        "index": 6,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "Northwest",
+        "tag": "Play_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "arcade-cabinet-selout-48_Play_Northwest_07.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 336,
+        "y": 240
+      },
+      "pixor": {
+        "action": "Play",
+        "degrees": 225.0,
+        "id": "df63b22298ee5cc8",
+        "index": 7,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "Northwest",
+        "tag": "Play_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "arcade-cabinet-selout-48_Play_West_00.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 288
+      },
+      "pixor": {
+        "action": "Play",
+        "degrees": 270.0,
+        "id": "6c2388d9c983446d",
+        "index": 0,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "West",
+        "tag": "Play_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "arcade-cabinet-selout-48_Play_West_01.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 48,
+        "y": 288
+      },
+      "pixor": {
+        "action": "Play",
+        "degrees": 270.0,
+        "id": "363023b866d6ee4c",
+        "index": 1,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "West",
+        "tag": "Play_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "arcade-cabinet-selout-48_Play_West_02.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 96,
+        "y": 288
+      },
+      "pixor": {
+        "action": "Play",
+        "degrees": 270.0,
+        "id": "630a99e86dc04ae8",
+        "index": 2,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "West",
+        "tag": "Play_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "arcade-cabinet-selout-48_Play_West_03.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 144,
+        "y": 288
+      },
+      "pixor": {
+        "action": "Play",
+        "degrees": 270.0,
+        "id": "5768f9298478b96f",
+        "index": 3,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "West",
+        "tag": "Play_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "arcade-cabinet-selout-48_Play_West_04.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 192,
+        "y": 288
+      },
+      "pixor": {
+        "action": "Play",
+        "degrees": 270.0,
+        "id": "4f0329a88e335103",
+        "index": 4,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "West",
+        "tag": "Play_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "arcade-cabinet-selout-48_Play_West_05.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 240,
+        "y": 288
+      },
+      "pixor": {
+        "action": "Play",
+        "degrees": 270.0,
+        "id": "f4c494d4ebf3507f",
+        "index": 5,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "West",
+        "tag": "Play_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "arcade-cabinet-selout-48_Play_West_06.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 288,
+        "y": 288
+      },
+      "pixor": {
+        "action": "Play",
+        "degrees": 270.0,
+        "id": "868b89d11e9ffbac",
+        "index": 6,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "West",
+        "tag": "Play_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "arcade-cabinet-selout-48_Play_West_07.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 336,
+        "y": 288
+      },
+      "pixor": {
+        "action": "Play",
+        "degrees": 270.0,
+        "id": "2704d367d8cd0c66",
+        "index": 7,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "West",
+        "tag": "Play_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "arcade-cabinet-selout-48_Play_Southwest_00.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 336
+      },
+      "pixor": {
+        "action": "Play",
+        "degrees": 315.0,
+        "id": "2375c8333c177169",
+        "index": 0,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "Southwest",
+        "tag": "Play_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "arcade-cabinet-selout-48_Play_Southwest_01.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 48,
+        "y": 336
+      },
+      "pixor": {
+        "action": "Play",
+        "degrees": 315.0,
+        "id": "df7791da752bb978",
+        "index": 1,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "Southwest",
+        "tag": "Play_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "arcade-cabinet-selout-48_Play_Southwest_02.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 96,
+        "y": 336
+      },
+      "pixor": {
+        "action": "Play",
+        "degrees": 315.0,
+        "id": "0e25b9f0d2efe8fc",
+        "index": 2,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "Southwest",
+        "tag": "Play_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "arcade-cabinet-selout-48_Play_Southwest_03.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 144,
+        "y": 336
+      },
+      "pixor": {
+        "action": "Play",
+        "degrees": 315.0,
+        "id": "4d7893524d4c3e2b",
+        "index": 3,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "Southwest",
+        "tag": "Play_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "arcade-cabinet-selout-48_Play_Southwest_04.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 192,
+        "y": 336
+      },
+      "pixor": {
+        "action": "Play",
+        "degrees": 315.0,
+        "id": "a49ba4010a700bc7",
+        "index": 4,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "Southwest",
+        "tag": "Play_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "arcade-cabinet-selout-48_Play_Southwest_05.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 240,
+        "y": 336
+      },
+      "pixor": {
+        "action": "Play",
+        "degrees": 315.0,
+        "id": "513ca9acc1f4893b",
+        "index": 5,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "Southwest",
+        "tag": "Play_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "arcade-cabinet-selout-48_Play_Southwest_06.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 288,
+        "y": 336
+      },
+      "pixor": {
+        "action": "Play",
+        "degrees": 315.0,
+        "id": "e77b39ab340ac290",
+        "index": 6,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "Southwest",
+        "tag": "Play_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "arcade-cabinet-selout-48_Play_Southwest_07.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 336,
+        "y": 336
+      },
+      "pixor": {
+        "action": "Play",
+        "degrees": 315.0,
+        "id": "8bfd477d3a3125ea",
+        "index": 7,
+        "pivot": {
+          "x": 24,
+          "y": 37
+        },
+        "side": "Southwest",
+        "tag": "Play_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    }
+  ],
+  "meta": {
+    "app": "Pixor",
+    "format": "I8",
+    "frameTags": [
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 0,
+        "name": "Play_South",
+        "to": 7
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 8,
+        "name": "Play_Southeast",
+        "to": 15
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 16,
+        "name": "Play_East",
+        "to": 23
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 24,
+        "name": "Play_Northeast",
+        "to": 31
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 32,
+        "name": "Play_North",
+        "to": 39
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 40,
+        "name": "Play_Northwest",
+        "to": 47
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 48,
+        "name": "Play_West",
+        "to": 55
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 56,
+        "name": "Play_Southwest",
+        "to": 63
+      }
+    ],
+    "image": "arcade-cabinet-selout-48.png",
+    "layers": [
+      {
+        "blendMode": "normal",
+        "name": "final",
+        "opacity": 255
+      }
+    ],
+    "pixor": {
+      "cell": {
+        "h": 48,
+        "w": 48
+      },
+      "pivot": {
+        "x": 24,
+        "y": 37
+      },
+      "sides": {
+        "East": 90.0,
+        "North": 180.0,
+        "Northeast": 135.0,
+        "Northwest": 225.0,
+        "South": 0.0,
+        "Southeast": 45.0,
+        "Southwest": 315.0,
+        "West": 270.0
+      }
+    },
+    "scale": "1",
+    "size": {
+      "h": 384,
+      "w": 384
+    },
+    "slices": [
+      {
+        "color": "#0000ffff",
+        "keys": [
+          {
+            "bounds": {
+              "h": 48,
+              "w": 48,
+              "x": 0,
+              "y": 0
+            },
+            "frame": 0,
+            "pivot": {
+              "x": 24,
+              "y": 37
+            }
+          }
+        ],
+        "name": "pivot"
+      }
+    ],
+    "version": "2.0.1"
+  }
+}

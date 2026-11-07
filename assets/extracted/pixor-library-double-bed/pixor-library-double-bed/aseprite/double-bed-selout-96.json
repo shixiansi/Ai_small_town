@@ -1,0 +1,401 @@
+{
+  "frames": [
+    {
+      "duration": 100,
+      "filename": "double-bed-selout-96_Static_South_00.png",
+      "frame": {
+        "h": 96,
+        "w": 96,
+        "x": 0,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Static",
+        "degrees": 0.0,
+        "id": "9dad0d1131157d1c",
+        "index": 0,
+        "pivot": {
+          "x": 48,
+          "y": 62
+        },
+        "side": "South",
+        "tag": "Static_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 96,
+        "w": 96
+      },
+      "spriteSourceSize": {
+        "h": 96,
+        "w": 96,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 100,
+      "filename": "double-bed-selout-96_Static_Southeast_00.png",
+      "frame": {
+        "h": 96,
+        "w": 96,
+        "x": 0,
+        "y": 96
+      },
+      "pixor": {
+        "action": "Static",
+        "degrees": 45.0,
+        "id": "2cc2e544aee6b873",
+        "index": 0,
+        "pivot": {
+          "x": 48,
+          "y": 62
+        },
+        "side": "Southeast",
+        "tag": "Static_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 96,
+        "w": 96
+      },
+      "spriteSourceSize": {
+        "h": 96,
+        "w": 96,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 100,
+      "filename": "double-bed-selout-96_Static_East_00.png",
+      "frame": {
+        "h": 96,
+        "w": 96,
+        "x": 0,
+        "y": 192
+      },
+      "pixor": {
+        "action": "Static",
+        "degrees": 90.0,
+        "id": "a893cbea3568a7ef",
+        "index": 0,
+        "pivot": {
+          "x": 48,
+          "y": 62
+        },
+        "side": "East",
+        "tag": "Static_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 96,
+        "w": 96
+      },
+      "spriteSourceSize": {
+        "h": 96,
+        "w": 96,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 100,
+      "filename": "double-bed-selout-96_Static_Northeast_00.png",
+      "frame": {
+        "h": 96,
+        "w": 96,
+        "x": 0,
+        "y": 288
+      },
+      "pixor": {
+        "action": "Static",
+        "degrees": 135.0,
+        "id": "311baf1e09c6ecc5",
+        "index": 0,
+        "pivot": {
+          "x": 48,
+          "y": 62
+        },
+        "side": "Northeast",
+        "tag": "Static_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 96,
+        "w": 96
+      },
+      "spriteSourceSize": {
+        "h": 96,
+        "w": 96,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 100,
+      "filename": "double-bed-selout-96_Static_North_00.png",
+      "frame": {
+        "h": 96,
+        "w": 96,
+        "x": 0,
+        "y": 384
+      },
+      "pixor": {
+        "action": "Static",
+        "degrees": 180.0,
+        "id": "c72e42561c34fa72",
+        "index": 0,
+        "pivot": {
+          "x": 48,
+          "y": 62
+        },
+        "side": "North",
+        "tag": "Static_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 96,
+        "w": 96
+      },
+      "spriteSourceSize": {
+        "h": 96,
+        "w": 96,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 100,
+      "filename": "double-bed-selout-96_Static_Northwest_00.png",
+      "frame": {
+        "h": 96,
+        "w": 96,
+        "x": 0,
+        "y": 480
+      },
+      "pixor": {
+        "action": "Static",
+        "degrees": 225.0,
+        "id": "4349749eef89a4ef",
+        "index": 0,
+        "pivot": {
+          "x": 48,
+          "y": 62
+        },
+        "side": "Northwest",
+        "tag": "Static_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 96,
+        "w": 96
+      },
+      "spriteSourceSize": {
+        "h": 96,
+        "w": 96,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 100,
+      "filename": "double-bed-selout-96_Static_West_00.png",
+      "frame": {
+        "h": 96,
+        "w": 96,
+        "x": 0,
+        "y": 576
+      },
+      "pixor": {
+        "action": "Static",
+        "degrees": 270.0,
+        "id": "6d00705233766a9d",
+        "index": 0,
+        "pivot": {
+          "x": 48,
+          "y": 62
+        },
+        "side": "West",
+        "tag": "Static_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 96,
+        "w": 96
+      },
+      "spriteSourceSize": {
+        "h": 96,
+        "w": 96,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 100,
+      "filename": "double-bed-selout-96_Static_Southwest_00.png",
+      "frame": {
+        "h": 96,
+        "w": 96,
+        "x": 0,
+        "y": 672
+      },
+      "pixor": {
+        "action": "Static",
+        "degrees": 315.0,
+        "id": "7536441366ec76d9",
+        "index": 0,
+        "pivot": {
+          "x": 48,
+          "y": 62
+        },
+        "side": "Southwest",
+        "tag": "Static_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 96,
+        "w": 96
+      },
+      "spriteSourceSize": {
+        "h": 96,
+        "w": 96,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    }
+  ],
+  "meta": {
+    "app": "Pixor",
+    "format": "I8",
+    "frameTags": [
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 0,
+        "name": "Static_South",
+        "repeat": "1",
+        "to": 0
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 1,
+        "name": "Static_Southeast",
+        "repeat": "1",
+        "to": 1
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 2,
+        "name": "Static_East",
+        "repeat": "1",
+        "to": 2
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 3,
+        "name": "Static_Northeast",
+        "repeat": "1",
+        "to": 3
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 4,
+        "name": "Static_North",
+        "repeat": "1",
+        "to": 4
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 5,
+        "name": "Static_Northwest",
+        "repeat": "1",
+        "to": 5
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 6,
+        "name": "Static_West",
+        "repeat": "1",
+        "to": 6
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 7,
+        "name": "Static_Southwest",
+        "repeat": "1",
+        "to": 7
+      }
+    ],
+    "image": "double-bed-selout-96.png",
+    "layers": [
+      {
+        "blendMode": "normal",
+        "name": "final",
+        "opacity": 255
+      }
+    ],
+    "pixor": {
+      "cell": {
+        "h": 96,
+        "w": 96
+      },
+      "pivot": {
+        "x": 48,
+        "y": 62
+      },
+      "sides": {
+        "East": 90.0,
+        "North": 180.0,
+        "Northeast": 135.0,
+        "Northwest": 225.0,
+        "South": 0.0,
+        "Southeast": 45.0,
+        "Southwest": 315.0,
+        "West": 270.0
+      }
+    },
+    "scale": "1",
+    "size": {
+      "h": 768,
+      "w": 96
+    },
+    "slices": [
+      {
+        "color": "#0000ffff",
+        "keys": [
+          {
+            "bounds": {
+              "h": 96,
+              "w": 96,
+              "x": 0,
+              "y": 0
+            },
+            "frame": 0,
+            "pivot": {
+              "x": 48,
+              "y": 62
+            }
+          }
+        ],
+        "name": "pivot"
+      }
+    ],
+    "version": "2.0.1"
+  }
+}

@@ -1,0 +1,2297 @@
+{
+  "frames": [
+    {
+      "duration": 83,
+      "filename": "gramophone-selout-64_Spin_South_00.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 0.0,
+        "id": "e670036a1516f393",
+        "index": 0,
+        "pivot": {
+          "x": 32,
+          "y": 47
+        },
+        "side": "South",
+        "tag": "Spin_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "gramophone-selout-64_Spin_South_01.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 64,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 0.0,
+        "id": "840f4fdb80420fae",
+        "index": 1,
+        "pivot": {
+          "x": 32,
+          "y": 47
+        },
+        "side": "South",
+        "tag": "Spin_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "gramophone-selout-64_Spin_South_02.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 128,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 0.0,
+        "id": "b2db7eb885f6ece2",
+        "index": 2,
+        "pivot": {
+          "x": 32,
+          "y": 47
+        },
+        "side": "South",
+        "tag": "Spin_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "gramophone-selout-64_Spin_South_03.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 192,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 0.0,
+        "id": "5482589e2a67bde1",
+        "index": 3,
+        "pivot": {
+          "x": 32,
+          "y": 47
+        },
+        "side": "South",
+        "tag": "Spin_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "gramophone-selout-64_Spin_South_04.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 256,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 0.0,
+        "id": "fea8ef38db4eae11",
+        "index": 4,
+        "pivot": {
+          "x": 32,
+          "y": 47
+        },
+        "side": "South",
+        "tag": "Spin_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "gramophone-selout-64_Spin_South_05.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 320,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 0.0,
+        "id": "a504ef9fd9b88f95",
+        "index": 5,
+        "pivot": {
+          "x": 32,
+          "y": 47
+        },
+        "side": "South",
+        "tag": "Spin_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "gramophone-selout-64_Spin_South_06.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 384,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 0.0,
+        "id": "4a91795b30f43e4a",
+        "index": 6,
+        "pivot": {
+          "x": 32,
+          "y": 47
+        },
+        "side": "South",
+        "tag": "Spin_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "gramophone-selout-64_Spin_South_07.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 448,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 0.0,
+        "id": "96f4817ffcdd5094",
+        "index": 7,
+        "pivot": {
+          "x": 32,
+          "y": 47
+        },
+        "side": "South",
+        "tag": "Spin_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "gramophone-selout-64_Spin_Southeast_00.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 64
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 45.0,
+        "id": "9946e509eeff6670",
+        "index": 0,
+        "pivot": {
+          "x": 32,
+          "y": 47
+        },
+        "side": "Southeast",
+        "tag": "Spin_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "gramophone-selout-64_Spin_Southeast_01.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 64,
+        "y": 64
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 45.0,
+        "id": "80e5f60fd178c101",
+        "index": 1,
+        "pivot": {
+          "x": 32,
+          "y": 47
+        },
+        "side": "Southeast",
+        "tag": "Spin_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "gramophone-selout-64_Spin_Southeast_02.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 128,
+        "y": 64
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 45.0,
+        "id": "adc21da2a2dfce15",
+        "index": 2,
+        "pivot": {
+          "x": 32,
+          "y": 47
+        },
+        "side": "Southeast",
+        "tag": "Spin_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "gramophone-selout-64_Spin_Southeast_03.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 192,
+        "y": 64
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 45.0,
+        "id": "459569c3bc7b5b8e",
+        "index": 3,
+        "pivot": {
+          "x": 32,
+          "y": 47
+        },
+        "side": "Southeast",
+        "tag": "Spin_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "gramophone-selout-64_Spin_Southeast_04.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 256,
+        "y": 64
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 45.0,
+        "id": "7700d303c432acfa",
+        "index": 4,
+        "pivot": {
+          "x": 32,
+          "y": 47
+        },
+        "side": "Southeast",
+        "tag": "Spin_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "gramophone-selout-64_Spin_Southeast_05.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 320,
+        "y": 64
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 45.0,
+        "id": "a55622b6c48eed5e",
+        "index": 5,
+        "pivot": {
+          "x": 32,
+          "y": 47
+        },
+        "side": "Southeast",
+        "tag": "Spin_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "gramophone-selout-64_Spin_Southeast_06.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 384,
+        "y": 64
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 45.0,
+        "id": "399ee1f544891b61",
+        "index": 6,
+        "pivot": {
+          "x": 32,
+          "y": 47
+        },
+        "side": "Southeast",
+        "tag": "Spin_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "gramophone-selout-64_Spin_Southeast_07.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 448,
+        "y": 64
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 45.0,
+        "id": "50d1a0fbd9d31743",
+        "index": 7,
+        "pivot": {
+          "x": 32,
+          "y": 47
+        },
+        "side": "Southeast",
+        "tag": "Spin_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "gramophone-selout-64_Spin_East_00.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 128
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 90.0,
+        "id": "edbbc1045d2f810a",
+        "index": 0,
+        "pivot": {
+          "x": 32,
+          "y": 47
+        },
+        "side": "East",
+        "tag": "Spin_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "gramophone-selout-64_Spin_East_01.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 64,
+        "y": 128
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 90.0,
+        "id": "9a73726eddaffb2f",
+        "index": 1,
+        "pivot": {
+          "x": 32,
+          "y": 47
+        },
+        "side": "East",
+        "tag": "Spin_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "gramophone-selout-64_Spin_East_02.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 128,
+        "y": 128
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 90.0,
+        "id": "b3c645b19f2579db",
+        "index": 2,
+        "pivot": {
+          "x": 32,
+          "y": 47
+        },
+        "side": "East",
+        "tag": "Spin_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "gramophone-selout-64_Spin_East_03.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 192,
+        "y": 128
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 90.0,
+        "id": "78dc6a2f22e79a0c",
+        "index": 3,
+        "pivot": {
+          "x": 32,
+          "y": 47
+        },
+        "side": "East",
+        "tag": "Spin_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "gramophone-selout-64_Spin_East_04.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 256,
+        "y": 128
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 90.0,
+        "id": "8cfa28341d01583c",
+        "index": 4,
+        "pivot": {
+          "x": 32,
+          "y": 47
+        },
+        "side": "East",
+        "tag": "Spin_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "gramophone-selout-64_Spin_East_05.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 320,
+        "y": 128
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 90.0,
+        "id": "b64acc7377ee39c8",
+        "index": 5,
+        "pivot": {
+          "x": 32,
+          "y": 47
+        },
+        "side": "East",
+        "tag": "Spin_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "gramophone-selout-64_Spin_East_06.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 384,
+        "y": 128
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 90.0,
+        "id": "8943ba21abd50573",
+        "index": 6,
+        "pivot": {
+          "x": 32,
+          "y": 47
+        },
+        "side": "East",
+        "tag": "Spin_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "gramophone-selout-64_Spin_East_07.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 448,
+        "y": 128
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 90.0,
+        "id": "6ea815e31208914d",
+        "index": 7,
+        "pivot": {
+          "x": 32,
+          "y": 47
+        },
+        "side": "East",
+        "tag": "Spin_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "gramophone-selout-64_Spin_Northeast_00.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 192
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 135.0,
+        "id": "0e7feb4b1c83c59e",
+        "index": 0,
+        "pivot": {
+          "x": 32,
+          "y": 47
+        },
+        "side": "Northeast",
+        "tag": "Spin_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "gramophone-selout-64_Spin_Northeast_01.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 64,
+        "y": 192
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 135.0,
+        "id": "28d6197ad1bc1163",
+        "index": 1,
+        "pivot": {
+          "x": 32,
+          "y": 47
+        },
+        "side": "Northeast",
+        "tag": "Spin_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "gramophone-selout-64_Spin_Northeast_02.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 128,
+        "y": 192
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 135.0,
+        "id": "ba0d49e45725a1d7",
+        "index": 2,
+        "pivot": {
+          "x": 32,
+          "y": 47
+        },
+        "side": "Northeast",
+        "tag": "Spin_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "gramophone-selout-64_Spin_Northeast_03.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 192,
+        "y": 192
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 135.0,
+        "id": "8fdd13ffd405d7e0",
+        "index": 3,
+        "pivot": {
+          "x": 32,
+          "y": 47
+        },
+        "side": "Northeast",
+        "tag": "Spin_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "gramophone-selout-64_Spin_Northeast_04.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 256,
+        "y": 192
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 135.0,
+        "id": "8d62b77c4a3091a8",
+        "index": 4,
+        "pivot": {
+          "x": 32,
+          "y": 47
+        },
+        "side": "Northeast",
+        "tag": "Spin_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "gramophone-selout-64_Spin_Northeast_05.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 320,
+        "y": 192
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 135.0,
+        "id": "8cddc139d986c15c",
+        "index": 5,
+        "pivot": {
+          "x": 32,
+          "y": 47
+        },
+        "side": "Northeast",
+        "tag": "Spin_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "gramophone-selout-64_Spin_Northeast_06.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 384,
+        "y": 192
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 135.0,
+        "id": "04f525208b4a7a0f",
+        "index": 6,
+        "pivot": {
+          "x": 32,
+          "y": 47
+        },
+        "side": "Northeast",
+        "tag": "Spin_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "gramophone-selout-64_Spin_Northeast_07.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 448,
+        "y": 192
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 135.0,
+        "id": "978a60df39df73d9",
+        "index": 7,
+        "pivot": {
+          "x": 32,
+          "y": 47
+        },
+        "side": "Northeast",
+        "tag": "Spin_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "gramophone-selout-64_Spin_North_00.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 256
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 180.0,
+        "id": "54c712970361cb6d",
+        "index": 0,
+        "pivot": {
+          "x": 32,
+          "y": 47
+        },
+        "side": "North",
+        "tag": "Spin_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "gramophone-selout-64_Spin_North_01.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 64,
+        "y": 256
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 180.0,
+        "id": "1ed3ad75a0b5754c",
+        "index": 1,
+        "pivot": {
+          "x": 32,
+          "y": 47
+        },
+        "side": "North",
+        "tag": "Spin_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "gramophone-selout-64_Spin_North_02.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 128,
+        "y": 256
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 180.0,
+        "id": "4bae23a5a79ed1e8",
+        "index": 2,
+        "pivot": {
+          "x": 32,
+          "y": 47
+        },
+        "side": "North",
+        "tag": "Spin_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "gramophone-selout-64_Spin_North_03.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 192,
+        "y": 256
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 180.0,
+        "id": "400c82e6be57406f",
+        "index": 3,
+        "pivot": {
+          "x": 32,
+          "y": 47
+        },
+        "side": "North",
+        "tag": "Spin_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "gramophone-selout-64_Spin_North_04.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 256,
+        "y": 256
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 180.0,
+        "id": "37a6b365c811d803",
+        "index": 4,
+        "pivot": {
+          "x": 32,
+          "y": 47
+        },
+        "side": "North",
+        "tag": "Spin_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "gramophone-selout-64_Spin_North_05.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 320,
+        "y": 256
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 180.0,
+        "id": "dd681e9225d1d77f",
+        "index": 5,
+        "pivot": {
+          "x": 32,
+          "y": 47
+        },
+        "side": "North",
+        "tag": "Spin_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "gramophone-selout-64_Spin_North_06.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 384,
+        "y": 256
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 180.0,
+        "id": "6f2f138e587e82ac",
+        "index": 6,
+        "pivot": {
+          "x": 32,
+          "y": 47
+        },
+        "side": "North",
+        "tag": "Spin_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "gramophone-selout-64_Spin_North_07.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 448,
+        "y": 256
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 180.0,
+        "id": "0fa85d2512ab9366",
+        "index": 7,
+        "pivot": {
+          "x": 32,
+          "y": 47
+        },
+        "side": "North",
+        "tag": "Spin_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "gramophone-selout-64_Spin_Northwest_00.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 320
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 225.0,
+        "id": "8f26fcef944cba60",
+        "index": 0,
+        "pivot": {
+          "x": 32,
+          "y": 47
+        },
+        "side": "Northwest",
+        "tag": "Spin_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "gramophone-selout-64_Spin_Northwest_01.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 64,
+        "y": 320
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 225.0,
+        "id": "97da5a3eecc22311",
+        "index": 1,
+        "pivot": {
+          "x": 32,
+          "y": 47
+        },
+        "side": "Northwest",
+        "tag": "Spin_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "gramophone-selout-64_Spin_Northwest_02.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 128,
+        "y": 320
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 225.0,
+        "id": "76f3778e782c77c5",
+        "index": 2,
+        "pivot": {
+          "x": 32,
+          "y": 47
+        },
+        "side": "Northwest",
+        "tag": "Spin_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "gramophone-selout-64_Spin_Northwest_03.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 192,
+        "y": 320
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 225.0,
+        "id": "33071e911f15cb1e",
+        "index": 3,
+        "pivot": {
+          "x": 32,
+          "y": 47
+        },
+        "side": "Northwest",
+        "tag": "Spin_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "gramophone-selout-64_Spin_Northwest_04.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 256,
+        "y": 320
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 225.0,
+        "id": "a61953cb3b35f5ea",
+        "index": 4,
+        "pivot": {
+          "x": 32,
+          "y": 47
+        },
+        "side": "Northwest",
+        "tag": "Spin_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "gramophone-selout-64_Spin_Northwest_05.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 320,
+        "y": 320
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 225.0,
+        "id": "bb077ca15f238ece",
+        "index": 5,
+        "pivot": {
+          "x": 32,
+          "y": 47
+        },
+        "side": "Northwest",
+        "tag": "Spin_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "gramophone-selout-64_Spin_Northwest_06.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 384,
+        "y": 320
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 225.0,
+        "id": "0d90907f8a1dfe71",
+        "index": 6,
+        "pivot": {
+          "x": 32,
+          "y": 47
+        },
+        "side": "Northwest",
+        "tag": "Spin_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "gramophone-selout-64_Spin_Northwest_07.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 448,
+        "y": 320
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 225.0,
+        "id": "d8ea280183b20973",
+        "index": 7,
+        "pivot": {
+          "x": 32,
+          "y": 47
+        },
+        "side": "Northwest",
+        "tag": "Spin_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "gramophone-selout-64_Spin_West_00.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 384
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 270.0,
+        "id": "73591ab1c0b979a4",
+        "index": 0,
+        "pivot": {
+          "x": 32,
+          "y": 47
+        },
+        "side": "West",
+        "tag": "Spin_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "gramophone-selout-64_Spin_West_01.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 64,
+        "y": 384
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 270.0,
+        "id": "0f6855ad1bfaac85",
+        "index": 1,
+        "pivot": {
+          "x": 32,
+          "y": 47
+        },
+        "side": "West",
+        "tag": "Spin_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "gramophone-selout-64_Spin_West_02.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 128,
+        "y": 384
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 270.0,
+        "id": "5a9ddd8d99b49451",
+        "index": 2,
+        "pivot": {
+          "x": 32,
+          "y": 47
+        },
+        "side": "West",
+        "tag": "Spin_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "gramophone-selout-64_Spin_West_03.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 192,
+        "y": 384
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 270.0,
+        "id": "1b9809de63d5f872",
+        "index": 3,
+        "pivot": {
+          "x": 32,
+          "y": 47
+        },
+        "side": "West",
+        "tag": "Spin_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "gramophone-selout-64_Spin_West_04.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 256,
+        "y": 384
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 270.0,
+        "id": "7dfc26f09efc3596",
+        "index": 4,
+        "pivot": {
+          "x": 32,
+          "y": 47
+        },
+        "side": "West",
+        "tag": "Spin_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "gramophone-selout-64_Spin_West_05.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 320,
+        "y": 384
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 270.0,
+        "id": "eb96ed4d837f0e02",
+        "index": 5,
+        "pivot": {
+          "x": 32,
+          "y": 47
+        },
+        "side": "West",
+        "tag": "Spin_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "gramophone-selout-64_Spin_West_06.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 384,
+        "y": 384
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 270.0,
+        "id": "6af1dd0ed18cf60d",
+        "index": 6,
+        "pivot": {
+          "x": 32,
+          "y": 47
+        },
+        "side": "West",
+        "tag": "Spin_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "gramophone-selout-64_Spin_West_07.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 448,
+        "y": 384
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 270.0,
+        "id": "43dbef9c04af9caf",
+        "index": 7,
+        "pivot": {
+          "x": 32,
+          "y": 47
+        },
+        "side": "West",
+        "tag": "Spin_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "gramophone-selout-64_Spin_Southwest_00.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 448
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 315.0,
+        "id": "41de13acaa413a6e",
+        "index": 0,
+        "pivot": {
+          "x": 32,
+          "y": 47
+        },
+        "side": "Southwest",
+        "tag": "Spin_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "gramophone-selout-64_Spin_Southwest_01.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 64,
+        "y": 448
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 315.0,
+        "id": "4321ef3c95e66fd3",
+        "index": 1,
+        "pivot": {
+          "x": 32,
+          "y": 47
+        },
+        "side": "Southwest",
+        "tag": "Spin_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "gramophone-selout-64_Spin_Southwest_02.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 128,
+        "y": 448
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 315.0,
+        "id": "8a8d0c8739524fe7",
+        "index": 2,
+        "pivot": {
+          "x": 32,
+          "y": 47
+        },
+        "side": "Southwest",
+        "tag": "Spin_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "gramophone-selout-64_Spin_Southwest_03.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 192,
+        "y": 448
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 315.0,
+        "id": "3142861c28c43e90",
+        "index": 3,
+        "pivot": {
+          "x": 32,
+          "y": 47
+        },
+        "side": "Southwest",
+        "tag": "Spin_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "gramophone-selout-64_Spin_Southwest_04.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 256,
+        "y": 448
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 315.0,
+        "id": "27a238a0d69ff378",
+        "index": 4,
+        "pivot": {
+          "x": 32,
+          "y": 47
+        },
+        "side": "Southwest",
+        "tag": "Spin_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "gramophone-selout-64_Spin_Southwest_05.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 320,
+        "y": 448
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 315.0,
+        "id": "864985f4bc68b22c",
+        "index": 5,
+        "pivot": {
+          "x": 32,
+          "y": 47
+        },
+        "side": "Southwest",
+        "tag": "Spin_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "gramophone-selout-64_Spin_Southwest_06.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 384,
+        "y": 448
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 315.0,
+        "id": "f48290f889bc06ff",
+        "index": 6,
+        "pivot": {
+          "x": 32,
+          "y": 47
+        },
+        "side": "Southwest",
+        "tag": "Spin_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "gramophone-selout-64_Spin_Southwest_07.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 448,
+        "y": 448
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 315.0,
+        "id": "0102554dac7695a9",
+        "index": 7,
+        "pivot": {
+          "x": 32,
+          "y": 47
+        },
+        "side": "Southwest",
+        "tag": "Spin_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    }
+  ],
+  "meta": {
+    "app": "Pixor",
+    "format": "I8",
+    "frameTags": [
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 0,
+        "name": "Spin_South",
+        "to": 7
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 8,
+        "name": "Spin_Southeast",
+        "to": 15
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 16,
+        "name": "Spin_East",
+        "to": 23
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 24,
+        "name": "Spin_Northeast",
+        "to": 31
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 32,
+        "name": "Spin_North",
+        "to": 39
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 40,
+        "name": "Spin_Northwest",
+        "to": 47
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 48,
+        "name": "Spin_West",
+        "to": 55
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 56,
+        "name": "Spin_Southwest",
+        "to": 63
+      }
+    ],
+    "image": "gramophone-selout-64.png",
+    "layers": [
+      {
+        "blendMode": "normal",
+        "name": "final",
+        "opacity": 255
+      }
+    ],
+    "pixor": {
+      "cell": {
+        "h": 64,
+        "w": 64
+      },
+      "pivot": {
+        "x": 32,
+        "y": 47
+      },
+      "sides": {
+        "East": 90.0,
+        "North": 180.0,
+        "Northeast": 135.0,
+        "Northwest": 225.0,
+        "South": 0.0,
+        "Southeast": 45.0,
+        "Southwest": 315.0,
+        "West": 270.0
+      }
+    },
+    "scale": "1",
+    "size": {
+      "h": 512,
+      "w": 512
+    },
+    "slices": [
+      {
+        "color": "#0000ffff",
+        "keys": [
+          {
+            "bounds": {
+              "h": 64,
+              "w": 64,
+              "x": 0,
+              "y": 0
+            },
+            "frame": 0,
+            "pivot": {
+              "x": 32,
+              "y": 47
+            }
+          }
+        ],
+        "name": "pivot"
+      }
+    ],
+    "version": "2.0.1"
+  }
+}

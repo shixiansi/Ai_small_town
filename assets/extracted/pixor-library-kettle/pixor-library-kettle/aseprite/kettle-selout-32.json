@@ -1,0 +1,1753 @@
+{
+  "frames": [
+    {
+      "duration": 83,
+      "filename": "kettle-selout-32_Steam_South_00.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Steam",
+        "degrees": 0.0,
+        "id": "2fe174fad199d6cd",
+        "index": 0,
+        "pivot": {
+          "x": 16,
+          "y": 23
+        },
+        "side": "South",
+        "tag": "Steam_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "kettle-selout-32_Steam_South_01.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 32,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Steam",
+        "degrees": 0.0,
+        "id": "80efedb2525c85ac",
+        "index": 1,
+        "pivot": {
+          "x": 16,
+          "y": 23
+        },
+        "side": "South",
+        "tag": "Steam_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "kettle-selout-32_Steam_South_02.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 64,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Steam",
+        "degrees": 0.0,
+        "id": "6088cfe424bf5e88",
+        "index": 2,
+        "pivot": {
+          "x": 16,
+          "y": 23
+        },
+        "side": "South",
+        "tag": "Steam_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "kettle-selout-32_Steam_South_03.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 96,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Steam",
+        "degrees": 0.0,
+        "id": "7435599da0005c0f",
+        "index": 3,
+        "pivot": {
+          "x": 16,
+          "y": 23
+        },
+        "side": "South",
+        "tag": "Steam_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "kettle-selout-32_Steam_South_04.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 128,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Steam",
+        "degrees": 0.0,
+        "id": "99b2f3a279b73563",
+        "index": 4,
+        "pivot": {
+          "x": 16,
+          "y": 23
+        },
+        "side": "South",
+        "tag": "Steam_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "kettle-selout-32_Steam_South_05.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 160,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Steam",
+        "degrees": 0.0,
+        "id": "2442cacbb812431f",
+        "index": 5,
+        "pivot": {
+          "x": 16,
+          "y": 23
+        },
+        "side": "South",
+        "tag": "Steam_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "kettle-selout-32_Steam_Southeast_00.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 32
+      },
+      "pixor": {
+        "action": "Steam",
+        "degrees": 45.0,
+        "id": "c9c8c4cc57534826",
+        "index": 0,
+        "pivot": {
+          "x": 16,
+          "y": 23
+        },
+        "side": "Southeast",
+        "tag": "Steam_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "kettle-selout-32_Steam_Southeast_01.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 32,
+        "y": 32
+      },
+      "pixor": {
+        "action": "Steam",
+        "degrees": 45.0,
+        "id": "bef91c71a9daff8b",
+        "index": 1,
+        "pivot": {
+          "x": 16,
+          "y": 23
+        },
+        "side": "Southeast",
+        "tag": "Steam_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "kettle-selout-32_Steam_Southeast_02.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 64,
+        "y": 32
+      },
+      "pixor": {
+        "action": "Steam",
+        "degrees": 45.0,
+        "id": "02169fe55b8ceeff",
+        "index": 2,
+        "pivot": {
+          "x": 16,
+          "y": 23
+        },
+        "side": "Southeast",
+        "tag": "Steam_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "kettle-selout-32_Steam_Southeast_03.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 96,
+        "y": 32
+      },
+      "pixor": {
+        "action": "Steam",
+        "degrees": 45.0,
+        "id": "af4c64a1c6d75198",
+        "index": 3,
+        "pivot": {
+          "x": 16,
+          "y": 23
+        },
+        "side": "Southeast",
+        "tag": "Steam_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "kettle-selout-32_Steam_Southeast_04.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 128,
+        "y": 32
+      },
+      "pixor": {
+        "action": "Steam",
+        "degrees": 45.0,
+        "id": "707145ee867056c0",
+        "index": 4,
+        "pivot": {
+          "x": 16,
+          "y": 23
+        },
+        "side": "Southeast",
+        "tag": "Steam_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "kettle-selout-32_Steam_Southeast_05.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 160,
+        "y": 32
+      },
+      "pixor": {
+        "action": "Steam",
+        "degrees": 45.0,
+        "id": "a7f718477a342f64",
+        "index": 5,
+        "pivot": {
+          "x": 16,
+          "y": 23
+        },
+        "side": "Southeast",
+        "tag": "Steam_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "kettle-selout-32_Steam_East_00.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 64
+      },
+      "pixor": {
+        "action": "Steam",
+        "degrees": 90.0,
+        "id": "aebfb96faa2deda4",
+        "index": 0,
+        "pivot": {
+          "x": 16,
+          "y": 23
+        },
+        "side": "East",
+        "tag": "Steam_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "kettle-selout-32_Steam_East_01.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 32,
+        "y": 64
+      },
+      "pixor": {
+        "action": "Steam",
+        "degrees": 90.0,
+        "id": "4acef46b056f2085",
+        "index": 1,
+        "pivot": {
+          "x": 16,
+          "y": 23
+        },
+        "side": "East",
+        "tag": "Steam_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "kettle-selout-32_Steam_East_02.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 64,
+        "y": 64
+      },
+      "pixor": {
+        "action": "Steam",
+        "degrees": 90.0,
+        "id": "96047c4b83290851",
+        "index": 2,
+        "pivot": {
+          "x": 16,
+          "y": 23
+        },
+        "side": "East",
+        "tag": "Steam_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "kettle-selout-32_Steam_East_03.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 96,
+        "y": 64
+      },
+      "pixor": {
+        "action": "Steam",
+        "degrees": 90.0,
+        "id": "56fea89c4d4a6c72",
+        "index": 3,
+        "pivot": {
+          "x": 16,
+          "y": 23
+        },
+        "side": "East",
+        "tag": "Steam_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "kettle-selout-32_Steam_East_04.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 128,
+        "y": 64
+      },
+      "pixor": {
+        "action": "Steam",
+        "degrees": 90.0,
+        "id": "b962c5ae8870a996",
+        "index": 4,
+        "pivot": {
+          "x": 16,
+          "y": 23
+        },
+        "side": "East",
+        "tag": "Steam_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "kettle-selout-32_Steam_East_05.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 160,
+        "y": 64
+      },
+      "pixor": {
+        "action": "Steam",
+        "degrees": 90.0,
+        "id": "26fd8c0b6cf38202",
+        "index": 5,
+        "pivot": {
+          "x": 16,
+          "y": 23
+        },
+        "side": "East",
+        "tag": "Steam_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "kettle-selout-32_Steam_Northeast_00.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 96
+      },
+      "pixor": {
+        "action": "Steam",
+        "degrees": 135.0,
+        "id": "b5f65cfbb84c0760",
+        "index": 0,
+        "pivot": {
+          "x": 16,
+          "y": 23
+        },
+        "side": "Northeast",
+        "tag": "Steam_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "kettle-selout-32_Steam_Northeast_01.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 32,
+        "y": 96
+      },
+      "pixor": {
+        "action": "Steam",
+        "degrees": 135.0,
+        "id": "bea9ba4b10c17011",
+        "index": 1,
+        "pivot": {
+          "x": 16,
+          "y": 23
+        },
+        "side": "Northeast",
+        "tag": "Steam_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "kettle-selout-32_Steam_Northeast_02.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 64,
+        "y": 96
+      },
+      "pixor": {
+        "action": "Steam",
+        "degrees": 135.0,
+        "id": "9dc2d79a9c2bc4c5",
+        "index": 2,
+        "pivot": {
+          "x": 16,
+          "y": 23
+        },
+        "side": "Northeast",
+        "tag": "Steam_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "kettle-selout-32_Steam_Northeast_03.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 96,
+        "y": 96
+      },
+      "pixor": {
+        "action": "Steam",
+        "degrees": 135.0,
+        "id": "59d67e9d4315181e",
+        "index": 3,
+        "pivot": {
+          "x": 16,
+          "y": 23
+        },
+        "side": "Northeast",
+        "tag": "Steam_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "kettle-selout-32_Steam_Northeast_04.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 128,
+        "y": 96
+      },
+      "pixor": {
+        "action": "Steam",
+        "degrees": 135.0,
+        "id": "cce8b3d75f3542ea",
+        "index": 4,
+        "pivot": {
+          "x": 16,
+          "y": 23
+        },
+        "side": "Northeast",
+        "tag": "Steam_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "kettle-selout-32_Steam_Northeast_05.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 160,
+        "y": 96
+      },
+      "pixor": {
+        "action": "Steam",
+        "degrees": 135.0,
+        "id": "e1d6dcad8322dbce",
+        "index": 5,
+        "pivot": {
+          "x": 16,
+          "y": 23
+        },
+        "side": "Northeast",
+        "tag": "Steam_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "kettle-selout-32_Steam_North_00.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 128
+      },
+      "pixor": {
+        "action": "Steam",
+        "degrees": 180.0,
+        "id": "54ef27105294700b",
+        "index": 0,
+        "pivot": {
+          "x": 16,
+          "y": 23
+        },
+        "side": "North",
+        "tag": "Steam_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "kettle-selout-32_Steam_North_01.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 32,
+        "y": 128
+      },
+      "pixor": {
+        "action": "Steam",
+        "degrees": 180.0,
+        "id": "5fbecf6b000cb8a6",
+        "index": 1,
+        "pivot": {
+          "x": 16,
+          "y": 23
+        },
+        "side": "North",
+        "tag": "Steam_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "kettle-selout-32_Steam_North_02.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 64,
+        "y": 128
+      },
+      "pixor": {
+        "action": "Steam",
+        "degrees": 180.0,
+        "id": "3ed9ecba8b7743ba",
+        "index": 2,
+        "pivot": {
+          "x": 16,
+          "y": 23
+        },
+        "side": "North",
+        "tag": "Steam_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "kettle-selout-32_Steam_North_03.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 96,
+        "y": 128
+      },
+      "pixor": {
+        "action": "Steam",
+        "degrees": 180.0,
+        "id": "1bdf4ac457a20b89",
+        "index": 3,
+        "pivot": {
+          "x": 16,
+          "y": 23
+        },
+        "side": "North",
+        "tag": "Steam_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "kettle-selout-32_Steam_North_04.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 128,
+        "y": 128
+      },
+      "pixor": {
+        "action": "Steam",
+        "degrees": 180.0,
+        "id": "fca848a8898aec59",
+        "index": 4,
+        "pivot": {
+          "x": 16,
+          "y": 23
+        },
+        "side": "North",
+        "tag": "Steam_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "kettle-selout-32_Steam_North_05.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 160,
+        "y": 128
+      },
+      "pixor": {
+        "action": "Steam",
+        "degrees": 180.0,
+        "id": "500802b3e6cfc62d",
+        "index": 5,
+        "pivot": {
+          "x": 16,
+          "y": 23
+        },
+        "side": "North",
+        "tag": "Steam_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "kettle-selout-32_Steam_Northwest_00.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 160
+      },
+      "pixor": {
+        "action": "Steam",
+        "degrees": 225.0,
+        "id": "41bf10e5e06dfc3e",
+        "index": 0,
+        "pivot": {
+          "x": 16,
+          "y": 23
+        },
+        "side": "Northwest",
+        "tag": "Steam_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "kettle-selout-32_Steam_Northwest_01.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 32,
+        "y": 160
+      },
+      "pixor": {
+        "action": "Steam",
+        "degrees": 225.0,
+        "id": "7fe36992e7f58703",
+        "index": 1,
+        "pivot": {
+          "x": 16,
+          "y": 23
+        },
+        "side": "Northwest",
+        "tag": "Steam_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "kettle-selout-32_Steam_Northwest_02.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 64,
+        "y": 160
+      },
+      "pixor": {
+        "action": "Steam",
+        "degrees": 225.0,
+        "id": "d71c3655c2824d37",
+        "index": 2,
+        "pivot": {
+          "x": 16,
+          "y": 23
+        },
+        "side": "Northwest",
+        "tag": "Steam_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "kettle-selout-32_Steam_Northwest_03.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 96,
+        "y": 160
+      },
+      "pixor": {
+        "action": "Steam",
+        "degrees": 225.0,
+        "id": "14cdcd9dba3b8f40",
+        "index": 3,
+        "pivot": {
+          "x": 16,
+          "y": 23
+        },
+        "side": "Northwest",
+        "tag": "Steam_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "kettle-selout-32_Steam_Northwest_04.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 128,
+        "y": 160
+      },
+      "pixor": {
+        "action": "Steam",
+        "degrees": 225.0,
+        "id": "ae0007945d852b48",
+        "index": 4,
+        "pivot": {
+          "x": 16,
+          "y": 23
+        },
+        "side": "Northwest",
+        "tag": "Steam_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "kettle-selout-32_Steam_Northwest_05.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 160,
+        "y": 160
+      },
+      "pixor": {
+        "action": "Steam",
+        "degrees": 225.0,
+        "id": "a9ecadab44e36cbc",
+        "index": 5,
+        "pivot": {
+          "x": 16,
+          "y": 23
+        },
+        "side": "Northwest",
+        "tag": "Steam_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "kettle-selout-32_Steam_West_00.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 192
+      },
+      "pixor": {
+        "action": "Steam",
+        "degrees": 270.0,
+        "id": "f96ec54dc9a1b6aa",
+        "index": 0,
+        "pivot": {
+          "x": 16,
+          "y": 23
+        },
+        "side": "West",
+        "tag": "Steam_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "kettle-selout-32_Steam_West_01.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 32,
+        "y": 192
+      },
+      "pixor": {
+        "action": "Steam",
+        "degrees": 270.0,
+        "id": "b8d84c3afab980cf",
+        "index": 1,
+        "pivot": {
+          "x": 16,
+          "y": 23
+        },
+        "side": "West",
+        "tag": "Steam_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "kettle-selout-32_Steam_West_02.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 64,
+        "y": 192
+      },
+      "pixor": {
+        "action": "Steam",
+        "degrees": 270.0,
+        "id": "8c1cb37bf67a223b",
+        "index": 2,
+        "pivot": {
+          "x": 16,
+          "y": 23
+        },
+        "side": "West",
+        "tag": "Steam_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "kettle-selout-32_Steam_West_03.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 96,
+        "y": 192
+      },
+      "pixor": {
+        "action": "Steam",
+        "degrees": 270.0,
+        "id": "81010ad1e761e16c",
+        "index": 3,
+        "pivot": {
+          "x": 16,
+          "y": 23
+        },
+        "side": "West",
+        "tag": "Steam_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "kettle-selout-32_Steam_West_04.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 128,
+        "y": 192
+      },
+      "pixor": {
+        "action": "Steam",
+        "degrees": 270.0,
+        "id": "ab4f02003a092adc",
+        "index": 4,
+        "pivot": {
+          "x": 16,
+          "y": 23
+        },
+        "side": "West",
+        "tag": "Steam_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "kettle-selout-32_Steam_West_05.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 160,
+        "y": 192
+      },
+      "pixor": {
+        "action": "Steam",
+        "degrees": 270.0,
+        "id": "d1114298ecfe1e28",
+        "index": 5,
+        "pivot": {
+          "x": 16,
+          "y": 23
+        },
+        "side": "West",
+        "tag": "Steam_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "kettle-selout-32_Steam_Southwest_00.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 224
+      },
+      "pixor": {
+        "action": "Steam",
+        "degrees": 315.0,
+        "id": "d378cfba087816c8",
+        "index": 0,
+        "pivot": {
+          "x": 16,
+          "y": 23
+        },
+        "side": "Southwest",
+        "tag": "Steam_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "kettle-selout-32_Steam_Southwest_01.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 32,
+        "y": 224
+      },
+      "pixor": {
+        "action": "Steam",
+        "degrees": 315.0,
+        "id": "d359dfb524f2dfd9",
+        "index": 1,
+        "pivot": {
+          "x": 16,
+          "y": 23
+        },
+        "side": "Southwest",
+        "tag": "Steam_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "kettle-selout-32_Steam_Southwest_02.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 64,
+        "y": 224
+      },
+      "pixor": {
+        "action": "Steam",
+        "degrees": 315.0,
+        "id": "969352a99e87e60d",
+        "index": 2,
+        "pivot": {
+          "x": 16,
+          "y": 23
+        },
+        "side": "Southwest",
+        "tag": "Steam_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "kettle-selout-32_Steam_Southwest_03.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 96,
+        "y": 224
+      },
+      "pixor": {
+        "action": "Steam",
+        "degrees": 315.0,
+        "id": "34e66f494af754b6",
+        "index": 3,
+        "pivot": {
+          "x": 16,
+          "y": 23
+        },
+        "side": "Southwest",
+        "tag": "Steam_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "kettle-selout-32_Steam_Southwest_04.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 128,
+        "y": 224
+      },
+      "pixor": {
+        "action": "Steam",
+        "degrees": 315.0,
+        "id": "f65aff658f3975c2",
+        "index": 4,
+        "pivot": {
+          "x": 16,
+          "y": 23
+        },
+        "side": "Southwest",
+        "tag": "Steam_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "kettle-selout-32_Steam_Southwest_05.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 160,
+        "y": 224
+      },
+      "pixor": {
+        "action": "Steam",
+        "degrees": 315.0,
+        "id": "51cede33cec10ad6",
+        "index": 5,
+        "pivot": {
+          "x": 16,
+          "y": 23
+        },
+        "side": "Southwest",
+        "tag": "Steam_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    }
+  ],
+  "meta": {
+    "app": "Pixor",
+    "format": "I8",
+    "frameTags": [
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 0,
+        "name": "Steam_South",
+        "to": 5
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 6,
+        "name": "Steam_Southeast",
+        "to": 11
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 12,
+        "name": "Steam_East",
+        "to": 17
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 18,
+        "name": "Steam_Northeast",
+        "to": 23
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 24,
+        "name": "Steam_North",
+        "to": 29
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 30,
+        "name": "Steam_Northwest",
+        "to": 35
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 36,
+        "name": "Steam_West",
+        "to": 41
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 42,
+        "name": "Steam_Southwest",
+        "to": 47
+      }
+    ],
+    "image": "kettle-selout-32.png",
+    "layers": [
+      {
+        "blendMode": "normal",
+        "name": "final",
+        "opacity": 255
+      }
+    ],
+    "pixor": {
+      "cell": {
+        "h": 32,
+        "w": 32
+      },
+      "pivot": {
+        "x": 16,
+        "y": 23
+      },
+      "sides": {
+        "East": 90.0,
+        "North": 180.0,
+        "Northeast": 135.0,
+        "Northwest": 225.0,
+        "South": 0.0,
+        "Southeast": 45.0,
+        "Southwest": 315.0,
+        "West": 270.0
+      }
+    },
+    "scale": "1",
+    "size": {
+      "h": 256,
+      "w": 192
+    },
+    "slices": [
+      {
+        "color": "#0000ffff",
+        "keys": [
+          {
+            "bounds": {
+              "h": 32,
+              "w": 32,
+              "x": 0,
+              "y": 0
+            },
+            "frame": 0,
+            "pivot": {
+              "x": 16,
+              "y": 23
+            }
+          }
+        ],
+        "name": "pivot"
+      }
+    ],
+    "version": "2.0.1"
+  }
+}

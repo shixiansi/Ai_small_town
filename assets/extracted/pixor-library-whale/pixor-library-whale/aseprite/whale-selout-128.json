@@ -1,0 +1,2297 @@
+{
+  "frames": [
+    {
+      "duration": 83,
+      "filename": "whale-selout-128_Swim_South_00.png",
+      "frame": {
+        "h": 128,
+        "w": 128,
+        "x": 0,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Swim",
+        "degrees": 0.0,
+        "id": "b7196993e82c40e7",
+        "index": 0,
+        "pivot": {
+          "x": 64,
+          "y": 75
+        },
+        "side": "South",
+        "tag": "Swim_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 128,
+        "w": 128
+      },
+      "spriteSourceSize": {
+        "h": 128,
+        "w": 128,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "whale-selout-128_Swim_South_01.png",
+      "frame": {
+        "h": 128,
+        "w": 128,
+        "x": 128,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Swim",
+        "degrees": 0.0,
+        "id": "1cc53c703237b422",
+        "index": 1,
+        "pivot": {
+          "x": 64,
+          "y": 75
+        },
+        "side": "South",
+        "tag": "Swim_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 128,
+        "w": 128
+      },
+      "spriteSourceSize": {
+        "h": 128,
+        "w": 128,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "whale-selout-128_Swim_South_02.png",
+      "frame": {
+        "h": 128,
+        "w": 128,
+        "x": 256,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Swim",
+        "degrees": 0.0,
+        "id": "6e6a70b9591b2b6e",
+        "index": 2,
+        "pivot": {
+          "x": 64,
+          "y": 75
+        },
+        "side": "South",
+        "tag": "Swim_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 128,
+        "w": 128
+      },
+      "spriteSourceSize": {
+        "h": 128,
+        "w": 128,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "whale-selout-128_Swim_South_03.png",
+      "frame": {
+        "h": 128,
+        "w": 128,
+        "x": 384,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Swim",
+        "degrees": 0.0,
+        "id": "43f87f6d1e5a0c75",
+        "index": 3,
+        "pivot": {
+          "x": 64,
+          "y": 75
+        },
+        "side": "South",
+        "tag": "Swim_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 128,
+        "w": 128
+      },
+      "spriteSourceSize": {
+        "h": 128,
+        "w": 128,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "whale-selout-128_Swim_South_04.png",
+      "frame": {
+        "h": 128,
+        "w": 128,
+        "x": 512,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Swim",
+        "degrees": 0.0,
+        "id": "f3feea891d7d69ed",
+        "index": 4,
+        "pivot": {
+          "x": 64,
+          "y": 75
+        },
+        "side": "South",
+        "tag": "Swim_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 128,
+        "w": 128
+      },
+      "spriteSourceSize": {
+        "h": 128,
+        "w": 128,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "whale-selout-128_Swim_South_05.png",
+      "frame": {
+        "h": 128,
+        "w": 128,
+        "x": 640,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Swim",
+        "degrees": 0.0,
+        "id": "43dbf7d4e5ec1499",
+        "index": 5,
+        "pivot": {
+          "x": 64,
+          "y": 75
+        },
+        "side": "South",
+        "tag": "Swim_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 128,
+        "w": 128
+      },
+      "spriteSourceSize": {
+        "h": 128,
+        "w": 128,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "whale-selout-128_Swim_South_06.png",
+      "frame": {
+        "h": 128,
+        "w": 128,
+        "x": 768,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Swim",
+        "degrees": 0.0,
+        "id": "64cc233e06f716b6",
+        "index": 6,
+        "pivot": {
+          "x": 64,
+          "y": 75
+        },
+        "side": "South",
+        "tag": "Swim_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 128,
+        "w": 128
+      },
+      "spriteSourceSize": {
+        "h": 128,
+        "w": 128,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "whale-selout-128_Swim_South_07.png",
+      "frame": {
+        "h": 128,
+        "w": 128,
+        "x": 896,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Swim",
+        "degrees": 0.0,
+        "id": "816f87d486a41090",
+        "index": 7,
+        "pivot": {
+          "x": 64,
+          "y": 75
+        },
+        "side": "South",
+        "tag": "Swim_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 128,
+        "w": 128
+      },
+      "spriteSourceSize": {
+        "h": 128,
+        "w": 128,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "whale-selout-128_Swim_Southeast_00.png",
+      "frame": {
+        "h": 128,
+        "w": 128,
+        "x": 0,
+        "y": 128
+      },
+      "pixor": {
+        "action": "Swim",
+        "degrees": 45.0,
+        "id": "eb1fa3b7c0e6135c",
+        "index": 0,
+        "pivot": {
+          "x": 64,
+          "y": 75
+        },
+        "side": "Southeast",
+        "tag": "Swim_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 128,
+        "w": 128
+      },
+      "spriteSourceSize": {
+        "h": 128,
+        "w": 128,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "whale-selout-128_Swim_Southeast_01.png",
+      "frame": {
+        "h": 128,
+        "w": 128,
+        "x": 128,
+        "y": 128
+      },
+      "pixor": {
+        "action": "Swim",
+        "degrees": 45.0,
+        "id": "b17b83e3254b4c5d",
+        "index": 1,
+        "pivot": {
+          "x": 64,
+          "y": 75
+        },
+        "side": "Southeast",
+        "tag": "Swim_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 128,
+        "w": 128
+      },
+      "spriteSourceSize": {
+        "h": 128,
+        "w": 128,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "whale-selout-128_Swim_Southeast_02.png",
+      "frame": {
+        "h": 128,
+        "w": 128,
+        "x": 256,
+        "y": 128
+      },
+      "pixor": {
+        "action": "Swim",
+        "degrees": 45.0,
+        "id": "840145f861759589",
+        "index": 2,
+        "pivot": {
+          "x": 64,
+          "y": 75
+        },
+        "side": "Southeast",
+        "tag": "Swim_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 128,
+        "w": 128
+      },
+      "spriteSourceSize": {
+        "h": 128,
+        "w": 128,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "whale-selout-128_Swim_Southeast_03.png",
+      "frame": {
+        "h": 128,
+        "w": 128,
+        "x": 384,
+        "y": 128
+      },
+      "pixor": {
+        "action": "Swim",
+        "degrees": 45.0,
+        "id": "a6fbe7ee954acdba",
+        "index": 3,
+        "pivot": {
+          "x": 64,
+          "y": 75
+        },
+        "side": "Southeast",
+        "tag": "Swim_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 128,
+        "w": 128
+      },
+      "spriteSourceSize": {
+        "h": 128,
+        "w": 128,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "whale-selout-128_Swim_Southeast_04.png",
+      "frame": {
+        "h": 128,
+        "w": 128,
+        "x": 512,
+        "y": 128
+      },
+      "pixor": {
+        "action": "Swim",
+        "degrees": 45.0,
+        "id": "31a797db284d3dfe",
+        "index": 4,
+        "pivot": {
+          "x": 64,
+          "y": 75
+        },
+        "side": "Southeast",
+        "tag": "Swim_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 128,
+        "w": 128
+      },
+      "spriteSourceSize": {
+        "h": 128,
+        "w": 128,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "whale-selout-128_Swim_Southeast_05.png",
+      "frame": {
+        "h": 128,
+        "w": 128,
+        "x": 640,
+        "y": 128
+      },
+      "pixor": {
+        "action": "Swim",
+        "degrees": 45.0,
+        "id": "5503dc2b4a3c7e5a",
+        "index": 5,
+        "pivot": {
+          "x": 64,
+          "y": 75
+        },
+        "side": "Southeast",
+        "tag": "Swim_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 128,
+        "w": 128
+      },
+      "spriteSourceSize": {
+        "h": 128,
+        "w": 128,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "whale-selout-128_Swim_Southeast_06.png",
+      "frame": {
+        "h": 128,
+        "w": 128,
+        "x": 768,
+        "y": 128
+      },
+      "pixor": {
+        "action": "Swim",
+        "degrees": 45.0,
+        "id": "d5eb711c9f44e745",
+        "index": 6,
+        "pivot": {
+          "x": 64,
+          "y": 75
+        },
+        "side": "Southeast",
+        "tag": "Swim_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 128,
+        "w": 128
+      },
+      "spriteSourceSize": {
+        "h": 128,
+        "w": 128,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "whale-selout-128_Swim_Southeast_07.png",
+      "frame": {
+        "h": 128,
+        "w": 128,
+        "x": 896,
+        "y": 128
+      },
+      "pixor": {
+        "action": "Swim",
+        "degrees": 45.0,
+        "id": "838d16873bfcc607",
+        "index": 7,
+        "pivot": {
+          "x": 64,
+          "y": 75
+        },
+        "side": "Southeast",
+        "tag": "Swim_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 128,
+        "w": 128
+      },
+      "spriteSourceSize": {
+        "h": 128,
+        "w": 128,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "whale-selout-128_Swim_East_00.png",
+      "frame": {
+        "h": 128,
+        "w": 128,
+        "x": 0,
+        "y": 256
+      },
+      "pixor": {
+        "action": "Swim",
+        "degrees": 90.0,
+        "id": "51c4f63108c617ae",
+        "index": 0,
+        "pivot": {
+          "x": 64,
+          "y": 75
+        },
+        "side": "East",
+        "tag": "Swim_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 128,
+        "w": 128
+      },
+      "spriteSourceSize": {
+        "h": 128,
+        "w": 128,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "whale-selout-128_Swim_East_01.png",
+      "frame": {
+        "h": 128,
+        "w": 128,
+        "x": 128,
+        "y": 256
+      },
+      "pixor": {
+        "action": "Swim",
+        "degrees": 90.0,
+        "id": "b425a9bf9d9afb93",
+        "index": 1,
+        "pivot": {
+          "x": 64,
+          "y": 75
+        },
+        "side": "East",
+        "tag": "Swim_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 128,
+        "w": 128
+      },
+      "spriteSourceSize": {
+        "h": 128,
+        "w": 128,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "whale-selout-128_Swim_East_02.png",
+      "frame": {
+        "h": 128,
+        "w": 128,
+        "x": 256,
+        "y": 256
+      },
+      "pixor": {
+        "action": "Swim",
+        "degrees": 90.0,
+        "id": "43b4d788dd962727",
+        "index": 2,
+        "pivot": {
+          "x": 64,
+          "y": 75
+        },
+        "side": "East",
+        "tag": "Swim_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 128,
+        "w": 128
+      },
+      "spriteSourceSize": {
+        "h": 128,
+        "w": 128,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "whale-selout-128_Swim_East_03.png",
+      "frame": {
+        "h": 128,
+        "w": 128,
+        "x": 384,
+        "y": 256
+      },
+      "pixor": {
+        "action": "Swim",
+        "degrees": 90.0,
+        "id": "4d4ac3708109bb50",
+        "index": 3,
+        "pivot": {
+          "x": 64,
+          "y": 75
+        },
+        "side": "East",
+        "tag": "Swim_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 128,
+        "w": 128
+      },
+      "spriteSourceSize": {
+        "h": 128,
+        "w": 128,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "whale-selout-128_Swim_East_04.png",
+      "frame": {
+        "h": 128,
+        "w": 128,
+        "x": 512,
+        "y": 256
+      },
+      "pixor": {
+        "action": "Swim",
+        "degrees": 90.0,
+        "id": "0105f31ef6578738",
+        "index": 4,
+        "pivot": {
+          "x": 64,
+          "y": 75
+        },
+        "side": "East",
+        "tag": "Swim_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 128,
+        "w": 128
+      },
+      "spriteSourceSize": {
+        "h": 128,
+        "w": 128,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "whale-selout-128_Swim_East_05.png",
+      "frame": {
+        "h": 128,
+        "w": 128,
+        "x": 640,
+        "y": 256
+      },
+      "pixor": {
+        "action": "Swim",
+        "degrees": 90.0,
+        "id": "94c148a02af1ab6c",
+        "index": 5,
+        "pivot": {
+          "x": 64,
+          "y": 75
+        },
+        "side": "East",
+        "tag": "Swim_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 128,
+        "w": 128
+      },
+      "spriteSourceSize": {
+        "h": 128,
+        "w": 128,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "whale-selout-128_Swim_East_06.png",
+      "frame": {
+        "h": 128,
+        "w": 128,
+        "x": 768,
+        "y": 256
+      },
+      "pixor": {
+        "action": "Swim",
+        "degrees": 90.0,
+        "id": "1c9ad6a7fcd996bf",
+        "index": 6,
+        "pivot": {
+          "x": 64,
+          "y": 75
+        },
+        "side": "East",
+        "tag": "Swim_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 128,
+        "w": 128
+      },
+      "spriteSourceSize": {
+        "h": 128,
+        "w": 128,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "whale-selout-128_Swim_East_07.png",
+      "frame": {
+        "h": 128,
+        "w": 128,
+        "x": 896,
+        "y": 256
+      },
+      "pixor": {
+        "action": "Swim",
+        "degrees": 90.0,
+        "id": "72160fd0b42cd469",
+        "index": 7,
+        "pivot": {
+          "x": 64,
+          "y": 75
+        },
+        "side": "East",
+        "tag": "Swim_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 128,
+        "w": 128
+      },
+      "spriteSourceSize": {
+        "h": 128,
+        "w": 128,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "whale-selout-128_Swim_Northeast_00.png",
+      "frame": {
+        "h": 128,
+        "w": 128,
+        "x": 0,
+        "y": 384
+      },
+      "pixor": {
+        "action": "Swim",
+        "degrees": 135.0,
+        "id": "ed6649b4ceccddca",
+        "index": 0,
+        "pivot": {
+          "x": 64,
+          "y": 75
+        },
+        "side": "Northeast",
+        "tag": "Swim_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 128,
+        "w": 128
+      },
+      "spriteSourceSize": {
+        "h": 128,
+        "w": 128,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "whale-selout-128_Swim_Northeast_01.png",
+      "frame": {
+        "h": 128,
+        "w": 128,
+        "x": 128,
+        "y": 384
+      },
+      "pixor": {
+        "action": "Swim",
+        "degrees": 135.0,
+        "id": "0d7e75d20bec0d6f",
+        "index": 1,
+        "pivot": {
+          "x": 64,
+          "y": 75
+        },
+        "side": "Northeast",
+        "tag": "Swim_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 128,
+        "w": 128
+      },
+      "spriteSourceSize": {
+        "h": 128,
+        "w": 128,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "whale-selout-128_Swim_Northeast_02.png",
+      "frame": {
+        "h": 128,
+        "w": 128,
+        "x": 256,
+        "y": 384
+      },
+      "pixor": {
+        "action": "Swim",
+        "degrees": 135.0,
+        "id": "c622a3e4c15a269b",
+        "index": 2,
+        "pivot": {
+          "x": 64,
+          "y": 75
+        },
+        "side": "Northeast",
+        "tag": "Swim_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 128,
+        "w": 128
+      },
+      "spriteSourceSize": {
+        "h": 128,
+        "w": 128,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "whale-selout-128_Swim_Northeast_03.png",
+      "frame": {
+        "h": 128,
+        "w": 128,
+        "x": 384,
+        "y": 384
+      },
+      "pixor": {
+        "action": "Swim",
+        "degrees": 135.0,
+        "id": "ec45a060ee4a424c",
+        "index": 3,
+        "pivot": {
+          "x": 64,
+          "y": 75
+        },
+        "side": "Northeast",
+        "tag": "Swim_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 128,
+        "w": 128
+      },
+      "spriteSourceSize": {
+        "h": 128,
+        "w": 128,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "whale-selout-128_Swim_Northeast_04.png",
+      "frame": {
+        "h": 128,
+        "w": 128,
+        "x": 512,
+        "y": 384
+      },
+      "pixor": {
+        "action": "Swim",
+        "degrees": 135.0,
+        "id": "31e52b926059e37c",
+        "index": 4,
+        "pivot": {
+          "x": 64,
+          "y": 75
+        },
+        "side": "Northeast",
+        "tag": "Swim_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 128,
+        "w": 128
+      },
+      "spriteSourceSize": {
+        "h": 128,
+        "w": 128,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "whale-selout-128_Swim_Northeast_05.png",
+      "frame": {
+        "h": 128,
+        "w": 128,
+        "x": 640,
+        "y": 384
+      },
+      "pixor": {
+        "action": "Swim",
+        "degrees": 135.0,
+        "id": "41773301bac14b88",
+        "index": 5,
+        "pivot": {
+          "x": 64,
+          "y": 75
+        },
+        "side": "Northeast",
+        "tag": "Swim_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 128,
+        "w": 128
+      },
+      "spriteSourceSize": {
+        "h": 128,
+        "w": 128,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "whale-selout-128_Swim_Northeast_06.png",
+      "frame": {
+        "h": 128,
+        "w": 128,
+        "x": 768,
+        "y": 384
+      },
+      "pixor": {
+        "action": "Swim",
+        "degrees": 135.0,
+        "id": "945cf0585f3658b3",
+        "index": 6,
+        "pivot": {
+          "x": 64,
+          "y": 75
+        },
+        "side": "Northeast",
+        "tag": "Swim_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 128,
+        "w": 128
+      },
+      "spriteSourceSize": {
+        "h": 128,
+        "w": 128,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "whale-selout-128_Swim_Northeast_07.png",
+      "frame": {
+        "h": 128,
+        "w": 128,
+        "x": 896,
+        "y": 384
+      },
+      "pixor": {
+        "action": "Swim",
+        "degrees": 135.0,
+        "id": "f4b321978e00d68d",
+        "index": 7,
+        "pivot": {
+          "x": 64,
+          "y": 75
+        },
+        "side": "Northeast",
+        "tag": "Swim_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 128,
+        "w": 128
+      },
+      "spriteSourceSize": {
+        "h": 128,
+        "w": 128,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "whale-selout-128_Swim_North_00.png",
+      "frame": {
+        "h": 128,
+        "w": 128,
+        "x": 0,
+        "y": 512
+      },
+      "pixor": {
+        "action": "Swim",
+        "degrees": 180.0,
+        "id": "d553d5e96b7a2a51",
+        "index": 0,
+        "pivot": {
+          "x": 64,
+          "y": 75
+        },
+        "side": "North",
+        "tag": "Swim_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 128,
+        "w": 128
+      },
+      "spriteSourceSize": {
+        "h": 128,
+        "w": 128,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "whale-selout-128_Swim_North_01.png",
+      "frame": {
+        "h": 128,
+        "w": 128,
+        "x": 128,
+        "y": 512
+      },
+      "pixor": {
+        "action": "Swim",
+        "degrees": 180.0,
+        "id": "a1e3a09b6cb83c20",
+        "index": 1,
+        "pivot": {
+          "x": 64,
+          "y": 75
+        },
+        "side": "North",
+        "tag": "Swim_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 128,
+        "w": 128
+      },
+      "spriteSourceSize": {
+        "h": 128,
+        "w": 128,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "whale-selout-128_Swim_North_02.png",
+      "frame": {
+        "h": 128,
+        "w": 128,
+        "x": 256,
+        "y": 512
+      },
+      "pixor": {
+        "action": "Swim",
+        "degrees": 180.0,
+        "id": "ee0f130d927f0fa4",
+        "index": 2,
+        "pivot": {
+          "x": 64,
+          "y": 75
+        },
+        "side": "North",
+        "tag": "Swim_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 128,
+        "w": 128
+      },
+      "spriteSourceSize": {
+        "h": 128,
+        "w": 128,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "whale-selout-128_Swim_North_03.png",
+      "frame": {
+        "h": 128,
+        "w": 128,
+        "x": 384,
+        "y": 512
+      },
+      "pixor": {
+        "action": "Swim",
+        "degrees": 180.0,
+        "id": "b5c81ae5142550a3",
+        "index": 3,
+        "pivot": {
+          "x": 64,
+          "y": 75
+        },
+        "side": "North",
+        "tag": "Swim_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 128,
+        "w": 128
+      },
+      "spriteSourceSize": {
+        "h": 128,
+        "w": 128,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "whale-selout-128_Swim_North_04.png",
+      "frame": {
+        "h": 128,
+        "w": 128,
+        "x": 512,
+        "y": 512
+      },
+      "pixor": {
+        "action": "Swim",
+        "degrees": 180.0,
+        "id": "8727e13cf146351f",
+        "index": 4,
+        "pivot": {
+          "x": 64,
+          "y": 75
+        },
+        "side": "North",
+        "tag": "Swim_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 128,
+        "w": 128
+      },
+      "spriteSourceSize": {
+        "h": 128,
+        "w": 128,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "whale-selout-128_Swim_North_05.png",
+      "frame": {
+        "h": 128,
+        "w": 128,
+        "x": 640,
+        "y": 512
+      },
+      "pixor": {
+        "action": "Swim",
+        "degrees": 180.0,
+        "id": "fc980a13b2eb2763",
+        "index": 5,
+        "pivot": {
+          "x": 64,
+          "y": 75
+        },
+        "side": "North",
+        "tag": "Swim_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 128,
+        "w": 128
+      },
+      "spriteSourceSize": {
+        "h": 128,
+        "w": 128,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "whale-selout-128_Swim_North_06.png",
+      "frame": {
+        "h": 128,
+        "w": 128,
+        "x": 768,
+        "y": 512
+      },
+      "pixor": {
+        "action": "Swim",
+        "degrees": 180.0,
+        "id": "86d491b70a2aca58",
+        "index": 6,
+        "pivot": {
+          "x": 64,
+          "y": 75
+        },
+        "side": "North",
+        "tag": "Swim_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 128,
+        "w": 128
+      },
+      "spriteSourceSize": {
+        "h": 128,
+        "w": 128,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "whale-selout-128_Swim_North_07.png",
+      "frame": {
+        "h": 128,
+        "w": 128,
+        "x": 896,
+        "y": 512
+      },
+      "pixor": {
+        "action": "Swim",
+        "degrees": 180.0,
+        "id": "72ad5d8e8695ad72",
+        "index": 7,
+        "pivot": {
+          "x": 64,
+          "y": 75
+        },
+        "side": "North",
+        "tag": "Swim_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 128,
+        "w": 128
+      },
+      "spriteSourceSize": {
+        "h": 128,
+        "w": 128,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "whale-selout-128_Swim_Northwest_00.png",
+      "frame": {
+        "h": 128,
+        "w": 128,
+        "x": 0,
+        "y": 640
+      },
+      "pixor": {
+        "action": "Swim",
+        "degrees": 225.0,
+        "id": "aa3bc288e401cc64",
+        "index": 0,
+        "pivot": {
+          "x": 64,
+          "y": 75
+        },
+        "side": "Northwest",
+        "tag": "Swim_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 128,
+        "w": 128
+      },
+      "spriteSourceSize": {
+        "h": 128,
+        "w": 128,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "whale-selout-128_Swim_Northwest_01.png",
+      "frame": {
+        "h": 128,
+        "w": 128,
+        "x": 128,
+        "y": 640
+      },
+      "pixor": {
+        "action": "Swim",
+        "degrees": 225.0,
+        "id": "d87b6fe0c34047c5",
+        "index": 1,
+        "pivot": {
+          "x": 64,
+          "y": 75
+        },
+        "side": "Northwest",
+        "tag": "Swim_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 128,
+        "w": 128
+      },
+      "spriteSourceSize": {
+        "h": 128,
+        "w": 128,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "whale-selout-128_Swim_Northwest_02.png",
+      "frame": {
+        "h": 128,
+        "w": 128,
+        "x": 256,
+        "y": 640
+      },
+      "pixor": {
+        "action": "Swim",
+        "degrees": 225.0,
+        "id": "f962529137d5f311",
+        "index": 2,
+        "pivot": {
+          "x": 64,
+          "y": 75
+        },
+        "side": "Northwest",
+        "tag": "Swim_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 128,
+        "w": 128
+      },
+      "spriteSourceSize": {
+        "h": 128,
+        "w": 128,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "whale-selout-128_Swim_Northwest_03.png",
+      "frame": {
+        "h": 128,
+        "w": 128,
+        "x": 384,
+        "y": 640
+      },
+      "pixor": {
+        "action": "Swim",
+        "degrees": 225.0,
+        "id": "70b94e8a756a74b2",
+        "index": 3,
+        "pivot": {
+          "x": 64,
+          "y": 75
+        },
+        "side": "Northwest",
+        "tag": "Swim_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 128,
+        "w": 128
+      },
+      "spriteSourceSize": {
+        "h": 128,
+        "w": 128,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "whale-selout-128_Swim_Northwest_04.png",
+      "frame": {
+        "h": 128,
+        "w": 128,
+        "x": 512,
+        "y": 640
+      },
+      "pixor": {
+        "action": "Swim",
+        "degrees": 225.0,
+        "id": "e5cf411f612801d6",
+        "index": 4,
+        "pivot": {
+          "x": 64,
+          "y": 75
+        },
+        "side": "Northwest",
+        "tag": "Swim_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 128,
+        "w": 128
+      },
+      "spriteSourceSize": {
+        "h": 128,
+        "w": 128,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "whale-selout-128_Swim_Northwest_05.png",
+      "frame": {
+        "h": 128,
+        "w": 128,
+        "x": 640,
+        "y": 640
+      },
+      "pixor": {
+        "action": "Swim",
+        "degrees": 225.0,
+        "id": "8a5b625121a06cc2",
+        "index": 5,
+        "pivot": {
+          "x": 64,
+          "y": 75
+        },
+        "side": "Northwest",
+        "tag": "Swim_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 128,
+        "w": 128
+      },
+      "spriteSourceSize": {
+        "h": 128,
+        "w": 128,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "whale-selout-128_Swim_Northwest_06.png",
+      "frame": {
+        "h": 128,
+        "w": 128,
+        "x": 768,
+        "y": 640
+      },
+      "pixor": {
+        "action": "Swim",
+        "degrees": 225.0,
+        "id": "217321bfc83ea74d",
+        "index": 6,
+        "pivot": {
+          "x": 64,
+          "y": 75
+        },
+        "side": "Northwest",
+        "tag": "Swim_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 128,
+        "w": 128
+      },
+      "spriteSourceSize": {
+        "h": 128,
+        "w": 128,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "whale-selout-128_Swim_Northwest_07.png",
+      "frame": {
+        "h": 128,
+        "w": 128,
+        "x": 896,
+        "y": 640
+      },
+      "pixor": {
+        "action": "Swim",
+        "degrees": 225.0,
+        "id": "435f09cfaeda13ef",
+        "index": 7,
+        "pivot": {
+          "x": 64,
+          "y": 75
+        },
+        "side": "Northwest",
+        "tag": "Swim_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 128,
+        "w": 128
+      },
+      "spriteSourceSize": {
+        "h": 128,
+        "w": 128,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "whale-selout-128_Swim_West_00.png",
+      "frame": {
+        "h": 128,
+        "w": 128,
+        "x": 0,
+        "y": 768
+      },
+      "pixor": {
+        "action": "Swim",
+        "degrees": 270.0,
+        "id": "4cd77e00ebc06610",
+        "index": 0,
+        "pivot": {
+          "x": 64,
+          "y": 75
+        },
+        "side": "West",
+        "tag": "Swim_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 128,
+        "w": 128
+      },
+      "spriteSourceSize": {
+        "h": 128,
+        "w": 128,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "whale-selout-128_Swim_West_01.png",
+      "frame": {
+        "h": 128,
+        "w": 128,
+        "x": 128,
+        "y": 768
+      },
+      "pixor": {
+        "action": "Swim",
+        "degrees": 270.0,
+        "id": "52b52bdbbc85ea21",
+        "index": 1,
+        "pivot": {
+          "x": 64,
+          "y": 75
+        },
+        "side": "West",
+        "tag": "Swim_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 128,
+        "w": 128
+      },
+      "spriteSourceSize": {
+        "h": 128,
+        "w": 128,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "whale-selout-128_Swim_West_02.png",
+      "frame": {
+        "h": 128,
+        "w": 128,
+        "x": 256,
+        "y": 768
+      },
+      "pixor": {
+        "action": "Swim",
+        "degrees": 270.0,
+        "id": "583e649b74c765f5",
+        "index": 2,
+        "pivot": {
+          "x": 64,
+          "y": 75
+        },
+        "side": "West",
+        "tag": "Swim_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 128,
+        "w": 128
+      },
+      "spriteSourceSize": {
+        "h": 128,
+        "w": 128,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "whale-selout-128_Swim_West_03.png",
+      "frame": {
+        "h": 128,
+        "w": 128,
+        "x": 384,
+        "y": 768
+      },
+      "pixor": {
+        "action": "Swim",
+        "degrees": 270.0,
+        "id": "82b055e7af8884ee",
+        "index": 3,
+        "pivot": {
+          "x": 64,
+          "y": 75
+        },
+        "side": "West",
+        "tag": "Swim_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 128,
+        "w": 128
+      },
+      "spriteSourceSize": {
+        "h": 128,
+        "w": 128,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "whale-selout-128_Swim_West_04.png",
+      "frame": {
+        "h": 128,
+        "w": 128,
+        "x": 512,
+        "y": 768
+      },
+      "pixor": {
+        "action": "Swim",
+        "degrees": 270.0,
+        "id": "128008cfac5e601a",
+        "index": 4,
+        "pivot": {
+          "x": 64,
+          "y": 75
+        },
+        "side": "West",
+        "tag": "Swim_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 128,
+        "w": 128
+      },
+      "spriteSourceSize": {
+        "h": 128,
+        "w": 128,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "whale-selout-128_Swim_West_05.png",
+      "frame": {
+        "h": 128,
+        "w": 128,
+        "x": 640,
+        "y": 768
+      },
+      "pixor": {
+        "action": "Swim",
+        "degrees": 270.0,
+        "id": "4fd269af9676853e",
+        "index": 5,
+        "pivot": {
+          "x": 64,
+          "y": 75
+        },
+        "side": "West",
+        "tag": "Swim_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 128,
+        "w": 128
+      },
+      "spriteSourceSize": {
+        "h": 128,
+        "w": 128,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "whale-selout-128_Swim_West_06.png",
+      "frame": {
+        "h": 128,
+        "w": 128,
+        "x": 768,
+        "y": 768
+      },
+      "pixor": {
+        "action": "Swim",
+        "degrees": 270.0,
+        "id": "cbf9c5c301d9b3c1",
+        "index": 6,
+        "pivot": {
+          "x": 64,
+          "y": 75
+        },
+        "side": "West",
+        "tag": "Swim_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 128,
+        "w": 128
+      },
+      "spriteSourceSize": {
+        "h": 128,
+        "w": 128,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "whale-selout-128_Swim_West_07.png",
+      "frame": {
+        "h": 128,
+        "w": 128,
+        "x": 896,
+        "y": 768
+      },
+      "pixor": {
+        "action": "Swim",
+        "degrees": 270.0,
+        "id": "9700df1df7b9a863",
+        "index": 7,
+        "pivot": {
+          "x": 64,
+          "y": 75
+        },
+        "side": "West",
+        "tag": "Swim_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 128,
+        "w": 128
+      },
+      "spriteSourceSize": {
+        "h": 128,
+        "w": 128,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "whale-selout-128_Swim_Southwest_00.png",
+      "frame": {
+        "h": 128,
+        "w": 128,
+        "x": 0,
+        "y": 896
+      },
+      "pixor": {
+        "action": "Swim",
+        "degrees": 315.0,
+        "id": "ef96faa3ec2d2142",
+        "index": 0,
+        "pivot": {
+          "x": 64,
+          "y": 75
+        },
+        "side": "Southwest",
+        "tag": "Swim_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 128,
+        "w": 128
+      },
+      "spriteSourceSize": {
+        "h": 128,
+        "w": 128,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "whale-selout-128_Swim_Southwest_01.png",
+      "frame": {
+        "h": 128,
+        "w": 128,
+        "x": 128,
+        "y": 896
+      },
+      "pixor": {
+        "action": "Swim",
+        "degrees": 315.0,
+        "id": "0ef95249d98abc07",
+        "index": 1,
+        "pivot": {
+          "x": 64,
+          "y": 75
+        },
+        "side": "Southwest",
+        "tag": "Swim_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 128,
+        "w": 128
+      },
+      "spriteSourceSize": {
+        "h": 128,
+        "w": 128,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "whale-selout-128_Swim_Southwest_02.png",
+      "frame": {
+        "h": 128,
+        "w": 128,
+        "x": 256,
+        "y": 896
+      },
+      "pixor": {
+        "action": "Swim",
+        "degrees": 315.0,
+        "id": "517d1ba9e871b2b3",
+        "index": 2,
+        "pivot": {
+          "x": 64,
+          "y": 75
+        },
+        "side": "Southwest",
+        "tag": "Swim_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 128,
+        "w": 128
+      },
+      "spriteSourceSize": {
+        "h": 128,
+        "w": 128,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "whale-selout-128_Swim_Southwest_03.png",
+      "frame": {
+        "h": 128,
+        "w": 128,
+        "x": 384,
+        "y": 896
+      },
+      "pixor": {
+        "action": "Swim",
+        "degrees": 315.0,
+        "id": "be97bf2f0c5b74d4",
+        "index": 3,
+        "pivot": {
+          "x": 64,
+          "y": 75
+        },
+        "side": "Southwest",
+        "tag": "Swim_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 128,
+        "w": 128
+      },
+      "spriteSourceSize": {
+        "h": 128,
+        "w": 128,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "whale-selout-128_Swim_Southwest_04.png",
+      "frame": {
+        "h": 128,
+        "w": 128,
+        "x": 512,
+        "y": 896
+      },
+      "pixor": {
+        "action": "Swim",
+        "degrees": 315.0,
+        "id": "27ffe2f2b14d9c44",
+        "index": 4,
+        "pivot": {
+          "x": 64,
+          "y": 75
+        },
+        "side": "Southwest",
+        "tag": "Swim_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 128,
+        "w": 128
+      },
+      "spriteSourceSize": {
+        "h": 128,
+        "w": 128,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "whale-selout-128_Swim_Southwest_05.png",
+      "frame": {
+        "h": 128,
+        "w": 128,
+        "x": 640,
+        "y": 896
+      },
+      "pixor": {
+        "action": "Swim",
+        "degrees": 315.0,
+        "id": "798b324058f31fe0",
+        "index": 5,
+        "pivot": {
+          "x": 64,
+          "y": 75
+        },
+        "side": "Southwest",
+        "tag": "Swim_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 128,
+        "w": 128
+      },
+      "spriteSourceSize": {
+        "h": 128,
+        "w": 128,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "whale-selout-128_Swim_Southwest_06.png",
+      "frame": {
+        "h": 128,
+        "w": 128,
+        "x": 768,
+        "y": 896
+      },
+      "pixor": {
+        "action": "Swim",
+        "degrees": 315.0,
+        "id": "ad34c51e98e1876b",
+        "index": 6,
+        "pivot": {
+          "x": 64,
+          "y": 75
+        },
+        "side": "Southwest",
+        "tag": "Swim_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 128,
+        "w": 128
+      },
+      "spriteSourceSize": {
+        "h": 128,
+        "w": 128,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "whale-selout-128_Swim_Southwest_07.png",
+      "frame": {
+        "h": 128,
+        "w": 128,
+        "x": 896,
+        "y": 896
+      },
+      "pixor": {
+        "action": "Swim",
+        "degrees": 315.0,
+        "id": "e0895a09f3303c45",
+        "index": 7,
+        "pivot": {
+          "x": 64,
+          "y": 75
+        },
+        "side": "Southwest",
+        "tag": "Swim_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 128,
+        "w": 128
+      },
+      "spriteSourceSize": {
+        "h": 128,
+        "w": 128,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    }
+  ],
+  "meta": {
+    "app": "Pixor",
+    "format": "I8",
+    "frameTags": [
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 0,
+        "name": "Swim_South",
+        "to": 7
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 8,
+        "name": "Swim_Southeast",
+        "to": 15
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 16,
+        "name": "Swim_East",
+        "to": 23
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 24,
+        "name": "Swim_Northeast",
+        "to": 31
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 32,
+        "name": "Swim_North",
+        "to": 39
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 40,
+        "name": "Swim_Northwest",
+        "to": 47
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 48,
+        "name": "Swim_West",
+        "to": 55
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 56,
+        "name": "Swim_Southwest",
+        "to": 63
+      }
+    ],
+    "image": "whale-selout-128.png",
+    "layers": [
+      {
+        "blendMode": "normal",
+        "name": "final",
+        "opacity": 255
+      }
+    ],
+    "pixor": {
+      "cell": {
+        "h": 128,
+        "w": 128
+      },
+      "pivot": {
+        "x": 64,
+        "y": 75
+      },
+      "sides": {
+        "East": 90.0,
+        "North": 180.0,
+        "Northeast": 135.0,
+        "Northwest": 225.0,
+        "South": 0.0,
+        "Southeast": 45.0,
+        "Southwest": 315.0,
+        "West": 270.0
+      }
+    },
+    "scale": "1",
+    "size": {
+      "h": 1024,
+      "w": 1024
+    },
+    "slices": [
+      {
+        "color": "#0000ffff",
+        "keys": [
+          {
+            "bounds": {
+              "h": 128,
+              "w": 128,
+              "x": 0,
+              "y": 0
+            },
+            "frame": 0,
+            "pivot": {
+              "x": 64,
+              "y": 75
+            }
+          }
+        ],
+        "name": "pivot"
+      }
+    ],
+    "version": "2.0.1"
+  }
+}

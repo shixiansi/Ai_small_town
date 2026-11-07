@@ -1,0 +1,17 @@
+{
+  "_comment": "B 层独立随机事件（方案 §2.2）。hub 每 2~6 小时加权抽 1 条，转成 {type:'event', eventKey} 广播。cond: 触发条件（hour 时段窗 / weather / stats 门槛），全部满足才进池。",
+  "events": [
+    { "key": "delivery",        "label": "快递到了",   "text": "门口有快递！去签收",           "w": 1.2, "hours": [9, 21] },
+    { "key": "rain_sudden",     "label": "突然下雨",   "text": "下雨了！得去花园看看",         "w": 1.0, "cond": { "weather": "rainy" } },
+    { "key": "cat_visit",       "label": "喵酱来了",   "text": "镇上的猫蹲在门口喵喵叫",       "w": 1.4, "hours": [8, 22] },
+    { "key": "neighbor_knock",  "label": "邻居敲门",   "text": "村长来敲门借工具",             "w": 1.0, "hours": [9, 20] },
+    { "key": "power_flicker",   "label": "停电一瞬",   "text": "灯闪了一下…检查下电闸",        "w": 0.6, "hours": [18, 24] },
+    { "key": "snack_craving",   "label": "嘴馋",       "text": "突然好想吃点东西",             "w": 1.2, "cond": { "stats": { "hunger": 45 } } },
+    { "key": "inspiration",     "label": "灵感突袭",   "text": "有个好点子！快记下来",         "w": 1.1, "hours": [9, 23] },
+    { "key": "phone_buzz",      "label": "手机震动",   "text": "有人发消息来了",               "w": 1.3 },
+    { "key": "plant_dry",       "label": "花渴了",     "text": "花园的花该浇水了",             "w": 0.9, "hours": [7, 19] },
+    { "key": "bug_report",      "label": "线上小 bug", "text": "有个小 bug，回去修一下",       "w": 0.7, "hours": [9, 22] },
+    { "key": "memory_flash",    "label": "旧时记忆",   "text": "忽然想起一些旧事…",            "w": 0.8 },
+    { "key": "market_day",      "label": "市集日",     "text": "今天市集进新货了，去凑热闹",   "w": 0.9, "hours": [10, 18] }
+  ]
+}

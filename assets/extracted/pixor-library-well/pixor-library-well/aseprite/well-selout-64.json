@@ -1,0 +1,4473 @@
+{
+  "frames": [
+    {
+      "duration": 83,
+      "filename": "well-selout-64_Crank_South_00.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 0.0,
+        "id": "23d201f8296030b1",
+        "index": 0,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "South",
+        "tag": "Crank_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "well-selout-64_Crank_South_01.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 64,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 0.0,
+        "id": "ddbff7277a08a580",
+        "index": 1,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "South",
+        "tag": "Crank_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "well-selout-64_Crank_South_02.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 128,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 0.0,
+        "id": "d849d5967d85ab44",
+        "index": 2,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "South",
+        "tag": "Crank_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "well-selout-64_Crank_South_03.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 192,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 0.0,
+        "id": "9f94aa9f6203a343",
+        "index": 3,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "South",
+        "tag": "Crank_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "well-selout-64_Crank_South_04.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 256,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 0.0,
+        "id": "18442f72c8da0d7f",
+        "index": 4,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "South",
+        "tag": "Crank_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "well-selout-64_Crank_South_05.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 320,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 0.0,
+        "id": "7282c4466b1a0e03",
+        "index": 5,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "South",
+        "tag": "Crank_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "well-selout-64_Crank_South_06.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 384,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 0.0,
+        "id": "70a1217158091cf8",
+        "index": 6,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "South",
+        "tag": "Crank_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "well-selout-64_Crank_South_07.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 448,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 0.0,
+        "id": "6c29abbf762c8dd2",
+        "index": 7,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "South",
+        "tag": "Crank_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "well-selout-64_Crank_South_08.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 512,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 0.0,
+        "id": "0cbdf97fe14799f6",
+        "index": 8,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "South",
+        "tag": "Crank_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "well-selout-64_Crank_South_09.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 576,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 0.0,
+        "id": "0e48f203ca2705b9",
+        "index": 9,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "South",
+        "tag": "Crank_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "well-selout-64_Crank_South_10.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 640,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 0.0,
+        "id": "d4849bc6faffde55",
+        "index": 10,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "South",
+        "tag": "Crank_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "well-selout-64_Crank_South_11.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 704,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 0.0,
+        "id": "f3c8e12d83d15a79",
+        "index": 11,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "South",
+        "tag": "Crank_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "well-selout-64_Crank_South_12.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 768,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 0.0,
+        "id": "1d26d7141d0e896a",
+        "index": 12,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "South",
+        "tag": "Crank_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "well-selout-64_Crank_South_13.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 832,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 0.0,
+        "id": "098203a8aa9b1d64",
+        "index": 13,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "South",
+        "tag": "Crank_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "well-selout-64_Crank_South_14.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 896,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 0.0,
+        "id": "39fc2fad935a5e30",
+        "index": 14,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "South",
+        "tag": "Crank_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "well-selout-64_Crank_South_15.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 960,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 0.0,
+        "id": "c29c365c2c428d77",
+        "index": 15,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "South",
+        "tag": "Crank_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "well-selout-64_Crank_Southeast_00.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 64
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 45.0,
+        "id": "a04aeca2560b67b2",
+        "index": 0,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "Southeast",
+        "tag": "Crank_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "well-selout-64_Crank_Southeast_01.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 64,
+        "y": 64
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 45.0,
+        "id": "4a70c93e43214757",
+        "index": 1,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "Southeast",
+        "tag": "Crank_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "well-selout-64_Crank_Southeast_02.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 128,
+        "y": 64
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 45.0,
+        "id": "de76e32b0002d9e3",
+        "index": 2,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "Southeast",
+        "tag": "Crank_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "well-selout-64_Crank_Southeast_03.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 192,
+        "y": 64
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 45.0,
+        "id": "d9cd60a0c4a2bf64",
+        "index": 3,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "Southeast",
+        "tag": "Crank_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "well-selout-64_Crank_Southeast_04.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 256,
+        "y": 64
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 45.0,
+        "id": "eb37033455035c34",
+        "index": 4,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "Southeast",
+        "tag": "Crank_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "well-selout-64_Crank_Southeast_05.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 320,
+        "y": 64
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 45.0,
+        "id": "cf1d68e177f90e50",
+        "index": 5,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "Southeast",
+        "tag": "Crank_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "well-selout-64_Crank_Southeast_06.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 384,
+        "y": 64
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 45.0,
+        "id": "9f9e66904efe067b",
+        "index": 6,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "Southeast",
+        "tag": "Crank_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "well-selout-64_Crank_Southeast_07.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 448,
+        "y": 64
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 45.0,
+        "id": "7a771e523ac57475",
+        "index": 7,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "Southeast",
+        "tag": "Crank_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "well-selout-64_Crank_Southeast_08.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 512,
+        "y": 64
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 45.0,
+        "id": "9a2b2fe8c4cf1ba1",
+        "index": 8,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "Southeast",
+        "tag": "Crank_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "well-selout-64_Crank_Southeast_09.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 576,
+        "y": 64
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 45.0,
+        "id": "ab982ce4480b72be",
+        "index": 9,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "Southeast",
+        "tag": "Crank_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "well-selout-64_Crank_Southeast_10.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 640,
+        "y": 64
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 45.0,
+        "id": "8ab9aca00e6466ae",
+        "index": 10,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "Southeast",
+        "tag": "Crank_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "well-selout-64_Crank_Southeast_11.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 704,
+        "y": 64
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 45.0,
+        "id": "ec2f56b69ebd93aa",
+        "index": 11,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "Southeast",
+        "tag": "Crank_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "well-selout-64_Crank_Southeast_12.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 768,
+        "y": 64
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 45.0,
+        "id": "8582b34eae9ff539",
+        "index": 12,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "Southeast",
+        "tag": "Crank_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "well-selout-64_Crank_Southeast_13.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 832,
+        "y": 64
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 45.0,
+        "id": "dd41626c5ae5b3c3",
+        "index": 13,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "Southeast",
+        "tag": "Crank_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "well-selout-64_Crank_Southeast_14.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 896,
+        "y": 64
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 45.0,
+        "id": "ff148677c01c5927",
+        "index": 14,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "Southeast",
+        "tag": "Crank_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "well-selout-64_Crank_Southeast_15.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 960,
+        "y": 64
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 45.0,
+        "id": "6781dcb11e0d3f60",
+        "index": 15,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "Southeast",
+        "tag": "Crank_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "well-selout-64_Crank_East_00.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 128
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 90.0,
+        "id": "a6cbe9a047d4e2b8",
+        "index": 0,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "East",
+        "tag": "Crank_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "well-selout-64_Crank_East_01.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 64,
+        "y": 128
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 90.0,
+        "id": "899d47fa658f3929",
+        "index": 1,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "East",
+        "tag": "Crank_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "well-selout-64_Crank_East_02.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 128,
+        "y": 128
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 90.0,
+        "id": "711919e363b1c5bd",
+        "index": 2,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "East",
+        "tag": "Crank_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "well-selout-64_Crank_East_03.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 192,
+        "y": 128
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 90.0,
+        "id": "b74c9377b56c5b06",
+        "index": 3,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "East",
+        "tag": "Crank_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "well-selout-64_Crank_East_04.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 256,
+        "y": 128
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 90.0,
+        "id": "e4fe1b63ce924d72",
+        "index": 4,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "East",
+        "tag": "Crank_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "well-selout-64_Crank_East_05.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 320,
+        "y": 128
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 90.0,
+        "id": "ad5d1efbd05eaac6",
+        "index": 5,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "East",
+        "tag": "Crank_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "well-selout-64_Crank_East_06.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 384,
+        "y": 128
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 90.0,
+        "id": "da1633e4c09ff189",
+        "index": 6,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "East",
+        "tag": "Crank_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "well-selout-64_Crank_East_07.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 448,
+        "y": 128
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 90.0,
+        "id": "54e4a485937f134b",
+        "index": 7,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "East",
+        "tag": "Crank_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "well-selout-64_Crank_East_08.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 512,
+        "y": 128
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 90.0,
+        "id": "5dbaed0bca7caa0f",
+        "index": 8,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "East",
+        "tag": "Crank_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "well-selout-64_Crank_East_09.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 576,
+        "y": 128
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 90.0,
+        "id": "5e27e3cd2b74e7ec",
+        "index": 9,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "East",
+        "tag": "Crank_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "well-selout-64_Crank_East_10.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 640,
+        "y": 128
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 90.0,
+        "id": "35bea42aa5eff088",
+        "index": 10,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "East",
+        "tag": "Crank_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "well-selout-64_Crank_East_11.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 704,
+        "y": 128
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 90.0,
+        "id": "30e877a29141f4ac",
+        "index": 11,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "East",
+        "tag": "Crank_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "well-selout-64_Crank_East_12.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 768,
+        "y": 128
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 90.0,
+        "id": "ceb9d43555d4879b",
+        "index": 12,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "East",
+        "tag": "Crank_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "well-selout-64_Crank_East_13.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 832,
+        "y": 128
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 90.0,
+        "id": "86b8d59d98610725",
+        "index": 13,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "East",
+        "tag": "Crank_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "well-selout-64_Crank_East_14.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 896,
+        "y": 128
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 90.0,
+        "id": "436bcacf5a036af1",
+        "index": 14,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "East",
+        "tag": "Crank_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "well-selout-64_Crank_East_15.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 960,
+        "y": 128
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 90.0,
+        "id": "b853e96f5c15816a",
+        "index": 15,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "East",
+        "tag": "Crank_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "well-selout-64_Crank_Northeast_00.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 192
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 135.0,
+        "id": "9344141d1ece11ec",
+        "index": 0,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "Northeast",
+        "tag": "Crank_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "well-selout-64_Crank_Northeast_01.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 64,
+        "y": 192
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 135.0,
+        "id": "fa761e64bd82c48d",
+        "index": 1,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "Northeast",
+        "tag": "Crank_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "well-selout-64_Crank_Northeast_02.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 128,
+        "y": 192
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 135.0,
+        "id": "5c79f5c68638e159",
+        "index": 2,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "Northeast",
+        "tag": "Crank_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "well-selout-64_Crank_Northeast_03.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 192,
+        "y": 192
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 135.0,
+        "id": "30ef18ef43590a2a",
+        "index": 3,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "Northeast",
+        "tag": "Crank_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "well-selout-64_Crank_Northeast_04.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 256,
+        "y": 192
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 135.0,
+        "id": "ec71ddc336cb464e",
+        "index": 4,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "Northeast",
+        "tag": "Crank_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "well-selout-64_Crank_Northeast_05.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 320,
+        "y": 192
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 135.0,
+        "id": "fcc0ff435528d06a",
+        "index": 5,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "Northeast",
+        "tag": "Crank_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "well-selout-64_Crank_Northeast_06.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 384,
+        "y": 192
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 135.0,
+        "id": "4492a0054d5784b5",
+        "index": 6,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "Northeast",
+        "tag": "Crank_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "well-selout-64_Crank_Northeast_07.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 448,
+        "y": 192
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 135.0,
+        "id": "080e00723ee86b97",
+        "index": 7,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "Northeast",
+        "tag": "Crank_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "well-selout-64_Crank_Northeast_08.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 512,
+        "y": 192
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 135.0,
+        "id": "95256cdda7ccb7a3",
+        "index": 8,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "Northeast",
+        "tag": "Crank_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "well-selout-64_Crank_Northeast_09.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 576,
+        "y": 192
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 135.0,
+        "id": "232963479939ceb8",
+        "index": 9,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "Northeast",
+        "tag": "Crank_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "well-selout-64_Crank_Northeast_10.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 640,
+        "y": 192
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 135.0,
+        "id": "7ee971b6ede7937c",
+        "index": 10,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "Northeast",
+        "tag": "Crank_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "well-selout-64_Crank_Northeast_11.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 704,
+        "y": 192
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 135.0,
+        "id": "a25b10724f972db8",
+        "index": 11,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "Northeast",
+        "tag": "Crank_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "well-selout-64_Crank_Northeast_12.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 768,
+        "y": 192
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 135.0,
+        "id": "d5da58a0e533b57f",
+        "index": 12,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "Northeast",
+        "tag": "Crank_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "well-selout-64_Crank_Northeast_13.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 832,
+        "y": 192
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 135.0,
+        "id": "8e21f008b4867e81",
+        "index": 13,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "Northeast",
+        "tag": "Crank_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "well-selout-64_Crank_Northeast_14.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 896,
+        "y": 192
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 135.0,
+        "id": "588dbb772bc2a755",
+        "index": 14,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "Northeast",
+        "tag": "Crank_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "well-selout-64_Crank_Northeast_15.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 960,
+        "y": 192
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 135.0,
+        "id": "33996b06776da2f6",
+        "index": 15,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "Northeast",
+        "tag": "Crank_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "well-selout-64_Crank_North_00.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 256
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 180.0,
+        "id": "e2f425adc975809f",
+        "index": 0,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "North",
+        "tag": "Crank_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "well-selout-64_Crank_North_01.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 64,
+        "y": 256
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 180.0,
+        "id": "dd723fb52aea89da",
+        "index": 1,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "North",
+        "tag": "Crank_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "well-selout-64_Crank_North_02.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 128,
+        "y": 256
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 180.0,
+        "id": "e9a6091536f00a86",
+        "index": 2,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "North",
+        "tag": "Crank_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "well-selout-64_Crank_North_03.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 192,
+        "y": 256
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 180.0,
+        "id": "a3728f80e535753d",
+        "index": 3,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "North",
+        "tag": "Crank_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "well-selout-64_Crank_North_04.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 256,
+        "y": 256
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 180.0,
+        "id": "f8f1f650ea310635",
+        "index": 4,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "North",
+        "tag": "Crank_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "well-selout-64_Crank_North_05.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 320,
+        "y": 256
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 180.0,
+        "id": "1897924340ea5a71",
+        "index": 5,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "North",
+        "tag": "Crank_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "well-selout-64_Crank_North_06.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 384,
+        "y": 256
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 180.0,
+        "id": "c60e7e6515efeace",
+        "index": 6,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "North",
+        "tag": "Crank_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "well-selout-64_Crank_North_07.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 448,
+        "y": 256
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 180.0,
+        "id": "3498e0c2b59d7ac8",
+        "index": 7,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "North",
+        "tag": "Crank_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "well-selout-64_Crank_North_08.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 512,
+        "y": 256
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 180.0,
+        "id": "82838d3aab08b204",
+        "index": 8,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "North",
+        "tag": "Crank_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "well-selout-64_Crank_North_09.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 576,
+        "y": 256
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 180.0,
+        "id": "20442a7b31a37fe7",
+        "index": 9,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "North",
+        "tag": "Crank_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "well-selout-64_Crank_North_10.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 640,
+        "y": 256
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 180.0,
+        "id": "eba56b285357d78f",
+        "index": 10,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "North",
+        "tag": "Crank_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "well-selout-64_Crank_North_11.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 704,
+        "y": 256
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 180.0,
+        "id": "428b6667868225bb",
+        "index": 11,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "North",
+        "tag": "Crank_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "well-selout-64_Crank_North_12.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 768,
+        "y": 256
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 180.0,
+        "id": "ad69c85530c24d8c",
+        "index": 12,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "North",
+        "tag": "Crank_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "well-selout-64_Crank_North_13.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 832,
+        "y": 256
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 180.0,
+        "id": "e580633dd6d16696",
+        "index": 13,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "North",
+        "tag": "Crank_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "well-selout-64_Crank_North_14.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 896,
+        "y": 256
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 180.0,
+        "id": "573137dd5b2a971a",
+        "index": 14,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "North",
+        "tag": "Crank_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "well-selout-64_Crank_North_15.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 960,
+        "y": 256
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 180.0,
+        "id": "a936ad3f42d511a1",
+        "index": 15,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "North",
+        "tag": "Crank_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "well-selout-64_Crank_Northwest_00.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 320
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 225.0,
+        "id": "3bf86cd80955fb72",
+        "index": 0,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "Northwest",
+        "tag": "Crank_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "well-selout-64_Crank_Northwest_01.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 64,
+        "y": 320
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 225.0,
+        "id": "ce5b19177efb7197",
+        "index": 1,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "Northwest",
+        "tag": "Crank_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "well-selout-64_Crank_Northwest_02.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 128,
+        "y": 320
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 225.0,
+        "id": "5b728582e7dfbda3",
+        "index": 2,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "Northwest",
+        "tag": "Crank_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "well-selout-64_Crank_Northwest_03.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 192,
+        "y": 320
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 225.0,
+        "id": "93b97dab66397ca4",
+        "index": 3,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "Northwest",
+        "tag": "Crank_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "well-selout-64_Crank_Northwest_04.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 256,
+        "y": 320
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 225.0,
+        "id": "fac14ab75e041e74",
+        "index": 4,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "Northwest",
+        "tag": "Crank_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "well-selout-64_Crank_Northwest_05.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 320,
+        "y": 320
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 225.0,
+        "id": "581913947aac5210",
+        "index": 5,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "Northwest",
+        "tag": "Crank_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "well-selout-64_Crank_Northwest_06.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 384,
+        "y": 320
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 225.0,
+        "id": "c1da8396089618bb",
+        "index": 6,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "Northwest",
+        "tag": "Crank_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "well-selout-64_Crank_Northwest_07.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 448,
+        "y": 320
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 225.0,
+        "id": "8a1165d543c7e9b5",
+        "index": 7,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "Northwest",
+        "tag": "Crank_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "well-selout-64_Crank_Northwest_08.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 512,
+        "y": 320
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 225.0,
+        "id": "8b76da96df83b461",
+        "index": 8,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "Northwest",
+        "tag": "Crank_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "well-selout-64_Crank_Northwest_09.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 576,
+        "y": 320
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 225.0,
+        "id": "84c274674e290bfe",
+        "index": 9,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "Northwest",
+        "tag": "Crank_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "well-selout-64_Crank_Northwest_10.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 640,
+        "y": 320
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 225.0,
+        "id": "4513fc794d236cee",
+        "index": 10,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "Northwest",
+        "tag": "Crank_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "well-selout-64_Crank_Northwest_11.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 704,
+        "y": 320
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 225.0,
+        "id": "7bccce913730146a",
+        "index": 11,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "Northwest",
+        "tag": "Crank_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "well-selout-64_Crank_Northwest_12.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 768,
+        "y": 320
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 225.0,
+        "id": "526ed8aa9df2e579",
+        "index": 12,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "Northwest",
+        "tag": "Crank_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "well-selout-64_Crank_Northwest_13.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 832,
+        "y": 320
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 225.0,
+        "id": "04fd0d1a787f2883",
+        "index": 13,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "Northwest",
+        "tag": "Crank_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "well-selout-64_Crank_Northwest_14.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 896,
+        "y": 320
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 225.0,
+        "id": "5851fe5255abb0e7",
+        "index": 14,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "Northwest",
+        "tag": "Crank_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "well-selout-64_Crank_Northwest_15.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 960,
+        "y": 320
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 225.0,
+        "id": "216df9bbbfa3fca0",
+        "index": 15,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "Northwest",
+        "tag": "Crank_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "well-selout-64_Crank_West_00.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 384
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 270.0,
+        "id": "e72cc37030fb0d76",
+        "index": 0,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "West",
+        "tag": "Crank_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "well-selout-64_Crank_West_01.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 64,
+        "y": 384
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 270.0,
+        "id": "df32ca8a0b32a97b",
+        "index": 1,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "West",
+        "tag": "Crank_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "well-selout-64_Crank_West_02.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 128,
+        "y": 384
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 270.0,
+        "id": "fa2a52ca75c5e58f",
+        "index": 2,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "West",
+        "tag": "Crank_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "well-selout-64_Crank_West_03.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 192,
+        "y": 384
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 270.0,
+        "id": "e67dc910fa84e808",
+        "index": 3,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "West",
+        "tag": "Crank_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "well-selout-64_Crank_West_04.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 256,
+        "y": 384
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 270.0,
+        "id": "b041415c01385990",
+        "index": 4,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "West",
+        "tag": "Crank_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "well-selout-64_Crank_West_05.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 320,
+        "y": 384
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 270.0,
+        "id": "7826c2d526db48f4",
+        "index": 5,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "West",
+        "tag": "Crank_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "well-selout-64_Crank_West_06.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 384,
+        "y": 384
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 270.0,
+        "id": "6d61abb1d79da2c7",
+        "index": 6,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "West",
+        "tag": "Crank_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "well-selout-64_Crank_West_07.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 448,
+        "y": 384
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 270.0,
+        "id": "01df2f8f210d4571",
+        "index": 7,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "West",
+        "tag": "Crank_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "well-selout-64_Crank_West_08.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 512,
+        "y": 384
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 270.0,
+        "id": "49484cd9c478ef25",
+        "index": 8,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "West",
+        "tag": "Crank_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "well-selout-64_Crank_West_09.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 576,
+        "y": 384
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 270.0,
+        "id": "c14727fe84f0231a",
+        "index": 9,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "West",
+        "tag": "Crank_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "well-selout-64_Crank_West_10.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 640,
+        "y": 384
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 270.0,
+        "id": "56af128c5912c2c2",
+        "index": 10,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "West",
+        "tag": "Crank_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "well-selout-64_Crank_West_11.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 704,
+        "y": 384
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 270.0,
+        "id": "028b3b631d9c2446",
+        "index": 11,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "West",
+        "tag": "Crank_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "well-selout-64_Crank_West_12.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 768,
+        "y": 384
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 270.0,
+        "id": "f0a010b78b314b1d",
+        "index": 12,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "West",
+        "tag": "Crank_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "well-selout-64_Crank_West_13.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 832,
+        "y": 384
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 270.0,
+        "id": "204a6447f694920f",
+        "index": 13,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "West",
+        "tag": "Crank_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "well-selout-64_Crank_West_14.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 896,
+        "y": 384
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 270.0,
+        "id": "a5f6ae707bae7f4b",
+        "index": 14,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "West",
+        "tag": "Crank_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "well-selout-64_Crank_West_15.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 960,
+        "y": 384
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 270.0,
+        "id": "2d04f85ca8f0bbac",
+        "index": 15,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "West",
+        "tag": "Crank_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "well-selout-64_Crank_Southwest_00.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 448
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 315.0,
+        "id": "14f73602e508222c",
+        "index": 0,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "Southwest",
+        "tag": "Crank_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "well-selout-64_Crank_Southwest_01.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 64,
+        "y": 448
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 315.0,
+        "id": "c3e8bd4b6445734d",
+        "index": 1,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "Southwest",
+        "tag": "Crank_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "well-selout-64_Crank_Southwest_02.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 128,
+        "y": 448
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 315.0,
+        "id": "eedb39d851029799",
+        "index": 2,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "Southwest",
+        "tag": "Crank_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "well-selout-64_Crank_Southwest_03.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 192,
+        "y": 448
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 315.0,
+        "id": "abb38d53b595d3ea",
+        "index": 3,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "Southwest",
+        "tag": "Crank_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "well-selout-64_Crank_Southwest_04.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 256,
+        "y": 448
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 315.0,
+        "id": "ff4484fb2e2d510e",
+        "index": 4,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "Southwest",
+        "tag": "Crank_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "well-selout-64_Crank_Southwest_05.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 320,
+        "y": 448
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 315.0,
+        "id": "03824bab52cbeeaa",
+        "index": 5,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "Southwest",
+        "tag": "Crank_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "well-selout-64_Crank_Southwest_06.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 384,
+        "y": 448
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 315.0,
+        "id": "cb571cc4da6aae75",
+        "index": 6,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "Southwest",
+        "tag": "Crank_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "well-selout-64_Crank_Southwest_07.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 448,
+        "y": 448
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 315.0,
+        "id": "1a8274db9923e057",
+        "index": 7,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "Southwest",
+        "tag": "Crank_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "well-selout-64_Crank_Southwest_08.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 512,
+        "y": 448
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 315.0,
+        "id": "ae888ec8560572e3",
+        "index": 8,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "Southwest",
+        "tag": "Crank_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "well-selout-64_Crank_Southwest_09.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 576,
+        "y": 448
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 315.0,
+        "id": "ff2dd7b0f0906778",
+        "index": 9,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "Southwest",
+        "tag": "Crank_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "well-selout-64_Crank_Southwest_10.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 640,
+        "y": 448
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 315.0,
+        "id": "297c18f3cd49fc3c",
+        "index": 10,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "Southwest",
+        "tag": "Crank_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "well-selout-64_Crank_Southwest_11.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 704,
+        "y": 448
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 315.0,
+        "id": "10fe2a06c81357f8",
+        "index": 11,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "Southwest",
+        "tag": "Crank_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "well-selout-64_Crank_Southwest_12.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 768,
+        "y": 448
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 315.0,
+        "id": "5caed5607248923f",
+        "index": 12,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "Southwest",
+        "tag": "Crank_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "well-selout-64_Crank_Southwest_13.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 832,
+        "y": 448
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 315.0,
+        "id": "88d33415975189c1",
+        "index": 13,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "Southwest",
+        "tag": "Crank_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "well-selout-64_Crank_Southwest_14.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 896,
+        "y": 448
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 315.0,
+        "id": "2f80d506bc402695",
+        "index": 14,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "Southwest",
+        "tag": "Crank_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "well-selout-64_Crank_Southwest_15.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 960,
+        "y": 448
+      },
+      "pixor": {
+        "action": "Crank",
+        "degrees": 315.0,
+        "id": "336c09ed21137ab6",
+        "index": 15,
+        "pivot": {
+          "x": 32,
+          "y": 51
+        },
+        "side": "Southwest",
+        "tag": "Crank_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    }
+  ],
+  "meta": {
+    "app": "Pixor",
+    "format": "I8",
+    "frameTags": [
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 0,
+        "name": "Crank_South",
+        "to": 15
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 16,
+        "name": "Crank_Southeast",
+        "to": 31
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 32,
+        "name": "Crank_East",
+        "to": 47
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 48,
+        "name": "Crank_Northeast",
+        "to": 63
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 64,
+        "name": "Crank_North",
+        "to": 79
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 80,
+        "name": "Crank_Northwest",
+        "to": 95
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 96,
+        "name": "Crank_West",
+        "to": 111
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 112,
+        "name": "Crank_Southwest",
+        "to": 127
+      }
+    ],
+    "image": "well-selout-64.png",
+    "layers": [
+      {
+        "blendMode": "normal",
+        "name": "final",
+        "opacity": 255
+      }
+    ],
+    "pixor": {
+      "cell": {
+        "h": 64,
+        "w": 64
+      },
+      "pivot": {
+        "x": 32,
+        "y": 51
+      },
+      "sides": {
+        "East": 90.0,
+        "North": 180.0,
+        "Northeast": 135.0,
+        "Northwest": 225.0,
+        "South": 0.0,
+        "Southeast": 45.0,
+        "Southwest": 315.0,
+        "West": 270.0
+      }
+    },
+    "scale": "1",
+    "size": {
+      "h": 512,
+      "w": 1024
+    },
+    "slices": [
+      {
+        "color": "#0000ffff",
+        "keys": [
+          {
+            "bounds": {
+              "h": 64,
+              "w": 64,
+              "x": 0,
+              "y": 0
+            },
+            "frame": 0,
+            "pivot": {
+              "x": 32,
+              "y": 51
+            }
+          }
+        ],
+        "name": "pivot"
+      }
+    ],
+    "version": "2.4.0"
+  }
+}

@@ -1,0 +1,2297 @@
+{
+  "frames": [
+    {
+      "duration": 83,
+      "filename": "coffee-mug-selout-32_bob_South_00.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 0.0,
+        "id": "2bce2f8ba0207297",
+        "index": 0,
+        "pivot": {
+          "x": 16,
+          "y": 22
+        },
+        "side": "South",
+        "tag": "bob_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "coffee-mug-selout-32_bob_South_01.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 32,
+        "y": 0
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 0.0,
+        "id": "996b834c2a7afc72",
+        "index": 1,
+        "pivot": {
+          "x": 16,
+          "y": 22
+        },
+        "side": "South",
+        "tag": "bob_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "coffee-mug-selout-32_bob_South_02.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 64,
+        "y": 0
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 0.0,
+        "id": "0d5fe87522a2c55e",
+        "index": 2,
+        "pivot": {
+          "x": 16,
+          "y": 22
+        },
+        "side": "South",
+        "tag": "bob_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "coffee-mug-selout-32_bob_South_03.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 96,
+        "y": 0
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 0.0,
+        "id": "8d3bcf1ae29fb085",
+        "index": 3,
+        "pivot": {
+          "x": 16,
+          "y": 22
+        },
+        "side": "South",
+        "tag": "bob_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "coffee-mug-selout-32_bob_South_04.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 128,
+        "y": 0
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 0.0,
+        "id": "ad0d0a623479409d",
+        "index": 4,
+        "pivot": {
+          "x": 16,
+          "y": 22
+        },
+        "side": "South",
+        "tag": "bob_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "coffee-mug-selout-32_bob_South_05.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 160,
+        "y": 0
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 0.0,
+        "id": "dbc171a28ee43f49",
+        "index": 5,
+        "pivot": {
+          "x": 16,
+          "y": 22
+        },
+        "side": "South",
+        "tag": "bob_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "coffee-mug-selout-32_bob_South_06.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 192,
+        "y": 0
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 0.0,
+        "id": "b497ea6202a60e06",
+        "index": 6,
+        "pivot": {
+          "x": 16,
+          "y": 22
+        },
+        "side": "South",
+        "tag": "bob_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "coffee-mug-selout-32_bob_South_07.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 224,
+        "y": 0
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 0.0,
+        "id": "bd79a9c464551280",
+        "index": 7,
+        "pivot": {
+          "x": 16,
+          "y": 22
+        },
+        "side": "South",
+        "tag": "bob_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "coffee-mug-selout-32_bob_Southeast_00.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 32
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 45.0,
+        "id": "73bd049f0b12af8c",
+        "index": 0,
+        "pivot": {
+          "x": 16,
+          "y": 22
+        },
+        "side": "Southeast",
+        "tag": "bob_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "coffee-mug-selout-32_bob_Southeast_01.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 32,
+        "y": 32
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 45.0,
+        "id": "5ffd3968e130702d",
+        "index": 1,
+        "pivot": {
+          "x": 16,
+          "y": 22
+        },
+        "side": "Southeast",
+        "tag": "bob_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "coffee-mug-selout-32_bob_Southeast_02.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 64,
+        "y": 32
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 45.0,
+        "id": "7c02a4c8e43362b9",
+        "index": 2,
+        "pivot": {
+          "x": 16,
+          "y": 22
+        },
+        "side": "Southeast",
+        "tag": "bob_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "coffee-mug-selout-32_bob_Southeast_03.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 96,
+        "y": 32
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 45.0,
+        "id": "0dd9a5ca87a5b98a",
+        "index": 3,
+        "pivot": {
+          "x": 16,
+          "y": 22
+        },
+        "side": "Southeast",
+        "tag": "bob_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "coffee-mug-selout-32_bob_Southeast_04.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 128,
+        "y": 32
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 45.0,
+        "id": "9b690118ab1a00ee",
+        "index": 4,
+        "pivot": {
+          "x": 16,
+          "y": 22
+        },
+        "side": "Southeast",
+        "tag": "bob_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "coffee-mug-selout-32_bob_Southeast_05.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 160,
+        "y": 32
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 45.0,
+        "id": "9099b69be5fb06ca",
+        "index": 5,
+        "pivot": {
+          "x": 16,
+          "y": 22
+        },
+        "side": "Southeast",
+        "tag": "bob_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "coffee-mug-selout-32_bob_Southeast_06.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 192,
+        "y": 32
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 45.0,
+        "id": "eb0d2ce08ebf5815",
+        "index": 6,
+        "pivot": {
+          "x": 16,
+          "y": 22
+        },
+        "side": "Southeast",
+        "tag": "bob_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "coffee-mug-selout-32_bob_Southeast_07.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 224,
+        "y": 32
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 45.0,
+        "id": "b6a6f0f916109037",
+        "index": 7,
+        "pivot": {
+          "x": 16,
+          "y": 22
+        },
+        "side": "Southeast",
+        "tag": "bob_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "coffee-mug-selout-32_bob_East_00.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 64
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 90.0,
+        "id": "f5343d6946a06ade",
+        "index": 0,
+        "pivot": {
+          "x": 16,
+          "y": 22
+        },
+        "side": "East",
+        "tag": "bob_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "coffee-mug-selout-32_bob_East_01.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 32,
+        "y": 64
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 90.0,
+        "id": "a0b9f0eb2d026423",
+        "index": 1,
+        "pivot": {
+          "x": 16,
+          "y": 22
+        },
+        "side": "East",
+        "tag": "bob_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "coffee-mug-selout-32_bob_East_02.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 64,
+        "y": 64
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 90.0,
+        "id": "38dfced606693b17",
+        "index": 2,
+        "pivot": {
+          "x": 16,
+          "y": 22
+        },
+        "side": "East",
+        "tag": "bob_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "coffee-mug-selout-32_bob_East_03.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 96,
+        "y": 64
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 90.0,
+        "id": "b212c0f7c7e072a0",
+        "index": 3,
+        "pivot": {
+          "x": 16,
+          "y": 22
+        },
+        "side": "East",
+        "tag": "bob_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "coffee-mug-selout-32_bob_East_04.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 128,
+        "y": 64
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 90.0,
+        "id": "cee68eeca293bb68",
+        "index": 4,
+        "pivot": {
+          "x": 16,
+          "y": 22
+        },
+        "side": "East",
+        "tag": "bob_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "coffee-mug-selout-32_bob_East_05.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 160,
+        "y": 64
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 90.0,
+        "id": "a370463070cab89c",
+        "index": 5,
+        "pivot": {
+          "x": 16,
+          "y": 22
+        },
+        "side": "East",
+        "tag": "bob_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "coffee-mug-selout-32_bob_East_06.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 192,
+        "y": 64
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 90.0,
+        "id": "591ad213944340cf",
+        "index": 6,
+        "pivot": {
+          "x": 16,
+          "y": 22
+        },
+        "side": "East",
+        "tag": "bob_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "coffee-mug-selout-32_bob_East_07.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 224,
+        "y": 64
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 90.0,
+        "id": "a70e38547d22be99",
+        "index": 7,
+        "pivot": {
+          "x": 16,
+          "y": 22
+        },
+        "side": "East",
+        "tag": "bob_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "coffee-mug-selout-32_bob_Northeast_00.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 96
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 135.0,
+        "id": "236ab555e864feda",
+        "index": 0,
+        "pivot": {
+          "x": 16,
+          "y": 22
+        },
+        "side": "Northeast",
+        "tag": "bob_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "coffee-mug-selout-32_bob_Northeast_01.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 32,
+        "y": 96
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 135.0,
+        "id": "28ec9b4e86eff59f",
+        "index": 1,
+        "pivot": {
+          "x": 16,
+          "y": 22
+        },
+        "side": "Northeast",
+        "tag": "bob_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "coffee-mug-selout-32_bob_Northeast_02.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 64,
+        "y": 96
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 135.0,
+        "id": "3770abddf787d3eb",
+        "index": 2,
+        "pivot": {
+          "x": 16,
+          "y": 22
+        },
+        "side": "Northeast",
+        "tag": "bob_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "coffee-mug-selout-32_bob_Northeast_03.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 96,
+        "y": 96
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 135.0,
+        "id": "52dd57ceab70503c",
+        "index": 3,
+        "pivot": {
+          "x": 16,
+          "y": 22
+        },
+        "side": "Northeast",
+        "tag": "bob_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "coffee-mug-selout-32_bob_Northeast_04.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 128,
+        "y": 96
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 135.0,
+        "id": "3d22f41f1e11500c",
+        "index": 4,
+        "pivot": {
+          "x": 16,
+          "y": 22
+        },
+        "side": "Northeast",
+        "tag": "bob_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "coffee-mug-selout-32_bob_Northeast_05.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 160,
+        "y": 96
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 135.0,
+        "id": "c4a932a108ddd098",
+        "index": 5,
+        "pivot": {
+          "x": 16,
+          "y": 22
+        },
+        "side": "Northeast",
+        "tag": "bob_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "coffee-mug-selout-32_bob_Northeast_06.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 192,
+        "y": 96
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 135.0,
+        "id": "33ec304afac93023",
+        "index": 6,
+        "pivot": {
+          "x": 16,
+          "y": 22
+        },
+        "side": "Northeast",
+        "tag": "bob_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "coffee-mug-selout-32_bob_Northeast_07.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 224,
+        "y": 96
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 135.0,
+        "id": "6f54e80d8449741d",
+        "index": 7,
+        "pivot": {
+          "x": 16,
+          "y": 22
+        },
+        "side": "Northeast",
+        "tag": "bob_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "coffee-mug-selout-32_bob_North_00.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 128
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 180.0,
+        "id": "b42022bb04821c21",
+        "index": 0,
+        "pivot": {
+          "x": 16,
+          "y": 22
+        },
+        "side": "North",
+        "tag": "bob_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "coffee-mug-selout-32_bob_North_01.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 32,
+        "y": 128
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 180.0,
+        "id": "ae4274e033bc9810",
+        "index": 1,
+        "pivot": {
+          "x": 16,
+          "y": 22
+        },
+        "side": "North",
+        "tag": "bob_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "coffee-mug-selout-32_bob_North_02.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 64,
+        "y": 128
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 180.0,
+        "id": "7627f659595f8774",
+        "index": 2,
+        "pivot": {
+          "x": 16,
+          "y": 22
+        },
+        "side": "North",
+        "tag": "bob_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "coffee-mug-selout-32_bob_North_03.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 96,
+        "y": 128
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 180.0,
+        "id": "e55f2856e329ec53",
+        "index": 3,
+        "pivot": {
+          "x": 16,
+          "y": 22
+        },
+        "side": "North",
+        "tag": "bob_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "coffee-mug-selout-32_bob_North_04.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 128,
+        "y": 128
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 180.0,
+        "id": "de06588d1245c6af",
+        "index": 4,
+        "pivot": {
+          "x": 16,
+          "y": 22
+        },
+        "side": "North",
+        "tag": "bob_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "coffee-mug-selout-32_bob_North_05.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 160,
+        "y": 128
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 180.0,
+        "id": "5b055e97808414b3",
+        "index": 5,
+        "pivot": {
+          "x": 16,
+          "y": 22
+        },
+        "side": "North",
+        "tag": "bob_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "coffee-mug-selout-32_bob_North_06.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 192,
+        "y": 128
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 180.0,
+        "id": "081fa140dc0f0788",
+        "index": 6,
+        "pivot": {
+          "x": 16,
+          "y": 22
+        },
+        "side": "North",
+        "tag": "bob_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "coffee-mug-selout-32_bob_North_07.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 224,
+        "y": 128
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 180.0,
+        "id": "54b046108b970142",
+        "index": 7,
+        "pivot": {
+          "x": 16,
+          "y": 22
+        },
+        "side": "North",
+        "tag": "bob_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "coffee-mug-selout-32_bob_Northwest_00.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 160
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 225.0,
+        "id": "fc8e3e1cd0a902d4",
+        "index": 0,
+        "pivot": {
+          "x": 16,
+          "y": 22
+        },
+        "side": "Northwest",
+        "tag": "bob_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "coffee-mug-selout-32_bob_Northwest_01.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 32,
+        "y": 160
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 225.0,
+        "id": "63cdcdbb865a9f55",
+        "index": 1,
+        "pivot": {
+          "x": 16,
+          "y": 22
+        },
+        "side": "Northwest",
+        "tag": "bob_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "coffee-mug-selout-32_bob_Northwest_02.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 64,
+        "y": 160
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 225.0,
+        "id": "61d2f8a2761111c1",
+        "index": 2,
+        "pivot": {
+          "x": 16,
+          "y": 22
+        },
+        "side": "Northwest",
+        "tag": "bob_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "coffee-mug-selout-32_bob_Northwest_03.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 96,
+        "y": 160
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 225.0,
+        "id": "2d8d7991b07aaf42",
+        "index": 3,
+        "pivot": {
+          "x": 16,
+          "y": 22
+        },
+        "side": "Northwest",
+        "tag": "bob_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "coffee-mug-selout-32_bob_Northwest_04.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 128,
+        "y": 160
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 225.0,
+        "id": "06f9bb900917a206",
+        "index": 4,
+        "pivot": {
+          "x": 16,
+          "y": 22
+        },
+        "side": "Northwest",
+        "tag": "bob_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "coffee-mug-selout-32_bob_Northwest_05.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 160,
+        "y": 160
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 225.0,
+        "id": "378c0a76b34a9832",
+        "index": 5,
+        "pivot": {
+          "x": 16,
+          "y": 22
+        },
+        "side": "Northwest",
+        "tag": "bob_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "coffee-mug-selout-32_bob_Northwest_06.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 192,
+        "y": 160
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 225.0,
+        "id": "ff6edb903aead49d",
+        "index": 6,
+        "pivot": {
+          "x": 16,
+          "y": 22
+        },
+        "side": "Northwest",
+        "tag": "bob_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "coffee-mug-selout-32_bob_Northwest_07.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 224,
+        "y": 160
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 225.0,
+        "id": "5d7586523639d81f",
+        "index": 7,
+        "pivot": {
+          "x": 16,
+          "y": 22
+        },
+        "side": "Northwest",
+        "tag": "bob_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "coffee-mug-selout-32_bob_West_00.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 192
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 270.0,
+        "id": "3d509fa54ef95fa0",
+        "index": 0,
+        "pivot": {
+          "x": 16,
+          "y": 22
+        },
+        "side": "West",
+        "tag": "bob_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "coffee-mug-selout-32_bob_West_01.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 32,
+        "y": 192
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 270.0,
+        "id": "70c0d4f34dbb4dd1",
+        "index": 1,
+        "pivot": {
+          "x": 16,
+          "y": 22
+        },
+        "side": "West",
+        "tag": "bob_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "coffee-mug-selout-32_bob_West_02.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 64,
+        "y": 192
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 270.0,
+        "id": "004e02bc8db64305",
+        "index": 2,
+        "pivot": {
+          "x": 16,
+          "y": 22
+        },
+        "side": "West",
+        "tag": "bob_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "coffee-mug-selout-32_bob_West_03.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 96,
+        "y": 192
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 270.0,
+        "id": "80721c16cdb957de",
+        "index": 3,
+        "pivot": {
+          "x": 16,
+          "y": 22
+        },
+        "side": "West",
+        "tag": "bob_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "coffee-mug-selout-32_bob_West_04.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 128,
+        "y": 192
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 270.0,
+        "id": "488fce7f994a44aa",
+        "index": 4,
+        "pivot": {
+          "x": 16,
+          "y": 22
+        },
+        "side": "West",
+        "tag": "bob_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "coffee-mug-selout-32_bob_West_05.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 160,
+        "y": 192
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 270.0,
+        "id": "445207cf74aba70e",
+        "index": 5,
+        "pivot": {
+          "x": 16,
+          "y": 22
+        },
+        "side": "West",
+        "tag": "bob_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "coffee-mug-selout-32_bob_West_06.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 192,
+        "y": 192
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 270.0,
+        "id": "d3cb9660595ff031",
+        "index": 6,
+        "pivot": {
+          "x": 16,
+          "y": 22
+        },
+        "side": "West",
+        "tag": "bob_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "coffee-mug-selout-32_bob_West_07.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 224,
+        "y": 192
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 270.0,
+        "id": "b1c0a2b5e4a98133",
+        "index": 7,
+        "pivot": {
+          "x": 16,
+          "y": 22
+        },
+        "side": "West",
+        "tag": "bob_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "coffee-mug-selout-32_bob_Southwest_00.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 224
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 315.0,
+        "id": "15c6adec9b471212",
+        "index": 0,
+        "pivot": {
+          "x": 16,
+          "y": 22
+        },
+        "side": "Southwest",
+        "tag": "bob_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "coffee-mug-selout-32_bob_Southwest_01.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 32,
+        "y": 224
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 315.0,
+        "id": "e3aab505daaa7db7",
+        "index": 1,
+        "pivot": {
+          "x": 16,
+          "y": 22
+        },
+        "side": "Southwest",
+        "tag": "bob_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "coffee-mug-selout-32_bob_Southwest_02.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 64,
+        "y": 224
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 315.0,
+        "id": "b1af32994268da83",
+        "index": 2,
+        "pivot": {
+          "x": 16,
+          "y": 22
+        },
+        "side": "Southwest",
+        "tag": "bob_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "coffee-mug-selout-32_bob_Southwest_03.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 96,
+        "y": 224
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 315.0,
+        "id": "89478591b4bb3404",
+        "index": 3,
+        "pivot": {
+          "x": 16,
+          "y": 22
+        },
+        "side": "Southwest",
+        "tag": "bob_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "coffee-mug-selout-32_bob_Southwest_04.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 128,
+        "y": 224
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 315.0,
+        "id": "41f0e6a0cecfa394",
+        "index": 4,
+        "pivot": {
+          "x": 16,
+          "y": 22
+        },
+        "side": "Southwest",
+        "tag": "bob_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "coffee-mug-selout-32_bob_Southwest_05.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 160,
+        "y": 224
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 315.0,
+        "id": "0395b8549f78ddf0",
+        "index": 5,
+        "pivot": {
+          "x": 16,
+          "y": 22
+        },
+        "side": "Southwest",
+        "tag": "bob_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "coffee-mug-selout-32_bob_Southwest_06.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 192,
+        "y": 224
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 315.0,
+        "id": "4f188b813f167b1b",
+        "index": 6,
+        "pivot": {
+          "x": 16,
+          "y": 22
+        },
+        "side": "Southwest",
+        "tag": "bob_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "coffee-mug-selout-32_bob_Southwest_07.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 224,
+        "y": 224
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 315.0,
+        "id": "13b10a19d24eaad5",
+        "index": 7,
+        "pivot": {
+          "x": 16,
+          "y": 22
+        },
+        "side": "Southwest",
+        "tag": "bob_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    }
+  ],
+  "meta": {
+    "app": "Pixor",
+    "format": "I8",
+    "frameTags": [
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 0,
+        "name": "bob_South",
+        "to": 7
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 8,
+        "name": "bob_Southeast",
+        "to": 15
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 16,
+        "name": "bob_East",
+        "to": 23
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 24,
+        "name": "bob_Northeast",
+        "to": 31
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 32,
+        "name": "bob_North",
+        "to": 39
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 40,
+        "name": "bob_Northwest",
+        "to": 47
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 48,
+        "name": "bob_West",
+        "to": 55
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 56,
+        "name": "bob_Southwest",
+        "to": 63
+      }
+    ],
+    "image": "coffee-mug-selout-32.png",
+    "layers": [
+      {
+        "blendMode": "normal",
+        "name": "final",
+        "opacity": 255
+      }
+    ],
+    "pixor": {
+      "cell": {
+        "h": 32,
+        "w": 32
+      },
+      "pivot": {
+        "x": 16,
+        "y": 22
+      },
+      "sides": {
+        "East": 90.0,
+        "North": 180.0,
+        "Northeast": 135.0,
+        "Northwest": 225.0,
+        "South": 0.0,
+        "Southeast": 45.0,
+        "Southwest": 315.0,
+        "West": 270.0
+      }
+    },
+    "scale": "1",
+    "size": {
+      "h": 256,
+      "w": 256
+    },
+    "slices": [
+      {
+        "color": "#0000ffff",
+        "keys": [
+          {
+            "bounds": {
+              "h": 32,
+              "w": 32,
+              "x": 0,
+              "y": 0
+            },
+            "frame": 0,
+            "pivot": {
+              "x": 16,
+              "y": 22
+            }
+          }
+        ],
+        "name": "pivot"
+      }
+    ],
+    "version": "2.0.1"
+  }
+}

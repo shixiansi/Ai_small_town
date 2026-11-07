@@ -1,0 +1,2297 @@
+{
+  "frames": [
+    {
+      "duration": 83,
+      "filename": "printer-selout-32_Print_South_00.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Print",
+        "degrees": 0.0,
+        "id": "a48258887fa4cb9e",
+        "index": 0,
+        "pivot": {
+          "x": 16,
+          "y": 21
+        },
+        "side": "South",
+        "tag": "Print_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "printer-selout-32_Print_South_01.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 32,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Print",
+        "degrees": 0.0,
+        "id": "bed886b834dd1763",
+        "index": 1,
+        "pivot": {
+          "x": 16,
+          "y": 21
+        },
+        "side": "South",
+        "tag": "Print_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "printer-selout-32_Print_South_02.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 64,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Print",
+        "degrees": 0.0,
+        "id": "500fb721ba46a7d7",
+        "index": 2,
+        "pivot": {
+          "x": 16,
+          "y": 21
+        },
+        "side": "South",
+        "tag": "Print_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "printer-selout-32_Print_South_03.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 96,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Print",
+        "degrees": 0.0,
+        "id": "25df813d3726dde0",
+        "index": 3,
+        "pivot": {
+          "x": 16,
+          "y": 21
+        },
+        "side": "South",
+        "tag": "Print_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "printer-selout-32_Print_South_04.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 128,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Print",
+        "degrees": 0.0,
+        "id": "236524b9ad5197a8",
+        "index": 4,
+        "pivot": {
+          "x": 16,
+          "y": 21
+        },
+        "side": "South",
+        "tag": "Print_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "printer-selout-32_Print_South_05.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 160,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Print",
+        "degrees": 0.0,
+        "id": "22e02e773ca7c75c",
+        "index": 5,
+        "pivot": {
+          "x": 16,
+          "y": 21
+        },
+        "side": "South",
+        "tag": "Print_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "printer-selout-32_Print_South_06.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 192,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Print",
+        "degrees": 0.0,
+        "id": "9af7925dee6b800f",
+        "index": 6,
+        "pivot": {
+          "x": 16,
+          "y": 21
+        },
+        "side": "South",
+        "tag": "Print_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "printer-selout-32_Print_South_07.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 224,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Print",
+        "degrees": 0.0,
+        "id": "2d8cce1c9d0079d9",
+        "index": 7,
+        "pivot": {
+          "x": 16,
+          "y": 21
+        },
+        "side": "South",
+        "tag": "Print_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "printer-selout-32_Print_Southeast_00.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 32
+      },
+      "pixor": {
+        "action": "Print",
+        "degrees": 45.0,
+        "id": "07dbfebb38e44751",
+        "index": 0,
+        "pivot": {
+          "x": 16,
+          "y": 21
+        },
+        "side": "Southeast",
+        "tag": "Print_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "printer-selout-32_Print_Southeast_01.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 32,
+        "y": 32
+      },
+      "pixor": {
+        "action": "Print",
+        "degrees": 45.0,
+        "id": "d46bc96d3a225920",
+        "index": 1,
+        "pivot": {
+          "x": 16,
+          "y": 21
+        },
+        "side": "Southeast",
+        "tag": "Print_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "printer-selout-32_Print_Southeast_02.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 64,
+        "y": 32
+      },
+      "pixor": {
+        "action": "Print",
+        "degrees": 45.0,
+        "id": "20973bdf5fe92ca4",
+        "index": 2,
+        "pivot": {
+          "x": 16,
+          "y": 21
+        },
+        "side": "Southeast",
+        "tag": "Print_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "printer-selout-32_Print_Southeast_03.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 96,
+        "y": 32
+      },
+      "pixor": {
+        "action": "Print",
+        "degrees": 45.0,
+        "id": "e85043b6e18f6da3",
+        "index": 3,
+        "pivot": {
+          "x": 16,
+          "y": 21
+        },
+        "side": "Southeast",
+        "tag": "Print_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "printer-selout-32_Print_Southeast_04.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 128,
+        "y": 32
+      },
+      "pixor": {
+        "action": "Print",
+        "degrees": 45.0,
+        "id": "b9b00a0ebeb0521f",
+        "index": 4,
+        "pivot": {
+          "x": 16,
+          "y": 21
+        },
+        "side": "Southeast",
+        "tag": "Print_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "printer-selout-32_Print_Southeast_05.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 160,
+        "y": 32
+      },
+      "pixor": {
+        "action": "Print",
+        "degrees": 45.0,
+        "id": "2f2032e580554463",
+        "index": 5,
+        "pivot": {
+          "x": 16,
+          "y": 21
+        },
+        "side": "Southeast",
+        "tag": "Print_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "printer-selout-32_Print_Southeast_06.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 192,
+        "y": 32
+      },
+      "pixor": {
+        "action": "Print",
+        "degrees": 45.0,
+        "id": "b95cba88d794e758",
+        "index": 6,
+        "pivot": {
+          "x": 16,
+          "y": 21
+        },
+        "side": "Southeast",
+        "tag": "Print_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "printer-selout-32_Print_Southeast_07.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 224,
+        "y": 32
+      },
+      "pixor": {
+        "action": "Print",
+        "degrees": 45.0,
+        "id": "a535866053ffca72",
+        "index": 7,
+        "pivot": {
+          "x": 16,
+          "y": 21
+        },
+        "side": "Southeast",
+        "tag": "Print_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "printer-selout-32_Print_East_00.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 64
+      },
+      "pixor": {
+        "action": "Print",
+        "degrees": 90.0,
+        "id": "acd7284b5f1ea071",
+        "index": 0,
+        "pivot": {
+          "x": 16,
+          "y": 21
+        },
+        "side": "East",
+        "tag": "Print_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "printer-selout-32_Print_East_01.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 32,
+        "y": 64
+      },
+      "pixor": {
+        "action": "Print",
+        "degrees": 90.0,
+        "id": "0c059828818243c0",
+        "index": 1,
+        "pivot": {
+          "x": 16,
+          "y": 21
+        },
+        "side": "East",
+        "tag": "Print_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "printer-selout-32_Print_East_02.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 64,
+        "y": 64
+      },
+      "pixor": {
+        "action": "Print",
+        "degrees": 90.0,
+        "id": "73f0d16c63d9b804",
+        "index": 2,
+        "pivot": {
+          "x": 16,
+          "y": 21
+        },
+        "side": "East",
+        "tag": "Print_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "printer-selout-32_Print_East_03.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 96,
+        "y": 64
+      },
+      "pixor": {
+        "action": "Print",
+        "degrees": 90.0,
+        "id": "9c587e73f1875e83",
+        "index": 3,
+        "pivot": {
+          "x": 16,
+          "y": 21
+        },
+        "side": "East",
+        "tag": "Print_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "printer-selout-32_Print_East_04.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 128,
+        "y": 64
+      },
+      "pixor": {
+        "action": "Print",
+        "degrees": 90.0,
+        "id": "88f9d8ceee0ee7bf",
+        "index": 4,
+        "pivot": {
+          "x": 16,
+          "y": 21
+        },
+        "side": "East",
+        "tag": "Print_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "printer-selout-32_Print_East_05.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 160,
+        "y": 64
+      },
+      "pixor": {
+        "action": "Print",
+        "degrees": 90.0,
+        "id": "a5c9c021396b12c3",
+        "index": 5,
+        "pivot": {
+          "x": 16,
+          "y": 21
+        },
+        "side": "East",
+        "tag": "Print_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "printer-selout-32_Print_East_06.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 192,
+        "y": 64
+      },
+      "pixor": {
+        "action": "Print",
+        "degrees": 90.0,
+        "id": "6d64f545e78cd838",
+        "index": 6,
+        "pivot": {
+          "x": 16,
+          "y": 21
+        },
+        "side": "East",
+        "tag": "Print_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "printer-selout-32_Print_East_07.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 224,
+        "y": 64
+      },
+      "pixor": {
+        "action": "Print",
+        "degrees": 90.0,
+        "id": "dccf551b9b5fb512",
+        "index": 7,
+        "pivot": {
+          "x": 16,
+          "y": 21
+        },
+        "side": "East",
+        "tag": "Print_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "printer-selout-32_Print_Northeast_00.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 96
+      },
+      "pixor": {
+        "action": "Print",
+        "degrees": 135.0,
+        "id": "24e4b2e0012a59f7",
+        "index": 0,
+        "pivot": {
+          "x": 16,
+          "y": 21
+        },
+        "side": "Northeast",
+        "tag": "Print_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "printer-selout-32_Print_Northeast_01.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 32,
+        "y": 96
+      },
+      "pixor": {
+        "action": "Print",
+        "degrees": 135.0,
+        "id": "3d7028c2bd340ad2",
+        "index": 1,
+        "pivot": {
+          "x": 16,
+          "y": 21
+        },
+        "side": "Northeast",
+        "tag": "Print_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "printer-selout-32_Print_Northeast_02.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 64,
+        "y": 96
+      },
+      "pixor": {
+        "action": "Print",
+        "degrees": 135.0,
+        "id": "f762f9ed7b0efdfe",
+        "index": 2,
+        "pivot": {
+          "x": 16,
+          "y": 21
+        },
+        "side": "Northeast",
+        "tag": "Print_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "printer-selout-32_Print_Northeast_03.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 96,
+        "y": 96
+      },
+      "pixor": {
+        "action": "Print",
+        "degrees": 135.0,
+        "id": "89e0b615eba18625",
+        "index": 3,
+        "pivot": {
+          "x": 16,
+          "y": 21
+        },
+        "side": "Northeast",
+        "tag": "Print_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "printer-selout-32_Print_Northeast_04.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 128,
+        "y": 96
+      },
+      "pixor": {
+        "action": "Print",
+        "degrees": 135.0,
+        "id": "5d11b833e208aefd",
+        "index": 4,
+        "pivot": {
+          "x": 16,
+          "y": 21
+        },
+        "side": "Northeast",
+        "tag": "Print_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "printer-selout-32_Print_Northeast_05.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 160,
+        "y": 96
+      },
+      "pixor": {
+        "action": "Print",
+        "degrees": 135.0,
+        "id": "3ea48b7607f08fe9",
+        "index": 5,
+        "pivot": {
+          "x": 16,
+          "y": 21
+        },
+        "side": "Northeast",
+        "tag": "Print_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "printer-selout-32_Print_Northeast_06.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 192,
+        "y": 96
+      },
+      "pixor": {
+        "action": "Print",
+        "degrees": 135.0,
+        "id": "b13cd15d0ba7e3a6",
+        "index": 6,
+        "pivot": {
+          "x": 16,
+          "y": 21
+        },
+        "side": "Northeast",
+        "tag": "Print_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "printer-selout-32_Print_Northeast_07.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 224,
+        "y": 96
+      },
+      "pixor": {
+        "action": "Print",
+        "degrees": 135.0,
+        "id": "d5de579129e788e0",
+        "index": 7,
+        "pivot": {
+          "x": 16,
+          "y": 21
+        },
+        "side": "Northeast",
+        "tag": "Print_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "printer-selout-32_Print_North_00.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 128
+      },
+      "pixor": {
+        "action": "Print",
+        "degrees": 180.0,
+        "id": "97fc6fec84395950",
+        "index": 0,
+        "pivot": {
+          "x": 16,
+          "y": 21
+        },
+        "side": "North",
+        "tag": "Print_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "printer-selout-32_Print_North_01.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 32,
+        "y": 128
+      },
+      "pixor": {
+        "action": "Print",
+        "degrees": 180.0,
+        "id": "6ce9ab6fb61b63e1",
+        "index": 1,
+        "pivot": {
+          "x": 16,
+          "y": 21
+        },
+        "side": "North",
+        "tag": "Print_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "printer-selout-32_Print_North_02.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 64,
+        "y": 128
+      },
+      "pixor": {
+        "action": "Print",
+        "degrees": 180.0,
+        "id": "90c181045caabc35",
+        "index": 2,
+        "pivot": {
+          "x": 16,
+          "y": 21
+        },
+        "side": "North",
+        "tag": "Print_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "printer-selout-32_Print_North_03.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 96,
+        "y": 128
+      },
+      "pixor": {
+        "action": "Print",
+        "degrees": 180.0,
+        "id": "9c76a2ad0bf5b5ae",
+        "index": 3,
+        "pivot": {
+          "x": 16,
+          "y": 21
+        },
+        "side": "North",
+        "tag": "Print_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "printer-selout-32_Print_North_04.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 128,
+        "y": 128
+      },
+      "pixor": {
+        "action": "Print",
+        "degrees": 180.0,
+        "id": "500480125b191cda",
+        "index": 4,
+        "pivot": {
+          "x": 16,
+          "y": 21
+        },
+        "side": "North",
+        "tag": "Print_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "printer-selout-32_Print_North_05.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 160,
+        "y": 128
+      },
+      "pixor": {
+        "action": "Print",
+        "degrees": 180.0,
+        "id": "51e586187b74ff7e",
+        "index": 5,
+        "pivot": {
+          "x": 16,
+          "y": 21
+        },
+        "side": "North",
+        "tag": "Print_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "printer-selout-32_Print_North_06.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 192,
+        "y": 128
+      },
+      "pixor": {
+        "action": "Print",
+        "degrees": 180.0,
+        "id": "90901ade94052881",
+        "index": 6,
+        "pivot": {
+          "x": 16,
+          "y": 21
+        },
+        "side": "North",
+        "tag": "Print_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "printer-selout-32_Print_North_07.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 224,
+        "y": 128
+      },
+      "pixor": {
+        "action": "Print",
+        "degrees": 180.0,
+        "id": "3ce5565bbe776d23",
+        "index": 7,
+        "pivot": {
+          "x": 16,
+          "y": 21
+        },
+        "side": "North",
+        "tag": "Print_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "printer-selout-32_Print_Northwest_00.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 160
+      },
+      "pixor": {
+        "action": "Print",
+        "degrees": 225.0,
+        "id": "216514871da33de5",
+        "index": 0,
+        "pivot": {
+          "x": 16,
+          "y": 21
+        },
+        "side": "Northwest",
+        "tag": "Print_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "printer-selout-32_Print_Northwest_01.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 32,
+        "y": 160
+      },
+      "pixor": {
+        "action": "Print",
+        "degrees": 225.0,
+        "id": "24b7345bb65c5884",
+        "index": 1,
+        "pivot": {
+          "x": 16,
+          "y": 21
+        },
+        "side": "Northwest",
+        "tag": "Print_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "printer-selout-32_Print_Northwest_02.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 64,
+        "y": 160
+      },
+      "pixor": {
+        "action": "Print",
+        "degrees": 225.0,
+        "id": "e209456e16500740",
+        "index": 2,
+        "pivot": {
+          "x": 16,
+          "y": 21
+        },
+        "side": "Northwest",
+        "tag": "Print_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "printer-selout-32_Print_Northwest_03.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 96,
+        "y": 160
+      },
+      "pixor": {
+        "action": "Print",
+        "degrees": 225.0,
+        "id": "a457ae261e96c537",
+        "index": 3,
+        "pivot": {
+          "x": 16,
+          "y": 21
+        },
+        "side": "Northwest",
+        "tag": "Print_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "printer-selout-32_Print_Northwest_04.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 128,
+        "y": 160
+      },
+      "pixor": {
+        "action": "Print",
+        "degrees": 225.0,
+        "id": "cc44131a85b9a94b",
+        "index": 4,
+        "pivot": {
+          "x": 16,
+          "y": 21
+        },
+        "side": "Northwest",
+        "tag": "Print_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "printer-selout-32_Print_Northwest_05.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 160,
+        "y": 160
+      },
+      "pixor": {
+        "action": "Print",
+        "degrees": 225.0,
+        "id": "4bede461d10f1997",
+        "index": 5,
+        "pivot": {
+          "x": 16,
+          "y": 21
+        },
+        "side": "Northwest",
+        "tag": "Print_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "printer-selout-32_Print_Northwest_06.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 192,
+        "y": 160
+      },
+      "pixor": {
+        "action": "Print",
+        "degrees": 225.0,
+        "id": "bdfe0f4802bc61e4",
+        "index": 6,
+        "pivot": {
+          "x": 16,
+          "y": 21
+        },
+        "side": "Northwest",
+        "tag": "Print_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "printer-selout-32_Print_Northwest_07.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 224,
+        "y": 160
+      },
+      "pixor": {
+        "action": "Print",
+        "degrees": 225.0,
+        "id": "f672009f39c358de",
+        "index": 7,
+        "pivot": {
+          "x": 16,
+          "y": 21
+        },
+        "side": "Northwest",
+        "tag": "Print_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "printer-selout-32_Print_West_00.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 192
+      },
+      "pixor": {
+        "action": "Print",
+        "degrees": 270.0,
+        "id": "1dacd473e8160f33",
+        "index": 0,
+        "pivot": {
+          "x": 16,
+          "y": 21
+        },
+        "side": "West",
+        "tag": "Print_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "printer-selout-32_Print_West_01.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 32,
+        "y": 192
+      },
+      "pixor": {
+        "action": "Print",
+        "degrees": 270.0,
+        "id": "4dfac61074686fce",
+        "index": 1,
+        "pivot": {
+          "x": 16,
+          "y": 21
+        },
+        "side": "West",
+        "tag": "Print_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "printer-selout-32_Print_West_02.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 64,
+        "y": 192
+      },
+      "pixor": {
+        "action": "Print",
+        "degrees": 270.0,
+        "id": "e103fdc42e1ca0c2",
+        "index": 2,
+        "pivot": {
+          "x": 16,
+          "y": 21
+        },
+        "side": "West",
+        "tag": "Print_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "printer-selout-32_Print_West_03.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 96,
+        "y": 192
+      },
+      "pixor": {
+        "action": "Print",
+        "degrees": 270.0,
+        "id": "15497cd4f3b30341",
+        "index": 3,
+        "pivot": {
+          "x": 16,
+          "y": 21
+        },
+        "side": "West",
+        "tag": "Print_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "printer-selout-32_Print_West_04.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 128,
+        "y": 192
+      },
+      "pixor": {
+        "action": "Print",
+        "degrees": 270.0,
+        "id": "41546dc8f011c031",
+        "index": 4,
+        "pivot": {
+          "x": 16,
+          "y": 21
+        },
+        "side": "West",
+        "tag": "Print_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "printer-selout-32_Print_West_05.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 160,
+        "y": 192
+      },
+      "pixor": {
+        "action": "Print",
+        "degrees": 270.0,
+        "id": "7ded7701b79ad475",
+        "index": 5,
+        "pivot": {
+          "x": 16,
+          "y": 21
+        },
+        "side": "West",
+        "tag": "Print_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "printer-selout-32_Print_West_06.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 192,
+        "y": 192
+      },
+      "pixor": {
+        "action": "Print",
+        "degrees": 270.0,
+        "id": "b618a5e82ffc14aa",
+        "index": 6,
+        "pivot": {
+          "x": 16,
+          "y": 21
+        },
+        "side": "West",
+        "tag": "Print_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "printer-selout-32_Print_West_07.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 224,
+        "y": 192
+      },
+      "pixor": {
+        "action": "Print",
+        "degrees": 270.0,
+        "id": "a35000100ebeecb4",
+        "index": 7,
+        "pivot": {
+          "x": 16,
+          "y": 21
+        },
+        "side": "West",
+        "tag": "Print_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "printer-selout-32_Print_Southwest_00.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 224
+      },
+      "pixor": {
+        "action": "Print",
+        "degrees": 315.0,
+        "id": "f2e44380a040d813",
+        "index": 0,
+        "pivot": {
+          "x": 16,
+          "y": 21
+        },
+        "side": "Southwest",
+        "tag": "Print_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "printer-selout-32_Print_Southwest_01.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 32,
+        "y": 224
+      },
+      "pixor": {
+        "action": "Print",
+        "degrees": 315.0,
+        "id": "90838ff20b6bf42e",
+        "index": 1,
+        "pivot": {
+          "x": 16,
+          "y": 21
+        },
+        "side": "Southwest",
+        "tag": "Print_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "printer-selout-32_Print_Southwest_02.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 64,
+        "y": 224
+      },
+      "pixor": {
+        "action": "Print",
+        "degrees": 315.0,
+        "id": "e48d0925536bf462",
+        "index": 2,
+        "pivot": {
+          "x": 16,
+          "y": 21
+        },
+        "side": "Southwest",
+        "tag": "Print_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "printer-selout-32_Print_Southwest_03.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 96,
+        "y": 224
+      },
+      "pixor": {
+        "action": "Print",
+        "degrees": 315.0,
+        "id": "8633e30af7dcc561",
+        "index": 3,
+        "pivot": {
+          "x": 16,
+          "y": 21
+        },
+        "side": "Southwest",
+        "tag": "Print_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "printer-selout-32_Print_Southwest_04.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 128,
+        "y": 224
+      },
+      "pixor": {
+        "action": "Print",
+        "degrees": 315.0,
+        "id": "0b1d2f4f66789291",
+        "index": 4,
+        "pivot": {
+          "x": 16,
+          "y": 21
+        },
+        "side": "Southwest",
+        "tag": "Print_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "printer-selout-32_Print_Southwest_05.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 160,
+        "y": 224
+      },
+      "pixor": {
+        "action": "Print",
+        "degrees": 315.0,
+        "id": "d6b67a0ca72d9715",
+        "index": 5,
+        "pivot": {
+          "x": 16,
+          "y": 21
+        },
+        "side": "Southwest",
+        "tag": "Print_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "printer-selout-32_Print_Southwest_06.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 192,
+        "y": 224
+      },
+      "pixor": {
+        "action": "Print",
+        "degrees": 315.0,
+        "id": "7c4303c7fe6945ca",
+        "index": 6,
+        "pivot": {
+          "x": 16,
+          "y": 21
+        },
+        "side": "Southwest",
+        "tag": "Print_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "printer-selout-32_Print_Southwest_07.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 224,
+        "y": 224
+      },
+      "pixor": {
+        "action": "Print",
+        "degrees": 315.0,
+        "id": "a368c19688073514",
+        "index": 7,
+        "pivot": {
+          "x": 16,
+          "y": 21
+        },
+        "side": "Southwest",
+        "tag": "Print_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    }
+  ],
+  "meta": {
+    "app": "Pixor",
+    "format": "I8",
+    "frameTags": [
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 0,
+        "name": "Print_South",
+        "to": 7
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 8,
+        "name": "Print_Southeast",
+        "to": 15
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 16,
+        "name": "Print_East",
+        "to": 23
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 24,
+        "name": "Print_Northeast",
+        "to": 31
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 32,
+        "name": "Print_North",
+        "to": 39
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 40,
+        "name": "Print_Northwest",
+        "to": 47
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 48,
+        "name": "Print_West",
+        "to": 55
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 56,
+        "name": "Print_Southwest",
+        "to": 63
+      }
+    ],
+    "image": "printer-selout-32.png",
+    "layers": [
+      {
+        "blendMode": "normal",
+        "name": "final",
+        "opacity": 255
+      }
+    ],
+    "pixor": {
+      "cell": {
+        "h": 32,
+        "w": 32
+      },
+      "pivot": {
+        "x": 16,
+        "y": 21
+      },
+      "sides": {
+        "East": 90.0,
+        "North": 180.0,
+        "Northeast": 135.0,
+        "Northwest": 225.0,
+        "South": 0.0,
+        "Southeast": 45.0,
+        "Southwest": 315.0,
+        "West": 270.0
+      }
+    },
+    "scale": "1",
+    "size": {
+      "h": 256,
+      "w": 256
+    },
+    "slices": [
+      {
+        "color": "#0000ffff",
+        "keys": [
+          {
+            "bounds": {
+              "h": 32,
+              "w": 32,
+              "x": 0,
+              "y": 0
+            },
+            "frame": 0,
+            "pivot": {
+              "x": 16,
+              "y": 21
+            }
+          }
+        ],
+        "name": "pivot"
+      }
+    ],
+    "version": "2.0.1"
+  }
+}

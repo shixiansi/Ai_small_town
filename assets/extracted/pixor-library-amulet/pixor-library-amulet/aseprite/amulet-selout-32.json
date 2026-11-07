@@ -1,0 +1,2297 @@
+{
+  "frames": [
+    {
+      "duration": 83,
+      "filename": "amulet-selout-32_swing_South_00.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 0.0,
+        "id": "a9f86ae28190e654",
+        "index": 0,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "South",
+        "tag": "swing_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "amulet-selout-32_swing_South_01.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 32,
+        "y": 0
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 0.0,
+        "id": "1137fa81374282d5",
+        "index": 1,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "South",
+        "tag": "swing_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "amulet-selout-32_swing_South_02.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 64,
+        "y": 0
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 0.0,
+        "id": "347a6fbe69441841",
+        "index": 2,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "South",
+        "tag": "swing_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "amulet-selout-32_swing_South_03.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 96,
+        "y": 0
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 0.0,
+        "id": "0034f0ada3adb5c2",
+        "index": 3,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "South",
+        "tag": "swing_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "amulet-selout-32_swing_South_04.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 128,
+        "y": 0
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 0.0,
+        "id": "b463e855b9ff8586",
+        "index": 4,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "South",
+        "tag": "swing_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "amulet-selout-32_swing_South_05.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 160,
+        "y": 0
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 0.0,
+        "id": "0a338192a67d9eb2",
+        "index": 5,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "South",
+        "tag": "swing_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "amulet-selout-32_swing_South_06.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 192,
+        "y": 0
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 0.0,
+        "id": "d21652ac2e1ddb1d",
+        "index": 6,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "South",
+        "tag": "swing_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "amulet-selout-32_swing_South_07.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 224,
+        "y": 0
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 0.0,
+        "id": "0adfb317e721bb9f",
+        "index": 7,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "South",
+        "tag": "swing_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "amulet-selout-32_swing_Southeast_00.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 32
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 45.0,
+        "id": "853eb796a41fecbb",
+        "index": 0,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "Southeast",
+        "tag": "swing_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "amulet-selout-32_swing_Southeast_01.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 32,
+        "y": 32
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 45.0,
+        "id": "7fa835d3e02bcd36",
+        "index": 1,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "Southeast",
+        "tag": "swing_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "amulet-selout-32_swing_Southeast_02.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 64,
+        "y": 32
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 45.0,
+        "id": "17ce13beb992a42a",
+        "index": 2,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "Southeast",
+        "tag": "swing_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "amulet-selout-32_swing_Southeast_03.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 96,
+        "y": 32
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 45.0,
+        "id": "4358f095fc727b59",
+        "index": 3,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "Southeast",
+        "tag": "swing_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "amulet-selout-32_swing_Southeast_04.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 128,
+        "y": 32
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 45.0,
+        "id": "19b203afd9389689",
+        "index": 4,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "Southeast",
+        "tag": "swing_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "amulet-selout-32_swing_Southeast_05.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 160,
+        "y": 32
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 45.0,
+        "id": "6c698bf0df59705d",
+        "index": 5,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "Southeast",
+        "tag": "swing_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "amulet-selout-32_swing_Southeast_06.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 192,
+        "y": 32
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 45.0,
+        "id": "2499eb2ee72af272",
+        "index": 6,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "Southeast",
+        "tag": "swing_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "amulet-selout-32_swing_Southeast_07.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 224,
+        "y": 32
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 45.0,
+        "id": "3dc7e1073410b1bc",
+        "index": 7,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "Southeast",
+        "tag": "swing_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "amulet-selout-32_swing_East_00.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 64
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 90.0,
+        "id": "2697774cec275537",
+        "index": 0,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "East",
+        "tag": "swing_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "amulet-selout-32_swing_East_01.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 32,
+        "y": 64
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 90.0,
+        "id": "58b37033acc3e992",
+        "index": 1,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "East",
+        "tag": "swing_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "amulet-selout-32_swing_East_02.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 64,
+        "y": 64
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 90.0,
+        "id": "913a51dd0a13043e",
+        "index": 2,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "East",
+        "tag": "swing_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "amulet-selout-32_swing_East_03.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 96,
+        "y": 64
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 90.0,
+        "id": "a3a4ddadeb33cde5",
+        "index": 3,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "East",
+        "tag": "swing_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "amulet-selout-32_swing_East_04.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 128,
+        "y": 64
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 90.0,
+        "id": "6c54f749b6c22dbd",
+        "index": 4,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "East",
+        "tag": "swing_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "amulet-selout-32_swing_East_05.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 160,
+        "y": 64
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 90.0,
+        "id": "5f9bdb0a76547e29",
+        "index": 5,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "East",
+        "tag": "swing_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "amulet-selout-32_swing_East_06.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 192,
+        "y": 64
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 90.0,
+        "id": "cb00f8f50b3a2b66",
+        "index": 6,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "East",
+        "tag": "swing_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "amulet-selout-32_swing_East_07.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 224,
+        "y": 64
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 90.0,
+        "id": "7cd196abe69fb2a0",
+        "index": 7,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "East",
+        "tag": "swing_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "amulet-selout-32_swing_Northeast_00.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 96
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 135.0,
+        "id": "c16c02fa32c87d1d",
+        "index": 0,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "Northeast",
+        "tag": "swing_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "amulet-selout-32_swing_Northeast_01.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 32,
+        "y": 96
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 135.0,
+        "id": "871cfad259cb4b9c",
+        "index": 1,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "Northeast",
+        "tag": "swing_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "amulet-selout-32_swing_Northeast_02.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 64,
+        "y": 96
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 135.0,
+        "id": "7ab066b54e5393d8",
+        "index": 2,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "Northeast",
+        "tag": "swing_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "amulet-selout-32_swing_Northeast_03.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 96,
+        "y": 96
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 135.0,
+        "id": "d40b1cab99dfe1bf",
+        "index": 3,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "Northeast",
+        "tag": "swing_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "amulet-selout-32_swing_Northeast_04.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 128,
+        "y": 96
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 135.0,
+        "id": "2dd01d55f5970833",
+        "index": 4,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "Northeast",
+        "tag": "swing_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "amulet-selout-32_swing_Northeast_05.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 160,
+        "y": 96
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 135.0,
+        "id": "d60e61a1c9a3dd2f",
+        "index": 5,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "Northeast",
+        "tag": "swing_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "amulet-selout-32_swing_Northeast_06.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 192,
+        "y": 96
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 135.0,
+        "id": "f095a2e63905b5fc",
+        "index": 6,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "Northeast",
+        "tag": "swing_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "amulet-selout-32_swing_Northeast_07.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 224,
+        "y": 96
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 135.0,
+        "id": "c8ed4f9f05e4b416",
+        "index": 7,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "Northeast",
+        "tag": "swing_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "amulet-selout-32_swing_North_00.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 128
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 180.0,
+        "id": "eb5f318b1ba5ba5a",
+        "index": 0,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "North",
+        "tag": "swing_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "amulet-selout-32_swing_North_01.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 32,
+        "y": 128
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 180.0,
+        "id": "f0e11783ba30b11f",
+        "index": 1,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "North",
+        "tag": "swing_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "amulet-selout-32_swing_North_02.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 64,
+        "y": 128
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 180.0,
+        "id": "da27ddbce87d6c6b",
+        "index": 2,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "North",
+        "tag": "swing_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "amulet-selout-32_swing_North_03.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 96,
+        "y": 128
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 180.0,
+        "id": "f59489ad9c65e8bc",
+        "index": 3,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "North",
+        "tag": "swing_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "amulet-selout-32_swing_North_04.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 128,
+        "y": 128
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 180.0,
+        "id": "0517705451520b8c",
+        "index": 4,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "North",
+        "tag": "swing_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "amulet-selout-32_swing_North_05.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 160,
+        "y": 128
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 180.0,
+        "id": "6760647ff9d36918",
+        "index": 5,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "North",
+        "tag": "swing_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "amulet-selout-32_swing_North_06.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 192,
+        "y": 128
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 180.0,
+        "id": "d6a36229ebbec8a3",
+        "index": 6,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "North",
+        "tag": "swing_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "amulet-selout-32_swing_North_07.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 224,
+        "y": 128
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 180.0,
+        "id": "37496442b78a2f9d",
+        "index": 7,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "North",
+        "tag": "swing_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "amulet-selout-32_swing_Northwest_00.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 160
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 225.0,
+        "id": "013cf2dd2d9cfd67",
+        "index": 0,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "Northwest",
+        "tag": "swing_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "amulet-selout-32_swing_Northwest_01.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 32,
+        "y": 160
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 225.0,
+        "id": "66e8c5b977a870a2",
+        "index": 1,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "Northwest",
+        "tag": "swing_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "amulet-selout-32_swing_Northwest_02.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 64,
+        "y": 160
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 225.0,
+        "id": "ddcb4458e0d70aee",
+        "index": 2,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "Northwest",
+        "tag": "swing_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "amulet-selout-32_swing_Northwest_03.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 96,
+        "y": 160
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 225.0,
+        "id": "b359530ca615ebf5",
+        "index": 3,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "Northwest",
+        "tag": "swing_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "amulet-selout-32_swing_Northwest_04.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 128,
+        "y": 160
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 225.0,
+        "id": "3e2273d262ee266d",
+        "index": 4,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "Northwest",
+        "tag": "swing_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "amulet-selout-32_swing_Northwest_05.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 160,
+        "y": 160
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 225.0,
+        "id": "b33ccb746da7f419",
+        "index": 5,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "Northwest",
+        "tag": "swing_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "amulet-selout-32_swing_Northwest_06.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 192,
+        "y": 160
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 225.0,
+        "id": "d42cf6dd8eb2f636",
+        "index": 6,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "Northwest",
+        "tag": "swing_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "amulet-selout-32_swing_Northwest_07.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 224,
+        "y": 160
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 225.0,
+        "id": "cb93111dcc14cd10",
+        "index": 7,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "Northwest",
+        "tag": "swing_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "amulet-selout-32_swing_West_00.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 192
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 270.0,
+        "id": "f75dc3470a161a25",
+        "index": 0,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "West",
+        "tag": "swing_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "amulet-selout-32_swing_West_01.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 32,
+        "y": 192
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 270.0,
+        "id": "f36cbb1f33fbdb44",
+        "index": 1,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "West",
+        "tag": "swing_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "amulet-selout-32_swing_West_02.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 64,
+        "y": 192
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 270.0,
+        "id": "f8e2dcb0307ed580",
+        "index": 2,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "West",
+        "tag": "swing_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "amulet-selout-32_swing_West_03.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 96,
+        "y": 192
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 270.0,
+        "id": "9261c0111f9eedf7",
+        "index": 3,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "West",
+        "tag": "swing_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "amulet-selout-32_swing_West_04.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 128,
+        "y": 192
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 270.0,
+        "id": "f0499187cd9e4e0b",
+        "index": 4,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "West",
+        "tag": "swing_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "amulet-selout-32_swing_West_05.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 160,
+        "y": 192
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 270.0,
+        "id": "cab948d06618a6d7",
+        "index": 5,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "West",
+        "tag": "swing_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "amulet-selout-32_swing_West_06.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 192,
+        "y": 192
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 270.0,
+        "id": "cf6818e1b8eb80a4",
+        "index": 6,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "West",
+        "tag": "swing_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "amulet-selout-32_swing_West_07.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 224,
+        "y": 192
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 270.0,
+        "id": "c5378762b7648e9e",
+        "index": 7,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "West",
+        "tag": "swing_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "amulet-selout-32_swing_Southwest_00.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 224
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 315.0,
+        "id": "cf2defafe5d62661",
+        "index": 0,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "Southwest",
+        "tag": "swing_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "amulet-selout-32_swing_Southwest_01.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 32,
+        "y": 224
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 315.0,
+        "id": "fa40b42cb3f41bd0",
+        "index": 1,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "Southwest",
+        "tag": "swing_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "amulet-selout-32_swing_Southwest_02.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 64,
+        "y": 224
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 315.0,
+        "id": "165a4e7f90fe69b4",
+        "index": 2,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "Southwest",
+        "tag": "swing_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "amulet-selout-32_swing_Southwest_03.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 96,
+        "y": 224
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 315.0,
+        "id": "3bde50258e3a3913",
+        "index": 3,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "Southwest",
+        "tag": "swing_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "amulet-selout-32_swing_Southwest_04.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 128,
+        "y": 224
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 315.0,
+        "id": "c1b497de7a7bf56f",
+        "index": 4,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "Southwest",
+        "tag": "swing_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "amulet-selout-32_swing_Southwest_05.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 160,
+        "y": 224
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 315.0,
+        "id": "b8c7ae629a67baf3",
+        "index": 5,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "Southwest",
+        "tag": "swing_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "amulet-selout-32_swing_Southwest_06.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 192,
+        "y": 224
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 315.0,
+        "id": "e5cec0b46680ef48",
+        "index": 6,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "Southwest",
+        "tag": "swing_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "amulet-selout-32_swing_Southwest_07.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 224,
+        "y": 224
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 315.0,
+        "id": "d07cb83578f42402",
+        "index": 7,
+        "pivot": {
+          "x": 16,
+          "y": 30
+        },
+        "side": "Southwest",
+        "tag": "swing_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    }
+  ],
+  "meta": {
+    "app": "Pixor",
+    "format": "I8",
+    "frameTags": [
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 0,
+        "name": "swing_South",
+        "to": 7
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 8,
+        "name": "swing_Southeast",
+        "to": 15
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 16,
+        "name": "swing_East",
+        "to": 23
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 24,
+        "name": "swing_Northeast",
+        "to": 31
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 32,
+        "name": "swing_North",
+        "to": 39
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 40,
+        "name": "swing_Northwest",
+        "to": 47
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 48,
+        "name": "swing_West",
+        "to": 55
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 56,
+        "name": "swing_Southwest",
+        "to": 63
+      }
+    ],
+    "image": "amulet-selout-32.png",
+    "layers": [
+      {
+        "blendMode": "normal",
+        "name": "final",
+        "opacity": 255
+      }
+    ],
+    "pixor": {
+      "cell": {
+        "h": 32,
+        "w": 32
+      },
+      "pivot": {
+        "x": 16,
+        "y": 30
+      },
+      "sides": {
+        "East": 90.0,
+        "North": 180.0,
+        "Northeast": 135.0,
+        "Northwest": 225.0,
+        "South": 0.0,
+        "Southeast": 45.0,
+        "Southwest": 315.0,
+        "West": 270.0
+      }
+    },
+    "scale": "1",
+    "size": {
+      "h": 256,
+      "w": 256
+    },
+    "slices": [
+      {
+        "color": "#0000ffff",
+        "keys": [
+          {
+            "bounds": {
+              "h": 32,
+              "w": 32,
+              "x": 0,
+              "y": 0
+            },
+            "frame": 0,
+            "pivot": {
+              "x": 16,
+              "y": 30
+            }
+          }
+        ],
+        "name": "pivot"
+      }
+    ],
+    "version": "2.4.0"
+  }
+}

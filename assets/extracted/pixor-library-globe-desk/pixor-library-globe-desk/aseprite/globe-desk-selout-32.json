@@ -1,0 +1,2297 @@
+{
+  "frames": [
+    {
+      "duration": 83,
+      "filename": "globe-desk-selout-32_Spin_South_00.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 0.0,
+        "id": "abb276273402dab2",
+        "index": 0,
+        "pivot": {
+          "x": 16,
+          "y": 24
+        },
+        "side": "South",
+        "tag": "Spin_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "globe-desk-selout-32_Spin_South_01.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 32,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 0.0,
+        "id": "55d852c32118ba57",
+        "index": 1,
+        "pivot": {
+          "x": 16,
+          "y": 24
+        },
+        "side": "South",
+        "tag": "Spin_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "globe-desk-selout-32_Spin_South_02.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 64,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 0.0,
+        "id": "e9de6cafddfa4ce3",
+        "index": 2,
+        "pivot": {
+          "x": 16,
+          "y": 24
+        },
+        "side": "South",
+        "tag": "Spin_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "globe-desk-selout-32_Spin_South_03.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 96,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 0.0,
+        "id": "e534ea25a29a3264",
+        "index": 3,
+        "pivot": {
+          "x": 16,
+          "y": 24
+        },
+        "side": "South",
+        "tag": "Spin_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "globe-desk-selout-32_Spin_South_04.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 128,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 0.0,
+        "id": "f69e8cb932facf34",
+        "index": 4,
+        "pivot": {
+          "x": 16,
+          "y": 24
+        },
+        "side": "South",
+        "tag": "Spin_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "globe-desk-selout-32_Spin_South_05.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 160,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 0.0,
+        "id": "da84f26655f08150",
+        "index": 5,
+        "pivot": {
+          "x": 16,
+          "y": 24
+        },
+        "side": "South",
+        "tag": "Spin_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "globe-desk-selout-32_Spin_South_06.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 192,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 0.0,
+        "id": "ab05f0152cf5797b",
+        "index": 6,
+        "pivot": {
+          "x": 16,
+          "y": 24
+        },
+        "side": "South",
+        "tag": "Spin_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "globe-desk-selout-32_Spin_South_07.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 224,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 0.0,
+        "id": "85dea7d718bce775",
+        "index": 7,
+        "pivot": {
+          "x": 16,
+          "y": 24
+        },
+        "side": "South",
+        "tag": "Spin_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "globe-desk-selout-32_Spin_Southeast_00.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 32
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 45.0,
+        "id": "595f38f56faa01dd",
+        "index": 0,
+        "pivot": {
+          "x": 16,
+          "y": 24
+        },
+        "side": "Southeast",
+        "tag": "Spin_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "globe-desk-selout-32_Spin_Southeast_01.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 32,
+        "y": 32
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 45.0,
+        "id": "930358ca0b44c8dc",
+        "index": 1,
+        "pivot": {
+          "x": 16,
+          "y": 24
+        },
+        "side": "Southeast",
+        "tag": "Spin_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "globe-desk-selout-32_Spin_Southeast_02.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 64,
+        "y": 32
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 45.0,
+        "id": "55481f86c3c30198",
+        "index": 2,
+        "pivot": {
+          "x": 16,
+          "y": 24
+        },
+        "side": "Southeast",
+        "tag": "Spin_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "globe-desk-selout-32_Spin_Southeast_03.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 96,
+        "y": 32
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 45.0,
+        "id": "a8125aca58789eff",
+        "index": 3,
+        "pivot": {
+          "x": 16,
+          "y": 24
+        },
+        "side": "Southeast",
+        "tag": "Spin_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "globe-desk-selout-32_Spin_Southeast_04.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 128,
+        "y": 32
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 45.0,
+        "id": "03667b4da42f0f73",
+        "index": 4,
+        "pivot": {
+          "x": 16,
+          "y": 24
+        },
+        "side": "Southeast",
+        "tag": "Spin_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "globe-desk-selout-32_Spin_Southeast_05.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 160,
+        "y": 32
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 45.0,
+        "id": "e7161a7341f826ef",
+        "index": 5,
+        "pivot": {
+          "x": 16,
+          "y": 24
+        },
+        "side": "Southeast",
+        "tag": "Spin_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "globe-desk-selout-32_Spin_Southeast_06.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 192,
+        "y": 32
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 45.0,
+        "id": "071ce960155b623c",
+        "index": 6,
+        "pivot": {
+          "x": 16,
+          "y": 24
+        },
+        "side": "Southeast",
+        "tag": "Spin_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "globe-desk-selout-32_Spin_Southeast_07.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 224,
+        "y": 32
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 45.0,
+        "id": "d4e3ad96b75fe456",
+        "index": 7,
+        "pivot": {
+          "x": 16,
+          "y": 24
+        },
+        "side": "Southeast",
+        "tag": "Spin_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "globe-desk-selout-32_Spin_East_00.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 64
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 90.0,
+        "id": "2df615bc03f8c1e5",
+        "index": 0,
+        "pivot": {
+          "x": 16,
+          "y": 24
+        },
+        "side": "East",
+        "tag": "Spin_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "globe-desk-selout-32_Spin_East_01.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 32,
+        "y": 64
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 90.0,
+        "id": "314835909cb1dc84",
+        "index": 1,
+        "pivot": {
+          "x": 16,
+          "y": 24
+        },
+        "side": "East",
+        "tag": "Spin_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "globe-desk-selout-32_Spin_East_02.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 64,
+        "y": 64
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 90.0,
+        "id": "ee9a46a2fca58b40",
+        "index": 2,
+        "pivot": {
+          "x": 16,
+          "y": 24
+        },
+        "side": "East",
+        "tag": "Spin_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "globe-desk-selout-32_Spin_East_03.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 96,
+        "y": 64
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 90.0,
+        "id": "b0e8af5b04ec4937",
+        "index": 3,
+        "pivot": {
+          "x": 16,
+          "y": 24
+        },
+        "side": "East",
+        "tag": "Spin_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "globe-desk-selout-32_Spin_East_04.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 128,
+        "y": 64
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 90.0,
+        "id": "d8d5144f6c0f2d4b",
+        "index": 4,
+        "pivot": {
+          "x": 16,
+          "y": 24
+        },
+        "side": "East",
+        "tag": "Spin_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "globe-desk-selout-32_Spin_East_05.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 160,
+        "y": 64
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 90.0,
+        "id": "587ee596b7649d97",
+        "index": 5,
+        "pivot": {
+          "x": 16,
+          "y": 24
+        },
+        "side": "East",
+        "tag": "Spin_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "globe-desk-selout-32_Spin_East_06.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 192,
+        "y": 64
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 90.0,
+        "id": "ca8f107ce911e5e4",
+        "index": 6,
+        "pivot": {
+          "x": 16,
+          "y": 24
+        },
+        "side": "East",
+        "tag": "Spin_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "globe-desk-selout-32_Spin_East_07.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 224,
+        "y": 64
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 90.0,
+        "id": "030301d42018dcde",
+        "index": 7,
+        "pivot": {
+          "x": 16,
+          "y": 24
+        },
+        "side": "East",
+        "tag": "Spin_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "globe-desk-selout-32_Spin_Northeast_00.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 96
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 135.0,
+        "id": "bc4513ff5401f2a3",
+        "index": 0,
+        "pivot": {
+          "x": 16,
+          "y": 24
+        },
+        "side": "Northeast",
+        "tag": "Spin_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "globe-desk-selout-32_Spin_Northeast_01.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 32,
+        "y": 96
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 135.0,
+        "id": "10bf607d6d9ff95e",
+        "index": 1,
+        "pivot": {
+          "x": 16,
+          "y": 24
+        },
+        "side": "Northeast",
+        "tag": "Spin_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "globe-desk-selout-32_Spin_Northeast_02.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 64,
+        "y": 96
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 135.0,
+        "id": "9ccafb5475783072",
+        "index": 2,
+        "pivot": {
+          "x": 16,
+          "y": 24
+        },
+        "side": "Northeast",
+        "tag": "Spin_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "globe-desk-selout-32_Spin_Northeast_03.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 96,
+        "y": 96
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 135.0,
+        "id": "dbd0cf03ab56cc51",
+        "index": 3,
+        "pivot": {
+          "x": 16,
+          "y": 24
+        },
+        "side": "Northeast",
+        "tag": "Spin_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "globe-desk-selout-32_Spin_Northeast_04.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 128,
+        "y": 96
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 135.0,
+        "id": "9b28ab40088e2a21",
+        "index": 4,
+        "pivot": {
+          "x": 16,
+          "y": 24
+        },
+        "side": "Northeast",
+        "tag": "Spin_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "globe-desk-selout-32_Spin_Northeast_05.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 160,
+        "y": 96
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 135.0,
+        "id": "f7446c36e13b2825",
+        "index": 5,
+        "pivot": {
+          "x": 16,
+          "y": 24
+        },
+        "side": "Northeast",
+        "tag": "Spin_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "globe-desk-selout-32_Spin_Northeast_06.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 192,
+        "y": 96
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 135.0,
+        "id": "7ced51f843096fba",
+        "index": 6,
+        "pivot": {
+          "x": 16,
+          "y": 24
+        },
+        "side": "Northeast",
+        "tag": "Spin_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "globe-desk-selout-32_Spin_Northeast_07.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 224,
+        "y": 96
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 135.0,
+        "id": "182cb0d3816192a4",
+        "index": 7,
+        "pivot": {
+          "x": 16,
+          "y": 24
+        },
+        "side": "Northeast",
+        "tag": "Spin_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "globe-desk-selout-32_Spin_North_00.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 128
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 180.0,
+        "id": "afed05da5da4fd64",
+        "index": 0,
+        "pivot": {
+          "x": 16,
+          "y": 24
+        },
+        "side": "North",
+        "tag": "Spin_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "globe-desk-selout-32_Spin_North_01.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 32,
+        "y": 128
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 180.0,
+        "id": "de2cb3323ce378c5",
+        "index": 1,
+        "pivot": {
+          "x": 16,
+          "y": 24
+        },
+        "side": "North",
+        "tag": "Spin_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "globe-desk-selout-32_Spin_North_02.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 64,
+        "y": 128
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 180.0,
+        "id": "ff1395e2b1792411",
+        "index": 2,
+        "pivot": {
+          "x": 16,
+          "y": 24
+        },
+        "side": "North",
+        "tag": "Spin_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "globe-desk-selout-32_Spin_North_03.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 96,
+        "y": 128
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 180.0,
+        "id": "766a91dbef0da5b2",
+        "index": 3,
+        "pivot": {
+          "x": 16,
+          "y": 24
+        },
+        "side": "North",
+        "tag": "Spin_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "globe-desk-selout-32_Spin_North_04.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 128,
+        "y": 128
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 180.0,
+        "id": "eb808470dacb32d6",
+        "index": 4,
+        "pivot": {
+          "x": 16,
+          "y": 24
+        },
+        "side": "North",
+        "tag": "Spin_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "globe-desk-selout-32_Spin_North_05.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 160,
+        "y": 128
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 180.0,
+        "id": "900ca5a29b439dc2",
+        "index": 5,
+        "pivot": {
+          "x": 16,
+          "y": 24
+        },
+        "side": "North",
+        "tag": "Spin_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "globe-desk-selout-32_Spin_North_06.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 192,
+        "y": 128
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 180.0,
+        "id": "2724651141e1d84d",
+        "index": 6,
+        "pivot": {
+          "x": 16,
+          "y": 24
+        },
+        "side": "North",
+        "tag": "Spin_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "globe-desk-selout-32_Spin_North_07.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 224,
+        "y": 128
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 180.0,
+        "id": "49104d21287d44ef",
+        "index": 7,
+        "pivot": {
+          "x": 16,
+          "y": 24
+        },
+        "side": "North",
+        "tag": "Spin_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "globe-desk-selout-32_Spin_Northwest_00.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 160
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 225.0,
+        "id": "fd75750df4da2fe9",
+        "index": 0,
+        "pivot": {
+          "x": 16,
+          "y": 24
+        },
+        "side": "Northwest",
+        "tag": "Spin_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "globe-desk-selout-32_Spin_Northwest_01.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 32,
+        "y": 160
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 225.0,
+        "id": "b9773eb52dee77f8",
+        "index": 1,
+        "pivot": {
+          "x": 16,
+          "y": 24
+        },
+        "side": "Northwest",
+        "tag": "Spin_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "globe-desk-selout-32_Spin_Northwest_02.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 64,
+        "y": 160
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 225.0,
+        "id": "0d62b121cdfdca7c",
+        "index": 2,
+        "pivot": {
+          "x": 16,
+          "y": 24
+        },
+        "side": "Northwest",
+        "tag": "Spin_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "globe-desk-selout-32_Spin_Northwest_03.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 96,
+        "y": 160
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 225.0,
+        "id": "4cb58a83485a1fab",
+        "index": 3,
+        "pivot": {
+          "x": 16,
+          "y": 24
+        },
+        "side": "Northwest",
+        "tag": "Spin_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "globe-desk-selout-32_Spin_Northwest_04.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 128,
+        "y": 160
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 225.0,
+        "id": "7e9b50dbc332ca47",
+        "index": 4,
+        "pivot": {
+          "x": 16,
+          "y": 24
+        },
+        "side": "Northwest",
+        "tag": "Spin_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "globe-desk-selout-32_Spin_Northwest_05.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 160,
+        "y": 160
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 225.0,
+        "id": "5079a0ddbd026abb",
+        "index": 5,
+        "pivot": {
+          "x": 16,
+          "y": 24
+        },
+        "side": "Northwest",
+        "tag": "Spin_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "globe-desk-selout-32_Spin_Northwest_06.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 192,
+        "y": 160
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 225.0,
+        "id": "e6b830dc2f18a410",
+        "index": 6,
+        "pivot": {
+          "x": 16,
+          "y": 24
+        },
+        "side": "Northwest",
+        "tag": "Spin_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "globe-desk-selout-32_Spin_Northwest_07.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 224,
+        "y": 160
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 225.0,
+        "id": "65fcf457f2f3e46a",
+        "index": 7,
+        "pivot": {
+          "x": 16,
+          "y": 24
+        },
+        "side": "Northwest",
+        "tag": "Spin_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "globe-desk-selout-32_Spin_West_00.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 192
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 270.0,
+        "id": "2c9ab64ff8dc550f",
+        "index": 0,
+        "pivot": {
+          "x": 16,
+          "y": 24
+        },
+        "side": "West",
+        "tag": "Spin_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "globe-desk-selout-32_Spin_West_01.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 32,
+        "y": 192
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 270.0,
+        "id": "aad4575f397b0d6a",
+        "index": 1,
+        "pivot": {
+          "x": 16,
+          "y": 24
+        },
+        "side": "West",
+        "tag": "Spin_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "globe-desk-selout-32_Spin_West_02.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 64,
+        "y": 192
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 270.0,
+        "id": "3eda714bf65c9ff6",
+        "index": 2,
+        "pivot": {
+          "x": 16,
+          "y": 24
+        },
+        "side": "West",
+        "tag": "Spin_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "globe-desk-selout-32_Spin_West_03.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 96,
+        "y": 192
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 270.0,
+        "id": "e846d1ad2a75cfcd",
+        "index": 3,
+        "pivot": {
+          "x": 16,
+          "y": 24
+        },
+        "side": "West",
+        "tag": "Spin_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "globe-desk-selout-32_Spin_West_04.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 128,
+        "y": 192
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 270.0,
+        "id": "4647b95dc1068d25",
+        "index": 4,
+        "pivot": {
+          "x": 16,
+          "y": 24
+        },
+        "side": "West",
+        "tag": "Spin_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "globe-desk-selout-32_Spin_West_05.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 160,
+        "y": 192
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 270.0,
+        "id": "ea2bf866e8598f21",
+        "index": 5,
+        "pivot": {
+          "x": 16,
+          "y": 24
+        },
+        "side": "West",
+        "tag": "Spin_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "globe-desk-selout-32_Spin_West_06.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 192,
+        "y": 192
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 270.0,
+        "id": "5b62c6d0cc60c39e",
+        "index": 6,
+        "pivot": {
+          "x": 16,
+          "y": 24
+        },
+        "side": "West",
+        "tag": "Spin_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "globe-desk-selout-32_Spin_West_07.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 224,
+        "y": 192
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 270.0,
+        "id": "fe4ea1bc7475a0f8",
+        "index": 7,
+        "pivot": {
+          "x": 16,
+          "y": 24
+        },
+        "side": "West",
+        "tag": "Spin_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "globe-desk-selout-32_Spin_Southwest_00.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 224
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 315.0,
+        "id": "d63ad845c7b53227",
+        "index": 0,
+        "pivot": {
+          "x": 16,
+          "y": 24
+        },
+        "side": "Southwest",
+        "tag": "Spin_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "globe-desk-selout-32_Spin_Southwest_01.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 32,
+        "y": 224
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 315.0,
+        "id": "131725caf899ffe2",
+        "index": 1,
+        "pivot": {
+          "x": 16,
+          "y": 24
+        },
+        "side": "Southwest",
+        "tag": "Spin_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "globe-desk-selout-32_Spin_Southwest_02.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 64,
+        "y": 224
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 315.0,
+        "id": "e44af6edf2e522ae",
+        "index": 2,
+        "pivot": {
+          "x": 16,
+          "y": 24
+        },
+        "side": "Southwest",
+        "tag": "Spin_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "globe-desk-selout-32_Spin_Southwest_03.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 96,
+        "y": 224
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 315.0,
+        "id": "d895d545439a2935",
+        "index": 3,
+        "pivot": {
+          "x": 16,
+          "y": 24
+        },
+        "side": "Southwest",
+        "tag": "Spin_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "globe-desk-selout-32_Spin_Southwest_04.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 128,
+        "y": 224
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 315.0,
+        "id": "fafef60fe86f5bad",
+        "index": 4,
+        "pivot": {
+          "x": 16,
+          "y": 24
+        },
+        "side": "Southwest",
+        "tag": "Spin_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "globe-desk-selout-32_Spin_Southwest_05.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 160,
+        "y": 224
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 315.0,
+        "id": "ccdc865acd75a4d9",
+        "index": 5,
+        "pivot": {
+          "x": 16,
+          "y": 24
+        },
+        "side": "Southwest",
+        "tag": "Spin_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "globe-desk-selout-32_Spin_Southwest_06.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 192,
+        "y": 224
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 315.0,
+        "id": "805b56ef0fa48576",
+        "index": 6,
+        "pivot": {
+          "x": 16,
+          "y": 24
+        },
+        "side": "Southwest",
+        "tag": "Spin_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "globe-desk-selout-32_Spin_Southwest_07.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 224,
+        "y": 224
+      },
+      "pixor": {
+        "action": "Spin",
+        "degrees": 315.0,
+        "id": "037168d91a2ea750",
+        "index": 7,
+        "pivot": {
+          "x": 16,
+          "y": 24
+        },
+        "side": "Southwest",
+        "tag": "Spin_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    }
+  ],
+  "meta": {
+    "app": "Pixor",
+    "format": "I8",
+    "frameTags": [
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 0,
+        "name": "Spin_South",
+        "to": 7
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 8,
+        "name": "Spin_Southeast",
+        "to": 15
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 16,
+        "name": "Spin_East",
+        "to": 23
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 24,
+        "name": "Spin_Northeast",
+        "to": 31
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 32,
+        "name": "Spin_North",
+        "to": 39
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 40,
+        "name": "Spin_Northwest",
+        "to": 47
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 48,
+        "name": "Spin_West",
+        "to": 55
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 56,
+        "name": "Spin_Southwest",
+        "to": 63
+      }
+    ],
+    "image": "globe-desk-selout-32.png",
+    "layers": [
+      {
+        "blendMode": "normal",
+        "name": "final",
+        "opacity": 255
+      }
+    ],
+    "pixor": {
+      "cell": {
+        "h": 32,
+        "w": 32
+      },
+      "pivot": {
+        "x": 16,
+        "y": 24
+      },
+      "sides": {
+        "East": 90.0,
+        "North": 180.0,
+        "Northeast": 135.0,
+        "Northwest": 225.0,
+        "South": 0.0,
+        "Southeast": 45.0,
+        "Southwest": 315.0,
+        "West": 270.0
+      }
+    },
+    "scale": "1",
+    "size": {
+      "h": 256,
+      "w": 256
+    },
+    "slices": [
+      {
+        "color": "#0000ffff",
+        "keys": [
+          {
+            "bounds": {
+              "h": 32,
+              "w": 32,
+              "x": 0,
+              "y": 0
+            },
+            "frame": 0,
+            "pivot": {
+              "x": 16,
+              "y": 24
+            }
+          }
+        ],
+        "name": "pivot"
+      }
+    ],
+    "version": "2.0.1"
+  }
+}

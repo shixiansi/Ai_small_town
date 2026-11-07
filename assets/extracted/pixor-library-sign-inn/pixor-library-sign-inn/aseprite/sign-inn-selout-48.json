@@ -1,0 +1,2297 @@
+{
+  "frames": [
+    {
+      "duration": 83,
+      "filename": "sign-inn-selout-48_swing_South_00.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 0.0,
+        "id": "a6b2189fe246e5b5",
+        "index": 0,
+        "pivot": {
+          "x": 24,
+          "y": 39
+        },
+        "side": "South",
+        "tag": "swing_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "sign-inn-selout-48_swing_South_01.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 48,
+        "y": 0
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 0.0,
+        "id": "ef43ec31292af3b4",
+        "index": 1,
+        "pivot": {
+          "x": 24,
+          "y": 39
+        },
+        "side": "South",
+        "tag": "swing_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "sign-inn-selout-48_swing_South_02.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 96,
+        "y": 0
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 0.0,
+        "id": "d32a51de4c20a5d0",
+        "index": 2,
+        "pivot": {
+          "x": 24,
+          "y": 39
+        },
+        "side": "South",
+        "tag": "swing_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "sign-inn-selout-48_swing_South_03.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 144,
+        "y": 0
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 0.0,
+        "id": "c99465f6a8ad11a7",
+        "index": 3,
+        "pivot": {
+          "x": 24,
+          "y": 39
+        },
+        "side": "South",
+        "tag": "swing_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "sign-inn-selout-48_swing_South_04.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 192,
+        "y": 0
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 0.0,
+        "id": "2e05194c85cb759b",
+        "index": 4,
+        "pivot": {
+          "x": 24,
+          "y": 39
+        },
+        "side": "South",
+        "tag": "swing_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "sign-inn-selout-48_swing_South_05.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 240,
+        "y": 0
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 0.0,
+        "id": "ce044cca29b95f67",
+        "index": 5,
+        "pivot": {
+          "x": 24,
+          "y": 39
+        },
+        "side": "South",
+        "tag": "swing_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "sign-inn-selout-48_swing_South_06.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 288,
+        "y": 0
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 0.0,
+        "id": "461abec257cfc114",
+        "index": 6,
+        "pivot": {
+          "x": 24,
+          "y": 39
+        },
+        "side": "South",
+        "tag": "swing_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "sign-inn-selout-48_swing_South_07.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 336,
+        "y": 0
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 0.0,
+        "id": "8ec6959ce28bfe2e",
+        "index": 7,
+        "pivot": {
+          "x": 24,
+          "y": 39
+        },
+        "side": "South",
+        "tag": "swing_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "sign-inn-selout-48_swing_Southeast_00.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 48
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 45.0,
+        "id": "30b441e0cdb0273e",
+        "index": 0,
+        "pivot": {
+          "x": 24,
+          "y": 39
+        },
+        "side": "Southeast",
+        "tag": "swing_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "sign-inn-selout-48_swing_Southeast_01.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 48,
+        "y": 48
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 45.0,
+        "id": "6ed89a8dd537b203",
+        "index": 1,
+        "pivot": {
+          "x": 24,
+          "y": 39
+        },
+        "side": "Southeast",
+        "tag": "swing_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "sign-inn-selout-48_swing_Southeast_02.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 96,
+        "y": 48
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 45.0,
+        "id": "c6116750afc47837",
+        "index": 2,
+        "pivot": {
+          "x": 24,
+          "y": 39
+        },
+        "side": "Southeast",
+        "tag": "swing_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "sign-inn-selout-48_swing_Southeast_03.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 144,
+        "y": 48
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 45.0,
+        "id": "03c2fe98a77dba40",
+        "index": 3,
+        "pivot": {
+          "x": 24,
+          "y": 39
+        },
+        "side": "Southeast",
+        "tag": "swing_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "sign-inn-selout-48_swing_Southeast_04.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 192,
+        "y": 48
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 45.0,
+        "id": "9cf5388f4ac75648",
+        "index": 4,
+        "pivot": {
+          "x": 24,
+          "y": 39
+        },
+        "side": "Southeast",
+        "tag": "swing_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "sign-inn-selout-48_swing_Southeast_05.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 240,
+        "y": 48
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 45.0,
+        "id": "98e1dea6322597bc",
+        "index": 5,
+        "pivot": {
+          "x": 24,
+          "y": 39
+        },
+        "side": "Southeast",
+        "tag": "swing_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "sign-inn-selout-48_swing_Southeast_06.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 288,
+        "y": 48
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 45.0,
+        "id": "78db0fb95ec25c6f",
+        "index": 6,
+        "pivot": {
+          "x": 24,
+          "y": 39
+        },
+        "side": "Southeast",
+        "tag": "swing_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "sign-inn-selout-48_swing_Southeast_07.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 336,
+        "y": 48
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 45.0,
+        "id": "f01eb774edeefe79",
+        "index": 7,
+        "pivot": {
+          "x": 24,
+          "y": 39
+        },
+        "side": "Southeast",
+        "tag": "swing_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "sign-inn-selout-48_swing_East_00.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 96
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 90.0,
+        "id": "5134b92adf68e3dc",
+        "index": 0,
+        "pivot": {
+          "x": 24,
+          "y": 39
+        },
+        "side": "East",
+        "tag": "swing_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "sign-inn-selout-48_swing_East_01.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 48,
+        "y": 96
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 90.0,
+        "id": "1790995643ce1cdd",
+        "index": 1,
+        "pivot": {
+          "x": 24,
+          "y": 39
+        },
+        "side": "East",
+        "tag": "swing_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "sign-inn-selout-48_swing_East_02.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 96,
+        "y": 96
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 90.0,
+        "id": "c4d911153dad4309",
+        "index": 2,
+        "pivot": {
+          "x": 24,
+          "y": 39
+        },
+        "side": "East",
+        "tag": "swing_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "sign-inn-selout-48_swing_East_03.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 144,
+        "y": 96
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 90.0,
+        "id": "e7d3b30b71827b3a",
+        "index": 3,
+        "pivot": {
+          "x": 24,
+          "y": 39
+        },
+        "side": "East",
+        "tag": "swing_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "sign-inn-selout-48_swing_East_04.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 192,
+        "y": 96
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 90.0,
+        "id": "97bcad4e46d00e7e",
+        "index": 4,
+        "pivot": {
+          "x": 24,
+          "y": 39
+        },
+        "side": "East",
+        "tag": "swing_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "sign-inn-selout-48_swing_East_05.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 240,
+        "y": 96
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 90.0,
+        "id": "95dba74826742bda",
+        "index": 5,
+        "pivot": {
+          "x": 24,
+          "y": 39
+        },
+        "side": "East",
+        "tag": "swing_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "sign-inn-selout-48_swing_East_06.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 288,
+        "y": 96
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 90.0,
+        "id": "16c33c397b7c94c5",
+        "index": 6,
+        "pivot": {
+          "x": 24,
+          "y": 39
+        },
+        "side": "East",
+        "tag": "swing_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "sign-inn-selout-48_swing_East_07.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 336,
+        "y": 96
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 90.0,
+        "id": "e9a22bfa5a7f9687",
+        "index": 7,
+        "pivot": {
+          "x": 24,
+          "y": 39
+        },
+        "side": "East",
+        "tag": "swing_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "sign-inn-selout-48_swing_Northeast_00.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 144
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 135.0,
+        "id": "b58aadac5bf5b648",
+        "index": 0,
+        "pivot": {
+          "x": 24,
+          "y": 39
+        },
+        "side": "Northeast",
+        "tag": "swing_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "sign-inn-selout-48_swing_Northeast_01.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 48,
+        "y": 144
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 135.0,
+        "id": "b56bbda778707f59",
+        "index": 1,
+        "pivot": {
+          "x": 24,
+          "y": 39
+        },
+        "side": "Northeast",
+        "tag": "swing_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "sign-inn-selout-48_swing_Northeast_02.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 96,
+        "y": 144
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 135.0,
+        "id": "5367e645afba628d",
+        "index": 2,
+        "pivot": {
+          "x": 24,
+          "y": 39
+        },
+        "side": "Northeast",
+        "tag": "swing_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "sign-inn-selout-48_swing_Northeast_03.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 144,
+        "y": 144
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 135.0,
+        "id": "f1bb02e55c29d136",
+        "index": 3,
+        "pivot": {
+          "x": 24,
+          "y": 39
+        },
+        "side": "Northeast",
+        "tag": "swing_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "sign-inn-selout-48_swing_Northeast_04.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 192,
+        "y": 144
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 135.0,
+        "id": "d86cdd57e2b71542",
+        "index": 4,
+        "pivot": {
+          "x": 24,
+          "y": 39
+        },
+        "side": "Northeast",
+        "tag": "swing_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "sign-inn-selout-48_swing_Northeast_05.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 240,
+        "y": 144
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 135.0,
+        "id": "0ea371cfdff38756",
+        "index": 5,
+        "pivot": {
+          "x": 24,
+          "y": 39
+        },
+        "side": "Northeast",
+        "tag": "swing_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "sign-inn-selout-48_swing_Northeast_06.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 288,
+        "y": 144
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 135.0,
+        "id": "5b24a13b9dc4a6b9",
+        "index": 6,
+        "pivot": {
+          "x": 24,
+          "y": 39
+        },
+        "side": "Northeast",
+        "tag": "swing_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "sign-inn-selout-48_swing_Northeast_07.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 336,
+        "y": 144
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 135.0,
+        "id": "24d76892e313b29b",
+        "index": 7,
+        "pivot": {
+          "x": 24,
+          "y": 39
+        },
+        "side": "Northeast",
+        "tag": "swing_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "sign-inn-selout-48_swing_North_00.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 192
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 180.0,
+        "id": "b5419c8ea27d7a63",
+        "index": 0,
+        "pivot": {
+          "x": 24,
+          "y": 39
+        },
+        "side": "North",
+        "tag": "swing_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "sign-inn-selout-48_swing_North_01.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 48,
+        "y": 192
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 180.0,
+        "id": "9aeb6e5eed452e9e",
+        "index": 1,
+        "pivot": {
+          "x": 24,
+          "y": 39
+        },
+        "side": "North",
+        "tag": "swing_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "sign-inn-selout-48_swing_North_02.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 96,
+        "y": 192
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 180.0,
+        "id": "9c52f05c3ad12b32",
+        "index": 2,
+        "pivot": {
+          "x": 24,
+          "y": 39
+        },
+        "side": "North",
+        "tag": "swing_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "sign-inn-selout-48_swing_North_03.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 144,
+        "y": 192
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 180.0,
+        "id": "24fbf462fd3ca991",
+        "index": 3,
+        "pivot": {
+          "x": 24,
+          "y": 39
+        },
+        "side": "North",
+        "tag": "swing_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "sign-inn-selout-48_swing_North_04.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 192,
+        "y": 192
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 180.0,
+        "id": "5734b91c9d4fd861",
+        "index": 4,
+        "pivot": {
+          "x": 24,
+          "y": 39
+        },
+        "side": "North",
+        "tag": "swing_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "sign-inn-selout-48_swing_North_05.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 240,
+        "y": 192
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 180.0,
+        "id": "393c6999c44f5ee5",
+        "index": 5,
+        "pivot": {
+          "x": 24,
+          "y": 39
+        },
+        "side": "North",
+        "tag": "swing_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "sign-inn-selout-48_swing_North_06.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 288,
+        "y": 192
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 180.0,
+        "id": "9496aa2b1cf969fa",
+        "index": 6,
+        "pivot": {
+          "x": 24,
+          "y": 39
+        },
+        "side": "North",
+        "tag": "swing_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "sign-inn-selout-48_swing_North_07.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 336,
+        "y": 192
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 180.0,
+        "id": "d438beb0162340e4",
+        "index": 7,
+        "pivot": {
+          "x": 24,
+          "y": 39
+        },
+        "side": "North",
+        "tag": "swing_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "sign-inn-selout-48_swing_Northwest_00.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 240
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 225.0,
+        "id": "abdaa2beaad0e7a6",
+        "index": 0,
+        "pivot": {
+          "x": 24,
+          "y": 39
+        },
+        "side": "Northwest",
+        "tag": "swing_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "sign-inn-selout-48_swing_Northwest_01.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 48,
+        "y": 240
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 225.0,
+        "id": "a10afa63fd589f0b",
+        "index": 1,
+        "pivot": {
+          "x": 24,
+          "y": 39
+        },
+        "side": "Northwest",
+        "tag": "swing_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "sign-inn-selout-48_swing_Northwest_02.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 96,
+        "y": 240
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 225.0,
+        "id": "0965c82df155b17f",
+        "index": 2,
+        "pivot": {
+          "x": 24,
+          "y": 39
+        },
+        "side": "Northwest",
+        "tag": "swing_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "sign-inn-selout-48_swing_Northwest_03.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 144,
+        "y": 240
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 225.0,
+        "id": "b69b8cea5ca01418",
+        "index": 3,
+        "pivot": {
+          "x": 24,
+          "y": 39
+        },
+        "side": "Northwest",
+        "tag": "swing_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "sign-inn-selout-48_swing_Northwest_04.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 192,
+        "y": 240
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 225.0,
+        "id": "528323e0d9edf640",
+        "index": 4,
+        "pivot": {
+          "x": 24,
+          "y": 39
+        },
+        "side": "Northwest",
+        "tag": "swing_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "sign-inn-selout-48_swing_Northwest_05.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 240,
+        "y": 240
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 225.0,
+        "id": "af4640900ffcf1e4",
+        "index": 5,
+        "pivot": {
+          "x": 24,
+          "y": 39
+        },
+        "side": "Northwest",
+        "tag": "swing_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "sign-inn-selout-48_swing_Northwest_06.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 288,
+        "y": 240
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 225.0,
+        "id": "3d3615a9de4fa997",
+        "index": 6,
+        "pivot": {
+          "x": 24,
+          "y": 39
+        },
+        "side": "Northwest",
+        "tag": "swing_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "sign-inn-selout-48_swing_Northwest_07.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 336,
+        "y": 240
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 225.0,
+        "id": "cb3518571780cc21",
+        "index": 7,
+        "pivot": {
+          "x": 24,
+          "y": 39
+        },
+        "side": "Northwest",
+        "tag": "swing_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "sign-inn-selout-48_swing_West_00.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 288
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 270.0,
+        "id": "55ac10170aaff1c2",
+        "index": 0,
+        "pivot": {
+          "x": 24,
+          "y": 39
+        },
+        "side": "West",
+        "tag": "swing_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "sign-inn-selout-48_swing_West_01.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 48,
+        "y": 288
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 270.0,
+        "id": "750e67bcf80d8c87",
+        "index": 1,
+        "pivot": {
+          "x": 24,
+          "y": 39
+        },
+        "side": "West",
+        "tag": "swing_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "sign-inn-selout-48_swing_West_02.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 96,
+        "y": 288
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 270.0,
+        "id": "9254e6c6c4a96033",
+        "index": 2,
+        "pivot": {
+          "x": 24,
+          "y": 39
+        },
+        "side": "West",
+        "tag": "swing_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "sign-inn-selout-48_swing_West_03.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 144,
+        "y": 288
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 270.0,
+        "id": "ff6f8a4be8932254",
+        "index": 3,
+        "pivot": {
+          "x": 24,
+          "y": 39
+        },
+        "side": "West",
+        "tag": "swing_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "sign-inn-selout-48_swing_West_04.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 192,
+        "y": 288
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 270.0,
+        "id": "8e14f865cfd06cc4",
+        "index": 4,
+        "pivot": {
+          "x": 24,
+          "y": 39
+        },
+        "side": "West",
+        "tag": "swing_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "sign-inn-selout-48_swing_West_05.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 240,
+        "y": 288
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 270.0,
+        "id": "ba62fd5d352acd60",
+        "index": 5,
+        "pivot": {
+          "x": 24,
+          "y": 39
+        },
+        "side": "West",
+        "tag": "swing_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "sign-inn-selout-48_swing_West_06.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 288,
+        "y": 288
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 270.0,
+        "id": "ee0c903b751934eb",
+        "index": 6,
+        "pivot": {
+          "x": 24,
+          "y": 39
+        },
+        "side": "West",
+        "tag": "swing_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "sign-inn-selout-48_swing_West_07.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 336,
+        "y": 288
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 270.0,
+        "id": "469e6f7d11b30cc5",
+        "index": 7,
+        "pivot": {
+          "x": 24,
+          "y": 39
+        },
+        "side": "West",
+        "tag": "swing_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "sign-inn-selout-48_swing_Southwest_00.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 336
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 315.0,
+        "id": "ec488d4c5a190400",
+        "index": 0,
+        "pivot": {
+          "x": 24,
+          "y": 39
+        },
+        "side": "Southwest",
+        "tag": "swing_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "sign-inn-selout-48_swing_Southwest_01.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 48,
+        "y": 336
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 315.0,
+        "id": "325a981d09708f31",
+        "index": 1,
+        "pivot": {
+          "x": 24,
+          "y": 39
+        },
+        "side": "Southwest",
+        "tag": "swing_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "sign-inn-selout-48_swing_Southwest_02.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 96,
+        "y": 336
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 315.0,
+        "id": "c586298cf16525a5",
+        "index": 2,
+        "pivot": {
+          "x": 24,
+          "y": 39
+        },
+        "side": "Southwest",
+        "tag": "swing_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "sign-inn-selout-48_swing_Southwest_03.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 144,
+        "y": 336
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 315.0,
+        "id": "33086d6480d29d7e",
+        "index": 3,
+        "pivot": {
+          "x": 24,
+          "y": 39
+        },
+        "side": "Southwest",
+        "tag": "swing_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "sign-inn-selout-48_swing_Southwest_04.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 192,
+        "y": 336
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 315.0,
+        "id": "0a3991a95501390a",
+        "index": 4,
+        "pivot": {
+          "x": 24,
+          "y": 39
+        },
+        "side": "Southwest",
+        "tag": "swing_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "sign-inn-selout-48_swing_Southwest_05.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 240,
+        "y": 336
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 315.0,
+        "id": "a13a2ea4c05934ae",
+        "index": 5,
+        "pivot": {
+          "x": 24,
+          "y": 39
+        },
+        "side": "Southwest",
+        "tag": "swing_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "sign-inn-selout-48_swing_Southwest_06.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 288,
+        "y": 336
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 315.0,
+        "id": "8671e7ae0c7ae8d1",
+        "index": 6,
+        "pivot": {
+          "x": 24,
+          "y": 39
+        },
+        "side": "Southwest",
+        "tag": "swing_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "sign-inn-selout-48_swing_Southwest_07.png",
+      "frame": {
+        "h": 48,
+        "w": 48,
+        "x": 336,
+        "y": 336
+      },
+      "pixor": {
+        "action": "swing",
+        "degrees": 315.0,
+        "id": "60c8905cefcad893",
+        "index": 7,
+        "pivot": {
+          "x": 24,
+          "y": 39
+        },
+        "side": "Southwest",
+        "tag": "swing_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 48,
+        "w": 48
+      },
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 48,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    }
+  ],
+  "meta": {
+    "app": "Pixor",
+    "format": "I8",
+    "frameTags": [
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 0,
+        "name": "swing_South",
+        "to": 7
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 8,
+        "name": "swing_Southeast",
+        "to": 15
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 16,
+        "name": "swing_East",
+        "to": 23
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 24,
+        "name": "swing_Northeast",
+        "to": 31
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 32,
+        "name": "swing_North",
+        "to": 39
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 40,
+        "name": "swing_Northwest",
+        "to": 47
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 48,
+        "name": "swing_West",
+        "to": 55
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 56,
+        "name": "swing_Southwest",
+        "to": 63
+      }
+    ],
+    "image": "sign-inn-selout-48.png",
+    "layers": [
+      {
+        "blendMode": "normal",
+        "name": "final",
+        "opacity": 255
+      }
+    ],
+    "pixor": {
+      "cell": {
+        "h": 48,
+        "w": 48
+      },
+      "pivot": {
+        "x": 24,
+        "y": 39
+      },
+      "sides": {
+        "East": 90.0,
+        "North": 180.0,
+        "Northeast": 135.0,
+        "Northwest": 225.0,
+        "South": 0.0,
+        "Southeast": 45.0,
+        "Southwest": 315.0,
+        "West": 270.0
+      }
+    },
+    "scale": "1",
+    "size": {
+      "h": 384,
+      "w": 384
+    },
+    "slices": [
+      {
+        "color": "#0000ffff",
+        "keys": [
+          {
+            "bounds": {
+              "h": 48,
+              "w": 48,
+              "x": 0,
+              "y": 0
+            },
+            "frame": 0,
+            "pivot": {
+              "x": 24,
+              "y": 39
+            }
+          }
+        ],
+        "name": "pivot"
+      }
+    ],
+    "version": "2.0.1"
+  }
+}

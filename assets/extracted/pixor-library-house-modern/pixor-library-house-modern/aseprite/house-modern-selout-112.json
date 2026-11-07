@@ -1,0 +1,401 @@
+{
+  "frames": [
+    {
+      "duration": 100,
+      "filename": "house-modern-selout-112_Static_South_00.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Static",
+        "degrees": 0.0,
+        "id": "bb89f68962a1580d",
+        "index": 0,
+        "pivot": {
+          "x": 56,
+          "y": 78
+        },
+        "side": "South",
+        "tag": "Static_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 100,
+      "filename": "house-modern-selout-112_Static_Southeast_00.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 112
+      },
+      "pixor": {
+        "action": "Static",
+        "degrees": 45.0,
+        "id": "334a0e2e516b4f66",
+        "index": 0,
+        "pivot": {
+          "x": 56,
+          "y": 78
+        },
+        "side": "Southeast",
+        "tag": "Static_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 100,
+      "filename": "house-modern-selout-112_Static_East_00.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 224
+      },
+      "pixor": {
+        "action": "Static",
+        "degrees": 90.0,
+        "id": "20ea708fc9f3eae4",
+        "index": 0,
+        "pivot": {
+          "x": 56,
+          "y": 78
+        },
+        "side": "East",
+        "tag": "Static_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 100,
+      "filename": "house-modern-selout-112_Static_Northeast_00.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 336
+      },
+      "pixor": {
+        "action": "Static",
+        "degrees": 135.0,
+        "id": "1562610b964983a0",
+        "index": 0,
+        "pivot": {
+          "x": 56,
+          "y": 78
+        },
+        "side": "Northeast",
+        "tag": "Static_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 100,
+      "filename": "house-modern-selout-112_Static_North_00.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 448
+      },
+      "pixor": {
+        "action": "Static",
+        "degrees": 180.0,
+        "id": "80b61e1e74613d4b",
+        "index": 0,
+        "pivot": {
+          "x": 56,
+          "y": 78
+        },
+        "side": "North",
+        "tag": "Static_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 100,
+      "filename": "house-modern-selout-112_Static_Northwest_00.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 560
+      },
+      "pixor": {
+        "action": "Static",
+        "degrees": 225.0,
+        "id": "2a0a7b2b8cdcb57e",
+        "index": 0,
+        "pivot": {
+          "x": 56,
+          "y": 78
+        },
+        "side": "Northwest",
+        "tag": "Static_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 100,
+      "filename": "house-modern-selout-112_Static_West_00.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 672
+      },
+      "pixor": {
+        "action": "Static",
+        "degrees": 270.0,
+        "id": "a6f4bd4a578ec1ea",
+        "index": 0,
+        "pivot": {
+          "x": 56,
+          "y": 78
+        },
+        "side": "West",
+        "tag": "Static_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 100,
+      "filename": "house-modern-selout-112_Static_Southwest_00.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 784
+      },
+      "pixor": {
+        "action": "Static",
+        "degrees": 315.0,
+        "id": "45c5412c99003408",
+        "index": 0,
+        "pivot": {
+          "x": 56,
+          "y": 78
+        },
+        "side": "Southwest",
+        "tag": "Static_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    }
+  ],
+  "meta": {
+    "app": "Pixor",
+    "format": "I8",
+    "frameTags": [
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 0,
+        "name": "Static_South",
+        "repeat": "1",
+        "to": 0
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 1,
+        "name": "Static_Southeast",
+        "repeat": "1",
+        "to": 1
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 2,
+        "name": "Static_East",
+        "repeat": "1",
+        "to": 2
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 3,
+        "name": "Static_Northeast",
+        "repeat": "1",
+        "to": 3
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 4,
+        "name": "Static_North",
+        "repeat": "1",
+        "to": 4
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 5,
+        "name": "Static_Northwest",
+        "repeat": "1",
+        "to": 5
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 6,
+        "name": "Static_West",
+        "repeat": "1",
+        "to": 6
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 7,
+        "name": "Static_Southwest",
+        "repeat": "1",
+        "to": 7
+      }
+    ],
+    "image": "house-modern-selout-112.png",
+    "layers": [
+      {
+        "blendMode": "normal",
+        "name": "final",
+        "opacity": 255
+      }
+    ],
+    "pixor": {
+      "cell": {
+        "h": 112,
+        "w": 112
+      },
+      "pivot": {
+        "x": 56,
+        "y": 78
+      },
+      "sides": {
+        "East": 90.0,
+        "North": 180.0,
+        "Northeast": 135.0,
+        "Northwest": 225.0,
+        "South": 0.0,
+        "Southeast": 45.0,
+        "Southwest": 315.0,
+        "West": 270.0
+      }
+    },
+    "scale": "1",
+    "size": {
+      "h": 896,
+      "w": 112
+    },
+    "slices": [
+      {
+        "color": "#0000ffff",
+        "keys": [
+          {
+            "bounds": {
+              "h": 112,
+              "w": 112,
+              "x": 0,
+              "y": 0
+            },
+            "frame": 0,
+            "pivot": {
+              "x": 56,
+              "y": 78
+            }
+          }
+        ],
+        "name": "pivot"
+      }
+    ],
+    "version": "2.4.0"
+  }
+}

@@ -1,0 +1,401 @@
+{
+  "frames": [
+    {
+      "duration": 100,
+      "filename": "street-lamp-selout-64_Static_South_00.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Static",
+        "degrees": 0.0,
+        "id": "1654f4009e170d00",
+        "index": 0,
+        "pivot": {
+          "x": 32,
+          "y": 53
+        },
+        "side": "South",
+        "tag": "Static_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 100,
+      "filename": "street-lamp-selout-64_Static_Southeast_00.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 64
+      },
+      "pixor": {
+        "action": "Static",
+        "degrees": 45.0,
+        "id": "015ba473af0bd90f",
+        "index": 0,
+        "pivot": {
+          "x": 32,
+          "y": 53
+        },
+        "side": "Southeast",
+        "tag": "Static_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 100,
+      "filename": "street-lamp-selout-64_Static_East_00.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 128
+      },
+      "pixor": {
+        "action": "Static",
+        "degrees": 90.0,
+        "id": "344366b9bdc00cd3",
+        "index": 0,
+        "pivot": {
+          "x": 32,
+          "y": 53
+        },
+        "side": "East",
+        "tag": "Static_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 100,
+      "filename": "street-lamp-selout-64_Static_Northeast_00.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 192
+      },
+      "pixor": {
+        "action": "Static",
+        "degrees": 135.0,
+        "id": "2e7018b0902d6fb1",
+        "index": 0,
+        "pivot": {
+          "x": 32,
+          "y": 53
+        },
+        "side": "Northeast",
+        "tag": "Static_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 100,
+      "filename": "street-lamp-selout-64_Static_North_00.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 256
+      },
+      "pixor": {
+        "action": "Static",
+        "degrees": 180.0,
+        "id": "464d9e9c1d823926",
+        "index": 0,
+        "pivot": {
+          "x": 32,
+          "y": 53
+        },
+        "side": "North",
+        "tag": "Static_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 100,
+      "filename": "street-lamp-selout-64_Static_Northwest_00.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 320
+      },
+      "pixor": {
+        "action": "Static",
+        "degrees": 225.0,
+        "id": "0a5990d840d7af73",
+        "index": 0,
+        "pivot": {
+          "x": 32,
+          "y": 53
+        },
+        "side": "Northwest",
+        "tag": "Static_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 100,
+      "filename": "street-lamp-selout-64_Static_West_00.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 384
+      },
+      "pixor": {
+        "action": "Static",
+        "degrees": 270.0,
+        "id": "65198370164b2639",
+        "index": 0,
+        "pivot": {
+          "x": 32,
+          "y": 53
+        },
+        "side": "West",
+        "tag": "Static_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 100,
+      "filename": "street-lamp-selout-64_Static_Southwest_00.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 448
+      },
+      "pixor": {
+        "action": "Static",
+        "degrees": 315.0,
+        "id": "26ff669acd9f20bd",
+        "index": 0,
+        "pivot": {
+          "x": 32,
+          "y": 53
+        },
+        "side": "Southwest",
+        "tag": "Static_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    }
+  ],
+  "meta": {
+    "app": "Pixor",
+    "format": "I8",
+    "frameTags": [
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 0,
+        "name": "Static_South",
+        "repeat": "1",
+        "to": 0
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 1,
+        "name": "Static_Southeast",
+        "repeat": "1",
+        "to": 1
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 2,
+        "name": "Static_East",
+        "repeat": "1",
+        "to": 2
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 3,
+        "name": "Static_Northeast",
+        "repeat": "1",
+        "to": 3
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 4,
+        "name": "Static_North",
+        "repeat": "1",
+        "to": 4
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 5,
+        "name": "Static_Northwest",
+        "repeat": "1",
+        "to": 5
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 6,
+        "name": "Static_West",
+        "repeat": "1",
+        "to": 6
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 7,
+        "name": "Static_Southwest",
+        "repeat": "1",
+        "to": 7
+      }
+    ],
+    "image": "street-lamp-selout-64.png",
+    "layers": [
+      {
+        "blendMode": "normal",
+        "name": "final",
+        "opacity": 255
+      }
+    ],
+    "pixor": {
+      "cell": {
+        "h": 64,
+        "w": 64
+      },
+      "pivot": {
+        "x": 32,
+        "y": 53
+      },
+      "sides": {
+        "East": 90.0,
+        "North": 180.0,
+        "Northeast": 135.0,
+        "Northwest": 225.0,
+        "South": 0.0,
+        "Southeast": 45.0,
+        "Southwest": 315.0,
+        "West": 270.0
+      }
+    },
+    "scale": "1",
+    "size": {
+      "h": 512,
+      "w": 64
+    },
+    "slices": [
+      {
+        "color": "#0000ffff",
+        "keys": [
+          {
+            "bounds": {
+              "h": 64,
+              "w": 64,
+              "x": 0,
+              "y": 0
+            },
+            "frame": 0,
+            "pivot": {
+              "x": 32,
+              "y": 53
+            }
+          }
+        ],
+        "name": "pivot"
+      }
+    ],
+    "version": "2.0.1"
+  }
+}

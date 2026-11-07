@@ -1,0 +1,4473 @@
+{
+  "frames": [
+    {
+      "duration": 83,
+      "filename": "oak-tree-selout-112_Sway_South_00.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 0.0,
+        "id": "abd5d48bdf1e9a95",
+        "index": 0,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "South",
+        "tag": "Sway_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "oak-tree-selout-112_Sway_South_01.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 112,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 0.0,
+        "id": "d5b5ca3f5a94f894",
+        "index": 1,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "South",
+        "tag": "Sway_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "oak-tree-selout-112_Sway_South_02.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 224,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 0.0,
+        "id": "721d519ce8f30ff0",
+        "index": 2,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "South",
+        "tag": "Sway_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "oak-tree-selout-112_Sway_South_03.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 336,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 0.0,
+        "id": "e3793b330e166dc7",
+        "index": 3,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "South",
+        "tag": "Sway_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "oak-tree-selout-112_Sway_South_04.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 448,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 0.0,
+        "id": "56e6ffb5d4f0b67b",
+        "index": 4,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "South",
+        "tag": "Sway_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "oak-tree-selout-112_Sway_South_05.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 560,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 0.0,
+        "id": "6cf74c88c68bc987",
+        "index": 5,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "South",
+        "tag": "Sway_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "oak-tree-selout-112_Sway_South_06.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 672,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 0.0,
+        "id": "a27f9c59daf60c34",
+        "index": 6,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "South",
+        "tag": "Sway_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "oak-tree-selout-112_Sway_South_07.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 784,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 0.0,
+        "id": "20087c0149b4470e",
+        "index": 7,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "South",
+        "tag": "Sway_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "oak-tree-selout-112_Sway_South_08.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 896,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 0.0,
+        "id": "c85681c3782b6e3a",
+        "index": 8,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "South",
+        "tag": "Sway_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "oak-tree-selout-112_Sway_South_09.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 1008,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 0.0,
+        "id": "a2776d7077280405",
+        "index": 9,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "South",
+        "tag": "Sway_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "oak-tree-selout-112_Sway_South_10.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 1120,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 0.0,
+        "id": "6d6b7bf9ec049909",
+        "index": 10,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "South",
+        "tag": "Sway_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "oak-tree-selout-112_Sway_South_11.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 1232,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 0.0,
+        "id": "3e875448e03149c5",
+        "index": 11,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "South",
+        "tag": "Sway_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "oak-tree-selout-112_Sway_South_12.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 1344,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 0.0,
+        "id": "e2127334845b81be",
+        "index": 12,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "South",
+        "tag": "Sway_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "oak-tree-selout-112_Sway_South_13.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 1456,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 0.0,
+        "id": "0e32cb9993b7c740",
+        "index": 13,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "South",
+        "tag": "Sway_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "oak-tree-selout-112_Sway_South_14.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 1568,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 0.0,
+        "id": "54861d4151ae1f54",
+        "index": 14,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "South",
+        "tag": "Sway_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "oak-tree-selout-112_Sway_South_15.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 1680,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 0.0,
+        "id": "f1c1def84c92f323",
+        "index": 15,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "South",
+        "tag": "Sway_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "oak-tree-selout-112_Sway_Southeast_00.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 112
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 45.0,
+        "id": "f7f16859e2cc261e",
+        "index": 0,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "Southeast",
+        "tag": "Sway_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "oak-tree-selout-112_Sway_Southeast_01.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 112,
+        "y": 112
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 45.0,
+        "id": "12479689980471e3",
+        "index": 1,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "Southeast",
+        "tag": "Sway_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "oak-tree-selout-112_Sway_Southeast_02.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 224,
+        "y": 112
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 45.0,
+        "id": "7e417c9cdb22df57",
+        "index": 2,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "Southeast",
+        "tag": "Sway_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "oak-tree-selout-112_Sway_Southeast_03.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 336,
+        "y": 112
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 45.0,
+        "id": "541146b858031560",
+        "index": 3,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "Southeast",
+        "tag": "Sway_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "oak-tree-selout-112_Sway_Southeast_04.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 448,
+        "y": 112
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 45.0,
+        "id": "76d4348b1078f228",
+        "index": 4,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "Southeast",
+        "tag": "Sway_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "oak-tree-selout-112_Sway_Southeast_05.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 560,
+        "y": 112
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 45.0,
+        "id": "5111f3f25d83fedc",
+        "index": 5,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "Southeast",
+        "tag": "Sway_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "oak-tree-selout-112_Sway_Southeast_06.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 672,
+        "y": 112
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 45.0,
+        "id": "c92957d90f47b78f",
+        "index": 6,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "Southeast",
+        "tag": "Sway_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "oak-tree-selout-112_Sway_Southeast_07.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 784,
+        "y": 112
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 45.0,
+        "id": "80fbddee0027d459",
+        "index": 7,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "Southeast",
+        "tag": "Sway_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "oak-tree-selout-112_Sway_Southeast_08.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 896,
+        "y": 112
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 45.0,
+        "id": "a1b79ddd248d5c7d",
+        "index": 8,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "Southeast",
+        "tag": "Sway_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "oak-tree-selout-112_Sway_Southeast_09.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 1008,
+        "y": 112
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 45.0,
+        "id": "b07afb553f071eb2",
+        "index": 9,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "Southeast",
+        "tag": "Sway_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "oak-tree-selout-112_Sway_Southeast_10.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 1120,
+        "y": 112
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 45.0,
+        "id": "2789c3033b0e030a",
+        "index": 10,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "Southeast",
+        "tag": "Sway_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "oak-tree-selout-112_Sway_Southeast_11.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 1232,
+        "y": 112
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 45.0,
+        "id": "1bc2436512208e0e",
+        "index": 11,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "Southeast",
+        "tag": "Sway_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "oak-tree-selout-112_Sway_Southeast_12.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 1344,
+        "y": 112
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 45.0,
+        "id": "d675e301a620e635",
+        "index": 12,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "Southeast",
+        "tag": "Sway_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "oak-tree-selout-112_Sway_Southeast_13.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 1456,
+        "y": 112
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 45.0,
+        "id": "b686cdd48f879de7",
+        "index": 13,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "Southeast",
+        "tag": "Sway_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "oak-tree-selout-112_Sway_Southeast_14.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 1568,
+        "y": 112
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 45.0,
+        "id": "6331dc9cb25b1583",
+        "index": 14,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "Southeast",
+        "tag": "Sway_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "oak-tree-selout-112_Sway_Southeast_15.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 1680,
+        "y": 112
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 45.0,
+        "id": "ffe47e8c625158f4",
+        "index": 15,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "Southeast",
+        "tag": "Sway_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "oak-tree-selout-112_Sway_East_00.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 224
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 90.0,
+        "id": "58e4f75ca4d9d3bc",
+        "index": 0,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "East",
+        "tag": "Sway_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "oak-tree-selout-112_Sway_East_01.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 112,
+        "y": 224
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 90.0,
+        "id": "ef72a4af9c196dbd",
+        "index": 1,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "East",
+        "tag": "Sway_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "oak-tree-selout-112_Sway_East_02.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 224,
+        "y": 224
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 90.0,
+        "id": "07f6d2c69df6e129",
+        "index": 2,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "East",
+        "tag": "Sway_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "oak-tree-selout-112_Sway_East_03.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 336,
+        "y": 224
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 90.0,
+        "id": "4eaf9f3a2419a55a",
+        "index": 3,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "East",
+        "tag": "Sway_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "oak-tree-selout-112_Sway_East_04.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 448,
+        "y": 224
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 90.0,
+        "id": "b20ec102bcd69b5e",
+        "index": 4,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "East",
+        "tag": "Sway_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "oak-tree-selout-112_Sway_East_05.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 560,
+        "y": 224
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 90.0,
+        "id": "83b9714fbc7a5afa",
+        "index": 5,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "East",
+        "tag": "Sway_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "oak-tree-selout-112_Sway_East_06.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 672,
+        "y": 224
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 90.0,
+        "id": "285f30be63d04fe5",
+        "index": 6,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "East",
+        "tag": "Sway_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "oak-tree-selout-112_Sway_East_07.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 784,
+        "y": 224
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 90.0,
+        "id": "6c443fa9e8877867",
+        "index": 7,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "East",
+        "tag": "Sway_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "oak-tree-selout-112_Sway_East_08.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 896,
+        "y": 224
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 90.0,
+        "id": "4a166cb58766bb53",
+        "index": 8,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "East",
+        "tag": "Sway_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "oak-tree-selout-112_Sway_East_09.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 1008,
+        "y": 224
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 90.0,
+        "id": "a5d64047aecc9648",
+        "index": 9,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "East",
+        "tag": "Sway_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "oak-tree-selout-112_Sway_East_10.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 1120,
+        "y": 224
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 90.0,
+        "id": "f969dd83e7a6460c",
+        "index": 10,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "East",
+        "tag": "Sway_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "oak-tree-selout-112_Sway_East_11.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 1232,
+        "y": 224
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 90.0,
+        "id": "30300a0711726de8",
+        "index": 11,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "East",
+        "tag": "Sway_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "oak-tree-selout-112_Sway_East_12.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 1344,
+        "y": 224
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 90.0,
+        "id": "5ce2caad4c86f30f",
+        "index": 12,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "East",
+        "tag": "Sway_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "oak-tree-selout-112_Sway_East_13.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 1456,
+        "y": 224
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 90.0,
+        "id": "be26f1f4ea7171b1",
+        "index": 13,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "East",
+        "tag": "Sway_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "oak-tree-selout-112_Sway_East_14.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 1568,
+        "y": 224
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 90.0,
+        "id": "eed22740783970e5",
+        "index": 14,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "East",
+        "tag": "Sway_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "oak-tree-selout-112_Sway_East_15.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 1680,
+        "y": 224
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 90.0,
+        "id": "f3c645f4b074b5c6",
+        "index": 15,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "East",
+        "tag": "Sway_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "oak-tree-selout-112_Sway_Northeast_00.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 336
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 135.0,
+        "id": "6c6126cd28647f28",
+        "index": 0,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "Northeast",
+        "tag": "Sway_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "oak-tree-selout-112_Sway_Northeast_01.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 112,
+        "y": 336
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 135.0,
+        "id": "aee058ef5e8d1a39",
+        "index": 1,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "Northeast",
+        "tag": "Sway_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "oak-tree-selout-112_Sway_Northeast_02.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 224,
+        "y": 336
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 135.0,
+        "id": "b81837e59dd54aad",
+        "index": 2,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "Northeast",
+        "tag": "Sway_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "oak-tree-selout-112_Sway_Northeast_03.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 336,
+        "y": 336
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 135.0,
+        "id": "d15d2a0312dbab56",
+        "index": 3,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "Northeast",
+        "tag": "Sway_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "oak-tree-selout-112_Sway_Northeast_04.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 448,
+        "y": 336
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 135.0,
+        "id": "7ca180f5fe904122",
+        "index": 4,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "Northeast",
+        "tag": "Sway_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "oak-tree-selout-112_Sway_Northeast_05.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 560,
+        "y": 336
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 135.0,
+        "id": "9905a143cc61f276",
+        "index": 5,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "Northeast",
+        "tag": "Sway_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "oak-tree-selout-112_Sway_Northeast_06.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 672,
+        "y": 336
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 135.0,
+        "id": "e586d0af8a3311d9",
+        "index": 6,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "Northeast",
+        "tag": "Sway_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "oak-tree-selout-112_Sway_Northeast_07.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 784,
+        "y": 336
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 135.0,
+        "id": "c8fc0c30feeb2b7b",
+        "index": 7,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "Northeast",
+        "tag": "Sway_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "oak-tree-selout-112_Sway_Northeast_08.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 896,
+        "y": 336
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 135.0,
+        "id": "410fbba0e909d85f",
+        "index": 8,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "Northeast",
+        "tag": "Sway_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "oak-tree-selout-112_Sway_Northeast_09.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 1008,
+        "y": 336
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 135.0,
+        "id": "8f7cd53666c08fdc",
+        "index": 9,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "Northeast",
+        "tag": "Sway_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "oak-tree-selout-112_Sway_Northeast_10.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 1120,
+        "y": 336
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 135.0,
+        "id": "aa99988609eebd38",
+        "index": 10,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "Northeast",
+        "tag": "Sway_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "oak-tree-selout-112_Sway_Northeast_11.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 1232,
+        "y": 336
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 135.0,
+        "id": "ac654420ea8a45fc",
+        "index": 11,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "Northeast",
+        "tag": "Sway_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "oak-tree-selout-112_Sway_Northeast_12.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 1344,
+        "y": 336
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 135.0,
+        "id": "36ae546a39d84ecb",
+        "index": 12,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "Northeast",
+        "tag": "Sway_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "oak-tree-selout-112_Sway_Northeast_13.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 1456,
+        "y": 336
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 135.0,
+        "id": "a5e2c3c63d3dc6b5",
+        "index": 13,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "Northeast",
+        "tag": "Sway_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "oak-tree-selout-112_Sway_Northeast_14.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 1568,
+        "y": 336
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 135.0,
+        "id": "fd15df0760531fa1",
+        "index": 14,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "Northeast",
+        "tag": "Sway_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "oak-tree-selout-112_Sway_Northeast_15.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 1680,
+        "y": 336
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 135.0,
+        "id": "ab1069a578a8a51a",
+        "index": 15,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "Northeast",
+        "tag": "Sway_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "oak-tree-selout-112_Sway_North_00.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 448
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 180.0,
+        "id": "4fd14e0f5ad72943",
+        "index": 0,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "North",
+        "tag": "Sway_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "oak-tree-selout-112_Sway_North_01.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 112,
+        "y": 448
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 180.0,
+        "id": "f9f9c505dbe0e7fe",
+        "index": 1,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "North",
+        "tag": "Sway_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "oak-tree-selout-112_Sway_North_02.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 224,
+        "y": 448
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 180.0,
+        "id": "4006f3db1e05f4d2",
+        "index": 2,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "North",
+        "tag": "Sway_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "oak-tree-selout-112_Sway_North_03.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 336,
+        "y": 448
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 180.0,
+        "id": "d40ea5682233b6b1",
+        "index": 3,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "North",
+        "tag": "Sway_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "oak-tree-selout-112_Sway_North_04.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 448,
+        "y": 448
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 180.0,
+        "id": "84630fc876cf18c1",
+        "index": 4,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "North",
+        "tag": "Sway_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "oak-tree-selout-112_Sway_North_05.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 560,
+        "y": 448
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 180.0,
+        "id": "dcf06d18a7842885",
+        "index": 5,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "North",
+        "tag": "Sway_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "oak-tree-selout-112_Sway_North_06.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 672,
+        "y": 448
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 180.0,
+        "id": "cae952d52153c51a",
+        "index": 6,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "North",
+        "tag": "Sway_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "oak-tree-selout-112_Sway_North_07.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 784,
+        "y": 448
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 180.0,
+        "id": "ac271db2255f1244",
+        "index": 7,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "North",
+        "tag": "Sway_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "oak-tree-selout-112_Sway_North_08.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 896,
+        "y": 448
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 180.0,
+        "id": "de4fa191bf659988",
+        "index": 8,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "North",
+        "tag": "Sway_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "oak-tree-selout-112_Sway_North_09.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 1008,
+        "y": 448
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 180.0,
+        "id": "027c9da8088e0013",
+        "index": 9,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "North",
+        "tag": "Sway_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "oak-tree-selout-112_Sway_North_10.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 1120,
+        "y": 448
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 180.0,
+        "id": "8e630d11fe7766b3",
+        "index": 10,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "North",
+        "tag": "Sway_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "oak-tree-selout-112_Sway_North_11.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 1232,
+        "y": 448
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 180.0,
+        "id": "1df23adb3e729247",
+        "index": 11,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "North",
+        "tag": "Sway_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "oak-tree-selout-112_Sway_North_12.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 1344,
+        "y": 448
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 180.0,
+        "id": "8751f83142b103d0",
+        "index": 12,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "North",
+        "tag": "Sway_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "oak-tree-selout-112_Sway_North_13.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 1456,
+        "y": 448
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 180.0,
+        "id": "1aac99b62aafe4c2",
+        "index": 13,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "North",
+        "tag": "Sway_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "oak-tree-selout-112_Sway_North_14.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 1568,
+        "y": 448
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 180.0,
+        "id": "ab0e058b70cf2a3e",
+        "index": 14,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "North",
+        "tag": "Sway_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "oak-tree-selout-112_Sway_North_15.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 1680,
+        "y": 448
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 180.0,
+        "id": "35fa87a88b4da68d",
+        "index": 15,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "North",
+        "tag": "Sway_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "oak-tree-selout-112_Sway_Northwest_00.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 560
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 225.0,
+        "id": "e66e0a9f5cbfb286",
+        "index": 0,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "Northwest",
+        "tag": "Sway_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "oak-tree-selout-112_Sway_Northwest_01.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 112,
+        "y": 560
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 225.0,
+        "id": "ee4037c75fdd06eb",
+        "index": 1,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "Northwest",
+        "tag": "Sway_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "oak-tree-selout-112_Sway_Northwest_02.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 224,
+        "y": 560
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 225.0,
+        "id": "dfbc2737ef45289f",
+        "index": 2,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "Northwest",
+        "tag": "Sway_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "oak-tree-selout-112_Sway_Northwest_03.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 336,
+        "y": 560
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 225.0,
+        "id": "b0b01671acdd1738",
+        "index": 3,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "Northwest",
+        "tag": "Sway_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "oak-tree-selout-112_Sway_Northwest_04.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 448,
+        "y": 560
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 225.0,
+        "id": "8d168bc18bdcc120",
+        "index": 4,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "Northwest",
+        "tag": "Sway_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "oak-tree-selout-112_Sway_Northwest_05.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 560,
+        "y": 560
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 225.0,
+        "id": "dadc9743d82fd804",
+        "index": 5,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "Northwest",
+        "tag": "Sway_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "oak-tree-selout-112_Sway_Northwest_06.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 672,
+        "y": 560
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 225.0,
+        "id": "36dc6c62916463b7",
+        "index": 6,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "Northwest",
+        "tag": "Sway_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "oak-tree-selout-112_Sway_Northwest_07.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 784,
+        "y": 560
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 225.0,
+        "id": "cf688037c68c6e01",
+        "index": 7,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "Northwest",
+        "tag": "Sway_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "oak-tree-selout-112_Sway_Northwest_08.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 896,
+        "y": 560
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 225.0,
+        "id": "e6146ea13f65efd5",
+        "index": 8,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "Northwest",
+        "tag": "Sway_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "oak-tree-selout-112_Sway_Northwest_09.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 1008,
+        "y": 560
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 225.0,
+        "id": "be75cc1956fc52aa",
+        "index": 9,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "Northwest",
+        "tag": "Sway_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "oak-tree-selout-112_Sway_Northwest_10.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 1120,
+        "y": 560
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 225.0,
+        "id": "68f865495200f812",
+        "index": 10,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "Northwest",
+        "tag": "Sway_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "oak-tree-selout-112_Sway_Northwest_11.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 1232,
+        "y": 560
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 225.0,
+        "id": "cabee5af763dfdb6",
+        "index": 11,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "Northwest",
+        "tag": "Sway_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "oak-tree-selout-112_Sway_Northwest_12.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 1344,
+        "y": 560
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 225.0,
+        "id": "e032b4d25c8443ad",
+        "index": 12,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "Northwest",
+        "tag": "Sway_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "oak-tree-selout-112_Sway_Northwest_13.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 1456,
+        "y": 560
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 225.0,
+        "id": "cde19fa546a468bf",
+        "index": 13,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "Northwest",
+        "tag": "Sway_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "oak-tree-selout-112_Sway_Northwest_14.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 1568,
+        "y": 560
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 225.0,
+        "id": "d1aead616807a2db",
+        "index": 14,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "Northwest",
+        "tag": "Sway_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "oak-tree-selout-112_Sway_Northwest_15.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 1680,
+        "y": 560
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 225.0,
+        "id": "c26b9a60b5b9c13c",
+        "index": 15,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "Northwest",
+        "tag": "Sway_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "oak-tree-selout-112_Sway_West_00.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 672
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 270.0,
+        "id": "f3bb128b663680a2",
+        "index": 0,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "West",
+        "tag": "Sway_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "oak-tree-selout-112_Sway_West_01.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 112,
+        "y": 672
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 270.0,
+        "id": "8e0f3faf1c2b0d67",
+        "index": 1,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "West",
+        "tag": "Sway_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "oak-tree-selout-112_Sway_West_02.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 224,
+        "y": 672
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 270.0,
+        "id": "6be16cbabb0a5053",
+        "index": 2,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "West",
+        "tag": "Sway_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "oak-tree-selout-112_Sway_West_03.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 336,
+        "y": 672
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 270.0,
+        "id": "fcaa3abd313feb74",
+        "index": 3,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "West",
+        "tag": "Sway_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "oak-tree-selout-112_Sway_West_04.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 448,
+        "y": 672
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 270.0,
+        "id": "9405c806a63007a4",
+        "index": 4,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "West",
+        "tag": "Sway_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "oak-tree-selout-112_Sway_West_05.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 560,
+        "y": 672
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 270.0,
+        "id": "61ef8356166bde80",
+        "index": 5,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "West",
+        "tag": "Sway_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "oak-tree-selout-112_Sway_West_06.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 672,
+        "y": 672
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 270.0,
+        "id": "b4e740acbae2d50b",
+        "index": 6,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "West",
+        "tag": "Sway_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "oak-tree-selout-112_Sway_West_07.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 784,
+        "y": 672
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 270.0,
+        "id": "4cfd71ec853af0a5",
+        "index": 7,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "West",
+        "tag": "Sway_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "oak-tree-selout-112_Sway_West_08.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 896,
+        "y": 672
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 270.0,
+        "id": "2ad19ef8241a69f1",
+        "index": 8,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "West",
+        "tag": "Sway_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "oak-tree-selout-112_Sway_West_09.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 1008,
+        "y": 672
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 270.0,
+        "id": "46fcec7f205f39ee",
+        "index": 9,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "West",
+        "tag": "Sway_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "oak-tree-selout-112_Sway_West_10.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 1120,
+        "y": 672
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 270.0,
+        "id": "8c9877b0926e6e5e",
+        "index": 10,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "West",
+        "tag": "Sway_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "oak-tree-selout-112_Sway_West_11.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 1232,
+        "y": 672
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 270.0,
+        "id": "5e4327fd92122dfa",
+        "index": 11,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "West",
+        "tag": "Sway_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "oak-tree-selout-112_Sway_West_12.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 1344,
+        "y": 672
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 270.0,
+        "id": "945fec77c2af8be9",
+        "index": 12,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "West",
+        "tag": "Sway_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "oak-tree-selout-112_Sway_West_13.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 1456,
+        "y": 672
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 270.0,
+        "id": "208410e6f7f080d3",
+        "index": 13,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "West",
+        "tag": "Sway_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "oak-tree-selout-112_Sway_West_14.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 1568,
+        "y": 672
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 270.0,
+        "id": "ec84a61eedf9edd7",
+        "index": 14,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "West",
+        "tag": "Sway_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "oak-tree-selout-112_Sway_West_15.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 1680,
+        "y": 672
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 270.0,
+        "id": "5b44e0efe640b6d0",
+        "index": 15,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "West",
+        "tag": "Sway_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "oak-tree-selout-112_Sway_Southwest_00.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 784
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 315.0,
+        "id": "789879fe5a951ae0",
+        "index": 0,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "Southwest",
+        "tag": "Sway_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "oak-tree-selout-112_Sway_Southwest_01.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 112,
+        "y": 784
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 315.0,
+        "id": "814bd74db30a8391",
+        "index": 1,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "Southwest",
+        "tag": "Sway_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "oak-tree-selout-112_Sway_Southwest_02.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 224,
+        "y": 784
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 315.0,
+        "id": "3b27aa46fc29b545",
+        "index": 2,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "Southwest",
+        "tag": "Sway_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "oak-tree-selout-112_Sway_Southwest_03.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 336,
+        "y": 784
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 315.0,
+        "id": "f73b5149a313089e",
+        "index": 3,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "Southwest",
+        "tag": "Sway_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "oak-tree-selout-112_Sway_Southwest_04.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 448,
+        "y": 784
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 315.0,
+        "id": "8f8ad0da017e566a",
+        "index": 4,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "Southwest",
+        "tag": "Sway_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "oak-tree-selout-112_Sway_Southwest_05.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 560,
+        "y": 784
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 315.0,
+        "id": "7f3baf59e320cc4e",
+        "index": 5,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "Southwest",
+        "tag": "Sway_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "oak-tree-selout-112_Sway_Southwest_06.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 672,
+        "y": 784
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 315.0,
+        "id": "d1c4c3380e1b3bf1",
+        "index": 6,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "Southwest",
+        "tag": "Sway_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "oak-tree-selout-112_Sway_Southwest_07.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 784,
+        "y": 784
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 315.0,
+        "id": "c25ba51049fa69f3",
+        "index": 7,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "Southwest",
+        "tag": "Sway_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "oak-tree-selout-112_Sway_Southwest_08.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 896,
+        "y": 784
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 315.0,
+        "id": "6997a286e2843507",
+        "index": 8,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "Southwest",
+        "tag": "Sway_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "oak-tree-selout-112_Sway_Southwest_09.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 1008,
+        "y": 784
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 315.0,
+        "id": "3088a19acbf11ae4",
+        "index": 9,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "Southwest",
+        "tag": "Sway_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "oak-tree-selout-112_Sway_Southwest_10.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 1120,
+        "y": 784
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 315.0,
+        "id": "76ef3271f14159b0",
+        "index": 10,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "Southwest",
+        "tag": "Sway_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "oak-tree-selout-112_Sway_Southwest_11.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 1232,
+        "y": 784
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 315.0,
+        "id": "dfa905ee29be0ed4",
+        "index": 11,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "Southwest",
+        "tag": "Sway_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "oak-tree-selout-112_Sway_Southwest_12.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 1344,
+        "y": 784
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 315.0,
+        "id": "12d490faa50b2253",
+        "index": 12,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "Southwest",
+        "tag": "Sway_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "oak-tree-selout-112_Sway_Southwest_13.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 1456,
+        "y": 784
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 315.0,
+        "id": "2b6792638550e49d",
+        "index": 13,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "Southwest",
+        "tag": "Sway_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "oak-tree-selout-112_Sway_Southwest_14.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 1568,
+        "y": 784
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 315.0,
+        "id": "22ca88a0a9f14289",
+        "index": 14,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "Southwest",
+        "tag": "Sway_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "oak-tree-selout-112_Sway_Southwest_15.png",
+      "frame": {
+        "h": 112,
+        "w": 112,
+        "x": 1680,
+        "y": 784
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 315.0,
+        "id": "e4d4811dc6929a72",
+        "index": 15,
+        "pivot": {
+          "x": 56,
+          "y": 96
+        },
+        "side": "Southwest",
+        "tag": "Sway_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 112,
+        "w": 112
+      },
+      "spriteSourceSize": {
+        "h": 112,
+        "w": 112,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    }
+  ],
+  "meta": {
+    "app": "Pixor",
+    "format": "I8",
+    "frameTags": [
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 0,
+        "name": "Sway_South",
+        "to": 15
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 16,
+        "name": "Sway_Southeast",
+        "to": 31
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 32,
+        "name": "Sway_East",
+        "to": 47
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 48,
+        "name": "Sway_Northeast",
+        "to": 63
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 64,
+        "name": "Sway_North",
+        "to": 79
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 80,
+        "name": "Sway_Northwest",
+        "to": 95
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 96,
+        "name": "Sway_West",
+        "to": 111
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 112,
+        "name": "Sway_Southwest",
+        "to": 127
+      }
+    ],
+    "image": "oak-tree-selout-112.png",
+    "layers": [
+      {
+        "blendMode": "normal",
+        "name": "final",
+        "opacity": 255
+      }
+    ],
+    "pixor": {
+      "cell": {
+        "h": 112,
+        "w": 112
+      },
+      "pivot": {
+        "x": 56,
+        "y": 96
+      },
+      "sides": {
+        "East": 90.0,
+        "North": 180.0,
+        "Northeast": 135.0,
+        "Northwest": 225.0,
+        "South": 0.0,
+        "Southeast": 45.0,
+        "Southwest": 315.0,
+        "West": 270.0
+      }
+    },
+    "scale": "1",
+    "size": {
+      "h": 896,
+      "w": 1792
+    },
+    "slices": [
+      {
+        "color": "#0000ffff",
+        "keys": [
+          {
+            "bounds": {
+              "h": 112,
+              "w": 112,
+              "x": 0,
+              "y": 0
+            },
+            "frame": 0,
+            "pivot": {
+              "x": 56,
+              "y": 96
+            }
+          }
+        ],
+        "name": "pivot"
+      }
+    ],
+    "version": "2.0.1"
+  }
+}

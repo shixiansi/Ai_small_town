@@ -1,0 +1,2025 @@
+{
+  "frames": [
+    {
+      "duration": 83,
+      "filename": "wardrobe-selout-96_Open_South_00.png",
+      "frame": {
+        "h": 96,
+        "w": 96,
+        "x": 0,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 0.0,
+        "id": "239b703841297ac5",
+        "index": 0,
+        "pivot": {
+          "x": 48,
+          "y": 71
+        },
+        "side": "South",
+        "tag": "Open_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 96,
+        "w": 96
+      },
+      "spriteSourceSize": {
+        "h": 96,
+        "w": 96,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "wardrobe-selout-96_Open_South_01.png",
+      "frame": {
+        "h": 96,
+        "w": 96,
+        "x": 96,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 0.0,
+        "id": "f55bc2e061eaff64",
+        "index": 1,
+        "pivot": {
+          "x": 48,
+          "y": 71
+        },
+        "side": "South",
+        "tag": "Open_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 96,
+        "w": 96
+      },
+      "spriteSourceSize": {
+        "h": 96,
+        "w": 96,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "wardrobe-selout-96_Open_South_02.png",
+      "frame": {
+        "h": 96,
+        "w": 96,
+        "x": 192,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 0.0,
+        "id": "3bcef5995d49bd60",
+        "index": 2,
+        "pivot": {
+          "x": 48,
+          "y": 71
+        },
+        "side": "South",
+        "tag": "Open_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 96,
+        "w": 96
+      },
+      "spriteSourceSize": {
+        "h": 96,
+        "w": 96,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "wardrobe-selout-96_Open_South_03.png",
+      "frame": {
+        "h": 96,
+        "w": 96,
+        "x": 288,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 0.0,
+        "id": "65ff2b7de0698757",
+        "index": 3,
+        "pivot": {
+          "x": 48,
+          "y": 71
+        },
+        "side": "South",
+        "tag": "Open_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 96,
+        "w": 96
+      },
+      "spriteSourceSize": {
+        "h": 96,
+        "w": 96,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "wardrobe-selout-96_Open_South_04.png",
+      "frame": {
+        "h": 96,
+        "w": 96,
+        "x": 384,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 0.0,
+        "id": "f2389948fb8d722b",
+        "index": 4,
+        "pivot": {
+          "x": 48,
+          "y": 71
+        },
+        "side": "South",
+        "tag": "Open_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 96,
+        "w": 96
+      },
+      "spriteSourceSize": {
+        "h": 96,
+        "w": 96,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "wardrobe-selout-96_Open_South_05.png",
+      "frame": {
+        "h": 96,
+        "w": 96,
+        "x": 480,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 0.0,
+        "id": "dbb561be7dc562b7",
+        "index": 5,
+        "pivot": {
+          "x": 48,
+          "y": 71
+        },
+        "side": "South",
+        "tag": "Open_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 96,
+        "w": 96
+      },
+      "spriteSourceSize": {
+        "h": 96,
+        "w": 96,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "wardrobe-selout-96_Open_South_06.png",
+      "frame": {
+        "h": 96,
+        "w": 96,
+        "x": 576,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 0.0,
+        "id": "7fb58c9fc490d704",
+        "index": 6,
+        "pivot": {
+          "x": 48,
+          "y": 71
+        },
+        "side": "South",
+        "tag": "Open_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 96,
+        "w": 96
+      },
+      "spriteSourceSize": {
+        "h": 96,
+        "w": 96,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "wardrobe-selout-96_Open_Southeast_00.png",
+      "frame": {
+        "h": 96,
+        "w": 96,
+        "x": 0,
+        "y": 96
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 45.0,
+        "id": "9aff4bbc73f0b18e",
+        "index": 0,
+        "pivot": {
+          "x": 48,
+          "y": 71
+        },
+        "side": "Southeast",
+        "tag": "Open_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 96,
+        "w": 96
+      },
+      "spriteSourceSize": {
+        "h": 96,
+        "w": 96,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "wardrobe-selout-96_Open_Southeast_01.png",
+      "frame": {
+        "h": 96,
+        "w": 96,
+        "x": 96,
+        "y": 96
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 45.0,
+        "id": "2ee1cc7780bb7873",
+        "index": 1,
+        "pivot": {
+          "x": 48,
+          "y": 71
+        },
+        "side": "Southeast",
+        "tag": "Open_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 96,
+        "w": 96
+      },
+      "spriteSourceSize": {
+        "h": 96,
+        "w": 96,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "wardrobe-selout-96_Open_Southeast_02.png",
+      "frame": {
+        "h": 96,
+        "w": 96,
+        "x": 192,
+        "y": 96
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 45.0,
+        "id": "600cb098cb981a47",
+        "index": 2,
+        "pivot": {
+          "x": 48,
+          "y": 71
+        },
+        "side": "Southeast",
+        "tag": "Open_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 96,
+        "w": 96
+      },
+      "spriteSourceSize": {
+        "h": 96,
+        "w": 96,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "wardrobe-selout-96_Open_Southeast_03.png",
+      "frame": {
+        "h": 96,
+        "w": 96,
+        "x": 288,
+        "y": 96
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 45.0,
+        "id": "eeb0c702a674bc70",
+        "index": 3,
+        "pivot": {
+          "x": 48,
+          "y": 71
+        },
+        "side": "Southeast",
+        "tag": "Open_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 96,
+        "w": 96
+      },
+      "spriteSourceSize": {
+        "h": 96,
+        "w": 96,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "wardrobe-selout-96_Open_Southeast_04.png",
+      "frame": {
+        "h": 96,
+        "w": 96,
+        "x": 384,
+        "y": 96
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 45.0,
+        "id": "136215dbc174fc18",
+        "index": 4,
+        "pivot": {
+          "x": 48,
+          "y": 71
+        },
+        "side": "Southeast",
+        "tag": "Open_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 96,
+        "w": 96
+      },
+      "spriteSourceSize": {
+        "h": 96,
+        "w": 96,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "wardrobe-selout-96_Open_Southeast_05.png",
+      "frame": {
+        "h": 96,
+        "w": 96,
+        "x": 480,
+        "y": 96
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 45.0,
+        "id": "b11921b018f39e8c",
+        "index": 5,
+        "pivot": {
+          "x": 48,
+          "y": 71
+        },
+        "side": "Southeast",
+        "tag": "Open_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 96,
+        "w": 96
+      },
+      "spriteSourceSize": {
+        "h": 96,
+        "w": 96,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "wardrobe-selout-96_Open_Southeast_06.png",
+      "frame": {
+        "h": 96,
+        "w": 96,
+        "x": 576,
+        "y": 96
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 45.0,
+        "id": "2650da353a45ecdf",
+        "index": 6,
+        "pivot": {
+          "x": 48,
+          "y": 71
+        },
+        "side": "Southeast",
+        "tag": "Open_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 96,
+        "w": 96
+      },
+      "spriteSourceSize": {
+        "h": 96,
+        "w": 96,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "wardrobe-selout-96_Open_East_00.png",
+      "frame": {
+        "h": 96,
+        "w": 96,
+        "x": 0,
+        "y": 192
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 90.0,
+        "id": "a1622bb83c8bfeac",
+        "index": 0,
+        "pivot": {
+          "x": 48,
+          "y": 71
+        },
+        "side": "East",
+        "tag": "Open_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 96,
+        "w": 96
+      },
+      "spriteSourceSize": {
+        "h": 96,
+        "w": 96,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "wardrobe-selout-96_Open_East_01.png",
+      "frame": {
+        "h": 96,
+        "w": 96,
+        "x": 96,
+        "y": 192
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 90.0,
+        "id": "5053b300bbc94fcd",
+        "index": 1,
+        "pivot": {
+          "x": 48,
+          "y": 71
+        },
+        "side": "East",
+        "tag": "Open_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 96,
+        "w": 96
+      },
+      "spriteSourceSize": {
+        "h": 96,
+        "w": 96,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "wardrobe-selout-96_Open_East_02.png",
+      "frame": {
+        "h": 96,
+        "w": 96,
+        "x": 192,
+        "y": 192
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 90.0,
+        "id": "5608e537663b5119",
+        "index": 2,
+        "pivot": {
+          "x": 48,
+          "y": 71
+        },
+        "side": "East",
+        "tag": "Open_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 96,
+        "w": 96
+      },
+      "spriteSourceSize": {
+        "h": 96,
+        "w": 96,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "wardrobe-selout-96_Open_East_03.png",
+      "frame": {
+        "h": 96,
+        "w": 96,
+        "x": 288,
+        "y": 192
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 90.0,
+        "id": "12e138b2cace8d6a",
+        "index": 3,
+        "pivot": {
+          "x": 48,
+          "y": 71
+        },
+        "side": "East",
+        "tag": "Open_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 96,
+        "w": 96
+      },
+      "spriteSourceSize": {
+        "h": 96,
+        "w": 96,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "wardrobe-selout-96_Open_East_04.png",
+      "frame": {
+        "h": 96,
+        "w": 96,
+        "x": 384,
+        "y": 192
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 90.0,
+        "id": "8baf7ab085b12d8e",
+        "index": 4,
+        "pivot": {
+          "x": 48,
+          "y": 71
+        },
+        "side": "East",
+        "tag": "Open_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 96,
+        "w": 96
+      },
+      "spriteSourceSize": {
+        "h": 96,
+        "w": 96,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "wardrobe-selout-96_Open_East_05.png",
+      "frame": {
+        "h": 96,
+        "w": 96,
+        "x": 480,
+        "y": 192
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 90.0,
+        "id": "6aaff70a6804a82a",
+        "index": 5,
+        "pivot": {
+          "x": 48,
+          "y": 71
+        },
+        "side": "East",
+        "tag": "Open_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 96,
+        "w": 96
+      },
+      "spriteSourceSize": {
+        "h": 96,
+        "w": 96,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "wardrobe-selout-96_Open_East_06.png",
+      "frame": {
+        "h": 96,
+        "w": 96,
+        "x": 576,
+        "y": 192
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 90.0,
+        "id": "3284c823efa367f5",
+        "index": 6,
+        "pivot": {
+          "x": 48,
+          "y": 71
+        },
+        "side": "East",
+        "tag": "Open_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 96,
+        "w": 96
+      },
+      "spriteSourceSize": {
+        "h": 96,
+        "w": 96,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "wardrobe-selout-96_Open_Northeast_00.png",
+      "frame": {
+        "h": 96,
+        "w": 96,
+        "x": 0,
+        "y": 288
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 135.0,
+        "id": "9e00b27f9e88dd38",
+        "index": 0,
+        "pivot": {
+          "x": 48,
+          "y": 71
+        },
+        "side": "Northeast",
+        "tag": "Open_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 96,
+        "w": 96
+      },
+      "spriteSourceSize": {
+        "h": 96,
+        "w": 96,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "wardrobe-selout-96_Open_Northeast_01.png",
+      "frame": {
+        "h": 96,
+        "w": 96,
+        "x": 96,
+        "y": 288
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 135.0,
+        "id": "80d210d9bc4333a9",
+        "index": 1,
+        "pivot": {
+          "x": 48,
+          "y": 71
+        },
+        "side": "Northeast",
+        "tag": "Open_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 96,
+        "w": 96
+      },
+      "spriteSourceSize": {
+        "h": 96,
+        "w": 96,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "wardrobe-selout-96_Open_Northeast_02.png",
+      "frame": {
+        "h": 96,
+        "w": 96,
+        "x": 192,
+        "y": 288
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 135.0,
+        "id": "8d8b2d18fcb0e33d",
+        "index": 2,
+        "pivot": {
+          "x": 48,
+          "y": 71
+        },
+        "side": "Northeast",
+        "tag": "Open_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 96,
+        "w": 96
+      },
+      "spriteSourceSize": {
+        "h": 96,
+        "w": 96,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "wardrobe-selout-96_Open_Northeast_03.png",
+      "frame": {
+        "h": 96,
+        "w": 96,
+        "x": 288,
+        "y": 288
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 135.0,
+        "id": "d3bea6ad4e6b7886",
+        "index": 3,
+        "pivot": {
+          "x": 48,
+          "y": 71
+        },
+        "side": "Northeast",
+        "tag": "Open_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 96,
+        "w": 96
+      },
+      "spriteSourceSize": {
+        "h": 96,
+        "w": 96,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "wardrobe-selout-96_Open_Northeast_04.png",
+      "frame": {
+        "h": 96,
+        "w": 96,
+        "x": 384,
+        "y": 288
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 135.0,
+        "id": "dc32e443254647f2",
+        "index": 4,
+        "pivot": {
+          "x": 48,
+          "y": 71
+        },
+        "side": "Northeast",
+        "tag": "Open_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 96,
+        "w": 96
+      },
+      "spriteSourceSize": {
+        "h": 96,
+        "w": 96,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "wardrobe-selout-96_Open_Northeast_05.png",
+      "frame": {
+        "h": 96,
+        "w": 96,
+        "x": 480,
+        "y": 288
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 135.0,
+        "id": "c9cf3231695dc846",
+        "index": 5,
+        "pivot": {
+          "x": 48,
+          "y": 71
+        },
+        "side": "Northeast",
+        "tag": "Open_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 96,
+        "w": 96
+      },
+      "spriteSourceSize": {
+        "h": 96,
+        "w": 96,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "wardrobe-selout-96_Open_Northeast_06.png",
+      "frame": {
+        "h": 96,
+        "w": 96,
+        "x": 576,
+        "y": 288
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 135.0,
+        "id": "f688471a599f0f09",
+        "index": 6,
+        "pivot": {
+          "x": 48,
+          "y": 71
+        },
+        "side": "Northeast",
+        "tag": "Open_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 96,
+        "w": 96
+      },
+      "spriteSourceSize": {
+        "h": 96,
+        "w": 96,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "wardrobe-selout-96_Open_North_00.png",
+      "frame": {
+        "h": 96,
+        "w": 96,
+        "x": 0,
+        "y": 384
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 180.0,
+        "id": "9f888cec24c7c413",
+        "index": 0,
+        "pivot": {
+          "x": 48,
+          "y": 71
+        },
+        "side": "North",
+        "tag": "Open_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 96,
+        "w": 96
+      },
+      "spriteSourceSize": {
+        "h": 96,
+        "w": 96,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "wardrobe-selout-96_Open_North_01.png",
+      "frame": {
+        "h": 96,
+        "w": 96,
+        "x": 96,
+        "y": 384
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 180.0,
+        "id": "3d27d95d8ff2e02e",
+        "index": 1,
+        "pivot": {
+          "x": 48,
+          "y": 71
+        },
+        "side": "North",
+        "tag": "Open_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 96,
+        "w": 96
+      },
+      "spriteSourceSize": {
+        "h": 96,
+        "w": 96,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "wardrobe-selout-96_Open_North_02.png",
+      "frame": {
+        "h": 96,
+        "w": 96,
+        "x": 192,
+        "y": 384
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 180.0,
+        "id": "91315290d7f2e062",
+        "index": 2,
+        "pivot": {
+          "x": 48,
+          "y": 71
+        },
+        "side": "North",
+        "tag": "Open_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 96,
+        "w": 96
+      },
+      "spriteSourceSize": {
+        "h": 96,
+        "w": 96,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "wardrobe-selout-96_Open_North_03.png",
+      "frame": {
+        "h": 96,
+        "w": 96,
+        "x": 288,
+        "y": 384
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 180.0,
+        "id": "32d82c767c63b161",
+        "index": 3,
+        "pivot": {
+          "x": 48,
+          "y": 71
+        },
+        "side": "North",
+        "tag": "Open_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 96,
+        "w": 96
+      },
+      "spriteSourceSize": {
+        "h": 96,
+        "w": 96,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "wardrobe-selout-96_Open_North_04.png",
+      "frame": {
+        "h": 96,
+        "w": 96,
+        "x": 384,
+        "y": 384
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 180.0,
+        "id": "b7c178baeaff7e91",
+        "index": 4,
+        "pivot": {
+          "x": 48,
+          "y": 71
+        },
+        "side": "North",
+        "tag": "Open_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 96,
+        "w": 96
+      },
+      "spriteSourceSize": {
+        "h": 96,
+        "w": 96,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "wardrobe-selout-96_Open_North_05.png",
+      "frame": {
+        "h": 96,
+        "w": 96,
+        "x": 480,
+        "y": 384
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 180.0,
+        "id": "835ac3782bb48315",
+        "index": 5,
+        "pivot": {
+          "x": 48,
+          "y": 71
+        },
+        "side": "North",
+        "tag": "Open_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 96,
+        "w": 96
+      },
+      "spriteSourceSize": {
+        "h": 96,
+        "w": 96,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "wardrobe-selout-96_Open_North_06.png",
+      "frame": {
+        "h": 96,
+        "w": 96,
+        "x": 576,
+        "y": 384
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 180.0,
+        "id": "28e74d3382f031ca",
+        "index": 6,
+        "pivot": {
+          "x": 48,
+          "y": 71
+        },
+        "side": "North",
+        "tag": "Open_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 96,
+        "w": 96
+      },
+      "spriteSourceSize": {
+        "h": 96,
+        "w": 96,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "wardrobe-selout-96_Open_Northwest_00.png",
+      "frame": {
+        "h": 96,
+        "w": 96,
+        "x": 0,
+        "y": 480
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 225.0,
+        "id": "de618c4f87af07f6",
+        "index": 0,
+        "pivot": {
+          "x": 48,
+          "y": 71
+        },
+        "side": "Northwest",
+        "tag": "Open_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 96,
+        "w": 96
+      },
+      "spriteSourceSize": {
+        "h": 96,
+        "w": 96,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "wardrobe-selout-96_Open_Northwest_01.png",
+      "frame": {
+        "h": 96,
+        "w": 96,
+        "x": 96,
+        "y": 480
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 225.0,
+        "id": "d667936961e6a3fb",
+        "index": 1,
+        "pivot": {
+          "x": 48,
+          "y": 71
+        },
+        "side": "Northwest",
+        "tag": "Open_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 96,
+        "w": 96
+      },
+      "spriteSourceSize": {
+        "h": 96,
+        "w": 96,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "wardrobe-selout-96_Open_Northwest_02.png",
+      "frame": {
+        "h": 96,
+        "w": 96,
+        "x": 192,
+        "y": 480
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 225.0,
+        "id": "cc21d1538a2ebd0f",
+        "index": 2,
+        "pivot": {
+          "x": 48,
+          "y": 71
+        },
+        "side": "Northwest",
+        "tag": "Open_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 96,
+        "w": 96
+      },
+      "spriteSourceSize": {
+        "h": 96,
+        "w": 96,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "wardrobe-selout-96_Open_Northwest_03.png",
+      "frame": {
+        "h": 96,
+        "w": 96,
+        "x": 288,
+        "y": 480
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 225.0,
+        "id": "b875479a0eedbf88",
+        "index": 3,
+        "pivot": {
+          "x": 48,
+          "y": 71
+        },
+        "side": "Northwest",
+        "tag": "Open_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 96,
+        "w": 96
+      },
+      "spriteSourceSize": {
+        "h": 96,
+        "w": 96,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "wardrobe-selout-96_Open_Northwest_04.png",
+      "frame": {
+        "h": 96,
+        "w": 96,
+        "x": 384,
+        "y": 480
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 225.0,
+        "id": "a7760a3b57ec5410",
+        "index": 4,
+        "pivot": {
+          "x": 48,
+          "y": 71
+        },
+        "side": "Northwest",
+        "tag": "Open_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 96,
+        "w": 96
+      },
+      "spriteSourceSize": {
+        "h": 96,
+        "w": 96,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "wardrobe-selout-96_Open_Northwest_05.png",
+      "frame": {
+        "h": 96,
+        "w": 96,
+        "x": 480,
+        "y": 480
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 225.0,
+        "id": "4a1e415e3b442074",
+        "index": 5,
+        "pivot": {
+          "x": 48,
+          "y": 71
+        },
+        "side": "Northwest",
+        "tag": "Open_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 96,
+        "w": 96
+      },
+      "spriteSourceSize": {
+        "h": 96,
+        "w": 96,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "wardrobe-selout-96_Open_Northwest_06.png",
+      "frame": {
+        "h": 96,
+        "w": 96,
+        "x": 576,
+        "y": 480
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 225.0,
+        "id": "3f592a3aec067a47",
+        "index": 6,
+        "pivot": {
+          "x": 48,
+          "y": 71
+        },
+        "side": "Northwest",
+        "tag": "Open_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 96,
+        "w": 96
+      },
+      "spriteSourceSize": {
+        "h": 96,
+        "w": 96,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "wardrobe-selout-96_Open_West_00.png",
+      "frame": {
+        "h": 96,
+        "w": 96,
+        "x": 0,
+        "y": 576
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 270.0,
+        "id": "2cb5e257ad8f4432",
+        "index": 0,
+        "pivot": {
+          "x": 48,
+          "y": 71
+        },
+        "side": "West",
+        "tag": "Open_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 96,
+        "w": 96
+      },
+      "spriteSourceSize": {
+        "h": 96,
+        "w": 96,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "wardrobe-selout-96_Open_West_01.png",
+      "frame": {
+        "h": 96,
+        "w": 96,
+        "x": 96,
+        "y": 576
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 270.0,
+        "id": "d6dbbef39aa523d7",
+        "index": 1,
+        "pivot": {
+          "x": 48,
+          "y": 71
+        },
+        "side": "West",
+        "tag": "Open_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 96,
+        "w": 96
+      },
+      "spriteSourceSize": {
+        "h": 96,
+        "w": 96,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "wardrobe-selout-96_Open_West_02.png",
+      "frame": {
+        "h": 96,
+        "w": 96,
+        "x": 192,
+        "y": 576
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 270.0,
+        "id": "45a48e8a153b9363",
+        "index": 2,
+        "pivot": {
+          "x": 48,
+          "y": 71
+        },
+        "side": "West",
+        "tag": "Open_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 96,
+        "w": 96
+      },
+      "spriteSourceSize": {
+        "h": 96,
+        "w": 96,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "wardrobe-selout-96_Open_West_03.png",
+      "frame": {
+        "h": 96,
+        "w": 96,
+        "x": 288,
+        "y": 576
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 270.0,
+        "id": "40fb0bffd9db78e4",
+        "index": 3,
+        "pivot": {
+          "x": 48,
+          "y": 71
+        },
+        "side": "West",
+        "tag": "Open_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 96,
+        "w": 96
+      },
+      "spriteSourceSize": {
+        "h": 96,
+        "w": 96,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "wardrobe-selout-96_Open_West_04.png",
+      "frame": {
+        "h": 96,
+        "w": 96,
+        "x": 384,
+        "y": 576
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 270.0,
+        "id": "77a1f8e9ac8738b4",
+        "index": 4,
+        "pivot": {
+          "x": 48,
+          "y": 71
+        },
+        "side": "West",
+        "tag": "Open_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 96,
+        "w": 96
+      },
+      "spriteSourceSize": {
+        "h": 96,
+        "w": 96,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "wardrobe-selout-96_Open_West_05.png",
+      "frame": {
+        "h": 96,
+        "w": 96,
+        "x": 480,
+        "y": 576
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 270.0,
+        "id": "364b14408d31c7d0",
+        "index": 5,
+        "pivot": {
+          "x": 48,
+          "y": 71
+        },
+        "side": "West",
+        "tag": "Open_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 96,
+        "w": 96
+      },
+      "spriteSourceSize": {
+        "h": 96,
+        "w": 96,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "wardrobe-selout-96_Open_West_06.png",
+      "frame": {
+        "h": 96,
+        "w": 96,
+        "x": 576,
+        "y": 576
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 270.0,
+        "id": "06cc11ef6436bffb",
+        "index": 6,
+        "pivot": {
+          "x": 48,
+          "y": 71
+        },
+        "side": "West",
+        "tag": "Open_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 96,
+        "w": 96
+      },
+      "spriteSourceSize": {
+        "h": 96,
+        "w": 96,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "wardrobe-selout-96_Open_Southwest_00.png",
+      "frame": {
+        "h": 96,
+        "w": 96,
+        "x": 0,
+        "y": 672
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 315.0,
+        "id": "7c571bcdaed992f0",
+        "index": 0,
+        "pivot": {
+          "x": 48,
+          "y": 71
+        },
+        "side": "Southwest",
+        "tag": "Open_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 96,
+        "w": 96
+      },
+      "spriteSourceSize": {
+        "h": 96,
+        "w": 96,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "wardrobe-selout-96_Open_Southwest_01.png",
+      "frame": {
+        "h": 96,
+        "w": 96,
+        "x": 96,
+        "y": 672
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 315.0,
+        "id": "63f62cd39152ed81",
+        "index": 1,
+        "pivot": {
+          "x": 48,
+          "y": 71
+        },
+        "side": "Southwest",
+        "tag": "Open_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 96,
+        "w": 96
+      },
+      "spriteSourceSize": {
+        "h": 96,
+        "w": 96,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "wardrobe-selout-96_Open_Southwest_02.png",
+      "frame": {
+        "h": 96,
+        "w": 96,
+        "x": 192,
+        "y": 672
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 315.0,
+        "id": "b60f9ebca5051d95",
+        "index": 2,
+        "pivot": {
+          "x": 48,
+          "y": 71
+        },
+        "side": "Southwest",
+        "tag": "Open_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 96,
+        "w": 96
+      },
+      "spriteSourceSize": {
+        "h": 96,
+        "w": 96,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "wardrobe-selout-96_Open_Southwest_03.png",
+      "frame": {
+        "h": 96,
+        "w": 96,
+        "x": 288,
+        "y": 672
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 315.0,
+        "id": "4de2eaddbea0ab0e",
+        "index": 3,
+        "pivot": {
+          "x": 48,
+          "y": 71
+        },
+        "side": "Southwest",
+        "tag": "Open_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 96,
+        "w": 96
+      },
+      "spriteSourceSize": {
+        "h": 96,
+        "w": 96,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "wardrobe-selout-96_Open_Southwest_04.png",
+      "frame": {
+        "h": 96,
+        "w": 96,
+        "x": 384,
+        "y": 672
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 315.0,
+        "id": "5a1109c7840cd97a",
+        "index": 4,
+        "pivot": {
+          "x": 48,
+          "y": 71
+        },
+        "side": "Southwest",
+        "tag": "Open_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 96,
+        "w": 96
+      },
+      "spriteSourceSize": {
+        "h": 96,
+        "w": 96,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "wardrobe-selout-96_Open_Southwest_05.png",
+      "frame": {
+        "h": 96,
+        "w": 96,
+        "x": 480,
+        "y": 672
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 315.0,
+        "id": "ada3a3d0c6b43cde",
+        "index": 5,
+        "pivot": {
+          "x": 48,
+          "y": 71
+        },
+        "side": "Southwest",
+        "tag": "Open_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 96,
+        "w": 96
+      },
+      "spriteSourceSize": {
+        "h": 96,
+        "w": 96,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "wardrobe-selout-96_Open_Southwest_06.png",
+      "frame": {
+        "h": 96,
+        "w": 96,
+        "x": 576,
+        "y": 672
+      },
+      "pixor": {
+        "action": "Open",
+        "degrees": 315.0,
+        "id": "41ec630f46ae6ae1",
+        "index": 6,
+        "pivot": {
+          "x": 48,
+          "y": 71
+        },
+        "side": "Southwest",
+        "tag": "Open_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 96,
+        "w": 96
+      },
+      "spriteSourceSize": {
+        "h": 96,
+        "w": 96,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    }
+  ],
+  "meta": {
+    "app": "Pixor",
+    "format": "I8",
+    "frameTags": [
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 0,
+        "name": "Open_South",
+        "to": 6
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 7,
+        "name": "Open_Southeast",
+        "to": 13
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 14,
+        "name": "Open_East",
+        "to": 20
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 21,
+        "name": "Open_Northeast",
+        "to": 27
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 28,
+        "name": "Open_North",
+        "to": 34
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 35,
+        "name": "Open_Northwest",
+        "to": 41
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 42,
+        "name": "Open_West",
+        "to": 48
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 49,
+        "name": "Open_Southwest",
+        "to": 55
+      }
+    ],
+    "image": "wardrobe-selout-96.png",
+    "layers": [
+      {
+        "blendMode": "normal",
+        "name": "final",
+        "opacity": 255
+      }
+    ],
+    "pixor": {
+      "cell": {
+        "h": 96,
+        "w": 96
+      },
+      "pivot": {
+        "x": 48,
+        "y": 71
+      },
+      "sides": {
+        "East": 90.0,
+        "North": 180.0,
+        "Northeast": 135.0,
+        "Northwest": 225.0,
+        "South": 0.0,
+        "Southeast": 45.0,
+        "Southwest": 315.0,
+        "West": 270.0
+      }
+    },
+    "scale": "1",
+    "size": {
+      "h": 768,
+      "w": 672
+    },
+    "slices": [
+      {
+        "color": "#0000ffff",
+        "keys": [
+          {
+            "bounds": {
+              "h": 96,
+              "w": 96,
+              "x": 0,
+              "y": 0
+            },
+            "frame": 0,
+            "pivot": {
+              "x": 48,
+              "y": 71
+            }
+          }
+        ],
+        "name": "pivot"
+      }
+    ],
+    "version": "2.0.1"
+  }
+}

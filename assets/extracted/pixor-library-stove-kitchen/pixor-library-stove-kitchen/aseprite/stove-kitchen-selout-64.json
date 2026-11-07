@@ -1,0 +1,1753 @@
+{
+  "frames": [
+    {
+      "duration": 83,
+      "filename": "stove-kitchen-selout-64_Steam_South_00.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Steam",
+        "degrees": 0.0,
+        "id": "f9bb23619293288b",
+        "index": 0,
+        "pivot": {
+          "x": 32,
+          "y": 49
+        },
+        "side": "South",
+        "tag": "Steam_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "stove-kitchen-selout-64_Steam_South_01.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 64,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Steam",
+        "degrees": 0.0,
+        "id": "048acbbc400b7126",
+        "index": 1,
+        "pivot": {
+          "x": 32,
+          "y": 49
+        },
+        "side": "South",
+        "tag": "Steam_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "stove-kitchen-selout-64_Steam_South_02.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 128,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Steam",
+        "degrees": 0.0,
+        "id": "be689eb5892ad93a",
+        "index": 2,
+        "pivot": {
+          "x": 32,
+          "y": 49
+        },
+        "side": "South",
+        "tag": "Steam_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "stove-kitchen-selout-64_Steam_South_03.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 192,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Steam",
+        "degrees": 0.0,
+        "id": "9b6dfcbf5555a109",
+        "index": 3,
+        "pivot": {
+          "x": 32,
+          "y": 49
+        },
+        "side": "South",
+        "tag": "Steam_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "stove-kitchen-selout-64_Steam_South_04.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 256,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Steam",
+        "degrees": 0.0,
+        "id": "a17444f9c989a4d9",
+        "index": 4,
+        "pivot": {
+          "x": 32,
+          "y": 49
+        },
+        "side": "South",
+        "tag": "Steam_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "stove-kitchen-selout-64_Steam_South_05.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 320,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Steam",
+        "degrees": 0.0,
+        "id": "cf96b4aee4835bad",
+        "index": 5,
+        "pivot": {
+          "x": 32,
+          "y": 49
+        },
+        "side": "South",
+        "tag": "Steam_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "stove-kitchen-selout-64_Steam_Southeast_00.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 64
+      },
+      "pixor": {
+        "action": "Steam",
+        "degrees": 45.0,
+        "id": "5b293214951af638",
+        "index": 0,
+        "pivot": {
+          "x": 32,
+          "y": 49
+        },
+        "side": "Southeast",
+        "tag": "Steam_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "stove-kitchen-selout-64_Steam_Southeast_01.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 64,
+        "y": 64
+      },
+      "pixor": {
+        "action": "Steam",
+        "degrees": 45.0,
+        "id": "3dfa906eb2d54ca9",
+        "index": 1,
+        "pivot": {
+          "x": 32,
+          "y": 49
+        },
+        "side": "Southeast",
+        "tag": "Steam_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "stove-kitchen-selout-64_Steam_Southeast_02.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 128,
+        "y": 64
+      },
+      "pixor": {
+        "action": "Steam",
+        "degrees": 45.0,
+        "id": "4ab3acadf342fc3d",
+        "index": 2,
+        "pivot": {
+          "x": 32,
+          "y": 49
+        },
+        "side": "Southeast",
+        "tag": "Steam_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "stove-kitchen-selout-64_Steam_Southeast_03.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 192,
+        "y": 64
+      },
+      "pixor": {
+        "action": "Steam",
+        "degrees": 45.0,
+        "id": "90e7264244fd9186",
+        "index": 3,
+        "pivot": {
+          "x": 32,
+          "y": 49
+        },
+        "side": "Southeast",
+        "tag": "Steam_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "stove-kitchen-selout-64_Steam_Southeast_04.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 256,
+        "y": 64
+      },
+      "pixor": {
+        "action": "Steam",
+        "degrees": 45.0,
+        "id": "995b63d81bd860f2",
+        "index": 4,
+        "pivot": {
+          "x": 32,
+          "y": 49
+        },
+        "side": "Southeast",
+        "tag": "Steam_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "stove-kitchen-selout-64_Steam_Southeast_05.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 320,
+        "y": 64
+      },
+      "pixor": {
+        "action": "Steam",
+        "degrees": 45.0,
+        "id": "86f7b1c65fefe146",
+        "index": 5,
+        "pivot": {
+          "x": 32,
+          "y": 49
+        },
+        "side": "Southeast",
+        "tag": "Steam_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "stove-kitchen-selout-64_Steam_East_00.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 128
+      },
+      "pixor": {
+        "action": "Steam",
+        "degrees": 90.0,
+        "id": "a4c307a1655b1112",
+        "index": 0,
+        "pivot": {
+          "x": 32,
+          "y": 49
+        },
+        "side": "East",
+        "tag": "Steam_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "stove-kitchen-selout-64_Steam_East_01.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 64,
+        "y": 128
+      },
+      "pixor": {
+        "action": "Steam",
+        "degrees": 90.0,
+        "id": "72a70ebaa4be7cb7",
+        "index": 1,
+        "pivot": {
+          "x": 32,
+          "y": 49
+        },
+        "side": "East",
+        "tag": "Steam_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "stove-kitchen-selout-64_Steam_East_02.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 128,
+        "y": 128
+      },
+      "pixor": {
+        "action": "Steam",
+        "degrees": 90.0,
+        "id": "40ab8c4e0c7cd983",
+        "index": 2,
+        "pivot": {
+          "x": 32,
+          "y": 49
+        },
+        "side": "East",
+        "tag": "Steam_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "stove-kitchen-selout-64_Steam_East_03.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 192,
+        "y": 128
+      },
+      "pixor": {
+        "action": "Steam",
+        "degrees": 90.0,
+        "id": "1843df467ecf3304",
+        "index": 3,
+        "pivot": {
+          "x": 32,
+          "y": 49
+        },
+        "side": "East",
+        "tag": "Steam_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "stove-kitchen-selout-64_Steam_East_04.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 256,
+        "y": 128
+      },
+      "pixor": {
+        "action": "Steam",
+        "degrees": 90.0,
+        "id": "d0ed405598e3a294",
+        "index": 4,
+        "pivot": {
+          "x": 32,
+          "y": 49
+        },
+        "side": "East",
+        "tag": "Steam_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "stove-kitchen-selout-64_Steam_East_05.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 320,
+        "y": 128
+      },
+      "pixor": {
+        "action": "Steam",
+        "degrees": 90.0,
+        "id": "92921209698cdcf0",
+        "index": 5,
+        "pivot": {
+          "x": 32,
+          "y": 49
+        },
+        "side": "East",
+        "tag": "Steam_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "stove-kitchen-selout-64_Steam_Northeast_00.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 192
+      },
+      "pixor": {
+        "action": "Steam",
+        "degrees": 135.0,
+        "id": "f055ca8f7e78bef6",
+        "index": 0,
+        "pivot": {
+          "x": 32,
+          "y": 49
+        },
+        "side": "Northeast",
+        "tag": "Steam_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "stove-kitchen-selout-64_Steam_Northeast_01.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 64,
+        "y": 192
+      },
+      "pixor": {
+        "action": "Steam",
+        "degrees": 135.0,
+        "id": "e85bd1a958b05afb",
+        "index": 1,
+        "pivot": {
+          "x": 32,
+          "y": 49
+        },
+        "side": "Northeast",
+        "tag": "Steam_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "stove-kitchen-selout-64_Steam_Northeast_02.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 128,
+        "y": 192
+      },
+      "pixor": {
+        "action": "Steam",
+        "degrees": 135.0,
+        "id": "de160f9380f8740f",
+        "index": 2,
+        "pivot": {
+          "x": 32,
+          "y": 49
+        },
+        "side": "Northeast",
+        "tag": "Steam_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "stove-kitchen-selout-64_Steam_Northeast_03.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 192,
+        "y": 192
+      },
+      "pixor": {
+        "action": "Steam",
+        "degrees": 135.0,
+        "id": "ca6985da05b77688",
+        "index": 3,
+        "pivot": {
+          "x": 32,
+          "y": 49
+        },
+        "side": "Northeast",
+        "tag": "Steam_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "stove-kitchen-selout-64_Steam_Northeast_04.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 256,
+        "y": 192
+      },
+      "pixor": {
+        "action": "Steam",
+        "degrees": 135.0,
+        "id": "b96a487b4eb60b10",
+        "index": 4,
+        "pivot": {
+          "x": 32,
+          "y": 49
+        },
+        "side": "Northeast",
+        "tag": "Steam_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "stove-kitchen-selout-64_Steam_Northeast_05.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 320,
+        "y": 192
+      },
+      "pixor": {
+        "action": "Steam",
+        "degrees": 135.0,
+        "id": "5c127f9e320dd774",
+        "index": 5,
+        "pivot": {
+          "x": 32,
+          "y": 49
+        },
+        "side": "Northeast",
+        "tag": "Steam_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "stove-kitchen-selout-64_Steam_North_00.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 256
+      },
+      "pixor": {
+        "action": "Steam",
+        "degrees": 180.0,
+        "id": "3c2902e88e36eb35",
+        "index": 0,
+        "pivot": {
+          "x": 32,
+          "y": 49
+        },
+        "side": "North",
+        "tag": "Steam_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "stove-kitchen-selout-64_Steam_North_01.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 64,
+        "y": 256
+      },
+      "pixor": {
+        "action": "Steam",
+        "degrees": 180.0,
+        "id": "84bad679d51af934",
+        "index": 1,
+        "pivot": {
+          "x": 32,
+          "y": 49
+        },
+        "side": "North",
+        "tag": "Steam_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "stove-kitchen-selout-64_Steam_North_02.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 128,
+        "y": 256
+      },
+      "pixor": {
+        "action": "Steam",
+        "degrees": 180.0,
+        "id": "4363f1d0b5c58850",
+        "index": 2,
+        "pivot": {
+          "x": 32,
+          "y": 49
+        },
+        "side": "North",
+        "tag": "Steam_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "stove-kitchen-selout-64_Steam_North_03.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 192,
+        "y": 256
+      },
+      "pixor": {
+        "action": "Steam",
+        "degrees": 180.0,
+        "id": "39ce05e91251f427",
+        "index": 3,
+        "pivot": {
+          "x": 32,
+          "y": 49
+        },
+        "side": "North",
+        "tag": "Steam_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "stove-kitchen-selout-64_Steam_North_04.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 256,
+        "y": 256
+      },
+      "pixor": {
+        "action": "Steam",
+        "degrees": 180.0,
+        "id": "c37c039531bb7b1b",
+        "index": 4,
+        "pivot": {
+          "x": 32,
+          "y": 49
+        },
+        "side": "North",
+        "tag": "Steam_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "stove-kitchen-selout-64_Steam_North_05.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 320,
+        "y": 256
+      },
+      "pixor": {
+        "action": "Steam",
+        "degrees": 180.0,
+        "id": "3e3decbc935e41e7",
+        "index": 5,
+        "pivot": {
+          "x": 32,
+          "y": 49
+        },
+        "side": "North",
+        "tag": "Steam_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "stove-kitchen-selout-64_Steam_Northwest_00.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 320
+      },
+      "pixor": {
+        "action": "Steam",
+        "degrees": 225.0,
+        "id": "aff4f0bf95529438",
+        "index": 0,
+        "pivot": {
+          "x": 32,
+          "y": 49
+        },
+        "side": "Northwest",
+        "tag": "Steam_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "stove-kitchen-selout-64_Steam_Northwest_01.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 64,
+        "y": 320
+      },
+      "pixor": {
+        "action": "Steam",
+        "degrees": 225.0,
+        "id": "92c64f19b30ceaa9",
+        "index": 1,
+        "pivot": {
+          "x": 32,
+          "y": 49
+        },
+        "side": "Northwest",
+        "tag": "Steam_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "stove-kitchen-selout-64_Steam_Northwest_02.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 128,
+        "y": 320
+      },
+      "pixor": {
+        "action": "Steam",
+        "degrees": 225.0,
+        "id": "9f7f6b58f37a9a3d",
+        "index": 2,
+        "pivot": {
+          "x": 32,
+          "y": 49
+        },
+        "side": "Northwest",
+        "tag": "Steam_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "stove-kitchen-selout-64_Steam_Northwest_03.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 192,
+        "y": 320
+      },
+      "pixor": {
+        "action": "Steam",
+        "degrees": 225.0,
+        "id": "e5b2e4ed45352f86",
+        "index": 3,
+        "pivot": {
+          "x": 32,
+          "y": 49
+        },
+        "side": "Northwest",
+        "tag": "Steam_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "stove-kitchen-selout-64_Steam_Northwest_04.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 256,
+        "y": 320
+      },
+      "pixor": {
+        "action": "Steam",
+        "degrees": 225.0,
+        "id": "ee2722831c0ffef2",
+        "index": 4,
+        "pivot": {
+          "x": 32,
+          "y": 49
+        },
+        "side": "Northwest",
+        "tag": "Steam_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "stove-kitchen-selout-64_Steam_Northwest_05.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 320,
+        "y": 320
+      },
+      "pixor": {
+        "action": "Steam",
+        "degrees": 225.0,
+        "id": "dbc3707160277f46",
+        "index": 5,
+        "pivot": {
+          "x": 32,
+          "y": 49
+        },
+        "side": "Northwest",
+        "tag": "Steam_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "stove-kitchen-selout-64_Steam_West_00.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 384
+      },
+      "pixor": {
+        "action": "Steam",
+        "degrees": 270.0,
+        "id": "02b95e53d526ae8c",
+        "index": 0,
+        "pivot": {
+          "x": 32,
+          "y": 49
+        },
+        "side": "West",
+        "tag": "Steam_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "stove-kitchen-selout-64_Steam_West_01.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 64,
+        "y": 384
+      },
+      "pixor": {
+        "action": "Steam",
+        "degrees": 270.0,
+        "id": "eef9931dab446f2d",
+        "index": 1,
+        "pivot": {
+          "x": 32,
+          "y": 49
+        },
+        "side": "West",
+        "tag": "Steam_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "stove-kitchen-selout-64_Steam_West_02.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 128,
+        "y": 384
+      },
+      "pixor": {
+        "action": "Steam",
+        "degrees": 270.0,
+        "id": "0afefe7dae4761b9",
+        "index": 2,
+        "pivot": {
+          "x": 32,
+          "y": 49
+        },
+        "side": "West",
+        "tag": "Steam_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "stove-kitchen-selout-64_Steam_West_03.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 192,
+        "y": 384
+      },
+      "pixor": {
+        "action": "Steam",
+        "degrees": 270.0,
+        "id": "9cd5ff7f51b9b88a",
+        "index": 3,
+        "pivot": {
+          "x": 32,
+          "y": 49
+        },
+        "side": "West",
+        "tag": "Steam_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "stove-kitchen-selout-64_Steam_West_04.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 256,
+        "y": 384
+      },
+      "pixor": {
+        "action": "Steam",
+        "degrees": 270.0,
+        "id": "2a655acd752dffee",
+        "index": 4,
+        "pivot": {
+          "x": 32,
+          "y": 49
+        },
+        "side": "West",
+        "tag": "Steam_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "stove-kitchen-selout-64_Steam_West_05.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 320,
+        "y": 384
+      },
+      "pixor": {
+        "action": "Steam",
+        "degrees": 270.0,
+        "id": "1f961050b00f05ca",
+        "index": 5,
+        "pivot": {
+          "x": 32,
+          "y": 49
+        },
+        "side": "West",
+        "tag": "Steam_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "stove-kitchen-selout-64_Steam_Southwest_00.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 448
+      },
+      "pixor": {
+        "action": "Steam",
+        "degrees": 315.0,
+        "id": "9b8a0be47e4120f6",
+        "index": 0,
+        "pivot": {
+          "x": 32,
+          "y": 49
+        },
+        "side": "Southwest",
+        "tag": "Steam_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "stove-kitchen-selout-64_Steam_Southwest_01.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 64,
+        "y": 448
+      },
+      "pixor": {
+        "action": "Steam",
+        "degrees": 315.0,
+        "id": "939012fe5878bcfb",
+        "index": 1,
+        "pivot": {
+          "x": 32,
+          "y": 49
+        },
+        "side": "Southwest",
+        "tag": "Steam_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "stove-kitchen-selout-64_Steam_Southwest_02.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 128,
+        "y": 448
+      },
+      "pixor": {
+        "action": "Steam",
+        "degrees": 315.0,
+        "id": "894a50e880c0d60f",
+        "index": 2,
+        "pivot": {
+          "x": 32,
+          "y": 49
+        },
+        "side": "Southwest",
+        "tag": "Steam_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "stove-kitchen-selout-64_Steam_Southwest_03.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 192,
+        "y": 448
+      },
+      "pixor": {
+        "action": "Steam",
+        "degrees": 315.0,
+        "id": "759dc72f057fd888",
+        "index": 3,
+        "pivot": {
+          "x": 32,
+          "y": 49
+        },
+        "side": "Southwest",
+        "tag": "Steam_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "stove-kitchen-selout-64_Steam_Southwest_04.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 256,
+        "y": 448
+      },
+      "pixor": {
+        "action": "Steam",
+        "degrees": 315.0,
+        "id": "649e89d04e7e6d10",
+        "index": 4,
+        "pivot": {
+          "x": 32,
+          "y": 49
+        },
+        "side": "Southwest",
+        "tag": "Steam_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "stove-kitchen-selout-64_Steam_Southwest_05.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 320,
+        "y": 448
+      },
+      "pixor": {
+        "action": "Steam",
+        "degrees": 315.0,
+        "id": "0746c0f331d63974",
+        "index": 5,
+        "pivot": {
+          "x": 32,
+          "y": 49
+        },
+        "side": "Southwest",
+        "tag": "Steam_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    }
+  ],
+  "meta": {
+    "app": "Pixor",
+    "format": "I8",
+    "frameTags": [
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 0,
+        "name": "Steam_South",
+        "to": 5
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 6,
+        "name": "Steam_Southeast",
+        "to": 11
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 12,
+        "name": "Steam_East",
+        "to": 17
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 18,
+        "name": "Steam_Northeast",
+        "to": 23
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 24,
+        "name": "Steam_North",
+        "to": 29
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 30,
+        "name": "Steam_Northwest",
+        "to": 35
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 36,
+        "name": "Steam_West",
+        "to": 41
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 42,
+        "name": "Steam_Southwest",
+        "to": 47
+      }
+    ],
+    "image": "stove-kitchen-selout-64.png",
+    "layers": [
+      {
+        "blendMode": "normal",
+        "name": "final",
+        "opacity": 255
+      }
+    ],
+    "pixor": {
+      "cell": {
+        "h": 64,
+        "w": 64
+      },
+      "pivot": {
+        "x": 32,
+        "y": 49
+      },
+      "sides": {
+        "East": 90.0,
+        "North": 180.0,
+        "Northeast": 135.0,
+        "Northwest": 225.0,
+        "South": 0.0,
+        "Southeast": 45.0,
+        "Southwest": 315.0,
+        "West": 270.0
+      }
+    },
+    "scale": "1",
+    "size": {
+      "h": 512,
+      "w": 384
+    },
+    "slices": [
+      {
+        "color": "#0000ffff",
+        "keys": [
+          {
+            "bounds": {
+              "h": 64,
+              "w": 64,
+              "x": 0,
+              "y": 0
+            },
+            "frame": 0,
+            "pivot": {
+              "x": 32,
+              "y": 49
+            }
+          }
+        ],
+        "name": "pivot"
+      }
+    ],
+    "version": "2.0.1"
+  }
+}

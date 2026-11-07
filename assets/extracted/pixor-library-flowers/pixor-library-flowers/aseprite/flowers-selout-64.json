@@ -1,0 +1,3385 @@
+{
+  "frames": [
+    {
+      "duration": 83,
+      "filename": "flowers-selout-64_Sway_South_00.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 0.0,
+        "id": "1ee2beb8c207ef64",
+        "index": 0,
+        "pivot": {
+          "x": 32,
+          "y": 38
+        },
+        "side": "South",
+        "tag": "Sway_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "flowers-selout-64_Sway_South_01.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 64,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 0.0,
+        "id": "4d226c10a1466ac5",
+        "index": 1,
+        "pivot": {
+          "x": 32,
+          "y": 38
+        },
+        "side": "South",
+        "tag": "Sway_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "flowers-selout-64_Sway_South_02.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 128,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 0.0,
+        "id": "6e094ec115dc1611",
+        "index": 2,
+        "pivot": {
+          "x": 32,
+          "y": 38
+        },
+        "side": "South",
+        "tag": "Sway_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "flowers-selout-64_Sway_South_03.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 192,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 0.0,
+        "id": "e5604aba537097b2",
+        "index": 3,
+        "pivot": {
+          "x": 32,
+          "y": 38
+        },
+        "side": "South",
+        "tag": "Sway_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "flowers-selout-64_Sway_South_04.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 256,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 0.0,
+        "id": "5a763d4f3f2e24d6",
+        "index": 4,
+        "pivot": {
+          "x": 32,
+          "y": 38
+        },
+        "side": "South",
+        "tag": "Sway_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "flowers-selout-64_Sway_South_05.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 320,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 0.0,
+        "id": "ff025e80ffa68fc2",
+        "index": 5,
+        "pivot": {
+          "x": 32,
+          "y": 38
+        },
+        "side": "South",
+        "tag": "Sway_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "flowers-selout-64_Sway_South_06.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 384,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 0.0,
+        "id": "961a1defa644ca4d",
+        "index": 6,
+        "pivot": {
+          "x": 32,
+          "y": 38
+        },
+        "side": "South",
+        "tag": "Sway_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "flowers-selout-64_Sway_South_07.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 448,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 0.0,
+        "id": "b80605ff8ce036ef",
+        "index": 7,
+        "pivot": {
+          "x": 32,
+          "y": 38
+        },
+        "side": "South",
+        "tag": "Sway_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "flowers-selout-64_Sway_South_08.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 512,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 0.0,
+        "id": "77509da06301e02b",
+        "index": 8,
+        "pivot": {
+          "x": 32,
+          "y": 38
+        },
+        "side": "South",
+        "tag": "Sway_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "flowers-selout-64_Sway_South_09.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 576,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 0.0,
+        "id": "e5c046b53afed4c0",
+        "index": 9,
+        "pivot": {
+          "x": 32,
+          "y": 38
+        },
+        "side": "South",
+        "tag": "Sway_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "flowers-selout-64_Sway_South_10.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 640,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 0.0,
+        "id": "e68bab232293feb4",
+        "index": 10,
+        "pivot": {
+          "x": 32,
+          "y": 38
+        },
+        "side": "South",
+        "tag": "Sway_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "flowers-selout-64_Sway_South_11.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 704,
+        "y": 0
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 0.0,
+        "id": "58948d50a7cc2690",
+        "index": 11,
+        "pivot": {
+          "x": 32,
+          "y": 38
+        },
+        "side": "South",
+        "tag": "Sway_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "flowers-selout-64_Sway_Southeast_00.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 64
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 45.0,
+        "id": "54ab86acc596decb",
+        "index": 0,
+        "pivot": {
+          "x": 32,
+          "y": 38
+        },
+        "side": "Southeast",
+        "tag": "Sway_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "flowers-selout-64_Sway_Southeast_01.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 64,
+        "y": 64
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 45.0,
+        "id": "ad87feb4ce80efe6",
+        "index": 1,
+        "pivot": {
+          "x": 32,
+          "y": 38
+        },
+        "side": "Southeast",
+        "tag": "Sway_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "flowers-selout-64_Sway_Southeast_02.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 128,
+        "y": 64
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 45.0,
+        "id": "625476d450c73e7a",
+        "index": 2,
+        "pivot": {
+          "x": 32,
+          "y": 38
+        },
+        "side": "Southeast",
+        "tag": "Sway_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "flowers-selout-64_Sway_Southeast_03.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 192,
+        "y": 64
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 45.0,
+        "id": "037a4735b60d7ac9",
+        "index": 3,
+        "pivot": {
+          "x": 32,
+          "y": 38
+        },
+        "side": "Southeast",
+        "tag": "Sway_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "flowers-selout-64_Sway_Southeast_04.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 256,
+        "y": 64
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 45.0,
+        "id": "9fb16f9c22429299",
+        "index": 4,
+        "pivot": {
+          "x": 32,
+          "y": 38
+        },
+        "side": "Southeast",
+        "tag": "Sway_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "flowers-selout-64_Sway_Southeast_05.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 320,
+        "y": 64
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 45.0,
+        "id": "4fd4625059d3e7ed",
+        "index": 5,
+        "pivot": {
+          "x": 32,
+          "y": 38
+        },
+        "side": "Southeast",
+        "tag": "Sway_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "flowers-selout-64_Sway_Southeast_06.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 384,
+        "y": 64
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 45.0,
+        "id": "4b5b480cd45b3ee2",
+        "index": 6,
+        "pivot": {
+          "x": 32,
+          "y": 38
+        },
+        "side": "Southeast",
+        "tag": "Sway_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "flowers-selout-64_Sway_Southeast_07.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 448,
+        "y": 64
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 45.0,
+        "id": "bcb34f055c8ad1cc",
+        "index": 7,
+        "pivot": {
+          "x": 32,
+          "y": 38
+        },
+        "side": "Southeast",
+        "tag": "Sway_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "flowers-selout-64_Sway_Southeast_08.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 512,
+        "y": 64
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 45.0,
+        "id": "6600d22cd520ef00",
+        "index": 8,
+        "pivot": {
+          "x": 32,
+          "y": 38
+        },
+        "side": "Southeast",
+        "tag": "Sway_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "flowers-selout-64_Sway_Southeast_09.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 576,
+        "y": 64
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 45.0,
+        "id": "9ce1a3c5cee0dbeb",
+        "index": 9,
+        "pivot": {
+          "x": 32,
+          "y": 38
+        },
+        "side": "Southeast",
+        "tag": "Sway_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "flowers-selout-64_Sway_Southeast_10.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 640,
+        "y": 64
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 45.0,
+        "id": "c4f53f726ee91c7b",
+        "index": 10,
+        "pivot": {
+          "x": 32,
+          "y": 38
+        },
+        "side": "Southeast",
+        "tag": "Sway_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "flowers-selout-64_Sway_Southeast_11.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 704,
+        "y": 64
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 45.0,
+        "id": "d0efb685efc073cf",
+        "index": 11,
+        "pivot": {
+          "x": 32,
+          "y": 38
+        },
+        "side": "Southeast",
+        "tag": "Sway_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "flowers-selout-64_Sway_East_00.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 128
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 90.0,
+        "id": "b14df297cfb76247",
+        "index": 0,
+        "pivot": {
+          "x": 32,
+          "y": 38
+        },
+        "side": "East",
+        "tag": "Sway_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "flowers-selout-64_Sway_East_01.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 64,
+        "y": 128
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 90.0,
+        "id": "a9a86a9f3aea1a02",
+        "index": 1,
+        "pivot": {
+          "x": 32,
+          "y": 38
+        },
+        "side": "East",
+        "tag": "Sway_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "flowers-selout-64_Sway_East_02.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 128,
+        "y": 128
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 90.0,
+        "id": "ec408dbb780ff98e",
+        "index": 2,
+        "pivot": {
+          "x": 32,
+          "y": 38
+        },
+        "side": "East",
+        "tag": "Sway_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "flowers-selout-64_Sway_East_03.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 192,
+        "y": 128
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 90.0,
+        "id": "546d419a5e746c15",
+        "index": 3,
+        "pivot": {
+          "x": 32,
+          "y": 38
+        },
+        "side": "East",
+        "tag": "Sway_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "flowers-selout-64_Sway_East_04.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 256,
+        "y": 128
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 90.0,
+        "id": "d6221061f0733ecd",
+        "index": 4,
+        "pivot": {
+          "x": 32,
+          "y": 38
+        },
+        "side": "East",
+        "tag": "Sway_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "flowers-selout-64_Sway_East_05.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 320,
+        "y": 128
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 90.0,
+        "id": "c1c214d704e295b9",
+        "index": 5,
+        "pivot": {
+          "x": 32,
+          "y": 38
+        },
+        "side": "East",
+        "tag": "Sway_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "flowers-selout-64_Sway_East_06.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 384,
+        "y": 128
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 90.0,
+        "id": "7540e56b47117656",
+        "index": 6,
+        "pivot": {
+          "x": 32,
+          "y": 38
+        },
+        "side": "East",
+        "tag": "Sway_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "flowers-selout-64_Sway_East_07.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 448,
+        "y": 128
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 90.0,
+        "id": "6392adad5999e570",
+        "index": 7,
+        "pivot": {
+          "x": 32,
+          "y": 38
+        },
+        "side": "East",
+        "tag": "Sway_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "flowers-selout-64_Sway_East_08.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 512,
+        "y": 128
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 90.0,
+        "id": "21903e48c3736a5c",
+        "index": 8,
+        "pivot": {
+          "x": 32,
+          "y": 38
+        },
+        "side": "East",
+        "tag": "Sway_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "flowers-selout-64_Sway_East_09.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 576,
+        "y": 128
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 90.0,
+        "id": "d32324b345bcb2df",
+        "index": 9,
+        "pivot": {
+          "x": 32,
+          "y": 38
+        },
+        "side": "East",
+        "tag": "Sway_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "flowers-selout-64_Sway_East_10.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 640,
+        "y": 128
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 90.0,
+        "id": "21a3ab5d790ae637",
+        "index": 10,
+        "pivot": {
+          "x": 32,
+          "y": 38
+        },
+        "side": "East",
+        "tag": "Sway_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "flowers-selout-64_Sway_East_11.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 704,
+        "y": 128
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 90.0,
+        "id": "530dcd729cbf3343",
+        "index": 11,
+        "pivot": {
+          "x": 32,
+          "y": 38
+        },
+        "side": "East",
+        "tag": "Sway_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "flowers-selout-64_Sway_Northeast_00.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 192
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 135.0,
+        "id": "8557af71ef01bacd",
+        "index": 0,
+        "pivot": {
+          "x": 32,
+          "y": 38
+        },
+        "side": "Northeast",
+        "tag": "Sway_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "flowers-selout-64_Sway_Northeast_01.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 64,
+        "y": 192
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 135.0,
+        "id": "d66628296fc469ac",
+        "index": 1,
+        "pivot": {
+          "x": 32,
+          "y": 38
+        },
+        "side": "Northeast",
+        "tag": "Sway_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "flowers-selout-64_Sway_Northeast_02.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 128,
+        "y": 192
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 135.0,
+        "id": "b5ff0a5b42274288",
+        "index": 2,
+        "pivot": {
+          "x": 32,
+          "y": 38
+        },
+        "side": "Northeast",
+        "tag": "Sway_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "flowers-selout-64_Sway_Northeast_03.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 192,
+        "y": 192
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 135.0,
+        "id": "c9ab9414bd68400f",
+        "index": 3,
+        "pivot": {
+          "x": 32,
+          "y": 38
+        },
+        "side": "Northeast",
+        "tag": "Sway_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "flowers-selout-64_Sway_Northeast_04.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 256,
+        "y": 192
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 135.0,
+        "id": "ef292e19971f1963",
+        "index": 4,
+        "pivot": {
+          "x": 32,
+          "y": 38
+        },
+        "side": "Northeast",
+        "tag": "Sway_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "flowers-selout-64_Sway_Northeast_05.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 320,
+        "y": 192
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 135.0,
+        "id": "79b90542d57a271f",
+        "index": 5,
+        "pivot": {
+          "x": 32,
+          "y": 38
+        },
+        "side": "Northeast",
+        "tag": "Sway_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "flowers-selout-64_Sway_Northeast_06.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 384,
+        "y": 192
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 135.0,
+        "id": "846e1c6624b61a4c",
+        "index": 6,
+        "pivot": {
+          "x": 32,
+          "y": 38
+        },
+        "side": "Northeast",
+        "tag": "Sway_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "flowers-selout-64_Sway_Northeast_07.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 448,
+        "y": 192
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 135.0,
+        "id": "52dacf82aee11fc6",
+        "index": 7,
+        "pivot": {
+          "x": 32,
+          "y": 38
+        },
+        "side": "Northeast",
+        "tag": "Sway_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "flowers-selout-64_Sway_Northeast_08.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 512,
+        "y": 192
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 135.0,
+        "id": "a6fea6abea57be42",
+        "index": 8,
+        "pivot": {
+          "x": 32,
+          "y": 38
+        },
+        "side": "Northeast",
+        "tag": "Sway_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "flowers-selout-64_Sway_Northeast_09.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 576,
+        "y": 192
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 135.0,
+        "id": "9dd03788f1bf232d",
+        "index": 9,
+        "pivot": {
+          "x": 32,
+          "y": 38
+        },
+        "side": "Northeast",
+        "tag": "Sway_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "flowers-selout-64_Sway_Northeast_10.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 640,
+        "y": 192
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 135.0,
+        "id": "69655e42acc16c81",
+        "index": 10,
+        "pivot": {
+          "x": 32,
+          "y": 38
+        },
+        "side": "Northeast",
+        "tag": "Sway_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "flowers-selout-64_Sway_Northeast_11.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 704,
+        "y": 192
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 135.0,
+        "id": "7e99356d23a803fd",
+        "index": 11,
+        "pivot": {
+          "x": 32,
+          "y": 38
+        },
+        "side": "Northeast",
+        "tag": "Sway_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "flowers-selout-64_Sway_North_00.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 256
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 180.0,
+        "id": "f27ce875e04d3b8a",
+        "index": 0,
+        "pivot": {
+          "x": 32,
+          "y": 38
+        },
+        "side": "North",
+        "tag": "Sway_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "flowers-selout-64_Sway_North_01.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 64,
+        "y": 256
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 180.0,
+        "id": "9f3499e060cdb5af",
+        "index": 1,
+        "pivot": {
+          "x": 32,
+          "y": 38
+        },
+        "side": "North",
+        "tag": "Sway_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "flowers-selout-64_Sway_North_02.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 128,
+        "y": 256
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 180.0,
+        "id": "934a22ccdff8115b",
+        "index": 2,
+        "pivot": {
+          "x": 32,
+          "y": 38
+        },
+        "side": "North",
+        "tag": "Sway_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "flowers-selout-64_Sway_North_03.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 192,
+        "y": 256
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 180.0,
+        "id": "5860474a63ba318c",
+        "index": 3,
+        "pivot": {
+          "x": 32,
+          "y": 38
+        },
+        "side": "North",
+        "tag": "Sway_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "flowers-selout-64_Sway_North_04.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 256,
+        "y": 256
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 180.0,
+        "id": "91bb4fa5a01f12bc",
+        "index": 4,
+        "pivot": {
+          "x": 32,
+          "y": 38
+        },
+        "side": "North",
+        "tag": "Sway_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "flowers-selout-64_Sway_North_05.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 320,
+        "y": 256
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 180.0,
+        "id": "95cea98eb8c0d148",
+        "index": 5,
+        "pivot": {
+          "x": 32,
+          "y": 38
+        },
+        "side": "North",
+        "tag": "Sway_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "flowers-selout-64_Sway_North_06.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 384,
+        "y": 256
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 180.0,
+        "id": "68c7973ceca79cf3",
+        "index": 6,
+        "pivot": {
+          "x": 32,
+          "y": 38
+        },
+        "side": "North",
+        "tag": "Sway_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "flowers-selout-64_Sway_North_07.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 448,
+        "y": 256
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 180.0,
+        "id": "73693d5495264bcd",
+        "index": 7,
+        "pivot": {
+          "x": 32,
+          "y": 38
+        },
+        "side": "North",
+        "tag": "Sway_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "flowers-selout-64_Sway_North_08.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 512,
+        "y": 256
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 180.0,
+        "id": "38784fa3dabab349",
+        "index": 8,
+        "pivot": {
+          "x": 32,
+          "y": 38
+        },
+        "side": "North",
+        "tag": "Sway_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "flowers-selout-64_Sway_North_09.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 576,
+        "y": 256
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 180.0,
+        "id": "b184f6f4edb1a4a6",
+        "index": 9,
+        "pivot": {
+          "x": 32,
+          "y": 38
+        },
+        "side": "North",
+        "tag": "Sway_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "flowers-selout-64_Sway_North_10.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 640,
+        "y": 256
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 180.0,
+        "id": "4adbd1e13a136106",
+        "index": 10,
+        "pivot": {
+          "x": 32,
+          "y": 38
+        },
+        "side": "North",
+        "tag": "Sway_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "flowers-selout-64_Sway_North_11.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 704,
+        "y": 256
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 180.0,
+        "id": "ffae4e3a81916502",
+        "index": 11,
+        "pivot": {
+          "x": 32,
+          "y": 38
+        },
+        "side": "North",
+        "tag": "Sway_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "flowers-selout-64_Sway_Northwest_00.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 320
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 225.0,
+        "id": "400cee6fb9d0f5f7",
+        "index": 0,
+        "pivot": {
+          "x": 32,
+          "y": 38
+        },
+        "side": "Northwest",
+        "tag": "Sway_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "flowers-selout-64_Sway_Northwest_01.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 64,
+        "y": 320
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 225.0,
+        "id": "5898645275daa6d2",
+        "index": 1,
+        "pivot": {
+          "x": 32,
+          "y": 38
+        },
+        "side": "Northwest",
+        "tag": "Sway_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "flowers-selout-64_Sway_Northwest_02.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 128,
+        "y": 320
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 225.0,
+        "id": "128b357d33b599fe",
+        "index": 2,
+        "pivot": {
+          "x": 32,
+          "y": 38
+        },
+        "side": "Northwest",
+        "tag": "Sway_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "flowers-selout-64_Sway_Northwest_03.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 192,
+        "y": 320
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 225.0,
+        "id": "a508f1a5a4482225",
+        "index": 3,
+        "pivot": {
+          "x": 32,
+          "y": 38
+        },
+        "side": "Northwest",
+        "tag": "Sway_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "flowers-selout-64_Sway_Northwest_04.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 256,
+        "y": 320
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 225.0,
+        "id": "7839f3c39aaf4afd",
+        "index": 4,
+        "pivot": {
+          "x": 32,
+          "y": 38
+        },
+        "side": "Northwest",
+        "tag": "Sway_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "flowers-selout-64_Sway_Northwest_05.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 320,
+        "y": 320
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 225.0,
+        "id": "59ccc705c0972be9",
+        "index": 5,
+        "pivot": {
+          "x": 32,
+          "y": 38
+        },
+        "side": "Northwest",
+        "tag": "Sway_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "flowers-selout-64_Sway_Northwest_06.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 384,
+        "y": 320
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 225.0,
+        "id": "cc650cecc44e7fa6",
+        "index": 6,
+        "pivot": {
+          "x": 32,
+          "y": 38
+        },
+        "side": "Northwest",
+        "tag": "Sway_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "flowers-selout-64_Sway_Northwest_07.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 448,
+        "y": 320
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 225.0,
+        "id": "f1069320e28e24e0",
+        "index": 7,
+        "pivot": {
+          "x": 32,
+          "y": 38
+        },
+        "side": "Northwest",
+        "tag": "Sway_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "flowers-selout-64_Sway_Northwest_08.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 512,
+        "y": 320
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 225.0,
+        "id": "17482fd744d772ac",
+        "index": 8,
+        "pivot": {
+          "x": 32,
+          "y": 38
+        },
+        "side": "Northwest",
+        "tag": "Sway_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "flowers-selout-64_Sway_Northwest_09.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 576,
+        "y": 320
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 225.0,
+        "id": "d98c8b948cfec54f",
+        "index": 9,
+        "pivot": {
+          "x": 32,
+          "y": 38
+        },
+        "side": "Northwest",
+        "tag": "Sway_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "flowers-selout-64_Sway_Northwest_10.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 640,
+        "y": 320
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 225.0,
+        "id": "2b6b8ebdea007ea7",
+        "index": 10,
+        "pivot": {
+          "x": 32,
+          "y": 38
+        },
+        "side": "Northwest",
+        "tag": "Sway_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "flowers-selout-64_Sway_Northwest_11.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 704,
+        "y": 320
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 225.0,
+        "id": "9bdc60f4aa055313",
+        "index": 11,
+        "pivot": {
+          "x": 32,
+          "y": 38
+        },
+        "side": "Northwest",
+        "tag": "Sway_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "flowers-selout-64_Sway_West_00.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 384
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 270.0,
+        "id": "6dcd9ee553fb4e55",
+        "index": 0,
+        "pivot": {
+          "x": 32,
+          "y": 38
+        },
+        "side": "West",
+        "tag": "Sway_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "flowers-selout-64_Sway_West_01.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 64,
+        "y": 384
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 270.0,
+        "id": "068e0f469e49b1d4",
+        "index": 1,
+        "pivot": {
+          "x": 32,
+          "y": 38
+        },
+        "side": "West",
+        "tag": "Sway_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "flowers-selout-64_Sway_West_02.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 128,
+        "y": 384
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 270.0,
+        "id": "7896f1742381d9b0",
+        "index": 2,
+        "pivot": {
+          "x": 32,
+          "y": 38
+        },
+        "side": "West",
+        "tag": "Sway_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "flowers-selout-64_Sway_West_03.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 192,
+        "y": 384
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 270.0,
+        "id": "56efa2616b78f907",
+        "index": 3,
+        "pivot": {
+          "x": 32,
+          "y": 38
+        },
+        "side": "West",
+        "tag": "Sway_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "flowers-selout-64_Sway_West_04.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 256,
+        "y": 384
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 270.0,
+        "id": "7baf3c61fdcd5cbb",
+        "index": 4,
+        "pivot": {
+          "x": 32,
+          "y": 38
+        },
+        "side": "West",
+        "tag": "Sway_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "flowers-selout-64_Sway_West_05.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 320,
+        "y": 384
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 270.0,
+        "id": "a9d0ec6003fdbc47",
+        "index": 5,
+        "pivot": {
+          "x": 32,
+          "y": 38
+        },
+        "side": "West",
+        "tag": "Sway_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "flowers-selout-64_Sway_West_06.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 384,
+        "y": 384
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 270.0,
+        "id": "b4960383533b6274",
+        "index": 6,
+        "pivot": {
+          "x": 32,
+          "y": 38
+        },
+        "side": "West",
+        "tag": "Sway_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "flowers-selout-64_Sway_West_07.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 448,
+        "y": 384
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 270.0,
+        "id": "a620b8b257ac6f4e",
+        "index": 7,
+        "pivot": {
+          "x": 32,
+          "y": 38
+        },
+        "side": "West",
+        "tag": "Sway_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "flowers-selout-64_Sway_West_08.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 512,
+        "y": 384
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 270.0,
+        "id": "f28e4c180507c3fa",
+        "index": 8,
+        "pivot": {
+          "x": 32,
+          "y": 38
+        },
+        "side": "West",
+        "tag": "Sway_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "flowers-selout-64_Sway_West_09.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 576,
+        "y": 384
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 270.0,
+        "id": "287faa21851e7945",
+        "index": 9,
+        "pivot": {
+          "x": 32,
+          "y": 38
+        },
+        "side": "West",
+        "tag": "Sway_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "flowers-selout-64_Sway_West_10.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 640,
+        "y": 384
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 270.0,
+        "id": "5bc3b8a611fc6349",
+        "index": 10,
+        "pivot": {
+          "x": 32,
+          "y": 38
+        },
+        "side": "West",
+        "tag": "Sway_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "flowers-selout-64_Sway_West_11.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 704,
+        "y": 384
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 270.0,
+        "id": "68cf1e9d6d0f5285",
+        "index": 11,
+        "pivot": {
+          "x": 32,
+          "y": 38
+        },
+        "side": "West",
+        "tag": "Sway_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "flowers-selout-64_Sway_Southwest_00.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 448
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 315.0,
+        "id": "87acac3cf4717511",
+        "index": 0,
+        "pivot": {
+          "x": 32,
+          "y": 38
+        },
+        "side": "Southwest",
+        "tag": "Sway_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "flowers-selout-64_Sway_Southwest_01.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 64,
+        "y": 448
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 315.0,
+        "id": "7ef94eed9bfc0c60",
+        "index": 1,
+        "pivot": {
+          "x": 32,
+          "y": 38
+        },
+        "side": "Southwest",
+        "tag": "Sway_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "flowers-selout-64_Sway_Southwest_02.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 128,
+        "y": 448
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 315.0,
+        "id": "38861c34a09d4e64",
+        "index": 2,
+        "pivot": {
+          "x": 32,
+          "y": 38
+        },
+        "side": "Southwest",
+        "tag": "Sway_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "flowers-selout-64_Sway_Southwest_03.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 192,
+        "y": 448
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 315.0,
+        "id": "3d2f9ebedbfd68e3",
+        "index": 3,
+        "pivot": {
+          "x": 32,
+          "y": 38
+        },
+        "side": "Southwest",
+        "tag": "Sway_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "flowers-selout-64_Sway_Southwest_04.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 256,
+        "y": 448
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 315.0,
+        "id": "512d873dd2cc1f5f",
+        "index": 4,
+        "pivot": {
+          "x": 32,
+          "y": 38
+        },
+        "side": "Southwest",
+        "tag": "Sway_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "flowers-selout-64_Sway_Southwest_05.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 320,
+        "y": 448
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 315.0,
+        "id": "d2bf0ae48e31b123",
+        "index": 5,
+        "pivot": {
+          "x": 32,
+          "y": 38
+        },
+        "side": "Southwest",
+        "tag": "Sway_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "flowers-selout-64_Sway_Southwest_06.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 384,
+        "y": 448
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 315.0,
+        "id": "637c0d3a9c465198",
+        "index": 6,
+        "pivot": {
+          "x": 32,
+          "y": 38
+        },
+        "side": "Southwest",
+        "tag": "Sway_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "flowers-selout-64_Sway_Southwest_07.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 448,
+        "y": 448
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 315.0,
+        "id": "db63038a830015b2",
+        "index": 7,
+        "pivot": {
+          "x": 32,
+          "y": 38
+        },
+        "side": "Southwest",
+        "tag": "Sway_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "flowers-selout-64_Sway_Southwest_08.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 512,
+        "y": 448
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 315.0,
+        "id": "3ea8a3c9973ab256",
+        "index": 8,
+        "pivot": {
+          "x": 32,
+          "y": 38
+        },
+        "side": "Southwest",
+        "tag": "Sway_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "flowers-selout-64_Sway_Southwest_09.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 576,
+        "y": 448
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 315.0,
+        "id": "abe3e6234420cb59",
+        "index": 9,
+        "pivot": {
+          "x": 32,
+          "y": 38
+        },
+        "side": "Southwest",
+        "tag": "Sway_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "flowers-selout-64_Sway_Southwest_10.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 640,
+        "y": 448
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 315.0,
+        "id": "015deb36ea19dd35",
+        "index": 10,
+        "pivot": {
+          "x": 32,
+          "y": 38
+        },
+        "side": "Southwest",
+        "tag": "Sway_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "flowers-selout-64_Sway_Southwest_11.png",
+      "frame": {
+        "h": 64,
+        "w": 64,
+        "x": 704,
+        "y": 448
+      },
+      "pixor": {
+        "action": "Sway",
+        "degrees": 315.0,
+        "id": "9a1393cd6c9ddad9",
+        "index": 11,
+        "pivot": {
+          "x": 32,
+          "y": 38
+        },
+        "side": "Southwest",
+        "tag": "Sway_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 64,
+        "w": 64
+      },
+      "spriteSourceSize": {
+        "h": 64,
+        "w": 64,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    }
+  ],
+  "meta": {
+    "app": "Pixor",
+    "format": "I8",
+    "frameTags": [
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 0,
+        "name": "Sway_South",
+        "to": 11
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 12,
+        "name": "Sway_Southeast",
+        "to": 23
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 24,
+        "name": "Sway_East",
+        "to": 35
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 36,
+        "name": "Sway_Northeast",
+        "to": 47
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 48,
+        "name": "Sway_North",
+        "to": 59
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 60,
+        "name": "Sway_Northwest",
+        "to": 71
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 72,
+        "name": "Sway_West",
+        "to": 83
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 84,
+        "name": "Sway_Southwest",
+        "to": 95
+      }
+    ],
+    "image": "flowers-selout-64.png",
+    "layers": [
+      {
+        "blendMode": "normal",
+        "name": "final",
+        "opacity": 255
+      }
+    ],
+    "pixor": {
+      "cell": {
+        "h": 64,
+        "w": 64
+      },
+      "pivot": {
+        "x": 32,
+        "y": 38
+      },
+      "sides": {
+        "East": 90.0,
+        "North": 180.0,
+        "Northeast": 135.0,
+        "Northwest": 225.0,
+        "South": 0.0,
+        "Southeast": 45.0,
+        "Southwest": 315.0,
+        "West": 270.0
+      }
+    },
+    "scale": "1",
+    "size": {
+      "h": 512,
+      "w": 768
+    },
+    "slices": [
+      {
+        "color": "#0000ffff",
+        "keys": [
+          {
+            "bounds": {
+              "h": 64,
+              "w": 64,
+              "x": 0,
+              "y": 0
+            },
+            "frame": 0,
+            "pivot": {
+              "x": 32,
+              "y": 38
+            }
+          }
+        ],
+        "name": "pivot"
+      }
+    ],
+    "version": "2.0.1"
+  }
+}

@@ -1,0 +1,2297 @@
+{
+  "frames": [
+    {
+      "duration": 83,
+      "filename": "open-book-selout-32_bob_South_00.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 0.0,
+        "id": "c7301df55fb4463c",
+        "index": 0,
+        "pivot": {
+          "x": 16,
+          "y": 16
+        },
+        "side": "South",
+        "tag": "bob_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "open-book-selout-32_bob_South_01.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 32,
+        "y": 0
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 0.0,
+        "id": "5dbdcb4856f3e03d",
+        "index": 1,
+        "pivot": {
+          "x": 16,
+          "y": 16
+        },
+        "side": "South",
+        "tag": "bob_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "open-book-selout-32_bob_South_02.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 64,
+        "y": 0
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 0.0,
+        "id": "5104af09168630a9",
+        "index": 2,
+        "pivot": {
+          "x": 16,
+          "y": 16
+        },
+        "side": "South",
+        "tag": "bob_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "open-book-selout-32_bob_South_03.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 96,
+        "y": 0
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 0.0,
+        "id": "97bd7b7c9ca8f4da",
+        "index": 3,
+        "pivot": {
+          "x": 16,
+          "y": 16
+        },
+        "side": "South",
+        "tag": "bob_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "open-book-selout-32_bob_South_04.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 128,
+        "y": 0
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 0.0,
+        "id": "2059e79b77b10dde",
+        "index": 4,
+        "pivot": {
+          "x": 16,
+          "y": 16
+        },
+        "side": "South",
+        "tag": "bob_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "open-book-selout-32_bob_South_05.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 160,
+        "y": 0
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 0.0,
+        "id": "ccc74d923509aa7a",
+        "index": 5,
+        "pivot": {
+          "x": 16,
+          "y": 16
+        },
+        "side": "South",
+        "tag": "bob_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "open-book-selout-32_bob_South_06.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 192,
+        "y": 0
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 0.0,
+        "id": "716d0d00dc5f9f65",
+        "index": 6,
+        "pivot": {
+          "x": 16,
+          "y": 16
+        },
+        "side": "South",
+        "tag": "bob_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "open-book-selout-32_bob_South_07.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 224,
+        "y": 0
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 0.0,
+        "id": "da8f6642a361eae7",
+        "index": 7,
+        "pivot": {
+          "x": 16,
+          "y": 16
+        },
+        "side": "South",
+        "tag": "bob_South"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "open-book-selout-32_bob_Southeast_00.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 32
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 45.0,
+        "id": "ab7a519b61412693",
+        "index": 0,
+        "pivot": {
+          "x": 16,
+          "y": 16
+        },
+        "side": "Southeast",
+        "tag": "bob_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "open-book-selout-32_bob_Southeast_01.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 32,
+        "y": 32
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 45.0,
+        "id": "49199e0ccc6c42ae",
+        "index": 1,
+        "pivot": {
+          "x": 16,
+          "y": 16
+        },
+        "side": "Southeast",
+        "tag": "bob_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "open-book-selout-32_bob_Southeast_02.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 64,
+        "y": 32
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 45.0,
+        "id": "77e5cce9d2211fe2",
+        "index": 2,
+        "pivot": {
+          "x": 16,
+          "y": 16
+        },
+        "side": "Southeast",
+        "tag": "bob_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "open-book-selout-32_bob_Southeast_03.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 96,
+        "y": 32
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 45.0,
+        "id": "198ca6cf7691f0e1",
+        "index": 3,
+        "pivot": {
+          "x": 16,
+          "y": 16
+        },
+        "side": "Southeast",
+        "tag": "bob_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "open-book-selout-32_bob_Southeast_04.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 128,
+        "y": 32
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 45.0,
+        "id": "c3b33d6a2778e111",
+        "index": 4,
+        "pivot": {
+          "x": 16,
+          "y": 16
+        },
+        "side": "Southeast",
+        "tag": "bob_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "open-book-selout-32_bob_Southeast_05.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 160,
+        "y": 32
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 45.0,
+        "id": "6a0f3dd125e2c295",
+        "index": 5,
+        "pivot": {
+          "x": 16,
+          "y": 16
+        },
+        "side": "Southeast",
+        "tag": "bob_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "open-book-selout-32_bob_Southeast_06.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 192,
+        "y": 32
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 45.0,
+        "id": "0f9bc78c7d1e714a",
+        "index": 6,
+        "pivot": {
+          "x": 16,
+          "y": 16
+        },
+        "side": "Southeast",
+        "tag": "bob_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "open-book-selout-32_bob_Southeast_07.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 224,
+        "y": 32
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 45.0,
+        "id": "5bfecfb149078394",
+        "index": 7,
+        "pivot": {
+          "x": 16,
+          "y": 16
+        },
+        "side": "Southeast",
+        "tag": "bob_Southeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "open-book-selout-32_bob_East_00.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 64
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 90.0,
+        "id": "9cdbf9a72e73cf0f",
+        "index": 0,
+        "pivot": {
+          "x": 16,
+          "y": 16
+        },
+        "side": "East",
+        "tag": "bob_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "open-book-selout-32_bob_East_01.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 32,
+        "y": 64
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 90.0,
+        "id": "1b159ab66f12876a",
+        "index": 1,
+        "pivot": {
+          "x": 16,
+          "y": 16
+        },
+        "side": "East",
+        "tag": "bob_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "open-book-selout-32_bob_East_02.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 64,
+        "y": 64
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 90.0,
+        "id": "af1bb4a32bf419f6",
+        "index": 2,
+        "pivot": {
+          "x": 16,
+          "y": 16
+        },
+        "side": "East",
+        "tag": "bob_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "open-book-selout-32_bob_East_03.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 96,
+        "y": 64
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 90.0,
+        "id": "58881504600d49cd",
+        "index": 3,
+        "pivot": {
+          "x": 16,
+          "y": 16
+        },
+        "side": "East",
+        "tag": "bob_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "open-book-selout-32_bob_East_04.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 128,
+        "y": 64
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 90.0,
+        "id": "b688fcb4f69e0725",
+        "index": 4,
+        "pivot": {
+          "x": 16,
+          "y": 16
+        },
+        "side": "East",
+        "tag": "bob_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "open-book-selout-32_bob_East_05.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 160,
+        "y": 64
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 90.0,
+        "id": "5a6d3bbe1df10921",
+        "index": 5,
+        "pivot": {
+          "x": 16,
+          "y": 16
+        },
+        "side": "East",
+        "tag": "bob_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "open-book-selout-32_bob_East_06.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 192,
+        "y": 64
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 90.0,
+        "id": "cba40a2801f83d9e",
+        "index": 6,
+        "pivot": {
+          "x": 16,
+          "y": 16
+        },
+        "side": "East",
+        "tag": "bob_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "open-book-selout-32_bob_East_07.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 224,
+        "y": 64
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 90.0,
+        "id": "6e8fe513aa0d1af8",
+        "index": 7,
+        "pivot": {
+          "x": 16,
+          "y": 16
+        },
+        "side": "East",
+        "tag": "bob_East"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "open-book-selout-32_bob_Northeast_00.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 96
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 135.0,
+        "id": "ef33c02ea41df3e5",
+        "index": 0,
+        "pivot": {
+          "x": 16,
+          "y": 16
+        },
+        "side": "Northeast",
+        "tag": "bob_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "open-book-selout-32_bob_Northeast_01.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 32,
+        "y": 96
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 135.0,
+        "id": "f285e0033cd70e84",
+        "index": 1,
+        "pivot": {
+          "x": 16,
+          "y": 16
+        },
+        "side": "Northeast",
+        "tag": "bob_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "open-book-selout-32_bob_Northeast_02.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 64,
+        "y": 96
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 135.0,
+        "id": "afd7f1159ccabd40",
+        "index": 2,
+        "pivot": {
+          "x": 16,
+          "y": 16
+        },
+        "side": "Northeast",
+        "tag": "bob_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "open-book-selout-32_bob_Northeast_03.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 96,
+        "y": 96
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 135.0,
+        "id": "722659cda5117b37",
+        "index": 3,
+        "pivot": {
+          "x": 16,
+          "y": 16
+        },
+        "side": "Northeast",
+        "tag": "bob_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "open-book-selout-32_bob_Northeast_04.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 128,
+        "y": 96
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 135.0,
+        "id": "9a12bec20c345f4b",
+        "index": 4,
+        "pivot": {
+          "x": 16,
+          "y": 16
+        },
+        "side": "Northeast",
+        "tag": "bob_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "open-book-selout-32_bob_Northeast_05.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 160,
+        "y": 96
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 135.0,
+        "id": "19bc90095789cf97",
+        "index": 5,
+        "pivot": {
+          "x": 16,
+          "y": 16
+        },
+        "side": "Northeast",
+        "tag": "bob_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "open-book-selout-32_bob_Northeast_06.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 192,
+        "y": 96
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 135.0,
+        "id": "8bccbaef893717e4",
+        "index": 6,
+        "pivot": {
+          "x": 16,
+          "y": 16
+        },
+        "side": "Northeast",
+        "tag": "bob_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "open-book-selout-32_bob_Northeast_07.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 224,
+        "y": 96
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 135.0,
+        "id": "c440ac46c03e0ede",
+        "index": 7,
+        "pivot": {
+          "x": 16,
+          "y": 16
+        },
+        "side": "Northeast",
+        "tag": "bob_Northeast"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "open-book-selout-32_bob_North_00.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 128
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 180.0,
+        "id": "dd59d61541336d92",
+        "index": 0,
+        "pivot": {
+          "x": 16,
+          "y": 16
+        },
+        "side": "North",
+        "tag": "bob_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "open-book-selout-32_bob_North_01.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 32,
+        "y": 128
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 180.0,
+        "id": "ab3ddd2e8096d937",
+        "index": 1,
+        "pivot": {
+          "x": 16,
+          "y": 16
+        },
+        "side": "North",
+        "tag": "bob_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "open-book-selout-32_bob_North_02.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 64,
+        "y": 128
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 180.0,
+        "id": "5405106ba60a1303",
+        "index": 2,
+        "pivot": {
+          "x": 16,
+          "y": 16
+        },
+        "side": "North",
+        "tag": "bob_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "open-book-selout-32_bob_North_03.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 96,
+        "y": 128
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 180.0,
+        "id": "2b9d6364185c6c84",
+        "index": 3,
+        "pivot": {
+          "x": 16,
+          "y": 16
+        },
+        "side": "North",
+        "tag": "bob_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "open-book-selout-32_bob_North_04.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 128,
+        "y": 128
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 180.0,
+        "id": "09840ec974bbff14",
+        "index": 4,
+        "pivot": {
+          "x": 16,
+          "y": 16
+        },
+        "side": "North",
+        "tag": "bob_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "open-book-selout-32_bob_North_05.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 160,
+        "y": 128
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 180.0,
+        "id": "a5eb9627031a1670",
+        "index": 5,
+        "pivot": {
+          "x": 16,
+          "y": 16
+        },
+        "side": "North",
+        "tag": "bob_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "open-book-selout-32_bob_North_06.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 192,
+        "y": 128
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 180.0,
+        "id": "f16e6953a2b7b39b",
+        "index": 6,
+        "pivot": {
+          "x": 16,
+          "y": 16
+        },
+        "side": "North",
+        "tag": "bob_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "open-book-selout-32_bob_North_07.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 224,
+        "y": 128
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 180.0,
+        "id": "db443242783b0655",
+        "index": 7,
+        "pivot": {
+          "x": 16,
+          "y": 16
+        },
+        "side": "North",
+        "tag": "bob_North"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "open-book-selout-32_bob_Northwest_00.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 160
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 225.0,
+        "id": "edd860c29901870f",
+        "index": 0,
+        "pivot": {
+          "x": 16,
+          "y": 16
+        },
+        "side": "Northwest",
+        "tag": "bob_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "open-book-selout-32_bob_Northwest_01.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 32,
+        "y": 160
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 225.0,
+        "id": "6c1201d1d9a03f6a",
+        "index": 1,
+        "pivot": {
+          "x": 16,
+          "y": 16
+        },
+        "side": "Northwest",
+        "tag": "bob_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "open-book-selout-32_bob_Northwest_02.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 64,
+        "y": 160
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 225.0,
+        "id": "00181bbe9681d1f6",
+        "index": 2,
+        "pivot": {
+          "x": 16,
+          "y": 16
+        },
+        "side": "Northwest",
+        "tag": "bob_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "open-book-selout-32_bob_Northwest_03.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 96,
+        "y": 160
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 225.0,
+        "id": "a9847c1fca9b01cd",
+        "index": 3,
+        "pivot": {
+          "x": 16,
+          "y": 16
+        },
+        "side": "Northwest",
+        "tag": "bob_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "open-book-selout-32_bob_Northwest_04.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 128,
+        "y": 160
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 225.0,
+        "id": "078563d0612bbf25",
+        "index": 4,
+        "pivot": {
+          "x": 16,
+          "y": 16
+        },
+        "side": "Northwest",
+        "tag": "bob_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "open-book-selout-32_bob_Northwest_05.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 160,
+        "y": 160
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 225.0,
+        "id": "ab69a2d9887ec121",
+        "index": 5,
+        "pivot": {
+          "x": 16,
+          "y": 16
+        },
+        "side": "Northwest",
+        "tag": "bob_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "open-book-selout-32_bob_Northwest_06.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 192,
+        "y": 160
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 225.0,
+        "id": "1ca071436c85f59e",
+        "index": 6,
+        "pivot": {
+          "x": 16,
+          "y": 16
+        },
+        "side": "Northwest",
+        "tag": "bob_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "open-book-selout-32_bob_Northwest_07.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 224,
+        "y": 160
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 225.0,
+        "id": "bf8c4c2f149ad2f8",
+        "index": 7,
+        "pivot": {
+          "x": 16,
+          "y": 16
+        },
+        "side": "Northwest",
+        "tag": "bob_Northwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "open-book-selout-32_bob_West_00.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 192
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 270.0,
+        "id": "c27fbbce4d0716bd",
+        "index": 0,
+        "pivot": {
+          "x": 16,
+          "y": 16
+        },
+        "side": "West",
+        "tag": "bob_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "open-book-selout-32_bob_West_01.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 32,
+        "y": 192
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 270.0,
+        "id": "2bf20e7b55c77cbc",
+        "index": 1,
+        "pivot": {
+          "x": 16,
+          "y": 16
+        },
+        "side": "West",
+        "tag": "bob_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "open-book-selout-32_bob_West_02.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 64,
+        "y": 192
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 270.0,
+        "id": "f8328b8b312a33b8",
+        "index": 2,
+        "pivot": {
+          "x": 16,
+          "y": 16
+        },
+        "side": "West",
+        "tag": "bob_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "open-book-selout-32_bob_West_03.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 96,
+        "y": 192
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 270.0,
+        "id": "273e9c517392451f",
+        "index": 3,
+        "pivot": {
+          "x": 16,
+          "y": 16
+        },
+        "side": "West",
+        "tag": "bob_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "open-book-selout-32_bob_West_04.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 128,
+        "y": 192
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 270.0,
+        "id": "9c5530feeeb1c353",
+        "index": 4,
+        "pivot": {
+          "x": 16,
+          "y": 16
+        },
+        "side": "West",
+        "tag": "bob_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "open-book-selout-32_bob_West_05.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 160,
+        "y": 192
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 270.0,
+        "id": "53908677ac7a7d0f",
+        "index": 5,
+        "pivot": {
+          "x": 16,
+          "y": 16
+        },
+        "side": "West",
+        "tag": "bob_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "open-book-selout-32_bob_West_06.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 192,
+        "y": 192
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 270.0,
+        "id": "db792290fab6c45c",
+        "index": 6,
+        "pivot": {
+          "x": 16,
+          "y": 16
+        },
+        "side": "West",
+        "tag": "bob_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "open-book-selout-32_bob_West_07.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 224,
+        "y": 192
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 270.0,
+        "id": "6dd2634801e29836",
+        "index": 7,
+        "pivot": {
+          "x": 16,
+          "y": 16
+        },
+        "side": "West",
+        "tag": "bob_West"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "open-book-selout-32_bob_Southwest_00.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 224
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 315.0,
+        "id": "c41f7d91ac2145f9",
+        "index": 0,
+        "pivot": {
+          "x": 16,
+          "y": 16
+        },
+        "side": "Southwest",
+        "tag": "bob_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "open-book-selout-32_bob_Southwest_01.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 32,
+        "y": 224
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 315.0,
+        "id": "fb4fc86b6b9f7568",
+        "index": 1,
+        "pivot": {
+          "x": 16,
+          "y": 16
+        },
+        "side": "Southwest",
+        "tag": "bob_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "open-book-selout-32_bob_Southwest_02.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 64,
+        "y": 224
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 315.0,
+        "id": "a93807e5226af5cc",
+        "index": 2,
+        "pivot": {
+          "x": 16,
+          "y": 16
+        },
+        "side": "Southwest",
+        "tag": "bob_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "open-book-selout-32_bob_Southwest_03.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 96,
+        "y": 224
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 315.0,
+        "id": "83150b68f57ada1b",
+        "index": 3,
+        "pivot": {
+          "x": 16,
+          "y": 16
+        },
+        "side": "Southwest",
+        "tag": "bob_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "open-book-selout-32_bob_Southwest_04.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 128,
+        "y": 224
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 315.0,
+        "id": "245bf72cd09ae457",
+        "index": 4,
+        "pivot": {
+          "x": 16,
+          "y": 16
+        },
+        "side": "Southwest",
+        "tag": "bob_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "open-book-selout-32_bob_Southwest_05.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 160,
+        "y": 224
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 315.0,
+        "id": "24aef58df5d5688b",
+        "index": 5,
+        "pivot": {
+          "x": 16,
+          "y": 16
+        },
+        "side": "Southwest",
+        "tag": "bob_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 83,
+      "filename": "open-book-selout-32_bob_Southwest_06.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 192,
+        "y": 224
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 315.0,
+        "id": "d1b73837515e7200",
+        "index": 6,
+        "pivot": {
+          "x": 16,
+          "y": 16
+        },
+        "side": "Southwest",
+        "tag": "bob_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    },
+    {
+      "duration": 84,
+      "filename": "open-book-selout-32_bob_Southwest_07.png",
+      "frame": {
+        "h": 32,
+        "w": 32,
+        "x": 224,
+        "y": 224
+      },
+      "pixor": {
+        "action": "bob",
+        "degrees": 315.0,
+        "id": "4ed92fb416a7627a",
+        "index": 7,
+        "pivot": {
+          "x": 16,
+          "y": 16
+        },
+        "side": "Southwest",
+        "tag": "bob_Southwest"
+      },
+      "rotated": false,
+      "sourceSize": {
+        "h": 32,
+        "w": 32
+      },
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 32,
+        "x": 0,
+        "y": 0
+      },
+      "trimmed": false
+    }
+  ],
+  "meta": {
+    "app": "Pixor",
+    "format": "I8",
+    "frameTags": [
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 0,
+        "name": "bob_South",
+        "to": 7
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 8,
+        "name": "bob_Southeast",
+        "to": 15
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 16,
+        "name": "bob_East",
+        "to": 23
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 24,
+        "name": "bob_Northeast",
+        "to": 31
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 32,
+        "name": "bob_North",
+        "to": 39
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 40,
+        "name": "bob_Northwest",
+        "to": 47
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 48,
+        "name": "bob_West",
+        "to": 55
+      },
+      {
+        "color": "#000000ff",
+        "direction": "forward",
+        "from": 56,
+        "name": "bob_Southwest",
+        "to": 63
+      }
+    ],
+    "image": "open-book-selout-32.png",
+    "layers": [
+      {
+        "blendMode": "normal",
+        "name": "final",
+        "opacity": 255
+      }
+    ],
+    "pixor": {
+      "cell": {
+        "h": 32,
+        "w": 32
+      },
+      "pivot": {
+        "x": 16,
+        "y": 16
+      },
+      "sides": {
+        "East": 90.0,
+        "North": 180.0,
+        "Northeast": 135.0,
+        "Northwest": 225.0,
+        "South": 0.0,
+        "Southeast": 45.0,
+        "Southwest": 315.0,
+        "West": 270.0
+      }
+    },
+    "scale": "1",
+    "size": {
+      "h": 256,
+      "w": 256
+    },
+    "slices": [
+      {
+        "color": "#0000ffff",
+        "keys": [
+          {
+            "bounds": {
+              "h": 32,
+              "w": 32,
+              "x": 0,
+              "y": 0
+            },
+            "frame": 0,
+            "pivot": {
+              "x": 16,
+              "y": 16
+            }
+          }
+        ],
+        "name": "pivot"
+      }
+    ],
+    "version": "2.0.1"
+  }
+}
