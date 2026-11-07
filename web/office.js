@@ -181,7 +181,7 @@
     this.load.off("loaderror", onLoadError);
     this.load.on("loaderror", onLoadError);
     this.load.json("manifest", "assets/manifest.json?v=62612ac6");
-    this.load.json("mapdata", "map.json?v=7a8ffa8b");
+    this.load.json("mapdata", "map.json?v=14c953b6");
   };
   SceneBoot.prototype.create = function () {
     var manifest = this.cache.json.get("manifest");
@@ -944,8 +944,10 @@
     for (var gy2 = 0; gy2 < ROWS; gy2++)
       for (var gx2 = 27; gx2 < 38; gx2++)
         if ((gx2 + gy2) % 2 === 0) g.fillRect(gx2 * TILE, WALL_H + gy2 * TILE, TILE, TILE);
-    g.fillStyle(0xc9b48a, 1);  // 花园小径（与街道主路同一水平带，动线连续）
+    g.fillStyle(0xc9b48a, 1);  // 花园小径（横带与街道主路同带）
     g.fillRect(gx0, WALL_H + 8.8 * TILE, gx1 - gx0, TILE * 1.4);
+    // 竖支路：连 x25 墙门洞 gap[20,22]（办公室侧门出来正对小径）
+    g.fillRect(20.2 * TILE, WALL_H + 10.2 * TILE, 1.6 * TILE, 12 * TILE);
     // 小镇街道 (cols 39-55)：石板路（v24 回字形东侧全高）
     var tx0 = 38.5 * TILE, tx1 = 55.5 * TILE;
     g.fillStyle(0x7c7e8c, 1); g.fillRect(tx0, WALL_H, tx1 - tx0, H - WALL_H);
