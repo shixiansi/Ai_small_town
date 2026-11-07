@@ -636,8 +636,6 @@
       });
       s.roomSwitches.push({ plate: plate, lever: lever, room: sd.room });
     });
-    s.switchLever = swLever;
-    s.switchPlate = swPlate;
   }
 
   function setLights(s, on) {
