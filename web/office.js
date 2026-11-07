@@ -289,9 +289,9 @@
   // ---------- 小镇居民（方案 §3）：3 个 NPC，前端本地状态机，零后端成本 ----------
   /* NPC 精灵表 = gen_npc_skins.py 从 whale.png 色相重映射的换装副本（发色/衣色区分，帧结构一致） */
   var NPCS = [
-    { id: "cat",   name: "喵酱", skin: "whale_cat",   home: "homeCat",  homeZone: "npc_cat",  roam: [58, 71], homeHours: null,      desc: "镇上的橘猫" },
-    { id: "chief", name: "村长", skin: "whale_chief", home: "homeChief",homeZone: "npc_chief",roam: [59, 71], homeHours: [20, 8],   desc: "热心的水豚村长" },
-    { id: "doc",   name: "博士", skin: "whale_doc",   home: "homeDoc",  homeZone: "npc_doc",  roam: [60, 71], homeHours: [21, 13],  desc: "研究潮汐的章鱼" }
+    { id: "cat",   name: "喵酱", skin: "whale_cat",   home: "homeCat",  homeZone: "npc_cat",  indoor: "living_cat",   roam: [40, 54], homeHours: null,      desc: "镇上的橘猫" },
+    { id: "chief", name: "村长", skin: "whale_chief", home: "homeChief",homeZone: "npc_chief",indoor: "living_chief", roam: [41, 54], homeHours: [20, 8],   desc: "热心的水豚村长" },
+    { id: "doc",   name: "博士", skin: "whale_doc",   home: "homeDoc",  homeZone: "npc_doc",  indoor: "living_doc",   roam: [42, 54], homeHours: [21, 13],  desc: "研究潮汐的章鱼" }
   ];
   var NPC_DIALOGS = {
     cat: {
@@ -353,18 +353,43 @@
     if (npc.tag) npc.tag.setPosition(x, topY - 6).setDepth(npc.spr.depth + 3);
     if (npc.dot) npc.dot.setPosition(x + (npc.tag ? npc.tag.width / 2 + 7 : 0), topY - 6).setDepth(npc.spr.depth + 3);
   }
-  /* 在家时把 NPC 收进屋里：精灵挪到屋内锚点、名牌与圆点隐藏。
-   * "回家"的最后一步是走进门洞，室内外面貌差异 = 屋门口看不见人。 */
+  /* 在家时把 NPC 真正收进屋里：精灵站在屋内锚点旁半步（给串门的鱼让出落点）、名牌与圆点隐藏。
+   * "回家"的最后一程走门洞（door zone 正对 gap），进屋路上不会被墙挡住视线。 */
   function setNpcIndoor(npc, indoor) {
     npc.indoor = !!indoor;
-    var z = scene.mapdata.zones[npc.def.homeZone];
+    var z = scene.mapdata.zones[indoor ? (npc.def.indoor || npc.def.homeZone) : npc.def.homeZone];
     if (z && indoor) {
-      npc.spr.x = z.anchor[0] * TILE; npc.spr.y = WALL_H + z.anchor[1] * TILE - 6;
-      npc.spr.setDepth(WALL_H + z.anchor[1] * TILE + 1);
+      npc.spr.x = z.anchor[0] * TILE + 18;   // 半步偏移：主人和客人不叠影
+      npc.spr.y = WALL_H + z.anchor[1] * TILE - 6;
+      npc.spr.setDepth(npc.spr.y + 1);
     }
     if (npc.tag) npc.tag.setVisible(!indoor);
     if (npc.dot) npc.dot.setVisible(!indoor);
     positionNpcParts(npc);
+  }
+  /* NPC 进/出屋共用：最后一段或第一段都路过自家门口 zone（视觉上穿过门洞，不穿墙） */
+  function npcDoorTween(npc, toIndoor, onDone) {
+    var zDoor = scene.mapdata.zones[npc.def.homeZone];
+    var zIn = scene.mapdata.zones[npc.def.indoor || npc.def.homeZone];
+    if (!zDoor || !zIn) { if (onDone) onDone(); return; }
+    var step2 = function () {
+      var tx = toIndoor ? zIn.anchor[0] * TILE + 18 : zDoor.anchor[0] * TILE;
+      var ty = toIndoor ? WALL_H + zIn.anchor[1] * TILE - 6 : WALL_H + zDoor.anchor[1] * TILE;
+      scene.tweens.add({
+        targets: npc.spr, x: tx, y: ty, duration: 1500, ease: "Sine.InOut",
+        onUpdate: function () { positionNpcParts(npc); },
+        onComplete: function () { if (onDone) onDone(); }
+      });
+    };
+    if (toIndoor) {
+      // 先到门口（家门前街面），再拐进门洞
+      scene.tweens.add({
+        targets: npc.spr, x: zDoor.anchor[0] * TILE, y: WALL_H + zDoor.anchor[1] * TILE,
+        duration: 1200, ease: "Sine.InOut",
+        onUpdate: function () { positionNpcParts(npc); },
+        onComplete: step2
+      });
+    } else step2();
   }
   function scheduleNpc(npc, delay) {
     if (npc.timer) clearTimeout(npc.timer);
@@ -375,10 +400,15 @@
     var home = npcIsHome(npc.def);
     if (home && npc.state !== "home") { npcGoHome(npc); return; }
     if (!home && npc.state === "home") {
-      var gx = npc.def.roam[0] + Math.random() * (npc.def.roam[1] - npc.def.roam[0]);
-      var gy = 8.5 + Math.random() * 3.5;
       npc.state = "roaming";
-      scene.tweens.add({ targets: npc.spr, x: gx * TILE, y: WALL_H + gy * TILE, duration: 6000 + Math.random() * 5000, ease: "Sine.InOut", onUpdate: function () { positionNpcParts(npc); } });
+      // 出门：先穿门洞到自家门口，再往街面 roam 区溜达
+      setNpcIndoor(npc, false);
+      npcDoorTween(npc, false, function () {
+        if (npc.state !== "roaming") return;
+        var gx = npc.def.roam[0] + Math.random() * (npc.def.roam[1] - npc.def.roam[0]);
+        var gy = 8.5 + Math.random() * 3.5;
+        scene.tweens.add({ targets: npc.spr, x: gx * TILE, y: WALL_H + gy * TILE, duration: 6000 + Math.random() * 5000, ease: "Sine.InOut", onUpdate: function () { positionNpcParts(npc); } });
+      });
       scheduleNpc(npc, 9000 + Math.random() * 8000);
       return;
     }
@@ -397,23 +427,9 @@
   }
   function npcGoHome(npc) {
     npc.state = "home";
-    // 回家动线两段式：先走到自家门口（路过可以被撞见），再拐进门洞里消失——"在家"=屋里有人
-    var z = scene.mapdata.zones[npc.def.homeZone];
-    var doorX = npc.home.x, doorY = npc.home.y + 30;
-    scene.tweens.add({
-      targets: npc.spr, x: doorX, y: doorY, duration: 4000, ease: "Sine.InOut",
-      onUpdate: function () { positionNpcParts(npc); },
-      onComplete: function () {
-        if (npc.state !== "home" || !npc.spr.active) return;
-        if (z) {
-          scene.tweens.add({
-            targets: npc.spr, x: z.anchor[0] * TILE, y: WALL_H + z.anchor[1] * TILE - 6,
-            duration: 1400, ease: "Sine.In",
-            onUpdate: function () { positionNpcParts(npc); },
-            onComplete: function () { if (npc.state === "home") setNpcIndoor(npc, true); }
-          });
-        } else setNpcIndoor(npc, true);
-      }
+    // 回家动线两段式：先走到自家门口（路过可以被撞见），再穿过门洞进屋
+    npcDoorTween(npc, true, function () {
+      if (npc.state === "home") setNpcIndoor(npc, true);
     });
     scheduleNpc(npc, 8000 + Math.random() * 8000);
   }
@@ -484,6 +500,7 @@
   /* 点房进屋：不是瞬移——鱼先走到那家门口敲门（门上浮现 ❢），镜头再推进屋里，
    * 主人在家时头顶冒一句欢迎语；不在家就是空屋。再点一次房屋 / 切房间 / 点跟随 = 出屋。 */
   var visitingHome = null;     // 正在串门的 NEIGHBOR_HOMES 项
+  var visitSitCount = 0;       // 在屋里已小坐的轮数（坐满两轮自己出门回家）
   function enterNeighborHome(s, h) {
     var zDoor = s.mapdata.zones[h.door], zLiving = s.mapdata.zones[h.living];
     if (!zDoor || !zLiving) return false;
@@ -512,6 +529,12 @@
   function arriveVisit() {
     var v = curPlan.visit, h = v.home;
     visitingHome = h;
+    fishState = "acting";        // 收掉 walking：否则 stepWalk 每帧重新 arriveAct→arriveVisit
+    hideBubble();                // 敲门气泡完成使命，进屋后换主人的欢迎语
+    var thisPlan = curPlan;      // 进屋演出 ~2.6s 后回到 idle（idleStep 的串门小坐分支接管）
+    setTimeout(function () {
+      if (curPlan === thisPlan && fishState === "acting") { fishState = "idle"; }
+    }, 2600);
     // 门上 ❢ 提示（敲门瞬间）
     var hp = scene.hostMap[h.home];
     if (hp) {
@@ -529,7 +552,7 @@
     var cam = scene.cameras.main;
     cam.stopFollow();
     cam.setZoom(h.zm);
-    cam.pan(h.cx, h.cy, 700, "Sine.InOut");
+    cam.pan(h.cx, h.cy, 700);
     cam.once("camerapancomplete", function () {
       if (visitingHome === h) scene.time.delayedCall(1600, function () {
         if (visitingHome === h) cam.startFollow(fish, true, 0.08, 0.08);
@@ -554,7 +577,8 @@
       }
     }
     lastNpcChat = Date.now();
-    startIdleLife(5000);
+    visitSitCount = 0;
+    startIdleLife(11000 + Math.random() * 7000);   // 小坐一阵再继续过日子（真实事件来了仍会被叫走）
   }
   function exitNeighborHome() {
     if (!visitingHome) return;
@@ -1105,6 +1129,19 @@
     // 街心主路：暖石板横穿
     g.fillStyle(0xb3a184, 1);
     g.fillRect(tx0, WALL_H + 8.6 * TILE, tx1 - tx0, TILE * 1.2);
+    // 三户邻居室内地板（南排 rows19-29）：喵酱家暖木地板 / 村长家暖黄地砖 / 博士家蓝灰地毯
+    // 各家铺各家色，走进去"换了空间"；门口前先铺屋内色，与门洞外街道形成材质分界
+    function drawHomeFloor(x0, x1, base, alt) {
+      g.fillStyle(base, 1);
+      g.fillRect(x0 * TILE, WALL_H + 19 * TILE, (x1 - x0) * TILE, 10.5 * TILE);
+      g.fillStyle(alt, 1);
+      for (var fy = 19; fy < 29; fy++)
+        for (var fx = x0; fx < x1; fx++)
+          if ((fx + fy) % 2 === 0) g.fillRect(fx * TILE, WALL_H + fy * TILE, TILE, TILE);
+    }
+    drawHomeFloor(39.6, 45.4, 0x8a6a4a, 0x846545);   // 喵酱家：暖木地板
+    drawHomeFloor(45.6, 50.4, 0xb59a6e, 0xb0936a);   // 村长家：暖黄地砖
+    drawHomeFloor(50.6, 55.4, 0x7d88a0, 0x79839a);   // 博士家：蓝灰地毯
     // 屋前小径（v32 对齐门口）：从房子底（y9.8=主路南缘）向南伸到活动带 y15，x 与房门对齐
     var paths = [[42.2, 22], [48.5, 34], [53.4, 22]];
     paths.forEach(function (pt) {
@@ -1491,9 +1528,14 @@
 
     // 观景模式（评审方案 B）：真实事件 → 相机先 600ms 缓动到目标 zone（不改鱼的位置），
     // 观众"先看到 AI 要去的房间"，到达时 follow 已恢复、画面无缝回到鱼身上
-    // （串门保护：正在邻居屋里时后台状态更新不抢镜头，状态条照常刷新）
-    if (!visitingHome) {
-      var cam = scene.cameras.main;
+    // （串门保护：真实事件到 = 客人该走了，先结束串门再走观景镜头，鱼从屋里走出来）
+    // 观景模式（评审方案 B）：真实事件 → 相机先 600ms 缓动到目标 zone（不改鱼的位置），
+    // 观众"先看到 AI 要去的房间"，到达时 follow 已恢复、画面无缝回到鱼身上
+    // （串门保护：参观邻居屋时镜头不被抢走，鱼自己走出屋去干活——观众点任意房间/房屋/跟随回来）
+    var cam = scene.cameras.main;
+    if (visitingHome) {
+      visitSitCount = 0;   // 真实事件优先，鱼随时可以被带走
+    } else {
       cam.stopFollow();
       var zx = zone.anchor[0] * TILE, zy = WALL_H + zone.anchor[1] * TILE;
       cam.pan(Phaser.Math.Clamp(zx, 624, W - 624), Phaser.Math.Clamp(zy - 96, 384, H - 384), 600);
@@ -2072,7 +2114,19 @@
   function idleStep() {
     if (!scene || !fish) return;
     if (fishState === "walking" || fishState === "acting") { scheduleIdle(2200); return; }
-    if (visitingHome) { fishState = "idle"; scheduleIdle(3600 + Math.random() * 2400); return; }   // 串门中：陪主人家站一会儿，不自己溜出去
+    // 串门中且鱼还在屋里：小坐一会儿；坐满两轮自己走出家门（真实事件来了随时被叫走）
+    if (visitingHome && px2ty(fish.y) >= 19 && px2tx(fish.x) >= 40) {
+      fishState = "idle";
+      visitSitCount++;
+      if (visitSitCount >= 2) {
+        visitSitCount = 0;
+        var zd = scene.mapdata.zones[visitingHome.door];
+        exitNeighborHome();   // 镜头回到小镇停靠位
+        if (zd) walkLocalTo(Math.round(zd.anchor[0]), Math.round(zd.anchor[1]), null);   // 走出门
+        scheduleIdle(4200);
+      } else scheduleIdle(5000 + Math.random() * 5000);
+      return;
+    }
     fishState = "idle";
     if (pendingEvent) {   // 排队中的随机事件优先演（方案 §2.2）
       var pe = pendingEvent; pendingEvent = null;
@@ -2222,10 +2276,10 @@
       });
       if (homeHit) {
         if (visitingHome === homeHit) {
-          // 已经在这家里：再点 = 出屋
+          // 已经在这家里：再点 = 出屋（走出门，镜头回小镇）
+          var zdOut = s.mapdata.zones[homeHit.door];
           exitNeighborHome();
-          showBubble("先出来吧", "idle");
-          startIdleLife(3000);
+          if (zdOut) walkLocalTo(Math.round(zdOut.anchor[0]), Math.round(zdOut.anchor[1]), null);
           return;
         }
         if (enterNeighborHome(s, homeHit)) return;
