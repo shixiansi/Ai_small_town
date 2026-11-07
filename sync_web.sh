@@ -31,3 +31,15 @@ chown -R www:www "$DST"
 find "$DST" -type d -exec chmod 755 {} +
 find "$DST" -type f -exec chmod 644 {} +
 echo "synced: $(find "$DST" -type f | wc -l) files -> $DST"
+
+# ---- 自动 git 快照（用户要求：每次更新都上传 git）----
+GIT_DIR="/root/项目/news-site"
+if command -v git >/dev/null 2>&1 && [ -d "$GIT_DIR/.git" ]; then
+  cd "$GIT_DIR"
+  if ! git diff --quiet HEAD 2>/dev/null || [ -n "$(git status --porcelain 2>/dev/null | head -1)" ]; then
+    git add -A
+    git commit -m "v$(date +%Y%m%d-%H%M) 上线快照：office.js=$(git hash-object office/web/office.js 2>/dev/null | cut -c1-8) map=$(git hash-object office/web/map.json 2>/dev/null | cut -c1-8)" >/dev/null 2>&1       && echo "git: 已提交快照 $(git rev-parse --short HEAD)"       || echo "git: 无变化，跳过"
+  else
+    echo "git: 工作区干净，跳过"
+  fi
+fi
