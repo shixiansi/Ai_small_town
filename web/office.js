@@ -614,7 +614,7 @@
     ctx.fillRect(0, 0, W, H);
     cv.refresh();
     ambient = s.add.image(0, 0, "ambientcv").setOrigin(0).setDepth(60000).setAlpha(1 - ambientCur);
-    ambientTarget = isNightHour() ? 0.42 : 0.12;   // 白天几乎全亮，夜里有基础暗度（开灯房间靠 roomOverlays 逆操作提亮）
+    ambientTarget = isNightHour() ? 0.38 : 0.10;   // 白天几乎全亮，夜里有基础暗度（开灯房间靠 roomOverlays 逆操作提亮）
 
     // 每房间一个灯开关（v31 用户反馈：开关只影响本房间）
     // 位置：贴各房间上墙右侧；switchDefs [房间, x格, 说明]
@@ -657,8 +657,8 @@
       var ov = s.roomOverlays[key];
       var lit = roomLights[key];
       ov.blendMode = lit ? Phaser.BlendModes.ADD : Phaser.BlendModes.NORMAL;
-      ov.fillColor = lit ? 0xffd9a0 : 0x0a1020;
-      s.tweens.add({ targets: ov, alpha: lit ? 0.20 : 0.55, duration: 600 });
+      ov.fillColor = lit ? 0xffe4b8 : 0x0a1020;
+      s.tweens.add({ targets: ov, alpha: lit ? 0.34 : 0.55, duration: 600 });
     });
     // 灯池分房间
     (s.lightPools || []).forEach(function (p) {
