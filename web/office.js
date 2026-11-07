@@ -527,7 +527,7 @@
   var lightsOn = false;          // 当前灯状态
   var lightsManual = false;      // 用户手动切换过
   var ambient = null;            // 环境光覆盖 graphics（每帧重画 alpha）
-  var ambientTarget = 0.60, ambientCur = 0.60;
+  var ambientTarget = 0.42, ambientCur = 0.42;
   var lightPoolTex = "lightpool";
 
   function makeLightTexture(s) {
@@ -599,18 +599,22 @@
     };
     Object.keys(roomRects).forEach(function (key) {
       var r0 = roomRects[key];
-      var ov = s.add.rectangle(r0[0], r0[1], r0[2], r0[3], 0x0a1020)
-        .setOrigin(0).setDepth(59000).setAlpha(roomLights[key] ? 0 : 0.62);
+      // 开灯=ADD 暖色提亮片（抵消夜间环境暗度）；关灯=黑色遮罩 0.55
+      var lit = roomLights[key];
+      var ov = s.add.rectangle(r0[0], r0[1], r0[2], r0[3], lit ? 0xffd9a0 : 0x0a1020)
+        .setOrigin(0).setDepth(59000).setAlpha(lit ? 0.20 : 0.55);
+      ov.blendMode = lit ? Phaser.BlendModes.ADD : Phaser.BlendModes.NORMAL;
       s.roomOverlays[key] = ov;
     });
 
-    // 环境遮罩：一张全屏黑色 image，alpha 由 ambientCur 驱动
+    // 环境遮罩：全屏黑 image，alpha = 夜间基础暗度（昼夜真实时间），开灯房间再被 roomOverlays 单独照亮
     var cv = s.textures.createCanvas("ambientcv", W, H);
     var ctx = cv.getContext();
     ctx.fillStyle = "#0a1020";
     ctx.fillRect(0, 0, W, H);
     cv.refresh();
     ambient = s.add.image(0, 0, "ambientcv").setOrigin(0).setDepth(60000).setAlpha(1 - ambientCur);
+    ambientTarget = isNightHour() ? 0.42 : 0.12;   // 白天几乎全亮，夜里有基础暗度（开灯房间靠 roomOverlays 逆操作提亮）
 
     // 每房间一个灯开关（v31 用户反馈：开关只影响本房间）
     // 位置：贴各房间上墙右侧；switchDefs [房间, x格, 说明]
@@ -648,12 +652,15 @@
   /* 分房间灯光（v31 用户反馈：每房间一个开关只影响本房间；AI 夜间自主开关部分灯） */
   function applyRoomLights(s) {
     if (!s || !s.roomOverlays) return;
-    // 各房间暗色遮罩 alpha：开灯 0（亮）/ 关灯 0.62（剪影可辨）
+    // 各房间遮罩：开灯=ADD 暖提亮片 0.20；关灯=黑遮罩 0.55（切换含 blend/颜色，不能用 tween 渐变 blend——直接 set + alpha tween）
     Object.keys(s.roomOverlays).forEach(function (key) {
-      var target = roomLights[key] ? 0 : 0.62;
-      s.tweens.add({ targets: s.roomOverlays[key], alpha: target, duration: 600 });
+      var ov = s.roomOverlays[key];
+      var lit = roomLights[key];
+      ov.blendMode = lit ? Phaser.BlendModes.ADD : Phaser.BlendModes.NORMAL;
+      ov.fillColor = lit ? 0xffd9a0 : 0x0a1020;
+      s.tweens.add({ targets: ov, alpha: lit ? 0.20 : 0.55, duration: 600 });
     });
-    // 灯池分房间（office 池组/bath 池组）
+    // 灯池分房间
     (s.lightPools || []).forEach(function (p) {
       var rl = roomLights[p.room] !== false;
       s.tweens.add({ targets: p, alpha: rl ? p.poolAlpha : 0, duration: 600 });
