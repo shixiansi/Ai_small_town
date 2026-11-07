@@ -338,6 +338,9 @@
         padding: { x: 4, y: 2 }
       }).setOrigin(0.5, 1).setDepth(home.footY + 3);
       var npc = { def: def, spr: spr, tag: tag, home: home, state: "home", timer: null };
+      // 在家/在街上状态圆点：挂在名牌旁，跟 positionNpcParts 一起走（进屋时连名牌一起收起）
+      npc.dot = s.add.circle(0, 0, 3.2, npcIsHome(def) ? 0x51cf66 : 0xffd43b)
+        .setStrokeStyle(1, 0x151826, 0.5).setDepth(home.footY + 3);
       npcLayer.push(npc);
       positionNpcParts(npc);
       scheduleNpc(npc, 2000 + Math.random() * 3000);
@@ -348,6 +351,20 @@
     if (!npc.spr || !npc.spr.active) return;
     var x = npc.spr.x, topY = npc.spr.y - npc.spr.displayHeight;
     if (npc.tag) npc.tag.setPosition(x, topY - 6).setDepth(npc.spr.depth + 3);
+    if (npc.dot) npc.dot.setPosition(x + (npc.tag ? npc.tag.width / 2 + 7 : 0), topY - 6).setDepth(npc.spr.depth + 3);
+  }
+  /* 在家时把 NPC 收进屋里：精灵挪到屋内锚点、名牌与圆点隐藏。
+   * "回家"的最后一步是走进门洞，室内外面貌差异 = 屋门口看不见人。 */
+  function setNpcIndoor(npc, indoor) {
+    npc.indoor = !!indoor;
+    var z = scene.mapdata.zones[npc.def.homeZone];
+    if (z && indoor) {
+      npc.spr.x = z.anchor[0] * TILE; npc.spr.y = WALL_H + z.anchor[1] * TILE - 6;
+      npc.spr.setDepth(WALL_H + z.anchor[1] * TILE + 1);
+    }
+    if (npc.tag) npc.tag.setVisible(!indoor);
+    if (npc.dot) npc.dot.setVisible(!indoor);
+    positionNpcParts(npc);
   }
   function scheduleNpc(npc, delay) {
     if (npc.timer) clearTimeout(npc.timer);
@@ -380,7 +397,24 @@
   }
   function npcGoHome(npc) {
     npc.state = "home";
-    scene.tweens.add({ targets: npc.spr, x: npc.home.x, y: npc.home.y - 6, duration: 5000, ease: "Sine.InOut", onUpdate: function () { positionNpcParts(npc); } });
+    // 回家动线两段式：先走到自家门口（路过可以被撞见），再拐进门洞里消失——"在家"=屋里有人
+    var z = scene.mapdata.zones[npc.def.homeZone];
+    var doorX = npc.home.x, doorY = npc.home.y + 30;
+    scene.tweens.add({
+      targets: npc.spr, x: doorX, y: doorY, duration: 4000, ease: "Sine.InOut",
+      onUpdate: function () { positionNpcParts(npc); },
+      onComplete: function () {
+        if (npc.state !== "home" || !npc.spr.active) return;
+        if (z) {
+          scene.tweens.add({
+            targets: npc.spr, x: z.anchor[0] * TILE, y: WALL_H + z.anchor[1] * TILE - 6,
+            duration: 1400, ease: "Sine.In",
+            onUpdate: function () { positionNpcParts(npc); },
+            onComplete: function () { if (npc.state === "home") setNpcIndoor(npc, true); }
+          });
+        } else setNpcIndoor(npc, true);
+      }
+    });
     scheduleNpc(npc, 8000 + Math.random() * 8000);
   }
   function npcInteractCheck() {
@@ -388,7 +422,7 @@
     if (fishState !== "idle" && fishState !== "acting") return null;
     for (var i = 0; i < npcLayer.length; i++) {
       var npc = npcLayer[i];
-      if (npc.state === "home") continue;
+      if (npc.state === "home" || npc.indoor) continue;   // 回了屋的人街上当然碰不到
       var dx = Math.abs(npc.spr.x - fish.x), dy = Math.abs(npc.spr.y - fish.y);
       if (dx < TILE * 2.2 && dy < TILE * 1.8) return npc;
     }
@@ -430,6 +464,108 @@
     { id: "garden",  label: "花园",   cx: 32 * TILE, cy: 15 * TILE },
     { id: "town",    label: "小镇",   cx: 47 * TILE, cy: 15 * TILE }
   ];
+  // —— 邻居家（点击房屋进屋串门）——
+  /* map.json 南排 rows19-28 已布好三户室内：家具/墙体/门洞/锚点。
+   * 每户：home=门外遮挡层 id、door=敲门 zone、living=屋内落点 zone。
+   * host 返回 NPCS 里的居民 id（或 null=空屋）。 */
+  var NEIGHBOR_HOMES = [
+    { id: "cat",   home: "homeCat",   door: "doorCat",   living: "living_cat",   cx: 43 * TILE, cy: 24 * TILE, zm: 1.25 },
+    { id: "chief", home: "homeChief", door: "doorChief", living: "living_chief", cx: 48 * TILE, cy: 24 * TILE, zm: 1.25 },
+    { id: "doc",   home: "homeDoc",   door: "doorDoc",   living: "living_doc",   cx: 53 * TILE, cy: 24 * TILE, zm: 1.25 }
+  ];
+  function npcHomeState(npcId) {
+    for (var i = 0; i < npcLayer.length; i++) {
+      if (npcLayer[i].def.id !== npcId) continue;
+      var npc = npcLayer[i];
+      return (npc.state === "home" || npc.indoor) ? "home" : "out";
+    }
+    return "out";
+  }
+  /* 点房进屋：不是瞬移——鱼先走到那家门口敲门（门上浮现 ❢），镜头再推进屋里，
+   * 主人在家时头顶冒一句欢迎语；不在家就是空屋。再点一次房屋 / 切房间 / 点跟随 = 出屋。 */
+  var visitingHome = null;     // 正在串门的 NEIGHBOR_HOMES 项
+  function enterNeighborHome(s, h) {
+    var zDoor = s.mapdata.zones[h.door], zLiving = s.mapdata.zones[h.living];
+    if (!zDoor || !zLiving) return false;
+    stopIdleLife();
+    unsit();
+    hideBubble();
+    hidePerfPanel();
+    var npcId = h.id;
+    var isHome = npcHomeState(npcId) === "home";
+    var verb = isHome ? "敲" + (INFO_CARDS[h.home] || {}).name + "的门" : "去" + (INFO_CARDS[h.home] || {}).name + "看看";
+    var path = astar(px2tx(fish.x), px2ty(fish.y), Math.round(zDoor.anchor[0]), Math.round(zDoor.anchor[1]));
+    if (!path) return false;
+    curPlan = {
+      path: path, i: 0, local: true, st: null,
+      cfg: { act: "idle_wave", mood: "idle" },
+      task: verb, bubbleText: isHome ? "咚咚咚——有人在家吗？" : "（门没锁，自己进去看看）",
+      face: "s", zone: null, statFill: null,
+      visit: { home: h, living: zLiving, isHome: isHome }
+    };
+    fishState = "walking";
+    showBubble(curPlan.bubbleText, "idle");
+    postStatDelta(isHome ? { social: 6 } : { social: 2 });
+    renderStatsBar();
+    return true;
+  }
+  function arriveVisit() {
+    var v = curPlan.visit, h = v.home;
+    visitingHome = h;
+    // 门上 ❢ 提示（敲门瞬间）
+    var hp = scene.hostMap[h.home];
+    if (hp) {
+      var mark = scene.add.text(hp.x, hp.y - hp.bbox[3] - 6, "❢", { fontSize: "18px", color: "#ffd43b" })
+        .setOrigin(0.5).setDepth(hp.footY + 30);
+      scene.tweens.add({ targets: mark, y: mark.y - 12, alpha: 0, duration: 1400, onComplete: function () { mark.destroy(); } });
+    }
+    // 鱼进屋：放在屋内锚点（穿越门洞的一瞬不逐格演，镜头剪切补足）
+    fish.x = v.living.anchor[0] * TILE + TILE / 2;
+    fish.y = WALL_H + v.living.anchor[1] * TILE + TILE / 2;
+    fish.setDepth(fish.y);
+    fish.face(v.living.face || "s");
+    fish.still();
+    // 镜头推进屋里（zoom 1.25 与小镇停靠一致），并短暂停留
+    var cam = scene.cameras.main;
+    cam.stopFollow();
+    cam.setZoom(h.zm);
+    cam.pan(h.cx, h.cy, 700, "Sine.InOut");
+    cam.once("camerapancomplete", function () {
+      if (visitingHome === h) scene.time.delayedCall(1600, function () {
+        if (visitingHome === h) cam.startFollow(fish, true, 0.08, 0.08);
+      });
+    });
+    // 主人在家 → 欢迎气泡（复用 NPC 对话池按时段抽一句）
+    if (v.isHome) {
+      var npc = null;
+      for (var i = 0; i < npcLayer.length; i++) if (npcLayer[i].def.id === h.id) npc = npcLayer[i];
+      if (npc) {
+        var bucket = npcHourBucket();
+        var pool = (NPC_DIALOGS[npc.def.id] || {})[bucket] || ["…"];
+        var line = pool[Math.floor(Math.random() * pool.length)];
+        var bub = scene.add.text(fish.x, fish.y - 58, (npc.def.name + "：「" + line + "」"), {
+          fontFamily: "PingFang SC, Microsoft YaHei, sans-serif",
+          fontSize: "15px", color: "#151826", backgroundColor: "#fffdf8ee",
+          padding: { x: 8, y: 5 }, align: "center", wordWrap: { width: 230 }
+        }).setOrigin(0.5, 1).setDepth(94000);
+        bub.setAlpha(0);
+        scene.tweens.add({ targets: bub, alpha: 1, duration: 250, delay: 500 });
+        scene.tweens.add({ targets: bub, alpha: 0, duration: 500, delay: 3400, onComplete: function () { bub.destroy(); } });
+      }
+    }
+    lastNpcChat = Date.now();
+    startIdleLife(5000);
+  }
+  function exitNeighborHome() {
+    if (!visitingHome) return;
+    visitingHome = null;
+    if (scene) {
+      var cam = scene.cameras.main;
+      cam.stopFollow();
+      cam.setZoom(1.25);                 // 出屋先回到小镇停靠视角，再交给后续逻辑
+      cam.pan(47 * TILE, 15 * TILE, 600);
+    }
+  }
   function buildRoomTabs(s) {
     var bar = document.getElementById("room-tabs");
     if (!bar) return;
@@ -445,6 +581,7 @@
       b.textContent = r.label;
       b.onclick = function () {
         // 平移相机到房间中心（不改鱼的位置——鱼按自己的作息走）
+        exitNeighborHome();   // 从邻居屋里出来：切房间即退出串门视角
         var cam = s.cameras.main;
         cam.stopFollow();   // 统一 pan 停靠（评审 #8：办公室 tab 跟随鱼曾把用户带到花园）；要看鱼另点"跟随"按钮
         var zm = (r.id === "garden" || r.id === "town") ? 1.25 : 1;   // 窄区 zoom 补边界（评审 #9）
@@ -467,6 +604,7 @@
     fb.textContent = "🐟跟随";
     fb.title = "镜头回到 AI 身上";
     fb.onclick = function () {
+      exitNeighborHome();
       var cam = s.cameras.main;
       cam.stopFollow(); cam.startFollow(fish, true, 0.08, 0.08); cam.setZoom(1);
       [].forEach.call(bar.children, function (c) { c.classList.remove("active"); });
