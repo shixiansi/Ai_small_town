@@ -789,7 +789,7 @@
     var gx0 = 26.5 * TILE, gx1 = 38.5 * TILE;
     g.fillStyle(0xc9b48a, 1);
     g.fillRect(gx0, WALL_H + 8.8 * TILE, gx1 - gx0, TILE * 1.4);
-    g.fillRect(25 * TILE, WALL_H + 19.9 * TILE, 3.2 * TILE, 2.2 * TILE);   // 门洞连接段（横）
+    g.fillRect(24.6 * TILE, WALL_H + 19.9 * TILE, 3.4 * TILE, 2.2 * TILE);   // 门洞连接段（横）
     g.fillRect(30.4 * TILE, WALL_H + 9.4 * TILE, 1.8 * TILE, 12 * TILE);   // 花园竖径（连横带与连接段）
     // 路灯暖光圈：夜里亮
     (s.mapdata.furniture || []).forEach(function (f) {
