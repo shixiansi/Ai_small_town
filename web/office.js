@@ -687,9 +687,9 @@
   }
 
   function updateAmbient(s) {
-    // 平滑趋近目标
+    // 平滑趋近目标（ambientCur = 遮罩不透明度；v32 起目标恒 0=无全屏滤镜）
     ambientCur += (ambientTarget - ambientCur) * 0.06;
-    if (ambient) ambient.setAlpha(1 - ambientCur);
+    if (ambient) ambient.setAlpha(ambientCur);
   }
 
   // ---------- 家具 ----------
