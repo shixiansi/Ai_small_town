@@ -1491,16 +1491,19 @@
 
     // 观景模式（评审方案 B）：真实事件 → 相机先 600ms 缓动到目标 zone（不改鱼的位置），
     // 观众"先看到 AI 要去的房间"，到达时 follow 已恢复、画面无缝回到鱼身上
-    var cam = scene.cameras.main;
-    cam.stopFollow();
-    var zx = zone.anchor[0] * TILE, zy = WALL_H + zone.anchor[1] * TILE;
-    cam.pan(Phaser.Math.Clamp(zx, 624, W - 624), Phaser.Math.Clamp(zy - 96, 384, H - 384), 600);
-    // 镜头在目标房间停留 ≥1.8s 再恢复跟随（复评 P1-5：600ms 完成就弹回等于甩镜头）
-    cam.once("camerapancomplete", function () {
-      scene.time.delayedCall(1800, function () {
-        cam.startFollow(fish, true, 0.08, 0.08);   // 无条件兜底：pan 被新事件打断也能恢复跟随
+    // （串门保护：正在邻居屋里时后台状态更新不抢镜头，状态条照常刷新）
+    if (!visitingHome) {
+      var cam = scene.cameras.main;
+      cam.stopFollow();
+      var zx = zone.anchor[0] * TILE, zy = WALL_H + zone.anchor[1] * TILE;
+      cam.pan(Phaser.Math.Clamp(zx, 624, W - 624), Phaser.Math.Clamp(zy - 96, 384, H - 384), 600);
+      // 镜头在目标房间停留 ≥1.8s 再恢复跟随（复评 P1-5：600ms 完成就弹回等于甩镜头）
+      cam.once("camerapancomplete", function () {
+        scene.time.delayedCall(1800, function () {
+          if (!visitingHome) cam.startFollow(fish, true, 0.08, 0.08);   // 无条件兜底：pan 被新事件打断也能恢复跟随
+        });
       });
-    });
+    }
 
     // 证据系统（场景清单 §3"补证据"）：AI 干了什么必须可见
     updateEvidence(cfg, taskText, st.detail || "");
@@ -2069,6 +2072,7 @@
   function idleStep() {
     if (!scene || !fish) return;
     if (fishState === "walking" || fishState === "acting") { scheduleIdle(2200); return; }
+    if (visitingHome) { fishState = "idle"; scheduleIdle(3600 + Math.random() * 2400); return; }   // 串门中：陪主人家站一会儿，不自己溜出去
     fishState = "idle";
     if (pendingEvent) {   // 排队中的随机事件优先演（方案 §2.2）
       var pe = pendingEvent; pendingEvent = null;
@@ -2207,15 +2211,14 @@
       var gx = px2tx(p.worldX), gy = px2ty(p.worldY);
       if (gx < 0 || gy < 0 || gx >= COLS || gy >= ROWS) return;
       if (fishState === "acting" && curPlan && !curPlan.local) return;
-      // 点邻居房屋 = 进屋串门（优先级最高：房屋比信息卡更"想被点到"）
-      var homeHit = null, homeD = Infinity;
+      // 点邻居房屋 = 进屋串门（优先级最高：用房屋精灵的整块包围盒判定，房子大不怕点偏）
+      var homeHit = null;
       NEIGHBOR_HOMES.forEach(function (h) {
         var hp = s.hostMap[h.home];
-        if (!hp) return;
-        // 命中判定取房屋 bbox 中心（房子大、锚点在门口），距离用切比雪夫
-        var hx = hp.x, hy = hp.y - (hp.bbox[3] * (hp.scale || 1)) / 2;
-        var d = Math.max(Math.abs(hx - p.worldX), Math.abs(hy - p.worldY));
-        if (d < radius * 1.6 && d < homeD) { homeD = d; homeHit = h; }
+        if (!hp || !hp.spr) return;
+        var dw = hp.spr.displayWidth || 48, dh = hp.spr.displayHeight || 48;
+        if (p.worldX > hp.x - dw / 2 - 12 && p.worldX < hp.x + dw / 2 + 12 &&
+            p.worldY > hp.y - dh - 12 && p.worldY < hp.y + 14) homeHit = h;
       });
       if (homeHit) {
         if (visitingHome === homeHit) {
