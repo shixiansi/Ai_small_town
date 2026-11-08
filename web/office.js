@@ -1064,7 +1064,7 @@
     });
 
     s.props.forEach(function (p) {
-      if (p.wall || p.o || p.f?.on) return;   // 墙饰/叠加物不产生碰撞
+      if (p.isFish || p.wall || p.o || p.f?.on) return;   // 鱼/墙饰/叠加物不产生碰撞（v37：rebuildCustomLayer 保留鱼重跑本函数时，鱼对象没有 bbox）
       var m = p.m, bbox = p.bbox;
       var footH = Math.min(12, bbox[3]);
       var left = p.x - m.frameW / 2 + bbox[0];
@@ -1145,8 +1145,7 @@
       copy._custom = true;
       s.mapdata.furniture.push(copy);
     });
-    // 家具层重建（含鱼以外全部实例）：自定义数量少，整层重建最省心
-    var fishState = s.props && s.props.filter(function (p) { return p.isFish; })[0];
+    // 家具层重建（鱼容器保留在 props 里，buildBlockedGrid 已跳过 isFish）：自定义数量少，整层重建最省心
     s.props = s.props ? s.props.filter(function (p) { return p.isFish; }) : [];
     s.hostMap = {};
     // 重建流程复用 buildFurniture 的两遍式，但不动 fxDirect 已有引用
