@@ -352,7 +352,7 @@
     var on = C.setEditMode(!C.editState().on);
     this.textContent = on ? "✏ 编辑中…" : "✏ 编辑地图";
     var st = C.editState();
-    addLog("info", "编辑模式 → " + (on ? "开" : "关") + (st.hub ? "" : "（线上未开放保存，改动仅本次生效）"));
+    addLog("info", "编辑模式 → " + (on ? "开" : "关") + (st.hub ? "（保存走 hub /api/map）" : "（hub 不可达，改动仅本次生效）"));
   };
   $("dbg-map-reload").onclick = function () {
     addLog("info", C.mapReload() ? "已从 hub 重载自定义层" : "hub 不可达（仅本地可用）");

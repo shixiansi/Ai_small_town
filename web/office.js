@@ -1120,9 +1120,9 @@
     "amulet", "wizard-hat", "robe"
   ];
   function hubMapBase() {
-    // 编辑器需要 hub 的 HTTP 口：本地直连 4321，线上没有 → 编辑模式只读本地状态但保存按钮不可用
+    // 本地：直连 hub:4321；线上：走 Nginx 的 /office-hub-api/ 反代（与 postStatDelta 同一条路）
     if (hubBase()) return hubBase();
-    return null;
+    return "/office-hub-api";
   }
   /* 首建时把 hub 自定义条目合入 mapdata（buildFurniture 内调用；实例层由同一循环直接建） */
   function applyCustomFurniture(s) {
@@ -1334,7 +1334,8 @@
       return;
     }
     var body = payload || { action: "set", item: customFurniture };
-    fetch(base + "/api/map", {
+    var url = base.indexOf("://") >= 0 ? base + "/api/map" : base + "/map";   // 本地拼 /api/map；线上反代已含 /api/
+    fetch(url, {
       method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body)
     }).then(function (r) { return r.json().then(function (j) { return { status: r.status, j: j }; }); })
       .then(function (r) {
@@ -4005,7 +4006,7 @@
       mapReload: function () {
         var base = hubMapBase();
         if (!base) return false;
-        fetch(base + "/api/map").then(function (r) { return r.json(); }).then(function (j) { applyCustomMap(j.furniture || []); });
+        fetch(base.indexOf("://") >= 0 ? base + "/api/map" : base + "/map").then(function (r) { return r.json(); }).then(function (j) { applyCustomMap(j.furniture || []); });
         return true;
       },
       /* 视角（v36）：邻居视角导航 / 自由拖动 */
