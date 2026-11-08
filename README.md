@@ -1064,6 +1064,28 @@ setLights 里 lightPools/moonPool 改为 no-op 对象保持兼容。验收：白
 最终格局：**每个房间至少一门、走廊贯通三扇门、办公室双出口（北门+东门直通花园）、花园路网接街道主路**。
 俯视结构图与游戏实拍双重验证，门禁 19/19。
 
+## v37 鱼塘碰撞 + 编辑地图界面（2026-11-08）
+
+用户需求："池塘没有加碰撞；新增编辑地图界面，可以自定义编辑地图，添加物品，删除物品，移动物品。"
+
+### 鱼塘碰撞（map.json blockers + buildBlockedGrid）
+- map.json 新增 `blockers: [{t:"pond", x0:35.2, y0:22.2, x1:38.2, y1:26.2}]`；碰撞格按**椭圆方程**逐格判定，水面格进 A* 阻挡，岸边保持可走（钓鱼 zone 在塘西 [34,24]）
+- check.mjs 的 buildGrid 复刻同一公式（静态自检与运行时碰撞不漂移）；第 20 项门禁校验 blockers↔POND 常量一致 + pond 锚点不被水格堵死
+
+### 编辑地图界面（hub /api/map + office.js 编辑层）
+- **存储**：`hub/map.custom.json`（与只读的 web/map.json 分离），hub 校验资产名/坐标范围/id 去重/400 条上限，重启自动恢复，保存时 WS 广播 `{type:"map"}` 全员热更新
+- **前端叠加**：`applyCustomFurniture` 把自定义条目合入 mapdata（`_custom` 标记），`rebuildCustomLayer` 整层重建家具 + 重算碰撞；hello 带 `customMap` 字段刷新即恢复
+- **编辑模式**（`__officeCtl.setEditMode(true)`，debug 台「✏ 编辑地图」进入）：
+  - ➕ 放置：选资产（74 件白名单）→ 点画布即放，半透明 ghost 跟手
+  - ✥ 移动：点物品拖到新格松手
+  - 🗑 删除：点物品移除；面板带条目列表逐条删 + 清空按钮
+  - 💾 保存到服务器：本地直连 hub:4321，线上走 Nginx `/office-hub-api/` 反代（hubMapBase 双形态）
+  - 编辑中鱼停走、碰撞格常显辅助对齐
+- **修一个重建崩溃**：rebuildCustomLayer 保留鱼重跑 buildBlockedGrid 时，鱼对象没有 bbox 直接 throw（线上验证时抓到 3 个 pageerror）——props 循环加 `isFish` 跳过；线上回归：连续 3 次增删重建零报错、鱼塘碰撞不丢、鱼存活
+
+### 验证
+- check.mjs 20/20；本地 + 线上（news.shixiansi.pw）无头走查：鱼塘 blockedCount=11、绕水路径 pathOk、编辑增删移经反代落 hub、刷新恢复、清理归零，PAGE_ERRORS: none
+
 ## v36 农场 / 鱼塘 / 料理 + 调试道路层 + 视角自由拖动（2026-11-08）
 
 用户需求："debug 中能直接单独显示道路层；添加农场系统：锄地、浇水、播种、施肥、收割；添加鱼塘以及钓鱼；添加料理制作；邻居没有视角导航，没有自由拖动视角的按钮。"
