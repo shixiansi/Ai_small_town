@@ -181,7 +181,7 @@
     this.load.off("loaderror", onLoadError);
     this.load.on("loaderror", onLoadError);
     this.load.json("manifest", "assets/manifest.json?v=62612ac6");
-    this.load.json("mapdata", "map.json?v=be9e5cca");
+    this.load.json("mapdata", "map.json?v=f689d826");
   };
   SceneBoot.prototype.create = function () {
     var manifest = this.cache.json.get("manifest");
@@ -733,6 +733,13 @@
     };
     s.input.on("pointerup", stop);
     s.input.on("pointerupoutside", stop);
+    // 编辑模式拖动 + 放置预览（v37）
+    s.input.on("pointermove", function (p) {
+      if (!editMode) return;
+      editPointerMove(p.worldX, p.worldY);
+    });
+    s.input.on("pointerup", function () { if (editMode) editPointerUp(); });
+    s.input.on("pointerupoutside", function () { if (editMode) editPointerUp(); });
   }
   var camDragSuppress = 0;   // 拖动结束后的点击抑制窗口（ms 时间戳）
   function bindCamWheel(s) {
@@ -1029,6 +1036,7 @@
       if (f.a === "office-chair") s.fxDirect.chair = { spr: spr, m: m, f: f };
     });
 
+    applyCustomFurniture(s);   // v37：hub 自定义家具层叠加进 props/mapdata，再一起算碰撞
     buildBlockedGrid(s);
   }
 
@@ -1068,8 +1076,345 @@
         }
       }
     });
+
+    // 阻挡区块（v37）：水面等椭圆区域不可走，A* 天然绕开；岸边保持可走（钓鱼 zone 在塘西）
+    (s.mapdata.blockers || []).forEach(function (b) {
+      if (b.t !== "pond") return;
+      var bx0 = Math.max(0, Math.floor(b.x0)), bx1 = Math.min(COLS - 1, Math.ceil(b.x1) - 1);
+      var by0 = Math.max(0, Math.floor(b.y0)), by1 = Math.min(ROWS - 1, Math.ceil(b.y1) - 1);
+      var ex = (b.x0 + b.x1) / 2, ey = (b.y0 + b.y1) / 2;
+      var rx = (b.x1 - b.x0) / 2 + 0.12, ry = (b.y1 - b.y0) / 2 + 0.12;
+      for (var py = by0; py <= by1; py++) {
+        if (!grid[py]) continue;
+        for (var px = bx0; px <= bx1; px++) {
+          var cx = px + 0.5, cy = py + 0.5;
+          if (Math.pow((cx - ex) / rx, 2) + Math.pow((cy - ey) / ry, 2) <= 1) grid[py][px] = 1;
+        }
+      }
+    });
     s.grid = grid;
   }
+
+  /* ============ 自定义地图层 + 编辑模式（v37） ============
+   * hub 的 map.custom.json 里存的是「用户在编辑模式下加的家具」，叠加在 web/map.json 之上。
+   * 走完 buildFurniture 后 applyCustomFurniture() 把它们再建一遍（同 makePlacement 语言），
+   * 并重算碰撞格；编辑模式下鱼停下、点击语义从走位切换成放置/移动/删除。 */
+  var customFurniture = [];        // hub 来的原始条目（真相在 hub，这里只是镜像）
+  var customPlaceholders = [];     // { f, placement, spr } 建出来的实例
+  var editMode = false;            // 编辑模式总开关
+  var editTool = "select";         // select | add | move | delete
+  var editAsset = null;            // add 工具当前选中的资产名
+  var editDragItem = null;         // 正在拖动的条目
+  var editGhost = null;            // add 模式跟随鼠标的半透明预览
+  var editDirty = false;           // 本地有未保存改动
+  var EDIT_PICKABLE = [            // 编辑器可选资产白名单（全部在 manifest 里）
+    "office-desk", "desk-wood", "school-desk", "dining-table", "round-table", "bookshelf-office",
+    "sofa", "armchair", "chair", "office-chair", "double-bed", "bed", "nightstand", "wardrobe",
+    "cabinet", "locker", "filing-cabinet", "book-stack", "open-book", "paper-stack", "pencil-cup",
+    "computer", "laptop", "printer", "phone-desk", "desk-lamp", "coffee-mug", "stapler", "calculator",
+    "globe-desk", "clock-desk", "fruit-bowl", "kettle", "fridge", "stove-kitchen", "kitchen-counter",
+    "sink", "bathtub", "toilet", "mirror", "curtains", "plant-office", "floor-lamp", "arcade-cabinet",
+    "gramophone", "blackboard", "whiteboard", "crown-cushion", "water-cooler", "mailbox", "trophy-cup",
+    "bench-park", "street-lamp", "oak-tree", "bush", "flowers", "fence", "fence-picket", "market-stall",
+    "stall-fruit", "well", "potion-shelf", "sign-inn", "cottage", "farmhouse", "house-modern", "coin",
+    "amulet", "wizard-hat", "robe"
+  ];
+  function hubMapBase() {
+    // 编辑器需要 hub 的 HTTP 口：本地直连 4321，线上没有 → 编辑模式只读本地状态但保存按钮不可用
+    if (hubBase()) return hubBase();
+    return null;
+  }
+  /* 首建时把 hub 自定义条目合入 mapdata（buildFurniture 内调用；实例层由同一循环直接建） */
+  function applyCustomFurniture(s) {
+    if (!s || !s.mapdata || !customFurniture.length) return;
+    customFurniture.forEach(function (f) {
+      var copy = Object.assign({}, f);
+      copy._custom = true;
+      s.mapdata.furniture.push(copy);
+    });
+  }
+  function rebuildCustomLayer() {
+    var s = scene;
+    if (!s || !s.mapdata) return;
+    customPlaceholders.forEach(function (ph) { if (ph.spr) ph.spr.destroy(); if (ph.shadow) ph.shadow.destroy(); });
+    customPlaceholders = [];
+    // 从 mapdata 移除旧的自定义条目再重算（mapdata.furniture 只保留静态部分）
+    s.mapdata.furniture = s.mapdata.furniture.filter(function (f) { return !f._custom; });
+    customFurniture.forEach(function (f) {
+      var copy = Object.assign({}, f);
+      copy._custom = true;
+      s.mapdata.furniture.push(copy);
+    });
+    // 家具层重建（含鱼以外全部实例）：自定义数量少，整层重建最省心
+    var fishState = s.props && s.props.filter(function (p) { return p.isFish; })[0];
+    s.props = s.props ? s.props.filter(function (p) { return p.isFish; }) : [];
+    s.hostMap = {};
+    // 重建流程复用 buildFurniture 的两遍式，但不动 fxDirect 已有引用
+    var fxKeep = s.fxDirect;
+    s.fxDirect = {};
+    s.mapdata.furniture.forEach(function (f) {
+      var p = makePlacement(f, s.hostMap);
+      if (!p) return;
+      p.f = f;
+      var m = p.m;
+      var f0 = f.frame || 0;
+      var spr;
+      if (m.anim && m.rows && m.rows.East > 1) spr = s.add.sprite(p.x, p.y, f.a, f0).setOrigin(p.originX, p.originY).setDepth(p.depth);
+      else spr = s.add.image(p.x, p.y, f.a, f0).setOrigin(p.originX, p.originY).setDepth(p.depth);
+      if (p.scale !== 1) spr.setScale(p.scale);
+      if (!p.wall && !p.o && !f.on) {
+        var shW = p.bbox[2] * (p.scale || 1) * 1.1;
+        p.shadow = s.add.ellipse(p.x, p.y + 1, shW, 8, 0x3a2a1a, 0.25).setDepth(p.depth - 1);
+      }
+      p.spr = spr;
+      s.props.push(p);
+      if (f.id) s.hostMap[f.id] = p;
+      if (f._custom) customPlaceholders.push(p);
+      if (f.a === "computer" && !fxKeep.pc) fxKeep.pc = { spr: spr, m: m, f: f };
+      if (f.a === "printer" && !fxKeep.printer) fxKeep.printer = { spr: spr, m: m, f: f };
+      if (f.a === "office-chair" && !fxKeep.chair) fxKeep.chair = { spr: spr, m: m, f: f };
+    });
+    s.fxDirect = fxKeep;
+    buildBlockedGrid(s);   // 重算碰撞（含鱼塘 blocker + 新家具占地）
+    if (gridOverlay) { gridOverlay.destroy(); gridOverlay = null; toggleGrid(true); }
+    if (s.roomOverlays) { /* 遮罩层与家具无关，不动 */ }
+    farmGfxRedrawSafe();
+  }
+  function farmGfxRedrawSafe() { try { if (farm && farmGfxTopmost()) drawFarm(); } catch (e) {} }
+  function farmGfxTopmost() { return true; }
+  function applyCustomMap(list) {
+    customFurniture = (list || []).filter(function (f) { return f && f.a; });
+    if (scene && scene.mapdata) { rebuildCustomLayer(); }
+    if (typeof renderEditList === "function" && editMode) renderEditList();
+  }
+  /* 编辑模式开关：鱼停、点击语义切换、显示网格 */
+  function setEditMode(on) {
+    if (!scene || !fish) return editMode;
+    editMode = !!on;
+    var btn = document.getElementById("edit-mode-btn");
+    if (btn) {
+      btn.classList.toggle("active", editMode);
+      btn.setAttribute("aria-pressed", String(editMode));
+      btn.textContent = editMode ? "✏ 编辑中" : "✏ 编辑地图";
+    }
+    if (editMode) {
+      stopIdleLife();
+      hideBubble();
+      if (!gridOverlay) toggleGrid(true);
+      buildEditPanel();
+      renderEditList();
+      var panel0 = document.getElementById("edit-panel");
+      if (panel0) panel0.style.display = "block";
+      showBubble("（编辑模式：选资产后点地图放置；拖动物品移动；删除工具点物品移除）", "idle");
+    } else {
+      clearEditGhost();
+      editDragItem = null;
+      editTool = "select";
+      setEditTool("select");
+      var panel1 = document.getElementById("edit-panel");
+      if (panel1) panel1.style.display = "none";
+      startIdleLife(800);
+      saveEditMap(true);   // 退出时若有改动顺手保存（静默）
+    }
+    return editMode;
+  }
+  function setEditTool(t) {
+    editTool = t;
+    ["select", "add", "move", "delete"].forEach(function (k) {
+      var b = document.getElementById("edit-tool-" + k);
+      if (b) b.classList.toggle("active", k === t);
+    });
+    if (t !== "add") clearEditGhost();
+  }
+  function setEditAsset(a) {
+    editAsset = a;
+    [].forEach.call(document.querySelectorAll("#edit-assets button"), function (b) {
+      b.classList.toggle("active", b.dataset.asset === a);
+    });
+    if (a) setEditTool("add");
+  }
+  function clearEditGhost() {
+    if (editGhost) { editGhost.destroy(); editGhost = null; }
+  }
+  function updateEditGhost(worldX, worldY) {
+    if (editTool !== "add" || !editAsset || !scene) return;
+    if (!editGhost) {
+      editGhost = scene.add.image(worldX, worldY, editAsset, 0).setAlpha(0.55);
+      var m = MAN[editAsset];
+      if (m) {
+        var bbox = m.bbox || [0, 0, m.frameW, m.frameH];
+        editGhost.setOrigin((bbox[0] + bbox[2] / 2) / m.frameW, (bbox[1] + bbox[3]) / m.frameH);
+      }
+    }
+    editGhost.setTexture(editAsset);
+    var gx = Math.floor(worldX / TILE) * TILE + TILE / 2;
+    var gy = Math.floor((worldY - WALL_H) / TILE) * TILE + WALL_H + TILE / 2;
+    editGhost.setPosition(gx, gy);
+    editGhost.setDepth(96000);
+  }
+  /* 命中检测：优先自定义层（可编辑），回退静态家具（提示只能删自定义的） */
+  function pickEditItem(worldX, worldY) {
+    var radius = TILE * 0.75;
+    var best = null, bestD = Infinity;
+    customPlaceholders.forEach(function (p) {
+      if (!p.spr || !p.spr.active) return;
+      var d = Math.max(Math.abs(p.x - worldX), Math.abs(p.y - worldY));
+      if (d < radius && d < bestD) { bestD = d; best = p; }
+    });
+    return best;
+  }
+  /* 编辑点击：add=放置 / delete=删除 / move=抓起（拖动在 pointermove / 松手落定） */
+  function editPointerDown(worldX, worldY) {
+    if (editTool === "add" && editAsset) {
+      var item = { a: editAsset, x: Math.round((worldX - TILE / 2) / TILE * 10) / 10 + 0.5, y: Math.round((worldY - WALL_H - TILE / 2) / TILE * 10) / 10 + 0.5 };
+      item.x = Math.round(Math.min(55.5, Math.max(0.5, item.x)) * 10) / 10;
+      item.y = Math.round(Math.min(29.5, Math.max(0.5, item.y)) * 10) / 10;
+      saveEditMap(false, { action: "add", item: item }, function (ok, err) {
+        if (ok) showBubble("已放置 " + editAsset, "idle");
+        else showBubble("放置失败：" + err, "error");
+      });
+      return true;
+    }
+    var hit = pickEditItem(worldX, worldY);
+    if (editTool === "delete") {
+      if (!hit) return true;
+      var fid = hit.f.id;
+      saveEditMap(false, { action: "remove", item: { id: fid } }, function (ok, err) {
+        showBubble(ok ? "已删除" : "删除失败：" + err, ok ? "idle" : "error");
+      });
+      return true;
+    }
+    if (editTool === "move" && hit) {
+      editDragItem = hit;
+      showBubble("（拖到新位置后松手）", "idle");
+      return true;
+    }
+    return false;   // select：走默认点击语义
+  }
+  function editPointerMove(worldX, worldY) {
+    if (editDragItem && editDragItem.spr) {
+      var gx = Math.round((worldX - TILE / 2) / TILE * 10) / 10 + 0.5;
+      var gy = Math.round((worldY - WALL_H - TILE / 2) / TILE * 10) / 10 + 0.5;
+      gx = Math.min(55.5, Math.max(0.5, gx));
+      gy = Math.min(29.5, Math.max(0.5, gy));
+      editDragItem.spr.x = gx * TILE;
+      editDragItem.spr.y = WALL_H + gy * TILE;
+      editDragItem.spr.setDepth(editDragItem.spr.y);
+      if (editDragItem.shadow) { editDragItem.shadow.x = editDragItem.spr.x; editDragItem.shadow.y = editDragItem.spr.y + 1; editDragItem.shadow.setDepth(editDragItem.spr.depth - 1); }
+      editDragItem._dragX = gx; editDragItem._dragY = gy;
+      return true;
+    }
+    if (editTool === "add") { updateEditGhost(worldX, worldY); return true; }
+    return false;
+  }
+  function editPointerUp() {
+    if (editDragItem && editDragItem._dragX != null) {
+      var f = editDragItem.f;
+      var nx = editDragItem._dragX, ny = editDragItem._dragY;
+      saveEditMap(false, { action: "move", item: { id: f.id, x: nx, y: ny } }, function (ok, err) {
+        showBubble(ok ? "已移动" : "移动失败：" + err, ok ? "idle" : "error");
+      });
+      editDragItem._dragX = editDragItem._dragY = null;
+    }
+    editDragItem = null;
+  }
+  /* 保存到 hub：item 为空 = 全量 set；hub 不在线时只动本地镜像（并提示） */
+  function saveEditMap(silent, payload, cb) {
+    var base = hubMapBase();
+    var done = function (ok, err) { if (cb) cb(ok, err); if (!ok && !silent && err) addEditLog("保存失败：" + err); };
+    if (!base) {
+      // 线上没有 hub HTTP 口：本地镜像生效（重启丢失），明确提示
+      if (payload && payload.action === "add") { customFurniture.push(payload.item); rebuildCustomLayer(); }
+      else if (payload && payload.action === "remove") { customFurniture = customFurniture.filter(f => f.id !== payload.item.id); rebuildCustomLayer(); }
+      else if (payload && payload.action === "move") {
+        var it = customFurniture.find(f => f.id === payload.item.id);
+        if (it) { it.x = payload.item.x; it.y = payload.item.y; rebuildCustomLayer(); }
+      }
+      done(false, "线上未开放地图保存（Nginx 只反代 WS）——改动仅本次生效");
+      return;
+    }
+    var body = payload || { action: "set", item: customFurniture };
+    fetch(base + "/api/map", {
+      method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body)
+    }).then(function (r) { return r.json().then(function (j) { return { status: r.status, j: j }; }); })
+      .then(function (r) {
+        if (r.status === 200) { done(true); if (!silent) addEditLog("已保存（" + (r.j.count || 0) + " 条）"); }
+        else done(false, r.j && r.j.error || ("HTTP " + r.status));
+      })
+      .catch(function (e) { done(false, e.message); });
+  }
+  function addEditLog(msg) {
+    var box = document.getElementById("edit-log");
+    if (!box) return;
+    var d = document.createElement("div");
+    d.textContent = new Date().toLocaleTimeString("zh-CN", { hour12: false }) + " " + msg;
+    box.prepend(d);
+    while (box.children.length > 8) box.removeChild(box.lastChild);
+  }
+  /* 编辑面板 DOM：资产选择 + 工具 + 条目列表 */
+  function buildEditPanel() {
+    if (document.getElementById("edit-panel")) return;
+    var host = document.getElementById("office-parent");
+    if (!host) return;
+    var panel = document.createElement("div");
+    panel.id = "edit-panel";
+    panel.style.cssText = "position:absolute;z-index:45;left:14px;top:52px;width:262px;max-height:560px;overflow:auto;" +
+      "border-radius:10px;background:#1d2130f2;border:1px solid #ffffff33;color:#ece8df;box-shadow:0 6px 20px #0008;display:none;" +
+      "font:12px/1.6 'PingFang SC','Microsoft YaHei',system-ui,sans-serif;padding:10px 12px;";
+    panel.innerHTML =
+      '<div style="display:flex;align-items:center;gap:6px;margin-bottom:6px"><b style="color:#ffd43b">地图编辑</b>' +
+      '<button id="edit-close" style="margin-left:auto;border:0;background:transparent;color:#9aa3b8;cursor:pointer;font-size:15px">×</button></div>' +
+      '<div style="display:flex;gap:5px;margin-bottom:8px">' +
+      ["select|🖱 选择", "add|➕ 放置", "move|✥ 移动", "delete|🗑 删除"].map(function (p) {
+        var kv = p.split("|");
+        return '<button id="edit-tool-' + kv[0] + '" data-tool="' + kv[0] + '" style="flex:1;padding:4px 2px;border-radius:6px;border:1px solid #ffffff33;background:#2a2e3d;color:#ece8df;cursor:pointer;font-size:11.5px">' + kv[1] + "</button>";
+      }).join("") + "</div>" +
+      '<div id="edit-assets" style="display:grid;grid-template-columns:repeat(4,1fr);gap:4px;max-height:190px;overflow:auto;margin-bottom:8px"></div>' +
+      '<div style="display:flex;gap:5px;margin-bottom:6px">' +
+      '<button id="edit-save" style="flex:1;padding:5px;border-radius:6px;border:0;background:#4a6cf7;color:#fff;cursor:pointer;font-weight:700">💾 保存到服务器</button>' +
+      '<button id="edit-clear" style="flex:none;padding:5px 8px;border-radius:6px;border:1px solid #ffffff33;background:transparent;color:#ff8787;cursor:pointer">清空</button></div>' +
+      '<div style="color:#9aa3b8;margin-bottom:4px">已添加 <span id="edit-count">0</span> 件（上限 400）</div>' +
+      '<div id="edit-list" style="max-height:120px;overflow:auto;margin-bottom:6px"></div>' +
+      '<div id="edit-log" style="color:#8ce99a;min-height:16px;font-size:11px"></div>';
+    host.appendChild(panel);
+    panel.querySelector("#edit-close").onclick = function () { setEditMode(false); };
+    panel.querySelector("#edit-save").onclick = function () { saveEditMap(false, null, function (ok, err) { addEditLog(ok ? "全量已保存" : "保存失败：" + err); }); };
+    panel.querySelector("#edit-clear").onclick = function () {
+      if (!confirm("清空全部 " + customFurniture.length + " 件自定义物品？")) return;
+      saveEditMap(false, { action: "set", item: [] }, function (ok, err) { addEditLog(ok ? "已清空" : "清空失败：" + err); });
+    };
+    ["select", "add", "move", "delete"].forEach(function (k) {
+      var b = panel.querySelector("#edit-tool-" + k);
+      b.onclick = function () { setEditTool(k); };
+    });
+    var wrap = panel.querySelector("#edit-assets");
+    EDIT_PICKABLE.forEach(function (a) {
+      var b = document.createElement("button");
+      b.dataset.asset = a;
+      b.title = a;
+      b.style.cssText = "padding:3px 1px;border-radius:5px;border:1px solid #ffffff22;background:#2a2e3d;color:#c3c9d9;cursor:pointer;font-size:10px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap";
+      b.textContent = a.replace(/^(office|kitchen|market|round|school|dining|double|bench|stall|sign|filing|floor|desk|crown|house)-/, "");
+      b.onclick = function () { setEditAsset(a); };
+      wrap.appendChild(b);
+    });
+    setEditTool("select");
+  }
+  function renderEditList() {
+    var el = document.getElementById("edit-list");
+    var cnt = document.getElementById("edit-count");
+    if (cnt) cnt.textContent = String(customFurniture.length);
+    if (!el) return;
+    el.innerHTML = customFurniture.slice(-60).reverse().map(function (f) {
+      return '<div style="display:flex;gap:6px;padding:2px 0;border-bottom:1px dashed #ffffff12">' +
+        '<span style="flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">' + f.a + "</span>" +
+        '<span style="color:#9aa3b8">' + f.x + "," + f.y + "</span>" +
+        '<button data-del="' + f.id + '" style="border:0;background:transparent;color:#ff8787;cursor:pointer;padding:0 2px">✕</button></div>';
+    }).join("");
+    [].forEach.call(el.querySelectorAll("button[data-del]"), function (b) {
+      b.onclick = function () { saveEditMap(false, { action: "remove", item: { id: b.dataset.del } }, function (ok, err) { addEditLog(ok ? "已删除" : err); }); };
+    });
+  }
+
 
   // ---------- A* ----------
   function astar(sx, sy, ex, ey) {
@@ -2848,6 +3193,8 @@
   function bindClick(s) {
     s.input.on("pointerdown", function (p) {
       lastPointer = { wx: Math.round(p.worldX), wy: Math.round(p.worldY), sx: Math.round(p.x), sy: Math.round(p.y) };
+      // 编辑模式（v37）：点击语义整体切到 放置/移动/删除
+      if (editMode && editPointerDown(p.worldX, p.worldY)) return;
       // 拖动视角刚结束：这次"抬起"不该当成一次点击（拖完镜头的余误触）
       if (Date.now() < camDragSuppress) { camDragSuppress = 0; return; }
       // 钓鱼中：任何一次点击都是「起竿」（咬钩窗口内 = 成功，否则脱钩）
@@ -3005,7 +3352,7 @@
           return;   // 走不过去也只看卡，不落回普通走位
         }
       }
-      if (s.grid[gy][gx]) return;   // 普通走位只允许点可走格
+      if (s.grid[gy][gx] && !editMode) return;   // 普通走位只允许点可走格
       var path = astar(px2tx(fish.x), px2ty(fish.y), gx, gy);
       if (!path || path.length < 2) return;
       stopIdleLife();
@@ -3053,6 +3400,9 @@
         if (Array.isArray(msg.recent)) msg.recent.forEach(pushEvent);
         if (msg.stats) onStats(msg.stats);
         if (msg.state) onState(msg.state);
+        if (Array.isArray(msg.customMap)) applyCustomMap(msg.customMap);   // v37：hub 里的自定义家具层
+      } else if (msg.type === "map" && Array.isArray(msg.furniture)) {
+        applyCustomMap(msg.furniture);   // v37：编辑保存后的热更新广播
       } else if (msg.type === "state" && msg.state) {
         if (msg.stats) onStats(msg.stats);
         onState(msg.state);
@@ -3646,6 +3996,18 @@
       kitchen: kitchenSummary,
       cook: cook,
       cookAuto: function () { var t = cookAuto(); if (t) renderCookPanel(); return t || "（食材不够）"; },
+      /* 地图编辑器（v37）：开关 + 状态 + 手动拉取 hub 自定义层 */
+      setEditMode: function (on) { return setEditMode(on); },
+      editState: function () { return { on: editMode, tool: editTool, asset: editAsset, count: customFurniture.length, hub: !!hubMapBase() }; },
+      editSetTool: function (t) { setEditTool(t); return editTool; },
+      editSetAsset: function (a) { setEditAsset(a); return editAsset; },
+      editSave: function () { saveEditMap(false, null, function (ok, err) { addEditLog(ok ? "已保存" : err); }); return true; },
+      mapReload: function () {
+        var base = hubMapBase();
+        if (!base) return false;
+        fetch(base + "/api/map").then(function (r) { return r.json(); }).then(function (j) { applyCustomMap(j.furniture || []); });
+        return true;
+      },
       /* 视角（v36）：邻居视角导航 / 自由拖动 */
       neighborRooms: function () { return NEIGHBOR_HOMES.map(function (h) { return { id: "nb-" + h.id, home: h.home, cx: h.cx, cy: h.cy }; }); },
       gotoNeighbor: function (id) {
@@ -3764,6 +4126,7 @@
           fishing: fishing ? { bite: fishing.bite, t: Number(fishing.t.toFixed(1)) } : null,
           roads: roadsVisible,
           camDrag: camDragOn,
+          edit: { on: editMode, tool: editTool, asset: editAsset, count: customFurniture.length },
           frameIssues: frameAudit(),
           gridOverlay: !!gridOverlay
         };

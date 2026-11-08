@@ -236,7 +236,90 @@ function applyEvent(ev) {
   return { ok: true, dedup: false }
 }
 
-// 本地调试工作台从 http://127.0.0.1:4322 跨域推事件，需允许 CORS（hub 只监听 127.0.0.1）
+// ---------- 地图自定义层（v37 编辑地图界面）----------
+/* 浏览器编辑模式的增删改存到这里：map.custom.json（与只读的 web/map.json 分离）。
+ * 编辑在本地（127.0.0.1）或 ?debug=1 下进行；保存时 hub 校验资产存在/坐标范围/条数上限，
+ * 广播 {type:"map"} 让所有在线页面热重载家具层，重启由 loadCustomMap() 恢复。 */
+const MAP_FILE = process.env.OFFICE_MAP_FILE
+  ? path.resolve(process.env.OFFICE_MAP_FILE)
+  : fileURLToPath(new URL("./map.custom.json", import.meta.url))
+const MAP_MAX_ITEMS = 400
+
+function loadCustomMap() {
+  try {
+    const j = JSON.parse(fs.readFileSync(MAP_FILE, "utf8"))
+    if (Array.isArray(j.furniture)) return { furniture: j.furniture, updatedAt: j.updatedAt || 0 }
+  } catch {}
+  return { furniture: [], updatedAt: 0 }
+}
+let customMap = loadCustomMap()
+
+/* 校验一条自定义家具：资产必须在 manifest、坐标在地图内、可选 id 不冲突 */
+function validateMapItem(it, existingIds) {
+  if (!it || typeof it !== "object") return "条目必须是对象"
+  if (!/^[a-z][a-z0-9-]{1,40}$/.test(String(it.a || ""))) return "资产名非法"
+  const x = Number(it.x), y = Number(it.y)
+  if (!Number.isFinite(x) || !Number.isFinite(y) || x < 0 || x > 56 || y < 0 || y > 30) return "坐标越界（0..56 / 0..30）"
+  if (it.id && !/^[A-Za-z][A-Za-z0-9_]{0,30}$/.test(String(it.id))) return "id 非法"
+  if (it.id && existingIds.has(String(it.id))) return "id 重复: " + it.id
+  if (it.frame != null && (!Number.isInteger(it.frame) || it.frame < 0 || it.frame > 63)) return "frame 非法"
+  return null
+}
+
+function applyMapEdit(action, item) {
+  if (action === "set") {
+    if (!Array.isArray(item)) return { ok: false, status: 400, error: "furniture 数组缺失" }
+    if (item.length > MAP_MAX_ITEMS) return { ok: false, status: 400, error: `超过上限 ${MAP_MAX_ITEMS} 条` }
+    const ids = new Set()
+    for (const it of item) {
+      const err = validateMapItem(it, ids)
+      if (err) return { ok: false, status: 400, error: err }
+      if (it.id) ids.add(String(it.id))
+    }
+    customMap = { furniture: item, updatedAt: Date.now() }
+  } else if (action === "add") {
+    const ids = new Set(customMap.furniture.map(f => String(f.id || "")).filter(Boolean))
+    const err = validateMapItem(item, ids)
+    if (err) return { ok: false, status: 400, error: err }
+    if (customMap.furniture.length >= MAP_MAX_ITEMS) return { ok: false, status: 400, error: `超过上限 ${MAP_MAX_ITEMS} 条` }
+    if (!item.id) item.id = "cu" + Date.now().toString(36) + Math.floor(Math.random() * 1e4).toString(36)
+    customMap.furniture.push(item)
+    customMap.updatedAt = Date.now()
+  } else if (action === "move" || action === "update") {
+    const it = customMap.furniture.find(f => f.id === item.id)
+    if (!it) return { ok: false, status: 404, error: "未找到 " + item.id }
+    if (action === "move") {
+      const x = Number(item.x), y = Number(item.y)
+      if (!Number.isFinite(x) || !Number.isFinite(y) || x < 0 || x > 56 || y < 0 || y > 30) return { ok: false, status: 400, error: "坐标越界" }
+      it.x = Math.round(x * 100) / 100; it.y = Math.round(y * 100) / 100
+    } else {
+      for (const k of ["a", "x", "y", "sc", "o", "wall", "frame", "on", "dx", "dy", "ox", "oy"]) {
+        if (item[k] !== undefined) it[k] = item[k]
+      }
+      const ids = new Set(customMap.furniture.filter(f => f !== it && f.id).map(f => String(f.id)))
+      const err = validateMapItem(it, ids)
+      if (err) return { ok: false, status: 400, error: err }
+    }
+    customMap.updatedAt = Date.now()
+  } else if (action === "remove") {
+    const n = customMap.furniture.length
+    customMap.furniture = customMap.furniture.filter(f => f.id !== item.id)
+    if (customMap.furniture.length === n) return { ok: false, status: 404, error: "未找到 " + (item && item.id) }
+    customMap.updatedAt = Date.now()
+  } else {
+    return { ok: false, status: 400, error: "未知 action: " + action }
+  }
+  try {
+    fs.writeFileSync(MAP_FILE + ".tmp", JSON.stringify(customMap, null, 1))
+    fs.renameSync(MAP_FILE + ".tmp", MAP_FILE)
+  } catch (e) {
+    console.warn(new Date().toISOString(), `[office-hub] 地图落盘失败: ${e.message}`)
+  }
+  broadcast({ type: "map", furniture: customMap.furniture, updatedAt: customMap.updatedAt })
+  console.log(new Date().toISOString(), `[office-hub] 地图 ${action} · 现 ${customMap.furniture.length} 条`)
+  return { ok: true, count: customMap.furniture.length }
+}
+
 const CORS = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Methods": "GET,POST,OPTIONS",
@@ -300,6 +383,30 @@ const server = http.createServer((req, res) => {
     }))
     return
   }
+  // 地图自定义层（v37 编辑地图界面）：GET 读全量，POST 增删改（仅本机/调试用）
+  if (req.url === "/api/map" && req.method === "GET") {
+    res.writeHead(200, { ...CORS, "Content-Type": "application/json; charset=utf-8" })
+    res.end(JSON.stringify({ furniture: customMap.furniture, updatedAt: customMap.updatedAt, max: MAP_MAX_ITEMS }))
+    return
+  }
+  if (req.url === "/api/map" && req.method === "POST") {
+    let body = ""
+    req.on("data", c => { body += c; if (body.length > 262144) req.destroy() })
+    req.on("end", () => {
+      let d
+      try { d = JSON.parse(body || "{}") }
+      catch { res.writeHead(400, CORS).end("bad json"); return }
+      const r = applyMapEdit(String(d.action || ""), d.item)
+      if (!r.ok) {
+        res.writeHead(r.status, { ...CORS, "Content-Type": "application/json; charset=utf-8" })
+        res.end(JSON.stringify({ error: r.error }))
+        return
+      }
+      res.writeHead(200, { ...CORS, "Content-Type": "application/json; charset=utf-8" })
+      res.end(JSON.stringify({ ok: true, count: r.count, updatedAt: customMap.updatedAt }))
+    })
+    return
+  }
   if (req.url === "/health") { res.writeHead(200, CORS).end("ok"); return }
   res.writeHead(404, CORS).end()
 })
@@ -312,6 +419,7 @@ wss.on("connection", (ws) => {
     state: cur,
     recent: recent.slice(-20),
     stats: statsSnapshot(),
+    customMap: customMap.furniture.length ? customMap.furniture : undefined,
     viewers: clients.size,
     serverTime: Date.now()
   }))

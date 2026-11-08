@@ -129,6 +129,19 @@ function buildGrid(props) {
       for (let gx = Math.floor(left / TILE); gx <= Math.floor((right - 1) / TILE); gx++)
         if (gy >= 0 && gy < ROWS && gx >= 0 && gx < COLS) grid[gy][gx] = 1;
   });
+  // 阻挡区块（v37 与前端 buildBlockedGrid 同步）：水面椭圆内格子不可走
+  (map.blockers || []).forEach(b => {
+    if (b.t !== "pond") return;
+    const bx0 = Math.max(0, Math.floor(b.x0)), bx1 = Math.min(COLS - 1, Math.ceil(b.x1) - 1);
+    const by0 = Math.max(0, Math.floor(b.y0)), by1 = Math.min(ROWS - 1, Math.ceil(b.y1) - 1);
+    const ex = (b.x0 + b.x1) / 2, ey = (b.y0 + b.y1) / 2;
+    const rx = (b.x1 - b.x0) / 2 + 0.12, ry = (b.y1 - b.y0) / 2 + 0.12;
+    for (let py = by0; py <= by1; py++)
+      for (let px = bx0; px <= bx1; px++) {
+        const cx = px + 0.5, cy = py + 0.5;
+        if (Math.pow((cx - ex) / rx, 2) + Math.pow((cy - ey) / ry, 2) <= 1) grid[py][px] = 1;
+      }
+  });
   return grid;
 }
 function pngFrames(file, m) {
@@ -610,6 +623,51 @@ check("数值层 stats（hub 字段 / 前端 UI / 增量上报 防回退）", ()
   const missing = needKeys.filter(k => !evKeys.includes(k));
   if (missing.length) problems.push(`EVENT_NEED 引用了不存在的事件: ${missing.join(", ")}`);
   return { problems, warnings, note: `${needKeys.length} 条事件挂需求 · 5 词条 · hub 真相源` };
+});
+
+// ---------- 第 20 项：鱼塘碰撞 + 地图编辑（v37） ----------
+check("鱼塘阻挡 + 地图编辑层（blockers / hub API / 编辑模式 防回退）", () => {
+  const bad = [];
+  // 1) map.json 必须声明鱼塘 blocker，且与前端 POND 常量一致
+  const blocker = (map.blockers || []).find(b => b.t === "pond");
+  if (!blocker) bad.push("map.json 缺 blockers[].t=pond：鱼塘水面会被 A* 穿过");
+  const pond = /var POND = \{\s*x0:\s*([\d.]+),\s*y0:\s*([\d.]+),\s*x1:\s*([\d.]+),\s*y1:\s*([\d.]+)/.exec(officeSrc);
+  if (!pond) bad.push("office.js 找不到 POND 常量");
+  else if (blocker) {
+    const [, x0, y0, x1, y1] = pond.map(Number);
+    if ([x0, y0, x1, y1].some(v => Math.abs(v - (blocker[[x0, y0, x1, y1][[x0, y0, x1, y1].indexOf(v)]]) ) > 0.001)) {
+      // 数值对不上时用精确比较再报（避免浮点误报）
+      const kv = { x0, y0, x1, y1 };
+      const mismatch = Object.keys(kv).filter(k => Math.abs(kv[k] - blocker[k]) > 0.001);
+      if (mismatch.length) bad.push(`POND 常量与 map.blockers 不一致: ${mismatch.join(",")}`);
+    }
+  }
+  // 2) 前端必须有 blocker 碰撞逻辑 + check.mjs 已同步（本文件自身）
+  if (!/s\.mapdata\.blockers/.test(officeSrc)) bad.push("buildBlockedGrid 未消费 mapdata.blockers（鱼塘碰撞失效）");
+  if (!/\(map\.blockers \|\| \[\]\)\.forEach/.test(read(path.join(OFFICE, "tools", "check.mjs"))))
+    bad.push("check.mjs 的 buildGrid 未同步 blockers（静态自检与运行时碰撞会漂移）");
+  // 3) hub 地图 API：GET/POST /api/map、落盘 map.custom.json、WS 广播、校验
+  for (const needle of ['"/api/map"', "applyMapEdit", "map.custom.json", 'type: "map"', "validateMapItem", "customMap"])
+    if (!hubSrc.includes(needle)) bad.push(`hub.mjs 缺 ${needle}（地图编辑 API 不完整）`);
+  if (!/customMap: customMap\.furniture/.test(hubSrc)) bad.push("hub hello 未带 customMap（刷新后编辑内容不恢复）");
+  // 4) 前端编辑模式：应用自定义层、编辑面板、保存调用、走位守卫
+  for (const needle of ["function applyCustomMap(", "function setEditMode(", "function editPointerDown(", "function saveEditMap(", 'action: "add"', 'action: "move"', 'action: "remove"', "renderEditList"])
+    if (!officeSrc.includes(needle)) bad.push(`office.js 缺 ${needle}（编辑器链路不完整）`);
+  if (!/if \(editMode && editPointerDown\(/.test(officeSrc)) bad.push("pointerdown 未接编辑模式（画布点击不会进入放置/删除）");
+  if (!/applyCustomFurniture\(s\)/.test(officeSrc)) bad.push("buildFurniture 未调用 applyCustomFurniture（自定义家具不会显示）");
+  // 5) debug 台入口
+  if (!dbgSrc.includes("dbg-edit") || !dbgSrc.includes("setEditMode")) bad.push("debug.js 缺编辑模式入口");
+  if (!dbgSrc.includes("dbg-map-reload")) bad.push("debug.js 缺重载自定义层按钮");
+  // 6) 钓鱼 zone 不得被水格堵死：pond zone 锚点必须是可走格
+  if (blocker && zones.pond) {
+    const a = zones.pond.anchor, ex = Math.round(a[0]), ey = Math.round(a[1]);
+    // 复算一次 pond 阻挡（与 buildGrid 相同公式）
+    const exC = (blocker.x0 + blocker.x1) / 2, eyC = (blocker.y0 + blocker.y1) / 2;
+    const rx = (blocker.x1 - blocker.x0) / 2 + 0.12, ry = (blocker.y1 - blocker.y0) / 2 + 0.12;
+    const inPond = Math.pow((ex + 0.5 - exC) / rx, 2) + Math.pow((ey + 0.5 - eyC) / ry, 2) <= 1;
+    if (inPond) bad.push(`pond 钓鱼位 [${ex},${ey}] 落在水格里，鱼永远走不进去`);
+  }
+  return { problems: bad, note: "鱼塘椭圆阻挡 · hub /api/map · 编辑模式 · 调试入口" };
 });
 
 console.log("\noffice 静态自检\n" + "─".repeat(64));

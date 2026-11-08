@@ -110,6 +110,11 @@
         <button class="dbg-btn" id="dbg-cook">🍳 做道菜</button>
       </div>
       <pre class="dbg-pre" id="dbg-farm-out">点上面按钮试农活/钓鱼/料理；farm()/kitchen() 可看全量状态</pre>
+      <label class="dbg-label">地图编辑（v37）</label>
+      <div class="dbg-row">
+        <button class="dbg-btn primary" id="dbg-edit">✏ 编辑地图</button>
+        <button class="dbg-btn" id="dbg-map-reload">↺ 重载自定义层</button>
+      </div>
       <label class="dbg-label">镜头 / 走位</label>
       <div class="dbg-row" id="dbg-rooms"></div>
       <div class="dbg-row">
@@ -341,6 +346,16 @@
     var k = C.kitchen();
     farmOut((t ? t : "食材不够") + "\n可做: " + k.recipes.filter(function (r) { return r.ok; }).map(function (r) { return r.name; }).join("、"));
     addLog("info", "cookAuto → " + t);
+  };
+  /* 地图编辑模式（v37）：进入后画布上直接增删移物品；本地可用，线上只读 */
+  $("dbg-edit").onclick = function () {
+    var on = C.setEditMode(!C.editState().on);
+    this.textContent = on ? "✏ 编辑中…" : "✏ 编辑地图";
+    var st = C.editState();
+    addLog("info", "编辑模式 → " + (on ? "开" : "关") + (st.hub ? "" : "（线上未开放保存，改动仅本次生效）"));
+  };
+  $("dbg-map-reload").onclick = function () {
+    addLog("info", C.mapReload() ? "已从 hub 重载自定义层" : "hub 不可达（仅本地可用）");
   };
   $("dbg-go").onclick = function () {
     var z = goSel.value; if (!z) return;
