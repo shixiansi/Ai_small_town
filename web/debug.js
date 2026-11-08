@@ -100,7 +100,16 @@
         <button class="dbg-btn" id="dbg-light-off">🌙 关灯</button>
         <button class="dbg-btn" id="dbg-rain">🌧 晴/雨切换</button>
         <button class="dbg-btn" id="dbg-grid">▦ 碰撞格叠加</button>
+        <button class="dbg-btn" id="dbg-roads">🛣 道路层</button>
       </div>
+      <label class="dbg-label">农场 / 鱼塘 / 料理（v36）</label>
+      <div class="dbg-row">
+        <button class="dbg-btn" id="dbg-farm-act">🌾 农活一轮</button>
+        <button class="dbg-btn" id="dbg-farm-grow">⚡ 催熟全部</button>
+        <button class="dbg-btn" id="dbg-fish">🎣 钓一条</button>
+        <button class="dbg-btn" id="dbg-cook">🍳 做道菜</button>
+      </div>
+      <pre class="dbg-pre" id="dbg-farm-out">点上面按钮试农活/钓鱼/料理；farm()/kitchen() 可看全量状态</pre>
       <label class="dbg-label">镜头 / 走位</label>
       <div class="dbg-row" id="dbg-rooms"></div>
       <div class="dbg-row">
@@ -301,6 +310,38 @@
     C.setWeather(w); addLog("info", "天气 → " + w);
   };
   $("dbg-grid").onclick = function () { addLog("info", "碰撞格叠加 → " + (C.toggleGrid() ? "开" : "关")); };
+  /* 道路层开关（v36）：单独显示/隐藏道路，用于检查路网与地块的压盖 */
+  $("dbg-roads").onclick = function () {
+    var v = C.toggleRoads();
+    this.textContent = v ? "🛣 道路层 ✓" : "🛣 道路层 ✗";
+    addLog("info", "道路层 → " + (v ? "显示" : "隐藏"));
+  };
+  /* 农场/钓鱼/料理快试（v36） */
+  function farmOut(text) { $("dbg-farm-out").textContent = text; }
+  $("dbg-farm-act").onclick = function () {
+    var order = ["till", "sow", "water", "feed", "harvest"], out = [];
+    var self = this;
+    order.forEach(function (act) { var r = C.farmAct(act); if (r) out.push(act + ": " + r.text); });
+    var s = C.farm();
+    farmOut(out.join("\n") + "\n—— 熟" + s.ready + " · 长" + s.growing + " · 种子 " + JSON.stringify(s.seeds));
+    addLog("info", "农场一轮完成");
+  };
+  $("dbg-farm-grow").onclick = function () {
+    var s = C.farmGrowAll();
+    farmOut("已催熟 " + s.ready + " 株（点田地或「农活一轮」收）");
+    addLog("info", "全部作物已催熟");
+  };
+  $("dbg-fish").onclick = function () {
+    var r = C.fishOnce();
+    farmOut("钓鱼： " + r.text + (r.ok ? "（塘里累计 " + C.farm().fish + " 条）" : ""));
+    addLog("info", "fishOnce → " + r.text);
+  };
+  $("dbg-cook").onclick = function () {
+    var t = C.cookAuto();
+    var k = C.kitchen();
+    farmOut((t ? t : "食材不够") + "\n可做: " + k.recipes.filter(function (r) { return r.ok; }).map(function (r) { return r.name; }).join("、"));
+    addLog("info", "cookAuto → " + t);
+  };
   $("dbg-go").onclick = function () {
     var z = goSel.value; if (!z) return;
     C.emit("idle", "调试：前往 " + z, "", z); addLog("info", "走位 → " + z);
@@ -386,7 +427,9 @@
       ["天气", s.weather], ["WS", WS_TEXT[s.ws.readyState] || "未知"],
       ["素材 / 物件", s.assets + " / " + s.props], ["阻挡格", s.blocked],
       ["今日完成", s.evidence.done], ["当前任务", s.evidence.current || "-"],
-      ["气泡", s.bubble || "-"], ["画布", s.canvas ? s.canvas.w + "×" + s.canvas.h : "-"]
+      ["气泡", s.bubble || "-"], ["画布", s.canvas ? s.canvas.w + "×" + s.canvas.h : "-"],
+      ["农场", "熟" + (s.farm ? s.farm.ready : 0) + "/长" + (s.farm ? s.farm.growing : 0) + "/鱼" + (s.farm ? s.farm.fish : 0)],
+      ["道路层", s.roads ? "显示" : "隐藏"], ["拖动视角", s.camDrag ? "开" : "关"]
     ];
     $("dbg-kv").innerHTML = kv.map(function (p) {
       return "<div><span>" + p[0] + "</span><b title=\"" + String(p[1]).replace(/"/g, "") + "\">" + p[1] + "</b></div>";

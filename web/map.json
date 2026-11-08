@@ -677,15 +677,15 @@
   },
   {
    "a": "flowers",
-   "x": 36.0,
-   "y": 24.0,
+   "x": 37.0,
+   "y": 13.5,
    "o": true,
    "sc": 0.8
   },
   {
    "a": "bench-park",
-   "x": 30.0,
-   "y": 25.0,
+   "x": 29.5,
+   "y": 28.4,
    "id": "gardenBench3"
   },
   {
@@ -1362,6 +1362,30 @@
     "school-desk",
     "chair"
    ]
+  },
+  "farm": {
+   "anchor": [
+    30,
+    25
+   ],
+   "face": "n",
+   "label": "农田"
+  },
+  "pond": {
+   "anchor": [
+    34,
+    24
+   ],
+   "face": "e",
+   "label": "鱼塘边"
+  },
+  "kitchenprep": {
+   "anchor": [
+    21.6,
+    3.4
+   ],
+   "face": "n",
+   "label": "料理台"
   }
  },
  "walls": [

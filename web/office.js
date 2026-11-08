@@ -181,7 +181,7 @@
     this.load.off("loaderror", onLoadError);
     this.load.on("loaderror", onLoadError);
     this.load.json("manifest", "assets/manifest.json?v=62612ac6");
-    this.load.json("mapdata", "map.json?v=603a960e");
+    this.load.json("mapdata", "map.json?v=be9e5cca");
   };
   SceneBoot.prototype.create = function () {
     var manifest = this.cache.json.get("manifest");
@@ -245,6 +245,10 @@
     buildRoomTabs(this);    // 房间切换 UI
     buildWeather(this);     // 天气层
     buildNPCs(this);        // 小镇居民（方案 §3）
+    farmLoad();             // 农场/鱼塘/料理（v36）：读档 + 画田地 + 塘面鱼影
+    drawFarm(this);
+    drawPond(this, this.add.graphics().setDepth(1));
+    buildPondLife(this);
     // loading 提前隐藏（评审 P1-3）：场景本体已就绪，WS/事件后续异步补——中途异常不再滞留"办公室布置中…"
     var loading = document.getElementById("loading");
     if (loading) loading.classList.add("hide");
@@ -620,8 +624,27 @@
       };
       bar.appendChild(b);
     });
-    bar.children[0].classList.add("active");
-    bar.children[0].setAttribute("aria-pressed", "true");
+    // 邻居视角导航（v36）：三户邻居各一个 tab，点了一下解锁拖动/缩放后可环视邻居屋内外
+    NEIGHBOR_HOMES.forEach(function (h) {
+      var nb = document.createElement("button");
+      nb.className = "room-tab";
+      nb.type = "button";
+      nb.dataset.room = "nb-" + h.id;
+      nb.title = "把镜头移到" + (INFO_CARDS[h.home] || {}).name + "门口（再拖动可环视）";
+      nb.setAttribute("aria-label", "视角移动到邻居家：" + (INFO_CARDS[h.home] || {}).name);
+      nb.textContent = (INFO_CARDS[h.home] || {}).name || h.id;
+      nb.onclick = function () {
+        exitNeighborHome();
+        camDragOn = false;   // 切换停靠视角时退出拖动模式
+        var cam = s.cameras.main;
+        cam.stopFollow();
+        cam.setZoom(1.4);
+        cam.pan(h.cx, h.cy - 2 * TILE, 600);
+        syncTabActive(nb);
+        nb.classList.add("active");
+      };
+      bar.appendChild(nb);
+    });
     // 跟随鱼按钮（评审 #8：tab 改固定停靠后，"看鱼去哪"变成显式动作）
     var fb = document.createElement("button");
     fb.className = "room-tab";
@@ -629,15 +652,100 @@
     fb.title = "镜头回到 AI 身上";
     fb.onclick = function () {
       exitNeighborHome();
+      camDragOn = false;
       var cam = s.cameras.main;
       cam.stopFollow(); cam.startFollow(fish, true, 0.08, 0.08); cam.setZoom(1);
-      [].forEach.call(bar.children, function (c) { c.classList.remove("active"); });
-      fb.classList.add("active");
+      syncTabActive(fb);
     };
     bar.appendChild(fb);
+    // ✋ 自由拖动按钮（v36）：视角不再只能靠切 tab——按住拖动画布直接平移镜头，滚轮缩放
+    var db = document.createElement("button");
+    db.className = "room-tab";
+    db.id = "cam-drag-btn";
+    db.textContent = "✋ 拖动";
+    db.title = "自由拖动视角：开启后按住画布拖动平移镜头，滚轮缩放（ESC 或再点一次退出）";
+    db.setAttribute("aria-pressed", "false");
+    db.onclick = function () {
+      camDragOn = !camDragOn;
+      exitNeighborHome();
+      var cam = s.cameras.main;
+      if (camDragOn) {
+        cam.stopFollow();                       // 拖动模式 = 脱离鱼的跟随，镜头完全交给手
+        if (cam.__dragPan) { cam.__dragPan.destroy(); cam.__dragPan = null; }
+        cam.setZoom(Math.max(1, cam.zoom));     // 缩小态拖动会露出世界外，钳到 1
+        db.classList.add("active");
+        db.setAttribute("aria-pressed", "true");
+        showBubble("（拖动视角已开启，按住画布拖一拖，滚轮缩放）", "idle");
+      } else {
+        db.classList.remove("active");
+        db.setAttribute("aria-pressed", "false");
+        cam.startFollow(fish, true, 0.08, 0.08);
+        cam.setZoom(1);
+      }
+      syncDragBtn();
+    };
+    bar.appendChild(db);
+    function syncTabActive(btn) {
+      [].forEach.call(bar.children, function (c) {
+        c.classList.remove("active");
+        if (c.setAttribute) c.setAttribute("aria-pressed", "false");
+      });
+      btn.classList.add("active");
+    }
+    function syncDragBtn() { db.classList.toggle("active", camDragOn); }
+    bar.children[0].classList.add("active");
+    bar.children[0].setAttribute("aria-pressed", "true");
+    bindCamDrag(s);
+    bindCamWheel(s);
   }
   SceneOffice.prototype.update = update;
 
+  /* ---------- 自由拖动视角（v36） ----------
+   * camDragOn 开启后：按住画布拖动 = 平移镜头（拖动距离超过 6px 才算"拖"，
+   * 没超过仍当一次点击走位）。滚轮 = 缩放 0.8~2.2，边界由 cameras.main.setBounds 钳制。 */
+  var camDragOn = false;
+  var camDragSuppress = 0;   // 拖动结束后的点击抑制窗口（ms 时间戳）
+  function bindCamDrag(s) {
+    var cam = s.cameras.main;
+    var dragging = false, moved = false, lx = 0, ly = 0;
+    s.input.on("pointerdown", function (p) {
+      if (!camDragOn) return;
+      dragging = true; moved = false; lx = p.x; ly = p.y;
+    });
+    s.input.on("pointermove", function (p) {
+      if (!camDragOn || !dragging || !p.isDown) return;
+      var dx = p.x - lx, dy = p.y - ly;
+      if (Math.abs(dx) + Math.abs(dy) > 6) moved = true;
+      if (!moved) return;
+      cam.stopFollow();                      // 一动就脱跟随，镜头完全交给手
+      cam.scrollX -= dx / cam.zoom;
+      cam.scrollY -= dy / cam.zoom;
+      lx = p.x; ly = p.y;
+      if (cam.__dragPan) { cam.__dragPan.remove(); cam.__dragPan = null; }   // 拖动打断 pan 停靠
+    });
+    var stop = function () {
+      dragging = false;
+      if (camDragOn && moved) {
+        // 拖完的一次「点击」不该再触发走位：挂一个短冷却，pointerdown 的走位逻辑看它退出
+        camDragSuppress = Date.now() + 350;
+        moved = false;
+      }
+    };
+    s.input.on("pointerup", stop);
+    s.input.on("pointerupoutside", stop);
+  }
+  var camDragSuppress = 0;   // 拖动结束后的点击抑制窗口（ms 时间戳）
+  function bindCamWheel(s) {
+    var cam = s.cameras.main;
+    var cv = s.game.canvas;
+    cv.addEventListener("wheel", function (e) {
+      if (!camDragOn && !camDragWheelAlways) return;
+      e.preventDefault();
+      var nz = Phaser.Math.Clamp(cam.zoom * (e.deltaY < 0 ? 1.12 : 0.89), 0.8, 2.2);
+      cam.setZoom(nz);
+    }, { passive: false });
+  }
+  var camDragWheelAlways = true;   // 滚轮缩放任何视角都可用（拖动模式外也允许）
   /* ============ 渲染核心：基于 bbox 的定位 ============
    * 每个精灵帧内含透明留白；bbox = 内容真实范围 [x,y,w,h]（帧内坐标）。
    * 放置约定：map.json 的 (x,y) 是物品"落脚点"（底部中心的格子坐标）。
@@ -1096,7 +1204,10 @@
 
   // ---------- 房间 ----------
   function buildRoom(s) {
-    var g = s.add.graphics({ x: 0, y: 0 }).setDepth(-100);
+    if (s.baseGfx) { try { s.baseGfx.destroy(); } catch (e) {} }   // rebuildRoomBase 旧层先拆
+    var g = s.add.graphics({ x: 0, y: 0 }).setDepth(-100).setVisible(true);
+    g._isBaseGfx = true;   // v36：道路层重建后旧 Phaser 版 destroy 会把新层误标 visible=false（见 rebuildRoomBase）
+    s.baseGfx = g;
     // 地板：双色明度差 ≥40/255（评审 #5：原 130 vs 147 差 17 太糊；现深格压到 L≈105）
     g.fillStyle(0x9c7750, 1); g.fillRect(0, WALL_H, W, H - WALL_H);
     g.fillStyle(0x98734c, 1);
@@ -1118,9 +1229,7 @@
     for (var ty2 = 0; ty2 < ROWS; ty2++)
       for (var tx2 = 39; tx2 < 56; tx2++)
         if ((tx2 + ty2) % 2 === 0) g.fillRect(tx2 * TILE, WALL_H + ty2 * TILE, TILE, TILE);
-    // 街心主路：暖石板横穿
-    g.fillStyle(0xb3a184, 1);
-    g.fillRect(tx0, WALL_H + 8.6 * TILE, tx1 - tx0, TILE * 1.2);
+    // 街心主路：暖石板横穿（v36 抽成 drawRoads：debug 台可单独开关道路层）
     // 三户邻居室内地板（南排 rows19-29）：喵酱家暖木地板 / 村长家暖黄地砖 / 博士家蓝灰地毯
     // 各家铺各家色，走进去"换了空间"；门口前先铺屋内色，与门洞外街道形成材质分界
     function drawHomeFloor(x0, x1, base, alt) {
@@ -1135,18 +1244,13 @@
     drawHomeFloor(45.6, 50.4, 0xb59a6e, 0xb0936a);   // 村长家：暖黄地砖
     drawHomeFloor(50.6, 55.4, 0x7d88a0, 0x79839a);   // 博士家：蓝灰地毯
     /* 道路系统（v35 重设计）：整张世界只保留小镇街道一张路网——
-     * 1) 街心主路（上面已画）：暖石板横穿 cols 38.5-55.5，北缘 y8.6 贴房子南缘
+     * 1) 街心主路：暖石板横穿 cols 38.5-55.5，北缘 y8.6 贴房子南缘
      * 2) 门径：从 map.walls y19 横墙的门洞（gap）动态推导——向北接到主路南缘 y9.8，
      *    向南铺出门洞 1.4 格当迎宾垫。另一个窗口调整邻居家布局/挪门洞时，
      *    小径自动跟着 gap 走，不会再出现「路对不上门口」。
-     * 3) 花园一侧不再画路：草皮直通主路西端（土路肩相接），花园回归纯草地 */
-    (s.mapdata.walls || []).forEach(function (wl) {
-      if (wl.x0 === undefined || wl.y !== 19 || !wl.gap) return;   // 只要 y19 这排屋前横墙的门洞
-      g.fillStyle(0xb3a184, 1);
-      var cL = wl.gap[0] * TILE, cW = (wl.gap[1] - wl.gap[0] + 1) * TILE;
-      g.fillRect(cL, WALL_H + 9.8 * TILE, cW, (19 - 9.8) * TILE);   // 主路南缘 → 门洞北缘
-      g.fillRect(cL - 3, WALL_H + 19 * TILE, cW + 6, 1.4 * TILE);   // 门外迎宾垫
-    });
+     * 3) 花园一侧不再画路：草皮直通主路西端（土路肩相接），花园回归纯草地
+     * v36：全部挪进 drawRoads()，debug 台「道路层」开关可以单独隐藏/显示它。 */
+    drawRoads(s, g, tx0, tx1);
     // 卫浴瓷砖（北排 cols 10-16, rows 1-15 全高）+ 厨房地砖（cols 16.5-25 淡暖灰，材质分区）
     g.fillStyle(0x8e9ca6, 1);
     g.fillRect(9.5 * TILE, WALL_H, 6.5 * TILE, 15 * TILE);
@@ -1255,6 +1359,413 @@
         }
       });
     });
+    drawRoads(s, g, tx0, tx1);   // v36：道路最后画，压在地板/田埂之上
+  }
+
+  /* 道路层（v36）：主路 + 门径集中画进 buildRoom 的 base graphics 上，debug 台可整体开关。
+   * buildRoom 里会调两次（中段铺主路基准，末尾压在田埂之上）——g 是同一个 baseGfx，
+   * 这里绝不能 destroy（roadsGfx===g 会自毁地板，整屏只剩背景色）。 */
+  var roadsVisible = true;
+  function drawRoads(s, g, tx0, tx1) {
+    if (!roadsVisible) return;   // debug 关闭道路层：主路/门径都不画，只留纯草地/石板底
+    g.fillStyle(0xb3a184, 1);
+    g.fillRect(tx0, WALL_H + 8.6 * TILE, tx1 - tx0, TILE * 1.2);   // 街心主路
+    (s.mapdata.walls || []).forEach(function (wl) {
+      if (wl.x0 === undefined || wl.y !== 19 || !wl.gap) return;   // 只要 y19 这排屋前横墙的门洞
+      var cL = wl.gap[0] * TILE, cW = (wl.gap[1] - wl.gap[0] + 1) * TILE;
+      g.fillRect(cL, WALL_H + 9.8 * TILE, cW, (19 - 9.8) * TILE);   // 主路南缘 → 门洞北缘
+      g.fillRect(cL - 3, WALL_H + 19 * TILE, cW + 6, 1.4 * TILE);   // 门外迎宾垫
+    });
+  }
+  function toggleRoads(force) {
+    if (!scene || !scene.mapdata) return roadsVisible;
+    if (force === true && roadsVisible) return true;          // 已开
+    if (force === false && !roadsVisible) return false;       // 已关
+    roadsVisible = !roadsVisible;
+    rebuildRoomBase();   // 地板/道路是同一个 graphics：整层重画
+    return roadsVisible;
+  }
+
+  /* 重画整层地板/道路/墙（debug 道路层开关用）：把 buildRoom 再跑一遍，旧 graphics 已在上面拆掉 */
+  function rebuildRoomBase() {
+    if (!scene || !scene.mapdata) return;
+    buildRoom(scene);
+    // Phaser 3.90 的 destroy() 会同步把「下一帧才入列」的对象标 visible=false；
+    // 重建后强制恢复，否则整块地板消失（页面只剩背景色）。
+    if (scene.baseGfx) scene.baseGfx.setVisible(true);
+  }
+
+  /* ==================== 农场 / 鱼塘 / 料理（v36 新增） ====================
+   * 全部前端本地模拟（与 NPC/本地生活同层，零后端成本）：
+   *   农田  = 花园 rows22-26 cols28-34 的 5×4=20 格耕地，锄地→播种→浇水→施肥→收割
+   *   鱼塘  = 花园东南 (35.2-38.2, 22.2-26.2) 水面 + 塘边坐垫，点击「钓鱼」进入小游戏
+   *   料理  = 厨房灶台/料理台：食材（农场+钓鱼+市集）→ 食谱 → 料理（饱食/心情大回）
+   * 状态持久化 localStorage（office_farm_v1），按天刷新种子生长；料理解锁一次性记录。
+   * debug 台可 farm()/pond()/kitchen() 读取全量状态，farmAct()/fishOnce()/cook() 直接触发。
+   */
+
+  // ---------- 农场 ----------
+  var FARM = {
+    x0: 28, y0: 22, cols: 5, rows: 4,          // 田地区（tile 坐标）
+    crops: [                                    // 种子 → 产出（也是料理食材）
+      { id: "wheat",   name: "小麦",   seed: "麦种",   stages: 4, growMin: 90,  color: 0xd8b45a },
+      { id: "tomato",  name: "番茄",   seed: "番茄苗", stages: 4, growMin: 110, color: 0xd64541 },
+      { id: "carrot",  name: "胡萝卜", seed: "萝卜籽", stages: 3, growMin: 80,  color: 0xe8862c },
+      { id: "corn",    name: "玉米",   seed: "玉米种", stages: 4, growMin: 130, color: 0xe8c832 },
+      { id: "cabbage", name: "卷心菜", seed: "菜苗",   stages: 3, growMin: 100, color: 0x8fbf5a }
+    ],
+    FERTILIZER_BOOST: 0.5   // 施肥：剩余生长时间 -50%
+  };
+  var farm = null;   // { plots: [{soil,watered,fed,crop,stage,progress,rot}], inv: {seeds:{}, crops:{}, feed}, day }
+  function farmNew() {
+    var plots = [];
+    for (var i = 0; i < FARM.cols * FARM.rows; i++) plots.push({ soil: false, watered: false, fed: false, crop: null, stage: 0, progress: 0 });
+    return { plots: plots, inv: { seeds: { wheat: 2, carrot: 1 }, crops: {}, feed: 1 }, day: bjDayKey(), fish: 0 };
+  }
+  function farmLoad() {
+    try {
+      var j = JSON.parse(localStorage.getItem("office_farm_v1") || "null");
+      if (j && j.plots && j.plots.length === FARM.cols * FARM.rows) {
+        if (j.day !== bjDayKey()) {         // 跨天：浇过水的地干掉，作物按存活天数推进
+          j.plots.forEach(function (p) { p.watered = false; p.fed = false; p.progress = (p.crop ? p.progress + 0.5 : 0); });
+          j.day = bjDayKey();
+        }
+        farm = j;
+        return;
+      }
+    } catch (e) {}
+    farm = farmNew();
+    farmSave();
+  }
+  function farmSave() { try { localStorage.setItem("office_farm_v1", JSON.stringify(farm)); } catch (e) {} }
+  function plotTile(i) { return { x: FARM.x0 + (i % FARM.cols), y: FARM.y0 + Math.floor(i / FARM.cols) }; }
+  function cropDef(id) { for (var i = 0; i < FARM.crops.length; i++) if (FARM.crops[i].id === id) return FARM.crops[i]; return null; }
+  /* 农场动作：act = till | water | sow | feed | harvest，slot 缺省 = 第一个符合条件的地块 */
+  function farmAct(act, slot) {
+    if (!farm) farmLoad();
+    var plots = farm.plots, order = [];
+    if (typeof slot === "number" && plots[slot]) order = [slot];
+    else for (var i = 0; i < plots.length; i++) order.push(i);
+    for (var k = 0; k < order.length; k++) {
+      var p = plots[order[k]];
+      if (act === "till" && !p.soil && !p.crop) {
+        p.soil = true; farmSave(); return { ok: true, slot: order[k], text: "翻开了一块生土" };
+      }
+      if (act === "water" && p.soil && !p.watered) {
+        p.watered = true; p.progress += 0.12; farmSave(); return { ok: true, slot: order[k], text: "浇水：土壤喝饱了" };
+      }
+      if (act === "sow" && p.soil && !p.crop) {
+        var ids = Object.keys(farm.inv.seeds).filter(function (id) { return farm.inv.seeds[id] > 0; });
+        if (!ids.length) return { ok: false, text: "种子用完了（去市集/翻农场可能找到）" };
+        var id = ids[Math.floor(Math.random() * ids.length)];
+        farm.inv.seeds[id]--;
+        p.crop = id; p.stage = 0; p.progress = 0; p.watered = false;
+        farmSave(); return { ok: true, slot: order[k], text: "播下了" + (cropDef(id) || {}).name };
+      }
+      if (act === "feed" && p.crop && !p.fed) {
+        if (!(farm.inv.feed > 0)) return { ok: false, text: "没有肥料了（钓鱼有时能捞到）" };
+        farm.inv.feed--; p.fed = true; p.progress = Math.min(1, p.progress + 0.2);
+        farmSave(); return { ok: true, slot: order[k], text: "施肥：" + (cropDef(p.crop) || {}).name + "长势更好了" };
+      }
+      if (act === "harvest" && p.crop && p.progress >= 1) {
+        var cd = cropDef(p.crop);
+        farm.inv.crops[p.crop] = (farm.inv.crops[p.crop] || 0) + 1;
+        p.crop = null; p.stage = 0; p.progress = 0; p.watered = false; p.fed = false;
+        farmSave(); return { ok: true, slot: order[k], text: "收获了" + (cd ? cd.name : "作物") + "×1" };
+      }
+    }
+    return { ok: false, text: actText(act) };
+  }
+  function actText(act) {
+    return {
+      till: "没有可开垦的生土了", water: "没有干着的耕地", sow: "没有空耕地可播种",
+      feed: "没有可施肥的作物", harvest: "还没有成熟的作物"
+    }[act] || "这里暂时没什么可做的";
+  }
+  /* 生长 tick（本地生活循环里每 ~30s 调一次）：浇过水才长；肥料加速 */
+  function farmTick() {
+    if (!farm) return;
+    var dirty = false;
+    farm.plots.forEach(function (p) {
+      if (!p.crop || p.progress >= 1) return;
+      if (!p.watered) return;
+      var cd = cropDef(p.crop);
+      p.progress = Math.min(1, p.progress + 1 / ((cd ? cd.growMin : 100) * (p.fed ? FARM.FERTILIZER_BOOST : 1)) * 3);
+      p.stage = Math.min((cd ? cd.stages : 3) - 1, Math.floor(p.progress * (cd ? cd.stages : 3)));
+      dirty = true;
+    });
+    if (dirty) { farmSave(); drawFarm(); }
+  }
+  function farmSummary() {
+    if (!farm) farmLoad();
+    var tilled = 0, growing = 0, ready = 0;
+    farm.plots.forEach(function (p) {
+      if (p.soil) tilled++;
+      if (p.crop) growing++;
+      if (p.crop && p.progress >= 1) ready++;
+    });
+    return { tilled: tilled, growing: growing, ready: ready, seeds: farm.inv.seeds, crops: farm.inv.crops, feed: farm.inv.feed, fish: farm.fish };
+  }
+
+  // ---------- 鱼塘 ----------
+  var POND = { x0: 35.2, y0: 22.2, x1: 38.2, y1: 26.2, cx: 36.7 * TILE, cy: WALL_H + 24.2 * TILE };
+  var fishShadows = [];      // 水面鱼影 { spr, vx, phase }
+  var fishing = null;        // { wait, bite, t, excl } 钓鱼小游戏状态
+  function pondTileFree(tx, ty) {   // 塘面格 → 阻挡（画水不画地，A* 天然绕开）
+    return tx >= Math.floor(POND.x0) && tx <= Math.ceil(POND.x1) - 1 &&
+           ty >= Math.floor(POND.y0) && ty <= Math.ceil(POND.y1) - 1;
+  }
+  function drawPond(s, g) {
+    var x0 = POND.x0 * TILE, y0 = WALL_H + POND.y0 * TILE;
+    var w = (POND.x1 - POND.x0) * TILE, h = (POND.y1 - POND.y0) * TILE;
+    // 塘岸（两圈描边 + 沙色滩）
+    g.fillStyle(0xc9b184, 1); g.fillEllipse(x0 + w / 2, y0 + h / 2, w + 30, h + 26);
+    g.fillStyle(0x5a86b0, 1); g.fillEllipse(x0 + w / 2, y0 + h / 2, w, h);
+    g.fillStyle(0x6e9cc8, 1); g.fillEllipse(x0 + w / 2, y0 + h / 2 - 4, w - 16, h - 12);
+    g.lineStyle(3, 0x8a6a4a, 1); g.strokeEllipse(x0 + w / 2, y0 + h / 2, w + 30, h + 26);
+    // 木栈道：塘西侧一块小平台（钓鱼位）
+    g.fillStyle(0x9a7346, 1); g.fillRect(x0 - 26, y0 + h / 2 - 24, 30, 48);
+    g.lineStyle(2, 0x6a4c28, 1); g.strokeRect(x0 - 26, y0 + h / 2 - 24, 30, 48);
+    // 芦苇
+    g.fillStyle(0x6e8f50, 1);
+    [[x0 - 10, y0 - 4], [x0 + w + 6, y0 + 2], [x0 + w + 10, y0 + h - 10]].forEach(function (r) {
+      g.fillEllipse(r[0], r[1], 8, 18);
+    });
+  }
+  function buildPondLife(s) {
+    if (!s || !s.mapdata) return;
+    clearPondLife();
+    for (var i = 0; i < 4; i++) {
+      var sh = s.add.ellipse(0, 0, 26, 10, 0x2a4a6e, 0.55).setDepth(3);
+      var shd = { spr: sh, vx: (Math.random() < 0.5 ? -1 : 1) * (0.25 + Math.random() * 0.35), phase: Math.random() * 6.28 };
+      respawnShadow(shd);
+      fishShadows.push(shd);
+    }
+  }
+  function respawnShadow(d) {
+    var mx = POND.x0 * TILE + 24, Mx = POND.x1 * TILE - 24;
+    var my = WALL_H + POND.y0 * TILE + 20, My = WALL_H + POND.y1 * TILE - 20;
+    d.spr.x = mx + Math.random() * (Mx - mx);
+    d.spr.y = my + Math.random() * (My - my);
+    d.spr.alpha = 0.35 + Math.random() * 0.3;
+  }
+  function clearPondLife() {
+    fishShadows.forEach(function (d) { if (d.spr) d.spr.destroy(); });
+    fishShadows.length = 0;
+  }
+  function tickPondLife() {
+    var mx = POND.x0 * TILE + 24, Mx = POND.x1 * TILE - 24;
+    fishShadows.forEach(function (d) {
+      d.spr.x += d.vx;
+      d.spr.y += Math.sin((d.phase += 0.02)) * 0.15;
+      if (d.spr.x < mx || d.spr.x > Mx) { d.vx *= -1; respawnShadow(d); }
+      if (fishing && fishing.bite) {   // 咬钩瞬间：鱼影游向浮标
+        d.spr.x += (fishing.bx - d.spr.x) * 0.05;
+        d.spr.y += (fishing.by - d.spr.y) * 0.05;
+      }
+    });
+  }
+  /* 钓鱼小游戏：点击「钓鱼」→ 抛竿（2~5s 等待）→「！ bite」(1.1s 窗口) → 再点一次 = 起竿成功 */
+  function fishStart() {
+    if (fishing) return { ok: false, text: "已经在钓鱼了，等浮标下沉再点一次起竿" };
+    fishing = {
+      t: 0, wait: 2 + Math.random() * 3, bite: false, biteLeft: 0,
+      bx: POND.cx + (Math.random() * 60 - 30), by: POND.cy + (Math.random() * 40 - 20),
+      bobber: null, excl: null
+    };
+    fishing.bobber = scene.add.circle(fishing.bx, fishing.by, 4, 0xff6b6b).setStrokeStyle(2, 0xffffff, 0.9).setDepth(4);
+    return { ok: true, text: "抛竿了…盯着浮标！" };
+  }
+  function fishTick(dt) {
+    if (!fishing) return;
+    fishing.t += dt;
+    if (fishing.bobber) fishing.bobber.y = fishing.by + Math.sin(fishing.t * 3) * 1.4;   // 浮标轻漂
+    if (!fishing.bite && fishing.t >= fishing.wait) {
+      fishing.bite = true; fishing.biteLeft = 1.1;
+      fishing.excl = scene.add.text(fishing.bx, fishing.by - 26, "！", {
+        fontFamily: "PingFang SC, Microsoft YaHei, sans-serif", fontSize: "26px",
+        color: "#ffd43b", fontStyle: "bold", stroke: "#151826", strokeThickness: 5
+      }).setOrigin(0.5).setDepth(95000);
+      scene.tweens.add({ targets: fishing.excl, scale: 1.25, yoyo: true, repeat: -1, duration: 160 });
+    }
+    if (fishing.bite) {
+      fishing.biteLeft -= dt;
+      if (fishing.biteLeft <= 0) fishAbort("鱼跑掉了…下次要更快！");
+    }
+  }
+  function fishReel() {
+    if (!fishing) return { ok: false, text: "先在鱼塘边点「钓鱼」抛竿" };
+    if (!fishing.bite) { fishAbort("太心急了，鱼还没咬钩…"); return { ok: false, text: "太心急了，鱼还没咬钩" }; }
+    // 成功！随机鱼获（80% 鱼 / 15% 偶得肥料 / 5% 宝物）
+    if (fishing.excl) { fishing.excl.destroy(); }
+    if (fishing.bobber) { fishing.bobber.destroy(); }
+    var roll = Math.random(), got;
+    if (roll < 0.78) { got = "鲜鱼"; farm.fish++; }
+    else if (roll < 0.93) { got = "肥料"; farm.inv.feed++; }
+    else { got = "河童的旧怀表"; farm.inv.feed += 2; }
+    farmSave();
+    fishing = null;
+    postStatDelta({ mood: 5, hunger: 1 });
+    renderStatsBar();
+    return { ok: true, text: "钓到了" + got + "！" };
+  }
+  function fishAbort(msg) {
+    if (fishing && fishing.excl) fishing.excl.destroy();
+    if (fishing && fishing.bobber) fishing.bobber.destroy();
+    fishing = null;
+    if (msg && bubbleText === null) showBubble(msg, "idle");
+  }
+
+  // ---------- 料理 ----------
+  var RECIPES = [
+    { id: "bread",   name: "烤面包",     need: { wheat: 2 },                     stat: { hunger: 22, mood: 3 },  verb: "揉面、进炉，烤得金黄" },
+    { id: "salad",   name: "田园沙拉",   need: { tomato: 1, cabbage: 1 },        stat: { hunger: 16, mood: 6 },  verb: "把今天的菜洗干净拌好" },
+    { id: "soup",    name: "蔬菜浓汤",   need: { carrot: 1, cabbage: 1 },        stat: { hunger: 20, mood: 4 },  verb: "小火咕嘟了半天" },
+    { id: "fishgrill", name: "盐烤鲜鱼", need: { fish: 1, wheat: 1 },            stat: { hunger: 30, mood: 6 },  verb: "炭火滋滋作响，香气扑鼻" },
+    { id: "sushi",   name: "鱼寿司",     need: { fish: 1, wheat: 2 },            stat: { hunger: 34, mood: 8 },  verb: "刀工利落，米粒紧实" },
+    { id: "popcorn", name: "爆米花",     need: { corn: 2 },                      stat: { hunger: 10, mood: 8 },  verb: "噼里啪啦，满锅都是响声" },
+    { id: "juice",   name: "番茄汁",     need: { tomato: 2 },                    stat: { hunger: 8, mood: 7 },   verb: "榨出一杯鲜红的晨光" },
+    { id: "stew",    name: "大杂烩",     need: { fish: 1, tomato: 1, carrot: 1 },stat: { hunger: 38, mood: 5 },  verb: "有什么就扔什么，意外地好喝" }
+  ];
+  function pantryCount(id) {
+    if (!farm) farmLoad();
+    if (id === "fish") return farm.fish || 0;
+    return farm.inv.crops[id] || 0;
+  }
+  function pantryUse(id, n) {
+    if (id === "fish") farm.fish = Math.max(0, farm.fish - n);
+    else farm.inv.crops[id] = Math.max(0, (farm.inv.crops[id] || 0) - n);
+    farmSave();
+  }
+  function cookable() {
+    return RECIPES.map(function (r) {
+      var ok = true, missing = [];
+      Object.keys(r.need).forEach(function (k) {
+        if (pantryCount(k) < r.need[k]) { ok = false; missing.push(k); }
+      });
+      return { id: r.id, ok: ok, missing: missing };
+    });
+  }
+  /* 做料理：走到灶台（stoveA）→ 表演 eat 动作 → 消耗食材 → 加数值 + 存饱食 */
+  function cook(recipeId) {
+    var r = null;
+    for (var i = 0; i < RECIPES.length; i++) if (RECIPES[i].id === recipeId) r = RECIPES[i];
+    if (!r) return { ok: false, text: "没有这道菜" };
+    var can = cookable().filter(function (c) { return c.id === recipeId; })[0];
+    if (!can.ok) return { ok: false, text: "食材不够：" + can.missing.join("、") };
+    Object.keys(r.need).forEach(function (k) { pantryUse(k, r.need[k]); });
+    postStatDelta(r.stat);
+    onStatsDeltaLocal(r.stat);
+    renderStatsBar();
+    return { ok: true, text: "做好了「" + r.name + "」：" + r.verb };
+  }
+  /* 本地直接补数值（hub 不在线时数值条也要动——真相仍在 hub，这里只是表演层） */
+  function onStatsDeltaLocal(d) {
+    Object.keys(d || {}).forEach(function (k) {
+      if (typeof stats[k] === "number") stats[k] = Math.max(0, Math.min(100, stats[k] + d[k]));
+    });
+  }
+  function kitchenSummary() {
+    return {
+      pantry: { fish: farm ? farm.fish : 0, crops: farm ? farm.inv.crops : {}, seeds: farm ? farm.inv.seeds : {}, feed: farm ? farm.inv.feed : 0 },
+      recipes: cookable().map(function (c, i) { return { id: c.id, name: RECIPES[i].name, ok: c.ok, missing: c.missing }; })
+    };
+  }
+  /* 自动挑一道能做的菜（按饱食恢复从高到低），做完返回文案 */
+  function cookAuto() {
+    var canDo = cookable().filter(function (c) { return c.ok; });
+    if (!canDo.length) return "";
+    canDo.sort(function (a, b) {
+      var ra = RECIPES.filter(function (r) { return r.id === a.id; })[0], rb = RECIPES.filter(function (r) { return r.id === b.id; })[0];
+      return (rb ? rb.stat.hunger : 0) - (ra ? ra.stat.hunger : 0);
+    });
+    var pick = RECIPES.filter(function (r) { return r.id === canDo[0].id; })[0];
+    var res = cook(pick.id);
+    return res.ok ? res.text : "";
+  }
+  /* ---------- 料理面板（画中画，复用 perf-panel 的样式语言） ---------- */
+  var cookPanelEl = null;
+  function renderCookPanel() {
+    var host = document.getElementById("office-parent");
+    if (!host) return;
+    if (!cookPanelEl) {
+      cookPanelEl = document.createElement("div");
+      cookPanelEl.id = "cook-panel";
+      cookPanelEl.style.cssText = "position:absolute;z-index:41;left:14px;top:52px;width:250px;border-radius:10px;" +
+        "background:#1d2130f5;border:1px solid #ffffff33;color:#ece8df;overflow:hidden;display:none;box-shadow:0 6px 20px #0008;";
+      cookPanelEl.innerHTML =
+        '<div style="display:flex;align-items:center;gap:6px;padding:6px 10px;font-size:12px;background:#2a2e3d;border-bottom:1px solid #ffffff22;">' +
+        '<span>🍳</span><span style="font-weight:700" id="ck-title">料理台</span>' +
+        '<button id="ck-close" type="button" style="margin-left:auto;border:0;background:transparent;color:#9aa3b8;cursor:pointer;font-size:14px;line-height:1">×</button></div>' +
+        '<div id="ck-body" style="padding:8px 12px;font-size:12px;line-height:1.7"></div>';
+      host.appendChild(cookPanelEl);
+      cookPanelEl.querySelector("#ck-close").onclick = hideCookPanel;
+    }
+    var s = kitchenSummary();
+    var row = function (n, ok, note) {
+      return '<div style="padding:2px 0;border-bottom:1px dashed #ffffff12;display:flex;gap:6px">' +
+        '<span style="flex:none">' + (ok ? "✅" : "⬜") + "</span><span style=\"flex:none;font-weight:600\">" + n + "</span>" +
+        '<span style="color:#9aa3b8;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">' + note + "</span></div>";
+    };
+    var html = '<div style="color:#8ce99a;margin-bottom:4px">🐟 鲜鱼×' + (s.pantry.fish || 0) + " · 肥料×" + (s.pantry.feed || 0) + "</div>";
+    var cropNames = { wheat: "小麦", tomato: "番茄", carrot: "胡萝卜", corn: "玉米", cabbage: "卷心菜" };
+    Object.keys(s.pantry.crops).forEach(function (k) {
+      if (s.pantry.crops[k] > 0) html += '<div style="color:#c3c9d9">' + (cropNames[k] || k) + "×" + s.pantry.crops[k] + "</div>";
+    });
+    html += '<div style="margin-top:6px;color:#ffd43b;font-weight:700">今日菜谱</div>';
+    s.recipes.forEach(function (r) {
+      html += row(r.name, r.ok, r.ok ? "可以做" : "缺 " + (r.missing || []).join("、"));
+    });
+    var body = cookPanelEl.querySelector("#ck-body");
+    body.innerHTML = html;
+    cookPanelEl.style.display = "block";
+  }
+  function hideCookPanel() {
+    if (cookPanelEl) cookPanelEl.style.display = "none";
+  }
+
+  // ---------- 农场/鱼塘视觉层 ----------
+  var farmGfx = null, farmCropGfx = null;
+  function drawFarm() {
+    if (!scene || !scene.mapdata) return;
+    if (farmGfx) { farmGfx.destroy(); farmGfx = null; }
+    if (farmCropGfx) { farmCropGfx.destroy(); farmCropGfx = null; }
+    if (!farm) farmLoad();
+    var g = scene.add.graphics().setDepth(2);
+    // 田埂底：整片深棕 + 田字沟
+    var fx0 = FARM.x0 * TILE, fy0 = WALL_H + FARM.y0 * TILE;
+    var fw = FARM.cols * TILE, fh = FARM.rows * TILE;
+    g.fillStyle(0x8a6a3f, 0.55); g.fillRect(fx0 - 6, fy0 - 6, fw + 12, fh + 12);
+    g.lineStyle(2, 0x6a4c28, 0.8); g.strokeRect(fx0 - 6, fy0 - 6, fw + 12, fh + 12);
+    var gc = scene.add.graphics().setDepth(3);
+    farm.plots.forEach(function (p, i) {
+      var t = plotTile(i);
+      var px = t.x * TILE, py = WALL_H + t.y * TILE;
+      if (p.soil) {
+        g.fillStyle(0x6a4a2a, 1); g.fillRect(px + 3, py + 3, TILE - 6, TILE - 6);
+        g.lineStyle(1, 0x503820, 0.9);
+        for (var k = 1; k <= 2; k++) g.lineBetween(px + 6, py + k * 14, px + TILE - 6, py + k * 14);
+        if (p.watered) { g.fillStyle(0x3a5a8a, 0.35); g.fillRect(px + 3, py + 3, TILE - 6, TILE - 6); }
+        if (p.fed) {
+          g.fillStyle(0x2e5c34, 0.5); g.fillRect(px + 3, py + 3, 6, 6);
+        }
+      }
+      if (p.crop) {
+        var cd = cropDef(p.crop);
+        var color = cd.color;
+        if (p.progress >= 1) {   // 成熟：顶一颗亮果
+          gc.fillStyle(color, 1);
+          gc.fillCircle(px + TILE / 2, py + TILE / 2 - 8, 6);
+          gc.fillStyle(0x4a7a3a, 1);
+          gc.fillRect(px + TILE / 2 - 2, py + TILE / 2 - 4, 4, 10);
+        } else {                 // 幼苗/生长中：苗 + 大小按 stage
+          var r = 3 + p.stage * 2.4;
+          gc.fillStyle(0x5a9a4a, 1);
+          gc.fillCircle(px + TILE / 2, py + TILE / 2 - 2, r);
+        }
+      }
+    });
+    farmGfx = g; farmCropGfx = gc;
   }
 
   function isNightHour() {   // 北京时间 18:00-6:00 = 夜（窗外昼夜按真实时间，与灯开关解耦——评审 v31 用户反馈）
@@ -1705,6 +2216,9 @@
     cook:     { need: "hunger",  label: "做饭" },
     fridge:   { need: "hunger",  label: "零食" },
     market:   { need: "hunger",  label: "采买" },
+    cookmeal: { need: "hunger",  label: "料理" },
+    farm:     { need: "hunger",  label: "种地" },
+    fishing:  { need: "hunger",  label: "钓鱼" },
     relax:    { need: "mood",    label: "窝着" },
     arcade:   { need: "mood",    label: "玩乐" },
     garden:   { need: "mood",    label: "赏花" },
@@ -1796,6 +2310,10 @@
     { key: "garden",   zone: "garden",   label: "看花",   icon: "🌷", text: "去花园看看花",     act: "idle_cheer", face: "n", w: 0.7, room: "garden" },
     { key: "stroll",   zone: "stroll",   label: "坐长椅", icon: "🌳", text: "在长椅上坐一会儿", act: "idle_sit",   face: "s", w: 0.7, room: "garden" },
     { key: "market",   zone: "market",   label: "逛摊位", icon: "🍎", text: "逛逛水果摊",       act: "idle_reach", face: "n", w: 0.6, room: "garden" },
+    { key: "farm",     zone: "farm",     label: "巡农田", icon: "🌾", text: "去田里转一圈，看看庄稼", act: "idle_farm", face: "n", w: 0.9, room: "garden" },
+    { key: "fishing",  zone: "pond",     label: "钓鱼",   icon: "🎣", text: "去鱼塘边钓会儿鱼", act: "idle_reach", face: "e", w: 0.7, room: "garden" },
+    // 厨房（料理）
+    { key: "cookmeal", zone: "kitchenprep", label: "做料理", icon: "🍳", text: "进厨房琢磨做点什么吃的", act: "idle_eat", face: "n", w: 0.8, room: "office" },
     // 小镇街道
     { key: "townwell", zone: "town",     label: "井边站站", icon: "💭", text: "在井边发会儿呆",   act: "idle_think", face: "s", w: 0.8, room: "town" },
     { key: "townbench",zone: "town_bench",label: "街边长椅", icon: "🪑", text: "在街边长椅坐坐",  act: "idle_sit",   face: "n", w: 0.7, room: "town" }
@@ -1823,12 +2341,14 @@
     idle_wave:  { anim: "wave",   dur: 2400 },   // 挥手
     idle_cheer: { anim: "cheer",  dur: 2600 },   // 伸懒腰/看花
     idle_sit:   { anim: "sit",    dur: 3200 },   // 长椅
-    idle_dizzy: { anim: "dizzy",  dur: 2200 }    // 犯迷糊
+    idle_dizzy: { anim: "dizzy",  dur: 2200 },   // 犯迷糊
+    idle_farm:  { anim: "reach",  dur: 2600 }    // 农活：锄地/播种/浇水/施肥/收割
   };
   /* 本地事件 → 数值增量（方案 §1.1 恢复列；只上报建议值，真相在 hub） */
   var STAT_FILLS = {
     tea: { social: 1 }, dining: { hunger: 12, mood: 2 }, cook: { hunger: 18, mood: 3 },
     fridge: { hunger: 8 }, market: { hunger: 10, social: 3 },
+    farm: { mood: 2 }, fishing: { mood: 3 }, cookmeal: { hunger: 6, mood: 2 },
     relax: { mood: 4, energy: 3 }, arcade: { mood: 7, energy: -2 }, garden: { mood: 5 },
     stroll: { mood: 4 }, window: { mood: 3 }, sofa: { energy: 8 }, bed: { energy: 10 },
     recover: { energy: 12 }, dizzy: {}, door: { social: 6, mood: 2 }, mail: { social: 3 },
@@ -1898,7 +2418,11 @@
     homeChief: { name: "村长家", desc: "水豚村长的宅子，门口的灯是全镇最亮的。点击房子可以进去串门。",
       dyn: function () { return npcHomeState("chief") === "home" ? "● 村长在家（点房子进屋）" : "○ 村长在镇上转悠"; } },
     homeDoc:   { name: "博士家", desc: "章鱼博士的研究所，窗户里贴满潮汐表。点击房子可以进去串门。",
-      dyn: function () { return npcHomeState("doc") === "home" ? "● 博士在家（点房子进屋）" : "○ 博士去海边观测了"; } }
+      dyn: function () { return npcHomeState("doc") === "home" ? "● 博士在家（点房子进屋）" : "○ 博士去海边观测了"; } },
+    farmField: { name: "自家农田", desc: "五列四排的耕地：锄地 → 播种 → 浇水 → 施肥 → 等它熟。点田地就会干对应的活。",
+      dyn: function () { var s = farmSummary(); return "熟了 " + s.ready + " 株 · 在长 " + s.growing + " 株 · 已开垦 " + s.tilled + " 块"; } },
+    pondWater: { name: "鱼塘", desc: "花园东南角的小水塘，扔根线就能坐一下午。看见「！」浮起来就点一下起竿。",
+      dyn: function () { return "今天钓了 " + (farm ? farm.fish : 0) + " 条鱼"; } }
   };
   /* 看书内容表：AI 的书架（内容随书随机） */
   var BOOKS = [
@@ -2137,7 +2661,9 @@
     var e = Math.random() < 0.26 ? null : pickLocalEvent();   // 26% 纯散步，74% 有内容的小动作
     if (e) {
       noteLocalEvent(e.key);
-      goLocal(e.zone, localText(e), e.act, e.face, false, statFillFor(e.key));
+      // v36：做料理 / 钓鱼这两条本地事件要带结算标记（到达后自动做菜 / 抛竿）
+      var ex = e.key === "cookmeal" ? { cookJob: true } : (e.key === "fishing" ? { pond: true } : (e.key === "farm" ? { farmJob: "water" } : null));
+      goLocal(e.zone, localText(e), e.act, e.face, false, statFillFor(e.key), ex);
     } else {
       wanderToRandomPoint();
     }
@@ -2166,7 +2692,7 @@
       if (!scene.grid[gy2][gx2]) { walkLocalTo(gx2, gy2, null); return; }
     }
   }
-  function goLocal(zoneKey, text, pseudoAct, face, instant, statFill) {
+  function goLocal(zoneKey, text, pseudoAct, face, instant, statFill, extra) {
     var zone = scene.mapdata.zones[zoneKey];
     if (!zone) return;
     if (instant) {
@@ -2177,7 +2703,7 @@
       fish.setDepth(fish.y);
     }
     walkLocalTo(Math.round(zone.anchor[0]), Math.round(zone.anchor[1]),
-      { text: text, act: pseudoAct, face: face || zone.face || "s", zone: zone, statFill: statFill || null });
+      { text: text, act: pseudoAct, face: face || zone.face || "s", zone: zone, statFill: statFill || null, extra: extra || null });
   }
   function walkLocalTo(gx, gy, act) {
     unsit();   // 本地动作开始前先起身，避免上一轮瘫坐的 scale/深度/角度带进走路
@@ -2193,7 +2719,11 @@
       bubbleText: act ? act.text : null,
       face: act ? act.face : "s",
       zone: act ? act.zone : null,
-      statFill: act ? act.statFill || null : null
+      statFill: act ? act.statFill || null : null,
+      cookJob: !!(act && act.extra && act.extra.cookJob),
+      farmJob: (act && act.extra && act.extra.farmJob) || null,
+      farmSlot: (act && act.extra && act.extra.farmSlot) != null ? act.extra.farmSlot : null,
+      pond: !!(act && act.extra && act.extra.pond)
     };
     fishState = "walking";
   }
@@ -2201,6 +2731,49 @@
     // 本地小动作的数值回报（真相在 hub，这里是触发增量；方案 §1.2）
     if (curPlan && curPlan.statFill) postStatDelta(curPlan.statFill);
     if (curPlan && curPlan.visit) { arriveVisit(); return; }   // 点邻居房屋 → 进屋串门
+    // 农活/钓鱼到达（v36）：田边演农活动作并结算，塘边进入钓鱼抛竿
+    if (curPlan && (curPlan.farmJob || curPlan.pond)) {
+      fishState = "acting";
+      fish.face(curPlan.face || "s");
+      fish.still();
+      var res;
+      if (curPlan.pond) {
+        res = fishStart();
+        showBubble(res.ok ? "钓鱼中…盯紧浮标" : res.text, "idle");
+      } else {
+        // 农活：依次播放两次 reach（一次锄/一次收），结算并刷新田地视觉
+        res = farmAct(curPlan.farmJob, curPlan.farmSlot);
+        showBubble(res.text, "idle");
+        if (res.ok) {
+          drawFarm();
+          postStatDelta({ mood: 2, energy: -1 });
+          onStatsDeltaLocal({ mood: 2, energy: -1 });
+          renderStatsBar();
+        }
+      }
+      var thisPlan2 = curPlan;
+      setTimeout(function () {
+        if (curPlan === thisPlan2 && fishState === "acting") { fishState = "idle"; hideBubble(); }
+      }, 2600);
+      return;
+    }
+    // 料理到达（v36）：打开料理面板，自动做一道食材够的菜（优先饱食恢复最高的）
+    if (curPlan && curPlan.cookJob) {
+      fishState = "acting";
+      fish.face(curPlan.face || "s");
+      var laCook = LOCAL_ACTS.idle_eat;
+      startActAnim(laCook.anim);
+      var done = cookAuto();
+      showBubble(done || "（食材不够，翻翻冰箱吧）", "idle");
+      if (done) { renderCookPanel(); var thisPlan3 = curPlan;
+        setTimeout(function () { if (curPlan === thisPlan3) hideCookPanel(); }, 5200);
+      }
+      var thisPlanC = curPlan;
+      setTimeout(function () {
+        if (curPlan === thisPlanC && fishState === "acting") { fishState = "idle"; hideBubble(); }
+      }, laCook.dur);
+      return;
+    }
 
     fishState = "acting";
     fish.face(curPlan.face || "s");
@@ -2240,7 +2813,9 @@
   }
 
   // ---------- 主循环 ----------
-  function update(time) {
+  var pondTickAcc = 0, farmTickAcc = 0;
+  var s_baseGuard = null;   // v36：地板层自愈哨兵（scene 引用）
+  function update(time, delta) {
     if (scene && rainParts.length) tickWeather(scene);
     if (!scene || !fish) return;
     updateAmbient(scene);
@@ -2254,6 +2829,18 @@
       fish.bodySpr.setAngle(0);
     }
     if (bubble) bubble.setPosition(fish.x + bubbleOff.x, fish.y + bubbleOff.y);
+    // v36 兜底：地板层被任何代码意外隐藏/摘除时，下一帧自动恢复（防整屏变背景色的回归）
+    if (s_baseGuard && s_baseGuard !== scene) s_baseGuard = null;
+    if (!s_baseGuard && scene && scene.baseGfx && scene.baseGfx._isBaseGfx) s_baseGuard = scene;
+    if (s_baseGuard && (!s_baseGuard.baseGfx.visible || !s_baseGuard.children.list.includes(s_baseGuard.baseGfx))) {
+      s_baseGuard.baseGfx.setVisible(true);
+      if (!s_baseGuard.children.list.includes(s_baseGuard.baseGfx)) s_baseGuard.children.add(s_baseGuard.baseGfx);
+    }
+    // 农场/鱼塘 tick（v36）：鱼影每帧游动；钓鱼进度 / 作物生长按真实毫秒累计
+    tickPondLife();
+    if (fishing) { fishTick(Math.min(delta || 16, 50) / 1000); if (fishing && fishing.bobber) fishing.bobber.setDepth(4); }
+    farmTickAcc += (delta || 16);
+    if (farmTickAcc >= 30000) { farmTickAcc = 0; farmTick(); }
   }
 
   // ---------- 点击 ----------
@@ -2261,6 +2848,14 @@
   function bindClick(s) {
     s.input.on("pointerdown", function (p) {
       lastPointer = { wx: Math.round(p.worldX), wy: Math.round(p.worldY), sx: Math.round(p.x), sy: Math.round(p.y) };
+      // 拖动视角刚结束：这次"抬起"不该当成一次点击（拖完镜头的余误触）
+      if (Date.now() < camDragSuppress) { camDragSuppress = 0; return; }
+      // 钓鱼中：任何一次点击都是「起竿」（咬钩窗口内 = 成功，否则脱钩）
+      if (fishing) {
+        var rr = fishReel();
+        showBubble(rr.text, rr.ok ? "idle" : "error");
+        return;
+      }
       var gx = px2tx(p.worldX), gy = px2ty(p.worldY);
       if (gx < 0 || gy < 0 || gx >= COLS || gy >= ROWS) return;
       if (fishState === "acting" && curPlan && !curPlan.local) return;
@@ -2282,6 +2877,43 @@
           return;
         }
         if (enterNeighborHome(s, homeHit)) return;
+      }
+      // 农场/鱼塘热点（v36）：点田地 = 对应农活，点塘面/栈道 = 钓鱼（优先于家具热点，田地里没有家具）
+      var farmHit = null, pondHit = false;
+      if (farm && !fishing) {
+        for (var pi = 0; pi < farm.plots.length; pi++) {
+          var pt = plotTile(pi);
+          var pcx = pt.x * TILE + TILE / 2, pcy = WALL_H + pt.y * TILE + TILE / 2;
+          if (Math.abs(p.worldX - pcx) < TILE * 0.75 && Math.abs(p.worldY - pcy) < TILE * 0.75) {
+            var pl = farm.plots[pi];
+            var actF = !pl.soil ? "till" : (!pl.crop ? "sow" : (pl.progress >= 1 ? "harvest" : (!pl.watered ? "water" : (!pl.fed ? "feed" : "harvest"))));
+            farmHit = { slot: pi, act: actF };
+            farmHit.verb = { till: "锄地", sow: "播种", water: "浇水", feed: "施肥", harvest: "收割" }[actF];
+            break;
+          }
+        }
+      }
+      if (!farmHit && p.worldY > WALL_H + (POND.y0 - 0.9) * TILE && p.worldY < WALL_H + (POND.y1 + 0.6) * TILE &&
+          p.worldX > (POND.x0 - 1.2) * TILE && p.worldX < (POND.x1 + 0.5) * TILE) pondHit = true;
+      if (farmHit || pondHit) {
+        var gxf = farmHit ? 30 : 34, gyf = farmHit ? 27 : 24;   // 田边过道 / 塘西栈道旁
+        var pathF = astar(px2tx(fish.x), px2ty(fish.y), gxf, gyf);
+        if (pathF) {
+          stopIdleLife();
+          unsit();
+          var verbF = pondHit ? "钓鱼" : farmHit.verb;
+          curPlan = {
+            path: pathF, i: 0, local: true, st: null,
+            cfg: { act: pondHit ? "idle_reach" : "idle_farm", mood: "idle" },
+            task: verbF, bubbleText: verbF, face: pondHit ? "e" : "n", zone: null,
+            statFill: null, farmJob: farmHit ? farmHit.act : null, farmSlot: farmHit ? farmHit.slot : null,
+            pond: pondHit
+          };
+          fishState = "walking";
+          showBubble(verbF, "idle");
+          startIdleLife(12000);
+          return;
+        }
       }
       // 干预点：家具本身就在阻挡格里，必须先判热点再判 grid，否则永远点不中
       var hotspots = [
@@ -2337,6 +2969,8 @@
         unsit();
         var cfg2 = STATE_MAP[best.state] || STATE_MAP.idle;
         curPlan = { path: path2, i: 0, local: true, cfg: cfg2, task: best.verb, face: z.face || "s", zone: z };
+        // 点灶台/料理台 = 进料理流程（v36）：到达后自动做一道能做的菜
+        if (best.state === "eating") curPlan.cookJob = true;
         fishState = "walking";
         showBubble(best.verb, "idle");
         startIdleLife(6000);
@@ -2989,6 +3623,42 @@
         return lightsOn;
       },
       setWeather: function (w) { if (!scene) return false; setWeather(scene, w === "rainy" ? "rainy" : "sunny"); return weather; },
+      /* 道路层开关（v36）：debug 台按钮用；返回当前可见性 */
+      toggleRoads: function () { return toggleRoads(); },
+      roadsVisible: function () { return roadsVisible; },
+      /* 农场诊断 + 直接触发农活（调试/走查用）：act = till|water|sow|feed|harvest */
+      farm: function () { return farmSummary(); },
+      farmAct: function (act, slot) { return farmAct(act, slot); },
+      farmGrowAll: function () {           // 调试：把所有已种作物直接催熟（走查收割用）
+        if (!farm) farmLoad();
+        farm.plots.forEach(function (p) { if (p.crop) { p.progress = 1; p.watered = true; } });
+        farmSave(); drawFarm();
+        return farmSummary();
+      },
+      /* 钓鱼诊断/走查：抛竿 → 直接咬钩 → 起竿（正常游玩请点鱼塘） */
+      pond: function () { return { fishing: !!fishing, bite: !!(fishing && fishing.bite), fish: farm ? farm.fish : 0, shadows: fishShadows.length }; },
+      fishOnce: function () {
+        if (!fishing) fishStart();
+        if (fishing && !fishing.bite) { fishing.t = fishing.wait; fishTick(0.01); }
+        return fishReel();
+      },
+      /* 料理诊断：kitchen() 看食材/菜谱，cook(id) 做指定菜，cookAuto() 自动做一道 */
+      kitchen: kitchenSummary,
+      cook: cook,
+      cookAuto: function () { var t = cookAuto(); if (t) renderCookPanel(); return t || "（食材不够）"; },
+      /* 视角（v36）：邻居视角导航 / 自由拖动 */
+      neighborRooms: function () { return NEIGHBOR_HOMES.map(function (h) { return { id: "nb-" + h.id, home: h.home, cx: h.cx, cy: h.cy }; }); },
+      gotoNeighbor: function (id) {
+        var b = document.querySelector('.room-tab[data-room="nb-' + id + '"]');
+        if (b) { b.click(); return true; }
+        return false;
+      },
+      camDrag: function (on) {
+        var b = document.getElementById("cam-drag-btn");
+        if (!b) return camDragOn;
+        if (typeof on === "boolean" && on !== camDragOn) b.click();
+        return camDragOn;
+      },
       gotoRoom: function (id) {
         var b = document.querySelector('.room-tab[data-room="' + id + '"]');
         if (b) { b.click(); return true; }
@@ -3090,6 +3760,10 @@
           statusbar: document.querySelector(".statusbar") ? document.querySelector(".statusbar").innerText.replace(/\s+/g, " ").trim() : "",
           bubble: bubbleText ? bubbleText.text : null,
           canvas: c ? { w: c.width, h: c.height, cssW: Math.round(c.getBoundingClientRect().width) } : null,
+          farm: farmSummary(),
+          fishing: fishing ? { bite: fishing.bite, t: Number(fishing.t.toFixed(1)) } : null,
+          roads: roadsVisible,
+          camDrag: camDragOn,
           frameIssues: frameAudit(),
           gridOverlay: !!gridOverlay
         };

@@ -231,14 +231,18 @@
       两处对照着看，就能分清「现在没活所以摸鱼」和「它真的在干活」；一旦长时间没有事件，下面会直接把原因写出来。</p>
       <p><strong>怎么看懂它：</strong>🛋️ 沙发区=摸鱼/睡觉 · 🖥️ 工位=写稿/回评论 · 📚 书架=查资料 · 🎨 设计台=做封面 ·
       💻 餐桌=看视频/发评论 · 📪 信箱=发邮件 · ☕ 茶水台=休息 · 🖨️ 打印机=发布内容 · 🚪 大门=到岗 · ❌ 报错=到哪里都在挠头。<br>
-      状态条实时显示它正在做的事；点地图让它走过去（只是参观），点沙发、床、冰箱等家具则会触发瘫坐、睡觉、找吃的小动作。
+      状态条实时显示它正在做的事；点地图让它走过去（只是参观），点沙发、床、冰箱等家具则会触发瘫坐、睡觉、找吃的小动作。<br>
+      <strong>花园东侧是它的田和塘：</strong>点耕地就会锄地/播种/浇水/施肥/收割（点哪块干哪块的活，庄稼会真的长大）；
+      点鱼塘抛竿钓鱼——浮标沉下去冒「！」再点一下就是起竿，钓上来的鲜鱼和菜都是厨房食材；
+      点灶台/料理台会自动做一道食材够的菜（烤面包、盐烤鲜鱼、鱼寿司…），面板里能看到菜谱和存货。<br>
       小镇南边住着三位邻居——点击 <strong>喵酱家 / 村长家 / 博士家</strong> 的房子，它会走过去敲门进屋串门（主人在家会打招呼）；再点一次房子或切换房间就出来。
+      顶栏有 <strong>三家邻居的视角按钮</strong>，也有 <strong>✋ 拖动</strong>：开启后按住画布就能自由拖动视角，滚轮缩放。
       房屋名牌旁的小圆点：🟢 在家 · 🟡 在街上溜达。</p>
     </footer>
   </div>
 
   <script src="assets/phaser.min.js"></script>
-  <script src="office.js?v=398caee5"></script>
+  <script src="office.js?v=7c553f37"></script>
 
   <!-- 调试工作台：默认只放一个低调入口，点击（或按 D / ?debug=1）才加载面板，线上零开销 -->
   <button id="debug-toggle" type="button" title="调试工作台（快捷键 D）" aria-label="打开调试工作台" aria-controls="dbg-panel" aria-expanded="false">🛠</button>
@@ -253,7 +257,7 @@
       function load(cb) {
         if (loaded) { cb && cb(); return; }
         var s = document.createElement("script");
-        s.src = "debug.js?v=ef358a10";
+        s.src = "debug.js?v=1b78f12b";
         s.onload = function () { loaded = true; cb && cb(); };
         s.onerror = function () { console.error("[office] debug.js 加载失败"); };
         document.body.appendChild(s);
