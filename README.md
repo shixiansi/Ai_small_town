@@ -97,6 +97,9 @@ office/                      ← 本仓库根目录
 ### 常用命令
 
 ```bash
+# 第一次：装依赖（只有 hub 需要一个 ws，npm workspace 会一并装好）
+npm install
+
 # 本地一键运行（静态 4322 + hub 4321）
 npm run dev
 

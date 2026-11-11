@@ -23,5 +23,7 @@
     "phaser"
   ],
   "license": "MIT",
-  "workspaces": []
+  "workspaces": [
+    "hub"
+  ]
 }
