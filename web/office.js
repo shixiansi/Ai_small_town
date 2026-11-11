@@ -3743,6 +3743,10 @@ return;
 }
 lastEventState = rawState;
 lastEventTask = taskText;
+if ((fishState === "walking" || fishState === "acting") && curPlan && !curPlan.stInterrupted) {
+showBubble("！", "error");
+if (curPlan) curPlan.stInterrupted = true;
+}
 stopIdleLife();
 updateStatusbar(rawState, taskText, st.detail || "");
 lightsManual = false;

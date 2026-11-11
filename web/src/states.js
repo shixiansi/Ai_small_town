@@ -17,6 +17,12 @@
     }
     lastEventState = rawState;
     lastEventTask = taskText;
+    // 打断转场（P1.2）：正在做别的事（本地生活/上一条真实事件还没走完）时来了新事件，
+    // 先冒一个「！」提示被叫走了，再走新任务的路 —— 观众能看出"这是打断"，不是瞬移换戏
+    if ((fishState === "walking" || fishState === "acting") && curPlan && !curPlan.stInterrupted) {
+      showBubble("！", "error");
+      if (curPlan) curPlan.stInterrupted = true;
+    }
     stopIdleLife();
     updateStatusbar(rawState, taskText, st.detail || "");
     // 灯光自动模式：睡觉/未开灯 → 关灯；上班干活 → 开灯（手动开关被下一次真实事件重置为自动）
