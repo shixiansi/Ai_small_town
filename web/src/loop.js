@@ -39,6 +39,36 @@
   var lastListVX = -1e9, lastListVY = -1e9, lastListRefreshAt = 0;
   function now0() { return (typeof performance !== "undefined" && performance.now) ? performance.now() : Date.now(); }
 
+  /* P3.1：点鱼弹「最近在忙什么」——复用 #info-card 的样式，列最近 5 条真实事件 */
+  function showFishActivityCard() {
+    var card = document.getElementById("info-card");
+    if (!card || typeof actRows === "undefined") return;
+    var rows = actRows.slice(-5).reverse();
+    var html = '<div class="ic-name">🐟 大肥鱼</div>';
+    if (actCur && actCur.state) {
+      html += '<div class="ic-desc">此刻：<b>' + escHtml(actCur.task || "（无任务名）") + "</b></div>";
+    }
+    if (rows.length) {
+      html += '<div style="margin-top:4px">' + rows.map(function (r) {
+        var cfg = STATE_MAP[r.state] || STATE_MAP.idle;
+        return '<div style="font-size:12px;color:#aab4c8;margin:2px 0">' + (ACT_ICON[r.state] || "🐟") +
+          " " + escHtml(r.task || cfg.verb) + ' <span style="opacity:.6">' + agoText(r.at) + "</span></div>";
+      }).join("") + "</div>";
+    } else {
+      html += '<div class="ic-desc">最近没有真实事件，自己在小镇里过日子</div>';
+    }
+    html += '<div class="ic-hint">点别处继续 · 事件来自 hub</div>';
+    // 弹在鱼头顶（转屏幕坐标）
+    var cam = scene.cameras.main;
+    var sx = (fish.x - cam.scrollX) * cam.zoom, sy = (fish.y - cam.scrollY) * cam.zoom;
+    card.innerHTML = html;
+    card.style.left = Math.max(6, Math.min(sx - 120, card.parentElement.clientWidth - 280)) + "px";
+    card.style.top = Math.max(6, sy - 170) + "px";
+    card.classList.add("show");
+    clearTimeout(showFishActivityCard._t);
+    showFishActivityCard._t = setTimeout(function () { card.classList.remove("show"); }, 4200);
+  }
+
   // ---------- 点击 ----------
   var lastPointer = null;   // 调试探针：最近一次点击的世界坐标（__office.lastPointer）
   function bindClick(s) {
@@ -57,6 +87,12 @@
       if (fishing) {
         var rr = fishReel();
         showBubble(rr.text, rr.ok ? "idle" : "error");
+        return;
+      }
+      // P3.1：点大肥鱼本鱼 = 弹「最近在忙什么」信息卡（读最近事件流水，5 条）
+      var fw = 40, fh = 44;   // 鱼身命中盒（世界像素），比精灵显示宽略小防误触
+      if (Math.abs(p.worldX - fish.x) < fw / 2 && p.worldY > fish.y - fh && p.worldY < fish.y + 10) {
+        showFishActivityCard();
         return;
       }
       var gx = px2tx(p.worldX), gy = px2ty(p.worldY);
