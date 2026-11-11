@@ -13,8 +13,8 @@ import json
 import os
 from PIL import Image
 
-EX = "/root/项目/news-site/office/assets/extracted"
-OUT = "/root/项目/news-site/office/web/assets"
+EX = os.environ.get("OFFICE_EXTRACT_DIR") or os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "assets", "extracted")
+OUT = os.environ.get("OFFICE_WEB_ASSETS") or os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "web", "assets")
 SIDES = ["South", "East", "West", "North"]
 
 os.makedirs(OUT, exist_ok=True)

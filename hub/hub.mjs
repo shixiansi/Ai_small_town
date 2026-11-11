@@ -1,11 +1,15 @@
 #!/usr/bin/env node
 /**
- * 大肥鱼办公室 · 状态中转 hub
- * 架构位置：agent(mjs) --HTTP POST--> hub(本文件, 127.0.0.1:4321) --WebSocket--> 浏览器(Phaser)
+ * AI 小镇 · 状态中转 hub
+ * 架构位置：任意事件源 --HTTP POST--> hub(本文件, 127.0.0.1:4321) --WebSocket--> 浏览器(Phaser)
+ * hub 不认识任何业务方：谁想驱动小镇，就往 POST /api/event 推一条状态事件即可；
+ * 小镇自己的作息见 hub/schedule.json，没有事件时由前端跑本地生活模拟。
  * 职责：
- *   - POST /api/event   agent 状态打点入口（仅本机可调，状态须在 hub/states.json 白名单内）
- *   - POST /api/heartbeat 同义入口（兼容方案文档里的命名）
+ *   - POST /api/event   状态事件入口（默认仅本机可调，状态须在 hub/states.json 白名单内）
+ *   - POST /api/heartbeat 同义入口（兼容旧命名）
+ *   - POST /api/stats   五项内在数值的增量加减（hunger/mood/energy/social/hygiene）
  *   - GET  /api/status  当前状态快照（调试用）
+ *   - GET  /api/map     自定义家具层（编辑器读写）
  *   - GET  /health      探活
  *   - WS   任意路径 upgrade（nginx /office-ws/ 反代进来）
  * 内存态：当前状态 + 最近 50 条事件环形缓冲；每次有效事件落盘 hub/state.json，重启可恢复。
@@ -24,12 +28,12 @@ const STARTED_AT = Date.now()
 const STATE_FILE = process.env.OFFICE_STATE_FILE
   ? path.resolve(process.env.OFFICE_STATE_FILE)
   : fileURLToPath(new URL("./state.json", import.meta.url))
-// 恢复上限：太久之前的状态不"复活"，避免博客重启后一直显示昨天的"写文章"
+// 恢复上限：太久之前的状态不"复活"，避免服务重启后一直挂着昨天那条状态
 const MAX_AGE = Number(process.env.OFFICE_STATE_MAX_AGE_MS || 6 * 3600 * 1000)
 /* 空档回落：没有任何真实事件（刚启动 / 状态超过 MAX_AGE）时显示什么，按北京时间决定。
  * 旧版一律回落 "sleeping"，于是 19 点打开页面看到鱼躺在床上 —— 用户问「怎么 19 点就睡觉了」。
  * 那不是它真的睡了，只是"没有事件 + 默认态"的假象。现在清醒时段回落成 idle（摸鱼等活，黄点），
- * 只有夜里才回落到睡觉；时间窗与前端 SCHEDULE.wake 一致，改一处要同步另一处。 */
+ * 只有夜里才回落到睡觉；时间窗与前端 SCHEDULE.wake、hub/schedule.json 的 wake 一致（check.mjs 会核对）。 */
 const WAKE_START = Number(process.env.OFFICE_WAKE_START || 8)
 const WAKE_END = Number(process.env.OFFICE_WAKE_END || 23)
 function beijingHour() {
@@ -40,13 +44,13 @@ function isAwakeHour() {
   return WAKE_START <= WAKE_END ? (h >= WAKE_START && h < WAKE_END) : (h >= WAKE_START || h < WAKE_END)
 }
 const initialState = () => (isAwakeHour()
-  ? { state: "idle", task: "这个点没有排班", detail: "空档期 · 等下一班（办公室里挂着今日时间表）", ts: Date.now() }
-  : { state: "sleeping", task: "办公室还没开灯…", detail: "夜里没有排班 · 明早 09:10 上班", ts: Date.now() })
+  ? { state: "idle", task: "这个点没有排班", detail: "空档期 · 等下一班（页面上挂着今日作息表）", ts: Date.now() }
+  : { state: "sleeping", task: "小镇还没开灯…", detail: "夜里没有排班 · 明早 08:00 起床", ts: Date.now() })
 
 // ---------- 内在状态层（数值系统）----------
 /* 五项词条驱动 AI 的自由行为选择（方案 docs/自主生活升级方案-v1.md §1）：
  *   hunger 饱食 / mood 心情 / energy 精力 / social 社交 / hygiene 卫生
- * hub 是真相源：每 60s tick 衰减一次；agent 任务钩子经 POST /api/stats 增减；
+ * hub 是真相源：每 60s tick 衰减一次；外部钩子经 POST /api/stats 增减；
  * 广播报文带 stats 字段，前端只读显示。落盘到 state.json 的 stats 字段，重启时按
  * updatedAt 补算离线衰减（地板 15，不清零，避免"每次重启都饿死"）。 */
 const STAT_KEYS = ["hunger", "mood", "energy", "social", "hygiene"]
@@ -87,7 +91,7 @@ function tickStats(now = Date.now()) {
   }
   stats.updatedAt = now
 }
-/* agent / 事件钩子调用：增量加减（可负），立即落盘+广播 */
+/* 事件钩子调用：增量加减（可负），立即落盘+广播 */
 function applyStatDelta(deltas) {
   tickStats()
   for (const key of STAT_KEYS) {
@@ -243,8 +247,43 @@ function applyEvent(ev) {
 const MAP_FILE = process.env.OFFICE_MAP_FILE
   ? path.resolve(process.env.OFFICE_MAP_FILE)
   : fileURLToPath(new URL("./map.custom.json", import.meta.url))
-const MAP_MAX_ITEMS = 400
+const MAP_MAX_ITEMS = 6000   // v74：56×30=1680 格，地板+地形各铺满就 3360 条，400 太小
 
+/* v47：每次覆盖 map.custom.json 之前先备份（用户的编辑不能被一次误操作全抹掉）。
+ * 备份放在同目录 map.backups/map-<时间戳>-<条数>.json，保留最近 30 份。 */
+const MAP_BACKUP_DIR = path.join(path.dirname(MAP_FILE), "map.backups")
+const MAP_BACKUP_KEEP = 30
+function backupMapFile() {
+  try {
+    if (!fs.existsSync(MAP_FILE)) return null
+    fs.mkdirSync(MAP_BACKUP_DIR, { recursive: true })
+    let n = 0
+    try { n = (JSON.parse(fs.readFileSync(MAP_FILE, "utf8")).furniture || []).length } catch {}
+    const d = new Date()
+    const pad = v => String(v).padStart(2, "0")
+    const stamp = d.getFullYear() + pad(d.getMonth() + 1) + pad(d.getDate()) + "-" + pad(d.getHours()) + pad(d.getMinutes()) + pad(d.getSeconds())
+    const name = `map-${stamp}-${n}条.json`
+    fs.copyFileSync(MAP_FILE, path.join(MAP_BACKUP_DIR, name))
+    const all = fs.readdirSync(MAP_BACKUP_DIR).filter(f => /^map-.*\.json$/.test(f)).sort()
+    while (all.length > MAP_BACKUP_KEEP) {
+      try { fs.unlinkSync(path.join(MAP_BACKUP_DIR, all.shift())) } catch {}
+    }
+    return name
+  } catch (e) {
+    console.warn(new Date().toISOString(), "[office-hub] 备份失败:", e.message)
+    return null
+  }
+}
+function listMapBackups() {
+  try {
+    return fs.readdirSync(MAP_BACKUP_DIR).filter(f => /^map-.*\.json$/.test(f)).sort().reverse().map(f => {
+      const st = fs.statSync(path.join(MAP_BACKUP_DIR, f))
+      let count = null
+      try { count = (JSON.parse(fs.readFileSync(path.join(MAP_BACKUP_DIR, f), "utf8")).furniture || []).length } catch {}
+      return { name: f, bytes: st.size, mtime: st.mtimeMs, count }
+    })
+  } catch { return [] }
+}
 function loadCustomMap() {
   try {
     const j = JSON.parse(fs.readFileSync(MAP_FILE, "utf8"))
@@ -293,7 +332,7 @@ function applyMapEdit(action, item) {
       if (!Number.isFinite(x) || !Number.isFinite(y) || x < 0 || x > 56 || y < 0 || y > 30) return { ok: false, status: 400, error: "坐标越界" }
       it.x = Math.round(x * 100) / 100; it.y = Math.round(y * 100) / 100
     } else {
-      for (const k of ["a", "x", "y", "sc", "o", "wall", "frame", "on", "dx", "dy", "ox", "oy"]) {
+      for (const k of ["a", "x", "y", "sc", "o", "wall", "frame", "on", "dx", "dy", "ox", "oy", "room", "band"]) {
         if (item[k] !== undefined) it[k] = item[k]
       }
       const ids = new Set(customMap.furniture.filter(f => f !== it && f.id).map(f => String(f.id)))
@@ -309,6 +348,7 @@ function applyMapEdit(action, item) {
   } else {
     return { ok: false, status: 400, error: "未知 action: " + action }
   }
+  const bak = backupMapFile()          // v47：先备份再覆盖
   try {
     fs.writeFileSync(MAP_FILE + ".tmp", JSON.stringify(customMap, null, 1))
     fs.renameSync(MAP_FILE + ".tmp", MAP_FILE)
@@ -316,7 +356,7 @@ function applyMapEdit(action, item) {
     console.warn(new Date().toISOString(), `[office-hub] 地图落盘失败: ${e.message}`)
   }
   broadcast({ type: "map", furniture: customMap.furniture, updatedAt: customMap.updatedAt })
-  console.log(new Date().toISOString(), `[office-hub] 地图 ${action} · 现 ${customMap.furniture.length} 条`)
+  console.log(new Date().toISOString(), `[office-hub] 地图 ${action} · 现 ${customMap.furniture.length} 条 · 备份 ${bak || "无"}`)
   return { ok: true, count: customMap.furniture.length }
 }
 
@@ -346,7 +386,7 @@ const server = http.createServer((req, res) => {
     return
   }
   if (req.method === "POST" && req.url === "/api/random-event") {
-    // 调试/agent 触发：body {key} 指定事件，或 {} 随机抽
+    // 调试 / 外部触发：body {key} 指定事件，或 {} 随机抽
     let body = ""
     req.on("data", c => { body += c; if (body.length > 1024) req.destroy() })
     req.on("end", () => {
@@ -384,6 +424,43 @@ const server = http.createServer((req, res) => {
     return
   }
   // 地图自定义层（v37 编辑地图界面）：GET 读全量，POST 增删改（仅本机/调试用）
+  /* v47：历史存档（每次覆盖前的自动备份）+ 一键恢复 */
+  if (req.url === "/api/map/backups" && req.method === "GET") {
+    res.writeHead(200, { ...CORS, "Content-Type": "application/json; charset=utf-8" })
+    res.end(JSON.stringify({ dir: MAP_BACKUP_DIR, list: listMapBackups() }))
+    return
+  }
+  if (req.url === "/api/map/restore" && req.method === "POST") {
+    let body = ""
+    req.on("data", c => { body += c; if (body.length > 8192) req.destroy() })
+    req.on("end", () => {
+      let d = {}
+      try { d = JSON.parse(body || "{}") } catch {}
+      const name = String(d.name || "")
+      if (!/^map-[0-9]{8}-[0-9]{6}-[0-9]+条\.json$/.test(name)) {
+        res.writeHead(400, { ...CORS, "Content-Type": "application/json; charset=utf-8" })
+        res.end(JSON.stringify({ error: "文件名非法" }))
+        return
+      }
+      try {
+        const j = JSON.parse(fs.readFileSync(path.join(MAP_BACKUP_DIR, name), "utf8"))
+        if (!Array.isArray(j.furniture)) throw new Error("备份内容不合法")
+        backupMapFile()
+        customMap = { furniture: j.furniture, updatedAt: Date.now() }
+        fs.writeFileSync(MAP_FILE + ".tmp", JSON.stringify(customMap, null, 1))
+        fs.renameSync(MAP_FILE + ".tmp", MAP_FILE)
+        broadcast({ type: "map", furniture: customMap.furniture, updatedAt: customMap.updatedAt })
+        console.log(new Date().toISOString(), `[office-hub] 恢复备份 ${name} · 现 ${customMap.furniture.length} 条`)
+        res.writeHead(200, { ...CORS, "Content-Type": "application/json; charset=utf-8" })
+        res.end(JSON.stringify({ ok: true, count: customMap.furniture.length, name }))
+      } catch (e) {
+        res.writeHead(500, { ...CORS, "Content-Type": "application/json; charset=utf-8" })
+        res.end(JSON.stringify({ error: e.message }))
+      }
+    })
+    return
+  }
+
   if (req.url === "/api/map" && req.method === "GET") {
     res.writeHead(200, { ...CORS, "Content-Type": "application/json; charset=utf-8" })
     res.end(JSON.stringify({ furniture: customMap.furniture, updatedAt: customMap.updatedAt, max: MAP_MAX_ITEMS }))
@@ -444,3 +521,4 @@ server.listen(PORT, HOST, () => {
 // 每 60s 给所有浏览器广播一次服务器时间（驱动"刚刚 / N 分钟前上报"的相对时间显示）
 setInterval(() => broadcast({ type: "ts", ts: Date.now() }), 60000).unref?.()
 for (const sig of ["SIGINT", "SIGTERM"]) process.on(sig, () => { saveDisk(); process.exit(0) })
+

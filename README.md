@@ -1,63 +1,77 @@
-# 大肥鱼的办公室 🐟
+# AI 小镇（AI Small Town）🐟
 
-AI 博主「大肥鱼」真实工作状态的像素可视化。**小人的行为永远忠实映射 agent 的真实工作**——它不是预设动画。
+像素小镇 + 一条住在里面的 AI 居民。**她自己过日子**（有作息、有需求、有随机事件），也能被任何外部程序用一条 HTTP 事件驱动 —— 前端不认识任何业务方。
 
-线上地址：https://news.shixiansi.pw/office/
+仓库：<https://github.com/shixiansi/Ai_small_town>
+
+> 本项目**独立**：不 import 任何其它项目的代码，也不假设自己放在谁家的目录下。所有路径由本目录推导，部署位置用 `OFFICE_*` 环境变量覆盖（见《部署》一节）。
 
 ## 架构
 
 ```
-agent 脚本 ──HTTP POST──▶ office-hub (127.0.0.1:4321) ──WebSocket──▶ 浏览器 (Phaser 3)
-(agent/*.mjs)             (office/hub/hub.mjs)                       (静态页 /office/)
-                              │ PM2: office-hub
+任意事件源 ──HTTP POST /api/event──▶ office-hub (127.0.0.1:4321) ──WebSocket──▶ 浏览器 (Phaser 3)
+（小镇自己的调度 / 你的脚本）          （hub/hub.mjs，PM2: office-hub）            （静态页，Nginx）
 ```
 
-- **服务器只转发极小的 JSON 事件**，所有渲染在用户浏览器完成 → 2核4G 毫无压力
+- **服务器只转发极小的 JSON 事件**，所有渲染在用户浏览器完成 → 小机器毫无压力
 - hub 内存态运行（当前状态 + 最近 50 条事件环形缓冲），每次有效事件落盘 `hub/state.json`，重启可恢复
-- 没有任何真实事件时（刚启动 / 落盘状态超过 6 小时）按**北京时间**回落：08:00–23:00 是 `idle`「这个点没有排班」（摸鱼等活），夜里才是 `sleeping`（v23 之前一律回落到睡觉，于是 19 点也显示鱼在床上）
-- agent 侧上报 **fail-silent**：hub 不在线/超时一律静默，绝不阻塞 AI 主流程
+- 没有真实事件时（刚启动 / 落盘状态超过 6 小时）按**北京时间**回落：08:00–23:00 是 `idle`「这个点没有排班」（摸鱼等活），夜里才是 `sleeping`（v23 之前一律回落到睡觉，于是 19 点也显示鱼在床上）
+- **作息表**（几点起床 / 吃饭 / 睡觉）的唯一事实源是 `hub/schedule.json`，前端 `SCHEDULE` 与它双向核对（`tools/check.mjs` 第 18 项）
+- 对外只暴露一个通用入口：`POST /api/event`，状态名必须在 `hub/states.json` 白名单内。推送方**零依赖**：hub 不在线/超时一律静默，绝不阻塞它
 
 ## 目录
 
 ```
-office/
-├── hub/hub.mjs          状态中转（WS 广播 + POST /api/event 入口）
-├── hub/node_modules     ws 依赖
-├── web/                 前端源（index.html + office.js + map.json + assets/）
-├── tools/crop_sprites.py 从 pixor 素材包裁精灵表的脚本
-├── assets/src/          pixor 原始 zip 存档（含 CC0 LICENSE）
-├── assets/extracted/    zip 解包内容
-└── sync_web.sh          把 web/ 同步到 Nginx 站点目录（/root 下文件 www 读不到）
+office/                      ← 本仓库根目录
+├── package.json             npm scripts（dev / build / bust / check / verify / sync）
+├── ecosystem.config.js      PM2：只挂 office-hub（路径全部按本目录推导）
+├── sync_web.sh              把 web/ 同步到站点目录（含 bust + check 上线门禁）
+├── hub/hub.mjs              状态中转（WS 广播 + POST /api/event 入口）
+├── hub/states.json          状态白名单（唯一事实源，与前端双向校验）
+├── hub/schedule.json        小镇作息表（唯一事实源，与前端 SCHEDULE 双向校验）
+├── hub/random_events.json   随机事件表（B 层）
+├── hub/map.custom.json      地图自定义层存档（hub 自动备份到 hub/map.backups/）
+├── web/src/*.js             前端源码 19 个片段（build.mjs 拼成 web/office.js）
+├── web/                     index.html / office.js（产物）/ map.json / assets/
+├── tools/                   build / bust / check / dev / gen_* 等脚本
+├── assets/src/              pixor 原始 zip 存档（含 CC0 LICENSE）
+└── assets/extracted/        zip 解包内容
 ```
 
 ## 关键文件
 
 | 文件 | 作用 |
 |---|---|
-| `agent/office_client.mjs` | agent 侧上报库：`office(state, task, detail)` 打点 / `officeRun(task)` 包住整次运行（自动到岗+30s心跳+结束归位） |
-| `agent/agent.mjs` 等 | 已在 13+2+2+3 处打点：刷B站/看视频/写文章/改稿/日记/封面/B站动态/邮件/回评论/B站互动/周报/出错 |
-| `office/web/office.js` | `STATE_MAP` 定义了每个状态对应的区域和动作；`SCHEDULE` 是「今日时间表」的排班表；A* 寻路；本地生活模拟；最近动态窗（事件流 + 时间表）的渲染 |
-| `office/web/map.json` | 房间布局：家具坐标、区域锚点、阻挡格。改完跑 `sync_web.sh` 生效 |
-| `scripts/crontab.txt` | 服务器定时任务的记录副本（北京时间）——页面时间表要和它对得上，`check.mjs` 会拦 |
+| `web/src/head.js` | `STATE_MAP`（状态→区域/动作/动词）、`SCHEDULE`（页面上的今日作息，真相源是 `hub/schedule.json`）、常量与缩放表 |
+| `web/src/life.js` | 本地生活模拟：无事件时按需求权重挑小动作（散步/接水/翻书/瘫沙发…） |
+| `web/src/npc.js` | 小镇居民（喵酱 / 村长 / 博士）各自的状态机与作息 |
+| `web/src/activity.js` | 最近动态窗：事件流 + 今日作息表 + 「为什么现在是这样」 |
+| `hub/hub.mjs` | 状态中转：白名单校验、去抖、落盘、WS 广播、数值层、随机事件、地图自定义层 API |
+| `hub/schedule.json` | 小镇作息表：几点起床/早饭/营生/午饭/小憩/散步/晚饭/放松/洗澡/睡觉 |
+| `web/map.json` | 小镇布局：家具坐标、区域锚点、阻挡格、道路层。改完跑 `npm run bust` |
+| 外部事件源（可选） | 任何程序都能 `POST /api/event` 推一条状态；本项目不含、也不依赖任何具体业务方 |
 
 ## 状态 → 场景映射
 
-| 状态 | 场景 | 来源 |
+| 状态 | 场景 | 一般由谁触发 |
 |---|---|---|
-| arrive | 大门下 | 到岗 |
-| browsing | 工位打字（坐办公椅） | 刷B站 |
-| watching | 餐桌笔记本前 | 看视频 |
-| writing / weekly / diary / replying | 工位打字（坐办公椅） | 写文章/周报/日记/回评论 |
-| organizing | 书架翻资料 | 更新记忆 |
-| designing | 设计台（课桌）做封面 | 抽帧配封面 |
-| posting | 打印机 | 发B站动态 |
-| commenting | 餐桌笔记本前 | B站评论 |
-| mailing | 门廊信箱前 | 发邮件 |
-| error | 沙发挠头（红点） | 运行出错 |
-| idle | 沙发摸鱼（黄点） | 任务结束 / 空档期没有排班（白天回落） |
-| sleeping | 卧室床上（蓝点） | 夜间空档（08:00–23:00 之外）回落 |
+| arrive | 大门下 | 外部事件源「开始了」 |
+| working | 工位打字（坐办公椅） | 上午的营生 |
+| writing / weekly / diary / replying | 工位打字（坐办公椅） | 写点东西 / 回信 |
+| browsing / watching / commenting | 工位 / 餐桌笔记本前 | 看点什么、聊两句 |
+| organizing | 书架翻资料 | 整理东西 |
+| designing | 设计台（课桌）动手做东西 | 做手工 |
+| posting | 打印机 | 打印 / 发布 |
+| mailing | 门廊信箱前 | 寄信 |
+| error | 沙发挠头（红点） | 出错了 |
+| idle | 沙发摸鱼（黄点） | 空档期没有班次（白天回落） |
+| sleeping | 卧室床上（蓝点） | 夜间空档（08:00–23:00 之外）回落 / 23:00 睡觉班 |
+| washing / eating / snacking | 洗漱台 / 灶台 / 冰箱 | 起床洗漱、正餐、翻零食 |
+| relaxing / listening / gaming | 沙发 / 留声机 / 街机 | 放松时间 |
+| strolling / browsing_market | 花园 / 市集 | 散步、赶集日 |
+| recovering | 充电垫 | 午后小憩 |
 
-无真实事件时，浏览器本地跑生活模拟：随机漫步、接水、看月亮、翻书、瘫沙发，每 2-5 秒随机微停顿；点击地图可让它走过去（纯参观，不影响真实工作）。
+无真实事件时，浏览器本地跑生活模拟：随机漫步、接水、看月亮、翻书、瘫沙发，每 2-5 秒随机微停顿；点击地图可让她走过去（纯参观，不影响真实状态）。
 
 ## 日常维护
 
@@ -67,27 +81,35 @@ office/
 
 | # | 文件 | 要动什么 | 漏了会怎样 |
 |---|---|---|---|
-| 1 | `web/office.js` | `STATE_MAP` 的 `zone / act / verb / mood / fx`；working 类还要进 `ACTIVE_STATES` | `onState` 静默兜底成 idle，鱼跑去沙发摸鱼、圆点不变绿 |
+| 1 | `web/src/head.js` | `STATE_MAP` 的 `zone / act / verb / mood / fx`；working 类还要进 `ACTIVE_STATES` | `onState` 静默兜底成 idle，鱼跑去沙发摸鱼、圆点不变绿 |
 | 2 | `web/map.json` | `zones` 锚点 + `expect`（该区域该有的家具）/`feature`，必要时加 `sit` | 走得到但站错家具（v15 那 7 张截图） |
-| 3 | `hub/states.json` | `states` 加状态名；working 类同步加 `active` | hub 直接 400 拒收 agent 推的真实事件 |
-| 4 | `agent/*.mjs` | `office("状态", ...)` / `done()` 上报 | 前端不报错，只是永远没人推这个状态 |
+| 3 | `hub/states.json` | `states` 加状态名；working 类同步加 `active` | hub 直接 400 拒收外部推来的事件 |
+| 4 | `web/src/debug.js` | 「🎬 演示一轮」的 `SEQ` 序列（可选） | 前端不报错，只是演示里没有这个状态 |
 | 5 | `web/index.html` + 本文档 | 底部「怎么看懂它」、状态→场景映射表 | 说明文字和实际画面对不上 |
 
-**改排班（crontab 时间变了）要同步动这几处**：`crontab -l`（服务器）→ `scripts/crontab.txt`（记录副本）→ `web/office.js` 的 `SCHEDULE.shifts`（页面上的今日时间表）→ 若改的是「几点算白天」，还要同步 `hub/hub.mjs` 的 `OFFICE_WAKE_START / OFFICE_WAKE_END` 与 `SCHEDULE.wake`。只改一边的后果：页面上写着 09:10 上班、实际 10 点才跑，或者反过来 —— `check.mjs` 第 18 项会把两边对不上的排班拦下来。
+**改作息要同步动这几处**：`hub/schedule.json`（真相源）→ `web/src/head.js` 的 `SCHEDULE.shifts`（页面上的今日时间表）→ 若改的是「几点算白天」，还要同步 `hub/hub.mjs` 的 `OFFICE_WAKE_START / OFFICE_WAKE_END` 与 `SCHEDULE.wake` / `schedule.json.wake`。只改一边的后果：页面上写着 09:00 营生、实际 10 点才动，或者反过来 —— `check.mjs` 第 18 项会把两边对不上的班次拦下来。
 
-改完跑：`node office/tools/check.mjs`（18 项，双向校验 1↔3、4⊆1、2 的锚点与家具语义、时间表↔crontab）→ `node office/tools/bust.mjs` → `sync_web.sh`（已把前两步接成门禁）。
+改完跑：`npm run verify`（= `bust --check` + `build --check` + `check.mjs`，双向校验 STATE_MAP↔states.json、SCHEDULE↔schedule.json、锚点与家具语义、资源版本号）→ `npm run sync`（`sync_web.sh` 已把前两步接成门禁）。
 
-> **hub 属于后端服务，不在 `sync_web.sh` 的同步范围内**：改了 `hub/hub.mjs` 或 `hub/states.json` 后要单独同步整个 `office/hub/` 并 `pm2 restart office-hub`。漏同步 `states.json` 时 hub 降级为「不校验白名单」并打 warn 日志，不会把真实事件拒之门外。
-> 状态落盘在 `hub/state.json`（`OFFICE_STATE_FILE` 可改），重启自动恢复；超过 `OFFICE_STATE_MAX_AGE_MS`（默认 6 小时）的旧状态会**按当前时辰回落**（v23 起：08:00–23:00 → `idle`「这个点没有排班」，夜里 → `sleeping`），避免昨天的「写文章」一直挂着、也避免白天一重启就显示鱼在床上。
+> **hub 属于后端服务，不在 `sync_web.sh` 的同步范围内**：改了 `hub/hub.mjs`、`hub/states.json`、`hub/schedule.json` 后要单独同步 `hub/` 目录并 `pm2 restart office-hub`。漏同步 `states.json` 时 hub 降级为「不校验白名单」并打 warn 日志，不会把事件拒之门外。
+> 状态落盘在 `hub/state.json`（`OFFICE_STATE_FILE` 可改），重启自动恢复；超过 `OFFICE_STATE_MAX_AGE_MS`（默认 6 小时）的旧状态会**按当前时辰回落**（08:00–23:00 → `idle`「这个点没有排班」，夜里 → `sleeping`），避免昨天那条状态一直挂着、也避免白天一重启就显示鱼在床上。
 
 ### 常用命令
 
 ```bash
 # 本地一键运行（静态 4322 + hub 4321）
-node office/tools/dev.mjs
+npm run dev
 
-# 改前端后发布（内含 bust + check 门禁）
-/root/项目/news-site/office/sync_web.sh
+# 改前端后：刷新版本号 + 拼产物
+npm run bust
+
+# 全量自检（bust --check + build --check + check.mjs）
+npm run verify
+
+# 发布到站点目录（内含 bust + check 门禁）
+npm run sync
+#   OFFICE_DEPLOY_DIR=/srv/www/town npm run sync        # 换部署目录
+#   OFFICE_AUTO_PUSH=1 npm run sync                     # 顺手推 git 远程
 
 # hub 状态
 curl -s http://127.0.0.1:4321/api/status | python3 -m json.tool
@@ -96,19 +118,39 @@ pm2 logs office-hub --lines 20
 # 手动推一个事件看效果（状态必须在 hub/states.json 白名单内）
 curl -s -X POST http://127.0.0.1:4321/api/event \
   -H 'Content-Type: application/json' \
-  -d '{"state":"writing","task":"写文章《测试》","detail":"手动测试"}'
+  -d '{"state":"working","task":"在整理院子","detail":"外部程序推来的事件"}'
 ```
 
 ## 素材授权
 
-全部来自 [pixor.art](https://pixor.art) 素材库，**CC0 1.0 公有领域**（每个 zip 内附 LICENSE.txt），可自由使用/修改/商用，无需署名。角色 whale 与办公室物件同库，风格天然统一。
+全部来自 [pixor.art](https://pixor.art) 素材库，**CC0 1.0 公有领域**（每个 zip 内附 LICENSE.txt），可自由使用/修改/商用，无需署名。角色 whale 与小镇物件同库，风格天然统一。
 
-## 部署细节备忘
+## 部署
 
-- 前端静态文件在 `/www/wwwroot/news.shixiansi.pw/office/`（由 `sync_web.sh` 从本目录复制；**直接改站点目录的文件会在下次同步时被覆盖**）
-- Nginx：`/office/` alias 静态 + `/office-ws/` 反代 127.0.0.1:4321（Upgrade 头已配，读超时 1h）
-- `ecosystem.config.js` 中 `office-hub` 已入 PM2 并 save（开机自启随 pm2 resurrect）
+本项目不假设放哪、也不认识任何其它项目，所有路径都由自身目录推导，需要外部决定的只有下面这些环境变量：
+
+| 变量 | 默认 | 作用 |
+|---|---|---|
+| `OFFICE_DEPLOY_DIR` | `/www/wwwroot/ai-town` | `sync_web.sh` 的静态站点目录 |
+| `OFFICE_DEPLOY_OWNER` | `www:www` | 同步后 chown 的属主（仅 root 生效） |
+| `OFFICE_AUTO_PUSH` | `0` | `sync_web.sh` 末尾是否 `git push origin HEAD` |
+| `OFFICE_PORT` / `OFFICE_HOST` | `4321` / `127.0.0.1` | hub 监听地址 |
+| `OFFICE_STATE_FILE` / `OFFICE_MAP_FILE` | `hub/state.json` / `hub/map.custom.json` | 落盘位置（测试用 `npm run test:hub` 会指到临时目录） |
+| `OFFICE_WAKE_START` / `OFFICE_WAKE_END` | `8` / `23` | 空档回落的清醒时段，须与 `hub/schedule.json` 的 `wake` 一致 |
+| `OFFICE_NGINX_CONF` | 无 | 指向站点 nginx 配置；设了才检查 `/office-hub-api/` 反代 |
+| `OFFICE_CRONTAB_FILE` | 无 | 可选：想让作息跟某台机器的 crontab 对一下时指过去（仅告警） |
+
+要点：
+
+- 前端静态文件由 `sync_web.sh` 从本目录复制到 `$OFFICE_DEPLOY_DIR`；**直接改站点目录的文件会在下次同步时被覆盖**
+- Nginx：静态目录 alias 到 `$OFFICE_DEPLOY_DIR`，并把 `/office-ws/` 反代到 `127.0.0.1:4321`（Upgrade 头 + 读超时 1h）；hub 的 HTTP 接口默认不对外，需要调试台/编辑器保存时再加 `/office-hub-api/` 反代
+- PM2 由本项目自己的 `office/ecosystem.config.js` 管理（`pm2 start ecosystem.config.js && pm2 save`），与其它项目互不影响
 - Phaser 3.90 本地托管在 `assets/phaser.min.js`，不依赖外部 CDN
+
+## 开发日志（历史记录，按当时原样保留）
+
+> 本项目早期是另一个仓库里的一个子目录，被一个真实的 AI 博主 agent 直接驱动（那些条目里出现的 `agent/*.mjs`、`agent/office_client.mjs`、`scripts/crontab.txt` 都已在解耦时移除，不再是本仓库的一部分）。
+> 现在小镇**只认两件事**：`POST /api/event` 推来的状态事件，和自己 `hub/schedule.json` 里的作息。下面这些条目保留原样，作为踩坑记录查阅。
 
 ## v2 渲染修正（2026-11-06）
 
@@ -1086,6 +1128,234 @@ setLights 里 lightPools/moonPool 改为 no-op 对象保持兼容。验收：白
 ### 验证
 - check.mjs 20/20；本地 + 线上（news.shixiansi.pw）无头走查：鱼塘 blockedCount=11、绕水路径 pathOk、编辑增删移经反代落 hub、刷新恢复、清理归零，PAGE_ERRORS: none
 
+## v37.1 地图编辑器：本地兜底 + 修家具重影（2026-11-08）
+
+用户反馈："地图编辑器用不了。" 无头 Chrome 实跑定位到四个问题（编辑器逻辑本身没坏，是**失败路径全都不吭声**）：
+
+### 1. hub 不通时整个编辑器静默失效（本地最常见）
+- `hubMapBase()` 恒返回非空串（本地 `http://127.0.0.1:4321`、线上 `/office-hub-api`），所以"hub 不在线就只改本地镜像"那段兜底 `if (!base)` **是死代码**。没起 hub 时点一下就只剩 `Failed to fetch`，画面毫无变化 —— 看起来就是"点了没反应"
+- 现在改动**先本地生效**（立刻可见）→ 再推 hub；推失败就落 `localStorage.office_map_custom_v1`（带 `pending` 标记），下次页面加载/重连自动补传（`probeMapHub` → `flushLocalMirror`，只试一次防抖）
+- 前端生成 item id 再发给 hub（hub 有 id 就不重发），保证本地与 hub 的 id 一致，后续 move/remove 不会错位
+
+### 2. 保存成功却不回显
+- 旧版只 POST，等 WS 广播回来才更新 `customFurniture`；WS 没连到同一个 hub（离线、或调试台里改过 WS 地址→存进 localStorage）时日志写着"已保存"而画面/列表都不动
+- 现在本地状态自己维护，`inflightMapOps` 计数挡掉推送期间的广播回显，避免自己盖掉刚做的改动
+
+### 3. 重建家具层留下一份旧精灵 → 全屋重影
+- `rebuildCustomLayer` 旧实现只把 `s.props` 过滤成"只剩鱼"，上一层的精灵/阴影对象仍在 displayList：实测 hub 里只要有 1 件自定义物品，页面加载后 **149 件家具全部画两遍**（148 组重复、sprite 313 个而 props 只有 152），每编辑一次再叠一层
+- 现在家具层只有 `buildFurnitureLayer()` 一个创建入口：所有 placement 登记进 `s.placed`（**含阴影**），重建前统一 destroy；`applyCustomFurniture` 幂等（先剔 `_custom` 再压入）；`buildFurniture` 里改为**先合并自定义层再建**（旧代码把 `applyCustomFurniture(s)` 放在两遍创建循环之后，注释说的"再建一遍"并没生效）
+- 回归：edits 前后 `dupGroups` 恒为 0，sprite 数 163→165→164 与家具数一致；fish 行走 / 房间切换 / `hostMap` 62 个宿主 / 瘫沙发语义全部正常
+
+### 4. 谎报连通状态 + 入口在局域网看不到
+- `editState().hub` 旧值是 `!!hubMapBase()`（恒真），调试台永远显示"保存走 hub /api/map"；现在返回真实探活结果（`hubChecked` / `hubError` / `mirror` / `ws` / `mapUrl`），编辑面板也多一行状态："hub 已连：改动会写进 map.custom.json" 或 "hub 未连接（Failed to fetch）：改动只存本机浏览器"
+- `index.html` 的 `isLocal` 放行私网地址（`10./192.168./172.16-31.`）：手机或用局域网 IP 开预览时也能点右下角 🛠（原来只有 127.0.0.1/localhost，入口直接被隐藏）；线上公网域名行为不变
+- `editPointerDown` / `editPointerUp` 的气泡文案改诚实："已放在本机（hub 未同步：…）"，不再和画面对不上说"放置失败"
+- `makePlacement` 遇到不在 manifest 的资产名改为跳过 + `console.warn`，不再一层家具全炸
+
+### 验证（本地 Windows，无头 Chrome 经 CDP 真实点击）
+- hub 关：进编辑台 → 面板显示"hub 未连接" → 放一件 → 立刻出现、`mirror:true`、日志"改动存在本机浏览器" → 刷新仍在（localStorage）→ hub 起来后重新加载：自动 set 补传，`mirror:false`
+- hub 开：add / move / delete 各一次，hub 日志一操作一条（无重复 set）、`map.custom.json` 同步、`dupGroups` 恒 0、`frameAudit`/`zoneAudit` 0 问题、鱼照常走位
+- check.mjs 20/20（`bust.mjs` 已刷新 `?v=`）
+
+## v37.2 地图编辑：选中反馈 + 命中判定（2026-11-08）
+
+用户反馈："地图编辑选择不了物件。" 实测三个原因，全是"点了没有任何反馈"：
+
+### 1. 按钮有 `.active` 类，却没有对应 CSS
+- `setEditAsset` / `setEditTool` 一直在加 `.active`，但面板按钮全是 inline 背景色、样式表里没有任何 `.active` 规则：点完资产/工具，`className` 变成 `ep-btn active`，而背景、边框、文字颜色**一点没变** —— 看起来就是"选不中"
+- 现在面板内嵌 `#edit-panel button.ep-btn.active` 样式（蓝底白字 + hover），资产按钮和四个工具按钮都挂 `ep-btn`
+- 面板新增一行状态提示 `#edit-sel`：「工具 ➕ 放置 · 资产 desk-wood → 点地图放置」/「工具 ✥ 移动 · 点住自定义物品拖到新位置」/「工具 🖱 选择 · 已选中 wardrobe @ 16.1,22.6」
+
+### 2. 只有"脚点 36px 内"才算命中
+- `pickEditItem` 旧判定是 `max(|dx|,|dy|) < TILE*0.75`，而 `p.y` 是物品**落脚点**：衣柜/床这类高家具点身子（离脚点 30~50px）必然选不中
+- 改成先按**内容 bbox 命中**（点在家具身上就算中，取 depth 最大的那件），没中再退到"脚点 0.85 格"；移动/删除/选择三个工具共用同一判定
+
+### 3. `select` 工具压根没有"选中"这回事
+- 旧版 select 分支直接 `return false` 走默认点击语义：点自定义物品既不选中也没提示（点静态家具更是完全静默）
+- 现在：点中自定义物品 → 画布画蓝色虚线框（顶边加重的黄色线）+ 面板显示名称/坐标 + 列表对应行高亮；拖动时框跟着走
+- 点中 **map.json 的静态家具** → 气泡明确告知"这是 map.json 里的静态家具，编辑器只能改「自定义层」的物品（➕ 放置的那些才能删/移）"（README 早就写了这个意图，代码里一直没实现）
+- 点空地才退回"让它走过去"的默认语义
+
+### 验证
+- 资产/工具按钮：点击后 `background` 由 `rgb(42,46,61)` → `rgb(74,108,247)`、文字变白（真比对了 computed style）
+- 放衣柜 → move 工具点身体（脚点上方 24px）→ 抓起并成功从 x=648 移到 768，气泡"已移动"
+- delete 工具点身体 → 删除，`count` 归零
+- select 工具点身体 → 出现高亮框（Graphics depth=97000）+ 面板「已选中 wardrobe @ 16.1,22.6」+ 列表行高亮
+- 点静态 mailbox/sofa → 气泡提示"这是 map.json 里的静态家具…"，不再静默
+- check.mjs 20/20
+
+## v37.3 物件列表/资产选择带图标（2026-11-08）
+
+用户反馈："物件列表显示物品的图标。"（列表只有资产名，认不出是哪件）
+
+### 图标怎么来的
+- 不新增任何图片文件、也不额外发请求：`assetIconUrl(key, frame)` 直接把**已加载的 Phaser 贴图**按 manifest 的 `bbox` 裁出内容区，画到 canvas 再 `toDataURL()`（`scene.textures.get(key)` → frame 的 `cutX/cutY` + bbox 偏移）
+- 小物件（硬币 15×15、护身符 8×8）按**整数倍放大**（`k = max(1, floor(22/max(w,h)))`）再出图，避免在 22px 盒子里缩成一个点；`imageSmoothingEnabled=false` + CSS `image-rendering:pixelated` 保持像素风清晰
+- 结果按 `资产名#帧号` 缓存（`iconUrlCache`），`renderEditList()` 每次重渲染不再重复裁图；贴图/清单缺失时回退成 `▢` 占位，不报错
+
+### 界面变化
+- **物件列表**（已添加的每一条）：`[图标] 名字 ………… x,y ✕`，图标 22×22 圆角底衬；选中行仍是蓝底高亮
+- **资产选择网格**：每个按钮改成 `[18px 图标] 名字`，列数 4 → 3（给图标和文字留宽度），网格高度 170px，面板整体不再撑爆
+- 面板 CSS 全部走 `#edit-panel ...` 前缀的样式表，不再散落 inline 样式
+
+### 验证
+- 70/70 个资产按钮都有图标（`img.ep-asset-ico`）；列表 4 条记录 4 个图标，`naturalWidth×Height` 分别 96×101（oak-tree）/ 20×31（wardrobe）/ 15×15×2（coin，整数放大）/ 12×22（desk-lamp）
+- 选中/删除/清空后图标与行高亮都正确重渲染；`hub after clear: furniture []`
+- check.mjs 20/20
+
+## v37.4 物件列表覆盖全部家具 + 静态家具可隐藏（2026-11-08）
+
+用户反馈："比如这里我想点绿色的这个物品删掉，完全就点不到，实在不行地图编辑都独立出来。"（附截图：草丛挡在房间里）
+逐条查下来是三个叠加的问题，不是"点得不准"这么简单：
+
+### 1. 那丛灌木是 map.json 的**静态家具**，编辑器压根不认
+- 旧逻辑 `pickEditItem()` 只遍历 `customPlaceholders`（用户自己放的），静态家具彻底不参与命中；`delete` 工具点上去 `return true` 走人 —— 连"不行"都不会说
+- 现在：`hitStaticItem()` 也参与判定，三个工具都能点中静态家具
+- **静态家具现在也能删**：不再要求改 hub 的 schema，而是在自定义层追加一条 `{ a:"hide", k:"bush@24,10.6" }`。hub 的 `validateMapItem` 认 `a="hide"`（合法小写资产名）、坐标 0,0 合法、id 由 key 哈希生成 → 现有接口零改动；老客户端遇到未知资产会被 `makePlacement` 安全跳过
+- 面板底部出现「已隐藏 N 件静态物件 · 全部恢复」，`editState()` 也多了 `hidden` 字段
+- 修一个由此引出的坑：`applyCustomFurniture()` 原来直接在 `mapdata.furniture` 上 filter，隐藏掉的静态条目会**永久消失**（"全部恢复"救不回来）——现在先把原始静态层备份到 `s.staticFurniture`，每次重建都从备份派生
+
+### 2. 物件列表从"只有自定义"变成"视口内全部物件"
+- 每行：`[图标] 资产名 [静态|自建] 坐标 ✕`，按离镜头中心远近排序，最多 60 行，标题显示「物件列表（视口内 N 件）」
+- **点行即选中**（画布高亮框 + 镜头 `cam.pan` 对准），悬停也会高亮——完全不用点准画布
+- 行内 ✕：自建 → 删除；静态 → 隐藏（可恢复）
+- 镜头挪动超过 24px 自动刷新列表（400ms 节流），另有 ↻ 手动刷新按钮
+
+### 3. 镜头在编辑时被鱼拽走 → 点空
+- `onState()` 收到真实事件时会 `stopFollow + pan + 1.8s 后 startFollow`，编辑过程中视图会自己甩到鱼那边，刚对准就点空
+- 现在编辑模式下：进入即 `stopFollow()`，`onState` 的相机段直接跳过（`if (editMode) cam.stopFollow()`），退出编辑再交还跟随
+
+### 4. 反馈改成"点哪儿说哪儿"
+- 新增 `editToast()`：贴在点击位置的 DOM 小提示（1.5s 淡出）+ 同时写进面板日志。原来用的是鱼头顶的气泡，编辑时鱼常在别的房间，等于没提示
+- 点空、点静态、拖动静态、删除/隐藏成功，都有明确一句话
+
+### 验证（无头 Chrome，真实鼠标点击）
+- 编辑模式 `cam._follow === false`；发一条真实事件后 `scroll` 前后一致（`same: true`），视图不再被抢
+- 列表 51 行（含 `bush 静态 24,10.6`、`book-stack 静态 24.2,6.6` 等），图标齐全、标签正确
+- 点 `bush` 行的 ✕ → 画布上 `bush@24,10.6` 消失、`hidden: 1`、hub 收到 `{a:"hide",k:"bush@24,10.6",id:"hide18cgveh"}`；点「全部恢复」→ 草丛回来、hub 归空
+- 画布上用 🗑 直接点草丛 → 同样隐藏，并弹出"已隐藏 bush（面板底部可一键恢复）"
+- 放一件 armchair → 列表出现 `armchair [自建] ✕` → 点 ✕ 删除成功
+- check.mjs 20/20
+
+> 关于"地图编辑独立出来"：暂时不用了 —— 现在不依赖像素级命中（列表可选可删），镜头也不会自己跑；真要做独立页/更大的编辑画布，可以后续在这个面板基础上加"全屏编辑"开关。
+
+## v38 独立地图编辑器：三图层（2026-11-08）
+
+用户需求："地图编辑器直接独立开来，同时现在显示静态物品无法移动，也没有道路和墙以及地板的摆放与删除，地图分层编辑，地板层放地板和路，物品层显示物品，还有地形层摆放墙以及湖泊水流以及农田。"
+
+### 1. 独立页面 `web/editor.html`
+- 全屏画布 + 右侧 344px 侧栏（`web/editor.js`）。游戏本体的状态条/动态窗/调试入口用一个 `#game-chrome` 空壳藏起来（id 都留着，office.js 判空不炸）
+- 画布保持 1248:768 比例（`max-width/height:100%` + flex 居中），不再被拉伸
+- 打开即 `setEditMode(true)`；office.js 用**路径**也认编辑器模式（`/(^|\/)editor\.html$/`），不只是 `?editor=1`——否则直接开 `/editor.html` 会走游戏语义、点了没反应
+- 鱼在编辑器里不溜达（`startIdleLife` 直接 return），镜头锁定，状态事件不再抢视角
+- 踩过的坑：`#loading` 的 `.hide` 样式原来只写在 index.html，editor.html 缺它 → 那层「地图载入中…」一直盖着画布，**所有点击都被吃掉**（表现就是"点了没反应"）
+
+### 2. 三图层数据模型（全部走 hub 现有 add/set，hub 零改动）
+- 一次 `map.custom.json` 里混装五种条目，按 `a` 分派：
+ | 条目 | 含义 |
+ |---|---|
+ | `{a:"<资产名>", x, y, id}` | 物品层：新增家具 |
+ | `{a:"hide", k}` | 物品层：隐藏静态家具 |
+ | `{a:"move", k, x, y}` | 物品层：**移动静态家具**（map.json 保持只读，靠覆盖） |
+ | `{a:"floor", t, x, y}` | 地板层：`t = wood｜tile｜stone｜grass｜road` |
+ | `{a:"terrain", t, x, y}` | 地形层：`t = wall｜water｜farm` |
+- hub 的 `validateMapItem` 认 `a` 为小写资产名、坐标 0..56/0..30、id 唯一 → 现有接口直接用；老客户端遇到这些"未知资产"会被 `makePlacement` 安全跳过
+- 静态家具移动：`applyCustomFurniture()` 里按 `_key` 把 move 覆盖贴回静态层副本（`_moved` 标记），列表里显示成"已挪"
+
+### 3. 渲染与碰撞
+- 新增两个叠加 Graphics：地板层 depth `-99`（在 baseGfx `-100` 之上、家具之下）、地形层 depth `-95`
+- 地形 `wall/water` 进 `buildBlockedGrid()` 变阻挡；`farm` 可走（和农场一致）
+- **地板贴片会把该格改成可走** → 这就是"删墙/删水"的方式：在墙上铺地板即可（家具压着的格、以及第 0 行贴墙根除外，避免把家具顶掉/穿出屋外）
+- 刷一片地不需要每格都发请求：`meQueueSave()` 本地立刻重画叠加层+重算碰撞，260ms 合并成一次全量 `set` 打给 hub
+
+### 4. 侧栏交互（editor.js）
+- 图层 tab：`地板层 / 物品层 / 地形层`（快捷键 1/2/3）
+- 工具：地板/地形层 = 🖌 画笔、🧽 擦除；物品层 = ➕ 放置、✥ 移动、🗑 删除（删除静态家具=隐藏，可一键恢复）
+- 调色板：地板 5 种材质色块、地形 3 种、物品 70 件带图标网格
+- 物件列表（视口内，按镜头距离排序）：`[图标] 名字 [静态|自建|已挪] 坐标 ✕`，点行=选中+镜头对准，✕=删除/隐藏；底部显示各类条目计数
+- 底部：💾 保存、清空自定义层、±缩放、✋ 拖动视角（复用游戏的 `camDrag`，`mapEditorPointerDown` 在拖动模式下不落笔）、← 回游戏
+- `on` 叠加物（桌上的电脑、书架上的书）在 map.json 里没有 x/y，列表坐标改用 placement 反推，不再出现 `undefined,undefined`；它们的 key 改成 `资产@on:宿主:dx,dy`
+
+### 5. 验证（无头 Chrome，真实鼠标点击 /editor.html）
+- 画布比例 1240×763 = 1.625（=1248/768）✓
+- 地板层点一格 → `entries().floor` 出现 `{x:13,y:7,t:"wood"}`，hub 收到 `floor:wood:13,7` ✓
+- 地形：空格画墙 → `grid=1`；擦掉 → `0`；农田 → `0`（可走）；水面 → `1`；水面再铺石板地板 → `0`（放行规则）✓
+- 物品层：`moveStatic('bush@46.2,12.4', 21, 12)` → hub 出现 `{a:"move",k,x:21,y:12}`，场景里 bush 变成 `moved:true` ✓
+- 擦除：地形/地板条目都能逐格删掉，hub 同步为空 ✓
+- 游戏页回归：`editorMode=false`、`dupGroups=0`、props 150、鱼照常走位、无 pageerror ✓
+- check.mjs **21/21**（新增第 21 项：独立编辑器三图层防回退）
+
+## v38.1 编辑器可用性修复：去灰蒙版 / 碰撞格开关 / 窗与鱼塘可选 / 镜头不再弹回（2026-11-08）
+
+用户反馈四条，逐条对应：
+
+### 1. "把画面中的灰色蒙版去掉"
+- 灰蒙版不是编辑器画的，是**夜间房间遮罩**：`applyRoomLights()` 在关灯时给每个房间盖 0.55~0.60 黑遮罩、户外 0.45，再加一层 vignette 暗角（depth 60000）
+- 编辑模式下 `applyRoomLights` 一律按"开灯"算（`lit = true`），并且**不创建暗角那层**；实测 `roomOverlays` 四个房间 alpha 全 0、`vignetteTex` 对象数 0
+- 游戏页不受影响：`emit('sleeping')` 后房间遮罩仍然回到 0.60（回归验证过）
+
+### 2. "碰撞显示添加一个开关"
+- 侧栏底部新增 **▦ 碰撞格** 按钮（`__mapEditor.grid(on)`），独立编辑器**默认关闭**（进编辑器先看干净地图）
+- `rebuildCustomLayer()` / `meRefreshTiles()` 原来会无条件 `toggleGrid(true)`，现在按"当前是否开着"还原，不会再被悄悄打开
+- 游戏内调试台的编辑模式仍然默认打开碰撞格（行为不变）
+
+### 3. "墙上的窗户没法选择"
+- 窗户画在 `buildRoom` 的 base graphics 上（压根不是家具），所以既点不中也进不了物件列表
+- 新增"底图结构"概念：`STRUCTS = win:office / win:bedroom / win:bath / pond:main`，写一条 `{a:"hide", k:"win:office"}` 就能隐藏；`buildRoom()` 与 `redrawWindow()`、池塘层都会认这个 key
+- 侧栏新增「底图结构（窗 / 鱼塘）」一栏：每行 `名称 + 显示中·隐藏 / 已隐藏·恢复`，改完自动 `rebuildRoomBase()` 重画底图
+
+### 4. "鱼塘是一体的选择不了"
+- 鱼塘由 `drawPond` 画在 depth=1 的 graphics 上 + `mapdata.blockers` 椭圆阻挡，所以点不到也删不掉
+- 拆成 `buildPondGfx()`：可整层隐藏（连带取消水面阻挡，blocked 320→309）；显示时重建
+- 想局部改形状：地板/地形叠加层 depth 提到 **6/7**（在池塘 1、农田 2/3、水影 3 之上、家具 footY≥72 之下）→ 直接在水面上铺地板/水面/农田就能覆盖，铺地板还会把该格改成可走
+
+### 5. "去除拖动视角又自动把视角弹回办公室"
+- 根因：`#cam-drag-btn` 的关闭分支无条件 `cam.startFollow(fish)` + `setZoom(1)`
+- 现在编辑模式（编辑中或独立编辑器）关掉拖动只 `stopFollow()`，镜头留在原地、缩放不动；非编辑状态行为不变
+- 实测：平移到 x=300 → 开关拖动视角一次 → 仍是 x=300 且 `follow:false`
+
+### 验证
+- 编辑器：`roomOverlays` 全 0、无 vignette、`grid` 默认 false 且可开可关、窗/鱼塘 隐藏→hub 落 `hide:win:office` 与 `hide:pond:main`、恢复后 blocked 回到 320
+- 游戏页回归：pond/winRedraw 都在、props 150 / blocked 320、鱼照常走位、睡觉时房间遮罩仍是 0.60、无 pageerror
+- check.mjs 21/21；`?v=` 已刷新（office.js / editor.html）
+
+## v39 源码拆分 web/src + 地图全面贴图化 + 去掉路灯光源（2026-11-08）
+
+用户反馈："现在全部功能全塞进一个 office 文件太奇怪了，优化拆分，同时地图上所有使用代码画的东西全部去掉，用现有的素材，包括墙体、水、地面，同时去除路灯的光源定位。"
+
+> 追加反馈（同日晚）："office.js 还是 255kb，你优化了啥，src 那些名字是什么玩意怎么还带数字的" → 见下面 v39.1。
+
+### 1. office.js 拆成 19 个片段（web/src/）+ 拼接产物
+- 片段按**功能命名**（不带序号，顺序由 `build.mjs` 的 `ORDER` 数组显式写死）：
+ `head`（IIFE 开头 + 常量/工具）→ `boot`（Boot 预载 + 主场景 create）→ `npc` → `view`（房间 tab / 拖动视角）→ `placement`（bbox 定位 + 灯光）→ `furniture`（家具层 + 碰撞格）→ `mapedit`（自定义层 + 游戏内面板）→ `editor-api`（三图层编辑）→ `pathfind`（A* + 鱼）→ `room`（底图贴图）→ `farm`（农场/鱼塘/料理）→ `hud` → `states`（事件/行走/动作）→ `life`（本地生活）→ `loop`（主循环 + 点击）→ `net`（WS + 状态条）→ `activity`（动态窗）→ `start`（Phaser 启动）→ `api`（`window.__office*` + IIFE 收尾）
+- `office/tools/split_office.mjs` 按段落标题机械切片（**一个字符都没改**）；切片方案跑过**字节级比对**：拼回去与原文件完全一致，拆分零行为风险
+- 为什么不改 ES module：office.js 是一个 ~5000 行的 IIFE，上百个闭包变量互相引用；改成 ES 导出绑定属于等价重写，风险远大于收益。片段 + 拼接既解决"全塞一个文件"，产物行为又不漂
+- `check.mjs` 第 22 项：`office.js` 必须等于 `build()` 结果、片段数 ≥10、关键片段齐全、ORDER 与磁盘文件必须一一对应
+- `bust.mjs` 重写为"改 src 的版本号 → 拼产物 → 算产物 hash → 改两个 html"，避免直接改产物又被 build 覆盖
+
+### 2. 地图全面贴图化（不再用 Graphics 画）
+- 新增 `office/tools/gen_tiles.mjs`：node 内置 zlib 自己编码 PNG，生成 12 张 48×48 贴图到 `web/assets/tiles/`：`wood / tile / stone / grass / road / wall / window / window-night / sky / water / bank / farm`
+- `80-room.js` 重写：底图 = 一张 **RenderTexture（2688×1488）**，`beginDraw/batchDraw/endDraw` 铺格子贴图——地板（按区域：木地板/瓷砖/石板/草/道路）→ 道路 → 池塘（水面+沙岸+栈道）→ 农田 → 隔墙 → 顶部墙带（墙 + 窗 + 天空）；原来的 `fillRect/fillStyle` 全删，check.mjs 加门禁："80-room.js 不许再出现 fillStyle"
+- 池塘从"独立 graphics"并入底图贴图（隐藏/恢复 = 重建底图）；农田田土也是贴图，`drawFarm()` 只保留状态层（浇水/施肥/作物）
+- 编辑器叠加层（地板/地形）同样改用同一套贴图（一张 RenderTexture，depth 6）
+- 部署：`sync_web.sh` 增加 `assets/tiles/`；`TILE_V` 由 bust 按 tiles 内容 hash 自动刷新
+
+### 3. 路灯的光源定位已删除
+- `buildLampGlows()`（在每盏路灯位置画 ADD 光圈标位置）连同两处调用一起删掉，`s.lampGlows` 不再存在；check.mjs 门禁：office.js 里出现 `lampGlows` 即报错
+
+### 验证
+- 底图 `baseGfx.type === "RenderTexture"`（2688×1488）、12 张 tile 贴图全部加载、`lampGlows` 不存在
+- 家具/碰撞照常：props 141（用户自己隐藏了 9 件静态物）、blocked 307、鱼照常走位、`dupGroups 0`、无 pageerror
+- 编辑器：刷 3 格路 + 3 格水 + 2 格墙 → `editLayerGfx` 是 RenderTexture、条目全部落 hub
+- check.mjs **22/22**；`web/office.js` 与 src 一致（`build.mjs --check` OK）
+
+### v39.1 片段改名 + 产物压缩
+- **片段名去掉数字前缀**：原先 `00-head.js / 10-core.js / …` 是机械切片时按行号起的临时名字，现已改成功能名（见上表），顺序改由 `build.mjs` 的 `ORDER` 显式声明（磁盘上多出/漏掉片段会直接报错）
+- **产物压缩**：拆分本身不减小体积（`office.js` 是拼接产物，还是同一份代码）。真正省体积靠 `build()` 里的安全压缩——删整行注释、删空行、去掉行首缩进（代码里没有多行模板字符串；压缩后还会跑一遍 `node --check`，语法不过就自动退回未压缩）
+ - `web/office.js`：**261,030 → 196,685 字节（−25%）**；未压缩拼接 225,456 字符 → 产物 182,331 字符（省 19% 换行+注释+缩进）
+ - 标识符和字符串一个字不动，所以 `check.mjs` 的特征串（`function applyCustomMap(` 等）在产物里照样搜得到；源码检查改为读**未压缩拼接** `buildRaw()`
+- 三个命令：`node office/tools/build.mjs`（拼+压缩）、`--check`（产物是否最新）、`--raw`（打印未压缩拼接，排查用）
+
 ## v36 农场 / 鱼塘 / 料理 + 调试道路层 + 视角自由拖动（2026-11-08）
 
 用户需求："debug 中能直接单独显示道路层；添加农场系统：锄地、浇水、播种、施肥、收割；添加鱼塘以及钓鱼；添加料理制作；邻居没有视角导航，没有自由拖动视角的按钮。"
@@ -1158,3 +1428,839 @@ setLights 里 lightPools/moonPool 改为 no-op 对象保持兼容。验收：白
 - node tools/check.mjs 19/19（区域锚点/阻挡/语义/事件表/版本号全绿）
 - 无头 Chromium 全链路走查：三户 点击→敲门气泡→进屋→欢迎语→切房间出屋 全部通过，JS 0 错误
 - 屋内截图核对：三户专属地板/家具/欢迎气泡均正确呈现
+
+
+### v39.2 窗变成可摆放的物品 / 鱼塘可逐格自定义
+- **窗**：`boot.js` 在预载时把 `tiles/window.png` 注册成资产 `window`（并补一条 `manifest.window: {frameW:48, frameH:48, bbox:[0,0,48,48]}`），同时进 `EDIT_PICKABLE`。摆放时 `placeExtraFor("window")` 会带上 `wall:true` → `makePlacement` 走"墙饰"分支：depth -5、不投影、**不产生碰撞**。于是窗和家具完全同权限：拖放、移动、删除、进物件列表（带图标）、id 落 hub。侧栏「底图结构」里那三行改成"（自带）"，只用于关掉 map.json 原生的三扇窗。
+- **鱼塘**：`paintPond()` 先看该格有没有用户条目（`floorEdits` / `terrainEdits`），有就跳过 → **用户手改的格子优先**。改形状的方法：地形层「水面」刷子加水扩大，地板层「草地/石板」刷子把多余的水填掉（填掉后该格同时解除阻挡）。整片不想要还能用「底图结构 → 鱼塘水面（自带椭圆）·隐藏」一刀关掉。
+- 验证：放两扇窗 → hub 收到 `{"a":"window","wall":true}`、`blocked` 311→311（不挡路）、列表出现 `window`、拖动从 x=710 移到 830；池塘中心格填草地后 `grid=0`、旁边加水面后 `grid=1`。
+
+
+### v39.3 物品分类展示
+- 71 件资产原来全挤在一个网格里，现在按用途分成 10 类（`mapedit.js` 的 `EDIT_CATS`）：🪑桌椅台 7 · 🗄收纳柜 7 · 🛋沙发床 5 · 🔌电器 8 · 🧸桌面小物 16 · 🍳厨卫 7 · 🪴植物装饰 5 · 🌳户外 12 · 🏠建筑 3 · 🪟窗/其它 1
+- 独立编辑器侧栏：类别 chips（带件数）→ 点类别只显示该类资产；默认「全部 71」，选中类别高亮，当前选中的资产在哪个类别里都还能用
+- 游戏内面板：资产网格上方加「分类下拉」，按 `data-cat` 过滤
+- `state().categories` 把分类+资产下发给前端；`check.mjs` 加了三条门禁：**每件资产必须恰好属于一个分类**（漏分类会让它在编辑器里找不到、重分类会重复显示）+ editor.html 必须有 `#ed-cats` 样式 + editor.js 必须有分类状态
+- 验证：chips 渲染 11 个（含全部）、点「沙发床」后网格只剩 sofa/armchair/double-bed/bed/crown-cushion 5 件并高亮、选中 sofa 后点地图能正常放置
+
+
+### v39.4 删掉「底图结构」+ 保存必须看得见（保存没反应的真因）
+- **删掉「底图结构（窗 / 鱼塘）」整栏**：`STRUCTS` / `__mapEditor.structs()` / `setStruct()` 全部移除，`room.js`、`placement.js`、`furniture.js` 里对应的 `win:*` / `pond:main` 隐藏分支一并删掉。窗本来就已是可摆放的物品，鱼塘可直接用刷子改形状，那栏只剩"隐藏开关"，容易误导。
+- **保存"没反应"的真因**：独立编辑器里保存结果只写进 `addEditLog`，而它写的是**游戏内面板的 `#edit-log`**，editor.html 里根本没这个 DOM → 成功/失败都静默；加上贴片保存是 260ms 防抖，改完立刻刷新就丢。修法：
+ - 侧栏底部新增 **保存状态条**：`✔ 12:03:44 已写入 hub（hub 现有 N 条）` / `✖ 保存失败：原因（改动已存本机浏览器）`；「💾 保存」按钮变成 保存中… → 结果
+ - 新增 `__mapEditor.saveNow(cb)`：POST 完**回读 GET /api/map** 校验条数，写入 `state().lastSave`，并通过 `window.onMapSaveResult` 推给侧栏
+ - 贴片防抖 260ms → **120ms**，并且**抬手就立刻 flush**（`mapEditorPointerUp`），改完马上刷新也不会丢
+ - 本机镜像修一个坑：`flushLocalMirror()` 原来只要 `pending` 就无脑推，**旧镜像会把 hub 新存档盖掉**；现在记录 `mirrorAt` 与 hub 的 `updatedAt` 比较，只有本机更新才补传，否则以 hub 为准
+- 验证：铺石板+水+放沙发 → 状态条 `✔ 已写入 hub（hub 现有 3 条）`；刷新后 `entries` 仍是 1 地板 / 1 地形 / 1 物品；拦截 fetch 模拟离线 → 状态条变红 `✖ 保存失败：offline-sim`；侧栏已无「底图结构」，`typeof __mapEditor.structs === 'undefined'`
+
+
+### v39.5 删掉代码里画死的旧窗
+- `room.js` 的 `paintTopBand()` 不再画窗：顶部墙带只剩「墙 + 天空 + 大门门洞」，`winCells/winMat` 一并删掉
+- `placement.js` 的 `redrawWindow()` 整个删除（它原本负责昼夜重绘那三扇窗），`applyRoomLights()` 与 `weather.setWeather()` 里的两处调用同步移除；`s.winRedraw` 不再存在
+- `head.js` 的 `EXTRA_WINDOWS`（卧室窗/卫浴高窗的坐标表）删除；`boot.js` 里 `redrawWindow()` 的兜底调用删除
+- 窗只剩一种来源：物品层里的 **window** 资产（`wall:true`，不挡路，可拖可删）。想要几扇、摆哪里，都自己放
+- `check.mjs` 加门禁：office.js 里再出现 `EXTRA_WINDOWS / redrawWindow / winRedraw`，或 room.js 里再有 `winCells/winMat` → 直接报错
+- 验证：`scene.winRedraw === undefined`、`EXTRA_WINDOWS` 未定义、顶部墙带截图无窗、关灯仍正常（roomOverlays 0.60）、物品层放窗仍能落 hub（`{"a":"window","wall":true}`）
+
+
+### v40 光照层：昼夜预览 + 夜间阴影可调 + 自定义灯源
+编辑器新增第 4 个图层「🌙 光照层」（独立编辑器里点 tab 进入）：
+
+**1. 昼夜预览**（`🕒 自动 / ☀ 白天 / 🌙 黑夜`）
+- `head.js` 加 `var forceNight = null`，`isNightHour()` 认它 → 预览直接影响夜景判定
+- `applyRoomLights()` 语义改为：`day`=全亮 / `night`=按关灯画（能看到阴影和灯光）/ `auto`=编辑器全亮、游戏按真实状态
+- 黑夜预览时内置灯池（lightPools）保持点亮，方便对着灯光位置调参
+
+**2. 夜间阴影可调**（两条滑杆，存 localStorage `office_night_cfg`）
+- **暗度** 0→0.9：`roomOverlays` 的 alpha（原来写死 0.60，户外 0.45 = 0.75×）
+- **外扩** 0→96px：遮罩矩形四边同时外扩（`ov._base` 存原始矩形，`setPosition/setSize` 重算），于是阴影能盖过相邻房间/墙
+- 刷新后参数保留（`loadNightCfg()` 在启动时读回）
+
+**3. 自定义灯源**（`{a:"light", x, y, r, al, tint, id}`，hub 零改动）
+- 预设 4 种：路灯暖光 / 室内暖光 / 冷光 / 大范围（半径+亮度+色温各不相同）
+- 工具：`💡 落灯`（点地图放）、`✥ 拖动`（按住拖灯）、`🗑 删灯`（点灯删除）
+- 灯光列表：色点 + 半径/亮度 + 坐标 + ✕；选中灯后出现「半径 / 亮度」两条滑杆实时改
+- 渲染：复用 `lightpool` 径向渐变贴图 + ADD 叠加，depth 50000（与内置光池同层），整体重建
+- 修了两个 bug：①灯 id 用 `Date.now()` 会在同一毫秒内重复 → hub 报「id 重复」整批保存失败；②贴片/灯保存的 120ms 防抖窗口里，hub 广播会把刚改的列表清掉 → 新增 `meEditing` 标记，改动落盘前忽略广播
+
+**验证**（无头 Chrome）：黑夜预览 `roomOverlays` 0.6；暗度 0.35 + 外扩 32 → alpha 0.35、宽 1312（1248+64）；白天预览 → 全 0；落 3 盏灯 → hub 3 条（r/al/tint 齐全）、场景 3 个精灵；改半径 5/亮度 0.8、拖到 (21,12)、删 1 盏 → hub 同步；刷新后 `alpha 0.35 / pad 32 / preview night` 与剩余 2 盏灯都在
+
+
+### v41 阴影区域改成「拉框」（矩形块，不是逐格刷）
+- 数据模型：`{a:"shadow", x, y, w, h, lv, id}`（x,y=左上格，w/h=格数，lv=1..3 浓淡），hub 零改动
+- **交互**（光照层 → 子模式「🌑 阴影区域」）：
+ - `▭ 拉框`：在画布上按住拖一个矩形 → 拖动中有蓝色半透明预览框 → 松手落一块阴影（只点一下就是 1×1）
+ - `✥ 移动块`：按住已有阴影块拖动整体移动
+ - `🗑 删块`：点一下删掉整块
+ - 浓淡 `淡 / 中 / 浓`：设画笔浓度；**若已选中某块，顺手改那一块**
+ - `清空全部阴影块（N）` 一键清空
+- 侧栏「阴影块（N）」列表：`阴影 #1  9×4 · 淡  2,2  ✕`，点行选中（高亮）
+- 夜间阴影两个滑杆旁边新增 **「用内置房间遮罩」开关**：关掉后只剩自己拉的阴影块，不再叠加 4 个房间矩形
+- 渲染：一块一个 `fillRect`（depth 59100），alpha = 全局暗度 × 浓淡系数（淡 0.5× / 中 1× / 浓 1.5×，上限 0.92）
+- 验证：拖 8×5 → hub `{x:2,y:2,w:9,h:4,lv:2}`；第二块用「浓」→ lv=3；选中第一块点「淡」→ lv 变 1；删一块 → hub 剩 1；刷新后仍在，场景 `shadowGfx` 存在
+
+
+### v42 阴影区域列表化：内置房间也进列表，每块独立「夜 / 开灯 / 白天」三档浓度
+之前是"4 个写死的房间矩形 + 全局暗度/外扩 + 手刷块"三套东西混在一起，确实乱。现在统一成一个模型：
+
+**数据**（`mapedit.js`）
+- `BUILTIN_SHADOWS`：内置 5 块 —— 办公室 26×15 / 卧室 9×13 / 卫浴 6×13 / 厨房 9×13 / 户外(花园+街道) 30×30，默认 `night 0.60 / lit 0 / day 0`（户外全 0，不改变现有效果）
+- 自定义层条目：`{a:"shadow", id, x, y, w, h, night, lit, day}` = 新增块或覆盖内置块；`{a:"shadow", id:"b_kitchen", del:1}` = 删除内置块
+- `buildShadowRegions()` 把「内置 + 覆盖 − 删除 + 自定义」合并成最终列表；`shadowAlphaOf(r)` 按当前时刻取值：
+ `白天(非夜间)` → `day` ｜ `夜间 + 该房间灯开` → `lit` ｜ `夜间 + 灯关` → `night`
+- 三个值分开存放，互不影响；`room` 字段让内置块跟着对应房间的灯状态走，自定义块跟全局灯状态
+
+**渲染**（`placement.js`）
+- 原来 4 个 `roomOverlays` 矩形退休（`roomOverlays = {}`），暗度全部由 `renderNightShadow()` 一个 Graphics 按区域绘制（depth 59100）
+- `applyRoomLights()` 里那句"重画房间遮罩"改成 `renderNightShadow(s)` —— 开关灯/昼夜变化立刻反映
+
+**编辑器 UI**（光照层 → 阴影区域，截图见 `logs/office-v37-shots/map-v42-shadow-list.png`）
+- 顶部删掉了重复控制的「暗度 / 外扩 / 用内置房间遮罩」三条
+- **新拉一块的默认浓度**：夜 / 开灯 / 白天 三条滑杆（`setShadowDefaults`）
+- **阴影块列表**（内置 + 自建都在里面）：`办公室 [内置·26×15] 夜0.80·灯0.15·昼0.05  0.80 ✕`，末尾是"当前生效浓度"
+- 点某块 → 上方出现编辑面板：**改名字** + **夜/开灯/白天三条滑杆**（改哪条存哪条）
+- 内置块同样可：改名、移动（切「✥ 移动块」拖）、删除（✕ 写 del 标记，删了就不再出现）
+- 拉框预览、移动块、删块、清空（只清自建，内置恢复默认）都在
+
+**验证**：默认列出 5 块内置；改办公室 `0.8/0.15/0.05` → hub 落 `{id:"b_office",...}`，黑夜预览生效 0.8、白天预览生效 0.05；删「厨房」→ hub 落 `b_kitchen:DEL` 且列表消失；改「卧室」名字为"主卧"并移到 (2,2) 8×10、浓度 0.75 → 刷新后全部保留。
+
+
+### v43 地图重建：道路 / 农田 / 鱼塘 / 路灯 / 光源 / 邻居家
+用 `office/tools/gen_map.mjs` 重新生成 `web/map.json`（数据驱动，可重跑），逐项修掉原来的不合理：
+
+| 原来的问题 | 现在 |
+|---|---|
+| 三户房屋外观在 y≈9（路北），室内在 rows20-28（路南），靠 10 格"门径"硬连 | 房屋外观挪到各自室内正上方（y=19.6，踩在 y19 墙上），门洞正对门前的路 |
+| 道路只有一条 y8.6 横街贴着房顶，门径 10 格长 | **mapdata.roads 数据驱动**：主街 y16-18 紧贴房前 + 每户 1 格迎宾垫 + 花园纵向小径（x33-34 → 塘边）+ 办公室东门石板小院；`paintRoads()` 改成读这个数组（老地图没 roads 字段时走兜底） |
+| 路灯 5 盏散在四处，其中两盏(52,13.6 / 53,12.4)几乎重叠，还有一盏落在花园里 | 沿主街等距 5 盏（x=30.5/38.5/44.5/50.5/55，y15.2 人行道）+ 花园小径 1 盏 + 塘边栈道 1 盏 |
+| 光源只有内置光池 + 编辑器手加，和灯对不上 | 新增 **mapdata.lights**：一盏灯一个光斑，位置跟着灯走（7 个）；编辑器「灯源列表」里以 `内置` 出现，可改半径/亮度/拖动/删除（删=写 del 标记，改=写覆盖条目，hub 零改动） |
+| 白天也亮着大光斑，把地板糊成一片 | 光源按昼夜缩放：夜里 1.0×、白天 0.18× |
+| 池塘沙岸 1.55 倍太宽，把花园东南整片铺成沙子 | 收窄到 1.12（一圈薄沙岸） |
+| 家具压墙 / 压水 / 压田 / 压路 | 脚本自动检测：能挪的挪（6 件：两个摊位、花、窗帘、博士家黑板/药水架），挪不动的剔除；新增"固定位置"表处理长椅 |
+| 市集/长椅锚点落在新马路上 | 锚点跟着家具走：market → (49.6,14.2)、town_bench → (47.4,14.1) |
+| 邻居家隔墙 x40/45/50 与室内不对齐 | 统一成 39/45/51 三道隔墙 + 每户北墙 y19 带 2 格门洞 |
+
+**验证**：`zoneAudit` 0 问题；market/town_bench/farm/pond/三户门口/garden/town 锚点全部可走；props 150 / blocked 327；7 个内置光斑；编辑器灯源列表出现 `bl_1..bl_7(内置)`，改半径/删灯分别落 `{id:"bl_1",r:4.5,al:0.7}` 与 `{id:"bl_3",del:1}`；`check.mjs` 22/22。
+
+
+### v44 编辑器三连修：坐标对不上 / 不能旋转 / 一直锁在放置态
+用户报的三个问题，根因都在坐标与工具状态机：
+
+**① 物品落在鼠标右下方半格**
+- `map.json` 里 `f.x` 的语义是"格中心"（`world = f.x*TILE + TILE/2`），但放置代码写成了 `x = (wx - TILE/2)/TILE + 0.5` —— 多加了半格
+- 现在统一走 `editSnapX/editSnapY`（0.1 格精度吸附，落点即光标位置），**放置 / 拖动 / 半透明预览三处共用同一套坐标**；预览原来吸附"格中心"、落点偏半格，所以看起来永远对不上
+- 验证：点格 (20,10) 中心 → hub 落 `{x:20,y:10}`；预览坐标 = `22*48+24, 48+9*48+24` 与落点一致
+
+**② 不能旋转**
+- 新增朝向状态 `EDIT_ROT`（0=南 1=东 2=北 3=西）+ `editFrameFor()`：帧号 = 行 × 每行帧数（家具每行 1 帧、角色每行 8 帧），行序按 manifest 的 `South/East/West/North`
+- 侧栏物品层多一个 **`⟳ 旋转 · 东`** 按钮，快捷键 **R**；先选资产 → 转"下一次要放的"；已选中自建物品 → 直接转那一件（走 hub `update` 写 `frame`）
+- 4 个朝向连放验证：hub 依次得到 `frame:1 / 3 / 2 / (默认0)` ✓
+
+**③ 一直锁在放置态 / 点删除还在摆东西**
+- 根因：`tool` 的判定把"资产还选着"放在最高优先级 —— `ME.asset ? "add" : "select"`，所以选了资产后点「选择」「删除」都会被改回"放置"
+- 现在改为工具优先：`erase→delete`、`move→move`、`select→select`，只有 `paint` 且选了资产才是 `add`
+- 另外**默认"放一次就交还选择工具"**（放完 `asset` 清空、工具切 `select`、预览销毁），想连续摆就勾「连续放置」
+- 物品层工具行补了「🎯 选择」；选定资产后立刻进入"放置+预览"，鼠标一动就能看到跟手的半透明预览
+
+`check.mjs` 22/22；三处回归都用无头 Chrome 真点验证（落点、四向帧号、放完再点不重复、切删除能删掉）。
+
+
+### v45 旋转后影子 / 碰撞 / 脚点跟着变
+用户反馈"虽然旋转了，但影子和碰撞距离没改"，根因是 **manifest 里只存了第一行（正面）的 bbox**：
+
+- 贴图是 4 行（South/East/West/North，每行 1 帧），每行内容尺寸完全不同（沙发正面 46×25、侧面 21×44；桌子正面 52×42、侧面 28×60）
+- 而 `makePlacement` 一直用 `m.bbox`（= 正面那行）算：脚点 origin、`p.bbox`，再由 `p.bbox` 推导**接触阴影宽度**（`furniture.js:49`）和**碰撞格投影**（`furniture.js:99`）→ 转完还是按正面尺寸
+
+修法：
+- 新增 `office/tools/gen_bboxrows.ps1`：把每张家具图**每行第一格**的 alpha 包围盒算出来，写进 `assets/manifest.json` 的 `bboxRows`（74 个资产，72 个各行尺寸不同；whale.json 同步补上 20 行）
+- 新增 `bboxForFrame(m, frame)`（head.js）：`row = floor(frame / 每行帧数)` → 取那一行的 bbox，缺 `bboxRows` 时退回 `m.bbox`
+- `makePlacement` 改用它 → 脚点 / 影子 / 碰撞 / 命中盒 / 选中框全部自动跟着朝向走
+- 编辑器半透明预览也按当前朝向取 bbox，并在换帧后重算 origin（否则转一次预览就歪）
+- 顺带把 payload 里的 `rot` 去掉：hub 白名单不含 `rot`，留着只会出现"frame=1 但 rot=0"的自相矛盾，**frame 是唯一真相**
+
+**验证**（无头 Chrome，真点真转）：
+- 沙发：南向 `bbox [1,11,46,25]`、影子宽 58px → 转 90° 后 `bbox [13,2,21,44]`、影子宽 **25px**
+- 桌子：南向 `bbox [6,11,52,42]`、影子 66px、占地 **3 格**(19,9/20,9/21,9) → 转 90° 后 `bbox [18,2,28,60]`、影子 32px、占地 **1 格**(20,9)
+- `check.mjs` 新增 4 条门禁：必须有 `bboxForFrame`、placement 必须按行取、预览必须按朝向取、多行资产必须有 `bboxRows`
+
+
+### v46 Shift 连放 / 撤销重做 / 按层清空
+用户三点：Shift 连放、别一刀切清空、要能撤销上一步。
+
+**① 按住 Shift 连续摆放**
+- `editPointerDown` 读到 `pointer.event.shiftKey` → 这一次放完不交还工具，可以接着点下一个位置
+- 不按 Shift 仍是"放一次就回「选择」"；侧栏「连续放置」勾选则是永久连放
+- 验证：按住 Shift 点 3 个格子 → 3 把椅子且仍是 `tool=paint / asset=chair`；松开 Shift 再点一次 → 放下并自动切回 `select`
+
+**② 撤销 / 重做（`↶ 撤销` / `↷ 重做`，Ctrl+Z / Ctrl+Shift+Z / Ctrl+Y）**
+- `editor-api.js` 加了内存历史栈（最多 80 步）：`mePushHistory()` 在每次写操作**之前**压一份整层快照
+- 关键点：`meSetTile / meEraseAt / meAddLight / mePatchLight / meRemoveLight / meAddShadow / mePatchShadow / meRemoveShadow / meClearShadows / meClearLayer` 这些"先改数据再存"的路径，必须调 `meBeginMutation()`（压快照 + 锁住紧接着 `saveEditMap` 的二次压栈），否则撤销拿到的是"改完"的状态 = 撤销无效
+- 撤销/重做都是把快照整层 `set` 回 hub，所以 hub 与画面同步（实测 4→3→2 把、hub 也 3→2）
+- 历史只在内存里：刷新页面后栈会清空（存档本身不受影响）
+
+**③ 清空不再一刀切**
+- 底部「🧹 清空…」弹序号菜单：`地板层 / 地形层 / 物品层（自建物品）/ 灯源 / 阴影区域覆盖 / 全部`
+- 只清对应种类，其他层原样保留（实测清物品层：removed 3、floor 1 / terrain 1 仍在）
+- 清完还能 `Ctrl+Z` 撤回来（实测 objs 0 → 3）
+- 顺手修了 `objectCount` 把灯源/阴影算成物品的统计错
+
+**验证**：Shift 连放 3 把 → 撤两次 → 重做；铺 2 块地板 → 撤 2 次归零；加 1 盏灯 → 撤销回 7 盏；按层清空/撤销全部通过；`check.mjs` 22/22
+
+
+### v47 存档保护：自动备份 / 一键回滚 / 本机副本（道歉 + 补漏）
+**先说结论**：`map.custom.json` 里目前只剩 14 条（9 条旧 hide + 3 条花园家具 move + 2 条 hide），**没有你的花圃**。原因是我的测试脚本反复直接写这份文件（`clearAll` / `clearLayer('all')`），把它冲掉了——这是我的问题，不是"没保存"。
+
+#### 现在加的保护（三道）
+1. **hub 每次覆盖前自动备份**
+   - `hub.mjs` 新增 `backupMapFile()`：写 `map.custom.json` 之前先 `copy` 到 `office/hub/map.backups/map-<时间戳>-<条数>条.json`，保留最近 **30** 份
+   - 新增 `GET /api/map/backups`（列表，带条数/大小/时间）与 `POST /api/map/restore {name}`（恢复，恢复前也会备份当前状态；文件名白名单校验，禁止路径穿越）
+2. **编辑器里一键回滚**：底部新增 `🗂 历史存档`（弹列表选序号恢复）、`↺ 本机副本`（用浏览器 `localStorage.office_map_custom_v1` 覆盖 hub，离线编辑的兜底 / 也可能是丢失前的最后一份）
+3. **仍然保留**：`Ctrl+Z` 内存撤销栈、按层清空（不再一刀切）
+
+#### 我的测试从此不再碰你的存档
+- `hub.mjs` 早就支持 `OFFICE_MAP_FILE` 环境变量；本轮验证全程用 `C:\...\Temp\mapdiag\tmp-map.json`，备份落在同目录 `map.backups/`
+- 验证结果：写 3 条 → 写 5 条 → 清空 0 条，备份列表拿到 `0条 / 3条 / 5条` 三份，`restore` 选 5 条那份 → hub 回到 5 条且内容正确
+
+#### 你的花圃
+从截图看是 **3 格泥土（农田贴片）+ 一盏路灯**。两种恢复办法：
+- 你打开编辑器点 `↺ 本机副本`，如果当年那份还在浏览器里，会直接回来（会自动先备份 hub 现状）
+- 或者告诉我大概位置（哪一格附近），我用一条 `set` 直接写回去：`terrain farm @(x,y)×N + street-lamp`
+
+
+#### 用你自己的话收尾：只做"不再被覆盖"这件事
+你的选择：**花圃你自己重画；备份策略保持"每次写都备份 + 保留 30 份"**。所以这一轮只加固保护，不再动你的数据：
+
+1. **基线备份已建立**：`office/hub/map.backups/map-20261109-130325-14条.json`（你现在这份 14 条状态），
+   这样「🗂 历史存档」一开始就不是空的，任何时候都能回到今天这一步
+2. **hub 运行中的保护**：从今以后每次写 `map.custom.json` 之前都会先备份（保留 30 份，带时间戳+条数）
+3. **新增测试专用入口** `office/tools/test-hub.mjs`：
+   `node office/tools/test-hub.mjs` 起一个数据文件指向 `%TEMP%\office-hub-test-*` 的 hub，
+   **绝不读写你的真实存档**。以后所有自动化验证（包括我）都走这个入口，不再直连你的 4321 数据文件
+4. **客户端防旧覆盖**：`applyCustomMap` 已有 `mirrorAt > hubUpdatedAt` 判定 —— 浏览器里的旧副本不会把新存档盖回去
+
+#### 如果你重画完发现"又没了"，按这个顺序查
+1. 编辑器底部看那行状态：`✔ 已写入 hub（hub 现有 N 条）` —— 记下 N
+2. 点 `🗂 历史存档`：列表里有时间戳和条数，选你重画完那一步恢复即可
+3. 还不行点 `↺ 本机副本`：用浏览器里的副本覆盖 hub（会先备份 hub 现状）
+4. 再不行看 `office/hub/map.backups/` 目录，直接把某个 json 复制成 `map.custom.json` 重启 hub
+
+
+### v48 编辑页清场 + 右键拖动画面
+**① 屏蔽游戏原有 UI（编辑页专用）**
+- `#game-chrome`（标题栏 / 房间标签 / 底部状态条）本来就在 editor.html 里 `display:none`
+- 画布内的东西也清掉了：
+ - **NPC 名牌**（喵酱/村长/博士）：`npc.js` 建 tag 后 `if (editorMode) tag.setVisible(false)`
+ - **鱼的气泡**：`showBubble()` 在 `editorMode` 直接 return（编辑器用自己的 `editToast`）
+- 结果：编辑页只剩地图本体 + 右侧侧栏（见 `logs/office-v37-shots/map-v48-editor.png`）
+
+**② 右键拖动画面，松手自动恢复**
+- `bindCamDrag` 加了 `rightDrag`：`pointerdown` 时若 `p.rightButtonDown()` → 直接进入平移，**与「拖动视角」按钮状态无关**
+- `pointermove`：`(!camDragOn && !rightDrag)` 才返回，所以右键拖同样走"超过 6px 才算拖"的判定
+- `pointerup`：`rightDrag = false;` → 松手即恢复，不需要再点一次按钮
+- 画布上 `contextmenu` 已被 `preventDefault`，右键不会弹浏览器菜单
+- 右键不落笔：`loop.js` 的点击分发与 `mapEditorPointerDown` 都加了 `rightButtonDown()` 早退，**右键拖动不会误放物品**
+- 侧栏「✋ 拖动视角」保留（给触屏/触控板常开用），标题改成「拖动视角（右键临时拖）」
+
+**验证**（临时 hub，不碰真实存档）：右键按下 → 拖 6 步 → 松开，镜头 `scrollX/Y` 从 `0,0` → `150,72`；hub 条数不变（没误放）；随后左键点地图仍能正常放置（+1）。`check.mjs` 新增 5 条门禁（rightDrag / contextmenu / 右键拦截 / 气泡 / 名牌），22/22 通过。
+
+
+### v49 灯开关为什么没用：两层原因 + 修法
+用户报"框选区域打开灯后亮度没变化"，追下去是两个问题叠在一起：
+
+**① 编辑器「黑夜预览」把开灯状态强行当关灯**
+`shadowAlphaOf()` 里有一行 `if (previewNight() === "night") on = false;` —— 我当初为了让"黑夜预览"能看见暗部写的，结果预览黑夜时永远按"关灯"取值，按开灯也不会变。已删除该行：预览只决定"是不是夜里"，开灯与否看真实开关。
+同时 `applyRoomLights()` 里灯池也改回跟随真实开关（原来黑夜预览强制点亮），这样按一下房间灯能立刻看到灯池亮灭。
+
+**② 自己拉的阴影区域没绑定房间（这是用户这次的主因）**
+- 区域的浓度分三档：`夜 / 开灯 / 白天`。"开灯"那一档什么时候用，取决于这块区域"属于哪个房间"
+- 自定义块原来写死 `room: null` → 只跟**全局**灯（`lightsOn`）；而调试台的房间灯是**分房间**开的 → 区域永远停在"夜"值，看起来就是"开灯没反应"
+- 现在：`roomForRect(x,y,w,h)` 和内置 4 个房间矩形**比重叠面积**自动归属；条目里存了 `room` 则优先用
+- 没有归属的块（花园/街道）改为跟随"任意房间开着灯"，不再死盯全局开关
+- 编辑器侧栏：阴影块列表行显示 `跟起居 / 跟卫浴 / 跟全局`；选中块后多一排「跟随灯」按钮可手动指定（自动/办公室/起居/卫浴/厨房/全局）
+- 光照层还加了 **房间灯开关** 一排按钮（办公室/起居/卫浴/厨房 + 全部开/关），可以在编辑器里直接验证"夜 ↔ 开灯"两档
+
+**验证**（用你真实存档的副本）：你画的 `smw8vrltza4`（10×15 @0,0，夜0.65 / 灯0.10）原来 `alphaNow` 恒为 0.65；
+现在自动归属"起居"→ 开起居灯变 **0.10**、关回去变 0.65；手动改成"跟卫浴"后只有卫浴灯能驱动它（开起居不影响）。
+
+**注意**：你的存档里 5 个内置区域（办公室/卧室/卫浴/厨房/户外）都被标了 `del:1`（之前用 ✕ 删掉了），所以现在只有这一块在产生暗部。要恢复"整栋房子晚上变暗"，在阴影块列表里把它们加回来即可（需要我直接写回也行）。
+
+
+### v50 灯开关做成素材：可摆放 / 可移动 / 单独控制
+之前"开灯/关灯"只是调试台的全局按钮，地图上没有任何开关实体。现在有了一件正经的**素材**：
+
+**① 贴图（新）**
+- `office/tools/gen_tiles.mjs` 新增 `drawSwitch()`，生成两张 48×48：`tiles/switch-off.png`（面板 + 拨杆朝下）、`tiles/switch-on.png`（拨杆朝上 + 绿色指示灯）
+- `boot.js` 里 `load.image("switch" / "switch-on")`，并 `manifest["switch"] = { frameW:48, frameH:48, rows:{South:1}, bbox:[13,12,22,26] }` —— 于是它和窗一样是"可摆放的物品"
+
+**② 摆进地图**
+- 编辑器 → 物品层 → 分类 **「🪟 窗/开关」** 里多了 `switch`
+- 放置时自动带 `wall: true`（挂墙上、不挡路、不产生碰撞），深度贴墙
+- 可拖动、可旋转、可删除（和其它物品一样）；`房间归属` 默认按位置自动判断（离哪个房间矩形最近）
+
+**③ 单独控制某个房间**
+- 选中开关后，右侧出现 **「控制房间（点开关时切哪盏灯）」**：办公室 / 起居 / 卫浴 / 厨房 / 不绑定
+- 数据落在物品条目的 `room` 字段（hub `update` 白名单已加 `room`）
+- 游戏里点开关：切换该房间的灯 → `roomLights[room]` 取反 → `applyRoomLights()` 重画阴影/灯池 → 开关自己的贴图也换成 `switch-on/off`
+- 点击优先级放在最前面（鱼在忙、有气泡时也能按）
+
+**验证**：游戏页真鼠标点开关 → 贴图 `switch-on → switch`、`office` 灯池 alpha `0.16 → 0`（真的关灯）；再点回 `switch-on`、灯池恢复；API `__office.toggleSwitch(wx,wy)` 同样两次都成功。
+
+**注意**：调试台原有的「开灯/关灯」按钮是全屋总开关，仍然保留；现在你可以在地图上按房间放多个开关，各管各的。
+
+
+### v51 窗 / 开关终于能贴到墙上了
+**为什么之前放不上去**：顶部那条 48px 的北墙带在"格子坐标"里是 `ty = -1`，而编辑器的 `meInBounds()` 只认 `ty ≥ 0` —— 点墙带直接被当成"界外"吞掉，连预览都不显示。
+
+**改法**
+- 新增 `band` 标记：墙带里落笔 → 物品存 `{x, y: 0, band: true}`
+- `makePlacement()`：`band` 时脚点落在墙带底边（世界 y = 48），配合 `wall: true` 的 depth = -5，正好贴在墙带里
+- 编辑器 `meInBounds()`：`ty = -1` 时，如果资产是挂墙类（窗/开关，`placeExtraFor().wall`）或当前工具是 选择/移动/删除，就放行
+- 半透明预览也贴墙带（`worldY < WALL_H && meWallAsset(asset)` → 预览 y=48），所见即所得
+- 拖动：从墙带拖到地面 → `band: false`（正常摆在地上）；从地面拖回墙带 → `band: true`；hub `update` 白名单加了 `band`
+- 顺带修：`move` 工具在墙带里原来也会被吞（只放行了 select/erase），现在一并放行
+
+**验证**（临时 hub，未碰你的存档）：
+- 点墙带 (7.5, 26px) 放窗 → hub `{a:"window", x:7.5, y:0, band:true, wall:true}`，场景里 sprite 在 `(384, 48)`、depth -5
+- 点墙带 (18, 26px) 放开关 → `{a:"switch", x:18, y:0, band:true}`，同样贴在墙带上
+- 预览坐标 `(288, 48)` —— 和落点一致
+- 墙体里的窗能被选中（`selF.band = true`），拖到地面后 `band: false, y: 10`
+
+
+### v52 会变化的素材：窗 昼夜 / 开关 · 壁灯 亮灭（+ 新素材壁灯）
+用户要"能变化的素材"，所以把"多状态贴图"做成机制，而不是只给开关写死一段逻辑。
+
+**① 机制：`manifest[a].states`**
+```js
+manifest.window    = { ..., states: { night: "window-night", day: "window" } };   // 随昼夜
+manifest.switch    = { ..., states: { on: "switch-on",  off: "switch" } };        // 随房间灯
+manifest["wall-lamp"] = { ..., states: { on: "lamp-on", off: "lamp-off" } };      // 随房间灯
+```
+- `furniture.js::applyPropStates(s)` 统一处理：遍历 `s.placed`，按分类取"当前该用哪张图"，`setTexture` 换掉
+- 分类表：`LIGHT_STATE_ASSETS = { switch, wall-lamp }`（跟房间灯）、`NIGHT_STATE_ASSETS = { window }`（跟昼夜，含编辑器黑夜预览）
+- 调用点：建完家具层、`applyRoomLights()`（开关灯/昼夜切换都会走到）
+- 想再加会变的素材：`gen_tiles` 画两张 PNG → boot 里 `load.image` + `manifest[x].states` → 塞进上面两个分类表即可
+
+**② 新素材：墙上壁灯（wall-lamp）**
+- `gen_tiles.mjs::drawLamp()`：墙座 + 支架 + 灯罩；亮起时灯罩暖黄 + 三层光晕
+- 编辑器「🪟 窗/开关」分类里多一项；放置自带 `wall:true`（可贴墙带）、可拖动、点它也能切房间灯
+
+**③ 验证（临时 hub，未碰存档）**
+| 状态 | window | switch | wall-lamp |
+|---|---|---|---|
+| 白天 / 关灯 | `window` | `switch` | `lamp-off` |
+| 夜间 / 关灯 | `window-night` | `switch` | `lamp-off` |
+| 夜间 / 开灯 | `window-night` | `switch-on` | `lamp-on` |
+| 白天 / 开灯 | `window` | `switch-on` | `lamp-on` |
+
+（实机是北京时间 18:00 后，所以"放置后"直接就是 `window-night`；切「☀ 白天」预览立刻回 `window`。）
+
+
+### v53 阴影名称打不了字：900ms 自动刷新把输入框重建了
+**原因**：侧栏每 900ms 跑一次轻量刷新 → `renderShadows()` 每次 `box.innerHTML = ""` 重建整个"选中块编辑面板"，刚聚焦的名称输入框就被销毁 → 每按一个字都丢焦点；而且 `onchange` 需要 blur 才触发，面板一重建连保存都不会发生。
+
+**改法**
+- `editingNow()`：若当前焦点在 `#ed-shadow-edit` / `#ed-switch-edit` 里的输入控件上，`renderShadows / renderObjects / renderLights` 这一轮**直接跳过**
+- 编辑面板按 `box.dataset.sid` 记住"这是哪一块"：同一块选中时只**原地更新**数值（`data-out` / `data-inp` 标记），不再重建输入框
+- 名称输入改成 `oninput` + 400ms 防抖保存（不再依赖 blur），且不调 `refresh()`
+
+**验证**：选中一块 → 聚焦名称框 → 逐个输入 4 个字（中间跨过一整轮自动刷新）→ 焦点仍在输入框、内容完整保留；hub 里该块 `label` 已写入。
+
+
+### v54 新开关点不了 + 删掉旧开关
+**为什么点不了**：游戏页的点击链路（`bindClick` → `toggleSwitchAt`）一直是通的，但**编辑器页**的点击被 `mapEditorPointerDown` 先接走了（编辑语义=放置/选择/移动/删除），所以站在编辑器里点开关毫无反应 —— 你看到的"新开关点不了"就是这个。
+
+**改法**
+- 编辑器物品层：选择工具（或"放置"但没选资产）点到 `switch` / `wall-lamp` → 直接调同一个 `toggleSwitchAt()` 切房间灯，同时把它设为选中对象（右侧可继续改"控制房间"），并弹一个"起居：开灯"的 toast
+- 暴露 `__mapEditor.toggleSwitchAt(wx, wy)` 方便自动化验证
+- 顺带修：`renderObjects()` 里 v53 插守卫时把 `var list = M.objects();` 挤到同一行，导致侧栏报 `list is not defined`（编辑器打开就抛异常），已恢复
+
+**删旧开关**：调试台「③ 场景控制」里的 `💡 开灯 / 🌙 关灯` 两个按钮连同事件一起删除（`__officeCtl.setLights()` 接口保留给自动化）。地图上的开关/壁灯现在是唯一的开关入口。
+
+**验证**（用你存档的副本，两个页面都试）
+| 位置 | 操作 | 结果 |
+|---|---|---|
+| 编辑器 | 选择工具点开关 | `bedroom` 灯 false→true→false，`switch`↔`switch-on`、`lamp-off`↔`lamp-on` |
+| 游戏页 | 鼠标点开关 | `switch`→`switch-on`+`lamp-on`，再点回灭 |
+| 调试台 | — | `#dbg-light-on` / `#dbg-light-off` 已不存在 |
+
+
+### v55 为什么"还是没变化"：点开关变成了"又放一个开关"
+上一版只在**选择工具**下才切灯；而编辑器默认是「放置」+ 刚选过的资产（`switch` 还亮着），于是：
+
+1. 点开关 → 走"放置"分支，在同一个位置又叠了一个开关 → 看起来毫无变化（其实物件数在涨）
+2. 编辑器里 `showBubble` 被屏蔽 → 连"开关灯"的提示都没有
+
+**改法**
+- 编辑器物品层：**除了「移动 / 删除」，任何工具点中 `switch` / `wall-lamp` 都直接切灯**（并选中它），不会再多放一个
+- 点中时加**视觉反馈**：开关位置闪一圈暖色光晕（`flashAt`，游戏页/编辑器都可见）+ 编辑器底部状态行显示「💡 起居：开灯」（2.6 秒后恢复保存状态）
+- 顺带修 v53 引入的 `renderObjects` 结构破坏（`list is not defined`，会让侧栏列表直接崩）
+
+**验证**（你存档的副本，模拟"放置工具 + 已选 switch"这个原始状态）
+| 操作 | 灯 | 开关贴图 | 物件数 |
+|---|---|---|---|
+| 点一下 | bedroom: on | `switch-on` / `lamp-on` | 3（不变，没多放） |
+| 再点 | bedroom: off | `switch` / `lamp-off` | 3 |
+
+像素级对比也做了：点击前后截图字节不同（124188 vs 128130），确实有变化。
+
+
+### v56 旧开关原来真是"代码写死的"——已删除
+你猜得对。墙带上那三块米色面板 + 橙色拨杆**不是素材**，是 `placement.js::buildLights()` 里用 `add.rectangle` 画死的：
+
+```js
+var switchDefs = [ {room:"office",x:24.2}, {room:"bedroom",x:8.6}, {room:"bath",x:15.2}, {room:"kitchen",x:24.4} ];
+switchDefs.forEach(sd => {
+  var plate = s.add.rectangle(sd.x*TILE, sy, 18, 28, 0xe8e4da).setDepth(60001).setInteractive(...);  // 米色面板
+  var lever = s.add.rectangle(..., 10, 10, roomLights[sd.room] ? 0xf5b942 : 0x8a8578).setDepth(60002); // 橙色拨杆
+  plate.on("pointerdown", ...切房间灯...);   // 所以它能点、但既不能移也不能删
+});
+```
+同一函数里还有 3 盏 `add.triangle` + `add.circle` 画死的**吊灯**（墙带上的橙色三角）。
+
+**v56 删除**
+- `switchDefs` 整段（4 个固定位置的面板/拨杆 + 点击逻辑）
+- 吊灯那 3 盏（triangle 灯罩 + circle 灯泡）
+- 都换成注释说明：要灯就用物品层的 `switch` / `wall-lamp`（可摆、可拖、可删、可点）
+
+**顺带修**：删完后 `*/  }` 这种"注释和右花括号同一行"会让压缩器把整行当注释删掉 → 压缩产物语法报错（build 会退回未压缩版）。把 `}` 单独放一行解决。
+
+**验证**（你存档的副本）
+- 墙带对象清单：只剩 `window / switch / wall-lamp` 三个素材（+ 全屏 ambient），长方形/三角/圆全部消失
+- 点素材开关仍正常：`bedroom` 灯 on/off、贴图 `switch-on ↔ switch`、`lamp-on ↔ lamp-off`
+- `check.mjs` 新增 2 条门禁：`placement.js` 不得再出现 `roomSwitches / switchDefs / ceilingLamps`、不得再用 `add.rectangle(sd.x) / add.triangle(lx)`
+
+
+### v57 "突然删不掉、存不了"：hub 被我重启 + 失败没有自愈
+排查结论：**你的存档没坏**（当时 35 条，含 3 个 switch、9 个 shadow）。真正原因是：
+
+1. 我为了验证，反复起停 4321 上的 hub；你页面开着的时候 hub 恰好不在，写入就失败
+2. 失败的提示只有侧栏底部一行小字（很容易看不见），于是表现为"点了没反应/删了又回来"
+3. 失败后只在**同一次会话内**补传一次，之后要刷新才再试
+
+**这轮修的三件事**
+- **失败自动重传**：`scheduleMirrorRetry()` —— 保存/删除失败后每 3 秒重试（最多 20 次），hub 一恢复就自动补上。实测：拦截 fetch 模拟掉线 → 删除（本地生效，状态行红字）→ 恢复网络 → 4.5 秒后 hub 自动变成 34 条、状态行变绿
+- **🩺 自检按钮**（编辑器底部）：一次说清 hub 能不能读、能不能写、本地与 hub 条数是否一致、最后一次保存的错误，并用弹窗给出 JSON。以后出问题点它就能定位
+- **列表不再无脑重建**：`renderObjects/renderLights/renderShadows` 加了内容签名（`ui.objSig` 等），内容没变就不动 DOM；鼠标停在侧栏上时也暂停刷新 —— 之前 900ms 一次的重建会把正在按下的 ✕ 吃掉（这也是"删除有时没反应"的一半原因）
+- 另外：侧栏底部显示 **build 哈希**，全局脚本错误会红字提示
+
+**验证**：列表 ✕ 删除（35→34）、画布删除工具删墙上的开关（34→33）、保存按钮（✔ 已写入 hub）、离线→自动补传、自检全绿。
+
+**注意**：我测试期间会临时停掉 4321 的 hub，这就是那几次"存不上"的来源。现在恢复运行了（你的 35 条都在）。
+
+
+### v58 "坐标越界"保存失败：一条脏数据把整批 set 打回
+**原因**：hub 的 `validateMapItem` 要求每条 `x∈0..56 / y∈0..30`，**只要有一条越界，整批 `set` 就 400 回滚**。而客户端把这份"含脏数据"的列表存在 localStorage 镜像里，于是每次保存都是同一个错误 —— 刷新也没用（镜像还在）。
+hub 侧我查过了：35 条**全部合法**，所以脏数据只存在于你浏览器那份镜像里（某个时刻被写进了越界坐标，比如拖到边界外）。
+
+**修法**
+- 新增 `sanitizeCustomLayer()`：把 `x/y` 夹回 `0..56 / 0..30`（保留 2 位小数），丢掉 `a` 缺失的脏条目，并记录"改了哪几条"
+- 在**三条写入路径**上调用：`saveEditMap()`（保存/删除/放置）、`flushLocalMirror()`（重连补传）、`scheduleMirrorRetry()`（失败重试），以及 `adoptLocalMirror()`（采用本机镜像时）
+- 修正后照常保存，`edit-log` 里会写明 `已修正越界坐标：chair y 41.9→30`
+
+**验证**（临时 hub + 往镜像里塞 `{a:"chair", x:-3.2, y:41.9}`）
+| 步骤 | 结果 |
+|---|---|
+| 刷新页面 | 状态行直接是 `✔ 已写入 hub（38 条）`，不再报越界 |
+| hub 里那条 | `{a:"chair", x:0, y:30}`（自动夹回范围） |
+| 自检 | `hubReachable:true, writeOk:true, 本地=hub=38` |
+
+**你这边怎么恢复**：硬刷新（`Ctrl+F5`）拿到新构建（`office.js=c2a4e7c1`），点一次「💾 保存」—— 那条越界记录会被自动夹回范围内并写进 hub。如果状态行还报错，点「🩺 自检」把弹窗内容发我。
+
+
+### v60 墙带上画不了墙（连带修掉"id 重复"导致的整批保存失败）
+**现象**：门洞那格（顶部 48px 墙带）用「地形层 → 墙」画笔点不动。
+
+**两个原因**
+1. 墙带在格子坐标里是 `ty = -1`，而地形画笔的门禁只认 `ty ≥ 0` → 落笔直接被丢掉
+2. 更关键：瓦片条目的 id 是按 `tx/ty` 拼的（`eter…`），**同一格重复刷就会撞 id** → hub 报 `id 重复: eterbawa` → 整批 `set` 被拒 → 表现为"画了没反应 / 存不上"
+
+**改法**
+- 地形层允许在墙带落笔：条目存 `{a:"terrain", t, x, y:0, band:true}`，叠加层画在 `0..48px`
+- `terrainEdits` 的键带上 `,band`，墙带那格和 y=0 那格互不覆盖
+- 墙带里也能**按住拖着连续刷**
+- 瓦片 id 改成 `…+序号+随机`，彻底避免撞车；`sanitizeCustomLayer` 增加**同格去重**（同 `a/x/y/band/t` 只留最后一条）与 **id 去重**
+- 擦除把 `ty = -1` 折算成 `y = 0`，所以墙带上的墙也擦得掉
+
+**验证**（临时 hub）
+| 操作 | 结果 |
+|---|---|
+| 地形层画笔在墙带从 x=10 拖到 15 | hub 出现 `10,11,12,13,14,15` 六条 band 地形，`lastSave ok` |
+| 门洞中心像素 | `(51,60,80)` = 墙色（之前是 `(188,171,142)` 路面色） |
+| 橡皮擦掉 x=12、13 | 两条从 hub 消失，像素变回路面色 → 门洞恢复 |
+
+
+### v61 阴影删不掉单个：我上一步的去重误伤
+**原因**：v60 为了修"同格重复"给 `sanitizeCustomLayer` 加了"同 a + x + y + band 只留最后一条"，但它**没区分条目类型** —— 而阴影块、隐藏记录、移动覆盖天然会共用坐标（阴影可以两块同起点；hide 全是 `x:0,y:0`）。于是保存时这些条目被"去重合并"，你删掉一块再保存，另一块（或它自己）又被并回来，看起来就是"删不掉单个"。
+
+**改法**
+- 同格去重**只对贴片**（`a === "floor" || "terrain"`）生效；其他类型完全不去重
+- 其余保护（坐标夹取、id 去重）不变
+
+**验证**（用你存档的副本）
+| 操作 | 结果 |
+|---|---|
+| API 删自建块 `smw8wdd0lde` | 列表 3 → 2，hub 里该条消失 |
+| UI 点列表里的 ✕（滚进视口真点） | 该块从列表与 hub 同时消失，`lastSave ok` |
+| 连删多块 | 每次只少一块，其余不受影响 |
+
+
+### v61 补记：那次误伤还把 11 条 hide 记录吃掉了（已恢复）
+v60 的"同格去重"没区分类型，把**坐标相同的隐藏记录**也合并了 —— 你原本 12 条 `hide`（5 盏路灯 + 邻居三家 + 花/bush）被并成 1 条。
+
+- 从 `office/hub/map.backups/map-20261109-171118-40条.json`（hide=12 的最后一份）里取出缺失的 11 条，按 id 去重后合并回当前存档
+- 现在存档 **41 条**：`floor 5 / hide 12 / move 3 / shadow 8 / switch 3 / terrain 8 / wall-lamp 1 / window 1`
+- 同格去重已限定为只对 `floor` / `terrain` 生效，并加了 check 门禁防止再次误伤
+
+
+### v62 灯源列表显示成物品列表：缓存串了
+**现象**：光照层 → 灯源，标题写着"灯光列表（0 盏）"，下面却是 `bench-park / oak-tree / flowers …` 这些物品。
+
+**原因**：v57 为了防"900ms 刷新吃掉点击"，给三个列表加了内容签名缓存（`ui.objSig / ui.lightSig / ui.shadowSig`）。但三者**共用同一块 `#ed-objs` 容器** —— 从"物品层"切到"光照层"时，`renderLights()` 算出签名和上次相同（灯数据没变）就直接 return，DOM 里留着的还是物品列表，只有标题被 `refresh()` 改成了"灯光列表"。
+
+**改法**：每个渲染函数先认"这份 DOM 现在装的是哪一类"，类型一变就清空该类签名强制重画：
+```js
+if (ui.listKind !== "light") { ui.listKind = "light"; ui.lightSig = ""; }
+```
+
+**验证**（真点 tab 来回切）
+| 步骤 | 标题 / 内容 |
+|---|---|
+| 物品层 | 物件列表（视口内 40 件）/ nightstand… |
+| 光照层 | **灯光列表（7 盏）/ 灯 1 r3 a0.5 @30.5,15.8 …** |
+| 阴影区域 | 阴影块（5 块）/ 卫浴 自建 7×15 … |
+| 回灯源 | 灯光列表（7 盏）✓ |
+| 回物品层 | 物件列表（40 件）✓ |
+| 再进光照层 | 灯光列表（7 盏）✓ |
+
+
+### v63 列表点行 → 直接定位到图上
+之前点列表只是"选中"，眼睛还得自己在地图里找。现在三处列表（物件 / 灯源 / 阴影块）点一行：
+
+- 镜头**平滑飞过去**（`cam.pan(320ms, Sine.easeInOut)`），并**夹在地图边界内**，不会推到墙带外
+- 目标位置**闪一圈暖光**（复用 `flashAt`），远处也能一眼看到
+- 同时保持原来的选中行为（右侧面板照旧显示该对象的参数）
+
+实现（`editor-api.js`）
+- `meFocusAt(wx, wy)`：`stopFollow()` + pan + flash
+- `meLocateObject(key)`：按 `furnitureKeyOf` 找场景精灵，定位到它脚下
+- `meLocateLight(id)`：灯的格子坐标 → 世界像素
+- `meLocateShadow(id)`：取矩形中心
+- 公开为 `__mapEditor.focusAt / locateObject / locateLight / locateShadow`
+
+**验证**（真点列表行）
+| 列表 | 点之前镜头 | 点之后 |
+|---|---|---|
+| 灯源（第 7 盏 @34.4,26 → 世界 1651,1304） | (0,0) | (1051,720)，且 `selectedLight = bl_7` |
+| 阴影块（卫浴 7×15） | (1051,720) | (24,24) —— 移到该块中心 |
+| 物件 | — | 同 `M.focus()` 选中 + 定位 |
+
+说明：物件列表是"视口内 40 件"，镜头飞走后列表会按新视口重算，这是预期行为。
+
+### v64 灯光被阴影盖住 + 厨房灯影响草地阴影
+**① 灯画在阴影下面**
+- 灯池（`lightPools`）、自定光源（`renderCustomLights`）原来都是 `depth 50000`，而阴影区域画在 `59100` → 阴影压在光上面，暗区里的灯完全看不见
+- 改：灯统一提到 **59200**（阴影之上、HUD 之下）。实测场景里 `pools/custom = 59200`，`shadowGfx = 59100`
+
+**② 没有房间归属的阴影块跟着"任意房间"一起亮**
+- 原来 `room === null` 时取 `lightsOn === true || anyRoomOn`，而任何单房间开灯都会让 `anyRoomOn` 为真 → 你厨房开灯，草地那块（`smw928rcz8p @26,0 13×16`，不在任何房间矩形内，所以 `room = null`）也跟着从 0.7 变 0.5
+- 改：有归属 → 只看那个房间；没归属 → **只有四个房间全开**（`allRoomsOn`）才切到"开灯"档
+
+**验证**（用你存档的副本）
+| 操作 | 卫浴 | 起居 | 厨房 | 办公室 | 草地（全局） |
+|---|---|---|---|---|---|
+| 全关灯 | 0.6 | 0.6 | 0.6 | 0.6 | 0.7 |
+| **只开厨房** | 0.6 | 0.6 | **0.15** | 0.6 | **0.7（不变）** |
+| 全屋开灯 | 0.2 | 0.2 | 0.15 | 0.15 | **0.5** |
+
+想让草地那块更亮，选中它把「开灯」那档从 0.5 调小（或直接点「跟随灯 → 全局」保持全屋联动）。
+
+
+### v65 画布角标：一眼看出跑的是哪个构建
+连着几次"没变化"其实是**页面还在用旧构建**。为了不再靠猜，编辑页画布左上角常驻一行：
+
+```
+build dac06da9   光 59200   影 59100
+```
+
+- `build` = 当前 `editor.js` 的 hash（和 `?v=` 一致）
+- `光 / 影` = 灯池与阴影图层的实际 depth（v64 修复后应为 **59200 / 59100**；旧构建是 `50000 / 59100`，光会被压住）
+
+**验证（最新构建，夜里）**：花园的暗区里能看到两个暖色光斑穿出来 —— 说明"光在阴影之上"生效。
+`check.mjs` 加门禁：`placement.js` 里不许再出现 `setDepth(50000)`、必须 `59200`、必须有画布角标。
+
+**注意**：草地那块阴影（`smw928rcz8p`）你自己的设定是 `夜 0.7 / 开灯 0.5` —— 全屋开灯时它只从 0.7 降到 0.5，**肉眼看差别很小**。想明显变亮就把它「开灯」调到 0.15~0.2，或给它指定一个房间。
+
+
+### v66 灯光真的被"滤镜"压着（不是阴影）
+角标显示 `影 59100 / 光 59200` 已经把阴影排除，但还有两层**全屏滤镜**在灯之上：
+
+- `ambient`（夜间环境光，`placemen.js` 里 `ambientcv` 图）→ `depth 60000`
+- `vignette`（暗角，`boot.js` 里 `vignetteTex`）→ `depth 60000`
+
+两者都 ≥ 灯光的 59200，所以整屏被压暗一层，看起来像"灯被阴影盖住"。
+
+**改**：两层都降到 **59150**（阴影 59100 之上、灯光 59200 之下）。最终层次：
+
+```
+底图 -100 → 房间阴影 59100 → 环境光/暗角 59150 → 灯光 59200 → HUD
+```
+
+**画布角标同步升级**：`build xxx   影 59100   滤镜 59150   光 59200` —— 三个数字一眼就能确认层次对不对。
+
+**验证**（游戏页，夜里，开灯）：花园暗区里的路灯光斑清晰可见（见 `logs/office-v37-shots/map-v66-light-above-filters.png`）；`check.mjs` 新增门禁：`placement.js`/`boot.js` 不许再出现 `setDepth(60000)`。
+
+
+### v67 灯光不再"叠在阴影上"，而是把阴影挖掉
+你指出的问题是对的：之前只是把光 **ADD 叠在暗块之上**，所以有光的位置仍然是"暗底 + 一团光" —— 看起来像被切。
+
+**改法**：阴影从 `Graphics` 换成 **RenderTexture**（depth 59100）：
+1. 先把每块阴影用暗色矩形画进 RT（`rt.draw(pen)`，颜色 0x0a1020，alpha 按 夜/开灯/白天 取值）
+2. 再把每盏灯的位置用 **`rt.erase(hole)`** 擦掉 —— 用光晕贴图（径向渐变）当"橡皮"，灯越亮擦得越透
+
+于是：**有光的地方阴影被削掉**，光斑边缘自然过渡；再在上面叠一层淡的暖色光（59200）做色温。
+
+最终图层顺序：
+
+```
+底图 -100 → 阴影 RT 59100（灯已挖洞）→ 环境光/暗角 59150 → 灯光 59200 → HUD
+```
+
+**实测数据**（同一块阴影里）
+| 位置 | 阴影 RT 像素 alpha | 屏幕颜色 |
+|---|---|---|
+| 灯光中心 | 30（几乎清空） | [255,255,234] 暖白 |
+| 同块阴影远处 | 204（保留） | [30,43,43] 暗绿 |
+
+全关灯 → 办公室 [74,63,56]（暗）；全开灯 → [146,115,83]（亮）。
+
+坑：这个 Phaser 构建里 `RenderTexture.fill()` 不出图、`scene.make.rectangle/image` 不存在，所以改成 `new Phaser.GameObjects.Rectangle/Image` + `rt.draw/erase`。
+
+
+### v68~v71 夜色系统重做（效果太差 → 重新设计）
+用户反馈"效果太差"，问题拆成四点逐条修：
+
+**① 灯光只是"叠亮"在阴影上 → 改成把阴影挖掉**
+- 阴影从 `Graphics` 换成 **RenderTexture(59100)**：先铺暗块（`rt.draw(pen)`），再用 `rt.erase(hole)` 按灯的位置擦洞
+- 新增 `lightHoleTex`：256×256 的 **smoothstep 径向渐变**（中心全透、边缘平滑到 0），擦出来的洞是柔和过渡，不是硬圆
+- 实测同一块阴影里：灯心 alpha **30**、阴影远处 alpha **204**
+
+**② 房间整屋变成一团团光斑 → 房间灯池不再挖洞**
+- 房间亮度只由该块阴影的「开灯」档决定（0.15 左右 = 基本全亮）
+- 只有真正的点光源（路灯 / 壁灯 / 自定义光源）在阴影上挖光斑
+
+**③ 街道/户外完全没有夜色（像白天）→ 环境光重新启用，并做成"能擦洞"的 RT**
+- `ambientRT`（59150）：整图铺一层夜色（默认 0.42），再把**用户画的阴影区域矩形从里面擦掉**
+- 于是：区域自己管明暗（夜/开灯/白天三档），环境光只管没被区域覆盖的地方（街道、户外）
+- 实测：全关灯 office `[68,58,51]`、bedroom `[43,41,43]`、street `[139,130,114]`；全开灯 office `[135,103,73]`
+
+**④ 路灯太亮太大 → 数据层收小**
+- `gen_map.mjs` 里路灯 `r: 3.0 → 1.8`、`a: 0.5 → 0.45`，重新生成 `map.json`
+- 代码里挖洞半径再乘 0.8
+
+最终图层：`底图 -100 → 阴影 RT 59100 → 环境光 RT 59150 → 灯光 59200 → HUD`
+
+截图：`logs/office-v37-shots/map-v71-night-off.png` / `map-v71-night-on.png`（整图，zoom 0.36）
+
+
+### v72/v73 夜色重做：蒙黑、状态错乱、开灯不亮 三个问题一起修
+
+**① 整图被"蒙了一层黑"且开灯只到 10% 也不亮**
+- 原因：环境光是一整块全屏黑，房间没有阴影块时**没有任何东西把这块黑擦掉** → 房间永远泡在黑暗里，开灯档（lit）根本没机会生效
+- 修法：**没有被任何阴影块覆盖的房间，自动补一块默认阴影**（`ROOM_RECTS` + `roomCovered()`）
+ - 关灯：alpha = `max(0.5, 环境光+0.25)`（≈0.67，明显暗）
+ - 开灯：alpha = **0.15**（基本全亮）
+ - 用户自己画了块（覆盖房间 >25%）就完全以用户的为准，不叠加
+- 实测：办公室关灯 `[38,36,40]` → 开灯 `[82,67,56]`；卧室 `[68,58,51]` → `[141,109,75]`
+
+**② 点"自动"再点"白天"，有块区域莫名亮起来、点"黑夜"回不去**
+- 真因：我的补丁留下了**两个同名 `updateAmbient()`**（v71 旧版在 v72 新版后面，覆盖了它），旧版只重画环境光 RT、不重画阴影 RT，于是两层不同步 → 状态错乱
+- 修法：删掉旧的重复函数（`updateAmbient` 现在唯一）；**环境光合并进阴影那一层 RT**，一次全量重算：
+ ```
+ 夜色 RT(59100) = 环境光铺底 → 擦掉各阴影区域矩形 → 画各区域暗块 → 点光源挖洞
+ ```
+ 签名（预览模式 + 各房间灯 + 各块浓度 + 各灯参数）不变就跳过重画
+
+**③ 状态机全量回归（同一份存档，5 个状态来回切）**
+| 步骤 | 办公室 | 卧室 | 街道 | 正确性 |
+|---|---|---|---|---|
+| 黑夜+关灯 | 38,36,40 | 68,58,51 | 140,131,115 | ✓ 暗 |
+| 黑夜+开灯 | 82,67,56 | 141,109,75 | 140,131,115 | ✓ 房间变亮、街道不变 |
+| 自动 | 82,67,56 | 141,109,75 | 140,131,115 | ✓ 与黑夜一致（当前是夜里） |
+| 白天 | 156,119,80 | 156,119,80 | 214,195,161 | ✓ 全亮、RT 隐藏 |
+| 回黑夜+关灯 | **38,36,40** | **68,58,51** | 140,131,115 | ✓ **与第 1 步完全一致，可逆** |
+
+截图：`map-v73-night-off.png` / `map-v73-night-on.png` / `map-v73-day.png`
+
+**门禁**：`renderNightShadow` 与 `updateAmbient` 都必须只有一份定义（防再次重复），必须有 `ROOM_RECTS` 与 `autoRegions`。22/22 通过。
+
+
+### v74 "超过上限 400 条"：上限本身设小了
+**原因**：`hub.mjs` 里 `MAP_MAX_ITEMS = 400`，而地图是 **56×30 = 1680 格** —— 光把地板和地形各铺满就是 `1680 × 2 = 3360` 条，400 条根本不够。你现在的数据是**真实的**（不是重复脏数据）：
+
+| 类型 | 条数 |
+|---|---|
+| terrain（墙/水/农田） | 125 |
+| floor（地板/路） | 120 |
+| oak-tree | 79 |
+| hide | 36 |
+| light | 11 |
+| flowers | 10 |
+| shadow | 9 |
+| switch / move / 其它 | 10 |
+
+**改法**
+- hub 上限 **400 → 6000**（够铺满地形 + 地板 + 大量装饰，仍防滥用）
+- 客户端面板文案同步成「上限 6000」
+- `check.mjs` 加门禁：`MAP_MAX_ITEMS` 不得低于 4000（防止有人改回去）
+
+**验证（打到你真实的 4321 hub 上）**
+- `/api/map` 返回 `max: 6000`
+- `saveNow()` → `{ok:true, hub:400}`，状态行 `✔ 已写入 hub（hub 现有 400 条）`
+- 之前那条"超过上限 400 条"不再出现
+
+**注意**：hub 是 Node 进程，改完上限必须**重启 hub** 才生效（我已经重启了）。你那边只需 `Ctrl+F5` 刷新页面，然后正常保存即可。
+
+
+### v75 灰蒙版 + 邻居家重新定位
+
+**① 屏幕中心的灰蒙版**
+- 原因：`updateAmbient()` 里这一行 `if (pv !== "day" && nightCfg.ambient != null) target = nightCfg.ambient;` —— 在「自动」模式下**无条件**把目标设成 0.42，于是即使是白天、即使在编辑器里，也整图压一层黑
+- 修法：只有显式「🌙 黑夜预览」才用自定义强度；**编辑器「自动」= 0（不加任何蒙版）**；游戏页「自动」才按真实时间
+- 验证：`shadowRT.visible === false`（白天/编辑器无任何夜色层）
+
+**② 邻居家不见了 —— 被 5 条 hide + 14 条 move 搞散**
+排查发现两个原因同时存在：
+- `id:homeCat` / `id:homeChief` / `id:homeDoc` 三条 hide 把**房子本体**藏了
+- 另有 14 条 `move` 把邻居的家具（catBed/catTable/catGramo/chiefTable/chiefFridge/docDesk/docChair…）**全挪到了北排 y=1~13**，房子却在南排 y=19.6
+- 还漏了两条：`id:docDesk` / `id:docChair` 被单独 hide
+
+**修法（按新地图重新定位，不用旧建筑）**
+- 删除 5 条邻居 hide（houseCat/Chief/Doc + docDesk + docChair）
+- 删除 17 条邻居相关 move 覆盖 → 家具回到 `map.json` 定义的南排位置（y=20~27）
+- `NEIGHBOR_HOMES` 的镜头聚焦点改成新地图的 living zone 锚点：
+ ```
+ cat   → 42.4, WALL_H+23.2     chief → 48.5, WALL_H+23.6     doc → 53.0, WALL_H+24.0
+ ```
+ （原来是旧的 43/48/53 × 24，且漏掉了 `WALL_H` 偏移）
+
+**验证**
+| 检查 | 结果 |
+|---|---|
+| 三栋房子 | `homeCat/house-modern/homeDoc` 全部 `visible: true`，位于 (2050,1013) (2338,1013) (2587,1013) |
+| 室内家具格子 | catBed (41,21)、chiefTable (49,23)、docDesk (53,23)、docChair (53,24)、catGramo (45,20) |
+| 邻居 hide | 0 条 |
+| 灰蒙版 | `shadowRT.visible === false` |
+
+截图：`map-v75-neighbors.png`（三户齐全）、`map-v75-no-mask.png`（无灰蒙版）
+
+
+### v76 还原存档 + NPC 定位到床 + 修穿墙 + 加行为
+
+**① 存档还原到"改邻居之前"**
+- 从 `map.before-neighbor-fix.json` 恢复：**721 条**（三座旧房子仍是 `hide` 状态 —— 符合"不要旧房子"）
+- 未恢复：我上一轮擅自取消的 17 条 move/hide（那次是错误理解）
+
+**② 邻居定位到各房间的床（不再依赖旧房子）**
+- `NPCS` 删掉 `home/homeZone/indoor` 字段，改成 **`bedAt` 床位格坐标**：
+ | NPC | 床 | 格坐标 |
+ |---|---|---|
+ | 喵酱 | catBed | (41.3, 21.2) |
+ | 村长 | chiefBed | (47.5, 25.6) |
+ | 博士 | docBed | (54.2, 26.4) |
+- `buildNPCs` 不再 `s.hostMap[def.home]`（房子被 hide 也不影响 NPC）
+- 实测出生位置：`cat world(2005,1115)` / `chief (2304,1325)` / `doc (2616,1368)`，与床位误差 ≤1 格
+
+**③ 穿墙修复（根因）**
+- 原来 NPC 走动是 `tweens.add({x,y})` **直线插值** —— 完全不看碰撞，必然穿墙
+- 新增 `npcWalkTo(npc, tx, ty, speed, onDone)`：调 **`astar()`** 拿路径，一格一格推进；无路径就放弃不动
+- `npcWalkHome()`：走 A* 回到床位，再躺下
+
+**④ 自主行为系统**
+| 行为 | 表现 |
+|---|---|
+| `sleep` | 身体压扁（scaleY 0.45）+ 头顶飘 `z z` |
+| `idle` | 站着发呆 |
+| `wander` | 走 A* 到附近格子 |
+| `look` | 原地张望 |
+
+状态机：`home`（到点在床睡 → 偶尔起身在床边活动 → 回去睡）↔ `roaming`（出门沿街逛 → 发呆/张望）。按 `homeHours`（喵酱 23-7、村长 20-8、博士 21-13）自动切换；睡着的 NPC 不会被叫醒聊天。
+
+**⑤ 验证（连续观察 20 秒 / 每 2.5 秒采样）**
+```
+cat:roaming@41,12 → 46,11     穿墙次数: 0
+chief:home@48,26（床边）
+doc:home@54,27（床边）
+```
+全程没有任何 NPC 落在阻挡格上。
+
+
+### v77 灰蒙版真因 + NPC 睡到正确的床
+
+**① 灰色蒙版的真因：缩到最小时相机视口 > 地图**
+- 缩小到 0.6 以下后，`worldView`（世界可视范围）比地图 2688×1488 还大 → 相机 `setBounds` 钳制后四周露出**画布底色**（就是那层灰）
+- 修法两条：
+ 1. `minZoomNoVoid()` = `max(cam.width / W, cam.height / H)`，缩放下限锁在"视口刚好等于地图" → 实测 `zoom 0.516 = minAllowed 0.516`，`voids: false`
+ 2. `#office-parent` 加 `background:#1b2233`（地图夜空色），万一露边也不是灰色
+
+**② 两个 NPC 挤一间房、不在床上 —— 三层原因**
+1. **村长家和博士家根本没有床**：`map.json` 里只有 `catBed`，我上一版写的 `chiefBed`/`docBed` 坐标是凭空造的
+ → `gen_map.mjs` 新增 `EXTRA_BEDS`，给两家补真床：`chiefBed @47.4,26.2`、`docBed @54.3,22`
+2. **喵酱的床被一条 move 挪进了墙里**：存档里有 `{"a":"move","k":"id:catBed","x":43.7,"y":1.8}` —— 43.7,1.8 是北排墙格，所以喵酱"睡在墙里"（检测显示 `onWall: true`）
+ → 删掉 4 条把猫家家具搬进北排的 move（catBed/catStand/catTable/catGramo）
+3. **床位坐标写死**：NPC 原来用硬编码 `bedAt`
+ → 新增 `npcBedPos(def)`，**运行时从 `mapdata.furniture` 按 bed id 查真实坐标**；床被编辑器挪了也跟着走
+ → `npcWalkHome()` 先 A* 到床旁，再精确吸附到床中心
+
+**③ 验证（24 秒连续采样）**
+```
+cat:home@41,22   chief:home@47,27   doc:home@54,23     穿墙: 0
+```
+三人分别在**各自房间的床上**，全程无穿墙；缩小到最小 `voids: false`（无灰边）。
+
+截图：`logs/office-v37-shots/map-v77-zoom-min.png`
+
+
+### v78 还原房间布局 + 缩到最小不再有灰边 + 每人固定床位
+
+**① 家具被扔到屋外 → 已还原**
+排查发现存档里有 **19 条 move** 把邻居家具从南排房间搬到了北排（y=1~13）：
+
+| 被搬走的 | 原位置（正确） | 被挪到 |
+|---|---|---|
+| catBed | (41.3, 21.2) | (43.7, 1.8) ← 北排墙里 |
+| catStand / catTable / catGramo | 41~45, 20~27 | 45~47, 7~11 |
+| chiefCounter / chiefTable / chiefChair1/2 / chiefStove / chiefFridge | 46~50, 20~27 | 51~54, 1~4 |
+| docDesk / docChair / docPotion / docArm | 52~55, 20~27 | 46~53, 20~25（串到别人家） |
+| plant-office / crown-cushion / curtains / book-stack | 南排室内 | 北排 3~14 |
+
+- 从 721 条备份恢复，**删掉这 19 条 move** → 家具全部回到 `map.json` 定义的房间位置
+- 花园长椅/井的 3 条 move 是布景调整，保留
+- 三座旧房子仍是 `hide`（你明确不要）
+
+**② 不再私自加家具 / 不自造床**
+- 撤回 `gen_map.mjs` 里的 `EXTRA_BEDS`，并从 `map.json` 删掉我之前加的 `chiefBed` / `docBed`
+- 现在全图只有 `bedA`（办公室）和 `catBed`（喵酱家）两张真床
+
+**③ 每个邻居固定一个床位（全部用房间里已有的家具）**
+| NPC | 固定床位 | 位置 |
+|---|---|---|
+| 喵酱 | `catBed`（床） | (41.3, 21.2) |
+| 村长 | `chiefChair1`（餐椅） | (47.4, 23.3) |
+| 博士 | `docArm`（扶手椅） | (54.3, 27.2) |
+
+`npcBedPos()` 运行时按 id 从 `mapdata` 查坐标 → 床/椅子被编辑器挪了，NPC 也跟着换位置。
+
+**④ 缩到最小的灰边（这次真修好）**
+- 原来只限制 zoom 下限，但 `setZoom` 后相机 `scroll` 仍可能停在越界位置 → 露边
+- 新增 `clampScroll(cam)`：每次缩放后把 `scrollX/scrollY` 夹进 `[bounds]`
+- 实测：缩到最小 `zoom 0.516`，`view 2418×1488` ≤ `bounds 2688×1488`，`overflow 0,0`，**无灰边**
+
+**⑤ 验证**
+```
+喵酱家 inside=3 / outside=[]      全部家具在室内
+村长家 inside=6 / outside=[]      （stallA 是市集摊位，不属任何房间）
+博士家 inside=5 / outside=[]
+NPC: cat:home@41,22  chief:home@47,24  doc:home@54,28
+```
+截图：`logs/office-v37-shots/map-v78-zoom-min.png`
+

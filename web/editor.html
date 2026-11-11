@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>地图编辑器 · 大肥鱼的办公室</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🗺</text></svg>" />
+  <style>
+    :root { --bg:#12141c; --panel:#1a1e2a; --line:#ffffff1f; --ink:#e8e6df; --muted:#9aa3b8; --blue:#4a6cf7; --warn:#ffc078; }
+    * { box-sizing: border-box; }
+    html, body { margin:0; height:100%; overflow:hidden; background:var(--bg); color:var(--ink);
+      font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif; }
+    #ed-root { display:flex; height:100%; }
+    /* 画布区：Phaser 自己写 inline 宽高，这里强制铺满左栏 */
+    #ed-stage { position:relative; flex:1 1 auto; min-width:0; background:#2a2e3d; }
+    /* 画布：居中 + 保持 1248:768 比例（编辑器里别拉伸像素画） */
+    #office-parent { position:absolute; inset:0; overflow:hidden; display:flex; align-items:center; justify-content:center;
+      background:#1b2233;   /* v77：缩小时露出的底色改成地图夜空色，不再是灰 */ }
+    #office-parent canvas { display:block; width:auto !important; height:auto !important; max-width:100%; max-height:100%;
+      image-rendering:pixelated; }
+    /* office.js 加载完成后只给 #loading 加 .hide 类，样式得在这里补齐；
+       否则那块「地图载入中…」会一直盖在画布上，把所有点击都吃掉（点哪儿都没反应） */
+    #loading.hide { opacity:0; pointer-events:none; }
+    /* 侧栏 */
+    #ed-side { flex:0 0 344px; display:flex; flex-direction:column; background:var(--panel); border-left:1px solid var(--line); overflow:hidden; }
+    #ed-head { padding:10px 12px 8px; border-bottom:1px solid var(--line); }
+    #ed-head h1 { margin:0 0 4px; font-size:15px; letter-spacing:.5px; }
+    #ed-head .sub { color:var(--muted); font-size:11.5px; line-height:1.5; }
+    #ed-hub { margin-top:5px; font-size:11.5px; }
+    #ed-body { flex:1 1 auto; overflow-y:auto; padding:10px 12px; }
+    #ed-foot { flex:none; padding:8px 12px 12px; border-top:1px solid var(--line); }
+    .sec { margin-bottom:12px; }
+    .sec > .lbl { display:flex; align-items:center; gap:6px; color:var(--muted); font-size:11.5px; margin-bottom:5px; }
+    .sec > .lbl .r { margin-left:auto; }
+    .row { display:flex; gap:5px; flex-wrap:wrap; }
+    button { font-family:inherit; }
+    .btn { flex:1; padding:5px 6px; border-radius:7px; border:1px solid #ffffff2e; background:#242938; color:#dfe3ee;
+      cursor:pointer; font-size:12px; line-height:1.5; white-space:nowrap; }
+    .btn:hover { border-color:var(--blue); color:#fff; }
+    .btn.on { background:var(--blue); border-color:var(--blue); color:#fff; box-shadow:0 0 0 1px #ffffff40 inset; }
+    .btn.sm { flex:none; padding:2px 7px; font-size:11.5px; }
+    .btn.primary { background:var(--blue); border-color:var(--blue); color:#fff; font-weight:700; }
+    .btn.danger { color:#ff8787; }
+    /* 图层切换 */
+    #ed-layers { display:flex; gap:5px; margin-bottom:10px; }
+    #ed-layers .btn { padding:7px 4px; font-size:12.5px; }
+    /* 资产网格（v39.3：按类别筛选） */
+    #ed-cats { display:flex; flex-wrap:wrap; gap:4px; margin-bottom:6px; }
+    #ed-cats button { padding:3px 7px; border-radius:12px; border:1px solid #ffffff2e; background:#242938;
+      color:#c3c9d9; cursor:pointer; font-size:11px; line-height:1.5; }
+    #ed-cats button i { font-style:normal; opacity:.55; margin-left:3px; font-size:10px; }
+    #ed-cats button:hover { border-color:var(--blue); color:#fff; }
+    #ed-cats button.on { background:var(--blue); border-color:var(--blue); color:#fff; }
+    #ed-assets { display:grid; grid-template-columns:repeat(3,1fr); gap:4px; max-height:224px; overflow-y:auto; }
+    #ed-assets button { display:flex; align-items:center; gap:4px; padding:3px 4px; border-radius:6px;
+      border:1px solid #ffffff22; background:#242938; color:#c3c9d9; cursor:pointer; font-size:10px; overflow:hidden; white-space:nowrap; }
+    #ed-assets button:hover { border-color:var(--blue); color:#fff; }
+    #ed-assets button.on { background:var(--blue); border-color:var(--blue); color:#fff; }
+    #ed-assets img { width:18px; height:18px; flex:none; object-fit:contain; image-rendering:pixelated; }
+    #ed-assets span { overflow:hidden; text-overflow:ellipsis; }
+    /* 贴片色块 */
+    #ed-tiles { display:grid; grid-template-columns:repeat(2,1fr); gap:5px; }
+    #ed-tiles button { display:flex; align-items:center; gap:7px; padding:6px 8px; border-radius:7px;
+      border:1px solid #ffffff2e; background:#242938; color:#dfe3ee; cursor:pointer; font-size:12px; }
+    #ed-tiles button:hover { border-color:var(--blue); color:#fff; }
+    #ed-tiles button.on { background:var(--blue); border-color:var(--blue); color:#fff; }
+    #ed-tiles .chip { width:18px; height:18px; border-radius:4px; flex:none; border:1px solid #00000055; }
+    /* 灯光预设（v40）：同款按钮，色块改成发光圆点 */
+    #ed-lights { display:grid; grid-template-columns:repeat(2,1fr); gap:5px; }
+    #ed-lights button { display:flex; align-items:center; gap:7px; padding:6px 8px; border-radius:7px;
+      border:1px solid #ffffff2e; background:#242938; color:#dfe3ee; cursor:pointer; font-size:12px; }
+    #ed-lights button:hover { border-color:var(--blue); color:#fff; }
+    #ed-lights .chip { width:16px; height:16px; border-radius:50%; flex:none; box-shadow:0 0 6px #fff7; }
+    /* 物件列表 */
+    #ed-objs { max-height:210px; overflow-y:auto; }
+    .obj { display:flex; align-items:center; gap:6px; padding:2px 4px; border-bottom:1px dashed #ffffff14; cursor:pointer; }
+    .obj:hover { background:#ffffff12; border-radius:5px; }
+    .obj img, .obj i.ph { width:22px; height:22px; flex:none; border-radius:4px; background:#ffffff12; image-rendering:pixelated; }
+    .obj i.ph { display:flex; align-items:center; justify-content:center; font-style:normal; color:#6b7280; }
+    .obj .nm { flex:1 1 auto; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-size:12px; }
+    .obj .tag { flex:none; font-size:9.5px; padding:0 3px; border-radius:4px; background:#ffffff1a; color:var(--muted); }
+    .obj .tag.cus { background:#4a6cf7aa; color:#fff; }
+    .obj .pos { flex:none; color:var(--muted); font-size:11px; font-variant-numeric:tabular-nums; }
+    .obj .x { flex:none; border:0; background:transparent; color:#ff8787; cursor:pointer; padding:0 2px; font-size:12px; }
+    .hint { color:var(--muted); font-size:11px; line-height:1.6; }
+    .kv { color:var(--muted); font-size:11.5px; line-height:1.7; }
+    /* 游戏本体 DOM（状态条/动态窗/调试入口…）在编辑器里全部藏掉，但要留着节点给 office.js 用 */
+    #game-chrome { display:none !important; }
+  </style>
+</head>
+<body>
+  <div id="ed-root">
+    <div id="ed-stage">
+      <div id="office-parent">
+        <div id="loading" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#9a9daa;font-size:14px;background:#2a2e3d;transition:opacity .4s;">地图载入中…</div>
+      </div>
+    </div>
+
+    <aside id="ed-side">
+      <div id="ed-head">
+        <h1>🗺 地图编辑器</h1>
+        <div class="sub">三图层编辑：<b>地板</b>（地板/道路）· <b>物品</b>（家具）· <b>地形</b>（墙/水/农田）。<br>改动直接写 hub 的 map.custom.json。</div>
+        <div id="ed-hub">—</div>
+      </div>
+      <div id="ed-body"><!-- editor.js 生成 --></div>
+      <div id="ed-foot">
+        <div id="ed-ver" style="font-size:10.5px;color:#5b6478;margin-bottom:2px">build —</div>
+        <div id="ed-save-status" style="font-size:11.5px;min-height:16px;margin-bottom:5px;color:#9aa3b8">尚未保存</div>
+        <div class="row" style="margin-bottom:6px">
+          <button class="btn primary" id="ed-save">💾 保存</button>
+          <button class="btn" id="ed-undo" title="撤销上一步（Ctrl+Z）">↶ 撤销</button>
+          <button class="btn" id="ed-redo" title="重做（Ctrl+Shift+Z）">↷ 重做</button>
+        </div>
+        <div class="row" style="margin-bottom:6px">
+          <button class="btn danger" id="ed-clear" title="按图层清理，不会一刀切">🧹 清空…</button>
+          <button class="btn" id="ed-backups" title="hub 每次覆盖前都自动备份，可以从这里回滚">🗂 历史存档</button>
+          <button class="btn" id="ed-selfcheck" title="检查 hub 能否读写、本地与 hub 条数是否一致，并强制写一次">🩺 自检</button>
+          <button class="btn" id="ed-mirror" title="用本机浏览器里的副本覆盖 hub（离线编辑的兜底，也可能是丢失前的最后一份）">↺ 本机副本</button>
+        </div>
+        <div class="row">
+          <button class="btn sm" id="ed-zoom-out">－</button>
+          <button class="btn sm" id="ed-zoom-in">＋</button>
+          <button class="btn sm" id="ed-grid" title="显示/隐藏碰撞阻挡格">▦ 碰撞格</button>
+          <button class="btn sm" id="ed-pan" title="按住鼠标右键即可临时拖动画面，松手自动恢复；这个按钮是给触屏/触控板用的常开模式">✋ 拖动视角（右键临时拖）</button>
+          <button class="btn sm" id="ed-back" style="margin-left:auto">← 回游戏</button>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <!-- office.js 会按 id 抓这些节点：留着空壳，避免它判空炸掉 -->
+  <div id="game-chrome">
+    <span id="st-dot"></span><span id="st-task"></span><span id="st-detail"></span><span id="st-ago"></span>
+    <span id="st-offline" hidden></span><span id="stats-bar"></span><span id="st-viewers"></span>
+    <div id="info-card"></div>
+    <div id="writer-panel"><div id="wp-title"></div><div id="wp-body"></div><div id="wp-meta"></div><button id="wp-close"></button></div>
+    <div id="perf-panel"><span id="pp-icon"></span><span id="pp-title"></span><div id="pp-body"></div><button id="pp-close"></button></div>
+    <div id="room-tabs"></div>
+    <section id="activity">
+      <div class="act-head">
+        <button id="act-tab-events"></button><button id="act-tab-plan"></button>
+        <span id="act-count"></span><button id="act-fold"></button>
+      </div>
+      <div id="act-body">
+        <div id="act-pane-events"><ol id="act-list"></ol></div>
+        <div id="act-pane-plan"><p id="act-now"></p><p id="act-why"></p><ol id="act-plan"></ol></div>
+      </div>
+    </section>
+  </div>
+
+  <script src="assets/phaser.min.js"></script>
+  <script src="office.js?v=d4c0e858"></script>
+  <script src="editor.js?v=ed3b2f4e"></script>
+</body>
+</html>
+

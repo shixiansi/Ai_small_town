@@ -1,0 +1,22 @@
+# ---- 运行时状态（每跑一次就变，不进 git）----
+hub/state.json
+hub/*.tmp
+hub/map.backups/
+logs/
+*.log
+
+# ---- 依赖 ----
+node_modules/
+
+# ---- Python 编译缓存 ----
+__pycache__/
+*.pyc
+
+# ---- 素材原始压缩包（体积大，解包后的 extracted/ 与 web/assets/ 已在库里）----
+assets/zips/
+web/assets/zips/
+
+# ---- 系统垃圾 ----
+.DS_Store
+Thumbs.db
+*.swp

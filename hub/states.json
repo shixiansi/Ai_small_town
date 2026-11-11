@@ -1,5 +1,5 @@
 {
-  "_comment": "办公室状态唯一清单。前端 web/office.js 的 STATE_MAP / ACTIVE_STATES 必须与这里一致（tools/check.mjs 双向校验）；hub 用它拒绝未登记状态。改状态时见 README《维护手册》。",
+  "_comment": "小镇状态清单（唯一事实源）。前端 web/office.js 的 STATE_MAP / ACTIVE_STATES 必须与这里一致（tools/check.mjs 双向校验）；hub 用它拒绝未登记状态。状态名描述的是「这个居民在干什么」，与任何外部业务方无关——外部程序想驱动小镇，推这些状态名之一即可。改状态时见 README《维护手册》。",
   "states": [
     "arrive",
     "working",

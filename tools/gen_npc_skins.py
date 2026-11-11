@@ -4,10 +4,12 @@
 腮红/饰品（其他色相）保留原样。输出 whale_{cat,chief,doc}.png + manifest 条目。
 """
 import json
+import os
 import numpy as np
 from PIL import Image
 
-ASSETS = "/root/项目/news-site/office/web/assets"
+ASSETS = os.environ.get("OFFICE_WEB_ASSETS") or os.path.join(
+    os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "web", "assets")
 
 def rgb_to_hsv(rgb):
     r, g, b = rgb[..., 0], rgb[..., 1], rgb[..., 2]

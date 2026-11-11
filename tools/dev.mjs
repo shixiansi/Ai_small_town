@@ -1,15 +1,15 @@
 #!/usr/bin/env node
 /**
- * 本地一键运行办公室界面：静态页(4322) + 状态 hub(4321)。
- * 用法：node office/tools/dev.mjs  [--web=4322] [--hub=4321]
+ * 本地一键运行小镇界面：静态页(4322) + 状态 hub(4321)。
+ * 用法：node tools/dev.mjs  [--web=4322] [--hub=4321]   （或在 office/ 下 npm run dev）
  * 打开：http://127.0.0.1:4322/?debug=1  （?debug=1 自动展开调试工作台）
  *
  * 说明：本地开发时 office.js 会把 WebSocket 直连 ws://127.0.0.1:<hub>/，
  * 因此不需要 Nginx 的 /office-ws/ 反代；hub 已允许 CORS，调试台可直接推事件。
  *
- * 配套命令（改完 STATE_MAP / map.json / agent/*.mjs 后建议跑一次）：
- *   node office/tools/check.mjs   静态自检（13 项，不开浏览器，失败退出码 1）
- *   node office/tools/bust.mjs    按文件内容刷新 ?v= 哈希，勿再手改版本号
+ * 配套命令（改完 STATE_MAP / map.json / hub/schedule.json 后建议跑一次）：
+ *   node tools/check.mjs   静态自检（不开浏览器，失败退出码 1）
+ *   node tools/bust.mjs    按文件内容刷新 ?v= 哈希，勿再手改版本号
  * 本静态服务固定 no-store，所以本地不用关心缓存；版本号主要服务于线上 Nginx。
  */
 import http from "node:http";

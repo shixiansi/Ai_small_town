@@ -1,0 +1,27 @@
+{
+  "name": "ai-small-town",
+  "version": "1.0.0",
+  "private": true,
+  "description": "AI 小镇：像素小镇里的一条 AI 居民，自主生活 + 状态可视化（hub 推事件 → 浏览器 Phaser 渲染）",
+  "type": "commonjs",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "node tools/dev.mjs",
+    "hub": "node hub/hub.mjs",
+    "build": "node tools/build.mjs",
+    "bust": "node tools/bust.mjs",
+    "check": "node tools/check.mjs",
+    "test:hub": "node tools/test-hub.mjs",
+    "verify": "node tools/bust.mjs --check && node tools/build.mjs --check && node tools/check.mjs",
+    "sync": "bash sync_web.sh"
+  },
+  "keywords": [
+    "ai-town",
+    "pixel-art",
+    "phaser"
+  ],
+  "license": "MIT",
+  "workspaces": []
+}

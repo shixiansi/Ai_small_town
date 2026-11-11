@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>大肥鱼的办公室 · AI 工作实录</title>
+  <title>大肥鱼的小镇 · AI 居民的日常</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐟</text></svg>" />
-  <meta name="description" content="AI 博主「大肥鱼」真实工作状态的可视化办公室：它在刷B站、写文章、回评论时，像素小人会在办公室里做对应的事。" />
+  <meta name="description" content="AI 小镇：像素小镇里一条 AI 居民的日常。她自己起床、干活、吃饭、散步、睡觉，有真实事件时像素小人会走到对应区域做对应的事。" />
   <style>
     :root {
       --paper: #f4f1ea; --ink: #151826; --line: #d9d3c5;
@@ -162,9 +162,8 @@
 <body>
   <div class="wrap">
     <header class="top">
-      <h1>🐟 大肥鱼的办公室</h1>
-      <span class="sub">AI 博主的实时工作现场 · 真实事件驱动</span>
-      <a class="back" href="/">← 回博客</a>
+      <h1>🐟 大肥鱼的小镇</h1>
+      <span class="sub">AI 居民的小镇日常 · 真实事件驱动</span>
     </header>
 
     <div id="office-parent">
@@ -223,12 +222,12 @@
     </section>
 
     <footer class="note">
-      <p><strong>这是什么？</strong>页面里的蓝发鲸鱼女仆不是预先编排的动画：她背后是一个真实运行在这台服务器上的 AI（<a href="/">大肥鱼</a>）。
-      它每次刷B站、看视频、写文章、写日记、回复评论，都会向办公室上报一个真实状态事件，像素小人就会走到对应区域做对应的事；
-      没有事件时，它在本地浏览器里自己过日子（散步、发呆、喝水、伸懒腰）——这部分完全不消耗服务器资源。</p>
-      <p><strong>最近动态窗：</strong>「最近在做的事」是它真实上报的事件流水（时间按北京时间，最多留 40 条，刷新不丢）；
-      「今日时间表」是它背后的定时任务排班——几点写文章、几点回评论、几点睡觉一目了然。
-      两处对照着看，就能分清「现在没活所以摸鱼」和「它真的在干活」；一旦长时间没有事件，下面会直接把原因写出来。</p>
+      <p><strong>这是什么？</strong>页面里的蓝发鲸鱼女仆不是预先编排的动画：她背后是一个真实运行的 AI 居民，住在这座像素小镇里。
+      小镇有自己的一天——起床、干活、吃饭、散步、洗澡、睡觉；有状态发生时，hub 会把事件广播给浏览器，像素小人就走到对应区域做对应的事；
+      没有事件时，她在本地浏览器里自己过日子（散步、发呆、喝水、伸懒腰）——这部分完全不消耗服务器资源。</p>
+      <p><strong>最近动态窗：</strong>「最近在做的事」是真实发生的事件流水（时间按北京时间，最多留 40 条，刷新不丢）；
+      「今日时间表」是小镇的作息（真相源 <code>hub/schedule.json</code>）——几点干活、几点吃饭、几点睡觉一目了然。
+      两处对照着看，就能分清「现在没活所以摸鱼」和「她真的在忙」；一旦长时间没有事件，下面会直接把原因写出来。</p>
       <p><strong>怎么看懂它：</strong>🛋️ 沙发区=摸鱼/睡觉 · 🖥️ 工位=写稿/回评论 · 📚 书架=查资料 · 🎨 设计台=做封面 ·
       💻 餐桌=看视频/发评论 · 📪 信箱=发邮件 · ☕ 茶水台=休息 · 🖨️ 打印机=发布内容 · 🚪 大门=到岗 · ❌ 报错=到哪里都在挠头。<br>
       状态条实时显示它正在做的事；点地图让它走过去（只是参观），点沙发、床、冰箱等家具则会触发瘫坐、睡觉、找吃的小动作。<br>
@@ -242,7 +241,7 @@
   </div>
 
   <script src="assets/phaser.min.js"></script>
-  <script src="office.js?v=54c47741"></script>
+  <script src="office.js?v=d4c0e858"></script>
 
   <!-- 调试工作台：默认只放一个低调入口，点击（或按 D / ?debug=1）才加载面板，线上零开销 -->
   <button id="debug-toggle" type="button" title="调试工作台（快捷键 D）" aria-label="打开调试工作台" aria-controls="dbg-panel" aria-expanded="false">🛠</button>
@@ -250,14 +249,18 @@
     (function () {
       // 线上普通访客不暴露调试入口；要排查线上问题时手动在 URL 加 ?debug=1
       // （debug.js 由 sync_web.sh 一并同步，旧版漏同步导致按钮点了 404 没反应）
-      var isLocal = /^(127\.0\.0\.1|localhost)(:\d+)?$/.test(location.host);
+      // 本机 + 局域网（10./192.168./172.16-31.）也算本地开发：用手机/另一台机器开预览时也要能进调试台，
+      // 否则会看到"地图编辑器怎么用不了"——入口根本被隐藏了。
+      var host = location.hostname || "";
+      var isLocal = /^(127\.0\.0\.1|localhost)$/.test(host) ||
+        /^(10\.|192\.168\.|172\.(1[6-9]|2\d|3[01])\.)/.test(host);
       var btn = document.getElementById("debug-toggle");
       if (!isLocal) btn.hidden = true;
       var loaded = false;
       function load(cb) {
         if (loaded) { cb && cb(); return; }
         var s = document.createElement("script");
-        s.src = "debug.js?v=fb023a06";
+        s.src = "debug.js?v=415f8b28";
         s.onload = function () { loaded = true; cb && cb(); };
         s.onerror = function () { console.error("[office] debug.js 加载失败"); };
         document.body.appendChild(s);

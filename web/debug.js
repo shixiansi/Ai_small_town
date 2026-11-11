@@ -96,8 +96,6 @@
 
     <details open><summary>③ 场景控制</summary><div class="dbg-sec">
       <div class="dbg-row">
-        <button class="dbg-btn" id="dbg-light-on">💡 开灯</button>
-        <button class="dbg-btn" id="dbg-light-off">🌙 关灯</button>
         <button class="dbg-btn" id="dbg-rain">🌧 晴/雨切换</button>
         <button class="dbg-btn" id="dbg-grid">▦ 碰撞格叠加</button>
         <button class="dbg-btn" id="dbg-roads">🛣 道路层</button>
@@ -307,10 +305,7 @@
     };
     run(); seqTimer = setInterval(run, 3200);
     addLog("info", "开始模拟一轮工作（共 " + SEQ.length + " 步，每 3.2 秒）");
-  };
-  $("dbg-light-on").onclick = function () { C.setLights(true); addLog("info", "开灯"); };
-  $("dbg-light-off").onclick = function () { C.setLights(false); addLog("info", "关灯"); };
-  $("dbg-rain").onclick = function () {
+  };  $("dbg-rain").onclick = function () {
     var w = C.snapshot().weather === "rainy" ? "sunny" : "rainy";
     C.setWeather(w); addLog("info", "天气 → " + w);
   };
@@ -347,15 +342,20 @@
     farmOut((t ? t : "食材不够") + "\n可做: " + k.recipes.filter(function (r) { return r.ok; }).map(function (r) { return r.name; }).join("、"));
     addLog("info", "cookAuto → " + t);
   };
-  /* 地图编辑模式（v37）：进入后画布上直接增删移物品；本地可用，线上只读 */
+  /* 地图编辑模式（v37）：进入后画布上直接增删移物品；hub 不通时改动存本机浏览器 */
   $("dbg-edit").onclick = function () {
     var on = C.setEditMode(!C.editState().on);
     this.textContent = on ? "✏ 编辑中…" : "✏ 编辑地图";
     var st = C.editState();
-    addLog("info", "编辑模式 → " + (on ? "开" : "关") + (st.hub ? "（保存走 hub /api/map）" : "（hub 不可达，改动仅本次生效）"));
+    // 旧版这里恒显示"保存走 hub"（editState().hub = !!hubMapBase() 永远为真），失败时极易误判
+    addLog("info", "编辑模式 → " + (on ? "开" : "关") +
+      (st.hub ? "（保存走 hub " + (st.mapUrl || "/api/map") + "）"
+              : "（hub 不可达：" + (st.hubError || "未连接") + " → 改动存本机浏览器，重连后自动补传）"));
   };
   $("dbg-map-reload").onclick = function () {
-    addLog("info", C.mapReload() ? "已从 hub 重载自定义层" : "hub 不可达（仅本地可用）");
+    C.mapReload();
+    var st = C.editState();
+    addLog("info", st.hub ? "已从 hub 重载自定义层（" + st.count + " 条）" : "hub 不可达（" + (st.hubError || "未连接") + "），当前用本机镜像：" + st.count + " 条");
   };
   $("dbg-go").onclick = function () {
     var z = goSel.value; if (!z) return;

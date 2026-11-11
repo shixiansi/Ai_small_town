@@ -1,12 +1,13 @@
-// office 四屏截图走查（headless chromium）
+// 小镇多屏截图走查（headless chromium）
 // 用法: node office/tools/shot_rooms.js [outDir] [tag]
-// 依赖 /tmp/node_modules/playwright-core + chromium_headless_shell
+// 依赖 playwright-core（默认从 PLAYWRIGHT_DIR 或 /tmp/node_modules 解析）+ chromium_headless_shell
 const path = require("path");
 const fs = require("fs");
-const pw = require(path.join("/tmp/node_modules/playwright-core"));
+const os = require("os");
+const pw = require(path.join(process.env.PLAYWRIGHT_DIR || "/tmp/node_modules/playwright-core"));
 
 const BASE = process.env.SHOT_BASE || "http://127.0.0.1:4322";
-const OUT = process.argv[2] || "/root/项目/news-site/logs/office-road-shots";
+const OUT = process.argv[2] || process.env.OFFICE_SHOT_DIR || path.join(os.tmpdir(), "office-shots");
 const TAG = process.argv[3] || "";
 fs.mkdirSync(OUT, { recursive: true });
 

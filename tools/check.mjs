@@ -7,25 +7,25 @@
  * 覆盖范围（与浏览器内 __officeCtl.zoneAudit() 同一套判定，坐标推导复刻 makePlacement /
  * buildBlockedGrid，避免「静态说没问题、画面全错」）：
  *   JSON / 常量一致性 / 状态→区域引用 / 锚点越界与阻挡 / 区域语义家具(2.2格) /
- *   坐席宿主 / 家具资产·on引用·帧号 / agent 状态名 / hub 状态清单双向一致 /
+ *   坐席宿主 / 家具资产·on引用·帧号 / 作息与调试台状态名 / hub 状态清单双向一致 /
  *   线上调试台保护·hub 白名单与持久化·aria 防回退 / 鲸鱼女仆精灵表与动作帧 / 部署文件清单 /
  *   资源版本号 / 本地生活事件表（区域·动作·房间分布防回退）/ 画布文字缩放防回退 /
  *   画布铺满容器·调试台重排（防宽屏左右留白）
  *
- * 典型用法：改完 STATE_MAP、hub/states.json、map.json、agent/*.mjs 或 sync_web.sh 后跑一次；
+ * 典型用法：改完 STATE_MAP、hub/states.json、hub/schedule.json、map.json 或 sync_web.sh 后跑一次；
  * sync_web.sh 已把它接成上线门禁，失败即中止同步。
  */
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { dryRun } from "./bust.mjs";
+import { build, buildRaw } from "./build.mjs";
 
 const OFFICE = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const PROJECT = path.resolve(OFFICE, "..");
 const WEB = path.join(OFFICE, "web");
 const ASSETS = path.join(WEB, "assets");
 const read = f => fs.readFileSync(f, "utf8");
-const pad2c = n => (n < 10 ? "0" : "") + n;
+const norm = s => String(s).replace(/\r\n/g, "\n").replace(/^\uFEFF/, "");
 const results = [];
 
 function check(name, fn) {
@@ -38,16 +38,17 @@ function check(name, fn) {
 }
 
 // ---------- 载入 ----------
-let map, manifest, officeSrc, indexSrc, shSrc, dbgSrc, hubSrc, statesJson = null;
+let map, manifest, officeSrc, indexSrc, shSrc, dbgSrc, hubSrc, statesJson = null, scheduleJson = null;
 try {
   map = JSON.parse(read(path.join(WEB, "map.json")));
   manifest = JSON.parse(read(path.join(ASSETS, "manifest.json")));
-  officeSrc = read(path.join(WEB, "office.js"));
+  officeSrc = buildRaw();   // 源码检查用"未压缩拼接"，产物压缩后注释/缩进会变
   indexSrc = read(path.join(WEB, "index.html"));
   dbgSrc = read(path.join(WEB, "debug.js"));
   hubSrc = read(path.join(OFFICE, "hub", "hub.mjs"));
   shSrc = read(path.join(OFFICE, "sync_web.sh"));
   try { statesJson = JSON.parse(read(path.join(OFFICE, "hub", "states.json"))); } catch { /* 由专门一项报错 */ }
+  try { scheduleJson = JSON.parse(read(path.join(OFFICE, "hub", "schedule.json"))); } catch { /* 由第 18 项报错 */ }
 } catch (e) {
   console.error("[FAIL] 读取/解析基础文件失败: " + e.message);
   process.exit(1);
@@ -253,16 +254,14 @@ check("家具资产 / on 引用 / 帧号 / 重复 id", () => {
   return { problems: bad, note: `${map.furniture.length} 件家具 / ${Object.keys(manifest).length} 个素材` };
 });
 
-check("agent 推送状态 ⊆ STATE_MAP", () => {
-  const dir = path.join(PROJECT, "agent");
-  if (!fs.existsSync(dir)) return { warnings: ["未找到 agent/ 目录，跳过"], note: "跳过" };
+check("作息 / 调试台引用的状态 ⊆ STATE_MAP", () => {
   const used = new Set();
-  fs.readdirSync(dir).filter(f => f.endsWith(".mjs")).forEach(f => {
-    const t = read(path.join(dir, f));
-    for (const m of t.matchAll(/\b(?:office|done)\(\s*["']([A-Za-z_][A-Za-z0-9_]*)["']/g)) used.add(m[1]);
-    if (/endState\s*=\s*"(\w+)"/.test(t)) used.add(RegExp.$1);   // officeRun 默认收尾状态
-  });
-  const bad = [...used].filter(s => !STATE[s]).map(s => `agent 推了 "${s}"，前端会静默兜底成 idle`);
+  // 1) 作息表里登记的班次状态（hub/schedule.json 的 state 字段）
+  (scheduleJson?.shifts || []).forEach(s => { if (s && s.state) used.add(String(s.state)); });
+  // 2) 调试台的演示序列（debug.js 的 SEQ）——一键演示不能推前端不认识的状态
+  const seq = /var SEQ = \[([^\]]*)\]/.exec(dbgSrc);
+  if (seq) seq[1].split(",").forEach(s => { const v = s.trim().replace(/^["']|["']$/g, ""); if (v) used.add(v); });
+  const bad = [...used].filter(s => !STATE[s]).map(s => `"${s}" 不在 STATE_MAP，前端会静默兜底成 idle`);
   return { problems: bad, note: `${used.size} 个状态名，0 缺失` };
 });
 
@@ -352,7 +351,7 @@ check("鲸鱼女仆精灵表 / 动作帧", () => {
 });
 
 check("部署清单 sync_web.sh", () => {
-  const need = ["index.html", "office.js", "debug.js", "map.json", "assets/*.png", "assets/*.json", "phaser.min.js"];
+  const need = ["index.html", "office.js", "debug.js", "editor.html", "editor.js", "map.json", "assets/*.png", "assets/*.json", "phaser.min.js"];
   const bad = need.filter(n => !shSrc.includes(n)).map(n => `sync_web.sh 未覆盖 ${n}`);
   if (!/bust\.mjs/.test(shSrc)) bad.push("sync_web.sh 未接入 bust.mjs（版本号不会自动更新）");
   if (!/check\.mjs/.test(shSrc)) bad.push("sync_web.sh 未接入 check.mjs（无上线门禁）");
@@ -478,7 +477,7 @@ check("画布铺满容器 / 调试台重排（防宽屏左右留白）", () => {
   return { problems: bad, note: `${gw}:${gh} 比例 · CSS 强制铺满 · 面板开关重排` };
 });
 
-check("最近动态窗（事件流 / 今日时间表 / crontab 对齐）", () => {
+check("最近动态窗（事件流 / 今日时间表 / 作息表对齐）", () => {
   const bad = [], warnings = [];
 
   // ---- 1) DOM 结构：面板在 index.html 里，且是 DOM 文字（canvas 里的字手机上糊，见 v21）----
@@ -520,7 +519,7 @@ check("最近动态窗（事件流 / 今日时间表 / crontab 对齐）", () =>
   if (!/BJ_MS/.test(officeSrc) || !/function bjClock\(/.test(officeSrc)) bad.push("缺北京时间换算（访客在别的时区会把班次算错）");
   if (/\.getHours\(\)/.test(officeSrc)) bad.push("office.js 出现 getHours()：班次会跟着访客本地时区漂");
 
-  // ---- 4) 时间表 ↔ scripts/crontab.txt 双向核对 ----
+  // ---- 4) 时间表 ↔ hub/schedule.json 双向核对 ----
   const si = officeSrc.indexOf("var SCHEDULE = {"), sj = officeSrc.indexOf("\n  };", si);
   if (si < 0 || sj < 0) return { problems: bad.concat(["office.js 找不到 SCHEDULE 时间表"]), warnings, note: "" };
   const block = officeSrc.slice(si, sj);
@@ -535,38 +534,55 @@ check("最近动态窗（事件流 / 今日时间表 / crontab 对齐）", () =>
   if (!wakeM) bad.push("SCHEDULE 缺 wake 清醒时段：[起, 止]，hub 的空档回落要对齐它");
   if (shifts.length < 5) bad.push(`SCHEDULE 只有 ${shifts.length} 班（要求 ≥5，别把时间表缩回只有一条）`);
   shifts.filter(s => !s.at).forEach(s => bad.push(`班次「${s.label}」的 at 不是 HH:MM`));
-  ["每日 agent（第一场）", "每日 agent（第二场）", "每日运营", "回博客评论", "B站互动", "备份数据"].forEach(k => {
-    if (!shifts.some(s => s.label === k)) bad.push(`SCHEDULE 少了「${k}」这一班（时间表要和服务器真实排班一致）`);
-  });
-  if (!shifts.some(s => s.weekday === "0")) bad.push("SCHEDULE 里没有周日专属班次（鱼缸周报 20:00）");
 
-  const cronPath = path.join(PROJECT, "scripts", "crontab.txt");
+  if (!scheduleJson) {
+    bad.push("缺 hub/schedule.json：作息表就没有唯一事实源，页面上的时间表无从核对");
+  } else {
+    const plan = Array.isArray(scheduleJson.shifts) ? scheduleJson.shifts : [];
+    if (!Array.isArray(scheduleJson.shifts)) bad.push("hub/schedule.json 的 shifts 必须是数组");
+    if (plan.length < 5) bad.push(`hub/schedule.json 只有 ${plan.length} 班（要求 ≥5）`);
+    const key = s => `${s.at}|${s.weekday ?? ""}|${s.label}`;
+    const planKeys = new Set(plan.map(key));
+    const pageKeys = new Set(shifts.map(key));
+    shifts.filter(s => s.at && !planKeys.has(key(s))).forEach(s => {
+      bad.push(`页面时间表里的 ${s.at}「${s.label}」在 hub/schedule.json 里找不到（改了作息忘了改前端，或者反过来）`);
+    });
+    plan.filter(s => s.at && s.label && !pageKeys.has(key(s))).forEach(s => {
+      bad.push(`hub/schedule.json 里的 ${s.at}「${s.label}」没写进页面时间表（前端会漏掉这一班）`);
+    });
+    // 周几字段两侧都要一致：只改一边等于"I班每天跑"和"只周日跑"混着
+    plan.filter(s => s.at && s.label && (s.weekday ?? "") !== "").forEach(s => {
+      const hit = shifts.find(x => x.at === s.at && x.label === s.label);
+      if (hit && (hit.weekday ?? "") !== String(s.weekday)) {
+        bad.push(`「${s.label}」的 weekday 不一致：schedule.json=${s.weekday} / 页面=${hit.weekday ?? "每天"}`);
+      }
+    });
+    if (!plan.some(s => String(s.weekday) === "0")) bad.push("schedule.json 里没有周日专属的班次（赶集日）");
+    const planWake = Array.isArray(scheduleJson.wake) ? scheduleJson.wake : null;
+    if (!planWake || planWake.length !== 2) bad.push("hub/schedule.json 缺 wake: [起, 止]");
+    else if (wakeM && (Number(planWake[0]) !== Number(wakeM[1]) || Number(planWake[1]) !== Number(wakeM[2]))) {
+      bad.push(`hub/schedule.json 的 wake ${planWake[0]}:00–${planWake[1]}:00 与前端 SCHEDULE.wake ${wakeM[1]}:00–${wakeM[2]}:00 不一致`);
+    }
+  }
+
+  /* 可选：如果你确实想让小镇作息跟某台机器的 crontab 对齐，把 OFFICE_CRONTAB_FILE 指过去即可，
+   * 这里只做告警不做门禁 —— 小镇自己的作息由 hub/schedule.json 说了算，不依赖外部定时任务。 */
+  const cronPath = process.env.OFFICE_CRONTAB_FILE;
   let cron = null;
-  if (!fs.existsSync(cronPath)) bad.push("缺 scripts/crontab.txt：页面上的时间表就没法和服务器排班核对");
-  else {
+  if (cronPath && fs.existsSync(cronPath)) {
     cron = read(cronPath).split(/\r?\n/).map(l => l.trim()).filter(l => l && !l.startsWith("#"))
       .map(l => l.split(/\s+/)).filter(f => f.length >= 6)
       .map(f => ({ min: f[0], hour: f[1], dom: f[2], mon: f[3], dow: f[4], cmd: f.slice(5).join(" ") }));
     const minOK = (field, m) => field === String(m) || field === "*" || (field.startsWith("*/") && m % Number(field.slice(2)) === 0);
-    const hourOK = (field, h, every) => {
+    const hourOK = (field, h) => {
       if (field.startsWith("*/")) { const step = Number(field.slice(2)); return step > 0 && h % step === 0; }
       if (field.includes(",")) return field.split(",").map(Number).includes(h);
       return field === "*" || Number(field) === h;
     };
     shifts.filter(s => s.at).forEach(s => {
       const [hh, mm] = s.at.split(":").map(Number);
-      const hit = cron.find(c => minOK(c.min, mm) && hourOK(c.hour, hh, s.every) &&
-        (s.weekday != null ? c.dow === s.weekday : c.dow === "*"));
-      if (!hit) bad.push(`时间表里的 ${s.at}「${s.label}」在 scripts/crontab.txt 找不到对应排班（改了 cron 忘了改页面，或者反过来）`);
-    });
-    // 反向：crontab 里跑 agent 的班次，页面上也该有 → 只告警，避免以后加新定时任务就卡门禁
-    cron.filter(c => /agent\.mjs|weekly\.mjs|bili_interact\.mjs/.test(c.cmd)).forEach(c => {
-      const hh = Number(c.hour.split(",")[0]);
-      const mm = Number(c.min);
-      if (!Number.isFinite(hh) || !Number.isFinite(mm)) return;
-      const at = pad2c(hh) + ":" + pad2c(mm);
-      if (!shifts.some(s => s.at === at || (s.every && hh % s.every === 0 && s.at.slice(3) === at.slice(3)))) {
-        warnings.push(`crontab 的 ${c.min} ${c.hour} * * * 没写进页面时间表（${c.cmd.split(" ").slice(-2).join(" ")}）`);
+      if (!cron.find(c => minOK(c.min, mm) && hourOK(c.hour, hh))) {
+        warnings.push(`时间表里的 ${s.at}「${s.label}」在 ${cronPath} 找不到对应排班（只是提醒：小镇作息不依赖它）`);
       }
     });
   }
@@ -583,7 +599,7 @@ check("最近动态窗（事件流 / 今日时间表 / crontab 对齐）", () =>
 
   return {
     problems: bad, warnings,
-    note: `${shifts.length} 班 / wake ${wakeM ? wakeM[1] + ":00–" + wakeM[2] + ":00" : "?"} / crontab ${cron ? cron.length : 0} 条`
+    note: `${shifts.length} 班 / wake ${wakeM ? wakeM[1] + ":00–" + wakeM[2] + ":00" : "?"} / 作息表 ${scheduleJson?.shifts?.length ?? 0} 班${cron ? ` / 外部 crontab ${cron.length} 条` : ""}`
   };
 });
 
@@ -613,8 +629,13 @@ check("数值层 stats（hub 字段 / 前端 UI / 增量上报 防回退）", ()
   if (!indexSrc.includes(".stat-fill"))
     problems.push("index.html 缺 .stat-fill 样式");
   // 4) nginx 反代（sync 不覆盖 nginx，单独提醒）
+  //    站点配置路径各家不同：用 OFFICE_NGINX_CONF 指过去；不设就跳过（不猜别人的路径）
   let ng = "";
-  try { ng = read("/www/server/panel/vhost/nginx/news.shixiansi.pw.conf"); } catch { warnings.push("读不到 nginx 配置，跳过反代检查"); }
+  const ngPath = process.env.OFFICE_NGINX_CONF;
+  if (!ngPath) warnings.push("未设置 OFFICE_NGINX_CONF，跳过 nginx 反代检查");
+  else {
+    try { ng = read(ngPath); } catch { warnings.push(`读不到 nginx 配置 ${ngPath}，跳过反代检查`); }
+  }
   if (ng && !ng.includes("/office-hub-api/"))
     problems.push("nginx 缺 /office-hub-api/ 反代");
   // 5) EVENT_NEED 的 key 必须都在 LOCAL_EVENTS 里
@@ -670,6 +691,209 @@ check("鱼塘阻挡 + 地图编辑层（blockers / hub API / 编辑模式 防回
   return { problems: bad, note: "鱼塘椭圆阻挡 · hub /api/map · 编辑模式 · 调试入口" };
 });
 
+// ---------- 第 21 项：独立地图编辑器（v38 三图层） ----------
+check("独立编辑器（editor.html）：三图层 / 静态可移动 / 地形碰撞 防回退", () => {
+  const bad = [];
+  let edHtml = "", edJs = "";
+  try { edHtml = read(path.join(OFFICE, "web", "editor.html")); } catch { bad.push("缺 web/editor.html"); }
+  try { edJs = read(path.join(OFFICE, "web", "editor.js")); } catch { bad.push("缺 web/editor.js"); }
+  // 1) 页面：挂 #office-parent（Phaser parent）、引 office.js/editor.js、藏游戏本体 DOM
+  if (edHtml) {
+    for (const needle of ['id="office-parent"', "office.js?v=", "editor.js?v=", 'id="game-chrome"', 'id="ed-stage"'])
+      if (!edHtml.includes(needle)) bad.push(`editor.html 缺 ${needle}`);
+  }
+  // 2) 侧栏：三图层 + 工具 + 图标
+  if (edJs) {
+    for (const needle of ['"floor"', '"object"', '"terrain"', "setLayer", "setFloor", "setTerrain", "setAsset", "deleteObject", "restoreHidden", "M.icon"])
+      if (!edJs.includes(needle)) bad.push(`editor.js 缺 ${needle}`);
+  }
+  // 3) office.js：图层数据模型 + 叠加渲染 + 地形碰撞 + 独立页 API
+  for (const needle of ["function splitCustomLayer(", "function renderEditOverlays(", "floorEdits", "terrainEdits", "moveOverrides",
+                        "function meSetTile(", "function meEraseAt(", "function meMoveTo(", "window.__mapEditor", "editorMode", "mapEditorPointerDown"])
+    if (!officeSrc.includes(needle)) bad.push(`office.js 缺 ${needle}（三图层编辑链路不完整）`);
+  // 4) 地形必须参与碰撞：墙/水挡路；地板贴片放行（家具压着的格除外）
+  if (!/terrainEdits\)\.forEach[\s\S]{0,400}grid\[e\.y\]\[e\.x\] = 1/.test(officeSrc)) bad.push("buildBlockedGrid 未消费 terrainEdits（墙/水不挡路）");
+  if (!/floorEdits\)\.forEach[\s\S]{0,400}grid\[e\.y\]\[e\.x\] = 0/.test(officeSrc)) bad.push("buildBlockedGrid 未消费 floorEdits（地板贴片不能把墙/水改成可走）");
+  if (!/propBlocked\[e\.y \+ "," \+ e\.x\]/.test(officeSrc)) bad.push("地板贴片未避开家具占格（会把家具下面放行）");
+  // 5) 静态家具可移动：拖动落定写 move 覆盖，而不是直接改 map.json
+  if (!/isMoveEntry\(f\)|isMoveEntry\(e\)/.test(officeSrc)) bad.push("office.js 缺 move 覆盖条目处理（静态家具不能移动）");
+  if (!/function moveEntryFor\(/.test(officeSrc)) bad.push("office.js 缺 moveEntryFor（静态家具移动无法持久化）");
+  // 6) 部署：sync_web.sh 带上 editor 两件
+  for (const f of ["editor.html", "editor.js"]) if (!shSrc.includes(f)) bad.push(`sync_web.sh 未覆盖 ${f}`);
+  return { problems: bad, note: "三图层 · 静态可移动 · 地形碰撞 · 独立页" };
+});
+
+// ---------- 第 22 项：源码拆分 + 地图贴图化（v39） ----------
+check("源码拆分（web/src）+ 地图贴图化 防回退", () => {
+  const bad = [];
+  const SRC = path.join(OFFICE, "web", "src");
+  let files = [];
+  try { files = fs.readdirSync(SRC).filter(f => f.endsWith(".js")).sort(); } catch { bad.push("缺 web/src/ 目录（office.js 应拆成片段）"); }
+  if (files.length < 10) bad.push(`web/src 片段过少（${files.length}），office.js 可能又变回单文件`);
+  for (const need of ["head.js", "boot.js", "room.js", "farm.js", "start.js"]) {
+    if (!files.includes(need)) bad.push(`缺片段 web/src/${need}`);
+  }
+  // office.js 必须等于 src 的拼接结果
+  let builtSame = false;
+  try { builtSame = norm(build()) === norm(read(path.join(WEB, "office.js"))); } catch { bad.push("web/office.js 与 src 拼接结果不一致（跑 build.mjs）"); }
+  if (!builtSame && !bad.some(b => b.includes("拼接结果"))) bad.push("web/office.js 与 src 拼接结果不一致（跑 build.mjs）");
+  // 地图贴图：tiles 目录 + 加载 + 底图用 RenderTexture
+  let tiles = [];
+  try { tiles = fs.readdirSync(path.join(OFFICE, "web", "assets", "tiles")).filter(f => f.endsWith(".png")); } catch { bad.push("缺 web/assets/tiles/（跑 gen_tiles.mjs）"); }
+  for (const t of ["wood", "wall", "water", "grass", "road", "farm", "window"]) {
+    if (!tiles.includes(t + ".png")) bad.push(`缺地图贴图 assets/tiles/${t}.png`);
+  }
+  if (!/load\.image\("tile-" \+ mat/.test(read(path.join(SRC, "boot.js")))) bad.push("10-core.js 未加载地图贴图");
+  const room = read(path.join(SRC, "room.js"));
+  if (!/add\.renderTexture/.test(room)) bad.push("room.js 底图不是贴图（renderTexture）");
+  if (/fillStyle\(/.test(room)) bad.push("room.js 里还有 fillStyle 画地板/墙（应全部走贴图）");
+  if (!/function paintPond/.test(room) || !/function paintFarm/.test(room) || !/function paintWalls/.test(room)) bad.push("room.js 缺池塘/农田/墙的贴图铺设");
+  if (!/var TILE_V = "/.test(read(path.join(SRC, "head.js")))) bad.push("head.js 缺 TILE_V 版本号");
+  // 路灯光源定位必须已删除
+  if (/lampGlows|buildLampGlows/.test(officeSrc)) bad.push("office.js 里还有路灯光源（lampGlows），用户已要求去掉");
+  // v39.2：窗必须能当物品摆（虚拟资产 + wall 标记），鱼塘必须能被逐格改
+  if (!/var EDIT_PICKABLE = \[[\s\S]*?"window"/.test(read(path.join(SRC, "mapedit.js")))) bad.push("mapedit.js 的 EDIT_PICKABLE 缺 window（窗不能当物品摆）");
+  if (!/placeExtraFor/.test(read(path.join(SRC, "editor-api.js")))) bad.push("editor-api.js 缺 placeExtraFor（窗摆放不会带 wall 标记，会挡路）");
+  if (!/manifest\.window = /.test(read(path.join(SRC, "boot.js")))) bad.push("boot.js 未把 window 注册成可用资产");
+  if (!/floorEdits\[tx \+ "," \+ ty\] \|\| terrainEdits\[tx \+ "," \+ ty\]/.test(room)) bad.push("room.js 的 paintPond 没让用户手改的格子优先（鱼塘不能自定义）");
+  // v39.3：资产必须分类且不重不漏
+  const mpSrc = read(path.join(SRC, "mapedit.js"));
+  const pick = (/var EDIT_PICKABLE = \[([\s\S]*?)\];/.exec(mpSrc) || [, ""])[1].match(/"([a-z0-9-]+)"/g) || [];
+  const pickList = pick.map(s => s.replace(/"/g, ""));
+  const catBlock = (/var EDIT_CATS = \[([\s\S]*?)\n  \];/.exec(mpSrc) || [, ""])[1];
+  const catAssets = [];
+  (catBlock.match(/assets:\s*\[([^\]]*)\]/g) || []).forEach(m => {
+    (m.match(/"([a-z0-9-]+)"/g) || []).forEach(s => catAssets.push(s.replace(/"/g, "")));
+  });
+  const missingCat = pickList.filter(a => !catAssets.includes(a));
+  const extraCat = catAssets.filter(a => !pickList.includes(a));
+  const dupCat = catAssets.filter((a, i) => catAssets.indexOf(a) !== i);
+  if (missingCat.length) bad.push(`资产未分类：${missingCat.join(", ")}（编辑器里找不到它们）`);
+  if (extraCat.length) bad.push(`分类里有未登记资产：${extraCat.join(", ")}`);
+  if (dupCat.length) bad.push(`资产被重复分类：${[...new Set(dupCat)].join(", ")}`);
+  if (!/#ed-cats/.test(read(path.join(WEB, "editor.html")))) bad.push("editor.html 缺分类 chips 样式（#ed-cats）");
+  if (!/curCat/.test(read(path.join(WEB, "editor.js")))) bad.push("editor.js 缺分类筛选状态");
+  // v39.4：底图结构面板已删；保存必须有可见反馈（保存状态条 + 回读校验）
+  if (/STRUCTS|setStruct|structs:/.test(mpSrc + read(path.join(SRC, "editor-api.js")))) bad.push("底图结构（STRUCTS/setStruct）还在，用户已要求删掉");
+  if (!/ed-save-status/.test(read(path.join(WEB, "editor.html")))) bad.push("editor.html 缺保存状态条（#ed-save-status）");
+  if (!/saveNow/.test(read(path.join(SRC, "editor-api.js"))) || !/saveNow/.test(read(path.join(WEB, "editor.js")))) bad.push("保存没有回读校验（saveNow），失败会静默");
+  if (!/noteSave\(/.test(mpSrc)) bad.push("保存结果没有记录（noteSave），UI 无法显示成功/失败");
+  // v39.5：画死的旧窗必须删干净（窗只在物品层里摆）
+  if (/EXTRA_WINDOWS|redrawWindow|winRedraw/.test(officeSrc)) bad.push("office.js 里还有画死的旧窗（EXTRA_WINDOWS / redrawWindow），用户已要求删除");
+  if (/winMat|winCells/.test(read(path.join(SRC, "room.js")))) bad.push("room.js 顶部墙带还在画窗（winCells/winMat）");
+  // v40：光照层（昼夜预览 + 夜间阴影可调 + 自定义灯源）
+  for (const needle of ["isLightEntry", "renderCustomLights", "LIGHT_PRESETS", "nightCfg"]) {
+    if (!mpSrc.includes(needle)) bad.push(`mapedit.js 缺 ${needle}（光照层链路不完整）`);
+  }
+  const apiSrc = read(path.join(SRC, "editor-api.js"));
+  const apiSrc2 = apiSrc;
+  for (const needle of ["meAddLight", "meRemoveLight", "mePatchLight", "meSetNight", "saveNow"]) {
+    if (!apiSrc.includes(needle)) bad.push(`editor-api.js 缺 ${needle}`);
+  }
+  if (!/id: "light"/.test(read(path.join(WEB, "editor.js")))) bad.push("editor.js 缺少光照层 tab");
+  if (!/ed-lights/.test(read(path.join(WEB, "editor.html")))) bad.push("editor.html 缺灯光预设样式（#ed-lights）");
+  // v42：阴影区域 = 内置 4 间房 + 自定义块，每块各自存 夜 / 开灯 / 白天 三档浓度
+  if (!/var BUILTIN_SHADOWS = \[/.test(mpSrc)) bad.push("mapedit.js 缺 BUILTIN_SHADOWS（内置房间阴影区域没进列表）");
+  if (!/function buildShadowRegions\(/.test(mpSrc)) bad.push("mapedit.js 缺 buildShadowRegions（内置+自定义合并）");
+  if (!/function shadowAlphaOf\(/.test(mpSrc)) bad.push("mapedit.js 缺 shadowAlphaOf（三档浓度取值）");
+  if (!/r\.room \? \(roomLights\[r\.room\] !== false\)/.test(mpSrc)) bad.push("阴影区域没按房间灯状态选「夜/开灯」浓度");
+  if (!/isShadowEntry\(f\) \{ return !!\(f && f\.a === "shadow" && \(typeof f\.w === "number" \|\| f\.del\)\)/.test(mpSrc)) bad.push("阴影条目必须支持 矩形(w/h) 或 删除标记(del)");
+  if (!/del: 1/.test(apiSrc)) bad.push("editor-api.js 删内置阴影块没写 del 标记（内置块删不掉）");
+  if (!/renderNightShadow\(s\)/.test(read(path.join(SRC, "placement.js")))) bad.push("applyRoomLights 没重画阴影区域（开关灯看不出变化）");
+  const edJs = read(path.join(WEB, "editor.js"));
+  // v45：旋转后影子/碰撞/脚点必须按"当前帧所在行"的 bbox 算
+  if (!/function bboxForFrame\(/.test(read(path.join(SRC, "head.js")))) bad.push("缺 bboxForFrame（按行取包围盒）");
+  if (!/bboxForFrame\(m, f\.frame\)/.test(read(path.join(SRC, "placement.js")))) bad.push("makePlacement 没按行取 bbox（旋转后影子/碰撞不会变）");
+  if (!/bboxForFrame\(m, editFrameFor/.test(read(path.join(SRC, "mapedit.js")))) bad.push("编辑器预览没按朝向取 bbox");
+  const manAll = JSON.parse(read(path.join(ASSETS, "manifest.json")));
+  const noRows = Object.keys(manAll).filter(k => manAll[k] && manAll[k].rows && Object.keys(manAll[k].rows).length > 1 && !Array.isArray(manAll[k].bboxRows));
+  if (noRows.length) bad.push(`这些资产的 manifest 缺 bboxRows：${noRows.slice(0, 5).join("/")}（跑 office/tools/gen_bboxrows.ps1）`);
+  // v47：存档保护（自动备份 + 一键回滚 + 本机副本）
+  const hubSrc = read(path.join(OFFICE, "hub", "hub.mjs"));
+  if (!/function backupMapFile\(/.test(hubSrc)) bad.push("hub 没有自动备份（backupMapFile）");
+  if (!/\/api\/map\/backups/.test(hubSrc) || !/\/api\/map\/restore/.test(hubSrc)) bad.push("hub 缺 /api/map/backups 或 /restore");
+  if (!/backupMapFile\(\)\s*\/\/ 先备份再覆盖/.test(hubSrc) && !/const bak = backupMapFile\(\)/.test(hubSrc)) bad.push("写盘前没调用备份");
+  if (!/restoreFromMirror/.test(read(path.join(SRC, "editor-api.js")))) bad.push("editor-api 缺本机副本恢复");
+  if (!/ed-backups/.test(read(path.join(WEB, "editor.html"))) || !/ed-mirror/.test(read(path.join(WEB, "editor.html")))) bad.push("editor.html 缺历史存档/本机副本按钮");
+  // v48：右键拖动平移 + 编辑页屏蔽游戏原有 UI
+  const viewSrc = read(path.join(SRC, "view.js"));
+  if (!/rightDrag/.test(viewSrc)) bad.push("view.js 缺右键拖动平移（rightDrag）");
+  if (!/contextmenu/.test(viewSrc)) bad.push("画布没屏蔽右键菜单");
+
+  // v75：编辑器「自动」预览不能压夜色；邻居按新地图定位
+  const plNight = read(path.join(SRC, "placement.js"));
+  if (/if \(pv !== "day" && typeof nightCfg !== "undefined" && nightCfg\.ambient != null\) target = nightCfg\.ambient;/.test(plNight))
+    bad.push("编辑器自动预览仍会压夜色（屏幕发灰）");
+  if (/cx: 43 \* TILE, cy: 24 \* TILE/.test(viewSrc)) bad.push("邻居家还是旧坐标");
+
+  // v76：NPC 家 = 床；走路必须走 A*（否则穿墙）；要有自主行为
+  const npcSrc = read(path.join(SRC, "npc.js"));
+  if (!/bedAt: \[41\.3, 21\.2\]/.test(npcSrc)) bad.push("NPC 家还绑在旧房子上（应为 bedAt 床位）");
+  if (/s\.hostMap\[def\.home\]/.test(npcSrc)) bad.push("NPC 还在依赖房子 sprite");
+  if (!/function npcWalkTo\(/.test(npcSrc) || !/astar\(/.test(npcSrc)) bad.push("NPC 走路没用 A*（会穿墙）");
+  if (!/function npcWalkHome\(/.test(npcSrc)) bad.push("缺 npcWalkHome（回家不走床位）");
+  if (!/NPC_ACTS/.test(npcSrc)) bad.push("NPC 缺自主行为表");
+  // v77：三张床必须在 map.json 里真实存在；缩小不能露出灰底
+  // v78：NPC 的 bed id 必须是 map.json 里【真实存在】的家具（不许凭空造床）
+  const mapJson = JSON.parse(read(path.join(WEB, "map.json")));
+  const npcSrcB = read(path.join(SRC, "npc.js"));
+  const bedIds = [];
+  npcSrcB.replace(/bed: "([A-Za-z0-9_]+)"/g, function (_, id) { bedIds.push(id); return _; });
+  if (bedIds.length < 3) bad.push("NPC 的 bed id 少于 3 个");
+  bedIds.forEach(function (bid) {
+    const found = (mapJson.furniture || []).filter(function (f) { return f.id === bid; })[0];
+    if (!found) bad.push("NPC 床位 " + bid + " 在 map.json 里不存在（不许私自造家具）");
+  });
+  // 一个房间一张床：catBed 所在的喵酱家不该有第二张床
+  const houses = [["catBed", 40, 44], ["chiefChair1", 46, 50], ["docArm", 52, 55]];
+  houses.forEach(function (h) {
+    const beds = (mapJson.furniture || []).filter(function (f) {
+      return /^bed/.test(f.a || "") && f.x >= h[1] && f.x <= h[2] && f.y >= 19;
+    });
+    if (beds.length > 1) bad.push("房间 x" + h[1] + "-" + h[2] + " 有 " + beds.length + " 张床（应只有一张）");
+  });
+  const apiSrc3 = read(path.join(SRC, "editor-api.js"));
+  if (!/function minZoomNoVoid/.test(apiSrc3)) bad.push("缺 minZoomNoVoid（缩小会露出灰底）");
+  if (!/background:#1b2233/.test(read(path.join(WEB, "editor.html")))) bad.push("画布容器缺底色（缩小时露灰）");
+
+  ["sleep", "idle", "wander", "look"].forEach(function (a) {
+    if (!new RegExp('"' + a + '"').test(npcSrc)) bad.push("NPC 行为缺 " + a);
+  });
+
+  if (!/右键只用来平移/.test(read(path.join(SRC, "loop.js")))) bad.push("右键没拦住点击（会误放物品）");
+  if (!/编辑页不弹气泡/.test(read(path.join(SRC, "hud.js")))) bad.push("编辑页还会弹气泡");
+  if (!/地图编辑页不显示名牌/.test(read(path.join(SRC, "npc.js")))) bad.push("编辑页还会显示 NPC 名牌");
+  // v49：房间灯开关必须真的影响阴影浓度（预览不得强行当关灯）
+  const mpSrc2 = read(path.join(SRC, "mapedit.js"));
+  const mpSrc3 = mpSrc;
+  if (/previewNight\(\) === "night"\) on = false/.test(mpSrc2)) bad.push("黑夜预览把开灯状态强行当关灯（灯开关无效）");
+  if (!/function meSetRoomLight\(/.test(apiSrc2)) bad.push("editor-api 缺 setRoomLight（编辑器没法试开关）");
+  // v49b：自定义阴影区域必须能归属到房间（否则单房间开灯不生效）
+  if (!/function roomForRect\(/.test(mpSrc2)) bad.push("缺 roomForRect（自定义阴影区域不会跟随房间灯）");
+  if (!/roomForRect\(Number\(o\.x\)/.test(mpSrc2)) bad.push("自定义阴影区域没自动绑定房间");
+  if (!/var allRoomsOn/.test(mpSrc2)) bad.push("无房间归属的阴影块应与单个房间灯解耦（只在全屋开灯时亮）");
+  if (!/跟随灯/.test(edJs)) bad.push("editor.js 缺阴影块的\"跟随灯\"选择器");
+  // v50：灯开关必须是一件可摆放的素材（贴图 + 注册 + 点击切换）
+  if (!/switch-off/.test(read(path.join(OFFICE, "tools", "gen_tiles.mjs")))) bad.push("gen_tiles 缺 switch-off 贴图");
+  if (!fs.existsSync(path.join(WEB, "assets", "tiles", "switch-off.png")) || !fs.existsSync(path.join(WEB, "assets", "tiles", "switch-on.png"))) bad.push("assets/tiles 缺 switch-off/on.png");
+  if (!/manifest\["switch"\]/.test(read(path.join(SRC, "boot.js")))) bad.push("boot.js 没注册 manifest.switch");
+  if (!/function toggleSwitchAt\(/.test(read(path.join(SRC, "furniture.js")))) bad.push("缺 toggleSwitchAt（点开关切灯）");
+  if (!/toggleSwitchAt\(p\.worldX/.test(read(path.join(SRC, "loop.js")))) bad.push("点击没接上灯开关");
+  if (!/"switch"/.test(mpSrc)) bad.push("编辑器可选资产里没有 switch");
+  // v51：窗/开关必须能贴到顶部墙带（band）
+  if (!/f\.band \? WALL_H/.test(read(path.join(SRC, "placement.js")))) bad.push("makePlacement 不支持 band（墙饰贴不到墙带）");
+  if (!/meWallAsset/.test(read(path.join(SRC, "editor-api.js")))) bad.push("editor-api 缺 meWallAsset（墙带内不能落笔）");
+  if (!/v51：贴到顶部墙带/.test(read(path.join(SRC, "editor-api.js")))) bad.push("放置时没写 band 标记");
+  if (!/ed-shadow-edit/.test(edJs)) bad.push("editor.js 缺选中块的浓度编辑面板（#ed-shadow-edit）");
+  if (!/alphaNow/.test(edJs)) bad.push("editor.js 阴影列表没显示当前生效浓度");
+  if (!/setShadowDefaults/.test(edJs)) bad.push("editor.js 缺新建块的默认浓度滑杆（setShadowDefaults）");
+  if (!/forceNight/.test(read(path.join(SRC, "head.js"))) || !/forceNight/.test(read(path.join(SRC, "farm.js")))) bad.push("昼夜预览开关（forceNight）没接到 isNightHour");
+  if (!/shadowAlphaOf/.test(mpSrc)) bad.push("阴影区域缺三档浓度取值函数");
+  // 部署脚本要带 tiles
+  if (!shSrc.includes("assets/tiles/")) bad.push("sync_web.sh 未同步 assets/tiles/");
+  return { problems: bad, note: `${files.length} 个片段 · 地图贴图 ${tiles.length} 张 · 底图 RenderTexture` };
+});
+
 console.log("\noffice 静态自检\n" + "─".repeat(64));
 results.forEach(r => {
   const tag = r.problems.length ? "[FAIL]" : (r.warnings.length ? "[WARN]" : "[ OK ]");
@@ -682,3 +906,42 @@ results.forEach(r => {
 console.log("─".repeat(64));
 console.log(`结果：${results.filter(r => !r.problems.length).length}/${results.length} 项通过 · ${fails} 个错误 · ${warns} 条警告\n`);
 process.exit(fails ? 1 : 0);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
