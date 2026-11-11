@@ -1,0 +1,15 @@
+# 行尾统一 LF：版本号是"按文件内容算 sha256"（tools/bust.mjs），
+# 如果 Windows 检出成 CRLF，同一份源码在 Linux 上算出来的 hash 就对不上，
+# bust --check 会误报 STALE。这里强制两种系统都检出成 LF。
+* text=auto eol=lf
+
+# 二进制资产不做任何转换
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.glb binary
+*.blend binary
+*.aseprite binary
+*.zip binary
+*.min.js binary
