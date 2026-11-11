@@ -262,7 +262,30 @@ check("作息 / 调试台引用的状态 ⊆ STATE_MAP", () => {
   const seq = /var SEQ = \[([^\]]*)\]/.exec(dbgSrc);
   if (seq) seq[1].split(",").forEach(s => { const v = s.trim().replace(/^["']|["']$/g, ""); if (v) used.add(v); });
   const bad = [...used].filter(s => !STATE[s]).map(s => `"${s}" 不在 STATE_MAP，前端会静默兜底成 idle`);
-  return { problems: bad, note: `${used.size} 个状态名，0 缺失` };
+  // P4.1 扩容：班次时长合法性 —— dur 必须 >0，同状态两班（无 every）不得重叠
+  if (scheduleJson && Array.isArray(scheduleJson.shifts)) {
+    scheduleJson.shifts.forEach(s => {
+      if (s && s.dur != null && !(Number(s.dur) > 0)) bad.push(`班次「${s.label}」的 dur=${s.dur} 非法（必须 >0，单位小时）`);
+      if (s && s.dur != null && Number(s.dur) > 24) bad.push(`班次「${s.label}」的 dur=${s.dur} 超过 24 小时`);
+      if (s && !s.silent && s.state && !s.at) bad.push(`班次「${s.label}」要上报状态却缺 at 时刻`);
+    });
+    const occ = scheduleJson.shifts.filter(s => s.at && s.state);
+    const toMin = t => { const [h, m] = String(t).split(":").map(Number); return h * 60 + (m || 0) };
+    for (let a = 0; a < occ.length; a++) for (let b = a + 1; b < occ.length; b++) {
+      const A = occ[a], B = occ[b];
+      if (A.state !== B.state || (A.weekday ?? "") !== (B.weekday ?? "")) continue;
+      if (A.every || B.every) continue;   // every 班是同一班展开，不参与重叠判断
+      const a0 = toMin(A.at), a1 = a0 + (Number(A.dur) || 1) * 60;
+      const b0 = toMin(B.at), b1 = b0 + (Number(B.dur) || 1) * 60;
+      // 跨零点：把窗口平移 ±1440 再测三种相对位置
+      const ov = (x0, x1, y0, y1) => (x0 < y1 && y0 < x1) || (x0 - 1440 < y1 && y0 < x1 - 1440) || (x0 + 1440 < y1 && y0 < x1 + 1440);
+      if (ov(a0, a1, b0, b1)) bad.push(`班次「${A.label}」与「${B.label}」同状态时段重叠（${A.at}+${A.dur}h vs ${B.at}+${B.dur}h）`);
+    }
+  }
+  // P4.1 扩容：hub 必须保留优先级仲裁与排班引擎（解耦后小镇自主生活的两个支柱）
+  if (!/STATE_PRIORITY\s*=/.test(hubSrc)) bad.push("hub.mjs 缺 STATE_PRIORITY 优先级表（外部低优事件会粗暴打断排班）");
+  if (!/scheduleTick/.test(hubSrc)) bad.push("hub.mjs 缺 scheduleTick 排班引擎（小镇 0 外部依赖就该能活）");
+  return { problems: bad, note: `${used.size} 个状态名 · dur/重叠/优先级/排班引擎 校验` };
 });
 
 check("状态清单 hub/states.json ↔ 前端 STATE_MAP", () => {

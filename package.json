@@ -13,7 +13,7 @@
     "build": "node tools/build.mjs",
     "bust": "node tools/bust.mjs",
     "check": "node tools/check.mjs",
-    "test:hub": "node tools/test-hub.mjs",
+    "test:hub": "node tools/test-hub.mjs --assert",
     "verify": "node tools/bust.mjs --check && node tools/build.mjs --check && node tools/check.mjs",
     "sync": "bash sync_web.sh"
   },
