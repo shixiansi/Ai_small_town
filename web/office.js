@@ -243,8 +243,12 @@ s.overcast = s.add.rectangle(0, 0, W, H, 0x3a4a66, 0.22).setOrigin(0).setDepth(5
 function setWeather(s, w) {
 weather = w;
 rainParts.forEach(function (r) { r.visible = (w === "rainy"); });
-if (s.overcast) s.overcast.setVisible(w === "rainy");
+if (s.overcast) s.overcast.setVisible(w === "rainy" || w === "cloudy");
 }
+window.__officeSetWeather = function (w) {
+if (w !== "sunny" && w !== "rainy" && w !== "cloudy" && w !== "snowy") return;
+if (scene) setWeather(scene, w === "snowy" ? "sunny" : w);
+};
 function tickWeather(s) {
 if (weather !== "rainy" || !rainParts.length) return;
 rainParts.forEach(function (r) {
@@ -4735,6 +4739,7 @@ if (Array.isArray(msg.recent)) msg.recent.forEach(pushEvent);
 if (msg.stats) onStats(msg.stats);
 if (msg.state) onState(msg.state);
 if (Array.isArray(msg.customMap)) applyCustomMap(msg.customMap, true, msg.updatedAt);   // v37：hub 里的自定义家具层
+if (msg.weather && window.__officeSetWeather) window.__officeSetWeather(msg.weather);   // P6：真实天气初始值
 } else if (msg.type === "map" && Array.isArray(msg.furniture)) {
 applyCustomMap(msg.furniture, true, msg.updatedAt);   // v37：编辑保存后的热更新广播
 } else if (msg.type === "state" && msg.state) {
@@ -4745,6 +4750,8 @@ pushEvent(msg.state);            // 实时事件进流水
 onStats(msg.stats);              // 数值层广播（60s 节奏，方案 §1.2）
 } else if (msg.type === "event" && msg.eventKey) {
 onRandomEvent(msg);              // B 层随机事件（hub 2~6h 一掷）
+} else if (msg.type === "weather" && msg.weather) {
+if (window.__officeSetWeather) window.__officeSetWeather(msg.weather);   // P6：整点天气刷新
 } else if (msg.type === "ts") {
 lastServerTs = msg.ts; updateAgo();
 } else if (msg.type === "viewers") {

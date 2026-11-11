@@ -147,13 +147,42 @@ function pickRandomEvent(weather) {
   for (const e of pool) { r -= e.w || 1; if (r <= 0) return e }
   return pool[pool.length - 1]
 }
-/* 天气：hub 不掌握天气（前端 R 键切换），默认晴。事件条件里带 weather 的只在晴天才算"保守通过"，
- * 真正的天气 gate 在前端 EVENT_SCRIPTS 里再做一次（前端知道自己天气）。 */
+/* 天气：P6 天气接入——hub 每小时拉一次 wttr.in（上海），映射成 sunny/rainy/snowy/cloudy
+ * 并广播给前端（前端 R 键仍可手动切换，真实天气只作初始值与整点刷新）。
+ * 抓取失败静默沿用上次结果；事件条件的 weather gate 从此吃真实天气。 */
+let realWeather = "sunny"
+let weatherCity = process.env.OFFICE_WEATHER_CITY || "Shanghai"
+async function fetchRealWeather() {
+  try {
+    const res = await fetch(`https://wttr.in/${weatherCity}?format=j1`, { signal: AbortSignal.timeout(8000) })
+    if (!res.ok) throw new Error("HTTP " + res.status)
+    const d = await res.json()
+    const c = d.current_condition?.[0] || {}
+    const code = Number(c.weatherCode ?? 9999)
+    const desc = (c.weatherDesc?.[0]?.value || "").toLowerCase()
+    let w = "sunny"
+    if ([71, 73, 75, 77, 85, 86].includes(code) || desc.includes("snow")) w = "snowy"
+    else if ([176, 263, 266, 293, 296, 299, 302, 305, 308, 353, 356, 359, 386, 389].includes(code) || desc.includes("rain") || desc.includes("drizzle") || desc.includes("shower") || desc.includes("thunder")) w = "rainy"
+    else if (code > 2 || desc.includes("overcast") || desc.includes("cloud") || desc.includes("mist") || desc.includes("fog")) w = "cloudy"
+    const changed = w !== realWeather
+    realWeather = w
+    if (changed) {
+      broadcast({ type: "weather", weather: realWeather, ts: Date.now() })
+      console.log(new Date().toISOString(), `[office-hub] 真实天气变化: ${realWeather}`)
+    }
+    console.log(new Date().toISOString(), `[office-hub] 天气刷新: ${realWeather} (${desc || "code" + code}, ${c.temp_C}°C)`)
+  } catch (e) {
+    console.warn(new Date().toISOString(), `[office-hub] 天气抓取失败（沿用 ${realWeather}）: ${e.message.slice(0, 60)}`)
+  }
+}
+setInterval(fetchRealWeather, 3600e3).unref?.()
+fetchRealWeather()
+
 function scheduleRandomEvents() {
   if (!RANDOM_EVENTS.length) return
   const delay = (2 + Math.random() * 4) * 3600e3   // 2~6 小时
   setTimeout(() => {
-    const ev = pickRandomEvent("sunny")
+    const ev = pickRandomEvent(realWeather)
     if (ev) {
       lastRandomEvent = ev.key
       broadcast({ type: "event", eventKey: ev.key, label: ev.label, text: ev.text, ts: Date.now() })
@@ -523,7 +552,7 @@ const server = http.createServer((req, res) => {
     res.writeHead(200, { ...CORS, "Content-Type": "application/json; charset=utf-8" })
     tickStats()
     res.end(JSON.stringify({
-      state: cur, recent, stats: statsSnapshot(), viewers: clients.size,
+      state: cur, recent, stats: statsSnapshot(), viewers: clients.size, weather: realWeather,
       allowedStates: allowed ? allowed.size : null,
       wake: [WAKE_START, WAKE_END],
       persisted: fs.existsSync(STATE_FILE), startedAt: STARTED_AT

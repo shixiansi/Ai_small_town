@@ -177,9 +177,15 @@
   function setWeather(s, w) {
     weather = w;
     rainParts.forEach(function (r) { r.visible = (w === "rainy"); });
-    if (s.overcast) s.overcast.setVisible(w === "rainy");
+    if (s.overcast) s.overcast.setVisible(w === "rainy" || w === "cloudy");
     // v39.5：画死的旧窗已删除，天气不再需要重绘窗户
   }
+  // P6 真实天气接入：hub 每小时广播 wttr.in 实况。snowy 暂按 sunny（无雪演出），
+  // cloudy 开阴天层不下雨，rainy 全套雨演。R 键手动切换仍可用（覆盖真实值直到下次广播）。
+  window.__officeSetWeather = function (w) {
+    if (w !== "sunny" && w !== "rainy" && w !== "cloudy" && w !== "snowy") return;
+    if (scene) setWeather(scene, w === "snowy" ? "sunny" : w);
+  };
   function tickWeather(s) {
     if (weather !== "rainy" || !rainParts.length) return;
     rainParts.forEach(function (r) {
