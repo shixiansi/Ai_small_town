@@ -185,7 +185,8 @@ function loadDisk() {
       state: s.state,
       task: String(s.task || "").slice(0, 200),
       detail: String(s.detail || "").slice(0, 300),
-      ts: Number(s.ts) || Date.now()
+      ts: Number(s.ts) || Date.now(),
+      priority: Number(s.priority) || STATE_PRIORITY[s.state] || 0
     }
     const recent = (Array.isArray(j.recent) ? j.recent : [])
       .filter(e => e && (allowed ? allowed.has(e.state) : true))
@@ -214,6 +215,96 @@ function broadcast(msg) {
   }
 }
 
+// ---------- 事件优先级仲裁（P1.2）----------
+/* 优先级：0=排班/回落，1=小镇自主（tick 决策），2=外部打点（news agent 等），3=错误。
+ * 规则：低优先级事件在 PRIORITY_HOLD_MS 内不能打断高优先级正在播的状态——
+ * 老版本"后到赢"，agent 下班归位一条 idle 能把刚排上的「睡觉」拽起来。 */
+const PRIORITY_HOLD_MS = Number(process.env.OFFICE_PRIORITY_HOLD_MS || 10 * 60 * 1000)
+const STATE_PRIORITY = {
+  error: 3,                        // 错误最高：必须可见
+  arrive: 2, working: 2, browsing: 2, watching: 2, organizing: 2,
+  writing: 2, rewriting: 2, diary: 2, designing: 2, posting: 2,
+  mailing: 2, replying: 2, commenting: 2, weekly: 2,   // 外部业务态
+  sleeping: 1, washing: 1, eating: 1, snacking: 1, recovering: 1,
+  relaxing: 1, strolling: 1, browsing_market: 1,       // 生活作息态
+  listening: 1, gaming: 1,
+  idle: 0                            // 摸鱼最低：谁都拦不住它被换掉
+}
+function eventPriority(ev, state) {
+  // 显式指定优先用显式值（外部可以传 priority=1..3）；没传按状态查表，未知状态按 1
+  const p = Number(ev.priority)
+  if (Number.isFinite(p) && p >= 0 && p <= 3) return p
+  return STATE_PRIORITY[state] != null ? STATE_PRIORITY[state] : 1
+}
+
+// ---------- 排班自主引擎（P1.1）----------
+/* 小镇「0 外部依赖也能活」的核心：hub 自己按 hub/schedule.json 的班次推进状态——
+ * 到点把对应状态设为当前（优先级 1），不依赖任何外部打点。外部打点（优先级 2/3）
+ * 仍可随时打断；班次推进时若外部状态还在 HOLD 期内且优先级更高，则不打断。 */
+let schedule = null
+try {
+  const j = JSON.parse(fs.readFileSync(new URL("./schedule.json", import.meta.url), "utf8"))
+  if (Array.isArray(j.shifts)) schedule = j
+} catch (e) {
+  console.warn(new Date().toISOString(), `[office-hub] 未读到 schedule.json (${e.message})，排班引擎停用`)
+}
+let lastShiftKey = null
+/* 北京时间当前分钟数（0..1439）+ 周几 */
+function bjNow() {
+  const d = new Date(Date.now() + 8 * 3600 * 1000)
+  return { min: d.getUTCHours() * 60 + d.getUTCMinutes(), dow: d.getUTCDay(), clock: `${String(d.getUTCHours()).padStart(2, "0")}:${String(d.getUTCMinutes()).padStart(2, "0")}` }
+}
+/* 班次是否适用于现在：weekday 过滤 + every 展开成今天的全部时刻 */
+function shiftOccurrences(shift, now) {
+  if (shift.weekday != null && shift.weekday !== now.dow) return []
+  const [h, m] = String(shift.at || "").split(":").map(Number)
+  const base = (h || 0) * 60 + (m || 0)
+  const step = (Number(shift.every) || 0) * 60
+  if (!step) return [base]
+  const n = Math.max(1, Math.round(1440 / step))
+  const out = []
+  for (let k = 0; k < n; k++) out.push((base + k * step) % 1440)
+  return out
+}
+/* 每 30s 查一次班次；进入新班次（且不打断更高优先级状态）时推进状态 */
+function scheduleTick() {
+  if (!schedule || !allowed) return
+  const now = bjNow()
+  let hit = null
+  for (const shift of schedule.shifts) {
+    if (shift.silent) continue
+    if (!shift.state || !allowed.has(shift.state)) continue
+    for (const occ of shiftOccurrences(shift, now)) {
+      const dur = Math.max(1, Number(shift.dur) || 1) * 60
+      // 跨零点班次（如 23:00 睡觉 dur=9h）：min>=occ 覆盖当晚，min < occ+dur-1440 覆盖次日凌晨
+      const inWin = occ + dur <= 1440
+        ? (now.min >= occ && now.min < occ + dur)
+        : (now.min >= occ || now.min < occ + dur - 1440)
+      if (inWin) { hit = { shift, occ }; break }
+    }
+    if (hit) break
+  }
+  if (!hit) return
+  const key = hit.shift.at + "|" + hit.shift.label
+  if (key === lastShiftKey) return          // 同一班次别反复重报
+  const prio = eventPriority({}, hit.shift.state)
+  const curPrio = cur.priority || 0
+  if (prio < curPrio && Date.now() - (Number(cur.ts) || 0) < PRIORITY_HOLD_MS) {
+    lastShiftKey = key                       // 记住这班已处理过，避免每 30s 重试
+    return
+  }
+  lastShiftKey = key
+  applyEvent({
+    state: hit.shift.state,
+    task: hit.shift.label,
+    detail: hit.shift.note || "排班时间到了（hub 自主推进）",
+    ts: Date.now(),
+    priority: prio
+  })
+  console.log(new Date().toISOString(), `[office-hub] 排班推进: ${hit.shift.at} ${hit.shift.label} → ${hit.shift.state}`)
+}
+if (schedule) setInterval(scheduleTick, 30000).unref?.()
+
 /**
  * 去抖规则：state + task + detail 三者全同 = 心跳重发，只刷新 ts，不广播也不进 recent，
  * 免得浏览器里的鱼反复重走路、最近事件列表堆满重复项；detail 变化仍会广播（状态条要更新）。
@@ -224,11 +315,19 @@ function applyEvent(ev) {
   if (allowed && !allowed.has(state)) {
     return { ok: false, status: 400, error: `未知状态 "${state}"；请同步 hub/states.json 与前端 STATE_MAP` }
   }
+  const prio = eventPriority(ev, state)
+  // 优先级仲裁（P1.2）：外部打点只在 ≥ 当前优先级时打断。
+  // 避免一条低优先级 idle（下班归位）把正在播的高优先级状态拽走；同优先级仍按"后到赢"。
+  const curPrio = cur.priority || 0
+  if (prio < curPrio && now - (Number(cur.ts) || 0) < PRIORITY_HOLD_MS) {
+    return { ok: true, dedup: true, suppressed: true, currentPriority: curPrio }
+  }
   const next = {
     state,
     task: String(ev.task || "").slice(0, 200),
     detail: String(ev.detail || "").slice(0, 300),
-    ts: Number(ev.ts) || now
+    ts: Number(ev.ts) || now,
+    priority: prio
   }
   const same = cur.state === next.state && cur.task === next.task && cur.detail === next.detail
   cur = next

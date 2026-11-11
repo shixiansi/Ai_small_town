@@ -107,7 +107,7 @@
       { at: "18:00", dur: 1, label: "晚饭", note: "厨房 · 一天里最舍得花时间的一顿", state: "eating" },
       { at: "20:00", dur: 2, label: "放松时间", note: "沙发 / 留声机 · 听歌、翻书、打游戏", state: "relaxing" },
       { at: "22:00", dur: 1, label: "洗澡", note: "卫浴 · 睡前洗漱", state: "washing" },
-      { at: "23:00", dur: 1, label: "睡觉", note: "卧室 · 灯留一盏，明早 08:00 起", state: "sleeping" }
+      { at: "23:00", dur: 9, label: "睡觉", note: "卧室 · 灯留一盏，一直睡到明早 08:00", state: "sleeping" }
     ]
   };
 

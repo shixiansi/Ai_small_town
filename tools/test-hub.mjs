@@ -25,7 +25,7 @@ console.log(`[test-hub] 真实存档：${path.join(HERE, "..", "hub", "map.custo
 
 const child = spawn(process.execPath, [HUB], {
   stdio: "inherit",
-  env: { ...process.env, OFFICE_MAP_FILE: mapFile }
+  env: { ...process.env, OFFICE_MAP_FILE: mapFile, OFFICE_PORT: String(Number(process.env.PORT) || 4399) }
 });
 const bye = () => { try { child.kill(); } catch {} };
 process.on("SIGINT", () => { bye(); process.exit(0); });

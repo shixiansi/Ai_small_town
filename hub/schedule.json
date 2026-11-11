@@ -11,18 +11,88 @@
     "silent": "可选：静默时段，不上报状态"
   },
   "tz": "Asia/Shanghai",
-  "wake": [8, 23],
+  "wake": [
+    8,
+    23
+  ],
   "shifts": [
-    { "at": "08:00", "dur": 1, "label": "起床洗漱", "note": "洗漱台 · 一天从这里开始", "state": "washing" },
-    { "at": "08:30", "dur": 1, "label": "早饭", "note": "厨房 · 煮点东西吃", "state": "eating" },
-    { "at": "09:00", "dur": 6, "label": "上午的营生", "note": "工位 · 写写画画，收拾小镇里的事", "state": "working" },
-    { "at": "10:00", "weekday": 0, "dur": 3, "label": "赶集日", "note": "周日的市集更热闹，去逛一圈", "state": "browsing_market" },
-    { "at": "12:00", "dur": 1, "label": "午饭", "note": "餐桌 · 顺便看看窗外", "state": "eating" },
-    { "at": "13:00", "dur": 1, "label": "午后小憩", "note": "充电垫 · 回一回精力", "state": "recovering" },
-    { "at": "15:00", "dur": 2, "label": "散步逛市集", "note": "花园 / 市集 · 天气好就走远一点", "state": "strolling" },
-    { "at": "18:00", "dur": 1, "label": "晚饭", "note": "厨房 · 一天里最舍得花时间的一顿", "state": "eating" },
-    { "at": "20:00", "dur": 2, "label": "放松时间", "note": "沙发 / 留声机 · 听歌、翻书、打游戏", "state": "relaxing" },
-    { "at": "22:00", "dur": 1, "label": "洗澡", "note": "卫浴 · 睡前洗漱", "state": "washing" },
-    { "at": "23:00", "dur": 1, "label": "睡觉", "note": "卧室 · 灯留一盏，明早 08:00 起", "state": "sleeping" }
+    {
+      "at": "08:00",
+      "dur": 1,
+      "label": "起床洗漱",
+      "note": "洗漱台 · 一天从这里开始",
+      "state": "washing"
+    },
+    {
+      "at": "08:30",
+      "dur": 1,
+      "label": "早饭",
+      "note": "厨房 · 煮点东西吃",
+      "state": "eating"
+    },
+    {
+      "at": "09:00",
+      "dur": 6,
+      "label": "上午的营生",
+      "note": "工位 · 写写画画，收拾小镇里的事",
+      "state": "working"
+    },
+    {
+      "at": "10:00",
+      "weekday": 0,
+      "dur": 3,
+      "label": "赶集日",
+      "note": "周日的市集更热闹，去逛一圈",
+      "state": "browsing_market"
+    },
+    {
+      "at": "12:00",
+      "dur": 1,
+      "label": "午饭",
+      "note": "餐桌 · 顺便看看窗外",
+      "state": "eating"
+    },
+    {
+      "at": "13:00",
+      "dur": 1,
+      "label": "午后小憩",
+      "note": "充电垫 · 回一回精力",
+      "state": "recovering"
+    },
+    {
+      "at": "15:00",
+      "dur": 2,
+      "label": "散步逛市集",
+      "note": "花园 / 市集 · 天气好就走远一点",
+      "state": "strolling"
+    },
+    {
+      "at": "18:00",
+      "dur": 1,
+      "label": "晚饭",
+      "note": "厨房 · 一天里最舍得花时间的一顿",
+      "state": "eating"
+    },
+    {
+      "at": "20:00",
+      "dur": 2,
+      "label": "放松时间",
+      "note": "沙发 / 留声机 · 听歌、翻书、打游戏",
+      "state": "relaxing"
+    },
+    {
+      "at": "22:00",
+      "dur": 1,
+      "label": "洗澡",
+      "note": "卫浴 · 睡前洗漱",
+      "state": "washing"
+    },
+    {
+      "at": "23:00",
+      "dur": 9,
+      "label": "睡觉",
+      "note": "卧室 · 灯留一盏，一直睡到明早 08:00",
+      "state": "sleeping"
+    }
   ]
 }
