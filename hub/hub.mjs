@@ -100,7 +100,7 @@ function applyStatDelta(deltas) {
     }
   }
   stats.updatedAt = Date.now()
-  saveDisk()
+  saveDiskDebounced()
   broadcast({ type: "stats", stats })
 }
 /* 广播给前端的精简形态（连同 state 一起带时间戳） */
@@ -111,7 +111,7 @@ function statsSnapshot() {
 // 每 60s：衰减 + 广播一次（与现有 ts 广播共用节奏）
 setInterval(() => {
   tickStats()
-  saveDisk()
+  saveDiskDebounced()
   broadcast({ type: "stats", stats: statsSnapshot() })
 }, 60000).unref?.()
 
@@ -201,6 +201,14 @@ function saveDisk() {
   } catch (e) {
     console.warn(new Date().toISOString(), `[office-hub] 状态落盘失败: ${e.message}`)
   }
+}
+// 评审修复[高危]：事件风暴下的落盘防抖——1s 合并窗口内的多次 saveDisk 只写一次盘，
+// 退出信号时 flush 落盘（状态文件本来就小，最坏丢 1s 内事件，可接受）
+let saveTimer = null
+function saveDiskDebounced() {
+  if (saveTimer) return
+  saveTimer = setTimeout(() => { saveTimer = null; saveDisk() }, 1000)
+  saveTimer.unref?.()
 }
 
 const disk = loadDisk()
@@ -331,11 +339,11 @@ function applyEvent(ev) {
   }
   const same = cur.state === next.state && cur.task === next.task && cur.detail === next.detail
   cur = next
-  if (same) { saveDisk(); return { ok: true, dedup: true } }
+  if (same) { saveDiskDebounced(); return { ok: true, dedup: true } }
   recent.push({ ...next, at: now })
   if (recent.length > MAX_RECENT) recent.shift()
   broadcast({ type: "state", state: cur, stats: statsSnapshot() })
-  saveDisk()
+  saveDiskDebounced()
   return { ok: true, dedup: false }
 }
 
@@ -588,8 +596,12 @@ const server = http.createServer((req, res) => {
 })
 
 const wss = new WebSocketServer({ server })
+// 评审修复[高危]：WS 心跳保活——弱网/休眠产生的僵尸连接 30s 无 pong 即踢除
+const HEARTBEAT_MS = 30000
 wss.on("connection", (ws) => {
   clients.add(ws)
+  ws.isAlive = true
+  ws.on("pong", () => { ws.isAlive = true })
   ws.send(JSON.stringify({
     type: "hello",
     state: cur,
@@ -604,9 +616,18 @@ wss.on("connection", (ws) => {
     clients.delete(ws)
     broadcast({ type: "viewers", viewers: clients.size })
   })
-  ws.on("error", () => {})
+  ws.on("error", () => { try { ws.terminate() } catch {} })
   ws.on("message", () => {}) // 浏览器 ping，仅保活，无需应答
 })
+// 心跳巡检：没 pong 的踢掉；存活的下发 ping
+setInterval(() => {
+  for (const ws of clients) {
+    if (!ws.isAlive) { try { ws.terminate() } catch {} clients.delete(ws); continue }
+    ws.isAlive = false
+    try { ws.ping() } catch {}
+  }
+  broadcast({ type: "viewers", viewers: clients.size })
+}, HEARTBEAT_MS).unref?.()
 
 server.listen(PORT, HOST, () => {
   console.log(new Date().toISOString(),
@@ -619,5 +640,5 @@ server.listen(PORT, HOST, () => {
 
 // 每 60s 给所有浏览器广播一次服务器时间（驱动"刚刚 / N 分钟前上报"的相对时间显示）
 setInterval(() => broadcast({ type: "ts", ts: Date.now() }), 60000).unref?.()
-for (const sig of ["SIGINT", "SIGTERM"]) process.on(sig, () => { saveDisk(); process.exit(0) })
+for (const sig of ["SIGINT", "SIGTERM"]) process.on(sig, () => { if (saveTimer) { clearTimeout(saveTimer); saveTimer = null } saveDisk(); process.exit(0) })
 
