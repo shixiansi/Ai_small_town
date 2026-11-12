@@ -4285,7 +4285,16 @@ function onRandomEvent(msg) {
 var script = EVENT_SCRIPTS[msg.eventKey];
 if (!script || !scene || !scene.mapdata.zones[script.zone]) return;
 if (script.outdoor && weather === "rainy" && msg.eventKey !== "rain_sudden") return;  // 雨天 gate 二次确认
-if (fishState === "walking" || fishState === "acting") { pendingEvent = script; return; }
+if (fishState === "walking" || fishState === "acting") {
+try {
+var prevBubble = (curPlan && curPlan.task) || bubbleText;
+showBubble("✉ " + (script.text || msg.label || msg.eventKey), "idle");
+scene.time.delayedCall(2500, function () {
+if (bubbleText && bubbleText.text && bubbleText.text.indexOf("✉") === 0 && prevBubble) showBubble(prevBubble, "idle");
+});
+} catch (e) {}
+pendingEvent = script; return;
+}
 stopIdleLife();
 goLocal(script.zone, script.text, script.act, null, false, script.fills || null);
 }

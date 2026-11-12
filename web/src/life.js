@@ -361,7 +361,18 @@
     var script = EVENT_SCRIPTS[msg.eventKey];
     if (!script || !scene || !scene.mapdata.zones[script.zone]) return;
     if (script.outdoor && weather === "rainy" && msg.eventKey !== "rain_sudden") return;  // 雨天 gate 二次确认
-    if (fishState === "walking" || fishState === "acting") { pendingEvent = script; return; }
+    if (fishState === "walking" || fishState === "acting") {
+      // v83.4：正事中随机事件进 pending 队列，但立刻冒一个「✉ 事件文案」提醒气泡 2.5s，
+      // 之后恢复当前任务气泡——观众能看到"发生了一件事"，正事的展示也不丢。
+      try {
+        var prevBubble = (curPlan && curPlan.task) || bubbleText;
+        showBubble("✉ " + (script.text || msg.label || msg.eventKey), "idle");
+        scene.time.delayedCall(2500, function () {
+          if (bubbleText && bubbleText.text && bubbleText.text.indexOf("✉") === 0 && prevBubble) showBubble(prevBubble, "idle");
+        });
+      } catch (e) {}
+      pendingEvent = script; return;
+    }
     stopIdleLife();
     goLocal(script.zone, script.text, script.act, null, false, script.fills || null);
   }
