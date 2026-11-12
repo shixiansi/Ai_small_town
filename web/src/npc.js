@@ -62,7 +62,7 @@
         var bp = npcBedPos(def);                     // v77：真实床位（map.json）
         def._bed = bp;
         var bx = bp.x * TILE + TILE / 2;
-        var by = WALL_H + bp.y * TILE + TILE;
+        var by = WALL_H + bp.y * TILE + TILE * 0.72;   // v83.3：初始也在床上（与 npcWalkHome 一致）
         var spr = s.add.sprite(bx, by, def.skin || "whale")
           .setScale(0.82).setOrigin(0.5, 1).setDepth(by + 1);
       var tag = null;
@@ -170,8 +170,10 @@
     npc.indoor = true;
     var bp = npcBedPos(npc.def);          // v77：每次都取真实床位（床可被编辑移动）
     npc.def._bed = bp;
+    // v83.3：睡觉显示「在床上」——贴床格本身（床中心），深度压床 sprite（床 depth=footY，
+    // NPC 深度=homeY+1 高于床 → 角色盖在床上）。原 homeY 多偏一格导致角色站床下方格。
     npc.homeX = bp.x * TILE + TILE / 2;
-    npc.homeY = WALL_H + bp.y * TILE + TILE;
+    npc.homeY = WALL_H + bp.y * TILE + TILE * 0.72;
     // 先寻路到床附近，再"贴"到床中心（床格本身是阻挡格，A* 到不了正中心）
     npcWalkTo(npc, bp.x, bp.y + 0.6, 360, function () {
       npc.spr.x = npc.homeX;
