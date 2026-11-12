@@ -100,6 +100,12 @@
         <button class="dbg-btn" id="dbg-grid">▦ 碰撞格叠加</button>
         <button class="dbg-btn" id="dbg-roads">🛣 道路层</button>
       </div>
+      <label class="dbg-label">昼夜预览（v83：跟随真实时间 / 强制白天 / 强制黑夜）</label>
+      <div class="dbg-row">
+        <button class="dbg-btn" id="dbg-day-auto">🕐 跟随真实</button>
+        <button class="dbg-btn" id="dbg-day-day">☀ 强制白天</button>
+        <button class="dbg-btn" id="dbg-day-night">🌙 强制黑夜</button>
+      </div>
       <label class="dbg-label">农场 / 鱼塘 / 料理（v36）</label>
       <div class="dbg-row">
         <button class="dbg-btn" id="dbg-farm-act">🌾 农活一轮</button>
@@ -305,7 +311,21 @@
     };
     run(); seqTimer = setInterval(run, 3200);
     addLog("info", "开始模拟一轮工作（共 " + SEQ.length + " 步，每 3.2 秒）");
-  };  $("dbg-rain").onclick = function () {
+  };
+  function setDayNight(preview) {
+    try {
+      var KEY = "office_night_cfg";
+      var cfg = {};
+      try { cfg = JSON.parse(localStorage.getItem(KEY) || "{}"); } catch (e) {}
+      cfg.preview = preview;
+      localStorage.setItem(KEY, JSON.stringify(cfg));
+      location.reload();
+    } catch (e) { addLog("error", "昼夜切换失败: " + e.message); }
+  }
+  $("dbg-day-auto").onclick = function () { setDayNight("auto"); };
+  $("dbg-day-day").onclick = function () { setDayNight("day"); };
+  $("dbg-day-night").onclick = function () { setDayNight("night"); };
+  $("dbg-rain").onclick = function () {
     var w = C.snapshot().weather === "rainy" ? "sunny" : "rainy";
     C.setWeather(w); addLog("info", "天气 → " + w);
   };

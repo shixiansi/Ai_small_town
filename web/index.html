@@ -241,7 +241,7 @@
   </div>
 
   <script src="assets/phaser.min.js"></script>
-  <script src="office.js?v=be87bb0e"></script>
+  <script src="office.js?v=d782a03f"></script>
 
   <!-- 调试工作台：默认只放一个低调入口，点击（或按 D / ?debug=1）才加载面板，线上零开销 -->
   <button id="debug-toggle" type="button" title="调试工作台（快捷键 D）" aria-label="打开调试工作台" aria-controls="dbg-panel" aria-expanded="false">🛠</button>
@@ -260,7 +260,7 @@
       function load(cb) {
         if (loaded) { cb && cb(); return; }
         var s = document.createElement("script");
-        s.src = "debug.js?v=415f8b28";
+        s.src = "debug.js?v=7dc3acec";
         s.onload = function () { loaded = true; cb && cb(); };
         s.onerror = function () { console.error("[office] debug.js 加载失败"); };
         document.body.appendChild(s);

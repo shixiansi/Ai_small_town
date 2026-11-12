@@ -773,8 +773,8 @@
   },
   {
    "a": "bed",
-   "x": 41.3,
-   "y": 21.2,
+   "x": 45.5,
+   "y": 2.8,
    "id": "catBed"
   },
   {
@@ -838,8 +838,8 @@
   },
   {
    "a": "chair",
-   "x": 47.4,
-   "y": 23.3,
+   "x": 53.5,
+   "y": 2.8,
    "id": "chiefChair1",
    "frame": 2
   },
@@ -932,8 +932,8 @@
   },
   {
    "a": "armchair",
-   "x": 54.3,
-   "y": 27.2,
+   "x": 54.5,
+   "y": 27.4,
    "id": "docArm"
   },
   {
@@ -1305,62 +1305,38 @@
   },
   "doorCat": {
    "anchor": [
-    42.5,
-    17.8
-   ],
-   "face": "s",
-   "label": "喵酱家门口"
+    40.3,
+    15.3
+   ]
   },
   "doorChief": {
    "anchor": [
-    48.5,
-    17.8
-   ],
-   "face": "s",
-   "label": "村长家门口"
+    49.4,
+    15.3
+   ]
   },
   "doorDoc": {
    "anchor": [
     53.2,
     17.8
-   ],
-   "face": "s",
-   "label": "博士家门口"
+   ]
   },
   "living_cat": {
    "anchor": [
-    42.4,
-    21.8
-   ],
-   "face": "s",
-   "label": "喵酱家",
-   "expect": [
-    "bed",
-    "gramophone"
+    44.2,
+    3.5
    ]
   },
   "living_chief": {
    "anchor": [
-    48.5,
-    24.6
-   ],
-   "face": "n",
-   "label": "村长家",
-   "expect": [
-    "dining-table",
-    "chair"
+    52.4,
+    3.5
    ]
   },
   "living_doc": {
    "anchor": [
-    53,
-    25
-   ],
-   "face": "n",
-   "label": "博士家",
-   "expect": [
-    "school-desk",
-    "chair"
+    52.4,
+    26.4
    ]
   },
   "farm": {
