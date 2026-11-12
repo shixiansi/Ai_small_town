@@ -581,6 +581,16 @@ check("最近动态窗（事件流 / 今日时间表 / 作息表对齐）", () =
       }
     });
     if (!plan.some(s => String(s.weekday) === "0")) bad.push("schedule.json 里没有周日专属的班次（赶集日）");
+    // v83.6 时刻合法性：at 必须是 HH:MM、dur 必须为正、state 必须在 states.json 白名单
+    const stateNames = new Set(Array.isArray(statesJson?.states) ? statesJson.states : []);
+    const atRe = /^([01]\d|2[0-3]):[0-5]\d$/;
+    plan.filter(s => s.at && !atRe.test(s.at)).forEach(s => bad.push(`「${s.label}」的 at="${s.at}" 不是合法 HH:MM`));
+    plan.filter(s => s.at).sort((a, b) => (a.at || "").localeCompare(b.at || "")).forEach((s, i, arr) => {
+      if (i > 0 && arr[i - 1].at === s.at && (s.weekday ?? "") === (arr[i - 1].weekday ?? ""))
+        bad.push(`${s.at} 同一时刻有两个班次：「${arr[i - 1].label}」和「${s.label}」`);
+    });
+    plan.filter(s => s.dur !== undefined && !(Number(s.dur) > 0)).forEach(s => bad.push(`「${s.label}」的 dur=${s.dur} 必须为正数`));
+    plan.filter(s => s.state && !stateNames.has(s.state)).forEach(s => bad.push(`「${s.label}」的 state="${s.state}" 不在 states.json 白名单`));
     const planWake = Array.isArray(scheduleJson.wake) ? scheduleJson.wake : null;
     if (!planWake || planWake.length !== 2) bad.push("hub/schedule.json 缺 wake: [起, 止]");
     else if (wakeM && (Number(planWake[0]) !== Number(wakeM[1]) || Number(planWake[1]) !== Number(wakeM[2]))) {

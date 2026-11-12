@@ -102,6 +102,15 @@ try {
   s = await status()
   assert("HOLD 过期后 idle 生效", s.state.state === "idle", "got " + s.state.state)
 
+  // 3.5 v83.5 新状态：celebrating(2) 可打断 working(2)（同级放行），tired(1) 被其压制
+  await post("/api/event", { state: "working", task: "忙", priority: 2 })
+  await post("/api/event", { state: "tired", task: "歇会儿", priority: 1 })
+  s = await status()
+  assert("tired(1) 不能打断 working(2)", s.state.state === "working", "got " + s.state.state)
+  await post("/api/event", { state: "celebrating", task: "庆祝", priority: 2 })
+  s = await status()
+  assert("celebrating(2) 同级可打断 working(2)", s.state.state === "celebrating", "got " + s.state.state)
+
   // 4. stats 增减 + 地板
   await post("/api/stats", { mood: -200, social: +3 })
   s = await status()
