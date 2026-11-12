@@ -638,6 +638,7 @@ wss.on("connection", (ws) => {
     stats: statsSnapshot(),
     customMap: customMap.furniture.length ? customMap.furniture : undefined,
     viewers: clients.size,
+    weather: realWeather,
     serverTime: Date.now()
   }))
   broadcast({ type: "viewers", viewers: clients.size })
