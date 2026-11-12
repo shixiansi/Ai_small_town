@@ -73,7 +73,8 @@
         padding: { x: 4, y: 2 }
       }).setOrigin(0.5, 1).setDepth(by + 3);
       var npc = { def: def, spr: spr, tag: tag, state: "home", timer: null,
-                    path: null, pathIdx: 0, homeX: bx, homeY: by, indoor: true, act: "sleep" };
+                    path: null, pathIdx: 0, homeX: bx, homeY: by, indoor: true, act: "sleep",
+                    motives: npcInitMotives() };   // v84 动机条
       if (typeof editorMode !== "undefined" && editorMode) tag.setVisible(false);   // v48：地图编辑页不显示名牌
       // 在家/在街上状态圆点：挂在名牌旁，跟 positionNpcParts 一起走（进屋时连名牌一起收起）
       npc.dot = s.add.circle(0, 0, 3.2, npcIsHome(def) ? 0x51cf66 : 0xffd43b)
@@ -89,6 +90,7 @@
     var x = npc.spr.x, topY = npc.spr.y - npc.spr.displayHeight;
     if (npc.tag) npc.tag.setPosition(x, topY - 6).setDepth(npc.spr.depth + 3);
     if (npc.dot) npc.dot.setPosition(x + (npc.tag ? npc.tag.width / 2 + 7 : 0), topY - 6).setDepth(npc.spr.depth + 3);
+    if (npc.say) npc.say.setPosition(x, topY - 26).setDepth(npc.spr.depth + 4);   // v84 动机气泡跟随
   }
   /* 在家时把 NPC 真正收进屋里：精灵站在屋内锚点旁半步（给串门的鱼让出落点）、名牌与圆点隐藏。
    * "回家"的最后一程走门洞（door zone 正对 gap），进屋路上不会被墙挡住视线。 */
@@ -146,6 +148,73 @@
     look:   { label: "四处张望", ms: [2500, 5000] }
   };
 
+  /* ---------- v84 动机层（P6.1）：NPC 不再纯随机溜达，行为有理由 ----------
+   * 每只 NPC 三条动机条（0-100），scheduleNpc 每跳涨一点：
+   *   hunger  饿了 → 去厨房/餐桌；social 无聊 → 串门（去别人家客厅/街上找人）；
+   *   energy  困了 → 回家睡觉（原有 homeHours 逻辑之上叠加）。
+   * 动机触发时气泡说「为什么去」——观众看到的是有原因的移动，不是抽风。
+   * 台词是模板随机组合（口气×内容），不是固定池循环。 */
+  var NPC_MOTIVES = {
+    hunger:  { trigger: 72, zones: ["cook", "dining", "fridge"],
+      lines: ["肚子有点饿了…去灶台那边看看", "好像闻到饭香了", "冰箱里应该还有吃的吧"] },
+    social:  { trigger: 78, zones: ["visit", "market", "garden"],
+      lines: ["一个人待着好闷，去找{other}聊两句", "{other}在忙吗？去瞧瞧", "街上应该挺热闹的吧"] },
+    energy:  { trigger: 85, zones: ["home"],
+      lines: ["眼皮打架了…回去躺一会儿", "困了困了，回窝", "今天走的路够多了，歇了"] }
+  };
+  function npcMotiveLine(def, motive) {
+    var others = NPCS.map(function (d) { return d.name; }).filter(function (n) { return n !== def.name; });
+    var line = motive.lines[Math.floor(Math.random() * motive.lines.length)];
+    return line.replace("{other}", others.length ? others[Math.floor(Math.random() * others.length)] : "村长");
+  }
+  function npcInitMotives() {
+    return { hunger: 20 + Math.random() * 40, social: 10 + Math.random() * 50, energy: 10 + Math.random() * 30 };
+  }
+  function npcTickMotives(m) {
+    m.hunger = Math.min(100, m.hunger + 1.6 + Math.random() * 1.2);
+    m.social = Math.min(100, m.social + 1.2 + Math.random());
+    m.energy = Math.min(100, m.energy + 0.8 + Math.random() * 0.8);
+  }
+  // 触发动机后该条的回落量
+  function npcRelieveMotives(m, which) {
+    if (which === "hunger") m.hunger = 10 + Math.random() * 15;
+    else if (which === "social") m.social = 15 + Math.random() * 20;
+    else if (which === "energy") m.energy = 5 + Math.random() * 10;
+  }
+  /* 找动机目的地：zones 里第一个存在的 zone 锚点（visit=别人家客厅，运行时解析） */
+  function npcMotiveTarget(def, motive) {
+    for (var i = 0; i < motive.zones.length; i++) {
+      var z = motive.zones[i];
+      if (z === "visit") {
+        // 串门：随机别人家 living zone（自己在场时排除自家）
+        var homes = ["living_cat", "living_chief", "living_doc"].filter(function (k) {
+          return scene.mapdata.zones[k] && k !== "living_" + def.id;
+        });
+        if (homes.length) return scene.mapdata.zones[homes[Math.floor(Math.random() * homes.length)]].anchor;
+      } else if (z === "home") {
+        return null;   // home 走原有 npcGoHome 流程
+      } else if (scene.mapdata.zones[z]) {
+        return scene.mapdata.zones[z].anchor;
+      }
+    }
+    return null;
+  }
+
+  /* v84：动机台词气泡——挂在 NPC 名牌上方，4.5s 后淡出。与鱼的气泡互不干扰 */
+  function npcSay(npc, text) {
+    if (!scene || !npc.spr || typeof editorMode !== "undefined" && editorMode) return;
+    if (npc.say) { npc.say.destroy(); npc.say = null; }
+    var t = scene.add.text(npc.spr.x, npc.spr.y - 42, text, {
+      fontFamily: "PingFang SC, Microsoft YaHei, sans-serif",
+      fontSize: "13px", color: "#1a1a2e", backgroundColor: "#fff8e1dd",
+      padding: { x: 6, y: 3 }, wordWrap: { width: 180 }
+    }).setOrigin(0.5, 1).setDepth(94001);
+    npc.say = t;
+    scene.time.delayedCall(4500, function () {
+      if (npc.say === t) { npc.say.destroy(); npc.say = null; }
+    });
+  }
+
   function npcSetAct(npc, act) {
     npc.act = act;
     var flat = act === "sleep";
@@ -197,6 +266,29 @@
   function npcStep(npc) {
     if (!npc.spr || !npc.spr.active) return;
     if (typeof editorMode !== "undefined" && editorMode) return;   // 编辑页 NPC 站桩
+    npcTickMotives(npc.motives || (npc.motives = npcInitMotives()));
+    // v84 动机触发：醒着且不在家时才外出版本有资格「饿了/无聊了」（home 睡觉由 homeHours 管）
+    var motiveKeys = ["hunger", "social", "energy"];
+    for (var mi = 0; mi < motiveKeys.length; mi++) {
+      var mk = motiveKeys[mi];
+      if (!npc.motives[mk] || npc.motives[mk] < NPC_MOTIVES[mk].trigger) continue;
+      if (npc.act === "sleep" || npc.state === "home") continue;   // 睡觉/在家时段不动机
+      if (mk === "energy") {                                       // 困了 → 回家（复用回家链路）
+        npcRelieveMotives(npc.motives, "energy");
+        npcSay(npc, npcMotiveLine(npc.def, NPC_MOTIVES.energy));
+        npcGoHome(npc);
+        return;
+      }
+      var anchor = npcMotiveTarget(npc.def, NPC_MOTIVES[mk]);
+      if (!anchor) continue;
+      npcRelieveMotives(npc.motives, mk);
+      npc.state = "roaming";
+      npcSetAct(npc, mk === "hunger" ? "wander" : "look");
+      npcSay(npc, npcMotiveLine(npc.def, NPC_MOTIVES[mk]));
+      npcWalkTo(npc, Math.round(anchor[0]), Math.round(anchor[1]), 400, function () { npcSetAct(npc, "idle"); });
+      scheduleNpc(npc, 9000 + Math.random() * 7000);
+      return;
+    }
     var shouldHome = npcIsHome(npc.def);
 
     // 到点该回家
