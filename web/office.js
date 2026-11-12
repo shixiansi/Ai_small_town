@@ -920,7 +920,7 @@ var rl = (preview2 === "day") ? false : roomLights[p.room] !== false;
 s.tweens.add({ targets: p, alpha: rl ? p.poolAlpha : 0, duration: editorMode ? 0 : 600 });
 });
 }
-var NIGHT_AMBIENT = 0.42;
+var NIGHT_AMBIENT = 0.62;   // v82：0.42 太黑——缩小视野时户外像蒙黑遮罩（用户反馈），提到 0.62 保留夜感但不压抑
 function updateAmbient(s) {
 var pv = (typeof nightCfg !== "undefined") ? nightCfg.preview : "auto";
 var target;

@@ -193,7 +193,7 @@
 
   /* v72：夜色只维护一个数值 ambientCur，具体合成交给 mapedit.js 的 renderNightShadow
    * （环境光 + 区域暗块 + 灯光挖洞都在那一层 RT 里一次算完，避免两层各自重画导致状态错乱）。 */
-  var NIGHT_AMBIENT = 0.42;
+  var NIGHT_AMBIENT = 0.62;   // v82：0.42 太黑——缩小视野时户外像蒙黑遮罩（用户反馈），提到 0.62 保留夜感但不压抑
   function updateAmbient(s) {
     var pv = (typeof nightCfg !== "undefined") ? nightCfg.preview : "auto";
     var target;
