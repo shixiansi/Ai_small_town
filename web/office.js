@@ -798,7 +798,7 @@ depth = footY;
 x = f.x * TILE + TILE / 2 + (f.ox || 0);
 y = f.band ? WALL_H + (f.oy || 0) : (WALL_H + f.y * TILE + TILE / 2 + (f.oy || 0));
 footY = y;
-depth = f.wall ? -5 : footY;
+depth = f.wall ? 60 : footY;   // v83.2：wall 开关/壁灯要盖在墙 tile（底图 RT depth 6）之上，-5 时被墙吞掉
 }
 var cap = SCALE_TABLE[f.a];
 var scale = 1;

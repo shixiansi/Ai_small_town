@@ -26,7 +26,7 @@
       // v51：band=true 表示"贴在顶部墙带（0–48px 那条北墙）"，脚点落在墙带底边
       y = f.band ? WALL_H + (f.oy || 0) : (WALL_H + f.y * TILE + TILE / 2 + (f.oy || 0));
       footY = y;
-      depth = f.wall ? -5 : footY;
+      depth = f.wall ? 60 : footY;   // v83.2：wall 开关/壁灯要盖在墙 tile（底图 RT depth 6）之上，-5 时被墙吞掉
     }
     // 大小关系：内容高度相对 48px 格的期望比例（SCALE_TABLE 给的是"内容渲染高度目标"）
     var cap = SCALE_TABLE[f.a];
