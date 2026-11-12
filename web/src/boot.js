@@ -140,45 +140,17 @@
         applyCustomMap(j.furniture, true);
       }
     });
-    // 暗角（评审 P2-1）：径向渐变纹理（一次生成，中心透明→边缘 28% 黑），铺满全图
-    var vgTexKey = "vignetteTex";
-    if (!this.textures.exists(vgTexKey)) {
-      var cvs = this.textures.createCanvas(vgTexKey, W, H);
-      var ctx2 = cvs.getContext();
-      var grad = ctx2.createRadialGradient(W / 2, H / 2, Math.min(W, H) * 0.36, W / 2, H / 2, Math.max(W, H) * 0.72);
-      grad.addColorStop(0, "rgba(0,0,0,0)");
-      grad.addColorStop(1, "rgba(0,0,0,0.28)");
-      ctx2.fillStyle = grad;
-      ctx2.fillRect(0, 0, W, H);
-      cvs.refresh();
-    }
-    // 暗角锁视口（评审 #12）：位置/尺寸按视口 1248x768，scrollFactor 0
-    // 独立编辑器不要这层：看地图要看清，别蒙一层暗角
-    // v81 缩放修复：Phaser 的 zoom 会以相机中点缩放 scrollFactor(0) 的对象，
-    // 暗角被缩放/移位后边缘那圈黑色渐变滑进画面中央 = 「放大缩小出现黑色遮罩」。
-    // 修法：监听 zoom 变化，让暗角尺寸 = 视口 / zoom，始终精确铺满屏幕。
-    if (!editorMode) {
-      var vgImg = this.add.image(624, 384, vgTexKey).setDisplaySize(1248, 768).setDepth(59150).setScrollFactor(0);   // v66：暗角也在灯之下
-      var vgCam = this.cameras.main;
-      var vgFit = function () {
-        // 视觉尺寸 = displaySize × zoom（scrollFactor(0) 也被 zoom 缩放）→ 要盖满视口
-        // displaySize 必须是 视口 / zoom。上一版写成 × zoom，方向反了：缩小(zoom<1)时
-        // 暗角缩得更小，边缘黑渐变滑进画面中央（用户截图的暗带）。
-        vgImg.setDisplaySize(vgCam.width / vgCam.zoom, vgCam.height / vgCam.zoom);
-        vgImg.setPosition(vgCam.midPoint.x, vgCam.midPoint.y);
+    // v82：暗角层整个移除（用户反馈缩放时黑色遮罩反复出现，宁可不要氛围也要干净画面）。
+    // 阴天层保留（天气语义，非装饰）：超大铺满 + 锚相机中点，缩放不错位。
+    var vgCam = this.cameras.main;
+    if (this.overcast) {
+      var oc = this.overcast;
+      oc.setDisplaySize(1248 * 4, 768 * 4);
+      var ocSync = function () {
+        oc.setPosition(vgCam.midPoint.x - oc.displayWidth / 2, vgCam.midPoint.y - oc.displayHeight / 2);
       };
-      vgFit();
-      vgCam.on("zoomchange", vgFit);
-      // 阴天层：放大铺满到 4 倍视口并锚住屏幕中心，任何 zoom 都不会露边
-      if (this.overcast) {
-        var oc = this.overcast;
-        oc.setDisplaySize(1248 * 4, 768 * 4);
-        var ocSync = function () {
-          oc.setPosition(vgCam.midPoint.x - oc.displayWidth / 2, vgCam.midPoint.y - oc.displayHeight / 2);
-        };
-        ocSync();
-        vgCam.on("zoomchange", ocSync);
-      }
+      ocSync();
+      vgCam.on("zoomchange", ocSync);
     }
     this.trophyLayer = this.add.container(0, 0).setDepth(30);      // 灯光：初始 = 关灯（hello 初始态"办公室还没开灯"）
     // 相机：视口 1248x768，世界 2112x768 → 跟随鱼 + 边界钳制

@@ -211,26 +211,7 @@ if (!customFurniture.length && j && Array.isArray(j.furniture) && j.furniture.le
 applyCustomMap(j.furniture, true);
 }
 });
-var vgTexKey = "vignetteTex";
-if (!this.textures.exists(vgTexKey)) {
-var cvs = this.textures.createCanvas(vgTexKey, W, H);
-var ctx2 = cvs.getContext();
-var grad = ctx2.createRadialGradient(W / 2, H / 2, Math.min(W, H) * 0.36, W / 2, H / 2, Math.max(W, H) * 0.72);
-grad.addColorStop(0, "rgba(0,0,0,0)");
-grad.addColorStop(1, "rgba(0,0,0,0.28)");
-ctx2.fillStyle = grad;
-ctx2.fillRect(0, 0, W, H);
-cvs.refresh();
-}
-if (!editorMode) {
-var vgImg = this.add.image(624, 384, vgTexKey).setDisplaySize(1248, 768).setDepth(59150).setScrollFactor(0);   // v66：暗角也在灯之下
 var vgCam = this.cameras.main;
-var vgFit = function () {
-vgImg.setDisplaySize(vgCam.width / vgCam.zoom, vgCam.height / vgCam.zoom);
-vgImg.setPosition(vgCam.midPoint.x, vgCam.midPoint.y);
-};
-vgFit();
-vgCam.on("zoomchange", vgFit);
 if (this.overcast) {
 var oc = this.overcast;
 oc.setDisplaySize(1248 * 4, 768 * 4);
@@ -239,7 +220,6 @@ oc.setPosition(vgCam.midPoint.x - oc.displayWidth / 2, vgCam.midPoint.y - oc.dis
 };
 ocSync();
 vgCam.on("zoomchange", ocSync);
-}
 }
 this.trophyLayer = this.add.container(0, 0).setDepth(30);      // 灯光：初始 = 关灯（hello 初始态"办公室还没开灯"）
 this.cameras.main.setBounds(0, 0, W, H);
