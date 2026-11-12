@@ -154,7 +154,30 @@
     }
     // 暗角锁视口（评审 #12）：位置/尺寸按视口 1248x768，scrollFactor 0
     // 独立编辑器不要这层：看地图要看清，别蒙一层暗角
-    if (!editorMode) this.add.image(624, 384, vgTexKey).setDisplaySize(1248, 768).setDepth(59150).setScrollFactor(0);   // v66：暗角也在灯之下
+    // v81 缩放修复：Phaser 的 zoom 会以相机中点缩放 scrollFactor(0) 的对象，
+    // 暗角被缩放/移位后边缘那圈黑色渐变滑进画面中央 = 「放大缩小出现黑色遮罩」。
+    // 修法：监听 zoom 变化，让暗角尺寸 = 视口 / zoom，始终精确铺满屏幕。
+    if (!editorMode) {
+      var vgImg = this.add.image(624, 384, vgTexKey).setDisplaySize(1248, 768).setDepth(59150).setScrollFactor(0);   // v66：暗角也在灯之下
+      var vgCam = this.cameras.main;
+      var vgFit = function () {
+        // scrollFactor(0) 对象在 zoom 下按 1/zoom 缩放视觉尺寸 → 显示尺寸要乘 zoom 补偿
+        vgImg.setDisplaySize(vgCam.width * vgCam.zoom, vgCam.height * vgCam.zoom);
+        vgImg.setPosition(vgCam.midPoint.x, vgCam.midPoint.y);
+      };
+      vgFit();
+      vgCam.on("zoomchange", vgFit);
+      // 阴天层：放大铺满到 4 倍视口并锚住屏幕中心，任何 zoom 都不会露边
+      if (this.overcast) {
+        var oc = this.overcast;
+        oc.setDisplaySize(1248 * 4, 768 * 4);
+        var ocSync = function () {
+          oc.setPosition(vgCam.midPoint.x - oc.displayWidth / 2, vgCam.midPoint.y - oc.displayHeight / 2);
+        };
+        ocSync();
+        vgCam.on("zoomchange", ocSync);
+      }
+    }
     this.trophyLayer = this.add.container(0, 0).setDepth(30);      // 灯光：初始 = 关灯（hello 初始态"办公室还没开灯"）
     // 相机：视口 1248x768，世界 2112x768 → 跟随鱼 + 边界钳制
     this.cameras.main.setBounds(0, 0, W, H);
@@ -187,7 +210,7 @@
       r.visible = false;
       rainParts.push(r);
     }
-    s.overcast = s.add.rectangle(0, 0, W, H, 0x3a4a66, 0.22).setOrigin(0).setDepth(54000).setVisible(false);
+    s.overcast = s.add.rectangle(0, 0, 1248, 768, 0x3a4a66, 0.22).setOrigin(0).setDepth(54000).setVisible(false).setScrollFactor(0);   // v81：锁视口
   }
   function setWeather(s, w) {
     weather = w;

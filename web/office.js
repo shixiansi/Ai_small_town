@@ -222,7 +222,25 @@ ctx2.fillStyle = grad;
 ctx2.fillRect(0, 0, W, H);
 cvs.refresh();
 }
-if (!editorMode) this.add.image(624, 384, vgTexKey).setDisplaySize(1248, 768).setDepth(59150).setScrollFactor(0);   // v66：暗角也在灯之下
+if (!editorMode) {
+var vgImg = this.add.image(624, 384, vgTexKey).setDisplaySize(1248, 768).setDepth(59150).setScrollFactor(0);   // v66：暗角也在灯之下
+var vgCam = this.cameras.main;
+var vgFit = function () {
+vgImg.setDisplaySize(vgCam.width * vgCam.zoom, vgCam.height * vgCam.zoom);
+vgImg.setPosition(vgCam.midPoint.x, vgCam.midPoint.y);
+};
+vgFit();
+vgCam.on("zoomchange", vgFit);
+if (this.overcast) {
+var oc = this.overcast;
+oc.setDisplaySize(1248 * 4, 768 * 4);
+var ocSync = function () {
+oc.setPosition(vgCam.midPoint.x - oc.displayWidth / 2, vgCam.midPoint.y - oc.displayHeight / 2);
+};
+ocSync();
+vgCam.on("zoomchange", ocSync);
+}
+}
 this.trophyLayer = this.add.container(0, 0).setDepth(30);      // 灯光：初始 = 关灯（hello 初始态"办公室还没开灯"）
 this.cameras.main.setBounds(0, 0, W, H);
 if (!editorMode) this.cameras.main.startFollow(fish, true, 0.08, 0.08);   // 编辑器里镜头不跟鱼
@@ -250,7 +268,7 @@ var r = s.add.rectangle(Math.random() * W, Math.random() * H, 1.5, 10, 0x9db8e8,
 r.visible = false;
 rainParts.push(r);
 }
-s.overcast = s.add.rectangle(0, 0, W, H, 0x3a4a66, 0.22).setOrigin(0).setDepth(54000).setVisible(false);
+s.overcast = s.add.rectangle(0, 0, 1248, 768, 0x3a4a66, 0.22).setOrigin(0).setDepth(54000).setVisible(false).setScrollFactor(0);   // v81：锁视口
 }
 function setWeather(s, w) {
 weather = w;
