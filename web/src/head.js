@@ -74,10 +74,14 @@
     recovering:{ zone: "recover", act: "rest",   verb: "充电恢复",  mood: "sleeping" },
     listening: { zone: "relax",   act: "listen", verb: "听音乐",    mood: "idle" },
     gaming:    { zone: "arcade",  act: "play",   verb: "打游戏",    mood: "idle" },
+    // P1.3 联动态：真实运营数据驱动（文章上热门/连续运行告警）
+    celebrating: { zone: "board",  act: "cheer",  verb: "庆祝上热门", mood: "happy" },
+    tired:     { zone: "sofa",    act: "rest",   verb: "累瘫了",    mood: "tired" },
   };
   var ACTIVE_STATES = ["arrive", "working", "browsing", "watching", "organizing", "writing", "rewriting",
     "diary", "designing", "posting", "mailing", "replying", "commenting", "weekly",
-    "washing", "eating", "snacking", "relaxing", "strolling", "browsing_market", "recovering", "listening", "gaming"];
+    "washing", "eating", "snacking", "relaxing", "strolling", "browsing_market", "recovering", "listening", "gaming",
+    "celebrating", "tired"];
 
   /* ---------- 今日时间表（小镇自己的作息） ----------
    * 用户问过「现在的时间表是什么，怎么 19 点就睡觉了」：页面上原来只有一行状态，
@@ -117,7 +121,7 @@
     rewriting: "✍️", diary: "📔", designing: "🎨", posting: "🖨️", mailing: "📮", replying: "💬",
     commenting: "💬", weekly: "📊", error: "❌", idle: "🛋️", sleeping: "😴", washing: "🚿",
     eating: "🍚", snacking: "🧊", relaxing: "😌", strolling: "🌳", browsing_market: "🛒",
-    recovering: "🔋", listening: "🎵", gaming: "🎮"
+    recovering: "🔋", listening: "🎵", gaming: "🎮", celebrating: "🎉", tired: "🥱"
   };
 
   /* ---------- 大小关系 ----------

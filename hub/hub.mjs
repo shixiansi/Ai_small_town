@@ -262,6 +262,7 @@ const STATE_PRIORITY = {
   arrive: 2, working: 2, browsing: 2, watching: 2, organizing: 2,
   writing: 2, rewriting: 2, diary: 2, designing: 2, posting: 2,
   mailing: 2, replying: 2, commenting: 2, weekly: 2,   // 外部业务态
+  celebrating: 2, tired: 1,   // celebrating=运营喜报（外部打点）；tired=自主疲惫态（tick/告警，生活作息级）
   sleeping: 1, washing: 1, eating: 1, snacking: 1, recovering: 1,
   relaxing: 1, strolling: 1, browsing_market: 1,       // 生活作息态
   listening: 1, gaming: 1,

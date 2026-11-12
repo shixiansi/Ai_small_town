@@ -42,10 +42,13 @@ browsing_market: { zone: "market", act: "fetch", verb: "逛市集", mood: "idle"
 recovering:{ zone: "recover", act: "rest",   verb: "充电恢复",  mood: "sleeping" },
 listening: { zone: "relax",   act: "listen", verb: "听音乐",    mood: "idle" },
 gaming:    { zone: "arcade",  act: "play",   verb: "打游戏",    mood: "idle" },
+celebrating: { zone: "board",  act: "cheer",  verb: "庆祝上热门", mood: "happy" },
+tired:     { zone: "sofa",    act: "rest",   verb: "累瘫了",    mood: "tired" },
 };
 var ACTIVE_STATES = ["arrive", "working", "browsing", "watching", "organizing", "writing", "rewriting",
 "diary", "designing", "posting", "mailing", "replying", "commenting", "weekly",
-"washing", "eating", "snacking", "relaxing", "strolling", "browsing_market", "recovering", "listening", "gaming"];
+"washing", "eating", "snacking", "relaxing", "strolling", "browsing_market", "recovering", "listening", "gaming",
+"celebrating", "tired"];
 var SCHEDULE = {
 tz: "Asia/Shanghai",
 wake: [8, 23],   // 这段时间里没有真实事件 → hub 回落成「摸鱼」；之外才回落到睡觉（见 hub/hub.mjs）
@@ -68,7 +71,7 @@ arrive: "🚪", working: "🖥️", browsing: "🖥️", watching: "📺", organ
 rewriting: "✍️", diary: "📔", designing: "🎨", posting: "🖨️", mailing: "📮", replying: "💬",
 commenting: "💬", weekly: "📊", error: "❌", idle: "🛋️", sleeping: "😴", washing: "🚿",
 eating: "🍚", snacking: "🧊", relaxing: "😌", strolling: "🌳", browsing_market: "🛒",
-recovering: "🔋", listening: "🎵", gaming: "🎮"
+recovering: "🔋", listening: "🎵", gaming: "🎮", celebrating: "🎉", tired: "🥱"
 };
 var SCALE_TABLE = {
 "coffee-mug": 0.32, "stapler": 0.4, "calculator": 0.4, "open-book": 0.45,
