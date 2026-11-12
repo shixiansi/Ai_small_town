@@ -226,7 +226,7 @@ if (!editorMode) {
 var vgImg = this.add.image(624, 384, vgTexKey).setDisplaySize(1248, 768).setDepth(59150).setScrollFactor(0);   // v66：暗角也在灯之下
 var vgCam = this.cameras.main;
 var vgFit = function () {
-vgImg.setDisplaySize(vgCam.width * vgCam.zoom, vgCam.height * vgCam.zoom);
+vgImg.setDisplaySize(vgCam.width / vgCam.zoom, vgCam.height / vgCam.zoom);
 vgImg.setPosition(vgCam.midPoint.x, vgCam.midPoint.y);
 };
 vgFit();

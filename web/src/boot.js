@@ -161,8 +161,10 @@
       var vgImg = this.add.image(624, 384, vgTexKey).setDisplaySize(1248, 768).setDepth(59150).setScrollFactor(0);   // v66：暗角也在灯之下
       var vgCam = this.cameras.main;
       var vgFit = function () {
-        // scrollFactor(0) 对象在 zoom 下按 1/zoom 缩放视觉尺寸 → 显示尺寸要乘 zoom 补偿
-        vgImg.setDisplaySize(vgCam.width * vgCam.zoom, vgCam.height * vgCam.zoom);
+        // 视觉尺寸 = displaySize × zoom（scrollFactor(0) 也被 zoom 缩放）→ 要盖满视口
+        // displaySize 必须是 视口 / zoom。上一版写成 × zoom，方向反了：缩小(zoom<1)时
+        // 暗角缩得更小，边缘黑渐变滑进画面中央（用户截图的暗带）。
+        vgImg.setDisplaySize(vgCam.width / vgCam.zoom, vgCam.height / vgCam.zoom);
         vgImg.setPosition(vgCam.midPoint.x, vgCam.midPoint.y);
       };
       vgFit();
