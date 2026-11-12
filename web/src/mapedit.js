@@ -655,6 +655,22 @@
       else addEditLog("本机改动同步失败：" + err);
     });
   }
+  /* 手动同步入口（排障三件套之一）：控制台跑 __officeMapSync() 强制把本机镜像推上 hub。
+   * 与自动补传的区别：不判断 pending/时间戳，就是无条件覆盖——用户明确说"以我本地为准"时用。 */
+  function forceSyncMirror() {
+    if (!customFurniture.length) return "本机镜像为空，没有可同步的内容（若你认为本地有改动，先在编辑器里保存一次）";
+    mirrorFlushTried = false;            // 允许重新补传
+    var cl = sanitizeCustomLayer(customFurniture);
+    if (cl.fixed.length) { customFurniture = cl.list; }
+    postMapApi({ action: "set", item: customFurniture }, function (ok, err) {
+      if (ok) {
+        mirrorPending = false; mirrorAt = Date.now(); saveLocalMirror();
+        editToast("已把本机改动同步到线上（" + customFurniture.length + " 条家具）");
+      } else editToast("同步失败：" + err + "（稍后重试 __officeMapSync()）");
+    });
+    return "同步中…（看编辑器侧栏或稍后 __officeMapInfo() 确认 pending 变 false）";
+  }
+  try { window.__officeMapSync = forceSyncMirror; } catch (e) {}
   /* v57：hub 掉线时点的"保存/删除"不会丢，恢复后自动补传（最多 20 次，间隔 3 秒） */
   function scheduleMirrorRetry() {
     if (mirrorRetryTimer || mirrorRetryCount >= MIRROR_RETRY_MAX) return;

@@ -1691,6 +1691,20 @@ if (ok) { mirrorPending = false; saveLocalMirror(); addEditLog("已把本机改�
 else addEditLog("本机改动同步失败：" + err);
 });
 }
+function forceSyncMirror() {
+if (!customFurniture.length) return "本机镜像为空，没有可同步的内容（若你认为本地有改动，先在编辑器里保存一次）";
+mirrorFlushTried = false;            // 允许重新补传
+var cl = sanitizeCustomLayer(customFurniture);
+if (cl.fixed.length) { customFurniture = cl.list; }
+postMapApi({ action: "set", item: customFurniture }, function (ok, err) {
+if (ok) {
+mirrorPending = false; mirrorAt = Date.now(); saveLocalMirror();
+editToast("已把本机改动同步到线上（" + customFurniture.length + " 条家具）");
+} else editToast("同步失败：" + err + "（稍后重试 __officeMapSync()）");
+});
+return "同步中…（看编辑器侧栏或稍后 __officeMapInfo() 确认 pending 变 false）";
+}
+try { window.__officeMapSync = forceSyncMirror; } catch (e) {}
 function scheduleMirrorRetry() {
 if (mirrorRetryTimer || mirrorRetryCount >= MIRROR_RETRY_MAX) return;
 mirrorRetryTimer = setTimeout(function () {

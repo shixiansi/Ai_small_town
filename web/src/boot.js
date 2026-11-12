@@ -127,6 +127,7 @@
                  hubCount: (window.__officeHubCount != null) ? window.__officeHubCount : "未知（连接 hub 后可见）" };
       } catch (e) { return { error: String(e) } }
     };
+    // __officeMapSync 在 mapedit.js 内部挂载（forceSyncMirror 是模块私有函数）
     window.__officeMapReset = function () {
       try { localStorage.removeItem("office_map_custom_v1"); } catch (e) {}
       location.reload();
