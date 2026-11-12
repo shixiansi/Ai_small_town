@@ -50,6 +50,8 @@
     return "night";
   }
   function npcIsHome(def) {
+    // ?debug-awake=1：验收用，全员强制醒着（动机层/串门/台词随时可看）；正常访问不受影响
+    try { if (location.search.indexOf("debug-awake=1") >= 0) return false; } catch (e) {}
     if (!def.homeHours) return false;
     var h = bjHour();
     var a = def.homeHours[0], b = def.homeHours[1];

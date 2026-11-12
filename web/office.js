@@ -310,6 +310,7 @@ if (h >= 11 && h < 19) return "day";
 return "night";
 }
 function npcIsHome(def) {
+try { if (location.search.indexOf("debug-awake=1") >= 0) return false; } catch (e) {}
 if (!def.homeHours) return false;
 var h = bjHour();
 var a = def.homeHours[0], b = def.homeHours[1];
