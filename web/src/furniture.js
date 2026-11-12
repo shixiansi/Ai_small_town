@@ -218,5 +218,6 @@
       grid[e.y][e.x] = 0;
     });
     s.grid = grid;
+    try { window.__dbgGrid = { terr: Object.keys(terrainEdits).length, floor: Object.keys(floorEdits).length, sample48_8: grid[8] ? grid[8][48] : "?", sample46_1: grid[1] ? grid[1][46] : "?", ts: Date.now() }; } catch (e) {}
   }
 

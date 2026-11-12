@@ -1133,6 +1133,7 @@ if (propBlocked[e.y + "," + e.x]) return;
 grid[e.y][e.x] = 0;
 });
 s.grid = grid;
+try { window.__dbgGrid = { terr: Object.keys(terrainEdits).length, floor: Object.keys(floorEdits).length, sample48_8: grid[8] ? grid[8][48] : "?", sample46_1: grid[1] ? grid[1][46] : "?", ts: Date.now() }; } catch (e) {}
 }
 var customFurniture = [];        // 自定义层条目（hub 是真相源；hub 不通时本机镜像代管）
 var customPlaceholders = [];     // { f, placement, spr } 建出来的实例
