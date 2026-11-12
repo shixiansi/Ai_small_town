@@ -2,7 +2,7 @@
 (function () {
 "use strict";
 var TILE = 48;
-var roomLights = { office: true, bedroom: false, kitchen: false, bath: false };
+var roomLights = { office: true, bedroom: false, kitchen: false, bath: false, nbCat: true, nbChief: true, nbDoc: true };   // v83：邻居三户默认开灯
 function bboxForFrame(m, frame) {
 if (!m) return [0, 0, 48, 48];
 var rows = (m.rows && m.rows.South) || 1;
@@ -137,7 +137,7 @@ loadErrors = [];
 this.load.off("loaderror", onLoadError);
 this.load.on("loaderror", onLoadError);
 this.load.json("manifest", "assets/manifest.json?v=eb7ab1a1");
-this.load.json("mapdata", "map.json?v=52d09b13");
+this.load.json("mapdata", "map.json?v=f8e26c78");
 };
 SceneBoot.prototype.create = function () {
 var manifest = this.cache.json.get("manifest");
@@ -956,12 +956,15 @@ s.props = s.props ? s.props.filter(function (p) { return p.isFish; }) : [];   //
 s.fxDirect = {};           // 工作特效：{ pc, printer, chair }
 s.hostMap = {};            // id → placement（供 on: 引用）
 }
-var SWITCH_ROOMS = { office: 1, bedroom: 1, bath: 1, kitchen: 1 };
+var SWITCH_ROOMS = { office: 1, bedroom: 1, bath: 1, kitchen: 1, nbCat: 1, nbChief: 1, nbDoc: 1 };
 var SWITCH_ROOM_RECTS = {
 office:  [0, 15, 26, 15],
 bedroom: [1, 1, 9, 13],
 bath:    [10, 1, 6, 13],
-kitchen: [16, 1, 9, 13]
+kitchen: [16, 1, 9, 13],
+nbCat:   [39, 1, 8, 13],    // v83：喵酱家（右上左新房）
+nbChief: [48, 1, 7, 13],    // v83：村长家（右上右新房）
+nbDoc:   [51, 20, 4, 9]     // v83：博士家（右下）
 };
 function roomOfProp(p) {
 var want = p.f && p.f.room;
@@ -1021,11 +1024,11 @@ if (!hit) return false;
 var room = hit.room || roomOfProp(hit);
 if (!room) { showBubble("这个开关没连到房间（编辑器里给它选一个）", "error"); return true; }
 roomLights[room] = roomLights[room] === false ? true : false;
-lightsOn = ["office", "bedroom", "bath", "kitchen"].some(function (k) { return roomLights[k] !== false; });
+lightsOn = ["office", "bedroom", "bath", "kitchen", "nbCat", "nbChief", "nbDoc"].some(function (k) { return roomLights[k] !== false; });
 applyRoomLights(s);
 syncSwitchVisuals(s);
 flashAt(s, hit.spr.x, hit.spr.y, roomLights[room] ? 0xfff3c4 : 0x6b7385);
-showBubble((roomLights[room] ? "💡 开灯：" : "⚫ 关灯：") + ({ office: "办公室", bedroom: "起居", bath: "卫浴", kitchen: "厨房" }[room] || room), "idle");
+showBubble((roomLights[room] ? "💡 开灯：" : "⚫ 关灯：") + ({ office: "办公室", bedroom: "起居", bath: "卫浴", kitchen: "厨房", nbCat: "喵酱家", nbChief: "村长家", nbDoc: "博士家" }[room] || room), "idle");
 return true;
 }
 function buildFurnitureLayer(s) {
@@ -1120,17 +1123,24 @@ if (Math.pow((cx - ex) / rx, 2) + Math.pow((cy - ey) / ry, 2) <= 1) grid[py][px]
 }
 }
 });
+var solidTerrain = {};
 Object.keys(terrainEdits).forEach(function (k) {
 var e = terrainEdits[k];
-if (e.t !== "wall" && e.t !== "water") return;   // 农田可走（和农场一致）
-if (grid[e.y] && grid[e.y][e.x] !== undefined) grid[e.y][e.x] = 1;
+if (e.t !== "wall" && e.t !== "water") return;
+solidTerrain[e.y + "," + e.x] = 1;
 });
 Object.keys(floorEdits).forEach(function (k) {
 var e = floorEdits[k];
 if (!grid[e.y] || grid[e.y][e.x] === undefined) return;
 if (e.y === 0) return;
 if (propBlocked[e.y + "," + e.x]) return;
+if (solidTerrain[e.y + "," + e.x]) return;   // v83.1：墙/水格不许地板放行
 grid[e.y][e.x] = 0;
+});
+Object.keys(solidTerrain).forEach(function (k) {
+var p = k.split(",");
+var gy = Number(p[0]), gx = Number(p[1]);
+if (grid[gy] && grid[gy][gx] !== undefined) grid[gy][gx] = 1;
 });
 s.grid = grid;
 try { window.__dbgGrid = { terr: Object.keys(terrainEdits).length, floor: Object.keys(floorEdits).length, sample48_8: grid[8] ? grid[8][48] : "?", sample46_1: grid[1] ? grid[1][46] : "?", ts: Date.now() }; } catch (e) {}
@@ -1420,7 +1430,10 @@ var ROOM_RECTS = [
 { room: "office",  x: 0,  y: 15, w: 26, h: 15, label: "办公室" },
 { room: "bedroom", x: 1,  y: 1,  w: 9,  h: 13, label: "起居" },
 { room: "bath",    x: 10, y: 1,  w: 6,  h: 13, label: "卫浴" },
-{ room: "kitchen", x: 16, y: 1,  w: 9,  h: 13, label: "厨房" }
+{ room: "kitchen", x: 16, y: 1,  w: 9,  h: 13, label: "厨房" },
+{ room: "nbCat",   x: 39, y: 1,  w: 8,  h: 13, label: "喵酱家" },
+{ room: "nbChief", x: 48, y: 1,  w: 7,  h: 13, label: "村长家" },
+{ room: "nbDoc",   x: 51, y: 20, w: 4,  h: 9,  label: "博士家" }
 ];
 function roomCovered(rr, edits) {
 var roomArea = rr.w * rr.h;
@@ -2684,11 +2697,11 @@ return true;
 }
 function meSetRoomLight(room, on) {
 if (room === "all") {
-["office", "bedroom", "bath", "kitchen"].forEach(function (k) { roomLights[k] = !!on; });
+["office", "bedroom", "bath", "kitchen", "nbCat", "nbChief", "nbDoc"].forEach(function (k) { roomLights[k] = !!on; });
 lightsOn = !!on;
 } else if (roomLights[room] !== undefined) {
 roomLights[room] = !!on;
-lightsOn = ["office", "bedroom", "bath", "kitchen"].some(function (k) { return roomLights[k]; });
+lightsOn = ["office", "bedroom", "bath", "kitchen", "nbCat", "nbChief", "nbDoc"].some(function (k) { return roomLights[k]; });
 }
 if (scene) applyRoomLights(scene);
 return { lights: Object.assign({}, roomLights), on: lightsOn };

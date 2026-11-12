@@ -16,7 +16,7 @@
 
   var TILE = 48;
   /* 分房间灯光（v31）：每房间独立开关；AI 侧经 hub stats.lights 覆盖（睡觉只开卧室灯/睡前全关） */
-  var roomLights = { office: true, bedroom: false, kitchen: false, bath: false };
+  var roomLights = { office: true, bedroom: false, kitchen: false, bath: false, nbCat: true, nbChief: true, nbDoc: true };   // v83：邻居三户默认开灯
   /* v45：manifest 里 bbox 只有第一行（正面）的尺寸；旋转后要按"当前帧所在行"取 bbox，
    * 否则影子/碰撞/脚点还按正面尺寸算（用户反馈：转了但影子和碰撞没变）。
    * perRow = 每行帧数；row = floor(frame / perRow)；行序 South/East/West/North。 */

@@ -734,9 +734,12 @@ check("独立编辑器（editor.html）：三图层 / 静态可移动 / 地形�
   for (const needle of ["function splitCustomLayer(", "function renderEditOverlays(", "floorEdits", "terrainEdits", "moveOverrides",
                         "function meSetTile(", "function meEraseAt(", "function meMoveTo(", "window.__mapEditor", "editorMode", "mapEditorPointerDown"])
     if (!officeSrc.includes(needle)) bad.push(`office.js 缺 ${needle}（三图层编辑链路不完整）`);
-  // 4) 地形必须参与碰撞：墙/水挡路；地板贴片放行（家具压着的格除外）
-  if (!/terrainEdits\)\.forEach[\s\S]{0,400}grid\[e\.y\]\[e\.x\] = 1/.test(officeSrc)) bad.push("buildBlockedGrid 未消费 terrainEdits（墙/水不挡路）");
+  // 4) 地形必须参与碰撞：墙/水挡路；地板贴片放行（家具压着的格除外；v83.1 墙格最终覆写，floor 不能放行墙）
+  if (!/(terrainEdits\)\.forEach[\s\S]{0,400}grid\[e\.y\]\[e\.x\] = 1)|(solidTerrain\[e\.y \+ "," \+ e\.x\] = 1[\s\S]{0,600}grid\[gy\]\[gx\] = 1)/.test(officeSrc))
+    bad.push("buildBlockedGrid 未消费 terrainEdits（墙/水不挡路）");
   if (!/floorEdits\)\.forEach[\s\S]{0,400}grid\[e\.y\]\[e\.x\] = 0/.test(officeSrc)) bad.push("buildBlockedGrid 未消费 floorEdits（地板贴片不能把墙/水改成可走）");
+  if (!/solidTerrain\[e\.y \+ "," \+ e\.x\]\) return/.test(officeSrc))
+    bad.push("地板放行未跳过地形墙格（v83.1：同格 floor 会把墙重新放行 → 穿墙）");
   if (!/propBlocked\[e\.y \+ "," \+ e\.x\]/.test(officeSrc)) bad.push("地板贴片未避开家具占格（会把家具下面放行）");
   // 5) 静态家具可移动：拖动落定写 move 覆盖，而不是直接改 map.json
   if (!/isMoveEntry\(f\)|isMoveEntry\(e\)/.test(officeSrc)) bad.push("office.js 缺 move 覆盖条目处理（静态家具不能移动）");

@@ -774,7 +774,7 @@
   {
    "a": "bed",
    "x": 45.5,
-   "y": 2.8,
+   "y": 3.2,
    "id": "catBed"
   },
   {
@@ -839,7 +839,7 @@
   {
    "a": "chair",
    "x": 53.5,
-   "y": 2.8,
+   "y": 3.2,
    "id": "chiefChair1",
    "frame": 2
   },
@@ -1324,13 +1324,13 @@
   "living_cat": {
    "anchor": [
     44.2,
-    3.5
+    3.8
    ]
   },
   "living_chief": {
    "anchor": [
     52.4,
-    3.5
+    3.8
    ]
   },
   "living_doc": {

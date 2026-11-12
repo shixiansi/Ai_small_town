@@ -752,11 +752,11 @@
   /* v49：编辑器里直接拨房间灯（验证 夜/开灯 两档浓度用） */
   function meSetRoomLight(room, on) {
     if (room === "all") {
-      ["office", "bedroom", "bath", "kitchen"].forEach(function (k) { roomLights[k] = !!on; });
+      ["office", "bedroom", "bath", "kitchen", "nbCat", "nbChief", "nbDoc"].forEach(function (k) { roomLights[k] = !!on; });
       lightsOn = !!on;
     } else if (roomLights[room] !== undefined) {
       roomLights[room] = !!on;
-      lightsOn = ["office", "bedroom", "bath", "kitchen"].some(function (k) { return roomLights[k]; });
+      lightsOn = ["office", "bedroom", "bath", "kitchen", "nbCat", "nbChief", "nbDoc"].some(function (k) { return roomLights[k]; });
     }
     if (scene) applyRoomLights(scene);
     return { lights: Object.assign({}, roomLights), on: lightsOn };

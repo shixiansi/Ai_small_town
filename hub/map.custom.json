@@ -4813,13 +4813,13 @@
   {
    "a": "armchair",
    "x": 45.5,
-   "y": 2.8,
+   "y": 3.2,
    "id": "cumw9b87j74p2"
   },
   {
    "a": "double-bed",
    "x": 53.5,
-   "y": 2.8,
+   "y": 3.2,
    "id": "cumw9b8ghhqz"
   },
   {
@@ -4862,6 +4862,61 @@
    "y": 20.5,
    "frame": 24,
    "id": "cumw9bb10p6f2"
+  },
+  {
+   "a": "switch",
+   "x": 46.4,
+   "y": 0,
+   "band": true,
+   "wall": true,
+   "id": "sw813834143025239",
+   "frame": 0,
+   "room": "nbCat"
+  },
+  {
+   "a": "wall-lamp",
+   "x": 45.2,
+   "y": 0,
+   "band": true,
+   "wall": true,
+   "id": "wl440597939295098",
+   "room": "nbCat"
+  },
+  {
+   "a": "switch",
+   "x": 51.6,
+   "y": 0,
+   "band": true,
+   "wall": true,
+   "id": "sw446770986234147",
+   "frame": 0,
+   "room": "nbChief"
+  },
+  {
+   "a": "wall-lamp",
+   "x": 52.6,
+   "y": 0,
+   "band": true,
+   "wall": true,
+   "id": "wl684927455261651",
+   "room": "nbChief"
+  },
+  {
+   "a": "switch",
+   "x": 53.6,
+   "y": 19,
+   "wall": true,
+   "id": "sw827718732124244",
+   "frame": 0,
+   "room": "nbDoc"
+  },
+  {
+   "a": "wall-lamp",
+   "x": 52.6,
+   "y": 19,
+   "wall": true,
+   "id": "wl210173951753750",
+   "room": "nbDoc"
   }
  ],
  "updatedAt": 1794313541417

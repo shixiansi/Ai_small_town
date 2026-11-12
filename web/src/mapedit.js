@@ -345,7 +345,10 @@
     { room: "office",  x: 0,  y: 15, w: 26, h: 15, label: "办公室" },
     { room: "bedroom", x: 1,  y: 1,  w: 9,  h: 13, label: "起居" },
     { room: "bath",    x: 10, y: 1,  w: 6,  h: 13, label: "卫浴" },
-    { room: "kitchen", x: 16, y: 1,  w: 9,  h: 13, label: "厨房" }
+    { room: "kitchen", x: 16, y: 1,  w: 9,  h: 13, label: "厨房" },
+    { room: "nbCat",   x: 39, y: 1,  w: 8,  h: 13, label: "喵酱家" },
+    { room: "nbChief", x: 48, y: 1,  w: 7,  h: 13, label: "村长家" },
+    { room: "nbDoc",   x: 51, y: 20, w: 4,  h: 9,  label: "博士家" }
   ];
   /* 某块阴影区域是否覆盖了这个房间（重叠面积 > 房间的 25% 就算覆盖） */
   function roomCovered(rr, edits) {

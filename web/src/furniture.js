@@ -17,12 +17,15 @@
     s.hostMap = {};            // id → placement（供 on: 引用）
   }
   /* ---------- 灯的开关（v50）---------- */
-  var SWITCH_ROOMS = { office: 1, bedroom: 1, bath: 1, kitchen: 1 };
+  var SWITCH_ROOMS = { office: 1, bedroom: 1, bath: 1, kitchen: 1, nbCat: 1, nbChief: 1, nbDoc: 1 };
   var SWITCH_ROOM_RECTS = {
     office:  [0, 15, 26, 15],
     bedroom: [1, 1, 9, 13],
     bath:    [10, 1, 6, 13],
-    kitchen: [16, 1, 9, 13]
+    kitchen: [16, 1, 9, 13],
+    nbCat:   [39, 1, 8, 13],    // v83：喵酱家（右上左新房）
+    nbChief: [48, 1, 7, 13],    // v83：村长家（右上右新房）
+    nbDoc:   [51, 20, 4, 9]     // v83：博士家（右下）
   };
   /* 一个开关控制哪个房间：优先用条目里的 room，否则按它所在位置取最近的房间 */
   function roomOfProp(p) {
@@ -88,11 +91,11 @@
     var room = hit.room || roomOfProp(hit);
     if (!room) { showBubble("这个开关没连到房间（编辑器里给它选一个）", "error"); return true; }
     roomLights[room] = roomLights[room] === false ? true : false;
-    lightsOn = ["office", "bedroom", "bath", "kitchen"].some(function (k) { return roomLights[k] !== false; });
+    lightsOn = ["office", "bedroom", "bath", "kitchen", "nbCat", "nbChief", "nbDoc"].some(function (k) { return roomLights[k] !== false; });
     applyRoomLights(s);
     syncSwitchVisuals(s);
     flashAt(s, hit.spr.x, hit.spr.y, roomLights[room] ? 0xfff3c4 : 0x6b7385);
-    showBubble((roomLights[room] ? "💡 开灯：" : "⚫ 关灯：") + ({ office: "办公室", bedroom: "起居", bath: "卫浴", kitchen: "厨房" }[room] || room), "idle");
+    showBubble((roomLights[room] ? "💡 开灯：" : "⚫ 关灯：") + ({ office: "办公室", bedroom: "起居", bath: "卫浴", kitchen: "厨房", nbCat: "喵酱家", nbChief: "村长家", nbDoc: "博士家" }[room] || room), "idle");
     return true;
   }
 
@@ -205,17 +208,27 @@
       }
     });
     // 编辑层（v38）：地形墙/水阻挡；地板贴片把该格改成可走（家具压着的格除外，第 0 行贴墙根也保留）
+    // v83.1：先收集地形墙/水格——地板放行必须跳过它们（用户先铺地板后画墙时，floor 条目
+    // 与 wall 同格共存，原逻辑会让地板把墙格重新放行 = 墙没有碰撞、鱼穿墙）。
+    var solidTerrain = {};
     Object.keys(terrainEdits).forEach(function (k) {
       var e = terrainEdits[k];
-      if (e.t !== "wall" && e.t !== "water") return;   // 农田可走（和农场一致）
-      if (grid[e.y] && grid[e.y][e.x] !== undefined) grid[e.y][e.x] = 1;
+      if (e.t !== "wall" && e.t !== "water") return;
+      solidTerrain[e.y + "," + e.x] = 1;
     });
     Object.keys(floorEdits).forEach(function (k) {
       var e = floorEdits[k];
       if (!grid[e.y] || grid[e.y][e.x] === undefined) return;
       if (e.y === 0) return;
       if (propBlocked[e.y + "," + e.x]) return;
+      if (solidTerrain[e.y + "," + e.x]) return;   // v83.1：墙/水格不许地板放行
       grid[e.y][e.x] = 0;
+    });
+    // 地形墙/水最后写入（v83.1）：同格 floor 不再能放行墙格
+    Object.keys(solidTerrain).forEach(function (k) {
+      var p = k.split(",");
+      var gy = Number(p[0]), gx = Number(p[1]);
+      if (grid[gy] && grid[gy][gx] !== undefined) grid[gy][gx] = 1;
     });
     s.grid = grid;
     try { window.__dbgGrid = { terr: Object.keys(terrainEdits).length, floor: Object.keys(floorEdits).length, sample48_8: grid[8] ? grid[8][48] : "?", sample46_1: grid[1] ? grid[1][46] : "?", ts: Date.now() }; } catch (e) {}
