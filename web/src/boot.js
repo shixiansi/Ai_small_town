@@ -118,6 +118,20 @@
     // 自定义层（v37）：hub 的 hello 可能比场景先到（那时 scene 还是 null，应用不了），
     // 所以这里补一次本机镜像；再探一次 hub，让调试台/编辑面板能显示真实连通状态。
     try { adoptLocalMirror(); } catch (e) {}
+    // 排障入口：本地镜像（localStorage）和 hub 存档打架时用——
+    // 控制台跑 __officeMapReset() 清空本机镜像并重新以 hub 为准；__officeMapInfo() 看两边状态
+    window.__officeMapInfo = function () {
+      try {
+        var m = JSON.parse(localStorage.getItem("office_map_custom_v1") || "null");
+        return { local: m ? { count: (m.furniture || []).length, updatedAt: new Date(m.updatedAt || 0).toLocaleString(), pending: !!m.pending } : null,
+                 hubCount: (window.__officeHubCount != null) ? window.__officeHubCount : "未知（连接 hub 后可见）" };
+      } catch (e) { return { error: String(e) } }
+    };
+    window.__officeMapReset = function () {
+      try { localStorage.removeItem("office_map_custom_v1"); } catch (e) {}
+      location.reload();
+      return "本地镜像已清空，页面刷新后以 hub 为准";
+    };
     probeMapHub(function (ok, j) {
       if (!ok) return;
       if (mirrorPending) { flushLocalMirror(); return; }   // 上次离线改的：hub 这次通了就补传上去

@@ -192,6 +192,18 @@ buildFurniture(this);   // 家具先建（含碰撞推导）
 buildFish(this);
 buildLights(this);
 try { adoptLocalMirror(); } catch (e) {}
+window.__officeMapInfo = function () {
+try {
+var m = JSON.parse(localStorage.getItem("office_map_custom_v1") || "null");
+return { local: m ? { count: (m.furniture || []).length, updatedAt: new Date(m.updatedAt || 0).toLocaleString(), pending: !!m.pending } : null,
+hubCount: (window.__officeHubCount != null) ? window.__officeHubCount : "未知（连接 hub 后可见）" };
+} catch (e) { return { error: String(e) } }
+};
+window.__officeMapReset = function () {
+try { localStorage.removeItem("office_map_custom_v1"); } catch (e) {}
+location.reload();
+return "本地镜像已清空，页面刷新后以 hub 为准";
+};
 probeMapHub(function (ok, j) {
 if (!ok) return;
 if (mirrorPending) { flushLocalMirror(); return; }   // 上次离线改的：hub 这次通了就补传上去
@@ -4740,6 +4752,7 @@ if (msg.stats) onStats(msg.stats);
 if (msg.state) onState(msg.state);
 if (Array.isArray(msg.customMap)) applyCustomMap(msg.customMap, true, msg.updatedAt);   // v37：hub 里的自定义家具层
 if (msg.weather && window.__officeSetWeather) window.__officeSetWeather(msg.weather);   // P6：真实天气初始值
+if (msg.customMap) window.__officeHubCount = msg.customMap.length;   // 排障：hub 侧家具数
 } else if (msg.type === "map" && Array.isArray(msg.furniture)) {
 applyCustomMap(msg.furniture, true, msg.updatedAt);   // v37：编辑保存后的热更新广播
 } else if (msg.type === "state" && msg.state) {

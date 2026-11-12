@@ -36,6 +36,7 @@
         if (msg.state) onState(msg.state);
         if (Array.isArray(msg.customMap)) applyCustomMap(msg.customMap, true, msg.updatedAt);   // v37：hub 里的自定义家具层
         if (msg.weather && window.__officeSetWeather) window.__officeSetWeather(msg.weather);   // P6：真实天气初始值
+        if (msg.customMap) window.__officeHubCount = msg.customMap.length;   // 排障：hub 侧家具数
       } else if (msg.type === "map" && Array.isArray(msg.furniture)) {
         applyCustomMap(msg.furniture, true, msg.updatedAt);   // v37：编辑保存后的热更新广播
       } else if (msg.type === "state" && msg.state) {
