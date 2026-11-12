@@ -211,16 +211,6 @@ if (!customFurniture.length && j && Array.isArray(j.furniture) && j.furniture.le
 applyCustomMap(j.furniture, true);
 }
 });
-var vgCam = this.cameras.main;
-if (this.overcast) {
-var oc = this.overcast;
-oc.setDisplaySize(1248 * 4, 768 * 4);
-var ocSync = function () {
-oc.setPosition(vgCam.midPoint.x - oc.displayWidth / 2, vgCam.midPoint.y - oc.displayHeight / 2);
-};
-ocSync();
-vgCam.on("zoomchange", ocSync);
-}
 this.trophyLayer = this.add.container(0, 0).setDepth(30);      // 灯光：初始 = 关灯（hello 初始态"办公室还没开灯"）
 this.cameras.main.setBounds(0, 0, W, H);
 if (!editorMode) this.cameras.main.startFollow(fish, true, 0.08, 0.08);   // 编辑器里镜头不跟鱼
@@ -248,7 +238,8 @@ var r = s.add.rectangle(Math.random() * W, Math.random() * H, 1.5, 10, 0x9db8e8,
 r.visible = false;
 rainParts.push(r);
 }
-s.overcast = s.add.rectangle(0, 0, 1248, 768, 0x3a4a66, 0.22).setOrigin(0).setDepth(54000).setVisible(false).setScrollFactor(0);   // v81：锁视口
+s.overcast = s.add.rectangle(0, 0, 1248, 768, 0x3a4a66, 0.22).setOrigin(0.5).setDepth(54000).setVisible(false).setScrollFactor(0);
+s.overcast.setDisplaySize(1248 * 4, 768 * 4);
 }
 function setWeather(s, w) {
 weather = w;
@@ -260,6 +251,10 @@ if (w !== "sunny" && w !== "rainy" && w !== "cloudy" && w !== "snowy") return;
 if (scene) setWeather(scene, w === "snowy" ? "sunny" : w);
 };
 function tickWeather(s) {
+if (s.overcast && s.overcast.visible) {
+var c = s.cameras.main;
+s.overcast.setPosition(c.midPoint.x, c.midPoint.y);
+}
 if (weather !== "rainy" || !rainParts.length) return;
 rainParts.forEach(function (r) {
 r.y += 7 + r.height * 0.4;

@@ -141,17 +141,6 @@
       }
     });
     // v82：暗角层整个移除（用户反馈缩放时黑色遮罩反复出现，宁可不要氛围也要干净画面）。
-    // 阴天层保留（天气语义，非装饰）：超大铺满 + 锚相机中点，缩放不错位。
-    var vgCam = this.cameras.main;
-    if (this.overcast) {
-      var oc = this.overcast;
-      oc.setDisplaySize(1248 * 4, 768 * 4);
-      var ocSync = function () {
-        oc.setPosition(vgCam.midPoint.x - oc.displayWidth / 2, vgCam.midPoint.y - oc.displayHeight / 2);
-      };
-      ocSync();
-      vgCam.on("zoomchange", ocSync);
-    }
     this.trophyLayer = this.add.container(0, 0).setDepth(30);      // 灯光：初始 = 关灯（hello 初始态"办公室还没开灯"）
     // 相机：视口 1248x768，世界 2112x768 → 跟随鱼 + 边界钳制
     this.cameras.main.setBounds(0, 0, W, H);
@@ -184,7 +173,10 @@
       r.visible = false;
       rainParts.push(r);
     }
-    s.overcast = s.add.rectangle(0, 0, 1248, 768, 0x3a4a66, 0.22).setOrigin(0).setDepth(54000).setVisible(false).setScrollFactor(0);   // v81：锁视口
+    // v82.3：4 倍视口大 + scrollFactor 0 —— zoom<1 时缩放层视觉缩小，超大尺寸保证任何 zoom 都盖满；
+    // 位置由 tickWeather 每帧锚相机中点（zoomchange 在 buildWeather 之前不可靠，v82.2 曾因此失效）
+    s.overcast = s.add.rectangle(0, 0, 1248, 768, 0x3a4a66, 0.22).setOrigin(0.5).setDepth(54000).setVisible(false).setScrollFactor(0);
+    s.overcast.setDisplaySize(1248 * 4, 768 * 4);
   }
   function setWeather(s, w) {
     weather = w;
@@ -199,6 +191,11 @@
     if (scene) setWeather(scene, w === "snowy" ? "sunny" : w);
   };
   function tickWeather(s) {
+    // 阴天层锚相机中点（每帧校正，zoom/滚动变化都稳）
+    if (s.overcast && s.overcast.visible) {
+      var c = s.cameras.main;
+      s.overcast.setPosition(c.midPoint.x, c.midPoint.y);
+    }
     if (weather !== "rainy" || !rainParts.length) return;
     rainParts.forEach(function (r) {
       r.y += 7 + r.height * 0.4;
