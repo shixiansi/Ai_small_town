@@ -380,3 +380,17 @@
     renderStatsBar();
   }
 
+
+/* v84 调试钩子：NPC 动机层只读快照（验收/观察用，不参与逻辑） */
+try {
+  window.__officeNpcs = function () {
+    return npcLayer.map(function (n) {
+      return {
+        id: n.def ? n.def.id : null, act: n.act, state: n.state, indoor: !!n.indoor,
+        say: n.say ? n.say.text : null,
+        x: Math.round((n.spr ? n.spr.x : 0) / 48), y: Math.round(((n.spr ? n.spr.y : 0) - 48) / 48 - 1),
+        m: n.motives ? { hunger: Math.round(n.motives.hunger), social: Math.round(n.motives.social), energy: Math.round(n.motives.energy) } : null
+      };
+    });
+  };
+} catch (e) {}

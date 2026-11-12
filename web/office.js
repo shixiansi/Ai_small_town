@@ -593,6 +593,18 @@ scene.tweens.add({ targets: mark, y: mark.y - 10, alpha: 0, duration: 1200, onCo
 postStatDelta({ social: 10, mood: 3 });
 renderStatsBar();
 }
+try {
+window.__officeNpcs = function () {
+return npcLayer.map(function (n) {
+return {
+id: n.def ? n.def.id : null, act: n.act, state: n.state, indoor: !!n.indoor,
+say: n.say ? n.say.text : null,
+x: Math.round((n.spr ? n.spr.x : 0) / 48), y: Math.round(((n.spr ? n.spr.y : 0) - 48) / 48 - 1),
+m: n.motives ? { hunger: Math.round(n.motives.hunger), social: Math.round(n.motives.social), energy: Math.round(n.motives.energy) } : null
+};
+});
+};
+} catch (e) {}
 var ROOMS = [
 { id: "office",  label: "办公室", cx: 13 * TILE, cy: 23.5 * TILE },
 { id: "bedroom", label: "起居",   cx: 13 * TILE, cy: 7 * TILE },    // 北排整排（卧室+卫浴+厨房）
