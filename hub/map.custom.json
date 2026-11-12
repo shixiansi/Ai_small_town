@@ -4812,19 +4812,19 @@
   },
   {
    "a": "armchair",
-   "x": 45.5,
+   "x": 42.5,
    "y": 3.2,
    "id": "cumw9b87j74p2"
   },
   {
    "a": "double-bed",
-   "x": 53.5,
+   "x": 52.5,
    "y": 3.2,
    "id": "cumw9b8ghhqz"
   },
   {
    "a": "bed",
-   "x": 54.5,
+   "x": 53.5,
    "y": 27.4,
    "frame": 2,
    "id": "cumw9b8upu1mx"
@@ -4865,9 +4865,8 @@
   },
   {
    "a": "switch",
-   "x": 46.4,
-   "y": 0,
-   "band": true,
+   "x": 43.6,
+   "y": 1,
    "wall": true,
    "id": "sw813834143025239",
    "frame": 0,
@@ -4875,9 +4874,8 @@
   },
   {
    "a": "wall-lamp",
-   "x": 45.2,
-   "y": 0,
-   "band": true,
+   "x": 42.6,
+   "y": 1,
    "wall": true,
    "id": "wl440597939295098",
    "room": "nbCat"
@@ -4885,8 +4883,7 @@
   {
    "a": "switch",
    "x": 51.6,
-   "y": 0,
-   "band": true,
+   "y": 1,
    "wall": true,
    "id": "sw446770986234147",
    "frame": 0,
@@ -4894,9 +4891,8 @@
   },
   {
    "a": "wall-lamp",
-   "x": 52.6,
-   "y": 0,
-   "band": true,
+   "x": 50.6,
+   "y": 1,
    "wall": true,
    "id": "wl684927455261651",
    "room": "nbChief"
