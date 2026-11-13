@@ -2267,3 +2267,12 @@ NPC: cat:home@41,22  chief:home@47,24  doc:home@54,28
 ```
 截图：`logs/office-v37-shots/map-v78-zoom-min.png`
 
+
+## v84 · NPC 动机层（2026-11-13）
+
+- 每只 NPC 三条动机条：`hunger`（饿了→cook/dining/fridge）、`social`（无聊→串门/市集/花园）、
+  `energy`（困了→回家睡觉），`scheduleNpc` 每跳涨 0.8~2.8，触发阈值 72/78/85，触发后回落
+- 触发时气泡说「为什么去」（模板口气×内容组合，`npcSay` 4.5s 淡出、跟随 NPC 移动）
+- 与原 homeHours 作息叠加：在家/睡觉时段不触发外出动机
+- 调试：URL `?debug-awake=1` 强制全员醒着；控制台 `__officeNpcs()` 返回动机/台词/位置只读快照
+- headless 300s 实测 6 次动机台词自然触发（"好像闻到饭香了""去找村长聊两句"…）
