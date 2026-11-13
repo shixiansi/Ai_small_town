@@ -15,7 +15,7 @@
       :root { --paper: #151826; --ink: #e8e6df; --line: #2c3044; --card: #1d2132; --muted: #9a9daa; }
     }
     * { box-sizing: border-box; }
-    html, body { margin: 0; padding: 0; background: var(--paper); color: var(--ink); font-family: "PingFang SC", "Microsoft YaHei", system-ui, sans-serif; }
+    html, body { margin: 0; padding: 0; background: var(--paper); color: var(--ink); font-family: "PingFang SC", "Microsoft YaHei", "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", system-ui, sans-serif; }   /* v84.1 emoji fallback 全局兜底 */
     a { color: var(--blue); text-decoration: none; }
     a:hover { text-decoration: underline; }
     .wrap { max-width: 1100px; margin: 0 auto; padding: 16px; }
@@ -116,7 +116,7 @@
     #act-list li { display: flex; align-items: baseline; gap: 8px; padding: 6px 12px; border-bottom: 1px dashed var(--line); }
     #act-list li:last-child { border-bottom: 0; }
     #act-list .act-time { flex: none; width: 52px; color: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
-    #act-list .act-icon { flex: none; }
+    #act-list .act-icon { flex: none; font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", "PingFang SC", sans-serif; }   /* v84.1 emoji 字形 fallback：无 emoji 字体的系统不再渲染成方框 */
     #act-list .act-verb { flex: none; color: var(--blue); }
     #act-list .act-task { font-weight: 600; }
     #act-list .act-detail { color: var(--muted); font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
