@@ -296,6 +296,20 @@ function loadDisk() {
 }
 function saveDisk() {
   try {
+    // v85.5 写前备份（同 memory.json 策略：每小时 1 份保留 3 份）——小镇状态/事件流水坏掉有回滚点
+    try {
+      if (fs.existsSync(STATE_FILE) && fs.statSync(STATE_FILE).size > 500) {
+        const bakDir = path.dirname(STATE_FILE) + "/backups"
+        fs.mkdirSync(bakDir, { recursive: true })
+        const stamp = new Date().toISOString().slice(0, 13)
+        const bak = bakDir + "/hubstate-" + stamp + ".json"
+        if (!fs.existsSync(bak)) {
+          fs.copyFileSync(STATE_FILE, bak)
+          const olds = fs.readdirSync(bakDir).filter(f => f.startsWith("hubstate-")).sort()
+          while (olds.length > 3) fs.unlinkSync(bakDir + "/" + olds.shift())
+        }
+      }
+    } catch {}
     fs.writeFileSync(STATE_FILE + ".tmp", JSON.stringify({ state: cur, recent, stats }))
     fs.renameSync(STATE_FILE + ".tmp", STATE_FILE)
   } catch (e) {
