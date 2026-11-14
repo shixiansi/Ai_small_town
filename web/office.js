@@ -407,6 +407,16 @@ var others = NPCS.map(function (d) { return d.name; }).filter(function (n) { ret
 var line = motive.lines[Math.floor(Math.random() * motive.lines.length)];
 return line.replace("{other}", others.length ? others[Math.floor(Math.random() * others.length)] : "村长");
 }
+function mailTalkLine(q) {
+var t = String(q.text).replace(/[「」]/g, "").slice(0, 18);
+var tpl = [
+"有读者问「" + t + "」…大肥鱼记在本子上了",
+"收到封来信，问的是「" + t + "」",
+"「" + t + "」——这个问题有意思，大肥鱼说会写",
+q.from + "的来信你看到没？问的还挺深"
+];
+return tpl[Math.floor(Math.random() * tpl.length)];
+}
 function blogTalkLine(def, title, views) {
 var t = String(title).slice(0, 22);
 var tpl = [
@@ -436,6 +446,16 @@ else if (which === "social") m.social = 15 + Math.random() * 20;
 else if (which === "energy") m.energy = 5 + Math.random() * 10;
 }
 var latestPost = { title: "", at: 0 }
+var readerQ = { text: "", from: "", at: 0 }
+function fetchReaderQ() {
+if (Date.now() - readerQ.at < 30 * 60000) return
+try {
+fetch("/api/reader-questions").then(function (r) { return r.ok ? r.json() : null }).then(function (d) {
+var it = d && d.items && d.items[0]
+if (it && it.text) readerQ = { text: it.text, from: it.from || "读者", at: Date.now() }
+}).catch(function () {})
+} catch (e) {}
+}
 function fetchLatestPost() {
 if (Date.now() - latestPost.at < 30 * 60000) return
 try {
@@ -537,6 +557,16 @@ var anchor = npcMotiveTarget(npc.def, NPC_MOTIVES[mk]);
 if (!anchor) continue;
 if (mk === "social") {
 fetchLatestPost();
+fetchReaderQ();
+if (readerQ.text && Math.random() < 0.25) {
+npcRelieveMotives(npc.motives, "social");
+npc.state = "roaming";
+npcSetAct(npc, "look");
+npcSay(npc, mailTalkLine(readerQ));
+npcWalkTo(npc, Math.round(anchor[0]), Math.round(anchor[1]), 400, function () { npcSetAct(npc, "idle"); });
+scheduleNpc(npc, 9000 + Math.random() * 7000);
+return;
+}
 if (latestPost.title && Math.random() < 0.5) {   // v85.3 提到 50%：显摆台词是主打的博客联动，太罕见观众看不到
 npcRelieveMotives(npc.motives, "social");
 npc.state = "roaming";
