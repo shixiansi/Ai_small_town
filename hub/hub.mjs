@@ -170,6 +170,19 @@ function dailyScript() {
   const today = shifts.filter(sh => { const h = Number(sh.at.slice(0, 2)); return h <= 23 })  // 全部
   const past = today.filter(sh => { const h = Number(sh.at.slice(0, 2)); return h <= bjHour }).slice(-1)
   const upcoming = today.filter(sh => { const h = Number(sh.at.slice(0, 2)); return h > bjHour }).slice(0, 3)
+  // v85.1 真实事件织入：最近 24h 的高亮事件（真实发生的事）进剧本
+  const dayAgo = Date.now() - 24 * 3600e3
+  const seenStates = new Set()
+  const realActs = []
+  for (const e of (recent || [])) {
+    if ((e.ts || e.at || 0) <= dayAgo) continue
+    const t = String(e.task || "")
+    if (!t || /验收|心跳|庆祝|转发|评论视频《/.test(t)) continue   // 庆祝/回评是派生动作，不进剧本
+    if (seenStates.has(e.state)) continue                          // 一类状态只取一件
+    seenStates.add(e.state)
+    realActs.push(t.slice(0, 24))
+    if (realActs.length >= 2) break
+  }
   const OPENINGS = ["今天小镇挺热闹。", "镇上一切照旧，", "清晨的雾散得比平时早，"]
   const CLOSERS = ["大肥鱼说今晚想早点睡。", "喵酱预告傍晚有蟋蟀出没。", "博士说要核对潮汐表，谁都别打扰她。"]
   // 句感：开场 + 正在做的 + 接下来（顿号连接）+ 收尾，拼成一段自然的话
@@ -186,7 +199,9 @@ function dailyScript() {
       ? `「${past[0].label || past[0].state}」也结束了，今天的班都跑完，各自回屋。`
       : "夜深了，镇上的灯一盏一盏熄了。"
   }
-  return { day, line: `${open}${mid}${close}`, upcoming }
+  let real = ""
+  if (realActs.length) real = ` 真实发生的事：${realActs.join("、")}。`
+  return { day, line: `${open}${mid}${close}${real}`, upcoming }
 }
 let realWeather = "sunny"
 let weatherCity = process.env.OFFICE_WEATHER_CITY || "Shanghai"
@@ -715,4 +730,3 @@ server.listen(PORT, HOST, () => {
 // 每 60s 给所有浏览器广播一次服务器时间（驱动"刚刚 / N 分钟前上报"的相对时间显示）
 setInterval(() => broadcast({ type: "ts", ts: Date.now() }), 60000).unref?.()
 for (const sig of ["SIGINT", "SIGTERM"]) process.on(sig, () => { if (saveTimer) { clearTimeout(saveTimer); saveTimer = null } saveDisk(); process.exit(0) })
-
