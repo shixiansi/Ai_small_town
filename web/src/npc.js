@@ -482,7 +482,7 @@ var lastWaveAt = 0
 try {
   window.__officeGuestWave = function (viewers) {
     if (!scene || !npcLayer.length) return
-    if (viewers < 3) return
+    if (viewers < 2) return   // v85.5 bot 过滤后真人少，2 人也算团聚
     if (Date.now() - lastWaveAt < 10 * 60000) return
     lastWaveAt = Date.now()
     var waved = 0
