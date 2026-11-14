@@ -594,6 +594,8 @@ function isLocalWrite(req) {
 const server = http.createServer((req, res) => {
   if (req.method === "OPTIONS") { res.writeHead(204, CORS).end(); return }
   if (req.method === "POST" && (req.url === "/api/event" || req.url === "/api/heartbeat")) {
+    // v85.5 安全修复：NPC 状态注入只允许本地（agent 直连 127.0.0.1）——外网可伪造「大肥鱼正在做的事」污染面板信任
+    if (!isLocalWrite(req)) { res.writeHead(403, CORS).end(JSON.stringify({ error: "事件注入仅限本地" })); return }
     let body = ""
     req.on("data", c => { body += c; if (body.length > 4096) req.destroy() })
     req.on("end", () => {
