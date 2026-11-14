@@ -169,6 +169,18 @@
     var line = motive.lines[Math.floor(Math.random() * motive.lines.length)];
     return line.replace("{other}", others.length ? others[Math.floor(Math.random() * others.length)] : "村长");
   }
+  /* v85：议论博客的台词模板（口气×角度，title 截断防长标题撑爆气泡） */
+  function blogTalkLine(def, title) {
+    var t = String(title).slice(0, 22);
+    var tpl = [
+      "大肥鱼的新文章《" + t + "》你们看了吗",
+      "刚看了眼《" + t + "》，写得还行",
+      "大肥鱼又在写《" + t + "》这种东西…不过挺好玩的",
+      "《" + t + "》里那个说法挺有意思的",
+      "站长又更新了，《" + t + "》，去看看"
+    ];
+    return tpl[Math.floor(Math.random() * tpl.length)];
+  }
   function npcInitMotives() {
     return { hunger: 20 + Math.random() * 40, social: 10 + Math.random() * 50, energy: 10 + Math.random() * 30 };
   }
@@ -182,6 +194,23 @@
     if (which === "hunger") m.hunger = 10 + Math.random() * 15;
     else if (which === "social") m.social = 15 + Math.random() * 20;
     else if (which === "energy") m.energy = 5 + Math.random() * 10;
+  }
+  /* ---------- v85 博客联动：NPC 偶尔议论大肥鱼的新文章 ----------
+   * 拉一次最新已发布文章标题（30 分钟缓存），social 动机触发时 35% 概率议论它——
+   * 把「小镇」和「博客」两个产品缝在一起：观众看到 NPC 在聊博主的新作。 */
+  var latestPost = { title: "", at: 0 }
+  function fetchLatestPost() {
+    if (Date.now() - latestPost.at < 30 * 60000) return
+    try {
+      fetch("/pb/api/collections/posts/records?perPage=1&sort=-published_at&filter=" +
+          encodeURIComponent("kind='article' && status='published'"))
+        .then(function (r) { return r.ok ? r.json() : null })
+        .then(function (d) {
+          var it = d && d.items && d.items[0]
+          if (it && it.title) latestPost = { title: it.title, at: Date.now() }
+        })
+        .catch(function () {})
+    } catch (e) {}
   }
   /* 找动机目的地：zones 里第一个存在的 zone 锚点（visit=别人家客厅，运行时解析） */
   function npcMotiveTarget(def, motive) {
@@ -283,6 +312,19 @@
       }
       var anchor = npcMotiveTarget(npc.def, NPC_MOTIVES[mk]);
       if (!anchor) continue;
+      // v85 博客联动：social 触发时 35% 概率议论最新文章（有缓存才说，否则走普通台词）
+      if (mk === "social") {
+        fetchLatestPost();
+        if (latestPost.title && Math.random() < 0.35) {
+          npcRelieveMotives(npc.motives, "social");
+          npc.state = "roaming";
+          npcSetAct(npc, "look");
+          npcSay(npc, blogTalkLine(npc.def, latestPost.title));
+          npcWalkTo(npc, Math.round(anchor[0]), Math.round(anchor[1]), 400, function () { npcSetAct(npc, "idle"); });
+          scheduleNpc(npc, 9000 + Math.random() * 7000);
+          return;
+        }
+      }
       npcRelieveMotives(npc.motives, mk);
       npc.state = "roaming";
       npcSetAct(npc, mk === "hunger" ? "wander" : "look");

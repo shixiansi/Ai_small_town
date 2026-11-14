@@ -407,6 +407,17 @@ var others = NPCS.map(function (d) { return d.name; }).filter(function (n) { ret
 var line = motive.lines[Math.floor(Math.random() * motive.lines.length)];
 return line.replace("{other}", others.length ? others[Math.floor(Math.random() * others.length)] : "村长");
 }
+function blogTalkLine(def, title) {
+var t = String(title).slice(0, 22);
+var tpl = [
+"大肥鱼的新文章《" + t + "》你们看了吗",
+"刚看了眼《" + t + "》，写得还行",
+"大肥鱼又在写《" + t + "》这种东西…不过挺好玩的",
+"《" + t + "》里那个说法挺有意思的",
+"站长又更新了，《" + t + "》，去看看"
+];
+return tpl[Math.floor(Math.random() * tpl.length)];
+}
 function npcInitMotives() {
 return { hunger: 20 + Math.random() * 40, social: 10 + Math.random() * 50, energy: 10 + Math.random() * 30 };
 }
@@ -419,6 +430,20 @@ function npcRelieveMotives(m, which) {
 if (which === "hunger") m.hunger = 10 + Math.random() * 15;
 else if (which === "social") m.social = 15 + Math.random() * 20;
 else if (which === "energy") m.energy = 5 + Math.random() * 10;
+}
+var latestPost = { title: "", at: 0 }
+function fetchLatestPost() {
+if (Date.now() - latestPost.at < 30 * 60000) return
+try {
+fetch("/pb/api/collections/posts/records?perPage=1&sort=-published_at&filter=" +
+encodeURIComponent("kind='article' && status='published'"))
+.then(function (r) { return r.ok ? r.json() : null })
+.then(function (d) {
+var it = d && d.items && d.items[0]
+if (it && it.title) latestPost = { title: it.title, at: Date.now() }
+})
+.catch(function () {})
+} catch (e) {}
 }
 function npcMotiveTarget(def, motive) {
 for (var i = 0; i < motive.zones.length; i++) {
@@ -506,6 +531,18 @@ return;
 }
 var anchor = npcMotiveTarget(npc.def, NPC_MOTIVES[mk]);
 if (!anchor) continue;
+if (mk === "social") {
+fetchLatestPost();
+if (latestPost.title && Math.random() < 0.35) {
+npcRelieveMotives(npc.motives, "social");
+npc.state = "roaming";
+npcSetAct(npc, "look");
+npcSay(npc, blogTalkLine(npc.def, latestPost.title));
+npcWalkTo(npc, Math.round(anchor[0]), Math.round(anchor[1]), 400, function () { npcSetAct(npc, "idle"); });
+scheduleNpc(npc, 9000 + Math.random() * 7000);
+return;
+}
+}
 npcRelieveMotives(npc.motives, mk);
 npc.state = "roaming";
 npcSetAct(npc, mk === "hunger" ? "wander" : "look");
