@@ -1,4 +1,4 @@
-  // ---------- 小镇居民（方案 §3）：3 个 NPC，前端本地状态机，零后端成本 ----------
+// ---------- 小镇居民（方案 §3）：3 个 NPC，前端本地状态机，零后端成本 ----------
   /* NPC 精灵表 = gen_npc_skins.py 从 whale.png 色相重映射的换装副本（发色/衣色区分，帧结构一致） */
   /* v76：NPC 不再依赖三座旧房子 —— "家"就是各房间的床。
    * bedAt = 床位格坐标（catBed 来自 map.json，另两张按室内布局给）。 */
@@ -170,7 +170,7 @@
     return line.replace("{other}", others.length ? others[Math.floor(Math.random() * others.length)] : "村长");
   }
   /* v85：议论博客的台词模板（口气×角度，title 截断防长标题撑爆气泡） */
-  function blogTalkLine(def, title) {
+  function blogTalkLine(def, title, views) {
     var t = String(title).slice(0, 22);
     var tpl = [
       "大肥鱼的新文章《" + t + "》你们看了吗",
@@ -179,6 +179,11 @@
       "《" + t + "》里那个说法挺有意思的",
       "站长又更新了，《" + t + "》，去看看"
     ];
+    // v85.2 阅读 >10 时 40% 概率换成显摆版（真实数据让 NPC 像真的在意流量）
+    if (views >= 10 && Math.random() < 0.4) {
+      var brag = ["《" + t + "》已经有 " + views + " 个人看了", "听说《" + t + "》阅读破 " + views + " 了，大肥鱼乐坏了"];
+      return brag[Math.floor(Math.random() * brag.length)];
+    }
     return tpl[Math.floor(Math.random() * tpl.length)];
   }
   function npcInitMotives() {
@@ -207,7 +212,7 @@
         .then(function (r) { return r.ok ? r.json() : null })
         .then(function (d) {
           var it = d && d.items && d.items[0]
-          if (it && it.title) latestPost = { title: it.title, at: Date.now() }
+          if (it && it.title) latestPost = { title: it.title, views: it.views || 0, at: Date.now() }
         })
         .catch(function () {})
     } catch (e) {}
@@ -319,7 +324,7 @@
           npcRelieveMotives(npc.motives, "social");
           npc.state = "roaming";
           npcSetAct(npc, "look");
-          npcSay(npc, blogTalkLine(npc.def, latestPost.title));
+          npcSay(npc, blogTalkLine(npc.def, latestPost.title, latestPost.views || 0));
           npcWalkTo(npc, Math.round(anchor[0]), Math.round(anchor[1]), 400, function () { npcSetAct(npc, "idle"); });
           scheduleNpc(npc, 9000 + Math.random() * 7000);
           return;
