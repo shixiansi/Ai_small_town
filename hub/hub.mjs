@@ -183,7 +183,16 @@ function dailyScript() {
     realActs.push(t.slice(0, 24))
     if (realActs.length >= 2) break
   }
-  const OPENINGS = ["今天小镇挺热闹。", "镇上一切照旧，", "清晨的雾散得比平时早，"]
+  // v85.4 天气开场：剧本第一句随真实天气变化（realWeather 来自 wttr.in，fail-open sunny）
+  const WEATHER_OPEN = {
+    sunny: ["阳光晒得屋顶发亮，", "难得的大晴天，", "今天小镇挺热闹。"],
+    cloudy: ["云层压得有点低，", "天灰蒙蒙的，"],
+    rainy: ["雨点敲着窗，", "下雨了，NPC 们都不出门，"],
+    snowy: ["落雪了！全镇都在看窗外，"],
+    storm: ["雷雨大作，谁也别想出门，"]
+  }
+  const WO = WEATHER_OPEN[realWeather] || WEATHER_OPEN.cloudy
+  const OPENINGS = WO
   const CLOSERS = ["大肥鱼说今晚想早点睡。", "喵酱预告傍晚有蟋蟀出没。", "博士说要核对潮汐表，谁都别打扰她。"]
   // 句感：开场 + 正在做的 + 接下来（顿号连接）+ 收尾，拼成一段自然的话
   const open = OPENINGS[Math.floor(rnd(1) * OPENINGS.length)]
