@@ -150,6 +150,44 @@ function pickRandomEvent(weather) {
 /* 天气：P6 天气接入——hub 每小时拉一次 wttr.in（上海），映射成 sunny/rainy/snowy/cloudy
  * 并广播给前端（前端 R 键仍可手动切换，真实天气只作初始值与整点刷新）。
  * 抓取失败静默沿用上次结果；事件条件的 weather gate 从此吃真实天气。 */
+/* ---------- v85 P8.1 今日剧本：每天一份小镇剧情梗概（纯模板拼装，零 AI 成本）----------
+ * 数据源：hub/schedule.json 的今日班次 + 随机事件调剂。前端状态栏上方展示，
+ * 每天变一次（按日期 seed 固定，同一天多次请求返回同一份）。 */
+let SCHEDULE = (() => {
+  try { return JSON.parse(fs.readFileSync(path.join(__dirname, "schedule.json"), "utf8")) } catch { return { shifts: [] } }
+})()
+function dailyScript() {
+  const day = new Date().toLocaleDateString("sv-SE", { timeZone: "Asia/Shanghai" })  // YYYY-MM-DD
+  // 按日期做确定性 seed：同一天返回同一份剧本
+  const seedNum = [...day].reduce((a, c) => a + c.charCodeAt(0) * 31, 0)
+  const rnd = (n) => ((seedNum * 9301 + 49297 * n) % 233280) / 233280
+  const bjHour = Number(new Date().toLocaleString("sv-SE", { timeZone: "Asia/Shanghai", hour: "2-digit", hour12: false }))
+  const shifts = (SCHEDULE.shifts || []).filter(sh => {
+    const wd = sh.weekday
+    if (wd !== undefined && wd !== new Date().getDay()) return false
+    return true
+  })
+  const today = shifts.filter(sh => { const h = Number(sh.at.slice(0, 2)); return h <= 23 })  // 全部
+  const past = today.filter(sh => { const h = Number(sh.at.slice(0, 2)); return h <= bjHour }).slice(-1)
+  const upcoming = today.filter(sh => { const h = Number(sh.at.slice(0, 2)); return h > bjHour }).slice(0, 3)
+  const OPENINGS = ["今天小镇挺热闹。", "镇上一切照旧，", "清晨的雾散得比平时早，"]
+  const CLOSERS = ["大肥鱼说今晚想早点睡。", "喵酱预告傍晚有蟋蟀出没。", "博士说要核对潮汐表，谁都别打扰她。"]
+  // 句感：开场 + 正在做的 + 接下来（顿号连接）+ 收尾，拼成一段自然的话
+  const open = OPENINGS[Math.floor(rnd(1) * OPENINGS.length)]
+  const close = CLOSERS[Math.floor(rnd(2) * CLOSERS.length)]
+  let mid = ""
+  if (upcoming.length) {
+    const items = upcoming.map(sh => `${sh.at} ${sh.label || sh.state}`)
+    mid = past.length
+      ? `「${past[0].label || past[0].state}」刚过，接下来是${items.join("、")}。`
+      : `今天安排：${items.join("、")}。`
+  } else {
+    mid = past.length
+      ? `「${past[0].label || past[0].state}」也结束了，今天的班都跑完，各自回屋。`
+      : "夜深了，镇上的灯一盏一盏熄了。"
+  }
+  return { day, line: `${open}${mid}${close}`, upcoming }
+}
 let realWeather = "sunny"
 let weatherCity = process.env.OFFICE_WEATHER_CITY || "Shanghai"
 async function fetchRealWeather() {
@@ -547,6 +585,11 @@ const server = http.createServer((req, res) => {
       applyStatDelta(d)
       res.writeHead(204, CORS).end()
     })
+    return
+  }
+  if (req.url === "/api/script") {
+    res.writeHead(200, { ...CORS, "Content-Type": "application/json; charset=utf-8" })
+    res.end(JSON.stringify({ script: dailyScript(), ts: Date.now() }))
     return
   }
   if (req.url === "/api/status") {

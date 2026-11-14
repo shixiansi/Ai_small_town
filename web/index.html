@@ -117,6 +117,8 @@
     #act-list li:last-child { border-bottom: 0; }
     #act-list .act-time { flex: none; width: 52px; color: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
     #act-list .act-icon { flex: none; font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", "PingFang SC", sans-serif; }   /* v84.1 emoji 字形 fallback：无 emoji 字体的系统不再渲染成方框 */
+    /* v85 今日剧本：手写体淡字，像小镇日志的开场白 */
+    .act-script { font-family: var(--hand); font-size: 13px; color: var(--ink-2); background: var(--paper-2); border-left: 3px solid var(--accent); padding: 8px 12px; border-radius: 0 10px 10px 0; margin: 0 0 12px; line-height: 1.7; }
     #act-list .act-verb { flex: none; color: var(--blue); }
     #act-list .act-task { font-weight: 600; }
     #act-list .act-detail { color: var(--muted); font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
@@ -216,6 +218,7 @@
         <div id="act-pane-plan" role="tabpanel" aria-labelledby="act-tab-plan" hidden>
           <p class="act-now" id="act-now"></p>
           <p class="act-why" id="act-why"></p>
+          <p class="act-script" id="act-script" hidden></p>
           <ol id="act-plan"></ol>
         </div>
       </div>
@@ -241,7 +244,7 @@
   </div>
 
   <script src="assets/phaser.min.js"></script>
-  <script src="office.js?v=5a7700fb"></script>
+  <script src="office.js?v=b1591a59"></script>
 
   <!-- 调试工作台：默认只放一个低调入口，点击（或按 D / ?debug=1）才加载面板，线上零开销 -->
   <button id="debug-toggle" type="button" title="调试工作台（快捷键 D）" aria-label="打开调试工作台" aria-controls="dbg-panel" aria-expanded="false">🛠</button>

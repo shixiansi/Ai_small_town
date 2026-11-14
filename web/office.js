@@ -5013,6 +5013,19 @@ var ACT_STORE = "office_activity_v1";
 var ACT_UI = "office_activity_ui";
 var actRows = [];                                          // 事件流水（旧的在前）
 var actCur = { state: "", task: "", at: 0 };                // 状态条当前这条（判断「为什么在睡觉」用）
+function loadScript() {
+try {
+var hubBase = (location.protocol === "file:" || location.hostname === "127.0.0.1") ? "http://127.0.0.1:4321" : "/office-hub-api"
+fetch(hubBase + "/script").then(function (r) { return r.ok ? r.json() : null }).then(function (d) {
+var el = document.getElementById("act-script")
+if (!el || !d || !d.script || !d.script.line) return
+el.textContent = "📖 " + d.script.line
+el.hidden = false
+}).catch(function () {})
+} catch (e) {}
+}
+loadScript()
+setInterval(loadScript, 30 * 60000)
 var actTab = "events", actFolded = false;
 var WEEK_CN = ["周日", "周一", "周二", "周三", "周四", "周五", "周六"];
 function pad2(n) { return (n < 10 ? "0" : "") + n; }
