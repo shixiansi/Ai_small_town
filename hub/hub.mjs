@@ -105,7 +105,9 @@ function applyStatDelta(deltas) {
 }
 /* 广播给前端的精简形态（连同 state 一起带时间戳） */
 function statsSnapshot() {
-  return { ...stats, ts: stats.updatedAt, viewers: clients.size }   // v85 P8.3：观众数随 stats 广播（前端做访客彩蛋）
+  let real = 0
+  for (const c of clients) { if (!c.isBot) real++ }   // v85.5：排除 headless/自动化，围观人数只算真人
+  return { ...stats, ts: stats.updatedAt, viewers: real }   // v85 P8.3：观众数随 stats 广播（前端做访客彩蛋）
 }
 
 // 每 60s：衰减 + 广播一次（与现有 ts 广播共用节奏）
@@ -703,8 +705,11 @@ const server = http.createServer((req, res) => {
 const wss = new WebSocketServer({ server })
 // 评审修复[高危]：WS 心跳保活——弱网/休眠产生的僵尸连接 30s 无 pong 即踢除
 const HEARTBEAT_MS = 30000
-wss.on("connection", (ws) => {
+wss.on("connection", (ws, req) => {
   clients.add(ws)
+  // v85.5 真实观众标记：headless 浏览器/自动化工具不计入「围观人数」（访客彩蛋和状态条只算真人）
+  const ua = String(req?.headers?.["user-agent"] || "")
+  ws.isBot = /HeadlessChrome|Puppeteer|Playwright|python-requests|curl|bot/i.test(ua)
   ws.isAlive = true
   ws.on("pong", () => { ws.isAlive = true })
   ws.send(JSON.stringify({
