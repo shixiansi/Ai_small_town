@@ -119,6 +119,12 @@
     #act-list .act-icon { flex: none; font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", "PingFang SC", sans-serif; }   /* v84.1 emoji 字形 fallback：无 emoji 字体的系统不再渲染成方框 */
     /* v85 今日剧本：手写体淡字，像小镇日志的开场白 */
     .act-script { font-family: var(--hand); font-size: 13px; color: var(--ink-2); background: var(--paper-2); border-left: 3px solid var(--accent); padding: 8px 12px; border-radius: 0 10px 10px 0; margin: 0 0 12px; line-height: 1.7; }
+    /* v85.3 读者来信：手写体列表，像贴在布告栏的信 */
+    .act-mail-head { font-family: var(--hand); font-size: 12.5px; color: var(--ink-3-strong); margin: 0 0 6px; }
+    .act-mail-list { margin: 0 0 14px; padding: 0 0 0 2px; list-style: none; }
+    .act-mail-list li { font-family: var(--hand); font-size: 12.5px; color: var(--ink-2); padding: 5px 0 5px 18px; position: relative; line-height: 1.6; border-bottom: 1px dashed var(--line); }
+    .act-mail-list li:last-child { border-bottom: 0; }
+    .act-mail-list li::before { content: "✉"; position: absolute; left: 0; top: 5px; font-size: 11px; color: var(--accent); }
     #act-list .act-verb { flex: none; color: var(--blue); }
     #act-list .act-task { font-weight: 600; }
     #act-list .act-detail { color: var(--muted); font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
@@ -219,6 +225,10 @@
           <p class="act-now" id="act-now"></p>
           <p class="act-why" id="act-why"></p>
           <p class="act-script" id="act-script" hidden></p>
+          <div id="act-mail" hidden>
+            <p class="act-mail-head">📮 读者来信（大肥鱼记在本子上的）</p>
+            <ul id="act-mail-list" class="act-mail-list"></ul>
+          </div>
           <ol id="act-plan"></ol>
         </div>
       </div>
@@ -244,7 +254,7 @@
   </div>
 
   <script src="assets/phaser.min.js"></script>
-  <script src="office.js?v=ea941377"></script>
+  <script src="office.js?v=60540771"></script>
 
   <!-- 调试工作台：默认只放一个低调入口，点击（或按 D / ?debug=1）才加载面板，线上零开销 -->
   <button id="debug-toggle" type="button" title="调试工作台（快捷键 D）" aria-label="打开调试工作台" aria-controls="dbg-panel" aria-expanded="false">🛠</button>

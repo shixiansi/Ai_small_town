@@ -1,4 +1,4 @@
-  /* ============ 最近动态窗：事件流 + 今日时间表 ============
+/* ============ 最近动态窗：事件流 + 今日时间表 ============
    * 两条数据线：
    *   1) 事件流 —— hub 的 hello.recent（内存里最近 20 条，重启会从 state.json 恢复）+ 实时 WS 事件；
    *      浏览器再留 40 条到 localStorage，刷新页面/上线新版本后不至于只剩一句「睡觉」。
@@ -28,6 +28,27 @@
   }
   loadScript()
   setInterval(loadScript, 30 * 60000)
+
+  /* v85.3 读者来信：拉最新 3 条展示（池空/接口挂了就不显示，fail-open） */
+  function loadMail() {
+    try {
+      fetch("/api/reader-questions").then(function (r) { return r.ok ? r.json() : null }).then(function (d) {
+        var box = document.getElementById("act-mail"), list = document.getElementById("act-mail-list")
+        if (!box || !list) return
+        var items = (d && d.items || []).slice(0, 3)
+        if (!items.length) { box.hidden = true; return }
+        list.innerHTML = ""
+        items.forEach(function (q) {
+          var li = document.createElement("li")
+          li.textContent = "「" + String(q.text).slice(0, 46) + "」 — " + (q.from || "读者")
+          list.appendChild(li)
+        })
+        box.hidden = false
+      }).catch(function () {})
+    } catch (e) {}
+  }
+  loadMail()
+  setInterval(loadMail, 10 * 60000)
   var actTab = "events", actFolded = false;
   var WEEK_CN = ["周日", "周一", "周二", "周三", "周四", "周五", "周六"];
 

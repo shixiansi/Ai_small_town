@@ -5050,6 +5050,25 @@ el.hidden = false
 }
 loadScript()
 setInterval(loadScript, 30 * 60000)
+function loadMail() {
+try {
+fetch("/api/reader-questions").then(function (r) { return r.ok ? r.json() : null }).then(function (d) {
+var box = document.getElementById("act-mail"), list = document.getElementById("act-mail-list")
+if (!box || !list) return
+var items = (d && d.items || []).slice(0, 3)
+if (!items.length) { box.hidden = true; return }
+list.innerHTML = ""
+items.forEach(function (q) {
+var li = document.createElement("li")
+li.textContent = "「" + String(q.text).slice(0, 46) + "」 — " + (q.from || "读者")
+list.appendChild(li)
+})
+box.hidden = false
+}).catch(function () {})
+} catch (e) {}
+}
+loadMail()
+setInterval(loadMail, 10 * 60000)
 var actTab = "events", actFolded = false;
 var WEEK_CN = ["周日", "周一", "周二", "周三", "周四", "周五", "周六"];
 function pad2(n) { return (n < 10 ? "0" : "") + n; }
