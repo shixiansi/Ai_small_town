@@ -41,6 +41,10 @@
   var lastStats = null;   // 上一帧数值（检测变化方向，浮字用）
   function onStats(s) {
     if (!s) return;
+    // v85 P8.3 访客彩蛋：观众数达到阈值触发 NPC 集体挥手（npc.js 提供，加载顺序兜底）
+    if (typeof s.viewers === "number" && window.__officeGuestWave) {
+      try { window.__officeGuestWave(s.viewers) } catch (e) {}
+    }
     var changed = [];
     ["hunger", "mood", "energy", "social", "hygiene"].forEach(function (k) {
       if (typeof s[k] !== "number") return;

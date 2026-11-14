@@ -438,3 +438,23 @@ try {
     });
   };
 } catch (e) {}
+
+/* ---------- v85 P8.3 访客彩蛋：观众数 ≥3 且 10 分钟未触发过 → NPC 集体看镜头挥手 ----------
+ * 由 life.js onStats(viewers) 调用；只在白天（醒着的 NPC）参加，睡觉的不喊起来。 */
+var lastWaveAt = 0
+try {
+  window.__officeGuestWave = function (viewers) {
+    if (!scene || !npcLayer.length) return
+    if (viewers < 3) return
+    if (Date.now() - lastWaveAt < 10 * 60000) return
+    lastWaveAt = Date.now()
+    var waved = 0
+    npcLayer.forEach(function (npc) {
+      if (npc.act === "sleep" || npc.state === "home") return
+      npcSetAct(npc, "look")   // 面向镜头（camera 侧）
+      npcSay(npc, ["有人来看我们了！", "嗨——", "欢迎来小镇玩", "挥手挥手"][Math.floor(Math.random() * 4)])
+      waved++
+    })
+    if (waved) console.log("[office] 访客彩蛋触发: " + viewers + " 位观众，" + waved + " 只 NPC 挥手")
+  }
+} catch (e) {}

@@ -105,7 +105,7 @@ function applyStatDelta(deltas) {
 }
 /* 广播给前端的精简形态（连同 state 一起带时间戳） */
 function statsSnapshot() {
-  return { ...stats, ts: stats.updatedAt }
+  return { ...stats, ts: stats.updatedAt, viewers: clients.size }   // v85 P8.3：观众数随 stats 广播（前端做访客彩蛋）
 }
 
 // 每 60s：衰减 + 广播一次（与现有 ts 广播共用节奏）

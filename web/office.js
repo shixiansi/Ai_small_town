@@ -643,6 +643,23 @@ m: n.motives ? { hunger: Math.round(n.motives.hunger), social: Math.round(n.moti
 });
 };
 } catch (e) {}
+var lastWaveAt = 0
+try {
+window.__officeGuestWave = function (viewers) {
+if (!scene || !npcLayer.length) return
+if (viewers < 3) return
+if (Date.now() - lastWaveAt < 10 * 60000) return
+lastWaveAt = Date.now()
+var waved = 0
+npcLayer.forEach(function (npc) {
+if (npc.act === "sleep" || npc.state === "home") return
+npcSetAct(npc, "look")   // 面向镜头（camera 侧）
+npcSay(npc, ["有人来看我们了！", "嗨——", "欢迎来小镇玩", "挥手挥手"][Math.floor(Math.random() * 4)])
+waved++
+})
+if (waved) console.log("[office] 访客彩蛋触发: " + viewers + " 位观众，" + waved + " 只 NPC 挥手")
+}
+} catch (e) {}
 var ROOMS = [
 { id: "office",  label: "办公室", cx: 13 * TILE, cy: 23.5 * TILE },
 { id: "bedroom", label: "起居",   cx: 13 * TILE, cy: 7 * TILE },    // 北排整排（卧室+卫浴+厨房）
@@ -4124,6 +4141,9 @@ var stats = { hunger: 70, mood: 65, energy: 80, social: 55, hygiene: 75, ts: 0 }
 var lastStats = null;   // 上一帧数值（检测变化方向，浮字用）
 function onStats(s) {
 if (!s) return;
+if (typeof s.viewers === "number" && window.__officeGuestWave) {
+try { window.__officeGuestWave(s.viewers) } catch (e) {}
+}
 var changed = [];
 ["hunger", "mood", "energy", "social", "hygiene"].forEach(function (k) {
 if (typeof s[k] !== "number") return;
