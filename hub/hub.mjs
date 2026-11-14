@@ -432,6 +432,14 @@ function applyEvent(ev) {
   const same = cur.state === next.state && cur.task === next.task && cur.detail === next.detail
   cur = next
   if (same) { saveDiskDebounced(); return { ok: true, dedup: true } }
+  // v85.5 降噪：打字机类高频事件（同 state+task、仅 detail 变化、3 分钟内）不再逐条刷屏
+  const last = recent[recent.length - 1]
+  if (last && last.state === next.state && last.task === next.task &&
+      Date.now() - (last.ts || 0) < 3 * 60000) {
+    last.ts = next.ts; last.detail = next.detail; last.at = now   // 原地更新：面板显示最新一次而不堆条目
+    saveDiskDebounced()
+    return { ok: true, dedup: true }
+  }
   recent.push({ ...next, at: now })
   if (recent.length > MAX_RECENT) recent.shift()
   broadcast({ type: "state", state: cur, stats: statsSnapshot() })
