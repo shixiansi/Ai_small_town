@@ -582,6 +582,15 @@ const CORS = {
   "Access-Control-Allow-Headers": "Content-Type",
   "Access-Control-Max-Age": "86400"
 }
+// v85.5 安全修复：外网经 nginx 反代可触达 hub——写操作（地图编辑/恢复）只允许本地直连
+// （nginx 反代请求带 X-Forwarded-For 时拒绝）。GET 不受限（观众面板需要）。
+const mapWriteRate = new Map()   // ip → [时间戳]
+function isLocalWrite(req) {
+  if (req.headers["x-forwarded-for"] || req.headers["x-real-ip"]) return false   // 反代透传 = 外网来源
+  const addr = req.socket?.remoteAddress || ""
+  return addr === "127.0.0.1" || addr === "::1" || addr === "::ffff:127.0.0.1"
+}
+
 const server = http.createServer((req, res) => {
   if (req.method === "OPTIONS") { res.writeHead(204, CORS).end(); return }
   if (req.method === "POST" && (req.url === "/api/event" || req.url === "/api/heartbeat")) {
@@ -652,6 +661,8 @@ const server = http.createServer((req, res) => {
     return
   }
   if (req.url === "/api/map/restore" && req.method === "POST") {
+    // restore 会整张覆盖地图——高危，只允许本地直连（本地编辑器/脚本），线上编辑器仅读备份列表
+    if (!isLocalWrite(req)) { res.writeHead(403, CORS).end(JSON.stringify({ error: "地图恢复仅限本地直连" })); return }
     let body = ""
     req.on("data", c => { body += c; if (body.length > 8192) req.destroy() })
     req.on("end", () => {
@@ -688,6 +699,15 @@ const server = http.createServer((req, res) => {
     return
   }
   if (req.url === "/api/map" && req.method === "POST") {
+    // v85.5 外网写入限频：合法编辑器走反代不能拦，但同 IP 10s 只允许 1 次写（防脚本刷屏摆家具）
+    const wip = req.headers["x-forwarded-for"] ? String(req.headers["x-forwarded-for"]).split(",")[0].trim() : (req.socket?.remoteAddress || "?")
+    const now = Date.now()
+    mapWriteRate.set(wip, (mapWriteRate.get(wip) || []).filter(t => now - t < 10000))
+    const stamps = mapWriteRate.get(wip)
+    if (stamps.length >= 1 && !isLocalWrite(req)) {
+      res.writeHead(429, CORS).end(JSON.stringify({ error: "编辑太快，稍等 10 秒" })); return
+    }
+    stamps.push(now)
     let body = ""
     req.on("data", c => { body += c; if (body.length > 262144) req.destroy() })
     req.on("end", () => {
