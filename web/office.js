@@ -537,7 +537,7 @@ var anchor = npcMotiveTarget(npc.def, NPC_MOTIVES[mk]);
 if (!anchor) continue;
 if (mk === "social") {
 fetchLatestPost();
-if (latestPost.title && Math.random() < 0.35) {
+if (latestPost.title && Math.random() < 0.5) {   // v85.3 提到 50%：显摆台词是主打的博客联动，太罕见观众看不到
 npcRelieveMotives(npc.motives, "social");
 npc.state = "roaming";
 npcSetAct(npc, "look");

@@ -320,7 +320,7 @@
       // v85 博客联动：social 触发时 35% 概率议论最新文章（有缓存才说，否则走普通台词）
       if (mk === "social") {
         fetchLatestPost();
-        if (latestPost.title && Math.random() < 0.35) {
+        if (latestPost.title && Math.random() < 0.5) {   // v85.3 提到 50%：显摆台词是主打的博客联动，太罕见观众看不到
           npcRelieveMotives(npc.motives, "social");
           npc.state = "roaming";
           npcSetAct(npc, "look");
