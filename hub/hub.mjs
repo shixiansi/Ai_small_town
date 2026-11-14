@@ -281,9 +281,16 @@ function loadDisk() {
       ts: Number(s.ts) || Date.now(),
       priority: Number(s.priority) || STATE_PRIORITY[s.state] || 0
     }
-    const recent = (Array.isArray(j.recent) ? j.recent : [])
+    let recent = (Array.isArray(j.recent) ? j.recent : [])
       .filter(e => e && (allowed ? allowed.has(e.state) : true))
       .slice(-MAX_RECENT)
+    // v85.5 历史折叠：载入磁盘状态时，相邻同 state+task 条目合并为一条（detail 取最新）——
+    // 修复 3 分钟降噪窗口外的历史打字机连发仍占多条面板位
+    recent = recent.filter((e, i) => {
+      if (i === 0) return true
+      const prev = recent[i - 1]
+      return !(prev && e.state === prev.state && e.task === prev.task)
+    })
     return { cur, recent }
   } catch { return { cur: initialState(), recent: [] } }
 }
