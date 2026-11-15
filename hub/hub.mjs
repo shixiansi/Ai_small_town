@@ -156,7 +156,7 @@ function pickRandomEvent(weather) {
  * 数据源：hub/schedule.json 的今日班次 + 随机事件调剂。前端状态栏上方展示，
  * 每天变一次（按日期 seed 固定，同一天多次请求返回同一份）。 */
 let SCHEDULE = (() => {
-  try { return JSON.parse(fs.readFileSync(path.join(__dirname, "schedule.json"), "utf8")) } catch { return { shifts: [] } }
+  try { return JSON.parse(fs.readFileSync(fileURLToPath(new URL("./schedule.json", import.meta.url)), "utf8")) } catch { return { shifts: [] } }
 })()
 function dailyScript() {
   const day = new Date().toLocaleDateString("sv-SE", { timeZone: "Asia/Shanghai" })  // YYYY-MM-DD
@@ -172,6 +172,7 @@ function dailyScript() {
   const today = shifts.filter(sh => { const h = Number(sh.at.slice(0, 2)); return h <= 23 })  // 全部
   const past = today.filter(sh => { const h = Number(sh.at.slice(0, 2)); return h <= bjHour }).slice(-1)
   const upcoming = today.filter(sh => { const h = Number(sh.at.slice(0, 2)); return h > bjHour }).slice(0, 3)
+
   // v85.1 真实事件织入：最近 24h 的高亮事件（真实发生的事）进剧本
   const dayAgo = Date.now() - 24 * 3600e3
   const seenStates = new Set()
