@@ -749,6 +749,37 @@ function loadCustomMap() {
 }
 let customMap = loadCustomMap()
 
+/* v87：把「改了 map.custom.json 但页面还是旧地图」从根上治掉。
+ *
+ * 这份文件有两个写入者：
+ *   ① hub 自己（浏览器编辑器保存）；
+ *   ② 磁盘上的其它进程 / 人（git checkout、手工改、tools/ 里批量落位的脚本）。
+ * 原来只在启动时 loadCustomMap() 读一次，之后内存就是唯一真相，于是：
+ *   - 改文件不生效，页面一直显示旧层，直到有人重启 hub（"怎么又是旧地图"就是它）；
+ *   - 更坏：下一次浏览器保存会把**内存里的旧状态**写回磁盘，
+ *     把文件改动静默抹掉 —— 所以光重启也不够，重启前的那次保存已经把改动吃掉了。
+ * （上面 applyMapEdit 里的 updatedAt 乐观并发只防了"旧浏览器副本盖新存档"这一个方向，
+ *   防不住"hub 内存盖磁盘改动"这个反方向，两个方向都得堵。）
+ *
+ * 现在按 mtime+size 认变化：**读之前、写之前都先跟磁盘对齐**，
+ * 再挂一个低频轮询，发现外部改动就广播 {type:"map"} 让在线页面热重载 —— 不用重启 hub。 */
+function mapFileStamp() {
+  try { const st = fs.statSync(MAP_FILE); return st.mtimeMs + ":" + st.size } catch { return "missing" }
+}
+let customMapStamp = mapFileStamp()
+function syncCustomMapFromDisk(why) {
+  const s = mapFileStamp()
+  if (s === customMapStamp) return false
+  const before = customMap.furniture.length
+  customMap = loadCustomMap()
+  customMapStamp = s
+  console.log(new Date().toISOString(),
+    `[office-hub] map.custom.json 在磁盘上变了（${why}）→ 重新载入 ${customMap.furniture.length} 条（内存里原有 ${before} 条）`)
+  return true
+}
+/** 自己写完盘必须刷新时间戳，否则轮询会把"自己刚写的"当成"外部改的"再广播一次 */
+function noteOwnMapWrite() { customMapStamp = mapFileStamp() }
+
 /* 校验一条自定义家具：资产必须在 manifest、坐标在地图内、可选 id 不冲突 */
 function validateMapItem(it, existingIds) {
   if (!it || typeof it !== "object") return "条目必须是对象"
@@ -762,6 +793,8 @@ function validateMapItem(it, existingIds) {
 }
 
 function applyMapEdit(action, item, extra) {
+  /* 写之前先跟磁盘对齐：否则"改文件 + 浏览器保存一次"会把文件改动永久抹掉 */
+  syncCustomMapFromDisk("applyMapEdit 之前")
   if (action === "set") {
     if (!Array.isArray(item)) return { ok: false, status: 400, error: "furniture 数组缺失" }
     /* v2.8-f 乐观并发：整表覆盖（set）必须带"我基于哪一版"的时间戳。
@@ -822,6 +855,7 @@ function applyMapEdit(action, item, extra) {
   try {
     fs.writeFileSync(MAP_FILE + ".tmp", JSON.stringify(customMap, null, 1))
     fs.renameSync(MAP_FILE + ".tmp", MAP_FILE)
+    noteOwnMapWrite()                  // 自己写的，不要被轮询当成外部改动
   } catch (e) {
     console.warn(new Date().toISOString(), `[office-hub] 地图落盘失败: ${e.message}`)
   }
@@ -1209,12 +1243,14 @@ const server = http.createServer((req, res) => {
         return
       }
       try {
+        syncCustomMapFromDisk("restore 之前")
         const j = JSON.parse(fs.readFileSync(path.join(MAP_BACKUP_DIR, name), "utf8"))
         if (!Array.isArray(j.furniture)) throw new Error("备份内容不合法")
         backupMapFile()
         customMap = { furniture: j.furniture, updatedAt: Date.now() }
         fs.writeFileSync(MAP_FILE + ".tmp", JSON.stringify(customMap, null, 1))
         fs.renameSync(MAP_FILE + ".tmp", MAP_FILE)
+        noteOwnMapWrite()
         broadcast({ type: "map", furniture: customMap.furniture, updatedAt: customMap.updatedAt })
         console.log(new Date().toISOString(), `[office-hub] 恢复备份 ${name} · 现 ${customMap.furniture.length} 条`)
         res.writeHead(200, { ...CORS, "Content-Type": "application/json; charset=utf-8" })
@@ -1228,6 +1264,8 @@ const server = http.createServer((req, res) => {
   }
 
   if (req.url === "/api/map" && req.method === "GET") {
+    /* 读之前也跟磁盘对齐：别人刚改了文件，页面刷新就该拿到新的，不该等重启 */
+    syncCustomMapFromDisk("/api/map 读取")
     res.writeHead(200, { ...CORS, "Content-Type": "application/json; charset=utf-8" })
     res.end(JSON.stringify({ furniture: customMap.furniture, updatedAt: customMap.updatedAt, max: MAP_MAX_ITEMS }))
     return
@@ -1312,6 +1350,19 @@ server.listen(PORT, HOST, () => {
 
 // 每 60s 给所有浏览器广播一次服务器时间（驱动"刚刚 / N 分钟前上报"的相对时间显示）
 setInterval(() => broadcast({ type: "ts", ts: Date.now() }), 60000).unref?.()
+
+/* v87：盯 map.custom.json 的 mtime。别人在磁盘上改了它（git checkout / 手改 / tools 脚本），
+ * 1.5s 内广播 {type:"map"} 让所有在线页面热重载 —— 不用重启 hub，也不用刷新浏览器。
+ * 只 stat 不读文件，代价可以忽略；真变了才 loadCustomMap()。 */
+setInterval(() => {
+  try {
+    if (syncCustomMapFromDisk("轮询发现磁盘改动")) {
+      broadcast({ type: "map", furniture: customMap.furniture, updatedAt: customMap.updatedAt })
+    }
+  } catch (e) {
+    console.warn(new Date().toISOString(), "[office-hub] 地图轮询失败:", e.message)
+  }
+}, 1500).unref?.()
 for (const sig of ["SIGINT", "SIGTERM"]) process.on(sig, () => {
   if (saveTimer) { clearTimeout(saveTimer); saveTimer = null }
   if (npcSaveTimer) { clearTimeout(npcSaveTimer); npcSaveTimer = null }
