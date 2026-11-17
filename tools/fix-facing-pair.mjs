@@ -33,6 +33,8 @@ for (const v of vlist().slice(0, 20)) {
   if (!item) { failed.push(v.a + "(无 id)"); continue; }
   const mj = JSON.parse(fs.readFileSync(mapPath, "utf8"));
   const entry = mj.furniture.find(f => f.id === item.id);
+  // 有些家具在自定义层（hub/map.custom.json），本脚本只处理基础层，跳过并记录
+  if (!entry) { failed.push(item.id + " " + v.a + "(在自定义层，跳过)"); continue; }
   const zoneKey = Object.keys(mj.zones || {}).find(k => mj.zones[k].host === item.id);
   const zone = zoneKey ? mj.zones[zoneKey] : null;
   const rk = model.roomOf(item.x, item.y), r = model.rooms[rk];
