@@ -20,7 +20,7 @@ const arg = Object.fromEntries(process.argv.slice(2).map(a => {
   const i = a.indexOf("="); return i > 0 ? [a.slice(2, i), a.slice(i + 1)] : [a.slice(2), true];
 }));
 const model = loadModel();
-const { items, solid, cellsOf, rooms, roomOf, map, COLS, ROWS, touchesWall } = model;
+const { items, solid, cellsOf, rooms, roomOf, map, COLS, ROWS, touchesWall, wallCells, customTerrain } = model;
 
 const BIG = new Set(["cabinet", "bookshelf-office", "wardrobe", "sofa", "double-bed", "bed", "desk-wood", "office-desk",
   "school-desk", "dining-table", "round-table", "filing-cabinet", "locker", "bathtub", "toilet", "sink",
@@ -53,17 +53,29 @@ for (const rk of targets) {
   }).sort((a, b) => a - b);
   const nnMedian = dists.length ? dists[Math.floor(dists.length / 2)] : 0;
 
-  // ③ 最长空段（房内每行/每列，连续没有家具占格的地板）
+  /* ③ 最长空段（房内每行/每列，连续"可走且没有家具"的地板）
+   * 墙和水面要当成"断开"，不能当成空地板 —— 旧版本把墙算成空的，于是"这一行没摆家具"
+   * 就直接报满房间宽度（office 报 26 格，而房间本身只有 26 格宽、室内 24 格），
+   * ≤6 这个阈值在数学上永远达不到，判据自相矛盾。房间矩形是含墙的（office x0=0,w=26），
+   * 所以必须显式跳过墙格。 */
+  const wallish = k => wallCells.has(k) || customTerrain.get(k) === "water";
   const occ = new Set();
   inR.forEach(f => cellsOf(f).forEach(k => occ.add(k)));
   let maxRun = 0;
-  for (let y = r.y; y < r.y + r.h; y++) {
+  const scanRun = (cells) => {
     let run = 0;
-    for (let x = r.x; x < r.x + r.w; x++) { if (occ.has(x + "," + y)) run = 0; else { run++; if (run > maxRun) maxRun = run; } }
+    for (const k of cells) {
+      if (occ.has(k) || wallish(k)) run = 0;
+      else { run++; if (run > maxRun) maxRun = run; }
+    }
+  };
+  for (let y = r.y; y < r.y + r.h; y++) {
+    const cells = []; for (let x = r.x; x < r.x + r.w; x++) cells.push(x + "," + y);
+    scanRun(cells);
   }
   for (let x = r.x; x < r.x + r.w; x++) {
-    let run = 0;
-    for (let y = r.y; y < r.y + r.h; y++) { if (occ.has(x + "," + y)) run = 0; else { run++; if (run > maxRun) maxRun = run; } }
+    const cells = []; for (let y = r.y; y < r.y + r.h; y++) cells.push(x + "," + y);
+    scanRun(cells);
   }
 
   // ④ 对齐率：同行（|dy|<0.6）或同列（|dx|<0.6）有成对家具的件数占比
