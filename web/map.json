@@ -1492,7 +1492,8 @@
    "expect": [
     "school-desk",
     "book-stack"
-   ]
+   ],
+   "host": "schA"
   },
   "screen": {
    "label": "看板",
@@ -1547,7 +1548,8 @@
    "expect": [
     "round-table",
     "coffee-mug"
-   ]
+   ],
+   "host": "tableB"
   },
   "sofa": {
    "label": "沙发",
@@ -1564,7 +1566,8 @@
     "dx": 0,
     "dy": -2,
     "lounge": true
-   }
+   },
+   "host": "sofaA"
   },
   "door": {
    "label": "大门",
@@ -1573,7 +1576,8 @@
     17.5
    ],
    "face": "s",
-   "feature": "door"
+   "feature": "door",
+   "host": "shoecabA"
   },
   "mail": {
    "label": "信箱",
@@ -1596,7 +1600,8 @@
    "label": "任务板",
    "expect": [
     "blackboard"
-   ]
+   ],
+   "host": "blackboardA"
   },
   "bed": {
    "anchor": [
@@ -1628,7 +1633,8 @@
    "expect": [
     "sink",
     "mirror"
-   ]
+   ],
+   "host": "sinkA"
   },
   "cook": {
    "anchor": [
@@ -1640,7 +1646,8 @@
    "expect": [
     "stove-kitchen",
     "kitchen-counter"
-   ]
+   ],
+   "host": "stoveA"
   },
   "fridge": {
    "anchor": [
@@ -1651,7 +1658,8 @@
    "label": "冰箱",
    "expect": [
     "fridge"
-   ]
+   ],
+   "host": "fridgeA"
   },
   "relax": {
    "anchor": [
@@ -1668,7 +1676,8 @@
    "label": "单人沙发",
    "expect": [
     "armchair"
-   ]
+   ],
+   "host": "armA"
   },
   "wardrobe": {
    "anchor": [
@@ -1693,7 +1702,8 @@
     "bench-park",
     "flowers",
     "oak-tree"
-   ]
+   ],
+   "host": "gardenWell"
   },
   "stroll": {
    "anchor": [
@@ -1724,7 +1734,8 @@
    "expect": [
     "stall-fruit",
     "market-stall"
-   ]
+   ],
+   "host": "stallA"
   },
   "recover": {
    "anchor": [
@@ -1740,7 +1751,8 @@
    "label": "充电角",
    "expect": [
     "crown-cushion"
-   ]
+   ],
+   "host": "rechargeA"
   },
   "arcade": {
    "anchor": [
@@ -1779,7 +1791,8 @@
    ],
    "face": "n",
    "label": "走廊阳台",
-   "decorative": false
+   "decorative": false,
+   "host": "kNook"
   },
   "doorCat": {
    "anchor": [
@@ -1839,14 +1852,16 @@
     3.4
    ],
    "face": "n",
-   "label": "料理台"
+   "label": "料理台",
+   "host": "counterA"
   },
   "park": {
    "anchor": [
     42.5,
     11.6
    ],
-   "face": "s"
+   "face": "s",
+   "host": "townBench"
   }
  },
  "walls": [
