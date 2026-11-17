@@ -74,7 +74,13 @@ const model = loadModel();
 // model.items / solid(f) / cellsOf(f) / isBlocked(x,y) / rooms / roomOf(x,y)
 // model.anchorCells / roadCells / anchors / conflictsOf(f) / protectedSet
 // model.wallCells / wallTouch(f) / touchesWall(f)          ← 墙格与"贴墙"的唯一实现
+// model.hiddenKeys / hidden / moveOverrides / movedCount   ← 自定义层的 hide/move 已应用
 ```
+
+**`loadModel()` 出来的 `items` 就是"游戏里真正会画出来的那些"**：floor / terrain / 家具 / `hide` / `move`
+五种自定义条目全部并进去了（hide 按运行时 `mapedit.js:518` 的语义直接不建精灵，也不进碰撞）。
+所以**别拿 `map.json` 直接判**——里面有 11 件是被 `hide` 掉的（含三户邻居的房子），
+照它算会得出"房间被堵死"这种游戏里根本不存在的问题（见 §8 坑 12）。
 
 `parityWithCheck(model)` 把模型的判断和 `check.mjs` 的实际判定逐条对账 —— **改动模型后必须跑，35 个锚点要全一致**。
 
@@ -327,7 +333,8 @@ git push origin main
 | 9 | **对账工具本身是假的** | `parityWithCheck` 的正则匹配不上门禁带 `✗ ` 前缀的行，于是恒定输出"全部一致" | 对账工具也要有已知会红的用例；第 41 轮把它修好后才第一次抓到真不一致 |
 | 10 | 判定改严后"突然变红" | 修好判据后门禁从 31/31 掉到 30/31 | 红不是回退，是**以前看不见的问题**。照 §6 逐件修，别改回宽松口径 |
 | 11 | **改了 `map.custom.json`，页面还是旧地图** | 磁盘上改了没反应；更坏的是下一次在编辑器里保存，hub 会把**内存里的旧状态**写回磁盘，把文件改动静默抹掉 —— 于是"怎么又是旧地图"反复发作，重启也只能暂时压住 | v87 起 hub 按 mtime+size 同步磁盘（**读之前、写之前都先对账**），另挂 1.5s 轮询发现外部改动就广播 `{type:"map"}` 热重载。**别再靠"重启 hub"解决** |
-| 12 | 上面 12 条之外 | —— | 先跑 `map-model.mjs` 对账，再怀疑数据 |
+| 12 | **自定义层的 `hide` / `move` 模型不认** | `map-model` 只并了 floor/terrain/家具，没应用 `hide`(38 条) 和 `move`(3 条)。于是模型算的是"游戏里并不存在的那张图"：三户邻居的房子其实被 `hide` 掉了，模型仍按它们占格，凭空得出"房间内部被堵死"的 P1；`docDesk`（书桌）也被 `hide`，椅子则是照着不存在的桌子判 R3 | v87 起 `loadModel()` 会先按运行时的 key 规则（`id:<id>` 或 `<asset>@<x>,<y>`）应用 `hide`/`move`。**新加判据前先问一句：这件东西在游戏里真的会画出来吗？** |
+| 13 | 上面 13 条之外 | —— | 先跑 `map-model.mjs` 对账，再怀疑数据 |
 
 ---
 

@@ -51,9 +51,18 @@ export function loadModel(opts = {}) {
   // 自定义层：地板 / 地形 / 家具
   const customFloor = new Map(), customTerrain = new Map();
   let customFurn = [];
+  /* v87：自定义层里除了家具，还有两种"覆盖 base"的条目，以前完全没被模型认：
+   *   {a:"hide", k:"id:homeChief"}         → 运行时 mapedit.js:518 直接不建精灵，也不进碰撞
+   *   {a:"move", k:"id:gardenBench2", x,y} → 把静态家具挪个位置
+   * 后果：模型/审计算的是"游戏里并不存在的那张图"——比如三户邻居的房子其实被 hide 掉了，
+   * 模型却仍按它们占格，于是凭空得出"房间内部被堵死"的 P1（第 41 轮就踩了这个）。
+   * key 规则与运行时一致：有 id 用 "id:<id>"，没有用 "<asset>@<x>,<y>"。 */
+  const hiddenKeys = new Set(), moveOverrides = new Map();
   try {
     const cj = JSON.parse(read(path.join(ROOT, "hub", "map.custom.json")));
     (cj.furniture || []).forEach(f => {
+      if (f.a === "hide") { if (f.k) hiddenKeys.add(String(f.k)); return; }
+      if (f.a === "move") { if (f.k) moveOverrides.set(String(f.k), { x: f.x, y: f.y }); return; }
       if (typeof f.x !== "number" || typeof f.y !== "number") return;
       if (f.a === "floor") customFloor.set(f.x + "," + f.y, f.t);
       else if (f.a === "terrain") customTerrain.set(f.x + "," + f.y, f.t);
@@ -149,8 +158,19 @@ export function loadModel(opts = {}) {
   };
   const touchesWall = f => wallTouch(f) === "ok";
 
-  const items = (map.furniture || []).concat(customFurn)
-    .filter(f => typeof f.x === "number" && man[f.a] && f.a !== "move");
+  /* 应用 hide / move —— 运行时是什么样，模型就是什么样（否则后面每个判据都在算另一张图）。
+   * 克隆一份再改，避免把坐标写回 map.furniture（那份是"磁盘上写的"，不是"实际显示的"）。 */
+  const keyOf = f => (f.id ? "id:" + f.id : f.a + "@" + f.x + "," + f.y);
+  let items = (map.furniture || []).concat(customFurn)
+    .filter(f => typeof f.x === "number" && man[f.a] && f.a !== "move")
+    .map(f => Object.assign({}, f));
+  const hidden = items.filter(f => hiddenKeys.has(keyOf(f)));
+  items = items.filter(f => !hiddenKeys.has(keyOf(f)));
+  let movedCount = 0;
+  items.forEach(f => {
+    const mv = moveOverrides.get(keyOf(f));
+    if (mv) { f.x = mv.x; f.y = mv.y; movedCount++; }
+  });
 
   // 阻挡格：第 0 行 + 墙 + 地形墙/水 + 落地家具
   const blocked = Array.from({ length: ROWS }, () => new Array(COLS).fill(false));
@@ -235,6 +255,7 @@ export function loadModel(opts = {}) {
     map, man, T, COLS, ROWS, rooms, roomOf, material, items, solid, cellsOf, roadCells, conflictsOf, protectedSet,
     customFloor, customTerrain, customFurn, anchors, anchorCells,
     wallCells, wallTouch, touchesWall,
+    hiddenKeys, moveOverrides, hidden, movedCount,
     isBlocked: (x, y) => !blocked[y] || blocked[y][x] === true,
     blocked
   };

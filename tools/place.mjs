@@ -125,7 +125,23 @@ if (!arg.id || !arg.cell) {
 const mj = JSON.parse(fs.readFileSync(mapPath, "utf8"));
 const [cx, row] = String(arg.cell).split(",").map(Number);
 const idx = mj.furniture.findIndex(f => f.id === arg.id);
-if (idx < 0) { console.log("map.json 里没有 id = " + arg.id); process.exit(1); }
+if (idx < 0) {
+  /* 编辑器加的家具在 hub/map.custom.json 里，不在 web/map.json —— 本工具只改 base 层。
+   * 明说清楚，别让人以为"这件不存在"（踩过一次：椅子在自定义层，place 报找不到）。 */
+  let inCustom = false;
+  try {
+    const cj = JSON.parse(fs.readFileSync(path.join(ROOT, "hub", "map.custom.json"), "utf8"));
+    inCustom = (cj.furniture || []).some(f => f.id === arg.id);
+  } catch {}
+  if (inCustom) {
+    console.log("✗ id = " + arg.id + " 在 hub/map.custom.json（编辑器层），不在 web/map.json。");
+    console.log("  本工具只管 base 层。改自定义层的件请直接编辑 hub/map.custom.json 的 x/y，");
+    console.log("  或先在编辑器里挪；改完 hub 会在 1.5s 内自动热重载（见 RULES §8 坑 11）。");
+  } else {
+    console.log("✗ map.json 和 hub/map.custom.json 里都没有 id = " + arg.id);
+  }
+  process.exit(1);
+}
 
 const entry = mj.furniture[idx];
 const before = { x: entry.x, y: entry.y };
