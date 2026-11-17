@@ -541,8 +541,8 @@
   },
   {
    "a": "bush",
-   "x": 53.6,
-   "y": 14,
+   "x": 26,
+   "y": 15,
    "o": true,
    "sc": 0.85,
    "id": "f0048"
@@ -982,26 +982,26 @@
   },
   {
    "a": "oak-tree",
-   "x": 41.5,
-   "y": 3,
+   "x": 27,
+   "y": 15,
    "id": "park1"
   },
   {
    "a": "oak-tree",
-   "x": 53.5,
-   "y": 3,
+   "x": 28,
+   "y": 15,
    "id": "park2"
   },
   {
    "a": "oak-tree",
-   "x": 43.5,
-   "y": 6.5,
+   "x": 29,
+   "y": 15,
    "id": "park3"
   },
   {
    "a": "oak-tree",
-   "x": 51.5,
-   "y": 6,
+   "x": 30,
+   "y": 15,
    "id": "park4"
   },
   {
@@ -1018,14 +1018,14 @@
   },
   {
    "a": "street-lamp",
-   "x": 43.5,
-   "y": 4.6,
+   "x": 31,
+   "y": 15,
    "id": "park7"
   },
   {
    "a": "street-lamp",
-   "x": 51.5,
-   "y": 5.2,
+   "x": 32,
+   "y": 15,
    "id": "park8"
   },
   {
@@ -1037,15 +1037,15 @@
   },
   {
    "a": "bush",
-   "x": 52.8,
-   "y": 8.6,
+   "x": 33,
+   "y": 15,
    "id": "park10",
    "o": true
   },
   {
    "a": "bush",
-   "x": 43.2,
-   "y": 9.4,
+   "x": 34,
+   "y": 15,
    "id": "park11",
    "o": true
   },
@@ -1058,8 +1058,8 @@
   },
   {
    "a": "flowers",
-   "x": 52.2,
-   "y": 5.6,
+   "x": 35,
+   "y": 15,
    "id": "park13",
    "o": true
   },
@@ -1288,15 +1288,15 @@
   },
   {
    "a": "flowers",
-   "x": 44,
-   "y": 8,
+   "x": 36,
+   "y": 15,
    "id": "plzFlower1",
    "o": true
   },
   {
    "a": "flowers",
-   "x": 53.6,
-   "y": 4,
+   "x": 37,
+   "y": 15,
    "id": "plzFlower2",
    "o": true
   },
@@ -1308,14 +1308,14 @@
   },
   {
    "a": "street-lamp",
-   "x": 51.5,
-   "y": 2.6,
+   "x": 38,
+   "y": 15,
    "id": "plzLamp2"
   },
   {
    "a": "well",
-   "x": 50.5,
-   "y": 7,
+   "x": 39,
+   "y": 15,
    "id": "plzWell"
   },
   {
@@ -1595,6 +1595,114 @@
    "x": 21,
    "y": 9.25,
    "id": "kBook1"
+  },
+  {
+   "a": "double-bed",
+   "x": 42,
+   "y": 1.25,
+   "id": "westBed"
+  },
+  {
+   "a": "nightstand",
+   "x": 44,
+   "y": 2.25,
+   "id": "westStand"
+  },
+  {
+   "a": "wardrobe",
+   "x": 44,
+   "y": 4.25,
+   "id": "westWard"
+  },
+  {
+   "a": "desk-wood",
+   "x": 41.1,
+   "y": 6.25,
+   "id": "westDesk"
+  },
+  {
+   "a": "chair",
+   "x": 42,
+   "y": 7.25,
+   "id": "westChair"
+  },
+  {
+   "a": "bookshelf-office",
+   "x": 44,
+   "y": 13.25,
+   "id": "westShelf"
+  },
+  {
+   "a": "plant-office",
+   "x": 41,
+   "y": 13.25,
+   "id": "westPlant"
+  },
+  {
+   "a": "floor-lamp",
+   "x": 44,
+   "y": 6.25,
+   "id": "westLamp"
+  },
+  {
+   "a": "dining-table",
+   "x": 51,
+   "y": 1.25,
+   "id": "eastTable"
+  },
+  {
+   "a": "chair",
+   "x": 50,
+   "y": 2.25,
+   "id": "eastChair1"
+  },
+  {
+   "a": "chair",
+   "x": 52,
+   "y": 2.25,
+   "id": "eastChair2"
+  },
+  {
+   "a": "sofa",
+   "x": 52,
+   "y": 8.25,
+   "id": "eastSofa"
+  },
+  {
+   "a": "round-table",
+   "x": 52,
+   "y": 10.25,
+   "id": "eastCoffee"
+  },
+  {
+   "a": "armchair",
+   "x": 50,
+   "y": 9.25,
+   "id": "eastArm"
+  },
+  {
+   "a": "bookshelf-office",
+   "x": 49,
+   "y": 6.25,
+   "id": "eastShelf"
+  },
+  {
+   "a": "potion-shelf",
+   "x": 54,
+   "y": 11.25,
+   "id": "eastCabinet"
+  },
+  {
+   "a": "plant-office",
+   "x": 49,
+   "y": 13.25,
+   "id": "eastPlant"
+  },
+  {
+   "a": "floor-lamp",
+   "x": 54,
+   "y": 4.25,
+   "id": "eastLamp"
   }
  ],
  "zones": {
@@ -2040,39 +2148,42 @@
    "host": "townBench"
   },
   "parkCourt": {
-   "label": "草地小院",
+   "label": "西厢房",
    "anchor": [
-    44,
-    11.4
+    42,
+    8.2
    ],
    "face": "n",
-   "host": "park5",
+   "host": "westDesk",
    "expect": [
-    "bench-park"
+    "desk-wood",
+    "chair"
    ],
    "sit": {
-    "host": "park5",
+    "host": "westChair",
     "dx": 0,
-    "dy": -8,
+    "dy": -10,
     "face": "n"
    }
   },
   "brickHall": {
-   "label": "砖地大厅",
+   "label": "东大厅",
    "anchor": [
-    53,
-    11.6
+    52,
+    9.4
    ],
    "face": "n",
-   "host": "plzBench2",
+   "host": "eastCoffee",
    "expect": [
-    "bench-park"
+    "round-table",
+    "sofa",
+    "armchair"
    ],
    "sit": {
-    "host": "plzBench2",
+    "host": "eastArm",
     "dx": 0,
-    "dy": -8,
-    "face": "n"
+    "dy": -10,
+    "lounge": true
    }
   }
  },

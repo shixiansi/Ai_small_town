@@ -342,7 +342,7 @@ loadErrors = [];
 this.load.off("loaderror", onLoadError);
 this.load.on("loaderror", onLoadError);
 this.load.json("manifest", "assets/manifest.json?v=eb7ab1a1");
-this.load.json("mapdata", "map.json?v=2accebc3");
+this.load.json("mapdata", "map.json?v=281f5e43");
 };
 SceneBoot.prototype.create = function () {
 var manifest = this.cache.json.get("manifest");
@@ -1496,8 +1496,8 @@ kitchen: [16, 1, 9, 13],
 nbCat:   [40, 19, 5, 10],    // 喵酱家：房子 cottage 在 x≈42.2 / y≈19.6
 nbChief: [46, 19, 5, 10],    // 村长家：房子 house-modern 在 x≈48.2 / y≈19.6
 nbDoc:   [52, 19, 4, 10],    // 博士家：房子 farmhouse 在 x≈53.4 / y≈19.6（原 y=20 起，房子精灵会露在框外）
-parkCourt: [41, 1, 7, 13],
-brickHall: [46, 1, 9, 14]
+parkCourt: [41, 1, 4, 13],
+brickHall: [49, 1, 6, 14]
 };
 try { window.__officeRoomRects = SWITCH_ROOM_RECTS; } catch (e) {}   // v2.7：小地图复用同一份房间矩形
 function roomOfProp(p) {
@@ -1974,8 +1974,8 @@ var ROOM_RECTS = [
 { room: "nbCat",   x: 40, y: 19, w: 5,  h: 10, label: "喵酱家" },
 { room: "nbChief", x: 46, y: 19, w: 5,  h: 10, label: "村长家" },
 { room: "nbDoc",   x: 52, y: 19, w: 4,  h: 10, label: "博士家" },
-{ room: "parkCourt", x: 41, y: 1, w: 7, h: 13, label: "草地小院" },
-{ room: "brickHall", x: 46, y: 1, w: 9, h: 14, label: "砖地大厅" }
+{ room: "parkCourt", x: 41, y: 1, w: 4, h: 13, label: "西厢房" },
+{ room: "brickHall", x: 49, y: 1, w: 6, h: 14, label: "东大厅" }
 ];
 function roomCovered(rr, edits) {
 var roomArea = rr.w * rr.h;
@@ -5829,7 +5829,7 @@ nbCat: "#b08a5e", nbChief: "#b08a5e", nbDoc: "#b08a5e", parkCourt: "#7fb069", br
 function roomRects() {
 return window.__officeRoomRects || {
 office: [0, 15, 26, 15], bedroom: [1, 1, 9, 13], bath: [10, 1, 6, 13],
-kitchen: [16, 1, 9, 13], nbCat: [40, 19, 5, 10], nbChief: [46, 19, 5, 10], nbDoc: [52, 19, 4, 10], parkCourt: [41, 1, 7, 13], brickHall: [46, 1, 9, 14]
+kitchen: [16, 1, 9, 13], nbCat: [40, 19, 5, 10], nbChief: [46, 19, 5, 10], nbDoc: [52, 19, 4, 10], parkCourt: [41, 1, 4, 13], brickHall: [49, 1, 6, 14]
 };
 }
 function paintBase() {

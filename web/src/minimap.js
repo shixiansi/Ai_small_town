@@ -23,7 +23,7 @@
       // furniture.js 定义的开关归属矩形就是房间矩形（真源）；这里只在它还没加载时兜底
       return window.__officeRoomRects || {
         office: [0, 15, 26, 15], bedroom: [1, 1, 9, 13], bath: [10, 1, 6, 13],
-        kitchen: [16, 1, 9, 13], nbCat: [40, 19, 5, 10], nbChief: [46, 19, 5, 10], nbDoc: [52, 19, 4, 10], parkCourt: [41, 1, 7, 13], brickHall: [46, 1, 9, 14]
+        kitchen: [16, 1, 9, 13], nbCat: [40, 19, 5, 10], nbChief: [46, 19, 5, 10], nbDoc: [52, 19, 4, 10], parkCourt: [41, 1, 4, 13], brickHall: [49, 1, 6, 14]
       };
     }
 

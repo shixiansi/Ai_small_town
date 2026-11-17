@@ -351,8 +351,8 @@
     { room: "nbChief", x: 46, y: 19, w: 5,  h: 10, label: "村长家" },
     { room: "nbDoc",   x: 52, y: 19, w: 4,  h: 10, label: "博士家" },
     /* v88：右上角两块被墙隔开的室内空间（原来 45 件家具全被判成"户外"） */
-    { room: "parkCourt", x: 41, y: 1, w: 7, h: 13, label: "草地小院" },
-    { room: "brickHall", x: 46, y: 1, w: 9, h: 14, label: "砖地大厅" }
+    { room: "parkCourt", x: 41, y: 1, w: 4, h: 13, label: "西厢房" },
+    { room: "brickHall", x: 49, y: 1, w: 6, h: 14, label: "东大厅" }
   ];
   /* 某块阴影区域是否覆盖了这个房间（重叠面积 > 房间的 25% 就算覆盖） */
   function roomCovered(rr, edits) {
