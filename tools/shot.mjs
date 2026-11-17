@@ -30,17 +30,23 @@ const URL_ = String(arg.url || "http://127.0.0.1:4322/");
 const SCALE = Number(arg.scale || 1);
 const OUT = path.resolve(ROOT, arg.out || path.join("logs", "shots"));
 
-// ---------- 机位表：world = [格 x, 格 y]（y 需要 +1 行墙带），zoom 越大越近 ----------
-const SHOTS = [
-  { id: "1-office-desk",  world: [9, 23.5],   zoom: 2.2, note: "办公室工位/书架/白板" },
-  { id: "2-office-south", world: [6, 28.5],   zoom: 2.2, note: "沙发/街机/茶水台（南墙裙）" },
-  { id: "3-bedroom",      world: [5.5, 7],    zoom: 2.4, note: "卧室床/衣柜" },
-  { id: "4-bath-kitchen", world: [13.5, 6],   zoom: 2.2, note: "卫浴+厨房交界（瓷砖/木地板接缝）" },
-  { id: "5-garden-pond",  world: [34, 22],    zoom: 2.2, note: "农田/池塘/花园小径" },
-  { id: "6-street",       world: [46, 17],    zoom: 2.2, note: "主街/集市/三户门脸" },
-  { id: "7-nbcat-inside", world: [42, 23],    zoom: 2.6, note: "喵酱家室内（床/桌/墙）" },
-  { id: "8-park",         world: [46, 8],     zoom: 2.2, note: "公园（树/长椅/小径）" }
-];
+// ---------- 机位：整图切成 4 列 × 2 行 = 8 块，每块 1/8 ----------
+// 地图 56×30 格 → 每块 14 格宽 × 15 格高（14*48=672 / 15*48=720 世界像素）。
+// 相机 zoom 取 768/720 ≈ 1.0667，让这块正好填满画布高度；宽度 672*1.0667≈717 < 1248，
+// 所以左右各留一点余量（相邻块会有一点点重叠，看图时不至于"缺一条"）。
+const COLS_MAP = 56, ROWS_MAP = 30;
+const TILE_W = COLS_MAP / 4, TILE_H = ROWS_MAP / 2;   // 14 / 15
+const SHOTS = [];
+for (let row = 0; row < 2; row++) {
+  for (let col = 0; col < 4; col++) {
+    SHOTS.push({
+      id: "c" + col + "r" + row,
+      col, row,
+      x0: col * TILE_W, y0: row * TILE_H, w: TILE_W, h: TILE_H,
+      note: "第 " + (row + 1) + " 行 第 " + (col + 1) + " 列（格 " + (col * TILE_W) + "~" + (col * TILE_W + TILE_W - 1) + " × " + (row * TILE_H) + "~" + (row * TILE_H + TILE_H - 1) + "）"
+    });
+  }
+}
 const only = arg.only ? String(arg.only).split(",") : null;
 
 function findBrowser() {
@@ -132,7 +138,14 @@ async function main() {
   const saved = [];
   for (const s of SHOTS) {
     if (only && !only.includes(s.id)) continue;
-    const wx = s.world[0] * TILE, wy = WALL_H + s.world[1] * TILE;
+    // 这块棋盘的几何：世界像素矩形 → zoom 让高度正好填满画布 → 裁剪居中那条带
+    const zx = s.w * TILE, zy = s.h * TILE;                 // 672 / 720
+    const zoom = 768 / zy;                                   // ≈1.0667
+    const cx = s.x0 * TILE + zx / 2;
+    const cy = WALL_H + s.y0 * TILE + zy / 2;
+    const drawnW = zx * zoom;                                // 画布里实际占用宽度
+    const clipCanvasX = (1248 - drawnW) / 2;
+    const cssK = rect.w / 1248;                              // 世界(画布内部)→CSS 的缩放
     // 停跟随 → 定 zoom → centerOn；然后**冻结场景 update**，
     // 否则 states.js 那个 1.8s 的延时 beginFollow 会把镜头抢回鱼身上（第一次拍就吃了这个亏）
     await cdp(ws, "Runtime.evaluate", {
@@ -142,16 +155,22 @@ async function main() {
         ["minimap", "room-tabs", "debug-toggle"].forEach(id => {
           const el = document.getElementById(id); if (el) el.style.visibility = "hidden";
         });
-        c.stopFollow(); c.setLerp(1, 1); c.setZoom(${s.zoom}); c.centerOn(${wx}, ${wy});
+        c.stopFollow(); c.setLerp(1, 1); c.setZoom(${zoom}); c.centerOn(${cx}, ${cy});
         sc.scene.pause();
-        c.centerOn(${wx}, ${wy});
+        c.centerOn(${cx}, ${cy});
         return true;
       })()`, returnByValue: true
     });
     await sleep(900);
     const shot = await cdp(ws, "Page.captureScreenshot", {
       format: "png",
-      clip: { x: Math.round(rect.x), y: Math.round(rect.y), width: Math.round(rect.w), height: Math.round(rect.h), scale: 1 },
+      clip: {
+        x: Math.round(rect.x + clipCanvasX * cssK),
+        y: Math.round(rect.y),
+        width: Math.round(drawnW * cssK),
+        height: Math.round(768 * cssK),
+        scale: Number(arg.scale || 2)     // 默认 2 倍超采样：每块约 1400×1560，细节够看
+      },
       captureBeyondViewport: false
     });
     const file = path.join(OUT, s.id + ".png");
