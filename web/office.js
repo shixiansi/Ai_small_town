@@ -1581,6 +1581,16 @@ spr = s.add.sprite(p.x, p.y, f.a, f0).setOrigin(p.originX, p.originY).setDepth(p
 } else {
 spr = s.add.image(p.x, p.y, f.a, f0).setOrigin(p.originX, p.originY).setDepth(p.depth);
 if (f.flipX) spr.setFlipX(true);
+if (!f.o && !f.wall && !f.on) {
+var shadowSc = Number(f.sc || 1);
+var shd = s.add.image(p.x + 6 * shadowSc, p.y + 10 * shadowSc, f.a, f0)
+.setOrigin(p.originX, p.originY)
+.setTint(0x000000)
+.setAlpha(0.22)
+.setDepth(Math.max(0, p.depth - 1));
+if (f.flipX) shd.setFlipX(true);
+if (shadowSc !== 1) shd.setScale(shadowSc);
+}
 }
 if (p.scale !== 1) spr.setScale(p.scale);   // 大小关系：按格子归一化
 if (!p.wall && !p.o && !f.on) {

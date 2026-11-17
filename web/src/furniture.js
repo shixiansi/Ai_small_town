@@ -133,6 +133,20 @@
        * 现有素材都是单朝向，只能用镜像表达"朝左/朝右"；朝上/朝下需要新美术或 rot。
        * 该不该翻由 tools/facing-audit.mjs 推导（椅子朝桌心、床头顶墙…）。 */
       if (f.flipX) spr.setFlipX(true);
+      /* v2.8-j 第 5 维·逐件投影：同一张贴图压暗 + 全局光向偏移（+6/+10 px），深度压在本体下一层。
+       * 房间级阴影走 mapedit 的 shadow 块（night 0.60 / lit 0.15 / day 0.00），
+       * 但单品投影原来一个都没有 —— 所以物体看起来像"贴"在地板上。
+       * 光向固定一个方向（3/4 俯视的常规做法）；sc 缩放的件按同系数跟随，避免影子错位。 */
+      if (!f.o && !f.wall && !f.on) {
+        var shadowSc = Number(f.sc || 1);
+        var shd = s.add.image(p.x + 6 * shadowSc, p.y + 10 * shadowSc, f.a, f0)
+          .setOrigin(p.originX, p.originY)
+          .setTint(0x000000)
+          .setAlpha(0.22)
+          .setDepth(Math.max(0, p.depth - 1));
+        if (f.flipX) shd.setFlipX(true);
+        if (shadowSc !== 1) shd.setScale(shadowSc);
+      }
       }
       if (p.scale !== 1) spr.setScale(p.scale);   // 大小关系：按格子归一化
       // 接触阴影（评审 #3）：落地物件底部椭圆软影，宽=内容宽×1.1、深棕 25%
