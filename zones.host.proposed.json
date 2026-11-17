@@ -1,0 +1,1370 @@
+{
+ "desk": {
+  "room": "office",
+  "anchor": [
+   9,
+   23.6
+  ],
+  "sit": "chairA",
+  "candidates": [
+   {
+    "id": "chairA",
+    "a": "office-chair",
+    "x": 9,
+    "y": 22.4,
+    "d": 1.2
+   },
+   {
+    "id": "ofFile1",
+    "a": "filing-cabinet",
+    "x": 11.2,
+    "y": 24.2,
+    "d": 2.3
+   },
+   {
+    "id": "desk",
+    "a": "office-desk",
+    "x": 9,
+    "y": 21,
+    "d": 2.6
+   },
+   {
+    "id": "ofMeetC2",
+    "a": "chair",
+    "x": 6.5,
+    "y": 25.4,
+    "d": 3.1
+   }
+  ]
+ },
+ "window": {
+  "room": "bedroom",
+  "anchor": [
+   3.3,
+   4.4
+  ],
+  "sit": null,
+  "candidates": [
+   {
+    "id": "bedstandA",
+    "a": "nightstand",
+    "x": 3.4,
+    "y": 2.8,
+    "d": 1.6
+   },
+   {
+    "id": "wardA",
+    "a": "wardrobe",
+    "x": 2.3,
+    "y": 2.5,
+    "d": 2.1
+   },
+   {
+    "id": "bedA",
+    "a": "double-bed",
+    "x": 5,
+    "y": 3,
+    "d": 2.2
+   },
+   {
+    "id": "bdStand3",
+    "a": "nightstand",
+    "x": 1.5,
+    "y": 6.5,
+    "d": 2.8
+   }
+  ]
+ },
+ "library": {
+  "room": "office",
+  "anchor": [
+   10.7,
+   18.2
+  ],
+  "sit": null,
+  "candidates": [
+   {
+    "id": "shoecabA",
+    "a": "nightstand",
+    "x": 11.2,
+    "y": 17.3,
+    "d": 1
+   },
+   {
+    "id": "shelfA",
+    "a": "bookshelf-office",
+    "x": 8.5,
+    "y": 17.1,
+    "d": 2.5
+   },
+   {
+    "id": "woodA",
+    "a": "desk-wood",
+    "x": 11.2,
+    "y": 21,
+    "d": 2.8
+   },
+   {
+    "id": "whiteboardA",
+    "a": "whiteboard",
+    "x": 13.8,
+    "y": 17.1,
+    "d": 3.3
+   }
+  ]
+ },
+ "tools": {
+  "room": "office",
+  "anchor": [
+   19.5,
+   23.2
+  ],
+  "sit": null,
+  "candidates": [
+   {
+    "id": "ofRestTable",
+    "a": "round-table",
+    "x": 18,
+    "y": 24.6,
+    "d": 2.1
+   },
+   {
+    "id": "schA",
+    "a": "school-desk",
+    "x": 19.5,
+    "y": 21,
+    "d": 2.2
+   },
+   {
+    "id": "ofRestArm",
+    "a": "armchair",
+    "x": 20.8,
+    "y": 25.2,
+    "d": 2.4
+   },
+   {
+    "id": "printA",
+    "a": "printer",
+    "x": 21.8,
+    "y": 21,
+    "d": 3.2
+   }
+  ]
+ },
+ "screen": {
+  "room": "office",
+  "anchor": [
+   13.8,
+   18.9
+  ],
+  "sit": null,
+  "candidates": [
+   {
+    "id": "whiteboardA",
+    "a": "whiteboard",
+    "x": 13.8,
+    "y": 17.1,
+    "d": 1.8
+   },
+   {
+    "id": "shoecabA",
+    "a": "nightstand",
+    "x": 11.2,
+    "y": 17.3,
+    "d": 3.1
+   },
+   {
+    "id": "woodA",
+    "a": "desk-wood",
+    "x": 11.2,
+    "y": 21,
+    "d": 3.3
+   },
+   {
+    "id": "ofPlant1",
+    "a": "plant-office",
+    "x": 15.6,
+    "y": 23.4,
+    "d": 4.8
+   }
+  ]
+ },
+ "printer": {
+  "room": "office",
+  "anchor": [
+   21.8,
+   22.8
+  ],
+  "sit": null,
+  "candidates": [
+   {
+    "id": "printA",
+    "a": "printer",
+    "x": 21.8,
+    "y": 21,
+    "d": 1.8
+   },
+   {
+    "id": "ofRestArm",
+    "a": "armchair",
+    "x": 20.8,
+    "y": 25.2,
+    "d": 2.6
+   },
+   {
+    "id": "schA",
+    "a": "school-desk",
+    "x": 19.5,
+    "y": 21,
+    "d": 2.9
+   },
+   {
+    "id": "cabB",
+    "a": "cabinet",
+    "x": 24.2,
+    "y": 20.6,
+    "d": 3.3
+   }
+  ]
+ },
+ "dining": {
+  "room": "kitchen",
+  "anchor": [
+   19,
+   8
+  ],
+  "sit": "tableA",
+  "candidates": [
+   {
+    "id": "kChairS",
+    "a": "chair",
+    "x": 19,
+    "y": 9.4,
+    "d": 1.4
+   },
+   {
+    "id": "tableA",
+    "a": "dining-table",
+    "x": 18,
+    "y": 6.5,
+    "d": 1.8
+   },
+   {
+    "id": "kChairN",
+    "a": "chair",
+    "x": 20,
+    "y": 6.5,
+    "d": 1.8
+   },
+   {
+    "id": "kNook",
+    "a": "round-table",
+    "x": 17.4,
+    "y": 10.6,
+    "d": 3.1
+   }
+  ]
+ },
+ "tea": {
+  "room": "office",
+  "anchor": [
+   3.4,
+   28.8
+  ],
+  "sit": null,
+  "candidates": [
+   {
+    "id": "sofaA",
+    "a": "sofa",
+    "x": 2.6,
+    "y": 27.6,
+    "d": 1.4
+   },
+   {
+    "id": "tableB",
+    "a": "round-table",
+    "x": 5,
+    "y": 28.9,
+    "d": 1.6
+   },
+   {
+    "id": "ofMeetC1",
+    "a": "chair",
+    "x": 3.5,
+    "y": 25.4,
+    "d": 3.4
+   },
+   {
+    "id": "gramoA",
+    "a": "gramophone",
+    "x": 1.5,
+    "y": 25.8,
+    "d": 3.6
+   }
+  ]
+ },
+ "sofa": {
+  "room": "office",
+  "anchor": [
+   3.4,
+   28.8
+  ],
+  "sit": "sofaA",
+  "candidates": [
+   {
+    "id": "sofaA",
+    "a": "sofa",
+    "x": 2.6,
+    "y": 27.6,
+    "d": 1.4
+   },
+   {
+    "id": "tableB",
+    "a": "round-table",
+    "x": 5,
+    "y": 28.9,
+    "d": 1.6
+   },
+   {
+    "id": "ofMeetC1",
+    "a": "chair",
+    "x": 3.5,
+    "y": 25.4,
+    "d": 3.4
+   },
+   {
+    "id": "gramoA",
+    "a": "gramophone",
+    "x": 1.5,
+    "y": 25.8,
+    "d": 3.6
+   }
+  ]
+ },
+ "door": {
+  "room": "office",
+  "anchor": [
+   12.5,
+   17.5
+  ],
+  "sit": null,
+  "candidates": [
+   {
+    "id": "shoecabA",
+    "a": "nightstand",
+    "x": 11.2,
+    "y": 17.3,
+    "d": 1.3
+   },
+   {
+    "id": "whiteboardA",
+    "a": "whiteboard",
+    "x": 13.8,
+    "y": 17.1,
+    "d": 1.4
+   },
+   {
+    "id": "woodA",
+    "a": "desk-wood",
+    "x": 11.2,
+    "y": 21,
+    "d": 3.7
+   },
+   {
+    "id": "shelfA",
+    "a": "bookshelf-office",
+    "x": 8.5,
+    "y": 17.1,
+    "d": 4
+   }
+  ]
+ },
+ "mail": {
+  "room": "office",
+  "anchor": [
+   6.4,
+   18.2
+  ],
+  "sit": null,
+  "candidates": [
+   {
+    "id": "blackboardA",
+    "a": "blackboard",
+    "x": 6,
+    "y": 17.1,
+    "d": 1.2
+   },
+   {
+    "id": "shelfA",
+    "a": "bookshelf-office",
+    "x": 8.5,
+    "y": 17.1,
+    "d": 2.4
+   },
+   {
+    "id": "desk",
+    "a": "office-desk",
+    "x": 9,
+    "y": 21,
+    "d": 3.8
+   },
+   {
+    "id": "chairA",
+    "a": "office-chair",
+    "x": 9,
+    "y": 22.4,
+    "d": 4.9
+   }
+  ]
+ },
+ "board": {
+  "room": "office",
+  "anchor": [
+   4.5,
+   18.3
+  ],
+  "sit": null,
+  "candidates": [
+   {
+    "id": "blackboardA",
+    "a": "blackboard",
+    "x": 6,
+    "y": 17.1,
+    "d": 1.9
+   },
+   {
+    "id": "shelfA",
+    "a": "bookshelf-office",
+    "x": 8.5,
+    "y": 17.1,
+    "d": 4.2
+   },
+   {
+    "id": "desk",
+    "a": "office-desk",
+    "x": 9,
+    "y": 21,
+    "d": 5.2
+   },
+   {
+    "id": "ofMeetC3",
+    "a": "chair",
+    "x": 5,
+    "y": 24.1,
+    "d": 5.8
+   }
+  ]
+ },
+ "bed": {
+  "room": "bedroom",
+  "anchor": [
+   5,
+   4.8
+  ],
+  "sit": "bedA",
+  "candidates": [
+   {
+    "id": "bedA",
+    "a": "double-bed",
+    "x": 5,
+    "y": 3,
+    "d": 1.8
+   },
+   {
+    "id": "bedstandA",
+    "a": "nightstand",
+    "x": 3.4,
+    "y": 2.8,
+    "d": 2.6
+   },
+   {
+    "id": "wardA",
+    "a": "wardrobe",
+    "x": 2.3,
+    "y": 2.5,
+    "d": 3.5
+   },
+   {
+    "id": "bdStand3",
+    "a": "nightstand",
+    "x": 1.5,
+    "y": 6.5,
+    "d": 3.9
+   }
+  ]
+ },
+ "washup": {
+  "room": "bath",
+  "anchor": [
+   11.1,
+   4
+  ],
+  "sit": null,
+  "candidates": [
+   {
+    "id": "bathA",
+    "a": "bathtub",
+    "x": 14,
+    "y": 2.6,
+    "d": 3.2
+   },
+   {
+    "id": "kSideTable",
+    "a": "dining-table",
+    "x": 16.6,
+    "y": 6.2,
+    "d": 5.9
+   },
+   {
+    "id": "rechargeA",
+    "a": "crown-cushion",
+    "x": 15.2,
+    "y": 9.7,
+    "d": 7
+   },
+   {
+    "id": "baToilet",
+    "a": "toilet",
+    "x": 12,
+    "y": 11.6,
+    "d": 7.7
+   }
+  ]
+ },
+ "cook": {
+  "room": "kitchen",
+  "anchor": [
+   19.3,
+   4
+  ],
+  "sit": null,
+  "candidates": [
+   {
+    "id": "stoveA",
+    "a": "stove-kitchen",
+    "x": 19.3,
+    "y": 2.2,
+    "d": 1.8
+   },
+   {
+    "id": "fridgeA",
+    "a": "fridge",
+    "x": 17.5,
+    "y": 2.2,
+    "d": 2.5
+   },
+   {
+    "id": "kChairN",
+    "a": "chair",
+    "x": 20,
+    "y": 6.5,
+    "d": 2.6
+   },
+   {
+    "id": "tableA",
+    "a": "dining-table",
+    "x": 18,
+    "y": 6.5,
+    "d": 2.8
+   }
+  ]
+ },
+ "fridge": {
+  "room": "kitchen",
+  "anchor": [
+   17.5,
+   4
+  ],
+  "sit": null,
+  "candidates": [
+   {
+    "id": "fridgeA",
+    "a": "fridge",
+    "x": 17.5,
+    "y": 2.2,
+    "d": 1.8
+   },
+   {
+    "id": "tableA",
+    "a": "dining-table",
+    "x": 18,
+    "y": 6.5,
+    "d": 2.5
+   },
+   {
+    "id": "stoveA",
+    "a": "stove-kitchen",
+    "x": 19.3,
+    "y": 2.2,
+    "d": 2.5
+   },
+   {
+    "id": "kChairN",
+    "a": "chair",
+    "x": 20,
+    "y": 6.5,
+    "d": 3.5
+   }
+  ]
+ },
+ "relax": {
+  "room": "office",
+  "anchor": [
+   20.8,
+   28.4
+  ],
+  "sit": "armA",
+  "candidates": [
+   {
+    "id": "armA",
+    "a": "armchair",
+    "x": 20.8,
+    "y": 27,
+    "d": 1.4
+   },
+   {
+    "id": "ofRestSofa",
+    "a": "sofa",
+    "x": 18,
+    "y": 26.8,
+    "d": 3.2
+   },
+   {
+    "id": "ofRestArm",
+    "a": "armchair",
+    "x": 20.8,
+    "y": 25.2,
+    "d": 3.2
+   },
+   {
+    "id": "ofLamp",
+    "a": "floor-lamp",
+    "x": 16.6,
+    "y": 27,
+    "d": 4.4
+   }
+  ]
+ },
+ "wardrobe": {
+  "room": "bedroom",
+  "anchor": [
+   2.3,
+   4
+  ],
+  "sit": null,
+  "candidates": [
+   {
+    "id": "wardA",
+    "a": "wardrobe",
+    "x": 2.3,
+    "y": 2.5,
+    "d": 1.5
+   },
+   {
+    "id": "bedstandA",
+    "a": "nightstand",
+    "x": 3.4,
+    "y": 2.8,
+    "d": 1.6
+   },
+   {
+    "id": "bdStand3",
+    "a": "nightstand",
+    "x": 1.5,
+    "y": 6.5,
+    "d": 2.6
+   },
+   {
+    "id": "bedA",
+    "a": "double-bed",
+    "x": 5,
+    "y": 3,
+    "d": 2.9
+   }
+  ]
+ },
+ "garden": {
+  "room": "outdoor",
+  "anchor": [
+   31.5,
+   12
+  ],
+  "sit": null,
+  "candidates": [
+   {
+    "id": "gardenBench1",
+    "a": "bench-park",
+    "x": 30.5,
+    "y": 11,
+    "d": 1.4
+   },
+   {
+    "id": "gardenWell",
+    "a": "well",
+    "x": 33.5,
+    "y": 12.5,
+    "d": 2.1
+   },
+   {
+    "id": "cumw9aamgo5b8",
+    "a": "oak-tree",
+    "x": 28.5,
+    "y": 10.5,
+    "d": 3.4
+   },
+   {
+    "id": "cumw9aamr16x",
+    "a": "oak-tree",
+    "x": 28,
+    "y": 11,
+    "d": 3.6
+   }
+  ]
+ },
+ "stroll": {
+  "room": "outdoor",
+  "anchor": [
+   30.5,
+   12.4
+  ],
+  "sit": "gardenBench1",
+  "candidates": [
+   {
+    "id": "gardenBench1",
+    "a": "bench-park",
+    "x": 30.5,
+    "y": 11,
+    "d": 1.4
+   },
+   {
+    "id": "cumw9aamgo5b8",
+    "a": "oak-tree",
+    "x": 28.5,
+    "y": 10.5,
+    "d": 2.8
+   },
+   {
+    "id": "cumw9aamr16x",
+    "a": "oak-tree",
+    "x": 28,
+    "y": 11,
+    "d": 2.9
+   },
+   {
+    "id": "gardenWell",
+    "a": "well",
+    "x": 33.5,
+    "y": 12.5,
+    "d": 3
+   }
+  ]
+ },
+ "market": {
+  "room": "outdoor",
+  "anchor": [
+   48.6,
+   16.5
+  ],
+  "sit": null,
+  "candidates": [
+   {
+    "id": "townBench",
+    "a": "bench-park",
+    "x": 47.6,
+    "y": 15.1,
+    "d": 1.7
+   },
+   {
+    "id": "townWell",
+    "a": "well",
+    "x": 46.6,
+    "y": 15.8,
+    "d": 2.1
+   },
+   {
+    "id": "benchA",
+    "a": "bench-park",
+    "x": 50,
+    "y": 10,
+    "d": 6.6
+   },
+   {
+    "id": "plzBench2",
+    "a": "bench-park",
+    "x": 52.5,
+    "y": 10.5,
+    "d": 7.2
+   }
+  ]
+ },
+ "recover": {
+  "room": "bath",
+  "anchor": [
+   15.2,
+   11
+  ],
+  "sit": "rechargeA",
+  "candidates": [
+   {
+    "id": "rechargeA",
+    "a": "crown-cushion",
+    "x": 15.2,
+    "y": 9.7,
+    "d": 1.3
+   },
+   {
+    "id": "baPaper",
+    "a": "paper-stack",
+    "x": 14.9,
+    "y": 12.4,
+    "d": 1.4
+   },
+   {
+    "id": "baToilet",
+    "a": "toilet",
+    "x": 12,
+    "y": 11.6,
+    "d": 3.3
+   },
+   {
+    "id": "baCabinet",
+    "a": "cabinet",
+    "x": 12.2,
+    "y": 12.6,
+    "d": 3.4
+   }
+  ]
+ },
+ "arcade": {
+  "room": "office",
+  "anchor": [
+   7.6,
+   29.4
+  ],
+  "sit": null,
+  "candidates": [
+   {
+    "id": "arcadeA",
+    "a": "arcade-cabinet",
+    "x": 9.2,
+    "y": 29.2,
+    "d": 1.6
+   },
+   {
+    "id": "tableB",
+    "a": "round-table",
+    "x": 5,
+    "y": 28.9,
+    "d": 2.6
+   },
+   {
+    "id": "ofMeetC2",
+    "a": "chair",
+    "x": 6.5,
+    "y": 25.4,
+    "d": 4.1
+   },
+   {
+    "id": "ofFile2",
+    "a": "filing-cabinet",
+    "x": 11.2,
+    "y": 26.4,
+    "d": 4.7
+   }
+  ]
+ },
+ "town": {
+  "room": "outdoor",
+  "anchor": [
+   46.6,
+   17.4
+  ],
+  "sit": null,
+  "candidates": [
+   {
+    "id": "townWell",
+    "a": "well",
+    "x": 46.6,
+    "y": 15.8,
+    "d": 1.6
+   },
+   {
+    "id": "townBench",
+    "a": "bench-park",
+    "x": 47.6,
+    "y": 15.1,
+    "d": 2.5
+   },
+   {
+    "id": "benchA",
+    "a": "bench-park",
+    "x": 50,
+    "y": 10,
+    "d": 8.1
+   },
+   {
+    "id": "plzBench2",
+    "a": "bench-park",
+    "x": 52.5,
+    "y": 10.5,
+    "d": 9.1
+   }
+  ]
+ },
+ "town_bench": {
+  "room": "outdoor",
+  "anchor": [
+   47.6,
+   16.8
+  ],
+  "sit": "townBench",
+  "candidates": [
+   {
+    "id": "townWell",
+    "a": "well",
+    "x": 46.6,
+    "y": 15.8,
+    "d": 1.4
+   },
+   {
+    "id": "townBench",
+    "a": "bench-park",
+    "x": 47.6,
+    "y": 15.1,
+    "d": 1.7
+   },
+   {
+    "id": "benchA",
+    "a": "bench-park",
+    "x": 50,
+    "y": 10,
+    "d": 7.2
+   },
+   {
+    "id": "plzBench2",
+    "a": "bench-park",
+    "x": 52.5,
+    "y": 10.5,
+    "d": 8
+   }
+  ]
+ },
+ "balcony": {
+  "room": "kitchen",
+  "anchor": [
+   20.5,
+   11.4
+  ],
+  "sit": null,
+  "candidates": [
+   {
+    "id": "kStool",
+    "a": "chair",
+    "x": 20,
+    "y": 13,
+    "d": 1.7
+   },
+   {
+    "id": "kCounter2",
+    "a": "kitchen-counter",
+    "x": 18,
+    "y": 11.5,
+    "d": 2.5
+   },
+   {
+    "id": "kChairS",
+    "a": "chair",
+    "x": 19,
+    "y": 9.4,
+    "d": 2.5
+   },
+   {
+    "id": "kPantry",
+    "a": "potion-shelf",
+    "x": 23.4,
+    "y": 10.4,
+    "d": 3.1
+   }
+  ]
+ },
+ "doorCat": {
+  "room": "nbCat",
+  "anchor": [
+   42.5,
+   18.4
+  ],
+  "sit": null,
+  "candidates": [
+   {
+    "id": "homeCat",
+    "a": "cottage",
+    "x": 42.2,
+    "y": 19.6,
+    "d": 1.2
+   },
+   {
+    "id": "catStand",
+    "a": "nightstand",
+    "x": 43.9,
+    "y": 20.4,
+    "d": 2.4
+   },
+   {
+    "id": "catBed",
+    "a": "bed",
+    "x": 41.3,
+    "y": 21.2,
+    "d": 3
+   },
+   {
+    "id": "catGramo",
+    "a": "gramophone",
+    "x": 44,
+    "y": 21,
+    "d": 3
+   }
+  ]
+ },
+ "doorChief": {
+  "room": "nbChief",
+  "anchor": [
+   48.5,
+   18.4
+  ],
+  "sit": null,
+  "candidates": [
+   {
+    "id": "homeChief",
+    "a": "house-modern",
+    "x": 48.2,
+    "y": 19.6,
+    "d": 1.2
+   },
+   {
+    "id": "chiefStove",
+    "a": "stove-kitchen",
+    "x": 49.9,
+    "y": 20.3,
+    "d": 2.4
+   },
+   {
+    "id": "chiefCounter",
+    "a": "kitchen-counter",
+    "x": 46.9,
+    "y": 20.3,
+    "d": 2.5
+   },
+   {
+    "id": "chiefTable",
+    "a": "dining-table",
+    "x": 48.5,
+    "y": 22,
+    "d": 3.6
+   }
+  ]
+ },
+ "doorDoc": {
+  "room": "nbDoc",
+  "anchor": [
+   53.5,
+   18.4
+  ],
+  "sit": null,
+  "candidates": [
+   {
+    "id": "homeDoc",
+    "a": "farmhouse",
+    "x": 53.4,
+    "y": 19.6,
+    "d": 1.2
+   },
+   {
+    "id": "docShelf",
+    "a": "bookshelf-office",
+    "x": 53.5,
+    "y": 20.5,
+    "d": 2.1
+   },
+   {
+    "id": "cumw9ba88s66k",
+    "a": "office-desk",
+    "x": 54,
+    "y": 20.5,
+    "d": 2.2
+   },
+   {
+    "id": "cumw9bb10p6f2",
+    "a": "globe-desk",
+    "x": 52.5,
+    "y": 20.5,
+    "d": 2.3
+   }
+  ]
+ },
+ "living_cat": {
+  "room": "nbCat",
+  "anchor": [
+   42.4,
+   22.4
+  ],
+  "sit": null,
+  "candidates": [
+   {
+    "id": "catBed",
+    "a": "bed",
+    "x": 41.3,
+    "y": 21.2,
+    "d": 1.6
+   },
+   {
+    "id": "catGramo",
+    "a": "gramophone",
+    "x": 44,
+    "y": 21,
+    "d": 2.1
+   },
+   {
+    "id": "catStand",
+    "a": "nightstand",
+    "x": 43.9,
+    "y": 20.4,
+    "d": 2.5
+   },
+   {
+    "id": "homeCat",
+    "a": "cottage",
+    "x": 42.2,
+    "y": 19.6,
+    "d": 2.8
+   }
+  ]
+ },
+ "living_chief": {
+  "room": "nbChief",
+  "anchor": [
+   49,
+   24.6
+  ],
+  "sit": null,
+  "candidates": [
+   {
+    "id": "chiefChair2",
+    "a": "chair",
+    "x": 48.5,
+    "y": 23.5,
+    "d": 1.2
+   },
+   {
+    "id": "chiefChair1",
+    "a": "chair",
+    "x": 47.4,
+    "y": 23.3,
+    "d": 2.1
+   },
+   {
+    "id": "chiefTable",
+    "a": "dining-table",
+    "x": 48.5,
+    "y": 22,
+    "d": 2.6
+   },
+   {
+    "id": "chiefFridge",
+    "a": "fridge",
+    "x": 46.6,
+    "y": 26.9,
+    "d": 3.3
+   }
+  ]
+ },
+ "living_doc": {
+  "room": "nbDoc",
+  "anchor": [
+   52.4,
+   25
+  ],
+  "sit": null,
+  "candidates": [
+   {
+    "id": "docChair",
+    "a": "chair",
+    "x": 53,
+    "y": 23.9,
+    "d": 1.3
+   },
+   {
+    "id": "docDesk",
+    "a": "school-desk",
+    "x": 53,
+    "y": 22.6,
+    "d": 2.5
+   },
+   {
+    "id": "docPotion",
+    "a": "potion-shelf",
+    "x": 52.5,
+    "y": 28,
+    "d": 3
+   },
+   {
+    "id": "docArm",
+    "a": "armchair",
+    "x": 54.5,
+    "y": 27.5,
+    "d": 3.3
+   }
+  ]
+ },
+ "farm": {
+  "room": "outdoor",
+  "anchor": [
+   30,
+   25
+  ],
+  "sit": null,
+  "candidates": [
+   {
+    "id": "gardenBench3",
+    "a": "bench-park",
+    "x": 29.5,
+    "y": 28.4,
+    "d": 3.4
+   },
+   {
+    "id": "gardenWell",
+    "a": "well",
+    "x": 33.5,
+    "y": 12.5,
+    "d": 13
+   },
+   {
+    "id": "gardenBench2",
+    "a": "bench-park",
+    "x": 35.5,
+    "y": 12.5,
+    "d": 13.7
+   },
+   {
+    "id": "gardenBench1",
+    "a": "bench-park",
+    "x": 30.5,
+    "y": 11,
+    "d": 14
+   }
+  ]
+ },
+ "pond": {
+  "room": "outdoor",
+  "anchor": [
+   34,
+   24
+  ],
+  "sit": null,
+  "candidates": [
+   {
+    "id": "gardenBench3",
+    "a": "bench-park",
+    "x": 29.5,
+    "y": 28.4,
+    "d": 6.3
+   },
+   {
+    "id": "gardenWell",
+    "a": "well",
+    "x": 33.5,
+    "y": 12.5,
+    "d": 11.5
+   },
+   {
+    "id": "gardenBench2",
+    "a": "bench-park",
+    "x": 35.5,
+    "y": 12.5,
+    "d": 11.6
+   },
+   {
+    "id": "cumw9aakmy3z9",
+    "a": "oak-tree",
+    "x": 37.5,
+    "y": 12,
+    "d": 12.5
+   }
+  ]
+ },
+ "kitchenprep": {
+  "room": "kitchen",
+  "anchor": [
+   21.6,
+   3.4
+  ],
+  "sit": null,
+  "candidates": [
+   {
+    "id": "kitchCab2",
+    "a": "nightstand",
+    "x": 21.5,
+    "y": 2,
+    "d": 1.4
+   },
+   {
+    "id": "counterA",
+    "a": "kitchen-counter",
+    "x": 22.5,
+    "y": 1.5,
+    "d": 2.1
+   },
+   {
+    "id": "kitchSink",
+    "a": "sink",
+    "x": 23,
+    "y": 5.2,
+    "d": 2.3
+   },
+   {
+    "id": "cabA",
+    "a": "cabinet",
+    "x": 23.6,
+    "y": 1.9,
+    "d": 2.5
+   }
+  ]
+ },
+ "park": {
+  "room": "outdoor",
+  "anchor": [
+   42.5,
+   11.6
+  ],
+  "sit": null,
+  "candidates": [
+   {
+    "id": "cumw9aakmy3z9",
+    "a": "oak-tree",
+    "x": 37.5,
+    "y": 12,
+    "d": 5
+   },
+   {
+    "id": "cumw9aakdu214",
+    "a": "oak-tree",
+    "x": 37.5,
+    "y": 10.5,
+    "d": 5.1
+   },
+   {
+    "id": "park3",
+    "a": "oak-tree",
+    "x": 43.5,
+    "y": 6.5,
+    "d": 5.2
+   },
+   {
+    "id": "cumw9aauaa3tc",
+    "a": "oak-tree",
+    "x": 37.2,
+    "y": 10.6,
+    "d": 5.4
+   }
+  ]
+ }
+}

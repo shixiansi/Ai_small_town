@@ -1,0 +1,19 @@
+{
+  "_readme": "zone → host 家具 id 的手工映射表。锚点由 host 推导（host 前方 1.2 格），不再靠几何猜。只写已确认的；未列出的 zone 由工具报 TODO，不静默取最近。",
+  "_confirmed": {
+    "desk": "desk",
+    "library": "shelfA",
+    "screen": "whiteboardA",
+    "printer": "printA",
+    "dining": "tableA",
+    "bed": "bedA",
+    "wardrobe": "wardA",
+    "window": "curtains"
+  },
+  "_todo": [
+    "door", "board", "mail", "tea", "sofa", "relax", "recover", "fridge", "cook", "kitchenprep",
+    "washup", "bath", "farm", "pond", "market", "park", "bench", "well", "yield", "fish",
+    "catHome", "chiefHome", "docHome", "walk", "shop", "sit", "balcony", "stretch", "coffee",
+    "phone", "trophy", "pet", "sleep_cat", "nap", "idle_spot", "garden"
+  ]
+}
