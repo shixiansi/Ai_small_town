@@ -2413,3 +2413,49 @@ NPC: cat:home@41,22  chief:home@47,24  doc:home@54,28
 - 烹饪 / NPC 聊天 / 串门的 `postStatDelta` 仍在前端（单用户动作，量级小；多开会轻微叠加）
 - 证据板是"每位访客自己的读数"，不属于世界状态，故意留在 localStorage
 - 记忆层（NPC 对鱼的关系值、昨天发生了什么）尚未开始
+
+---
+
+## v2.8-b / v2.9 第一批：数值单点写入 + 旧床归位 + NPC 关系值（2026-11-17）
+
+### b1 数值单点写入（`/api/interact`）
+- 前端**不再自己算 delta**：删除 `postStatDelta`，改为 `interact(kind, extra)` 发"我做了什么事"
+- hub 用两张表决定金额：`INTERACT`（fish / chat / visit_home / visit_away / farm_work）与
+  `RECIPE_STATS`（8 道菜，id 与前端配方表由门禁第 29 项对齐）
+- 未知 kind / 未知菜品返回 **400**，不再静默吞掉
+- 顺手修掉一个一直影响本地开发的问题：前端把路径写死成 `/office-hub-api/stats`，
+  而本地 `dev.mjs`（4322）没有这个前缀 ⇒ **本地数值从来没到过 hub**。
+  现在统一走 `hubApiUrl(name)`：本地直连 `127.0.0.1:4321` / 局域网同主机 / 线上 `/office-hub-api`
+
+### b2 旧床归位
+| 对象 | 旧 | 新 |
+|---|---|---|
+| `catBed` | (42.5, 3.2) | (41.3, 21.2) |
+| `chiefChair1` | (52.5, 3.2) | (47.4, 23.3) |
+| `living_cat` 锚点 | (41.4, 3.8) | (42.4, 22.4) |
+| `living_chief` 锚点 | (50.4, 4.4) | (49.0, 24.6) |
+
+v75 已经把房子和家具搬到南排，这两个床位还留在 v83 之前的顶部 —— NPC 睡觉会走到空地上。
+门禁 25 的两条"床不在室内"WARN 因此清零（全局 WARN 3 → 1，只剩 nginx 未配）。
+
+### b3 NPC 关系值（v2.9 第一块）
+- `hub/npc.json`（`OFFICE_NPC_FILE` 可改）：`{ affinity, chats, lastAt }`，只增不减、上限 20
+- 三档：`stranger(<3)` / `familiar(3~7)` / `close(>=8)`；升级时打日志 + 广播 `{type:"npc"}`
+- `interact("chat")` 自动 +1（阈值只存在于 hub）
+- `/api/npc-feed` 增发 `affinity`，前端按档位改演法：
+  familiar 40% 加「（熟门熟路地）」，close 55% 先「（隔着半条街就朝你挥手）」再说话
+- 退出时把去抖存档（npc.json / farm.json）刷盘，刚聊完的那句话不丢
+
+### 门禁（28 → 30 项）
+| # | 项 | 拦什么 |
+|---|---|---|
+| 29 | 数值单点写入 | 缺 INTERACT/RECIPE_STATS/api/interact、8 道菜 id 对不上、前端残留 postStatDelta、硬编码反代前缀、五处调用没走 interact |
+| 30 | NPC 关系值 | 缺存档路径/bumpAffinity/上限、档位不足三档、chat 没挂钩、npc-feed 没下发、前端缺档位分支 |
+
+真机 e2e：chat → social 55→65 / mood +3；cook(sushi) → hunger 70→100（封顶）/ mood +8；
+未知 kind 与菜品均 400；连聊 9 次 → affinity 9 / tier close，日志按 3 与 8 两次升级。
+
+### 还没做（v2.9 剩余）
+- 关系值还没有"后果"：close 档位除了台词和挥手，还没有影响 NPC 的日程（比如主动来敲门、留东西）
+- 记忆（昨天发生了什么）仍未落地；`hub/npc.json` 只记次数，不记内容
+- 证据板仍是每位访客自己的读数（故意留在 localStorage，不属于世界状态）
