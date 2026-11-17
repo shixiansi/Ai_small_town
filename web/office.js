@@ -1368,6 +1368,12 @@ var poolDefs = [
 { x: 1.9,  y: 9.2,  r: 1.6, a: 0.13, tint: 0xffedd0, room: "bedroom" },  // 卧室换衣站（立镜）
 { x: 12.7, y: 3.2,  r: 1.8, a: 0.18, tint: 0xffe2a8, room: "bath" },     // 卫浴镜前灯
 { x: 20.5, y: 3.2,  r: 2.0, a: 0.18, tint: 0xffe2a8, room: "kitchen" },  // 厨房操作台灯
+{ x: 41.4, y: 21.6, r: 1.6, a: 0.17, tint: 0xffe2a8, room: "nbCat" },     // 喵酱家：床边
+{ x: 43.0, y: 24.4, r: 1.5, a: 0.13, tint: 0xffedd0, room: "nbCat" },     // 喵酱家：起居桌
+{ x: 47.4, y: 21.2, r: 1.5, a: 0.13, tint: 0xffe2a8, room: "nbChief" },   // 村长家：床区
+{ x: 48.6, y: 23.2, r: 1.7, a: 0.16, tint: 0xffedd0, room: "nbChief" },   // 村长家：餐桌
+{ x: 53.2, y: 21.6, r: 1.5, a: 0.15, tint: 0xffe2a8, room: "nbDoc" },     // 博士家：书桌
+{ x: 54.0, y: 25.2, r: 1.4, a: 0.12, tint: 0xffedd0, room: "nbDoc" },     // 博士家：起居角
 ];
 poolDefs.forEach(function (d) {
 var img = s.add.image(d.x * TILE, WALL_H + d.y * TILE, lightPoolTex)

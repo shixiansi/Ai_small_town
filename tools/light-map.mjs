@@ -62,15 +62,17 @@ for (let sy = 0; sy < ROWS * SUB; sy++) {
 const stats = {};
 ROOM_KEYS.forEach(k => {
   const r = rooms[k]; if (!r) return;
-  let sum = 0, n = 0, minV = 1, maxV = 0;
+  let sum = 0, n = 0, minV = 1, maxV = 0, lit = 0;
   for (let y = r.y; y < r.y + r.h; y++) for (let x = r.x; x < r.x + r.w; x++) {
     for (let dy = 0; dy < SUB; dy++) for (let dx = 0; dx < SUB; dx++) {
       const v = light[((y * SUB + dy) * SW) + (x * SUB + dx)];
       if (v === undefined) continue;
       sum += v; n++; if (v < minV) minV = v; if (v > maxV) maxV = v;
+      if (v > AMB + 0.05) lit++;
     }
   }
-  stats[k] = { avg: n ? sum / n : 0, min: minV, max: maxV, pools: pools.filter(p => p.room === k).length };
+  // 平均亮度在"房间大、灯池小"时天然接近 ambient，判别力差；补一个"被照亮面积占比"
+  stats[k] = { avg: n ? sum / n : 0, min: minV, max: maxV, cover: n ? lit / n : 0, pools: pools.filter(p => p.room === k).length };
 });
 
 // 画图
@@ -129,7 +131,7 @@ console.log("─".repeat(70));
 console.log("每地块（平均 / 最暗 / 最亮 · 灯池数）：");
 ROOM_KEYS.forEach(k => {
   const s = stats[k]; if (!s) return;
-  const flag = s.pools === 0 ? "  ⚠ 无灯池" : (s.avg < AMB + 0.05 ? "  ⚠ 与 ambient 几乎无差" : "");
-  console.log("  " + k.padEnd(9) + s.avg.toFixed(3) + " / " + s.min.toFixed(3) + " / " + s.max.toFixed(3) + " · 灯池 " + s.pools + flag);
+  const flag = s.pools === 0 ? "  ⚠ 无灯池" : (s.cover < 0.05 ? "  ⚠ 照亮面积 <5%" : (s.cover < 0.15 ? "  · 照亮面积偏小" : "  ✓"));
+  console.log("  " + k.padEnd(9) + "均" + s.avg.toFixed(3) + " 最亮" + s.max.toFixed(3) + " 照亮" + (s.cover * 100).toFixed(0) + "% · 灯池 " + s.pools + flag);
 });
 console.log("─".repeat(70) + "\n");
