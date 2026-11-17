@@ -343,7 +343,7 @@ loadErrors = [];
 this.load.off("loaderror", onLoadError);
 this.load.on("loaderror", onLoadError);
 this.load.json("manifest", "assets/manifest.json?v=e700c6bc");
-this.load.json("mapdata", "map.json?v=7d06cbe5");
+this.load.json("mapdata", "map.json?v=16127002");
 };
 SceneBoot.prototype.create = function () {
 var manifest = this.cache.json.get("manifest");
@@ -478,9 +478,9 @@ if (scene) setWeather(scene, weather === "sunny" ? "rainy" : "sunny");
 }
 });
 var NPCS = [
-{ id: "cat",   name: "喵酱", skin: "whale_cat",   bed: "catBed",      bedAt: [41.3, 21.2], roam: { x0: 39, y0: 16.2, x1: 46.4, y1: 18.6 }, homeHours: [23, 7],  desc: "镇上的橘猫" },
-{ id: "chief", name: "村长", skin: "whale_chief", bed: "chiefChair1", bedAt: [47.4, 23.3], roam: { x0: 46.6, y0: 16.2, x1: 50.4, y1: 18.6 }, homeHours: [20, 8],  desc: "热心的水豚村长" },
-{ id: "doc",   name: "博士", skin: "whale_doc",   bed: "docArm",      bedAt: [54.3, 27.2], roam: { x0: 50.6, y0: 16.2, x1: 54.4, y1: 18.6 }, homeHours: [21, 13], desc: "研究潮汐的章鱼" }
+{ id: "cat",   name: "喵酱", skin: "whale_cat",   bed: "catBed",      bedAt: [41.3, 21.2], roam: { x0: 40.2, y0: 20.2, x1: 44.8, y1: 27.6 }, homeHours: [23, 7],  desc: "镇上的橘猫" },
+{ id: "chief", name: "村长", skin: "whale_chief", bed: "chiefBed",     bedAt: [44.5, 21.2], roam: { x0: 44.2, y0: 20.2, x1: 50.4, y1: 27.6 }, homeHours: [20, 8],  desc: "热心的水豚村长" },
+{ id: "doc",   name: "博士", skin: "whale_doc",   bed: "docBed",       bedAt: [51.5, 21.2], roam: { x0: 50.8, y0: 20.2, x1: 54.6, y1: 27.6 }, homeHours: [21, 13], desc: "研究潮汐的章鱼" }
 ];
 function npcBedPos(def) {
 var md = scene && scene.mapdata;
@@ -1498,6 +1498,7 @@ function disposeFurnitureLayer(s) {
 (s.placed || []).forEach(function (p) {
 if (p.spr) { try { p.spr.destroy(); } catch (e) {} }
 if (p.shadow) { try { p.shadow.destroy(); } catch (e) {} }
+if (p.label) { try { p.label.destroy(); } catch (e) {} }   // v2.11：挂牌名牌文字跟着销毁
 });
 s.placed = [];
 customPlaceholders = [];   // 指向被销毁的实例，必须一起清
@@ -1625,6 +1626,14 @@ if (f._custom) customPlaceholders.push(p);
 if (f.a === "computer") s.fxDirect.pc = { spr: spr, m: m, f: f };
 if (f.a === "printer") s.fxDirect.printer = { spr: spr, m: m, f: f };
 if (f.a === "office-chair") s.fxDirect.chair = { spr: spr, m: m, f: f };
+if (f.id === "signCat" || f.id === "signChief" || f.id === "signDoc") {
+var _signNames = { signCat: "喵酱家", signChief: "村长家", signDoc: "博士家" };
+p.label = s.add.text(p.x, p.y - 30, _signNames[f.id], {
+fontFamily: "PingFang SC, Microsoft YaHei, sans-serif",
+fontSize: "12px", color: "#fff3d6", backgroundColor: "#3a2c1855",
+padding: { x: 3, y: 1 }
+}).setOrigin(0.5, 1).setDepth(p.depth + 1);
+}
 });
 syncSwitchVisuals(s);   // v50：建完家具层同步开关外观（必须在 return 之前）
 buildBlockedGrid(s);
@@ -4838,6 +4847,12 @@ homeChief: { name: "村长家", desc: "水豚村长的宅子，门口的灯是�
 dyn: function () { return npcHomeState("chief") === "home" ? "● 村长在家（点房子进屋）" : "○ 村长在镇上转悠"; } },
 homeDoc:   { name: "博士家", desc: "章鱼博士的研究所，墙壁里贴满潮汐表。点门或沙发可以进去串门。",
 dyn: function () { return npcHomeState("doc") === "home" ? "● 博士在家（点房子进屋）" : "○ 博士去海边观测了"; } },
+signCat:   { name: "喵酱家", desc: "西卧室区那扇门。门垫上永远有鱼干渣。",
+dyn: function () { return npcHomeState("cat") === "home" ? "● 喵酱在家" : "○ 喵酱出门遛弯了"; } },
+signChief: { name: "村长家", desc: "中间那扇门，厨房香味就是从这儿飘出来的。",
+dyn: function () { return npcHomeState("chief") === "home" ? "● 村长在家" : "○ 村长在镇上转悠"; } },
+signDoc:   { name: "博士家", desc: "东书房区那扇门，屋里贴满潮汐表。",
+dyn: function () { return npcHomeState("doc") === "home" ? "● 博士在家" : "○ 博士去海边观测了"; } },
 farmField: { name: "自家农田", desc: "五列四排的耕地：锄地 → 播种 → 浇水 → 施肥 → 等它熟。点田地就会干对应的活。",
 dyn: function () { var s = farmSummary(); return "熟了 " + s.ready + " 株 · 在长 " + s.growing + " 株 · 已开垦 " + s.tilled + " 块"; } },
 pondWater: { name: "鱼塘", desc: "花园东南角的小水塘，扔根线就能坐一下午。看见「！」浮起来就点一下起竿。",
@@ -6292,6 +6307,11 @@ stopIdleLife(); unsit(); exitNeighborHome();
 noteLocalEvent(e.key);
 goLocal(e.zone, localText(e), e.act, e.face, !!instant, statFillFor(e.key));
 startIdleLife(9000);
+return true;
+},
+freezeIdle: function (on) {
+if (on) stopIdleLife();
+else startIdleLife(1500);
 return true;
 },
 localEvents: function () {

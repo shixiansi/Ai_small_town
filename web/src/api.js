@@ -240,6 +240,12 @@
         startIdleLife(9000);
         return true;
       },
+      /* v2.11 走查专用：冻结/解冻鱼的自主闲逛（localAct 后 9s 会自己散步，走查截图被打断） */
+      freezeIdle: function (on) {
+        if (on) stopIdleLife();
+        else startIdleLife(1500);
+        return true;
+      },
       localEvents: function () {
         return LOCAL_EVENTS.map(function (e) {
           return { key: e.key, zone: e.zone, label: e.label, icon: e.icon,

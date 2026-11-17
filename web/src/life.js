@@ -215,6 +215,13 @@
       dyn: function () { return npcHomeState("chief") === "home" ? "● 村长在家（点房子进屋）" : "○ 村长在镇上转悠"; } },
     homeDoc:   { name: "博士家", desc: "章鱼博士的研究所，墙壁里贴满潮汐表。点门或沙发可以进去串门。",
       dyn: function () { return npcHomeState("doc") === "home" ? "● 博士在家（点房子进屋）" : "○ 博士去海边观测了"; } },
+    /* v2.11：大屋三户门口的挂牌——点牌子就知道这是谁家 */
+    signCat:   { name: "喵酱家", desc: "西卧室区那扇门。门垫上永远有鱼干渣。",
+      dyn: function () { return npcHomeState("cat") === "home" ? "● 喵酱在家" : "○ 喵酱出门遛弯了"; } },
+    signChief: { name: "村长家", desc: "中间那扇门，厨房香味就是从这儿飘出来的。",
+      dyn: function () { return npcHomeState("chief") === "home" ? "● 村长在家" : "○ 村长在镇上转悠"; } },
+    signDoc:   { name: "博士家", desc: "东书房区那扇门，屋里贴满潮汐表。",
+      dyn: function () { return npcHomeState("doc") === "home" ? "● 博士在家" : "○ 博士去海边观测了"; } },
     farmField: { name: "自家农田", desc: "五列四排的耕地：锄地 → 播种 → 浇水 → 施肥 → 等它熟。点田地就会干对应的活。",
       dyn: function () { var s = farmSummary(); return "熟了 " + s.ready + " 株 · 在长 " + s.growing + " 株 · 已开垦 " + s.tilled + " 块"; } },
     pondWater: { name: "鱼塘", desc: "花园东南角的小水塘，扔根线就能坐一下午。看见「！」浮起来就点一下起竿。",

@@ -10,9 +10,9 @@
    *  - 博士 → docArm（扶手椅）
    * bedAt 只是兜底，运行时用 npcBedPos() 按 id 从 mapdata 取真实坐标。 */
   var NPCS = [
-    { id: "cat",   name: "喵酱", skin: "whale_cat",   bed: "catBed",      bedAt: [41.3, 21.2], roam: { x0: 39, y0: 16.2, x1: 46.4, y1: 18.6 }, homeHours: [23, 7],  desc: "镇上的橘猫" },
-    { id: "chief", name: "村长", skin: "whale_chief", bed: "chiefChair1", bedAt: [47.4, 23.3], roam: { x0: 46.6, y0: 16.2, x1: 50.4, y1: 18.6 }, homeHours: [20, 8],  desc: "热心的水豚村长" },
-    { id: "doc",   name: "博士", skin: "whale_doc",   bed: "docArm",      bedAt: [54.3, 27.2], roam: { x0: 50.6, y0: 16.2, x1: 54.4, y1: 18.6 }, homeHours: [21, 13], desc: "研究潮汐的章鱼" }
+    { id: "cat",   name: "喵酱", skin: "whale_cat",   bed: "catBed",      bedAt: [41.3, 21.2], roam: { x0: 40.2, y0: 20.2, x1: 44.8, y1: 27.6 }, homeHours: [23, 7],  desc: "镇上的橘猫" },
+    { id: "chief", name: "村长", skin: "whale_chief", bed: "chiefBed",     bedAt: [44.5, 21.2], roam: { x0: 44.2, y0: 20.2, x1: 50.4, y1: 27.6 }, homeHours: [20, 8],  desc: "热心的水豚村长" },
+    { id: "doc",   name: "博士", skin: "whale_doc",   bed: "docBed",       bedAt: [51.5, 21.2], roam: { x0: 50.8, y0: 20.2, x1: 54.6, y1: 27.6 }, homeHours: [21, 13], desc: "研究潮汐的章鱼" }
   ];
   /* 从 mapdata 查这张床的真实格坐标；查不到就用兜底 bedAt */
   function npcBedPos(def) {

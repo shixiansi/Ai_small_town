@@ -122,7 +122,7 @@ export const ASSET_RULES = {
   "bench-park":   { place: "outdoor", mount: ["floor"], body: "full", note: "公园长椅" },
   "market-stall": { place: "outdoor", mount: ["floor"], body: "full", note: "市集棚位" },
   "stall-fruit":  { place: "outdoor", mount: ["floor"], body: "full", note: "水果摊" },
-  "sign-inn":     { place: "outdoor", mount: ["wall"], body: "none", note: "客栈招牌，挂墙" },
+  "sign-inn":     { place: "both", mount: ["wall"], body: "none", note: "招牌门牌，挂墙（门口室内外通用）" },
   "mailbox":      { place: "outdoor", mount: ["wall"], body: "none", note: "信箱，挂门边墙上" },
   "cottage":      { place: "outdoor", mount: ["floor"], body: "full", note: "小屋（建筑体）" },
   "farmhouse":    { place: "outdoor", mount: ["floor"], body: "full", note: "农舍（建筑体）" },

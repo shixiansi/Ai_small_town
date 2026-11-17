@@ -9,6 +9,7 @@
     (s.placed || []).forEach(function (p) {
       if (p.spr) { try { p.spr.destroy(); } catch (e) {} }
       if (p.shadow) { try { p.shadow.destroy(); } catch (e) {} }
+      if (p.label) { try { p.label.destroy(); } catch (e) {} }   // v2.11：挂牌名牌文字跟着销毁
     });
     s.placed = [];
     customPlaceholders = [];   // 指向被销毁的实例，必须一起清
@@ -175,6 +176,16 @@
       if (f.a === "computer") s.fxDirect.pc = { spr: spr, m: m, f: f };
       if (f.a === "printer") s.fxDirect.printer = { spr: spr, m: m, f: f };
       if (f.a === "office-chair") s.fxDirect.chair = { spr: spr, m: m, f: f };
+      /* v2.11：门口挂牌叠名字——sign-inn 素材是光板木牌，玩家看不出是谁家。
+       * signCat/signChief/signDoc 三块牌子在其上方挂名牌文字（与 NPC 名牌同款样式）。 */
+      if (f.id === "signCat" || f.id === "signChief" || f.id === "signDoc") {
+        var _signNames = { signCat: "喵酱家", signChief: "村长家", signDoc: "博士家" };
+        p.label = s.add.text(p.x, p.y - 30, _signNames[f.id], {
+          fontFamily: "PingFang SC, Microsoft YaHei, sans-serif",
+          fontSize: "12px", color: "#fff3d6", backgroundColor: "#3a2c1855",
+          padding: { x: 3, y: 1 }
+        }).setOrigin(0.5, 1).setDepth(p.depth + 1);
+      }
     });
 
     syncSwitchVisuals(s);   // v50：建完家具层同步开关外观（必须在 return 之前）
