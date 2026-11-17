@@ -269,27 +269,27 @@
   },
   {
    "a": "bathtub",
-   "x": 12.7,
-   "y": 2.5,
+   "x": 14,
+   "y": 2.6,
    "id": "bathA",
    "sc": 1
   },
   {
    "a": "toilet",
-   "x": 14.1,
-   "y": 2.4
+   "x": 13.8,
+   "y": 11.4
   },
   {
    "a": "sink",
-   "x": 11.1,
-   "y": 2.2,
+   "x": 12.3,
+   "y": 2.4,
    "id": "sinkA",
    "wall": true
   },
   {
    "a": "mirror",
-   "x": 11.1,
-   "y": 1.6,
+   "x": 11.2,
+   "y": 2.4,
    "sc": 0.9,
    "wall": true
   },
@@ -356,13 +356,6 @@
    "x": 7.1,
    "y": 2.8,
    "sc": 0.85
-  },
-  {
-   "a": "nightstand",
-   "x": 14.3,
-   "y": 7.4,
-   "sc": 0.85,
-   "id": "bathcabA"
   },
   {
    "a": "plant-office",
@@ -445,17 +438,9 @@
   },
   {
    "a": "potion-shelf",
-   "x": 14.4,
-   "y": 2.1,
+   "x": 15,
+   "y": 2.6,
    "wall": true
-  },
-  {
-   "a": "crown-cushion",
-   "x": 14.2,
-   "y": 8,
-   "o": true,
-   "id": "rechargeA",
-   "sc": 1
   },
   {
    "a": "gramophone",
@@ -738,31 +723,15 @@
    "sc": 0.5
   },
   {
-   "a": "nightstand",
-   "x": 12.8,
-   "y": 6.8,
-   "sc": 0.8,
-   "id": "bathCab2"
-  },
-  {
-   "a": "coffee-mug",
-   "x": 12.8,
-   "y": 6.2,
-   "on": "bathCab2",
-   "dx": 0,
-   "dy": 2,
-   "sc": 0.8
-  },
-  {
    "a": "plant-office",
-   "x": 15.2,
-   "y": 6.8,
+   "x": 11,
+   "y": 9.6,
    "sc": 0.85
   },
   {
    "a": "book-stack",
-   "x": 10.9,
-   "y": 6.6,
+   "x": 2.6,
+   "y": 12,
    "sc": 0.5
   },
   {
@@ -1146,30 +1115,19 @@
    "a": "toilet",
    "x": 12,
    "y": 11.6,
-   "id": "baToilet"
-  },
-  {
-   "a": "sink",
-   "x": 14.4,
-   "y": 11.9,
-   "id": "baSink2"
+   "id": "baToilet",
+   "__del": true
   },
   {
    "a": "cabinet",
-   "x": 13,
-   "y": 13.7,
+   "x": 12.2,
+   "y": 12.6,
    "id": "baCabinet"
   },
   {
-   "a": "plant-office",
-   "x": 11.2,
-   "y": 13.6,
-   "id": "baPlant2"
-  },
-  {
    "a": "paper-stack",
-   "x": 14.5,
-   "y": 13.8,
+   "x": 14.9,
+   "y": 12.4,
    "id": "baPaper"
   },
   {
@@ -1471,6 +1429,12 @@
    "x": 1.7,
    "y": 7.9,
    "id": "bdDresser"
+  },
+  {
+   "a": "crown-cushion",
+   "x": 15.2,
+   "y": 9.7,
+   "id": "rechargeA"
   }
  ],
  "zones": {
@@ -1753,8 +1717,8 @@
   },
   "recover": {
    "anchor": [
-    14.2,
-    9.4
+    15.2,
+    11
    ],
    "face": "n",
    "sit": {

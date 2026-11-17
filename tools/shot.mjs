@@ -74,6 +74,14 @@ async function cdp(ws, method, params = {}, sessionId) {
       clearTimeout(t); ws.removeEventListener("message", onMsg);
       m.error ? rej(new Error(method + ": " + m.error.message)) : res(m.result);
     };
+// --room=<office|bedroom|bath|kitchen|nbCat|nbChief|nbDoc>：只拍这一间房（房间矩形与家具层同源）
+if (arg.room) {
+  const furnSrc = fs.readFileSync(path.join(ROOT, "web", "src", "furniture.js"), "utf8");
+  const mm = new RegExp("\\b" + String(arg.room) + ":\\s*\\[(\\d+),\\s*(\\d+),\\s*(\\d+),\\s*(\\d+)\\]").exec(furnSrc);
+  if (!mm) { console.error("找不到房间矩形: " + arg.room); process.exit(1); }
+  SHOTS.length = 0;
+  SHOTS.push({ id: "room-" + arg.room, col: 0, row: 0, x0: +mm[1], y0: +mm[2], w: +mm[3], h: +mm[4], note: "房间 " + arg.room + "（" + mm[3] + "×" + mm[4] + " 格）" });
+}
     ws.addEventListener("message", onMsg);
   });
 }
