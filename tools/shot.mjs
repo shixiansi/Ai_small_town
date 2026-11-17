@@ -155,7 +155,11 @@ async function main() {
         ["minimap", "room-tabs", "debug-toggle"].forEach(id => {
           const el = document.getElementById(id); if (el) el.style.visibility = "hidden";
         });
-        c.stopFollow(); c.setLerp(1, 1); c.setZoom(${zoom}); c.centerOn(${cx}, ${cy});
+        c.stopFollow(); c.setLerp(1, 1);
+        // 关键：先把相机边界放到世界外面。默认 setBounds(0,0,W,H) 会把边缘机位的 scrollX 钳住，
+        // 于是"这块居中"的假设不成立（c0r0 就偏了约 265 画布像素，根本没到地图左边缘）。
+        c.setBounds(-10000, -10000, 20000, 20000);
+        c.setZoom(${zoom}); c.centerOn(${cx}, ${cy});
         sc.scene.pause();
         c.centerOn(${cx}, ${cy});
         return true;
