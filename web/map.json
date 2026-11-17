@@ -1273,6 +1273,58 @@
    "on": "kSideTable",
    "dx": 0,
    "dy": -6
+  },
+  {
+   "a": "bench-park",
+   "x": 45.5,
+   "y": 4.5,
+   "id": "plzBench1"
+  },
+  {
+   "a": "bench-park",
+   "x": 52.5,
+   "y": 10.5,
+   "id": "plzBench2"
+  },
+  {
+   "a": "flowers",
+   "x": 44,
+   "y": 8,
+   "id": "plzFlower1",
+   "o": true
+  },
+  {
+   "a": "flowers",
+   "x": 53.6,
+   "y": 4,
+   "id": "plzFlower2",
+   "o": true
+  },
+  {
+   "a": "street-lamp",
+   "x": 46.5,
+   "y": 7.6,
+   "id": "plzLamp1"
+  },
+  {
+   "a": "street-lamp",
+   "x": 51.5,
+   "y": 2.6,
+   "id": "plzLamp2"
+  },
+  {
+   "a": "well",
+   "x": 48.6,
+   "y": 6.4,
+   "id": "plzWell"
+  },
+  {
+   "a": "sign-inn",
+   "x": 44.6,
+   "y": 11.4,
+   "id": "plzSign",
+   "o": true,
+   "wall": true
   }
  ],
  "zones": {
