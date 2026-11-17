@@ -2347,3 +2347,69 @@ NPC: cat:home@41,22  chief:home@47,24  doc:home@54,28
 - `catBed (42.5, 3.2)` / `chiefChair1 (52.5, 3.2)` 仍是旧坐标（顶部空带），NPC 睡觉会走到空地上；
   `npc.js` 的 `bedAt` 兜底值 `[41.3,21.2]` / `[47.4,23.3]` 才是新室内位置 —— check 第 25 项把它作为 WARN 长期显示
 - 观众数归一（多开网页会叠加多次 `POST /api/stats`）与「生活模拟搬到 hub」属 v2.8「一个世界」范围
+
+---
+
+## v2.8-a 「一个世界」第一刀：生活决策 + 农场搬到 hub（2026-11-17）
+
+> 起因：v2.7 之后复核出的 P0 —— **世界不是一个，是每个浏览器一个**。
+> 生活模拟跑在前端、结算后 `POST /api/stats`；农场在 `localStorage`。两个观众 = 两条鱼的不同人生，
+> 数值被 N 份增量叠加（人越多她越不饿），农场各长各的。
+> 这一版把"决定"和"记账"都搬到服务端，前端退化成画布。
+
+### 生活决策（hub/lifeTick）
+- 新增 `hub/life_events.json`（24 条：接水/看窗外/翻书/对白板/阳台伸懒腰/换衣/照镜子/长椅歇脚/
+  下地/井边打水/街边坐/逛花园/市集/沙发歪一会儿/放唱片/街机/翻冰箱/做早饭/做晚饭/洗脸/充电垫/收拾桌面）
+- `lifeTick`：`OFFICE_LIFE_MIN`（默认 240s，±20% 抖动）→ 按需求曲线加权挑一条 →
+  **hub 自己 `applyStatDelta` 结算 fills** → `applyEvent(priority 1)` 广播
+- `LIFE_BLOCKED`：working/writing/…/sleeping/error/arrive 期间不插话（正事和睡觉最大）
+- 为此补齐 12 个 state：`tea_time / gaze / reading / thinking / noting / breathe / dressing /
+  preening / resting / tilling / wellside / bench_sit`（全部 `mood: "idle"` = 黄点"过日子"，
+  不进 ACTIVE_STATES）。状态总数 28 → 40
+- 前端：`life.js` 的本地动作**不再 postStatDelta**；新增 `LOCAL_RADIUS=6` + `hubOnlineForLife()`，
+  在线时只做"就地小动作"，离线才恢复自由漫游（否则两边同时改主意会互相打断）
+
+四层事件源的分工（现在）：
+| 层 | 频率 | 是否改状态 | 谁决定 |
+|---|---|---|---|
+| 作息 `schedule.json` | 小时级 | 会（占住） | 固定表 |
+| 生活 `life_events.json` | 4 分钟级 | 会 | hub 按需求加权 |
+| 微事件 `micro_events.json` | 3 分钟级 | 否（只播报） | hub 加权 |
+| 随机事件 `random_events.json` | 2~6h | 会 | hub 加权 |
+| 本地生活 `life.js` | 5~10s | 否（只演） | 浏览器（离线兜底） |
+
+### 农场（hub/farm.json）
+- 20 格 / 5 种作物 / 8 个配方，一份真相；`GET/POST /api/farm`（每 IP 150ms 节流）
+- 动作：till / water / sow / feed / harvest / fish，规则与前端逐条对齐
+- 30s tick：跨天结算 + 生长推进；有变化广播 `type:"farm"`，两个浏览器同步
+- **闭环**（修掉"种三次后永久停摆"）：市集每天补 2 粒种子（按星期轮换 5 种作物）+
+  每两天 1 份肥料 + 收割 60% 返 1 粒同种种子
+- 前端：在线走 hub（本地先算保证气泡文案准，再用 hub 返回覆盖），离线退回 localStorage 镜像
+- 播种会把本地挑的作物一起发上去，避免"本地选小麦、hub 随机成胡萝卜"
+
+### 新增环境变量
+| 变量 | 默认 | 作用 |
+|---|---|---|
+| `OFFICE_LIFE_MIN` | 240 | 生活决策间隔（秒） |
+| `OFFICE_FARM_FILE` | `hub/farm.json` | 农场存档路径 |
+| `OFFICE_SCHEDULE_OFF` | 无 | 置 `1` 只关作息引擎，用来单独验证生活决策层 |
+
+### 门禁（26 → 28 项）
+| # | 项 | 拦什么 |
+|---|---|---|
+| 27 | 生活决策在 hub | 缺 lifeTick / 自己结算 fills / LIFE_BLOCKED、事件表不在白名单、
+前端还在 postStatDelta、缺活动半径 |
+| 28 | 农场在 hub | 缺 farm API / 跨天 / 六个动作、没有每天补种子或收割返种、
+前端在线仍推进生长、本地镜像被删、钓鱼不回写 |
+
+验收（真机）：
+- 生活决策：`OFFICE_SCHEDULE_OFF=1 OFFICE_LIFE_MIN=60` → 125s 后自动推进到
+  `snacking「开冰箱找了点吃的」`，stats `hunger 70→78 / hygiene 75→73`（服务端单点结算）
+- 双浏览器一致性：两个 WS 客户端同时连，A 触发 `till` → 两边都收到 `farm` 广播，
+  两次 `GET /api/farm` 返回同一块地
+- 农场闭环：把存档日期改到两天前再启动 → 浇水清除、progress 0.4→1、市集补 `carrot×2`
+
+### 还没搬（v2.8-b / v2.9）
+- 烹饪 / NPC 聊天 / 串门的 `postStatDelta` 仍在前端（单用户动作，量级小；多开会轻微叠加）
+- 证据板是"每位访客自己的读数"，不属于世界状态，故意留在 localStorage
+- 记忆层（NPC 对鱼的关系值、昨天发生了什么）尚未开始
