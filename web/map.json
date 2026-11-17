@@ -1102,6 +1102,96 @@
    "id": "gfence9",
    "o": true,
    "wall": true
+  },
+  {
+   "a": "bookshelf-office",
+   "x": 2,
+   "y": 12.6,
+   "id": "bdShelf"
+  },
+  {
+   "a": "round-table",
+   "x": 4.8,
+   "y": 12.2,
+   "id": "bdTable"
+  },
+  {
+   "a": "book-stack",
+   "x": 4.8,
+   "y": 12.2,
+   "id": "bdBook",
+   "on": "bdTable",
+   "dx": 0,
+   "dy": -6
+  },
+  {
+   "a": "armchair",
+   "x": 6.7,
+   "y": 12.8,
+   "id": "bdArm"
+  },
+  {
+   "a": "floor-lamp",
+   "x": 8.7,
+   "y": 11.7,
+   "id": "bdLamp"
+  },
+  {
+   "a": "plant-office",
+   "x": 8.9,
+   "y": 13.7,
+   "id": "bdPlant"
+  },
+  {
+   "a": "mirror",
+   "x": 1.6,
+   "y": 10.4,
+   "id": "bdMirror"
+  },
+  {
+   "a": "nightstand",
+   "x": 3.2,
+   "y": 13.7,
+   "id": "bdStand2"
+  },
+  {
+   "a": "coffee-mug",
+   "x": 3.2,
+   "y": 13.7,
+   "id": "bdMug",
+   "on": "bdStand2",
+   "dx": 0,
+   "dy": -6
+  },
+  {
+   "a": "toilet",
+   "x": 12,
+   "y": 11.6,
+   "id": "baToilet"
+  },
+  {
+   "a": "sink",
+   "x": 14.4,
+   "y": 11.9,
+   "id": "baSink2"
+  },
+  {
+   "a": "cabinet",
+   "x": 13,
+   "y": 13.7,
+   "id": "baCabinet"
+  },
+  {
+   "a": "plant-office",
+   "x": 11.2,
+   "y": 13.6,
+   "id": "baPlant2"
+  },
+  {
+   "a": "paper-stack",
+   "x": 14.5,
+   "y": 13.8,
+   "id": "baPaper"
   }
  ],
  "zones": {
