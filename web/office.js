@@ -1380,6 +1380,20 @@ var poolDefs = [
 { x: 14.0, y: 4.2,  r: 1.9, a: 0.15, tint: 0xffe2a8, room: "bath" },      // 浴缸区（原来只有镜前灯）
 { x: 19.0, y: 7.4,  r: 2.0, a: 0.16, tint: 0xffedd0, room: "kitchen" },   // 餐桌区（原来只有操作台灯）
 ];
+if (/[?&]overlay=light/.test(location.search)) {
+var og = s.add.graphics().setDepth(9000);
+poolDefs.forEach(function (d) {
+og.lineStyle(2, 0xff5555, 0.95);
+og.strokeCircle(d.x * TILE, WALL_H + d.y * TILE, d.r * TILE);
+og.lineStyle(1, 0xffffff, 0.7);
+og.strokeCircle(d.x * TILE, WALL_H + d.y * TILE, 5);
+og.fillStyle(0xff5555, 0.9);
+og.fillCircle(d.x * TILE, WALL_H + d.y * TILE, 3);
+var lab = s.add.text(d.x * TILE + 10, WALL_H + d.y * TILE - 16,
+"r" + d.r + " a" + d.a, { font: "12px monospace", color: "#ffd0d0" }).setDepth(9001);
+lab.setShadow(1, 1, "#000", 2);
+});
+}
 poolDefs.forEach(function (d) {
 var img = s.add.image(d.x * TILE, WALL_H + d.y * TILE, lightPoolTex)
 .setBlendMode(Phaser.BlendModes.ADD)
