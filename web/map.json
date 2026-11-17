@@ -507,30 +507,6 @@
    "id": "f0044"
   },
   {
-   "a": "cottage",
-   "x": 42.2,
-   "y": 19.6,
-   "id": "homeCat",
-   "sc": 1,
-   "wall": 1
-  },
-  {
-   "a": "house-modern",
-   "x": 48.2,
-   "y": 19.6,
-   "id": "homeChief",
-   "sc": 1,
-   "wall": 1
-  },
-  {
-   "a": "farmhouse",
-   "x": 53.4,
-   "y": 19.6,
-   "id": "homeDoc",
-   "sc": 1,
-   "wall": 1
-  },
-  {
    "a": "well",
    "x": 46.6,
    "y": 15.4,

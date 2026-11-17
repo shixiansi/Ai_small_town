@@ -11,7 +11,13 @@
    * 每户：home=门外遮挡层 id、door=敲门 zone、living=屋内落点 zone。
    * host 返回 NPCS 里的居民 id（或 null=空屋）。 */
   /* v75：按新地图重新定位 —— cx/cy 用各自 living zone 的锚点（南排室内中心），
-   * 不再用旧的 43/48/53 × 24 固定值。房子本体在 map.json 里 y=19.6（室内正上方）。 */
+   * 不再用旧的 43/48/53 × 24 固定值。
+   * v88：**房子精灵已删除**（homeCat/homeChief/homeDoc 是初版临时过渡的门面，
+   * 且一直被自定义层 hide 掉，玩家从没见过）。
+   * 但 home 字段**保留**：它是 INFO_CARDS 的显示名索引（"喵酱家"/"村长家"/"博士家"），
+   * 敲门文案、相机按钮 aria-label 都靠它取名。
+   * 地图上已经没有同名精灵，所以 hostMap[home] 取不到 —— arriveVisit 里本来就有空值保护，
+   * 只是少了敲门那一下 ❢ 特效，其余全走 living/door zone 与 cx/cy。 */
   var NEIGHBOR_HOMES = [
     { id: "cat",   home: "homeCat",   door: "doorCat",   living: "living_cat",   cx: 42.4 * TILE, cy: WALL_H + 23.2 * TILE, zm: 1.25 },
     { id: "chief", home: "homeChief", door: "doorChief", living: "living_chief", cx: 48.5 * TILE, cy: WALL_H + 23.6 * TILE, zm: 1.25 },

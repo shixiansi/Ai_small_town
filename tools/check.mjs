@@ -1124,9 +1124,14 @@ check("相机（死区 / 锁定）与房间矩形几何", () => {
     const n = placed.filter(f => inRect(rects[k], f.x, f.y)).length;
     if (!n) bad.push(`房间 ${k} 的矩形里一件家具都没有：坐标多半是旧布局留下的`);
   });
+  /* v88：房子精灵（homeCat/homeChief/homeDoc）已按用户要求删除 ——
+   * 它们是初版临时过渡的门面（cottage / house-modern / farmhouse），本来就被自定义层 hide 掉了，
+   * 玩家从来没看见过。原来的断言"必须存在且落在房间矩形里"是旧布局的产物，
+   * 现在改成：**存在就校验位置，不存在不报警**。房间是否"有内容"由上面那条
+   * "矩形里一件家具都没有"负责，不该再依赖某一个特定精灵。 */
   [["homeCat", "nbCat"], ["homeChief", "nbChief"], ["homeDoc", "nbDoc"]].forEach(([id, room]) => {
     const h = placed.find(f => f.id === id);
-    if (!h) { warnings.push(`map.json 找不到房子精灵 ${id}`); return; }
+    if (!h) return;                                  // 已删除：不报警
     if (!inRect(rects[room], h.x, h.y)) {
       bad.push(`房子 ${id} 在 (${h.x}, ${h.y})，却不在 ${room} 的矩形里 —— 夜里开灯/阴影会作用到别人家`);
     }

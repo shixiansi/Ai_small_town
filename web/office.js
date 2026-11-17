@@ -342,7 +342,7 @@ loadErrors = [];
 this.load.off("loaderror", onLoadError);
 this.load.on("loaderror", onLoadError);
 this.load.json("manifest", "assets/manifest.json?v=eb7ab1a1");
-this.load.json("mapdata", "map.json?v=65b6f5f3");
+this.load.json("mapdata", "map.json?v=2accebc3");
 };
 SceneBoot.prototype.create = function () {
 var manifest = this.cache.json.get("manifest");
@@ -4745,11 +4745,11 @@ stallA:    { name: "杂货摊", desc: "红白棚子是镇长的，摆什么全�
 stallB:    { name: "水果摊", desc: "今天的橙子很新鲜——猫爪印数量：2。" },
 townWell:  { name: "镇口水井", desc: "据说扔硬币能许愿。博士说是伪科学，但还是扔了。" },
 townBench: { name: "街边长椅", desc: "喵酱的地盘。坐之前要跟它打招呼。" },
-homeCat:   { name: "喵酱家", desc: "门垫上永远有鱼干渣。主人是只好脾气的橘猫。点击房子可以进去串门。",
+homeCat:   { name: "喵酱家", desc: "门垫上永远有鱼干渣。主人是只好脾气的橘猫。点门或沙发可以进去串门。",
 dyn: function () { return npcHomeState("cat") === "home" ? "● 喵酱在家（点房子进屋）" : "○ 喵酱出门遛弯了"; } },
-homeChief: { name: "村长家", desc: "水豚村长的宅子，门口的灯是全镇最亮的。点击房子可以进去串门。",
+homeChief: { name: "村长家", desc: "水豚村长的宅子，门口的灯是全镇最亮的。点门或餐椅可以进去串门。",
 dyn: function () { return npcHomeState("chief") === "home" ? "● 村长在家（点房子进屋）" : "○ 村长在镇上转悠"; } },
-homeDoc:   { name: "博士家", desc: "章鱼博士的研究所，窗户里贴满潮汐表。点击房子可以进去串门。",
+homeDoc:   { name: "博士家", desc: "章鱼博士的研究所，墙壁里贴满潮汐表。点门或沙发可以进去串门。",
 dyn: function () { return npcHomeState("doc") === "home" ? "● 博士在家（点房子进屋）" : "○ 博士去海边观测了"; } },
 farmField: { name: "自家农田", desc: "五列四排的耕地：锄地 → 播种 → 浇水 → 施肥 → 等它熟。点田地就会干对应的活。",
 dyn: function () { var s = farmSummary(); return "熟了 " + s.ready + " 株 · 在长 " + s.growing + " 株 · 已开垦 " + s.tilled + " 块"; } },
