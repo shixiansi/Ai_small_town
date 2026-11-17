@@ -28,10 +28,17 @@ const map = JSON.parse(fs.readFileSync(path.join(WEB, "map.json"), "utf8"));
 const src = fs.readFileSync(path.join(WEB, "src", "placement.js"), "utf8");
 const P = map.room.tile, COLS = map.room.cols, ROWS = map.room.rows;
 const furnSrc = fs.readFileSync(path.join(WEB, "src", "furniture.js"), "utf8");
-const ROOM_KEYS = ["office", "bedroom", "bath", "kitchen", "nbCat", "nbChief", "nbDoc"];
+/* 房间名单从 furniture.js 现解析，别再写死 —— map-model 之前就是这份硬编码漏了
+ * parkCourt/brickHall 的教训（加房间只改渲染层、工具还按旧名单跑，于是新房间"没有灯池"）。
+ * 这里同样的 bug 又出现一次：placement.js 里有 4 盏新灯，本工具只认得 7 间房，把它们全丢了。 */
+const ROOM_KEYS = (() => {
+  const keys = [], re = /^\s*([A-Za-z]\w*)\s*:\s*\[\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*\]/gm;
+  let m; while ((m = re.exec(furnSrc))) if (!keys.includes(m[1])) keys.push(m[1]);
+  return keys.length ? keys : ["office", "bedroom", "bath", "kitchen", "nbCat", "nbChief", "nbDoc"];
+})();
 const rooms = {};
 ROOM_KEYS.forEach(k => {
-  const m = new RegExp(k + ":\\s*\\[(\\d+),\\s*(\\d+),\\s*(\\d+),\\s*(\\d+)\\]").exec(furnSrc);
+  const m = new RegExp("\\b" + k + ":\\s*\\[(\\d+),\\s*(\\d+),\\s*(\\d+),\\s*(\\d+)\\]").exec(furnSrc);
   if (m) rooms[k] = { x: +m[1], y: +m[2], w: +m[3], h: +m[4] };
 });
 
