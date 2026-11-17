@@ -16,6 +16,7 @@ import fs from "node:fs";
 import path from "node:path";
 import zlib from "node:zlib";
 import { fileURLToPath } from "node:url";
+import { loadModel } from "./map-model.mjs";   // v2.8-h：重叠统计与门禁同源
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const WEB = path.join(ROOT, "web");
@@ -129,13 +130,15 @@ items.forEach((f, i) => {
   let cx = x0 + 1, cy = y0 + Math.max(2, h0 - 7);
   for (const ch of n) { drawDigit(cx, cy, ch, [255, 255, 255]); cx += 4; }
 });
-// 重叠检测：同一碰撞格被两件非 on: 家具占用 → 洋红
-const seenPair = new Set();
-occupancy.forEach((list, k) => {
-  if (list.length < 2) return;
-  list.forEach(a => list.forEach(b => { if (a < b) seenPair.add(a + "-" + b); }));
-});
-const pairList = [...seenPair];
+// 重叠检测：改用 tools/map-model.mjs 的唯一实现（与 check/审计/修复脚本同一个判定），
+// 并且只统计"当前视图范围内"的家具 —— 之前这里是自己一份旧实现 + 全局统计，
+// 结果每间房都报"147 对"，与统一模型的 0 件自相矛盾。
+const um = loadModel();
+const inView = f => f.x >= view.x - 1 && f.x <= view.x + view.w + 1 && f.y >= view.y - 1 && f.y <= view.y + view.h + 1;
+const pairList = um.items
+  .filter(f => um.solid(f) && inView(f))
+  .flatMap(f => um.conflictsOf(f).map(g => (f.id || f.a) + " × " + (g.id || g.a)))
+  .filter((v, i, a) => a.indexOf(v) === i);
 // 3×5 点阵数字
 function drawDigit(x0, y0, ch, col) {
   const G = {
@@ -174,9 +177,6 @@ if (line.trim()) console.log("  " + line.trimEnd());
 console.log("─".repeat(72));
 if (pairList.length) {
   console.log("⚠ 碰撞重叠 " + pairList.length + " 对（洋红未画，先看清单）：");
-  pairList.slice(0, 20).forEach(p => {
-    const [a, b] = p.split("-").map(Number);
-    console.log("  #" + a + " " + (items[a - 1].id || items[a - 1].a) + " × #" + b + " " + (items[b - 1].id || items[b - 1].a));
-  });
+  pairList.slice(0, 20).forEach(p => console.log("  " + p));
 } else console.log("✓ 没有碰撞重叠（on: 叠加关系已排除）");
 console.log("落地家具 " + items.filter(f => !(f.o || f.wall || f.on)).length + " 件 · 装饰/叠加 " + items.filter(f => f.o || f.wall || f.on).length + " 件\n");
