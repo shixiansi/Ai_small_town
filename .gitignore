@@ -28,3 +28,6 @@ hub/backups/
 hub/*.bak
 hub/*-bak
 hub/*.manual-bak
+
+# 提交时临时用的消息文件（别再提交进去）
+commit-msg.tmp
