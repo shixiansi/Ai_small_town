@@ -24,6 +24,19 @@ const WEB = path.join(ROOT, "web");
 const read = f => fs.readFileSync(f, "utf8");
 const map = JSON.parse(read(path.join(WEB, "map.json")));
 const man = JSON.parse(read(path.join(WEB, "assets", "manifest.json")));
+/* v2.8-e：把"编辑器自定义层"一起算进来。
+ * 屏幕上看到的是 base(map.json) + custom(hub/map.custom.json)，只审 base 会得出"没问题"的假结论
+ * —— 实测自定义层里有 79 棵橡树、379 块地板涂刷、160 条地形，全在 map.json 之外。
+ * 只取"真家具"（a 能在 manifest 里查到的）；floor/terrain/hide/light/shadow/move/switch 是编辑器指令，跳过。 */
+let customFurn = [], customCmd = 0;
+try {
+  const cj = JSON.parse(fs.readFileSync(path.join(ROOT, "hub", "map.custom.json"), "utf8"));
+  (cj.furniture || []).forEach(f => {
+    if (!f || typeof f.x !== "number" || typeof f.y !== "number") return;
+    if (man[f.a]) customFurn.push(f); else customCmd++;
+  });
+} catch {}
+const allFurn = (map.furniture || []).concat(customFurn);
 const roomSrc = read(path.join(WEB, "src", "room.js"));
 const furnSrc = read(path.join(WEB, "src", "furniture.js"));
 const npcSrc = read(path.join(WEB, "src", "npc.js"));
@@ -59,7 +72,7 @@ for (let x = 0; x < COLS; x++) grid[0][x] = 1;                       // 第 0 �
 });
 // 家具占地（bbox 底部 12px 投影），只算落地家具
 const feet = [];
-(map.furniture || []).forEach(f => {
+allFurn.forEach(f => {
   if (typeof f.x !== "number" || typeof f.y !== "number") return;
   const m = man[f.a];
   if (!m) return;
@@ -139,7 +152,7 @@ for (let i = 0; i < ks.length; i++) for (let j = i + 1; j < ks.length; j++) {
   const a = rects[ks[i]], b = rects[ks[j]];
   if (a.x < b.x + b.w && b.x < a.x + a.w && a.y < b.y + b.h && b.y < a.y + a.h) add("P0", "C1", "房间矩形重叠：" + ks[i] + " × " + ks[j]);
 }
-const placed = (map.furniture || []).filter(f => typeof f.x === "number" && typeof f.y === "number");
+const placed = allFurn.filter(f => typeof f.x === "number" && typeof f.y === "number");
 ks.forEach(k => {
   const n = placed.filter(f => inRect(rects[k], f.x, f.y)).length;
   if (!n) add("P1", "C2", "房间 " + k + " 矩形里一件家具都没有（坐标多半是旧布局）");
