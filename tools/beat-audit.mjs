@@ -15,7 +15,7 @@
  * 口径说明：
  *   - 只统计「清醒时段」(schedule.json 的 wake，默认 8:00–23:00)，因为夜里没人看、也没事件；
  *   - 窗口 3 分钟、步长 1 分钟、覆盖整个清醒时段；
- *   - 微事件按 micro_events.json 的 hours 窗口过滤（天气条件不模拟 —— 只会更少，不会更多）；
+ *   - 四层事件源：排班（小时级）/ 生活决策（v2.8-a，4 分钟级，改状态）/ 微事件（3 分钟级，只播报）/ 随机事件（2~6h）；\n *   - 微事件按 micro_events.json 的 hours 窗口过滤（天气条件不模拟 —— 只会更少，不会更多）；
  *   - 不含「日常摘要行」（本地生活模拟），那是前端在 idle 时才有的，属于额外覆盖。
  */
 import fs from "node:fs";
@@ -27,6 +27,8 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 export const DEFAULTS = {
   microMinSec: Number(process.env.OFFICE_MICRO_MIN || 180),  // 微事件基准间隔（秒）
   microJitter: 0.4,        // ±40%（与 hub.mjs 的 (0.6 + rand*0.8) 对齐）
+  lifeMinSec: Number(process.env.OFFICE_LIFE_MIN || 240),    // 生活决策基准间隔（秒，v2.8-a）
+  lifeJitter: 0.2,         // ±20%（与 hub.mjs 的 (0.8 + rand*0.4) 对齐）
   needEveryMin: 120,       // 数值驱动事件：2h 冷却（hub.mjs 的 NEED_EVENT_COOLDOWN）
   randomMinMin: 120,       // 随机事件 2~6h（hub.mjs 的 scheduleRandomEvents）
   randomMaxMin: 360,
@@ -93,12 +95,22 @@ export function simulateDay(day, src, opt, rnd) {
     if (src.beats.some(b => hourIn(h, b.hours))) out.push({ min: t, src: "micro" });
   }
 
-  // 3) 数值驱动事件：2h 冷却，清醒时段
+  // 3) 生活决策（v2.8-a）：hub 自己决定她做什么，4 分钟级
+  //    注：真实运行时会被"正事/睡觉不插话"挡住，这里按理想密度算 —— 口径偏乐观，用作上界
+  {
+    let lt = ws * 60 + (opt.lifeMinSec / 60) * (1 - opt.lifeJitter + rnd() * opt.lifeJitter * 2);
+    while (lt < end) {
+      out.push({ min: lt, src: "life" });
+      lt += (opt.lifeMinSec / 60) * (1 - opt.lifeJitter + rnd() * opt.lifeJitter * 2);
+    }
+  }
+
+  // 4) 数值驱动事件：2h 冷却，清醒时段
   for (let m = ws * 60 + opt.needEveryMin * (0.5 + rnd()); m < end; m += opt.needEveryMin) {
     out.push({ min: m, src: "need" });
   }
 
-  // 4) 随机事件：2~6h
+  // 5) 随机事件：2~6h
   for (let m = opt.randomMinMin + rnd() * (opt.randomMaxMin - opt.randomMinMin); m < 24 * 60; m += opt.randomMinMin + rnd() * (opt.randomMaxMin - opt.randomMinMin)) {
     out.push({ min: m, src: "random" });
   }
@@ -130,7 +142,7 @@ export function simulate(opt = {}) {
   const src = loadSources(o.root || ROOT);
   const rnd = mulberry32(o.seed);
   let total = 0, hit = 0;
-  const per = { schedule: 0, micro: 0, need: 0, random: 0 };
+  const per = { schedule: 0, micro: 0, life: 0, need: 0, random: 0 };
   for (let d = 0; d < o.days; d++) {
     const ev = simulateDay(d, src, o, rnd);
     ev.forEach(e => { per[e.src] = (per[e.src] || 0) + 1; });
@@ -142,9 +154,9 @@ export function simulate(opt = {}) {
   return {
     days: o.days, windowMin: o.windowMin, wake: src.wake,
     rate: total ? hit / total : 0, total, hit,
-    per, perHour: { schedule: perHour("schedule"), micro: perHour("micro"), need: perHour("need"), random: perHour("random") },
+    per, perHour: { schedule: perHour("schedule"), micro: perHour("micro"), life: perHour("life"), need: perHour("need"), random: perHour("random") },
     totalPerHour: Object.values(per).reduce((a, b) => a + b, 0) / (awakeMin / 60),
-    microMinSec: o.microMinSec
+    microMinSec: o.microMinSec, lifeMinSec: o.lifeMinSec
   };
 }
 
@@ -171,8 +183,8 @@ function main() {
   console.log("\n节奏审计（3 分钟窗口 · 清醒时段 " + r.wake[0] + ":00–" + r.wake[1] + ":00 · " + r.days + " 天仿真）");
   console.log("─".repeat(58));
   console.log(`  命中率        ${fmtPct(r.rate)}   （${r.hit}/${r.total} 个窗口里至少有一件事）`);
-  console.log(`  每小时事件数  ${r.totalPerHour.toFixed(1)}   排班 ${r.perHour.schedule.toFixed(2)} · 微事件 ${r.perHour.micro.toFixed(2)} · 数值 ${r.perHour.need.toFixed(2)} · 随机 ${r.perHour.random.toFixed(2)}`);
-  console.log(`  微事件间隔    ${r.microMinSec}s（OFFICE_MICRO_MIN 可调）`);
+  console.log(`  每小时事件数  ${r.totalPerHour.toFixed(1)}   排班 ${r.perHour.schedule.toFixed(2)} · 生活 ${r.perHour.life.toFixed(2)} · 微事件 ${r.perHour.micro.toFixed(2)} · 数值 ${r.perHour.need.toFixed(2)} · 随机 ${r.perHour.random.toFixed(2)}`);
+  console.log(`  间隔          生活 ${r.lifeMinSec}s（OFFICE_LIFE_MIN）· 微事件 ${r.microMinSec}s（OFFICE_MICRO_MIN）`);
   console.log("─".repeat(58));
   if (r.rate < 0.85) console.log("  ⚠ 命中率低于 85%：观众有 1/" + Math.round(1 / Math.max(1e-6, 1 - r.rate)) + " 的概率打开就看到空窗期");
   else console.log("  ✓ 达到 v2.7 目标（≥85%）");

@@ -44,6 +44,18 @@ listening: { zone: "relax",   act: "listen", verb: "听音乐",    mood: "idle" 
 gaming:    { zone: "arcade",  act: "play",   verb: "打游戏",    mood: "idle" },
 celebrating: { zone: "board",  act: "cheer",  verb: "庆祝上热门", mood: "happy" },
 tired:     { zone: "sofa",    act: "rest",   verb: "累瘫了",    mood: "tired" },
+tea_time:  { zone: "tea",        act: "drink",  verb: "接杯热水",  mood: "idle" },
+gaze:      { zone: "window",     act: "watch",  verb: "看窗外",    mood: "idle" },
+reading:   { zone: "library",    act: "read",   verb: "翻两页书",  mood: "idle" },
+thinking:  { zone: "screen",     act: "think",  verb: "对着白板想", mood: "idle" },
+noting:    { zone: "board",      act: "think",  verb: "盯任务板",  mood: "idle" },
+breathe:   { zone: "balcony",    act: "cheer",  verb: "伸个懒腰",  mood: "idle" },
+dressing:  { zone: "wardrobe",   act: "fetch",  verb: "换件衣服",  mood: "idle" },
+preening:  { zone: "washup",     act: "fetch",  verb: "照照镜子",  mood: "idle" },
+resting:   { zone: "stroll",     act: "rest",   verb: "长椅歇脚",  mood: "idle" },
+tilling:   { zone: "farm",       act: "craft",  verb: "下地看看",  mood: "idle" },
+wellside:  { zone: "town",       act: "drink",  verb: "井边打水",  mood: "idle" },
+bench_sit: { zone: "town_bench", act: "sit",    verb: "坐一会儿",  mood: "idle" },
 };
 var ACTIVE_STATES = ["arrive", "working", "browsing", "watching", "organizing", "writing", "rewriting",
 "diary", "designing", "posting", "mailing", "replying", "commenting", "weekly",
@@ -71,7 +83,10 @@ arrive: "🚪", working: "🖥️", browsing: "🖥️", watching: "📺", organ
 rewriting: "✍️", diary: "📔", designing: "🎨", posting: "🖨️", mailing: "📮", replying: "💬",
 commenting: "💬", weekly: "📊", error: "❌", idle: "🛋️", sleeping: "😴", washing: "🚿",
 eating: "🍚", snacking: "🧊", relaxing: "😌", strolling: "🌳", browsing_market: "🛒",
-recovering: "🔋", listening: "🎵", gaming: "🎮", celebrating: "🎉", tired: "🥱"
+recovering: "🔋", listening: "🎵", gaming: "🎮", celebrating: "🎉", tired: "🥱",
+tea_time: "☕", gaze: "🪟", reading: "📖", thinking: "💡", noting: "📋",
+breathe: "🌤", dressing: "👗", preening: "🪞", resting: "🪑", tilling: "🌱",
+wellside: "🪣", bench_sit: "🌳"
 };
 var SCALE_TABLE = {
 "coffee-mug": 0.32, "stapler": 0.4, "calculator": 0.4, "open-book": 0.45,
@@ -4777,13 +4792,24 @@ function findLocalEvent(key) {
 for (var i = 0; i < LOCAL_EVENTS.length; i++) if (LOCAL_EVENTS[i].key === key) return LOCAL_EVENTS[i];
 return null;
 }
+var LOCAL_RADIUS = 6;
+function hubOnlineForLife() {
+return !!(typeof ws !== "undefined" && ws && ws.readyState === 1);
+}
 function pickLocalEvent() {
 if (!scene || !fish || !scene.mapdata) return null;
 var fx = px2tx(fish.x), fy = px2ty(fish.y);
+var radius = hubOnlineForLife() ? LOCAL_RADIUS : 1e9;
+function near(e) {
+var z = scene.mapdata.zones[e.zone];
+if (!z) return false;
+var d0 = Math.abs(z.anchor[0] - fx) + Math.abs(z.anchor[1] - fy) * 0.4;
+return d0 <= radius;
+}
 var pool = LOCAL_EVENTS.filter(function (e) {
-return recentLocal.indexOf(e.key) < 0 && scene.mapdata.zones[e.zone];
+return recentLocal.indexOf(e.key) < 0 && near(e);
 });
-if (!pool.length) { recentLocal.length = 0; pool = LOCAL_EVENTS.filter(function (e) { return scene.mapdata.zones[e.zone]; }); }
+if (!pool.length) { recentLocal.length = 0; pool = LOCAL_EVENTS.filter(near); }
 if (!pool.length) return null;
 var hourNow = bjHour();
 var weights = [], total = 0;
@@ -4912,7 +4938,6 @@ pond: !!(act && act.extra && act.extra.pond)
 fishState = "walking";
 }
 function arriveLocal() {
-if (curPlan && curPlan.statFill) postStatDelta(curPlan.statFill);
 if (curPlan && curPlan.visit) { arriveVisit(); return; }   // 点邻居房屋 → 进屋串门
 if (curPlan && (curPlan.farmJob || curPlan.pond)) {
 fishState = "acting";

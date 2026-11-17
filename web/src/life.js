@@ -398,13 +398,28 @@
   }
   /* 按「离当前位置的距离」加权抽事件：就近活动为主，但远处的房间仍有机会被抽到，
    * 免得一整晚只在工位附近打转；最近 6 次触发过的先排除，避免连着两次瘫沙发。 */
+  /* 本地生活事件的"活动半径"（格）。
+   * v2.8-a：hub 在线时，"去哪、干什么"由 hub 的 lifeTick 决定；前端只保留**就地的小动作**
+   * （坐一会儿、翻两页书、接杯水），否则两边同时改主意会互相打断 ——
+   * 观众会看到鱼走到一半突然折返。hub 不通时（离线兜底）才恢复成自由漫游。 */
+  var LOCAL_RADIUS = 6;
+  function hubOnlineForLife() {
+    return !!(typeof ws !== "undefined" && ws && ws.readyState === 1);
+  }
   function pickLocalEvent() {
     if (!scene || !fish || !scene.mapdata) return null;
     var fx = px2tx(fish.x), fy = px2ty(fish.y);
+    var radius = hubOnlineForLife() ? LOCAL_RADIUS : 1e9;
+    function near(e) {
+      var z = scene.mapdata.zones[e.zone];
+      if (!z) return false;
+      var d0 = Math.abs(z.anchor[0] - fx) + Math.abs(z.anchor[1] - fy) * 0.4;
+      return d0 <= radius;
+    }
     var pool = LOCAL_EVENTS.filter(function (e) {
-      return recentLocal.indexOf(e.key) < 0 && scene.mapdata.zones[e.zone];
+      return recentLocal.indexOf(e.key) < 0 && near(e);
     });
-    if (!pool.length) { recentLocal.length = 0; pool = LOCAL_EVENTS.filter(function (e) { return scene.mapdata.zones[e.zone]; }); }
+    if (!pool.length) { recentLocal.length = 0; pool = LOCAL_EVENTS.filter(near); }
     if (!pool.length) return null;
     var hourNow = bjHour();
     var weights = [], total = 0;
@@ -542,8 +557,9 @@
     fishState = "walking";
   }
   function arriveLocal() {
-    // 本地小动作的数值回报（真相在 hub，这里是触发增量；方案 §1.2）
-    if (curPlan && curPlan.statFill) postStatDelta(curPlan.statFill);
+    /* v2.8-a：本地小动作**不再上报数值**。数值的真相在 hub ——
+     * hub 的 lifeTick 决定动作时自己结算 fills；前端上报会在多开网页时被叠加成 N 倍
+     * （两个观众 = 她吃到两倍的饭）。这里保留 statFill 字段仅供调试台预览，不 POST。 */
     if (curPlan && curPlan.visit) { arriveVisit(); return; }   // 点邻居房屋 → 进屋串门
     // 农活/钓鱼到达（v36）：田边演农活动作并结算，塘边进入钓鱼抛竿
     if (curPlan && (curPlan.farmJob || curPlan.pond)) {

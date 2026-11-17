@@ -434,7 +434,9 @@ function scheduleTick() {
   })
   console.log(new Date().toISOString(), `[office-hub] 排班推进: ${hit.shift.at} ${hit.shift.label} → ${hit.shift.state}`)
 }
-if (schedule) setInterval(scheduleTick, 30000).unref?.()
+/* OFFICE_SCHEDULE_OFF=1 可只关掉作息引擎（调试生活决策层时用：不然作息表一直在占状态，
+ * lifeTick 会被 LIFE_BLOCKED 挡住，看不出它到底会不会自己动起来）。 */
+if (schedule && process.env.OFFICE_SCHEDULE_OFF !== "1") setInterval(scheduleTick, 30000).unref?.()
 
 // ---------- 数值驱动的排班外行为（v2.6）----------
 /* 作息表是"计划"，数值是"生理"。数值跌破阈值时插入一次性行为事件（优先级 1，不打断
@@ -514,6 +516,88 @@ function beatTick() {
 }
 setInterval(beatTick, 20e3).unref?.()
 planNextBeat()
+
+// ---------- 生活决策层（v2.8-a）：她自己决定做什么，由 hub 说了算 ----------
+/* 为什么必须搬到服务端：这段逻辑原来在每个浏览器里各跑一份（web/src/life.js 的 LOCAL_EVENTS），
+ * 于是两个观众 = 两条鱼的不同人生；而且每个浏览器都把结算量 POST 回 /api/stats，
+ * 人越多她越不饿（数值被叠加成 N 倍）。搬上来之后：
+ *   1) 动作由 hub 决定 → 所有观众必然看到同一件事（SSE/WS 天然同步）
+ *   2) 数值由 hub 结算 → 一份真相，不再随观众数漂移
+ *   3) 事件流里出现的是真事，不是旁白
+ * 前端从此只负责"怎么演"，离线（hub 不通）时才退回本地生活模拟。
+ *
+ * 与其它层的关系：
+ *   作息（小时级，改状态，会占住）
+ *   生活（本层，4 分钟级，改状态）        ← 只在"非正事"时插话
+ *   微事件（3 分钟级，只播报不改状态）
+ *   随机事件（2~6h，稀有）
+ */
+const LIFE_MIN_MS = Math.max(60, Number(process.env.OFFICE_LIFE_MIN || 240)) * 1000
+let LIFE = []
+try {
+  const j = JSON.parse(fs.readFileSync(new URL("./life_events.json", import.meta.url), "utf8"))
+  if (Array.isArray(j.events)) LIFE = j.events.filter(e => e && e.key && e.state && e.task)
+} catch (e) {
+  console.warn(new Date().toISOString(), `[office-hub] 未读到 life_events.json (${e.message})，生活决策层停用`)
+}
+/* 这些状态下不插话：正事（外部业务态）、睡觉、出错、以及刚到的"到岗" */
+const LIFE_BLOCKED = new Set([
+  "working", "writing", "rewriting", "designing", "diary", "weekly", "posting",
+  "replying", "commenting", "organizing", "browsing", "watching",
+  "error", "sleeping", "arrive", "celebrating"
+])
+let lastLifeKey = null
+let nextLifeAt = 0
+function planNextLife() { nextLifeAt = Date.now() + LIFE_MIN_MS * (0.8 + Math.random() * 0.4) }
+/* 需求曲线：与前端 life.js 的 needBoost 同形（越低越想吃/睡/洗），
+ * 单因子乘进去就够了 —— 多因子连乘会把所有候选一起压扁（utility AI 的补偿问题）。 */
+function lifeNeedBoost(need) {
+  if (!need) return 1
+  const v = Number(stats[need])
+  if (!Number.isFinite(v)) return 1
+  if (v >= 88) return 0.05;
+  if (v >= 75) return 0.3;
+  if (v >= 65) return 0.75;
+  if (v >= 40) return 1;
+  if (v >= 25) return 2.2;
+  if (v >= 15) return 3.5;
+  return 5
+}
+function pickLife(weather) {
+  const h = beijingHour()
+  const pool = LIFE.filter(e => {
+    if (allowed && !allowed.has(e.state)) return false       // 白名单外的状态推出去会被自己拒掉
+    if (e.hours && !hourInWindow(h, e.hours)) return false
+    if (e.weather && e.weather !== weather) return false
+    if (e.key === lastLifeKey) return false                  // 不连着做同一件事
+    return true
+  })
+  if (!pool.length) return null
+  const weights = pool.map(e => (Number(e.w) || 1) * lifeNeedBoost(e.need))
+  const total = weights.reduce((a, b) => a + b, 0)
+  let r = Math.random() * total
+  for (let i = 0; i < pool.length; i++) { r -= weights[i]; if (r <= 0) return pool[i] }
+  return pool[pool.length - 1]
+}
+function lifeTick() {
+  if (!LIFE.length) return
+  if (!nextLifeAt) { planNextLife(); return }
+  if (Date.now() < nextLifeAt) return
+  planNextLife()
+  if (!isAwakeHour()) return
+  if (LIFE_BLOCKED.has(cur.state)) return                    // 正事/睡觉中不打扰
+  const curAge = Date.now() - (Number(cur.ts) || 0)
+  if (curAge < 90e3) return                                  // 刚排上的动作别两秒就换掉
+  if ((cur.priority || 0) >= 2 && curAge < PRIORITY_HOLD_MS) return
+  const e = pickLife(realWeather)
+  if (!e) return
+  lastLifeKey = e.key
+  if (e.fills) applyStatDelta(e.fills)                       // 数值由 hub 自己结算（前端不再上报）
+  applyEvent({ state: e.state, task: e.task, detail: e.detail || "", ts: Date.now(), priority: 1 })
+  console.log(new Date().toISOString(), `[office-hub] 生活决策: ${e.state}（${e.task}）`)
+}
+setInterval(lifeTick, 20e3).unref?.()
+planNextLife()
 
 /**
  * 去抖规则：state + task + detail 三者全同 = 心跳重发，只刷新 ts，不广播也不进 recent，

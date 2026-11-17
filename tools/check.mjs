@@ -1116,6 +1116,55 @@ check("相机（死区 / 锁定）与房间矩形几何", () => {
   return { problems: bad, warnings, note: `死区 ${dz ? dz[1] + "×" + dz[2] : "?"}px · ${ks.length} 个房间矩形无重叠 · 门洞已封板 · 家具落在 ${ks.filter(k => rects[k]).length} 块内` };
 });
 
+// ---------- 第 27 项：生活决策在 hub（v2.8-a）----------
+check("生活决策在 hub（lifeTick / 数值单点结算 / 前端不再上报）", () => {
+  const bad = [], warnings = [];
+  const lifeSrc = read(path.join(WEB, "src", "life.js"));
+
+  // 1) hub 侧：决策层存在、可调、自己结算数值
+  if (!/function lifeTick\(/.test(hubSrc)) bad.push("hub.mjs 缺 lifeTick（生活决策没搬到服务端）");
+  if (!/life_events\.json/.test(hubSrc)) bad.push("hub.mjs 没读 life_events.json");
+  if (!/OFFICE_LIFE_MIN/.test(hubSrc)) bad.push("hub.mjs 缺 OFFICE_LIFE_MIN（决策间隔不可调）");
+  if (!/if \(e\.fills\) applyStatDelta\(e\.fills\)/.test(hubSrc)) bad.push("hub.mjs 的 lifeTick 没自己结算 fills：数值仍要等浏览器上报，多开会叠加");
+  if (!/"working"/.test(hubSrc) || !/"sleeping"/.test(hubSrc) || !/LIFE_BLOCKED/.test(hubSrc)) {
+    bad.push("hub.mjs 缺 LIFE_BLOCKED（正事/睡觉会被生活决策打断）");
+  }
+
+  // 2) 事件表本身：状态必须合法、文案不能超气泡长度
+  let life = null;
+  try { life = JSON.parse(read(path.join(OFFICE, "hub", "life_events.json"))); } catch (e) { bad.push("life_events.json 缺失或不是合法 JSON"); }
+  const list = (life && Array.isArray(life.events)) ? life.events : [];
+  if (list.length < 15) bad.push(`life_events.json 只有 ${list.length} 条（要求 ≥15，否则来回就那几下）`);
+  const declared = new Set((statesJson && statesJson.states) || []);
+  const seen = new Set();
+  list.forEach((e, i) => {
+    if (!e.key || !e.state || !e.task) bad.push(`life_events[${i}] 缺 key/state/task`);
+    if (e.state && !declared.has(e.state)) bad.push(`life_events[${i}]（${e.key}）的 state=${e.state} 不在 states.json 白名单：hub 会自己拒掉`);
+    if (e.task && e.task.length > 20) warnings.push(`life_events[${i}]「${e.task}」超过 20 字，气泡会截断`);
+    if (e.key) { if (seen.has(e.key)) bad.push(`life_events 里 ${e.key} 重复`); seen.add(e.key); }
+    if (e.hours && (!Array.isArray(e.hours) || e.hours.length !== 2)) bad.push(`life_events[${i}]（${e.key}）hours 必须是 [起, 止]`);
+    if (e.fills && Object.keys(e.fills).some(k => !["hunger", "mood", "energy", "social", "hygiene"].includes(k))) {
+      bad.push(`life_events[${i}]（${e.key}）的 fills 有未知词条：${Object.keys(e.fills).join(",")}`);
+    }
+  });
+
+  // 3) 前端侧：本地动作不再上报数值（这是"多开会叠加"的根源），且活动半径受限
+  if (/postStatDelta\(curPlan\.statFill\)/.test(lifeSrc)) bad.push("life.js 的本地动作还在 postStatDelta：两个观众 = 她吃到两倍的饭");
+  if (!/LOCAL_RADIUS/.test(lifeSrc) || !/hubOnlineForLife/.test(lifeSrc)) {
+    bad.push("life.js 缺 LOCAL_RADIUS / hubOnlineForLife：hub 在线时前端仍会满地图乱跑，和 hub 决策互相打断");
+  }
+
+  // 4) 密度：搬上来之后 3 分钟窗口应该更满
+  let r = null;
+  try { r = simulate({ days: 14 }); } catch (e) { /* 由第 23 项报错 */ }
+  if (r && r.perHour.life < 10) warnings.push(`生活决策只有 ${r.perHour.life.toFixed(1)} 条/小时，OFFICE_LIFE_MIN=${r.lifeMinSec}s 可能偏长`);
+
+  return {
+    problems: bad, warnings,
+    note: `${list.length} 条生活事件 · 生活 ${r ? r.perHour.life.toFixed(1) : "?"} 条/小时 · 窗口命中 ${r ? (r.rate * 100).toFixed(1) + "%" : "?"}`
+  };
+});
+
 console.log("\noffice 静态自检\n" + "─".repeat(64));
 results.forEach(r => {
   const tag = r.problems.length ? "[FAIL]" : (r.warnings.length ? "[WARN]" : "[ OK ]");

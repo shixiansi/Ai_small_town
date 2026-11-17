@@ -28,7 +28,19 @@
   "listening",
   "gaming",
   "celebrating",
-  "tired"
+  "tired",
+  "tea_time",
+  "gaze",
+  "reading",
+  "thinking",
+  "noting",
+  "breathe",
+  "dressing",
+  "preening",
+  "resting",
+  "tilling",
+  "wellside",
+  "bench_sit"
  ],
  "active": [
   "arrive",

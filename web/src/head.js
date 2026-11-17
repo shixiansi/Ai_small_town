@@ -77,6 +77,21 @@
     // P1.3 联动态：真实运营数据驱动（文章上热门/连续运行告警）
     celebrating: { zone: "board",  act: "cheer",  verb: "庆祝上热门", mood: "happy" },
     tired:     { zone: "sofa",    act: "rest",   verb: "累瘫了",    mood: "tired" },
+    /* v2.8-a：把"她自己决定做什么"搬到 hub 之后，hub 需要能表达原来只存在于前端的
+     * 本地生活动作（接水/看窗外/翻书…）。这些 state 的意义不是"工作"，而是"她现在在这个角落"。
+     * 全部 mood: "idle"（黄点 = 在过日子），所以不必进 ACTIVE_STATES（那是 working 态用的绿点）。 */
+    tea_time:  { zone: "tea",        act: "drink",  verb: "接杯热水",  mood: "idle" },
+    gaze:      { zone: "window",     act: "watch",  verb: "看窗外",    mood: "idle" },
+    reading:   { zone: "library",    act: "read",   verb: "翻两页书",  mood: "idle" },
+    thinking:  { zone: "screen",     act: "think",  verb: "对着白板想", mood: "idle" },
+    noting:    { zone: "board",      act: "think",  verb: "盯任务板",  mood: "idle" },
+    breathe:   { zone: "balcony",    act: "cheer",  verb: "伸个懒腰",  mood: "idle" },
+    dressing:  { zone: "wardrobe",   act: "fetch",  verb: "换件衣服",  mood: "idle" },
+    preening:  { zone: "washup",     act: "fetch",  verb: "照照镜子",  mood: "idle" },
+    resting:   { zone: "stroll",     act: "rest",   verb: "长椅歇脚",  mood: "idle" },
+    tilling:   { zone: "farm",       act: "craft",  verb: "下地看看",  mood: "idle" },
+    wellside:  { zone: "town",       act: "drink",  verb: "井边打水",  mood: "idle" },
+    bench_sit: { zone: "town_bench", act: "sit",    verb: "坐一会儿",  mood: "idle" },
   };
   var ACTIVE_STATES = ["arrive", "working", "browsing", "watching", "organizing", "writing", "rewriting",
     "diary", "designing", "posting", "mailing", "replying", "commenting", "weekly",
@@ -121,7 +136,10 @@
     rewriting: "✍️", diary: "📔", designing: "🎨", posting: "🖨️", mailing: "📮", replying: "💬",
     commenting: "💬", weekly: "📊", error: "❌", idle: "🛋️", sleeping: "😴", washing: "🚿",
     eating: "🍚", snacking: "🧊", relaxing: "😌", strolling: "🌳", browsing_market: "🛒",
-    recovering: "🔋", listening: "🎵", gaming: "🎮", celebrating: "🎉", tired: "🥱"
+    recovering: "🔋", listening: "🎵", gaming: "🎮", celebrating: "🎉", tired: "🥱",
+    tea_time: "☕", gaze: "🪟", reading: "📖", thinking: "💡", noting: "📋",
+    breathe: "🌤", dressing: "👗", preening: "🪞", resting: "🪑", tilling: "🌱",
+    wellside: "🪣", bench_sit: "🌳"
   };
 
   /* ---------- 大小关系 ----------

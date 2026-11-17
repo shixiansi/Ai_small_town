@@ -1,0 +1,36 @@
+{
+  "_comment": "生活事件表（v2.8-a）。这是「她自己决定做什么」的真相源：hub 的 lifeTick 从这张表里挑一条，用 applyEvent 推成状态事件，所有观众看到同一个动作。前端 web/src/life.js 的 LOCAL_EVENTS 从此只在 hub 离线时兜底（并且不再改数值）。",
+  "_rules": [
+    "state 必须在 hub/states.json 白名单内 —— 区域由前端 STATE_MAP 决定，hub 只负责'演什么'",
+    "task/detail 是写进事件流与气泡的话，第三人称、口语、task ≤ 20 字（气泡会截断）",
+    "fills 由 hub 直接结算（前端不再上报本地动作的数值），所以这里的数值就是真相",
+    "need 决定权重：越低的需求值越容易选中对应事件（hunger 掉到 25 以下时吃饭类权重 ×4）",
+    "hours 支持跨零点；weather 只在指定天气出现"
+  ],
+  "events": [
+    { "key": "tea_break",   "state": "tea_time",  "task": "接了杯热水",        "detail": "捧着杯子暖手",            "w": 1.4, "hours": [7, 23], "fills": { "hunger": 2, "mood": 2 }, "need": "hunger" },
+    { "key": "tea_gaze",    "state": "gaze",      "task": "靠在窗边发呆",      "detail": "外面亮得晃眼",            "w": 1.2, "hours": [7, 20], "fills": { "mood": 3 }, "need": "mood" },
+    { "key": "night_window","state": "gaze",      "task": "看了一会儿月亮",    "detail": "窗玻璃上有一层白雾",      "w": 1.0, "hours": [21, 24], "fills": { "mood": 4 }, "need": "mood" },
+    { "key": "read_pages",  "state": "reading",   "task": "翻了两页书",        "detail": "折了个角记下来",          "w": 1.1, "hours": [8, 23], "fills": { "mood": 3 }, "need": "mood" },
+    { "key": "think_board", "state": "thinking",  "task": "对着白板想事情",    "detail": "画了三条线又擦掉",        "w": 0.9, "hours": [9, 22], "fills": { "mood": 2 }, "need": "mood" },
+    { "key": "check_tasks", "state": "noting",    "task": "盯着任务板核对",    "detail": "划掉了两条",              "w": 0.8, "hours": [9, 22] },
+    { "key": "stretch_out", "state": "breathe",   "task": "到阳台伸了个懒腰",  "detail": "骨节咔咔响",              "w": 1.0, "hours": [8, 21], "fills": { "energy": 2 } },
+    { "key": "change_top",  "state": "dressing",  "task": "换了件宽松的上衣",  "detail": "在衣柜前站了半天",        "w": 0.6, "hours": [7, 11], "fills": { "hygiene": 3, "mood": 2 } },
+    { "key": "mirror_check","state": "preening",  "task": "在镜子前理了理头发","detail": "把翘起来的那撮按下去",    "w": 0.7, "hours": [7, 22], "fills": { "hygiene": 3 }, "need": "hygiene" },
+    { "key": "bench_rest",  "state": "resting",   "task": "在长椅上歇脚",      "detail": "风把树叶吹得哗哗响",      "w": 1.1, "hours": [9, 19], "fills": { "energy": 4 }, "need": "energy", "weather": "sunny" },
+    { "key": "field_check", "state": "tilling",   "task": "去地里看了看",      "detail": "土是湿的，苗还得再等等",  "w": 0.9, "hours": [8, 18], "fills": { "mood": 2 } },
+    { "key": "well_water",  "state": "wellside",  "task": "在井边打了桶水",    "detail": "水面晃出碎月亮",          "w": 0.8, "hours": [8, 20], "fills": { "hygiene": 2, "mood": 2 } },
+    { "key": "town_sit",    "state": "bench_sit", "task": "在街边坐了一会儿",  "detail": "看着路人走来走去",        "w": 0.9, "hours": [10, 20], "fills": { "social": 3 } },
+    { "key": "garden_round","state": "strolling", "task": "绕着花园走了一圈",  "detail": "顺手掐了片叶子",          "w": 1.2, "hours": [8, 20], "fills": { "mood": 4, "energy": -1 }, "need": "mood" },
+    { "key": "market_look", "state": "browsing_market", "task": "在市集转了一圈", "detail": "摊子上的果子换了新货",  "w": 1.0, "hours": [9, 19], "fills": { "hunger": 6, "social": 3 }, "need": "hunger", "weather": "sunny" },
+    { "key": "sofa_doze",   "state": "relaxing",  "task": "在沙发上歪了一会儿","detail": "什么也没干",              "w": 1.0, "hours": [13, 23], "fills": { "energy": 5 }, "need": "energy" },
+    { "key": "record_spin", "state": "listening", "task": "放了张唱片",        "detail": "针落下去有点杂音",        "w": 0.8, "hours": [10, 23], "fills": { "mood": 5 }, "need": "mood" },
+    { "key": "one_round",   "state": "gaming",    "task": "打了两把街机",      "detail": "第二把差一点就过了",      "w": 0.7, "hours": [14, 23], "fills": { "mood": 6, "energy": -2 }, "need": "mood" },
+    { "key": "snack_find",  "state": "snacking",  "task": "开冰箱找了点吃的",  "detail": "挑了块小饼干",            "w": 1.3, "hours": [8, 23], "fills": { "hunger": 8, "hygiene": -2 }, "need": "hunger" },
+    { "key": "cook_quick",  "state": "eating",    "task": "随手煮了点东西",    "detail": "热腾腾地端上桌",          "w": 1.1, "hours": [7, 10], "fills": { "hunger": 14, "mood": 3 }, "need": "hunger" },
+    { "key": "cook_dinner", "state": "eating",    "task": "认真做了顿晚饭",    "detail": "厨房里全是香味",          "w": 1.0, "hours": [17, 20], "fills": { "hunger": 18, "mood": 4 }, "need": "hunger" },
+    { "key": "wash_hands",  "state": "washing",   "task": "洗了把脸",          "detail": "水有点凉",                "w": 1.0, "hours": [7, 23], "fills": { "hygiene": 10, "mood": 2 }, "need": "hygiene" },
+    { "key": "nap_pad",     "state": "recovering", "task": "在充电垫上趴了会儿","detail": "迷迷糊糊睡过去了",      "w": 1.0, "hours": [12, 17], "fills": { "energy": 10 }, "need": "energy" },
+    { "key": "tidy_desk",   "state": "organizing", "task": "把桌上的东西归位", "detail": "顺便擦了下桌面",          "w": 0.8, "hours": [9, 22], "fills": { "mood": 2 } }
+  ]
+}
