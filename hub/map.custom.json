@@ -1692,20 +1692,6 @@
    "a": "terrain",
    "t": "wall",
    "x": 46,
-   "y": 6,
-   "id": "eter1az6wa3eq4"
-  },
-  {
-   "a": "terrain",
-   "t": "wall",
-   "x": 47,
-   "y": 6,
-   "id": "eter1bz6wa3fvq"
-  },
-  {
-   "a": "terrain",
-   "t": "wall",
-   "x": 46,
    "y": 0,
    "id": "eter1az0wa40pu"
   },
@@ -3156,6 +3142,324 @@
    "wall": true,
    "id": "wl210173951753750",
    "room": "nbDoc"
+  },
+  {
+   "a": "floor",
+   "t": "wood",
+   "x": 42,
+   "y": 1
+  },
+  {
+   "a": "floor",
+   "t": "wood",
+   "x": 43,
+   "y": 1
+  },
+  {
+   "a": "floor",
+   "t": "wood",
+   "x": 44,
+   "y": 1
+  },
+  {
+   "a": "floor",
+   "t": "wood",
+   "x": 42,
+   "y": 2
+  },
+  {
+   "a": "floor",
+   "t": "wood",
+   "x": 43,
+   "y": 2
+  },
+  {
+   "a": "floor",
+   "t": "wood",
+   "x": 44,
+   "y": 2
+  },
+  {
+   "a": "floor",
+   "t": "wood",
+   "x": 42,
+   "y": 3
+  },
+  {
+   "a": "floor",
+   "t": "wood",
+   "x": 43,
+   "y": 3
+  },
+  {
+   "a": "floor",
+   "t": "wood",
+   "x": 44,
+   "y": 3
+  },
+  {
+   "a": "floor",
+   "t": "wood",
+   "x": 42,
+   "y": 4
+  },
+  {
+   "a": "floor",
+   "t": "wood",
+   "x": 43,
+   "y": 4
+  },
+  {
+   "a": "floor",
+   "t": "wood",
+   "x": 44,
+   "y": 4
+  },
+  {
+   "a": "floor",
+   "t": "wood",
+   "x": 42,
+   "y": 5
+  },
+  {
+   "a": "floor",
+   "t": "wood",
+   "x": 43,
+   "y": 5
+  },
+  {
+   "a": "floor",
+   "t": "wood",
+   "x": 44,
+   "y": 5
+  },
+  {
+   "a": "floor",
+   "t": "wood",
+   "x": 42,
+   "y": 6
+  },
+  {
+   "a": "floor",
+   "t": "wood",
+   "x": 43,
+   "y": 6
+  },
+  {
+   "a": "floor",
+   "t": "wood",
+   "x": 44,
+   "y": 6
+  },
+  {
+   "a": "floor",
+   "t": "wood",
+   "x": 42,
+   "y": 7
+  },
+  {
+   "a": "floor",
+   "t": "wood",
+   "x": 43,
+   "y": 7
+  },
+  {
+   "a": "floor",
+   "t": "wood",
+   "x": 44,
+   "y": 7
+  },
+  {
+   "a": "floor",
+   "t": "wood",
+   "x": 42,
+   "y": 8
+  },
+  {
+   "a": "floor",
+   "t": "wood",
+   "x": 43,
+   "y": 8
+  },
+  {
+   "a": "floor",
+   "t": "wood",
+   "x": 44,
+   "y": 8
+  },
+  {
+   "a": "floor",
+   "t": "wood",
+   "x": 42,
+   "y": 9
+  },
+  {
+   "a": "floor",
+   "t": "wood",
+   "x": 43,
+   "y": 9
+  },
+  {
+   "a": "floor",
+   "t": "wood",
+   "x": 44,
+   "y": 9
+  },
+  {
+   "a": "floor",
+   "t": "wood",
+   "x": 42,
+   "y": 10
+  },
+  {
+   "a": "floor",
+   "t": "wood",
+   "x": 43,
+   "y": 10
+  },
+  {
+   "a": "floor",
+   "t": "wood",
+   "x": 44,
+   "y": 10
+  },
+  {
+   "a": "floor",
+   "t": "wood",
+   "x": 42,
+   "y": 11
+  },
+  {
+   "a": "floor",
+   "t": "wood",
+   "x": 43,
+   "y": 11
+  },
+  {
+   "a": "floor",
+   "t": "wood",
+   "x": 44,
+   "y": 11
+  },
+  {
+   "a": "floor",
+   "t": "wood",
+   "x": 42,
+   "y": 12
+  },
+  {
+   "a": "floor",
+   "t": "wood",
+   "x": 43,
+   "y": 12
+  },
+  {
+   "a": "floor",
+   "t": "wood",
+   "x": 44,
+   "y": 12
+  },
+  {
+   "a": "floor",
+   "t": "wood",
+   "x": 42,
+   "y": 13
+  },
+  {
+   "a": "floor",
+   "t": "wood",
+   "x": 43,
+   "y": 13
+  },
+  {
+   "a": "floor",
+   "t": "wood",
+   "x": 44,
+   "y": 13
+  },
+  {
+   "a": "floor",
+   "t": "tile",
+   "x": 49,
+   "y": 7
+  },
+  {
+   "a": "floor",
+   "t": "tile",
+   "x": 49,
+   "y": 8
+  },
+  {
+   "a": "floor",
+   "t": "tile",
+   "x": 49,
+   "y": 14
+  },
+  {
+   "a": "floor",
+   "t": "tile",
+   "x": 50,
+   "y": 14
+  },
+  {
+   "a": "floor",
+   "t": "tile",
+   "x": 51,
+   "y": 14
+  },
+  {
+   "a": "floor",
+   "t": "tile",
+   "x": 52,
+   "y": 14
+  },
+  {
+   "a": "terrain",
+   "t": "wall",
+   "x": 45,
+   "y": 7
+  },
+  {
+   "a": "terrain",
+   "t": "wall",
+   "x": 45,
+   "y": 8
+  },
+  {
+   "a": "terrain",
+   "t": "wall",
+   "x": 45,
+   "y": 9
+  },
+  {
+   "a": "terrain",
+   "t": "wall",
+   "x": 45,
+   "y": 10
+  },
+  {
+   "a": "terrain",
+   "t": "wall",
+   "x": 45,
+   "y": 11
+  },
+  {
+   "a": "terrain",
+   "t": "wall",
+   "x": 45,
+   "y": 12
+  },
+  {
+   "a": "terrain",
+   "t": "wall",
+   "x": 45,
+   "y": 13
+  },
+  {
+   "a": "terrain",
+   "t": "wall",
+   "x": 46,
+   "y": 6
   }
  ],
  "updatedAt": 1794904145165
