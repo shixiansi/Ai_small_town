@@ -39,25 +39,36 @@ const footOf = f => {
   return { wT: Math.max(1, pxW / T), fh: Math.min(12, pxH) / T };
 };
 
-/** 反解：让占格正好落在 [cx, cx+n-1] × row */
+/** 反解：让占格正好落在 [cx, …] × row
+ *
+ *  横向：**优先取整数 f.x** —— 运行时 p.x = f.x*TILE + TILE/2，f.x 取整数时贴图才正好落在这一列；
+ *        取 6.5 会让左边缘压在格线上，运行时同时占 6、7 两列（旧 solver 正好犯这个错）。
+ *  纵向：f.y 取 row + 0.25。这个值同时满足三套口径，别乱改：
+ *        · 运行时/门禁的脚底行 = floor(f.y + 0.5 - footH/T)…floor(f.y + 0.5 - 1/T) → row
+ *        · map-audit 的 H1「家具踩在墙上」用的是 floor(f.y) → 必须等于 row
+ *        取 row - 0.25 时脚底行也是 row，但 floor(f.y) 变成 row-1，H1 会报"踩在墙上"（假警报）。 */
 const solve = (f, cx, row) => {
-  const { wT, fh } = footOf(f);
-  const want = [];
-  for (let i = 0; i < wT; i++) want.push((cx + i) + "," + row);
-  const trial = g => {
-    const probe = Object.assign({}, f, { x: g.x, y: g.y });
-    return cellsOf(probe).join(" ");
-  };
-  // 先试解析解（f.x = cx + wT/2，f.y = row + fh），再在其附近微调
-  const exact = { x: cx + wT / 2, y: row + fh };
-  const near = [];
-  for (let dx = -0.5; dx <= 0.5001; dx += 0.05)
-    for (let dy = -0.5; dy <= 0.5001; dy += 0.05)
-      near.push({ x: Math.round((exact.x + dx) * 100) / 100, y: Math.round((exact.y + dy) * 100) / 100 });
-  near.sort((a, b) => (Math.abs(a.x - exact.x) + Math.abs(a.y - exact.y)) - (Math.abs(b.x - exact.x) + Math.abs(b.y - exact.y)));
-  for (const g of [exact].concat(near)) {
-    const probe = Object.assign({}, f, { x: Math.round(g.x * 100) / 100, y: Math.round(g.y * 100) / 100 });
-    if (cellsOf(probe).join(" ") === want.join(" ")) return probe;
+  const test = (x, y) => cellsOf(Object.assign({}, f, { x, y }));
+  const xs = [cx];
+  for (let d = 1; d <= 10; d++) { xs.push(cx - d / 10, cx + d / 10); }
+  const ys = [];
+  for (let d = 0; d <= 10; d++) {
+    for (const s of (d === 0 ? [0] : [-1, 1])) {
+      const y = Math.round((row + 0.25 + s * d / 20) * 100) / 100;
+      if (y >= row && y < row + 0.5) ys.push(y);
+    }
+  }
+  for (const x of xs) {
+    for (const y of ys) {
+      const cs = test(x, y);
+      if (!cs.length) continue;
+      const cols = cs.map(k => +k.split(",")[0]);
+      const rows = cs.map(k => +k.split(",")[1]);
+      if (!rows.every(r => r === row)) continue;
+      if (Math.min(...cols) !== cx) continue;
+      if (new Set(cs).size !== cs.length) continue;
+      return { x: Math.round(x * 100) / 100, y: Math.round(y * 100) / 100, cells: cs };
+    }
   }
   return null;
 };
@@ -94,9 +105,13 @@ if (arg.list) {
   const only = arg.room ? String(arg.room) : null;
   items.filter(f => solid(f)).forEach(f => {
     if (only && roomOf(f.x, f.y) !== only) return;
-    const { wT } = footOf(f);
+    const cs = cellsOf(f);
+    const cols = cs.map(k => +k.split(",")[0]);
+    const straddle = new Set(cols).size > 1 && Number.isInteger(Math.min(...cols)) === false;
     console.log(String(f.id || "-").padEnd(15) + f.a.padEnd(18) + ("@" + f.x + "," + f.y).padEnd(15) +
-      "格=" + cellsOf(f).join(" ").padEnd(20) + "宽=" + wT.toFixed(2));
+      "格=" + cs.join(" ").padEnd(20) + "格数=" + cs.length +
+      (!Number.isInteger(f.x) ? "  ⚠f.x 非整数（会跨列）" : "") +
+      (straddle ? "  ⚠跨列" : ""));
   });
   process.exit(0);
 }

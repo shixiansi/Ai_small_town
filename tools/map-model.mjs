@@ -86,21 +86,46 @@ export function loadModel(opts = {}) {
   for (let y = 1; y < ROWS; y++) wallCells.add("0," + y);
   for (let x = 0; x < SOUTH_WALL_RIGHT; x++) wallCells.add(x + "," + (ROWS - 1));
 
-  // 每件家具的占格（与 check.mjs 同口径：round + bbox 底部 12px 投影）
+  /* 每件家具的占格 —— 【与运行时 furniture.js buildBlockedGrid 逐字同口径】。
+   *
+   * 原来是自己的简化版（round(y-footH) 起一行 + round(x-wT/2+i) 一排），看着对，实际和运行时
+   * 差一整列：运行时把排版坐标算成 p.x = f.x*TILE + TILE/2（f.x 是"第几列"，中心落在该列中央），
+   * 左边缘 left = p.x - frameW/2、右边缘 right = left + bbox[2]，再 floor 到格。
+   * 于是 **f.x 必须取整数才占一格**：f.x = 6.5 时 left 正好压在 6/7 之间的格线上，
+   * 运行时会同时占 6 和 7 两列，而旧模型只说占 6 列 —— "算着不压锚点，门禁说压了"就是这么来的（§8 坑 2）。
+   *
+   * 结论（后续所有落位工具都按这个来）：
+   *   f.x 取整数   → 横向占位对齐到格
+   *   f.y 可带小数 → 只影响纵向贴图偏移，行号由 floor 决定
+   */
+  const WALL_H = Number(map.room.wallH || 48);
+  /* 朝向相关的 bbox：manifest 的 bbox 只是"正面"那一行，转过的件要按当前帧所在行取（v45。
+   * 影子/脚点/碰撞一起跟着变，运行时 placement.js 也是这么调的）。 */
+  const bboxOf = f => {
+    const m = man[f.a];
+    if (!m) return null;
+    const per = (m.rows && m.rows.South) || 1;
+    const row = Math.max(0, Math.floor((f.frame || 0) / per));
+    if (m.bboxRows && m.bboxRows[row]) return m.bboxRows[row];
+    return m.bbox || [0, 0, m.frameW, m.frameH];
+  };
   const cellsOf = f => {
     const m = man[f.a];
     if (!m) return [];
-    /* 占格要用"真实像素宽度 × sc"，不能只用 bbox[2]/48 —— 宽体家具（office-desk 等）
-     * 后者算出来比实际窄，于是"算着不压路"实际压了（E1 残留的原因）。 */
-    const sc = Number(f.sc || 1);
-    const bb = m.bbox || [0, 0, 48, 48];
-    const pxW = Number(m.frameW || m.fw || bb[2] || 48) * sc;
-    const pxH = Number(m.frameH || m.fh || bb[3] || 48) * sc;
-    const wT = Math.max(1, pxW / T), fh = Math.min(12, pxH) / T;
-    const ty = Math.round(f.y - fh);              // round：与门禁一致
-    const xs = [];
-    for (let i = 0; i < wT; i++) xs.push(Math.round(f.x - wT / 2 + i));
-    return xs.map(x => x + "," + ty);
+    if (f.on) return [];                       // 叠加物没有自己的坐标，跟着 host 走，不产生碰撞
+    const bbox = bboxOf(f);
+    const px = f.x * T + T / 2 + (f.ox || 0);
+    /* band:1 = 贴在顶部墙带（0–48px 那条北墙），脚点落在墙带底边，不按 y 换行 */
+    const py = f.band ? WALL_H + (f.oy || 0) : (WALL_H + f.y * T + T / 2 + (f.oy || 0));
+    const footH = Math.min(12, bbox[3]);
+    const left = px - m.frameW / 2 + (bbox[0] || 0);
+    const right = left + bbox[2];
+    const top = py - footH;
+    const out = [];
+    for (let gy = Math.floor((top - WALL_H) / T); gy <= Math.floor((py - WALL_H - 1) / T); gy++)
+      for (let gx = Math.floor(left / T); gx <= Math.floor((right - 1) / T); gx++)
+        out.push(gx + "," + gy);
+    return out;
   };
   const solid = f => !(f.o || f.wall || f.on);
 
@@ -152,6 +177,20 @@ export function loadModel(opts = {}) {
     const [x, y] = k.split(",").map(Number);
     if (blocked[y] && blocked[y][x] !== undefined) blocked[y][x] = true;
   }));
+  /* 池塘椭圆阻挡（运行时 buildBlockedGrid 里同款公式）：水面不可走，岸边保持可走。
+   * 之前模型里漏了这一段，于是"模型说可走、运行时走不进去"的格子在塘边成片存在。 */
+  (map.blockers || []).forEach(b => {
+    if (b.t !== "pond") return;
+    const bx0 = Math.max(0, Math.floor(b.x0)), bx1 = Math.min(COLS - 1, Math.ceil(b.x1) - 1);
+    const by0 = Math.max(0, Math.floor(b.y0)), by1 = Math.min(ROWS - 1, Math.ceil(b.y1) - 1);
+    const ex = (b.x0 + b.x1) / 2, ey = (b.y0 + b.y1) / 2;
+    const rx = (b.x1 - b.x0) / 2 + 0.12, ry = (b.y1 - b.y0) / 2 + 0.12;
+    for (let py = by0; py <= by1; py++)
+      for (let px = bx0; px <= bx1; px++) {
+        const cx = px + 0.5, cy = py + 0.5;
+        if (Math.pow((cx - ex) / rx, 2) + Math.pow((cy - ey) / ry, 2) <= 1 && blocked[py]) blocked[py][px] = true;
+      }
+  });
 
   // 锚点：锚点格 + 四邻（执行器不许落在这里）
   const anchors = {};
@@ -208,7 +247,10 @@ export function parityWithCheck(model) {
   catch (e) { out = String(e.stdout || "") + String(e.stderr || ""); }
   const reported = new Set();
   out.split("\n").forEach(line => {
-    const m = /^(\S+) 锚点 \[(\d+),(\d+)\] 落在阻挡格里/.exec(line.trim());
+    /* 门禁的输出是 "         ✗ sofa 锚点 [7,28] 落在阻挡格里，A* 会漂走"。
+     * 原来这里的正则以 ^(\S+) 开头，碰上 "✗ " 前缀永远匹配不上 —— 于是不管门禁报多少条，
+     * reported 都是空的，对账恒定输出"全部一致"。假绿比红更坏：它让人相信两套模型没分叉。 */
+    const m = /✗\s+(\S+)\s+锚点\s+\[(\d+),(\d+)\]\s+落在阻挡格里/.exec(line);
     if (m) reported.add(m[1]);
   });
   const mismatches = [];

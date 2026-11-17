@@ -28,7 +28,8 @@ const BACK_TO_WALL = new Set(["cabinet", "bookshelf-office", "filing-cabinet", "
 const HEAD_TO_WALL = new Set(["double-bed", "bed"]);
 const FACE_TABLE = new Set(["chair", "office-chair"]);
 const FACE_COFFEE = new Set(["sofa", "armchair"]);
-const TABLES = new Set(["table", "round-table", "dining-table", "office-desk", "desk-wood"]);
+/* school-desk 也是"桌"：nbDoc 的书桌就是这个素材，漏掉它会让两张椅子被 R3 误报（§5.3 只要求"2 格内有桌"）。 */
+const TABLES = new Set(["table", "round-table", "dining-table", "office-desk", "desk-wood", "school-desk"]);
 const COFFEE = new Set(["round-table", "dining-table"]);
 
 const nearAny = (f, set, r) => items.some(g => g !== f && set.has(g.a) && Math.hypot(g.x - f.x, g.y - f.y) <= r);

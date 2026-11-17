@@ -18,6 +18,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { loadModel } from "./map-model.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const WEB = path.join(ROOT, "web");
@@ -57,6 +58,8 @@ const furnSrc = read(path.join(WEB, "src", "furniture.js"));
 const npcSrc = read(path.join(WEB, "src", "npc.js"));
 
 const T = map.room.tile, COLS = map.room.cols, ROWS = map.room.rows;
+const WALL_H = Number(map.room.wallH || 48);
+const model = loadModel();   // 占格/墙格/锚点的唯一来源（本文件不再自己算一套）
 const issues = [];
 const add = (sev, code, msg, extra) => issues.push({ sev, code, msg, extra });
 
@@ -85,19 +88,20 @@ for (let x = 0; x < COLS; x++) grid[0][x] = 1;                       // 第 0 �
     }
   }
 });
-// 家具占地（bbox 底部 12px 投影），只算落地家具
+// 家具占地（bbox 底部 12px 投影）—— 【与运行时 buildBlockedGrid 同一套算式】
+// 原来是 floor(f.x - wTiles/2) / floor(f.y - footH)，少了排版时的 TILE/2 中心偏移（p.x = f.x*T+24），
+// 于是每一件都往左上偏半格：整数 x 的家具会被算到 x-1 列，审计就报"家具踩在墙上""有格子不连通"，
+// 而运行时不挡。三套占格口径（运行时 / check.mjs / 这里）必须只剩一套，否则改一个位置要同时哄三个判据。
+// 家具占地 —— 【不再自己算】。占格口径只有 map-model.cellsOf 一份（与运行时 buildBlockedGrid 逐字同算式）。
+// 这里原来自己算一版 floor(f.x - wTiles/2) / floor(f.y - footH)，少了排版时的 TILE/2 中心偏移，
+// 每件都往左上偏半格：整数 x 的家具被算到 x-1 列，于是报出"家具踩在墙上""有格子不连通""路断了"
+// 这类其实不存在的错，而真正压在路上的反而看不出来。三套口径对齐这件事（§2）比修任何单件都优先。
 const feet = [];
-allFurn.forEach(f => {
-  if (typeof f.x !== "number" || typeof f.y !== "number") return;
-  const m = man[f.a];
-  if (!m) return;
-  if (f.o || f.wall || f.on) return;
-  const bb = m.bbox || [0, 0, m.frameW || 48, m.frameH || 48];
-  const wTiles = Math.max(1, bb[2] / T), footH = Math.min(12, bb[3]) / T;
-  const ty = Math.floor(f.y - footH + 0.001);
-  for (let i = 0; i < wTiles; i++) {
-    const tx = Math.floor(f.x - wTiles / 2 + i);
-    if (grid[ty] && grid[ty][tx] !== undefined) { grid[ty][tx] = 1; feet.push({ id: f.id || f.a, tx, ty }); }
+model.items.filter(model.solid).forEach(f => {
+  const label = f.id || f.a;
+  for (const k of model.cellsOf(f)) {
+    const [tx, ty] = k.split(",").map(Number);
+    if (grid[ty] && grid[ty][tx] !== undefined) { grid[ty][tx] = 1; feet.push({ id: label, tx, ty }); }
   }
 });
 // 池塘
@@ -156,7 +160,10 @@ Object.keys(map.zones || {}).forEach(k => {
   const z = map.zones[k];
   const a = z && z.anchor;
   if (!Array.isArray(a) || a.length !== 2) { add("P0", "B0", "zone " + k + " 没有合法 anchor"); return; }
-  const x = Math.floor(a[0]), y = Math.floor(a[1]);
+  /* 锚点格口径 = Math.round，和 map-model / check.mjs 一致（§2 取整口径表：房间归属用 floor，
+   * 锚点用 round）。这里原来是 floor：锚点 [20.6,1] 被算成 (20,1)，而运行时/门禁算的是 (21,1)，
+   * 于是审计对着"隔壁那一格"报"锚点落在阻挡格"，五个 zone 全是假警报。 */
+  const x = Math.round(a[0]), y = Math.round(a[1]);
   if (a[0] < 0 || a[0] >= COLS || a[1] < 0 || a[1] >= ROWS) add("P0", "B1", "zone " + k + " 锚点越界", { anchor: a });
   else if (grid[y] && grid[y][x] === 1) add("P1", "B2", "zone " + k + " 锚点落在阻挡格（家具/墙/水里）→ 走过去站在原地", { anchor: a });
   else if (!mainSet.has(x + "," + y)) add("P1", "B3", "zone " + k + " 锚点不可达（不在主连通区）", { anchor: a });
@@ -277,20 +284,26 @@ npcDefs.forEach(m => {
 });
 
 // ---------- H 家具位置 ----------
+// 用上面同一套算式算出来的占地格（feet），不要再拿 floor(f.x)/floor(f.y) 当"家具所在格"——
+// 那是第四套口径，和占地格差半格，会报出"家具踩在墙上 7,15"这种其实站在第 16 行的假警报。
+const feetById = new Map();
+feet.forEach(e => { if (!feetById.has(e.id)) feetById.set(e.id, []); feetById.get(e.id).push(e); });
 placed.forEach(f => {
-  const x = Math.floor(f.x), y = Math.floor(f.y);
-  if (!grid[y]) return;
-  if (grid[y][x] === 1 && !f.o && !f.wall && !f.on) {
-    const onWall = (map.walls || []).some(wl => wl.x0 !== undefined
-      ? (y === wl.y && x >= wl.x0 && x <= wl.x1 && !(wl.gap && x >= wl.gap[0] && x <= wl.gap[1]))
-      : (x === wl.x && y >= wl.y && y < wl.y + wl.h && !(wl.gap && y >= wl.gap[0] && y <= wl.gap[1])));
-    const onPond = (map.blockers || []).filter(b => b.t === "pond").some(b => {
-      const cx = (b.x0 + b.x1) / 2, cy = (b.y0 + b.y1) / 2, rx = (b.x1 - b.x0) / 2, ry = (b.y1 - b.y0) / 2;
-      const dx = (x + 0.5 - cx) / rx, dy = (y + 0.5 - cy) / ry;
-      return dx * dx + dy * dy <= 1;
-    });
-    if (onWall) add("P2", "H1", "家具 " + (f.id || f.a) + " 踩在墙上：" + x + "," + y);
-    else if (onPond) add("P2", "H2", "家具 " + (f.id || f.a) + " 漂在水面上：" + x + "," + y);
+  const cells = feetById.get(f.id || f.a) || [];
+  for (const { tx: x, ty: y } of cells) {
+    if (!grid[y]) continue;
+    if (grid[y][x] === 1 && !f.o && !f.wall && !f.on) {
+      const onWall = (map.walls || []).some(wl => wl.x0 !== undefined
+        ? (y === wl.y && x >= wl.x0 && x <= wl.x1 && !(wl.gap && x >= wl.gap[0] && x <= wl.gap[1]))
+        : (x === wl.x && y >= wl.y && y < wl.y + wl.h && !(wl.gap && y >= wl.gap[0] && y <= wl.gap[1])));
+      const onPond = (map.blockers || []).filter(b => b.t === "pond").some(b => {
+        const cx = (b.x0 + b.x1) / 2, cy = (b.y0 + b.y1) / 2, rx = (b.x1 - b.x0) / 2, ry = (b.y1 - b.y0) / 2;
+        const dx = (x + 0.5 - cx) / rx, dy = (y + 0.5 - cy) / ry;
+        return dx * dx + dy * dy <= 1;
+      });
+      if (onWall) add("P2", "H1", "家具 " + (f.id || f.a) + " 踩在墙上：" + x + "," + y);
+      else if (onPond) add("P2", "H2", "家具 " + (f.id || f.a) + " 漂在水面上：" + x + "," + y);
+    }
   }
 });
 const outdoorFurniture = placed.filter(f => !roomAt(Math.floor(f.x), Math.floor(f.y)) && Math.floor(f.x) < 26);

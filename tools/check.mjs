@@ -116,10 +116,24 @@ function buildProps() {
 function buildGrid(props) {
   const grid = Array.from({ length: ROWS }, () => new Array(COLS).fill(0));
   for (let x = 0; x < COLS; x++) grid[0][x] = 1;
+  /* 必须区分竖墙 / 横墙 —— 竖墙对象带 {x,y,h}，横墙带 {y,x0,x1}。
+   * 这里原来丢了 isH 判定，把竖墙也按"整列全堵"处理（忽略 y/h），于是 x=10/16/25 三列
+   * 在**整张图**的所有行上都是阻挡格：办公室正中凭空多出三条走不进去的走廊。
+   * 运行时 furniture.js 的 buildBlockedGrid 是正确的（v24 已按 isH 分叉，见那里的 P0-1 注释），
+   * 是这条"复刻"没跟上 —— 复刻和实现分叉，正是 §2 说的事。
+   * 表现：把白板放到 (16,16) 后，锚点 (16,17) 被门禁判成"落在阻挡格里"，而运行时不挡。 */
   (map.walls || []).forEach(wl => {
-    for (let wy = 0; wy < ROWS; wy++) {
-      if (wl.gap && wy >= wl.gap[0] && wy <= wl.gap[1]) continue;
-      if (grid[wy]) grid[wy][wl.x] = 1;
+    const isH = wl.x0 !== undefined;
+    if (!isH) {
+      for (let wy = wl.y; wy < wl.y + wl.h; wy++) {
+        if (wl.gap && wy >= wl.gap[0] && wy <= wl.gap[1]) continue;
+        if (grid[wy]) grid[wy][wl.x] = 1;
+      }
+    } else {
+      for (let wx = wl.x0; wx <= wl.x1; wx++) {
+        if (wl.gap && wx >= wl.gap[0] && wx <= wl.gap[1]) continue;
+        if (grid[wl.y]) grid[wl.y][wx] = 1;
+      }
     }
   });
   props.forEach(p => {
