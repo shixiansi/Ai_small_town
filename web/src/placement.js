@@ -135,6 +135,10 @@
       { x: 19.0, y: 7.4,  r: 2.0, a: 0.16, tint: 0xffedd0, room: "kitchen" },   // 餐桌区（原来只有操作台灯）
       /* v2.8-h：?overlay=light 目视复核发现的两处功能区缺口 */
       { x: 24.0, y: 22.0, r: 1.9, a: 0.15, tint: 0xffedd0, room: "office" },    // 办公室最右一列（瓶架/白板）
+      /* v2.8-h：三户的"储物/角落"补弱光 —— 原来南半是纯 ambient，一晚一半亮一半黑 */
+      { x: 41.2, y: 26.4, r: 1.3, a: 0.10, tint: 0xffedd0, room: "nbCat" },     // 喵酱家：西南角
+      { x: 47.6, y: 26.6, r: 1.3, a: 0.10, tint: 0xffedd0, room: "nbChief" },   // 村长家：西南角
+      { x: 53.8, y: 27.6, r: 1.2, a: 0.10, tint: 0xffedd0, room: "nbDoc" },     // 博士家：东南角
       { x: 15.2, y: 28.2, r: 1.9, a: 0.15, tint: 0xffe2a8, room: "office" },    // 办公室南侧中带
     ];
     /* v2.8-h：第 3 层光照验收的运行时可视化 —— 地址栏加 ?overlay=light 打开：
