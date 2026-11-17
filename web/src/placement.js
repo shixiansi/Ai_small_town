@@ -115,6 +115,8 @@
       { x: 20.5, y: 21.4, r: 2.2, a: 0.18, tint: 0xffedd0, room: "office" },   // 产出簇
       { x: 4.5,  y: 27.8, r: 2.0, a: 0.16, tint: 0xffe2a8, room: "office" },   // 休息簇
       { x: 5.0,  y: 4.0,  r: 2.0, a: 0.20, tint: 0xffe2a8, room: "bedroom" },  // 卧室床头灯
+      { x: 8.6,  y: 10.4, r: 1.8, a: 0.15, tint: 0xffe2a8, room: "bedroom" },  // 卧室阅读站（书架+沙发）
+      { x: 1.9,  y: 9.2,  r: 1.6, a: 0.13, tint: 0xffedd0, room: "bedroom" },  // 卧室换衣站（立镜）
       { x: 12.7, y: 3.2,  r: 1.8, a: 0.18, tint: 0xffe2a8, room: "bath" },     // 卫浴镜前灯
       { x: 20.5, y: 3.2,  r: 2.0, a: 0.18, tint: 0xffe2a8, room: "kitchen" },  // 厨房操作台灯
     ];

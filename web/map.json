@@ -268,12 +268,6 @@
    "wall": true
   },
   {
-   "a": "chair",
-   "x": 5,
-   "y": 5,
-   "frame": 3
-  },
-  {
    "a": "bathtub",
    "x": 12.7,
    "y": 2.5,
@@ -1105,35 +1099,20 @@
   },
   {
    "a": "bookshelf-office",
-   "x": 2,
-   "y": 12.6,
+   "x": 8.9,
+   "y": 9.4,
    "id": "bdShelf"
   },
   {
-   "a": "round-table",
-   "x": 4.8,
-   "y": 12.2,
-   "id": "bdTable"
-  },
-  {
-   "a": "book-stack",
-   "x": 4.8,
-   "y": 12.2,
-   "id": "bdBook",
-   "on": "bdTable",
-   "dx": 0,
-   "dy": -6
-  },
-  {
    "a": "armchair",
-   "x": 6.7,
-   "y": 12.8,
+   "x": 8.2,
+   "y": 11.2,
    "id": "bdArm"
   },
   {
    "a": "floor-lamp",
-   "x": 8.7,
-   "y": 11.7,
+   "x": 9.1,
+   "y": 10.2,
    "id": "bdLamp"
   },
   {
@@ -1459,8 +1438,8 @@
   },
   {
    "a": "book-stack",
-   "x": 8.2,
-   "y": 8.6,
+   "x": 8.4,
+   "y": 8.2,
    "id": "bdBooks"
   },
   {
