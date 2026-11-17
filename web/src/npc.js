@@ -439,7 +439,7 @@
   var npcFeed = null, npcFeedAt = 0;
   function npcFeedFetch() {
     if (npcFeed && Date.now() - npcFeedAt < 600000) return npcFeed;
-    fetch("/office-hub-api/npc-feed").then(function (r) { return r.ok ? r.json() : null; })
+    fetch(hubApiUrl("npc-feed")).then(function (r) { return r.ok ? r.json() : null; })
       .then(function (j) { if (j) { npcFeed = j; npcFeedAt = Date.now(); } })
       .catch(function () {});
     return npcFeed;
@@ -494,7 +494,26 @@
       var pool = (NPC_DIALOGS[npc.def.id] || {})[bucket] || ["…"];
       line = pool[Math.floor(Math.random() * pool.length)];
     }
-    showBubble(line, "idle");
+    /* v2.9 关系档位：同一句话，熟人和生人说出来不一样。档位来自 hub /api/npc-feed 的 affinity，
+     * 拿不到就是 stranger（离线也不乱套）。close 还会先主动挥手 —— 让"住了很久"这件事有可见证据。 */
+    var tier = "stranger";
+    try {
+      var af = feed && feed.affinity && feed.affinity[npc.def.id];
+      if (af && af.tier) tier = af.tier;
+    } catch (e) {}
+    if (tier === "close" && Math.random() < 0.55) {
+      try {
+        showBubble("（隔着半条街就朝你挥手）", "idle");
+        scene.time.delayedCall(900, function () { if (bubbleText && bubbleText.text && bubbleText.text.indexOf("隔着半条街") === 0) showBubble(line, "idle"); });
+      } catch (e) { showBubble(line, "idle"); }
+    } else if (tier === "familiar" && Math.random() < 0.4) {
+      showBubble("（熟门熟路地）" + line, "idle");
+    } else {
+      showBubble(line, "idle");
+    }
+    if (typeof window !== "undefined") {
+      window.__officeNpcRel = function () { return { tier: tier, feed: !!feed }; };
+    }
     // NPC 回应气泡（头顶白泡，2.6s 消失）——鱼也回一句（静态池里挑一句通用回应）
     var replyPool = (NPC_DIALOGS[npc.def.id] || {})[bucket] || ["…"];
     var reply = replyPool[Math.floor(Math.random() * replyPool.length)];
@@ -513,7 +532,7 @@
     // v2.6 邻里事件回流：NPC 对话写进 hub 事件流（"最近动态"可见），agent 侧的日记/文章
     // 素材池会经 eventsBlock 捞到它（external 事件源约定：POST /api/event 即可）。
     try {
-      fetch("/office-hub-api/event", {
+      fetch(hubApiUrl("event"), {
         method: "POST", headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           state: "relaxing", task: "和" + npc.def.name + "聊天",

@@ -341,7 +341,7 @@ loadErrors = [];
 this.load.off("loaderror", onLoadError);
 this.load.on("loaderror", onLoadError);
 this.load.json("manifest", "assets/manifest.json?v=eb7ab1a1");
-this.load.json("mapdata", "map.json?v=3c831e6e");
+this.load.json("mapdata", "map.json?v=d22b591a");
 };
 SceneBoot.prototype.create = function () {
 var manifest = this.cache.json.get("manifest");
@@ -844,7 +844,7 @@ var lastNpcChat = 0;
 var npcFeed = null, npcFeedAt = 0;
 function npcFeedFetch() {
 if (npcFeed && Date.now() - npcFeedAt < 600000) return npcFeed;
-fetch("/office-hub-api/npc-feed").then(function (r) { return r.ok ? r.json() : null; })
+fetch(hubApiUrl("npc-feed")).then(function (r) { return r.ok ? r.json() : null; })
 .then(function (j) { if (j) { npcFeed = j; npcFeedAt = Date.now(); } })
 .catch(function () {});
 return npcFeed;
@@ -894,7 +894,24 @@ if (!line) {
 var pool = (NPC_DIALOGS[npc.def.id] || {})[bucket] || ["…"];
 line = pool[Math.floor(Math.random() * pool.length)];
 }
+var tier = "stranger";
+try {
+var af = feed && feed.affinity && feed.affinity[npc.def.id];
+if (af && af.tier) tier = af.tier;
+} catch (e) {}
+if (tier === "close" && Math.random() < 0.55) {
+try {
+showBubble("（隔着半条街就朝你挥手）", "idle");
+scene.time.delayedCall(900, function () { if (bubbleText && bubbleText.text && bubbleText.text.indexOf("隔着半条街") === 0) showBubble(line, "idle"); });
+} catch (e) { showBubble(line, "idle"); }
+} else if (tier === "familiar" && Math.random() < 0.4) {
+showBubble("（熟门熟路地）" + line, "idle");
+} else {
 showBubble(line, "idle");
+}
+if (typeof window !== "undefined") {
+window.__officeNpcRel = function () { return { tier: tier, feed: !!feed }; };
+}
 var replyPool = (NPC_DIALOGS[npc.def.id] || {})[bucket] || ["…"];
 var reply = replyPool[Math.floor(Math.random() * replyPool.length)];
 var bub = scene.add.text(npc.spr.x, npc.spr.y - npc.spr.displayHeight - 6, reply, {
@@ -910,7 +927,7 @@ scene.tweens.add({ targets: mark, y: mark.y - 10, alpha: 0, duration: 1200, onCo
 interact("chat", { npc: npc.def.id });
 if (typeof Audio !== "undefined") Audio.fx("medium", "chat");   // v2.7：搭上话了一声
 try {
-fetch("/office-hub-api/event", {
+fetch(hubApiUrl("event"), {
 method: "POST", headers: { "Content-Type": "application/json" },
 body: JSON.stringify({
 state: "relaxing", task: "和" + npc.def.name + "聊天",

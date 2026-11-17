@@ -984,7 +984,62 @@ function applyInteract(kind, extra) {
   const delta = INTERACT[kind]
   if (!delta) return { ok: false, status: 400, error: "未知交互 " + kind }
   applyStatDelta(delta)
+  if (kind === "chat") bumpAffinity(extra && extra.npc)   // v2.9：聊天累计关系值
   return { ok: true, kind, delta }
+}
+
+// ---------- NPC 关系值（v2.9）：她记得你和她说过的每一句话 ----------
+/* 三个档位，直接决定台词与主动程度：
+ *   stranger (<3)  刚搬来，客气；familiar (3~7) 熟面，会多聊两句；close (>=8) 亲近，会主动凑过来。
+ * 存 hub/npc.json（OFFICE_NPC_FILE 可改），随 /api/npc-feed 下发给前端选台词。
+ * 关系值只增不减（上限 20）：这不是养成游戏的压力系统，而是"越住越熟"的记账。 */
+const NPC_FILE = process.env.OFFICE_NPC_FILE
+  ? path.resolve(process.env.OFFICE_NPC_FILE)
+  : fileURLToPath(new URL("./npc.json", import.meta.url))
+const NPC_IDS = ["cat", "chief", "doc"]
+const AFFINITY_CAP = 20
+let npcRel = {}
+try {
+  const j = JSON.parse(fs.readFileSync(NPC_FILE, "utf8"))
+  NPC_IDS.forEach(id => { if (j && j[id]) npcRel[id] = j[id] })
+} catch {}
+NPC_IDS.forEach(id => {
+  if (!npcRel[id]) npcRel[id] = { affinity: 0, chats: 0, lastAt: 0 }
+})
+function npcTier(a) {
+  const v = Number(a) || 0
+  return v >= 8 ? "close" : v >= 3 ? "familiar" : "stranger"
+}
+let npcSaveTimer = null
+function saveNpcRel() {
+  if (npcSaveTimer) return
+  npcSaveTimer = setTimeout(() => {
+    npcSaveTimer = null
+    try {
+      fs.writeFileSync(NPC_FILE + ".tmp", JSON.stringify(npcRel))
+      fs.renameSync(NPC_FILE + ".tmp", NPC_FILE)
+    } catch (e) { console.warn(new Date().toISOString(), "[office-hub] 关系值落盘失败: " + e.message) }
+  }, 500)
+  npcSaveTimer.unref?.()
+}
+function bumpAffinity(id) {
+  const key = String(id || "")
+  if (!npcRel[key]) return null
+  const r = npcRel[key]
+  const before = npcTier(r.affinity)
+  r.affinity = Math.min(AFFINITY_CAP, (Number(r.affinity) || 0) + 1)
+  r.chats = (Number(r.chats) || 0) + 1
+  r.lastAt = Date.now()
+  const tier = npcTier(r.affinity)
+  saveNpcRel()
+  broadcast({ type: "npc", npc: key, affinity: r.affinity, tier, becameFriend: before !== tier })
+  if (before !== tier) console.log(new Date().toISOString(), "[office-hub] 关系升级: " + key + " " + before + " → " + tier + "（" + r.affinity + "）")
+  return { affinity: r.affinity, tier }
+}
+function affinitySnapshot() {
+  const out = {}
+  NPC_IDS.forEach(id => { out[id] = { value: npcRel[id].affinity, chats: npcRel[id].chats, tier: npcTier(npcRel[id].affinity) } })
+  return out
 }
 
 const CORS = {
@@ -1114,7 +1169,8 @@ const server = http.createServer((req, res) => {
   // 读外部事件源的落盘（social_memory.json / qq_state.json / posts 最近一条），fail-open。
   if (req.url === "/api/npc-feed") {
     res.writeHead(200, { ...CORS, "Content-Type": "application/json; charset=utf-8" })
-    res.end(JSON.stringify(npcFeedSnapshot()))
+    // v2.9：把三个邻居的关系值/档位一起下发，前端据此挑台词与决定要不要主动凑过来
+    res.end(JSON.stringify({ ...npcFeedSnapshot(), affinity: affinitySnapshot() }))
     return
   }
   // 地图自定义层（v37 编辑地图界面）：GET 读全量，POST 增删改（仅本机/调试用）
@@ -1242,4 +1298,12 @@ server.listen(PORT, HOST, () => {
 
 // 每 60s 给所有浏览器广播一次服务器时间（驱动"刚刚 / N 分钟前上报"的相对时间显示）
 setInterval(() => broadcast({ type: "ts", ts: Date.now() }), 60000).unref?.()
-for (const sig of ["SIGINT", "SIGTERM"]) process.on(sig, () => { if (saveTimer) { clearTimeout(saveTimer); saveTimer = null } saveDisk(); process.exit(0) })
+for (const sig of ["SIGINT", "SIGTERM"]) process.on(sig, () => {
+  if (saveTimer) { clearTimeout(saveTimer); saveTimer = null }
+  if (npcSaveTimer) { clearTimeout(npcSaveTimer); npcSaveTimer = null }
+  saveDisk()
+  // 退出前把"去抖写"的存档刷一次：刚聊完的那句话、刚浇的那块地不能丢
+  try { fs.writeFileSync(NPC_FILE, JSON.stringify(npcRel)) } catch {}
+  try { saveFarm() } catch {}
+  process.exit(0)
+})

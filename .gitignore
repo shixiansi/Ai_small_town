@@ -1,6 +1,7 @@
 # ---- 运行时状态（每跑一次就变，不进 git）----
 hub/state.json
 hub/farm.json
+hub/npc.json
 hub/*.tmp
 hub/map.backups/
 logs/

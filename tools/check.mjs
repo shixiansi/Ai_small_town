@@ -1236,6 +1236,37 @@ check("数值单点写入（前端只发意图 / hub 决定金额 / 本地开发
   return { problems: bad, warnings, note: ids.length + " 道菜的金额在 hub · 5 个交互统一结算 · 前端只剩意图" };
 });
 
+// ---------- 第 30 项：NPC 关系值（v2.9）----------
+check("NPC 关系值（聊天累计 / 三个档位 / 台词与主动程度跟着变）", () => {
+  const bad = [], warnings = [];
+  const npcSrc = read(path.join(WEB, "src", "npc.js"));
+
+  // 1) hub：存档 + 只增不减 + 上限 + 档位阈值 + 聊天挂钩
+  if (hubSrc.indexOf("OFFICE_NPC_FILE") < 0) bad.push("hub.mjs 缺 OFFICE_NPC_FILE（关系值存档路径不可配）");
+  if (hubSrc.indexOf("function bumpAffinity(") < 0) bad.push("hub.mjs 缺 bumpAffinity");
+  if (hubSrc.indexOf("AFFINITY_CAP") < 0) bad.push("hub.mjs 缺关系值上限（会无限涨）");
+  if (hubSrc.indexOf("function npcTier(") < 0) bad.push("hub.mjs 缺档位换算 npcTier");
+  if (hubSrc.indexOf('kind === "chat") bumpAffinity') < 0) bad.push("hub.mjs 的 chat 交互没累计关系值");
+  if ((hubSrc.match(/"close"/g) || []).length < 1 || (hubSrc.match(/"familiar"/g) || []).length < 1) {
+    bad.push("hub.mjs 的档位缺 close/familiar");
+  }
+  if (hubSrc.indexOf("affinity: affinitySnapshot()") < 0) bad.push("/api/npc-feed 没下发关系值：前端挑不了台词档位");
+
+  // 2) 前端：三条档位分支 + 不硬编码反代前缀 + 可断言快照
+  if (npcSrc.indexOf("office-hub-api") >= 0) bad.push("npc.js 还硬编码 /office-hub-api 前缀（本地开发会静默 404）");
+  ["stranger", "familiar", "close"].forEach(t => {
+    if (npcSrc.indexOf(t) < 0) bad.push("npc.js 缺档位分支 " + t);
+  });
+  if (npcSrc.indexOf("feed.affinity") < 0) bad.push("npc.js 没从 feed 读 affinity（关系值白算了）");
+  if (npcSrc.indexOf("__officeNpcRel") < 0) bad.push("npc.js 没暴露 __officeNpcRel（自动走查断言用）");
+  if (npcSrc.indexOf("隔着半条街") < 0) warnings.push("close 档位的「主动挥手」文案没找到，确认是不是被改掉了");
+
+  // 3) 只增不减、且不封顶到 100（那是数值条，不是关系）
+  if (!/Math\.min\(AFFINITY_CAP,/.test(hubSrc)) bad.push("bumpAffinity 没做上限钳制");
+
+  return { problems: bad, warnings, note: "3 档（<3 陌生 / 3~7 熟面 / >=8 亲近）· 上限 20 · 随 feed 下发" };
+});
+
 console.log("\noffice 静态自检\n" + "─".repeat(64));
 results.forEach(r => {
   const tag = r.problems.length ? "[FAIL]" : (r.warnings.length ? "[WARN]" : "[ OK ]");
