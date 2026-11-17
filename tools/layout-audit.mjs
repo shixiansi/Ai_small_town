@@ -61,21 +61,21 @@ for (const rk of targets) {
   const wallish = k => wallCells.has(k) || customTerrain.get(k) === "water";
   const occ = new Set();
   inR.forEach(f => cellsOf(f).forEach(k => occ.add(k)));
-  let maxRun = 0;
-  const scanRun = (cells) => {
+  let maxRun = 0, maxAt = "";
+  const scanRun = (cells, where) => {
     let run = 0;
     for (const k of cells) {
       if (occ.has(k) || wallish(k)) run = 0;
-      else { run++; if (run > maxRun) maxRun = run; }
+      else { run++; if (run > maxRun) { maxRun = run; maxAt = where(k); } }
     }
   };
   for (let y = r.y; y < r.y + r.h; y++) {
     const cells = []; for (let x = r.x; x < r.x + r.w; x++) cells.push(x + "," + y);
-    scanRun(cells);
+    scanRun(cells, () => "y=" + y);
   }
   for (let x = r.x; x < r.x + r.w; x++) {
     const cells = []; for (let y = r.y; y < r.y + r.h; y++) cells.push(x + "," + y);
-    scanRun(cells);
+    scanRun(cells, () => "x=" + x);
   }
 
   // ④ 对齐率：同行（|dy|<0.6）或同列（|dx|<0.6）有成对家具的件数占比
@@ -85,7 +85,7 @@ for (const rk of targets) {
   });
   const alignRate = aligned / inR.length;
 
-  rows.push({ rk, n: inR.length, bigs: bigs.length, wallRate, nnMedian, maxRun, alignRate });
+  rows.push({ rk, n: inR.length, bigs: bigs.length, wallRate, nnMedian, maxRun, maxAt, alignRate });
 }
 
 console.log("\n布局审计（像不像人摆的，而不是有没有违规）");
@@ -102,7 +102,7 @@ rows.forEach(r => {
     r.rk.padEnd(10) + String(r.n).padStart(4) + String(r.bigs).padStart(6) +
     ("  " + (r.wallRate * 100).toFixed(0) + "%").padStart(8) +
     ("  " + r.nnMedian.toFixed(1)).padStart(11) +
-    ("  " + r.maxRun + " 格").padStart(9) +
+    ("  " + r.maxRun + " 格" + (r.maxAt ? "(" + r.maxAt + ")" : "")).padStart(14) +
     ("  " + (r.alignRate * 100).toFixed(0) + "%").padStart(8) +
     "   " + (flags.length ? "⚠ " + flags.join(" / ") : "✓")
   );

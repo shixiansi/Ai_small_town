@@ -1306,6 +1306,24 @@ check("地图审计（可走性 / 锚点 / 房间矩形 / 路网 / 地形 / NPC 
   return { problems: bad, warnings, note: "可走 " + j.walkable + " 格 · 连通区 " + j.components + " 个 · P0 " + p0.length + " / P1 " + p1.length + " / P2 " + (issues.length - p0.length - p1.length) };
 });
 
+// ---------- 第 32 项：朝向门禁（v2.9 · 判据已按 §5.1 修正）----------
+check("朝向门禁（R1 背靠墙 / R2 头靠墙 / R3 面桌 / R4 面茶几）", () => {
+  let out = "";
+  try {
+    out = execFileSync(process.execPath, [path.join(OFFICE, "tools", "facing-check.mjs"), "--json"], { encoding: "utf8" });
+  } catch (e) {
+    // 有违规时 facing-check 退出码是 1，JSON 仍在 stdout 里
+    out = String(e.stdout || "");
+  }
+  let j = null;
+  try { j = JSON.parse(out); } catch (e) { return { problems: ["facing-check --json 输出不是合法 JSON"] }; }
+  const v = j.violations || [];
+  return {
+    problems: v.slice(0, 8).map(x => "[" + x.rule + "] " + (x.room || "户外") + " " + x.a + "@" + x.x + "," + x.y + "  " + x.msg),
+    note: "只断言可判定件 " + (j.checked || 0) + " 件 · 违规 " + v.length + " 处 · 墙格 " + (j.wallCells || 0)
+  };
+});
+
 console.log("\noffice 静态自检\n" + "─".repeat(64));
 results.forEach(r => {
   const tag = r.problems.length ? "[FAIL]" : (r.warnings.length ? "[WARN]" : "[ OK ]");

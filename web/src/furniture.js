@@ -133,28 +133,27 @@
        * 现有素材都是单朝向，只能用镜像表达"朝左/朝右"；朝上/朝下需要新美术或 rot。
        * 该不该翻由 tools/facing-audit.mjs 推导（椅子朝桌心、床头顶墙…）。 */
       if (f.flipX) spr.setFlipX(true);
-      /* v2.8-j 第 5 维·逐件投影：同一张贴图压暗 + 全局光向偏移（+6/+10 px），深度压在本体下一层。
-       * 房间级阴影走 mapedit 的 shadow 块（night 0.60 / lit 0.15 / day 0.00），
-       * 但单品投影原来一个都没有 —— 所以物体看起来像"贴"在地板上。
-       * 光向固定一个方向（3/4 俯视的常规做法）；sc 缩放的件按同系数跟随，避免影子错位。 */
-      if (!f.o && !f.wall && !f.on) {
-        var shadowSc = Number(f.sc || 1);
-        var shd = s.add.image(p.x + 6 * shadowSc, p.y + 10 * shadowSc, f.a, f0)
-          .setOrigin(p.originX, p.originY)
-          .setTint(0x000000)
-          .setAlpha(0.22)
-          .setDepth(Math.max(0, p.depth - 1));
-        if (f.flipX) shd.setFlipX(true);
-        if (shadowSc !== 1) shd.setScale(shadowSc);
+      /* v2.8-j 第 5 维·逐件投影（v86 重做）：**不再复制本体贴图**。
+       * 旧写法是 s.add.image(p.x+6, p.y+10, f.a, f0).setTint(0x000000)，即"把家具自己再画一遍、
+       * 涂黑、斜移 6/10px"。两个毛病：
+       *   ① 视觉上阴影里带着物品的全部细节（镂空、亮面、描边），看着是"物体被复制了一份"，
+       *      而不是地面上的影子 —— 投影应该只有**接触面**的形状，不该有本体的图案。
+       *   ② 那份 image 没有登记到任何地方，重建家具层时销毁不掉（furniture.js:11 只销毁
+       *      p.spr / p.shadow），于是每重建一次就多叠一层黑影子。
+       * 现在只留一层"接触阴影"：椭圆，宽度跟占格宽、高度跟素材高，按全局光向微微偏移。
+       * 光向仍然只有一个方向（3/4 俯视常规做法），只是从"整件投影"退回到"落地处软影"。 */
+      if (!p.wall && !p.o && !f.on) {
+        var ssc = Number(p.scale || 1);
+        var shW = p.bbox[2] * ssc * 1.08;                     // 略宽于内容，读起来是"压在地上"
+        var shH = Math.max(6, Math.min(14, 6 + p.bbox[3] / 16));  // 越高的件落地影越厚一点
+        p.shadow = s.add.ellipse(
+          p.x + 2 * ssc,                  // 光向偏东
+          p.y + 3 * ssc,                  // 光向偏南（与房间级阴影同一侧）
+          shW, shH, 0x241a12, 0.26
+        ).setDepth(Math.max(0, p.depth - 1));
       }
       }
       if (p.scale !== 1) spr.setScale(p.scale);   // 大小关系：按格子归一化
-      // 接触阴影（评审 #3）：落地物件底部椭圆软影，宽=内容宽×1.1、深棕 25%
-      // 注意：阴影也要登记到 p.shadow，否则重建时销毁不掉（v37 家具重影的第二个来源）
-      if (!p.wall && !p.o && !f.on) {
-        var shW = p.bbox[2] * (p.scale || 1) * 1.1;
-        p.shadow = s.add.ellipse(p.x, p.y + 1, shW, 8, 0x3a2a1a, 0.25).setDepth(p.depth - 1);
-      }
       p.spr = spr;
       s.props.push(p);
       s.placed.push(p);

@@ -342,7 +342,7 @@ loadErrors = [];
 this.load.off("loaderror", onLoadError);
 this.load.on("loaderror", onLoadError);
 this.load.json("manifest", "assets/manifest.json?v=eb7ab1a1");
-this.load.json("mapdata", "map.json?v=70253d10");
+this.load.json("mapdata", "map.json?v=dd709a97");
 };
 SceneBoot.prototype.create = function () {
 var manifest = this.cache.json.get("manifest");
@@ -1581,22 +1581,18 @@ spr = s.add.sprite(p.x, p.y, f.a, f0).setOrigin(p.originX, p.originY).setDepth(p
 } else {
 spr = s.add.image(p.x, p.y, f.a, f0).setOrigin(p.originX, p.originY).setDepth(p.depth);
 if (f.flipX) spr.setFlipX(true);
-if (!f.o && !f.wall && !f.on) {
-var shadowSc = Number(f.sc || 1);
-var shd = s.add.image(p.x + 6 * shadowSc, p.y + 10 * shadowSc, f.a, f0)
-.setOrigin(p.originX, p.originY)
-.setTint(0x000000)
-.setAlpha(0.22)
-.setDepth(Math.max(0, p.depth - 1));
-if (f.flipX) shd.setFlipX(true);
-if (shadowSc !== 1) shd.setScale(shadowSc);
+if (!p.wall && !p.o && !f.on) {
+var ssc = Number(p.scale || 1);
+var shW = p.bbox[2] * ssc * 1.08;                     // 略宽于内容，读起来是"压在地上"
+var shH = Math.max(6, Math.min(14, 6 + p.bbox[3] / 16));  // 越高的件落地影越厚一点
+p.shadow = s.add.ellipse(
+p.x + 2 * ssc,                  // 光向偏东
+p.y + 3 * ssc,                  // 光向偏南（与房间级阴影同一侧）
+shW, shH, 0x241a12, 0.26
+).setDepth(Math.max(0, p.depth - 1));
 }
 }
 if (p.scale !== 1) spr.setScale(p.scale);   // 大小关系：按格子归一化
-if (!p.wall && !p.o && !f.on) {
-var shW = p.bbox[2] * (p.scale || 1) * 1.1;
-p.shadow = s.add.ellipse(p.x, p.y + 1, shW, 8, 0x3a2a1a, 0.25).setDepth(p.depth - 1);
-}
 p.spr = spr;
 s.props.push(p);
 s.placed.push(p);
