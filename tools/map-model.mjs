@@ -127,8 +127,29 @@ export function loadModel(opts = {}) {
     for (let y = r.y; y < r.y + r.h; y++) for (let x = r.x; x < r.x + r.w; x++) roadCells.add(x + "," + y);
   });
 
+  /* v2.8-h：碰撞判定也收敛到这里 —— 之前 resolve-v5/v6 与 resolve-stubborn 各写一份，
+   * 结果两个脚本报的"真重叠"件数不一样（一个 2 件、一个 0 件）。现在只此一处。 */
+  const occMap = except => {
+    const m = new Map();
+    items.forEach(f => {
+      if (f === except || !solid(f)) return;
+      cellsOf(f).forEach(k => { if (!m.has(k)) m.set(k, []); m.get(k).push(f); });
+    });
+    return m;
+  };
+  const conflictsOf = f => {
+    const m = occMap(f), out = [];
+    cellsOf(f).forEach(k => (m.get(k) || []).forEach(g => { if (g.a !== f.a && !out.includes(g)) out.push(g); }));
+    return out;
+  };
+  const protectedSet = new Set();
+  Object.values(anchors).forEach(a => {
+    if (a.sit) protectedSet.add(a.sit);
+    items.forEach(f => { if (Math.abs(f.x - a.raw[0]) <= 1.2 && Math.abs(f.y - a.raw[1]) <= 1.2) protectedSet.add(f.id); });
+  });
+
   return {
-    map, man, T, COLS, ROWS, rooms, roomOf, material, items, solid, cellsOf, roadCells,
+    map, man, T, COLS, ROWS, rooms, roomOf, material, items, solid, cellsOf, roadCells, conflictsOf, protectedSet,
     customFloor, customTerrain, customFurn, anchors, anchorCells,
     isBlocked: (x, y) => !blocked[y] || blocked[y][x] === true,
     blocked
