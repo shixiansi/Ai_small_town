@@ -144,8 +144,8 @@ async function main() {
     const M = Number(arg.margin || 1.5) * TILE;               // 默认 1.5 格 = 72px
     const zx = s.w * TILE + 2 * M, zy = s.h * TILE + 2 * M;
     const zoom = 768 / zy;
-    const cx = s.x0 * TILE + zx / 2;
-    const cy = WALL_H + s.y0 * TILE + zy / 2;
+    const cx = s.x0 * TILE + (s.w * TILE) / 2;             // 用**原始格范围**的中心
+    const cy = WALL_H + s.y0 * TILE + (s.h * TILE) / 2;    // 之前误用了 zy/2（含余量）→ 整幅被推下/推右 72px
     const drawnW = zx * zoom;                                // 画布里实际占用宽度
     const clipCanvasX = (1248 - drawnW) / 2;
     const cssK = rect.w / 1248;                              // 世界(画布内部)→CSS 的缩放
