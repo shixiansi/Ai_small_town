@@ -14,9 +14,16 @@ const TABLES = new Set(["table", "round-table", "dining-table", "office-desk", "
 const COFFEE = new Set(["round-table", "dining-table"]);
 
 const run = t => { try { return execFileSync(process.execPath, [path.join(ROOT, "tools", t)], { encoding: "utf8" }); } catch (e) { return String(e.stdout || ""); } };
-const gateOk = () => /0 个错误/.test(run("check.mjs"));
+/* 关键：每改一次 map.json，内容哈希就变旧，check 会在"版本号过期"上失败 —— 那是假阴性。
+ * 所以在判门禁前先跑 bust 重新写版本号，否则每件都会被误判为"候选都不过"（这坑踩了两轮）。 */
+const gateOk = () => {
+  try { execFileSync(process.execPath, [path.join(ROOT, "tools", "bust.mjs")], { encoding: "utf8" }); } catch {}
+  return /0 个错误/.test(run("check.mjs"));
+};
 const vcount = () => +((run("facing-check.mjs").match(/✗ (\d+) 处/) || [, "0"])[1]);
 const vlist = () => [...run("facing-check.mjs").matchAll(/^\s{4}(\S+)\s+(\S+?)@([\d.]+),([\d.]+)\s/gm)].map(m => ({ a: m[2], x: +m[3], y: +m[4] }));
+// 逐件局部判定：这一件在新位置上还违不违规（不看全图总数 —— 家具互相依赖，挪一件会让另一件违规）
+const violatesAt = (a, x, y) => vlist().some(v => v.a === a && Math.abs(v.x - x) < 0.06 && Math.abs(v.y - y) < 0.06);
 
 const start = vcount();
 const fixed = [], failed = [];
@@ -58,7 +65,7 @@ for (const v of vlist().slice(0, 20)) {
       }
     }
     fs.writeFileSync(mapPath, JSON.stringify(mj, null, 1));
-    if (gateOk() && vcount() < start) { fixed.push(item.id + " " + v.a + " → " + nx + "," + ny + (zone ? " (anchor " + zone.anchor.join(",") + ")" : "")); done = true; break; }
+    if (gateOk() && !violatesAt(item.a, nx, ny)) { fixed.push(item.id + " " + v.a + " → " + nx + "," + ny + (zone ? " (anchor " + zone.anchor.join(",") + ")" : "")); done = true; break; }
   }
   if (!done) {
     entry.x = ox; entry.y = oy;
