@@ -1726,62 +1726,6 @@
   {
    "a": "terrain",
    "t": "wall",
-   "x": 49,
-   "y": 6,
-   "id": "eter1dz6wa3hdx"
-  },
-  {
-   "a": "terrain",
-   "t": "wall",
-   "x": 49,
-   "y": 7,
-   "id": "eter1dz7wa3idy"
-  },
-  {
-   "a": "terrain",
-   "t": "wall",
-   "x": 49,
-   "y": 8,
-   "id": "eter1dz8wa3jvz"
-  },
-  {
-   "a": "terrain",
-   "t": "wall",
-   "x": 49,
-   "y": 9,
-   "id": "eter1dz9wa3kzl"
-  },
-  {
-   "a": "terrain",
-   "t": "wall",
-   "x": 49,
-   "y": 10,
-   "id": "eter1dzawa3llh"
-  },
-  {
-   "a": "terrain",
-   "t": "wall",
-   "x": 49,
-   "y": 11,
-   "id": "eter1dzbwa3mci"
-  },
-  {
-   "a": "terrain",
-   "t": "wall",
-   "x": 49,
-   "y": 12,
-   "id": "eter1dzcwa3no3"
-  },
-  {
-   "a": "terrain",
-   "t": "wall",
-   "x": 49,
-   "y": 13,
-   "id": "eter1dzdwa3oak"
-  },
-  {
-   "a": "terrain",
-   "t": "wall",
    "x": 46,
    "y": 0,
    "id": "eter1az0wa40pu"

@@ -2,7 +2,7 @@
 (function () {
 "use strict";
 var TILE = 48;
-var roomLights = { office: true, bedroom: false, kitchen: false, bath: false, nbCat: true, nbChief: true, nbDoc: true };   // v83：邻居三户默认开灯
+var roomLights = { office: true, bedroom: false, kitchen: false, bath: false, nbCat: true, nbChief: true, nbDoc: true, parkCourt: false, brickHall: false };   // v83：邻居三户默认开灯
 function bboxForFrame(m, frame) {
 if (!m) return [0, 0, 48, 48];
 var rows = (m.rows && m.rows.South) || 1;
@@ -342,7 +342,7 @@ loadErrors = [];
 this.load.off("loaderror", onLoadError);
 this.load.on("loaderror", onLoadError);
 this.load.json("manifest", "assets/manifest.json?v=eb7ab1a1");
-this.load.json("mapdata", "map.json?v=f35f361e");
+this.load.json("mapdata", "map.json?v=65b6f5f3");
 };
 SceneBoot.prototype.create = function () {
 var manifest = this.cache.json.get("manifest");
@@ -1483,7 +1483,7 @@ s.props = s.props ? s.props.filter(function (p) { return p.isFish; }) : [];   //
 s.fxDirect = {};           // 工作特效：{ pc, printer, chair }
 s.hostMap = {};            // id → placement（供 on: 引用）
 }
-var SWITCH_ROOMS = { office: 1, bedroom: 1, bath: 1, kitchen: 1, nbCat: 1, nbChief: 1, nbDoc: 1 };
+var SWITCH_ROOMS = { office: 1, bedroom: 1, bath: 1, kitchen: 1, nbCat: 1, nbChief: 1, nbDoc: 1, parkCourt: 1, brickHall: 1 };
 var SWITCH_ROOM_RECTS = {
 office:  [0, 15, 26, 15],
 bedroom: [1, 1, 9, 13],
@@ -1491,7 +1491,9 @@ bath:    [10, 1, 6, 13],
 kitchen: [16, 1, 9, 13],
 nbCat:   [40, 19, 5, 10],    // 喵酱家：房子 cottage 在 x≈42.2 / y≈19.6
 nbChief: [46, 19, 5, 10],    // 村长家：房子 house-modern 在 x≈48.2 / y≈19.6
-nbDoc:   [52, 19, 4, 10]     // 博士家：房子 farmhouse 在 x≈53.4 / y≈19.6（原 y=20 起，房子精灵会露在框外）
+nbDoc:   [52, 19, 4, 10],    // 博士家：房子 farmhouse 在 x≈53.4 / y≈19.6（原 y=20 起，房子精灵会露在框外）
+parkCourt: [41, 1, 7, 13],
+brickHall: [46, 1, 9, 14]
 };
 try { window.__officeRoomRects = SWITCH_ROOM_RECTS; } catch (e) {}   // v2.7：小地图复用同一份房间矩形
 function roomOfProp(p) {
@@ -1552,7 +1554,7 @@ if (!hit) return false;
 var room = hit.room || roomOfProp(hit);
 if (!room) { showBubble("这个开关没连到房间（编辑器里给它选一个）", "error"); return true; }
 roomLights[room] = roomLights[room] === false ? true : false;
-lightsOn = ["office", "bedroom", "bath", "kitchen", "nbCat", "nbChief", "nbDoc"].some(function (k) { return roomLights[k] !== false; });
+lightsOn = ["office", "bedroom", "bath", "kitchen", "nbCat", "nbChief", "nbDoc","parkCourt","brickHall"].some(function (k) { return roomLights[k] !== false; });
 applyRoomLights(s);
 syncSwitchVisuals(s);
 flashAt(s, hit.spr.x, hit.spr.y, roomLights[room] ? 0xfff3c4 : 0x6b7385);
@@ -1967,7 +1969,9 @@ var ROOM_RECTS = [
 { room: "kitchen", x: 16, y: 1,  w: 9,  h: 13, label: "厨房" },
 { room: "nbCat",   x: 40, y: 19, w: 5,  h: 10, label: "喵酱家" },
 { room: "nbChief", x: 46, y: 19, w: 5,  h: 10, label: "村长家" },
-{ room: "nbDoc",   x: 52, y: 19, w: 4,  h: 10, label: "博士家" }
+{ room: "nbDoc",   x: 52, y: 19, w: 4,  h: 10, label: "博士家" },
+{ room: "parkCourt", x: 41, y: 1, w: 7, h: 13, label: "草地小院" },
+{ room: "brickHall", x: 46, y: 1, w: 9, h: 14, label: "砖地大厅" }
 ];
 function roomCovered(rr, edits) {
 var roomArea = rr.w * rr.h;
@@ -3231,11 +3235,11 @@ return true;
 }
 function meSetRoomLight(room, on) {
 if (room === "all") {
-["office", "bedroom", "bath", "kitchen", "nbCat", "nbChief", "nbDoc"].forEach(function (k) { roomLights[k] = !!on; });
+["office", "bedroom", "bath", "kitchen", "nbCat", "nbChief", "nbDoc","parkCourt","brickHall"].forEach(function (k) { roomLights[k] = !!on; });
 lightsOn = !!on;
 } else if (roomLights[room] !== undefined) {
 roomLights[room] = !!on;
-lightsOn = ["office", "bedroom", "bath", "kitchen", "nbCat", "nbChief", "nbDoc"].some(function (k) { return roomLights[k]; });
+lightsOn = ["office", "bedroom", "bath", "kitchen", "nbCat", "nbChief", "nbDoc","parkCourt","brickHall"].some(function (k) { return roomLights[k]; });
 }
 if (scene) applyRoomLights(scene);
 return { lights: Object.assign({}, roomLights), on: lightsOn };
@@ -5816,12 +5820,12 @@ var cv = null, cx = null, base = null, bx = null;
 var timer = null, folded = false;
 var COLORS = {                       // 室内暖木 / 室内瓷砖 / 户外草地 / 街道石板
 office: "#b08a5e", bedroom: "#b08a5e", kitchen: "#9fb0b8", bath: "#9fb0b8",
-nbCat: "#b08a5e", nbChief: "#b08a5e", nbDoc: "#b08a5e"
+nbCat: "#b08a5e", nbChief: "#b08a5e", nbDoc: "#b08a5e", parkCourt: "#7fb069", brickHall: "#b8a888"
 };
 function roomRects() {
 return window.__officeRoomRects || {
 office: [0, 15, 26, 15], bedroom: [1, 1, 9, 13], bath: [10, 1, 6, 13],
-kitchen: [16, 1, 9, 13], nbCat: [40, 19, 5, 10], nbChief: [46, 19, 5, 10], nbDoc: [52, 19, 4, 10]
+kitchen: [16, 1, 9, 13], nbCat: [40, 19, 5, 10], nbChief: [46, 19, 5, 10], nbDoc: [52, 19, 4, 10], parkCourt: [41, 1, 7, 13], brickHall: [46, 1, 9, 14]
 };
 }
 function paintBase() {

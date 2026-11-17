@@ -951,7 +951,7 @@
   },
   {
    "a": "globe-desk",
-   "on": "docDesk",
+   "on": "cumw9ba88s66k",
    "dx": -14,
    "dy": 2,
    "sc": 0.8,
@@ -959,7 +959,7 @@
   },
   {
    "a": "book-stack",
-   "on": "docDesk",
+   "on": "cumw9ba88s66k",
    "dx": 13,
    "dy": 3,
    "sc": 0.45,
@@ -1030,8 +1030,8 @@
   },
   {
    "a": "bench-park",
-   "x": 44.5,
-   "y": 5,
+   "x": 44,
+   "y": 10.25,
    "id": "park5"
   },
   {
@@ -1303,12 +1303,6 @@
    "on": "kSideTable",
    "dx": 0,
    "dy": -6
-  },
-  {
-   "a": "bench-park",
-   "x": 44.5,
-   "y": 5,
-   "id": "plzBench1"
   },
   {
    "a": "bench-park",
@@ -1904,12 +1898,12 @@
     "bench-park"
    ],
    "sit": {
-    "host": "gardenBench1",
+    "host": "ofBridge",
     "dx": 0,
     "dy": -8,
-    "lounge": false,
     "face": "n"
-   }
+   },
+   "host": "ofBridge"
   },
   "market": {
    "anchor": [
@@ -1964,12 +1958,7 @@
     47.6,
     16.8
    ],
-   "face": "n",
-   "sit": {
-    "host": "townBench",
-    "dx": 0,
-    "dy": -6
-   }
+   "face": "n"
   },
   "balcony": {
    "anchor": [
@@ -2003,19 +1992,43 @@
    "anchor": [
     42.4,
     22.4
-   ]
+   ],
+   "label": "喵酱家客厅",
+   "host": "cumw9b87j74p2",
+   "sit": {
+    "host": "cumw9b87j74p2",
+    "dx": 0,
+    "dy": -10,
+    "lounge": true
+   }
   },
   "living_chief": {
    "anchor": [
     49,
     24.6
-   ]
+   ],
+   "label": "村长家客厅",
+   "host": "chiefChair2",
+   "sit": {
+    "host": "chiefChair2",
+    "dx": 0,
+    "dy": -10,
+    "lounge": false
+   }
   },
   "living_doc": {
    "anchor": [
     52.4,
     25
-   ]
+   ],
+   "label": "博士家客厅",
+   "host": "docArm",
+   "sit": {
+    "host": "docArm",
+    "dx": 0,
+    "dy": -10,
+    "lounge": true
+   }
   },
   "farm": {
    "anchor": [
@@ -2049,6 +2062,42 @@
    ],
    "face": "s",
    "host": "townBench"
+  },
+  "parkCourt": {
+   "label": "草地小院",
+   "anchor": [
+    44,
+    11.4
+   ],
+   "face": "n",
+   "host": "park5",
+   "expect": [
+    "bench-park"
+   ],
+   "sit": {
+    "host": "park5",
+    "dx": 0,
+    "dy": -8,
+    "face": "n"
+   }
+  },
+  "brickHall": {
+   "label": "砖地大厅",
+   "anchor": [
+    53,
+    11.6
+   ],
+   "face": "n",
+   "host": "plzBench2",
+   "expect": [
+    "bench-park"
+   ],
+   "sit": {
+    "host": "plzBench2",
+    "dx": 0,
+    "dy": -8,
+    "face": "n"
+   }
   }
  },
  "walls": [

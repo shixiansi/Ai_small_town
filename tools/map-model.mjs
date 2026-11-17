@@ -23,7 +23,21 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const WEB = path.join(ROOT, "web");
 const read = f => fs.readFileSync(f, "utf8");
 
-export const ROOM_KEYS = ["office", "bedroom", "bath", "kitchen", "nbCat", "nbChief", "nbDoc"];
+/* 房间名不再写死 —— 直接从 furniture.js 的 SWITCH_ROOM_RECTS 解析。
+ * 以前这里是 `["office","bedroom",...,"nbDoc"]` 硬编码，加房间（v88 的 parkCourt/brickHall）
+ * 就必然漏改：矩形加进了渲染层，工具却还按旧名单判，于是新房间里的家具全算"户外"。
+ * 房间名单是数据不是常量，交还给唯一的源头文件。 */
+export function roomKeysOf(furnSrc) {
+  const keys = [];
+  const re = /^\s*([A-Za-z]\w*)\s*:\s*\[\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*\]/gm;
+  let m;
+  while ((m = re.exec(furnSrc))) if (!keys.includes(m[1])) keys.push(m[1]);
+  return keys;
+}
+export const ROOM_KEYS = (() => {
+  try { return roomKeysOf(read(path.join(WEB, "src", "furniture.js"))); }
+  catch { return ["office", "bedroom", "bath", "kitchen", "nbCat", "nbChief", "nbDoc"]; }
+})();
 
 export function loadModel(opts = {}) {
   const map = JSON.parse(read(path.join(WEB, "map.json")));
@@ -32,13 +46,13 @@ export function loadModel(opts = {}) {
   const roomSrc = read(path.join(WEB, "src", "room.js"));
   const T = map.room.tile, COLS = map.room.cols, ROWS = map.room.rows;
 
-  // 房间矩形（与家具层同源）
+  // 房间矩形（与家具层同源；房间名单也现解析，别用模块级的旧快照）
   const rooms = {};
-  ROOM_KEYS.forEach(k => {
-    const m = new RegExp(k + ":\\s*\\[(\\d+),\\s*(\\d+),\\s*(\\d+),\\s*(\\d+)\\]").exec(furnSrc);
+  roomKeysOf(furnSrc).forEach(k => {
+    const m = new RegExp("\\b" + k + ":\\s*\\[(\\d+),\\s*(\\d+),\\s*(\\d+),\\s*(\\d+)\\]").exec(furnSrc);
     if (m) rooms[k] = { x: +m[1], y: +m[2], w: +m[3], h: +m[4] };
   });
-  const roomOf = (x, y) => ROOM_KEYS.find(k => {
+  const roomOf = (x, y) => Object.keys(rooms).find(k => {
     const r = rooms[k]; return r && x >= r.x - 0.6 && x <= r.x + r.w + 0.6 && y >= r.y - 0.6 && y <= r.y + r.h + 0.6;
   }) || null;
 

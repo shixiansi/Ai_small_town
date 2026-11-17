@@ -17,7 +17,7 @@
     s.hostMap = {};            // id → placement（供 on: 引用）
   }
   /* ---------- 灯的开关（v50）---------- */
-  var SWITCH_ROOMS = { office: 1, bedroom: 1, bath: 1, kitchen: 1, nbCat: 1, nbChief: 1, nbDoc: 1 };
+  var SWITCH_ROOMS = { office: 1, bedroom: 1, bath: 1, kitchen: 1, nbCat: 1, nbChief: 1, nbDoc: 1, parkCourt: 1, brickHall: 1 };
   var SWITCH_ROOM_RECTS = {
     office:  [0, 15, 26, 15],
     bedroom: [1, 1, 9, 13],
@@ -29,7 +29,15 @@
      * 于是夜里开关灯/阴影遮罩作用在别人家身上。这里按真实室内重算。 */
     nbCat:   [40, 19, 5, 10],    // 喵酱家：房子 cottage 在 x≈42.2 / y≈19.6
     nbChief: [46, 19, 5, 10],    // 村长家：房子 house-modern 在 x≈48.2 / y≈19.6
-    nbDoc:   [52, 19, 4, 10]     // 博士家：房子 farmhouse 在 x≈53.4 / y≈19.6（原 y=20 起，房子精灵会露在框外）
+    nbDoc:   [52, 19, 4, 10],    // 博士家：房子 farmhouse 在 x≈53.4 / y≈19.6（原 y=20 起，房子精灵会露在框外）
+    /* v88：右上角原本是两块被墙隔开的室内空间（不是户外公园），
+     * 但 7 个房间矩形没有一个覆盖它们 → 那块 45 件家具全被判成"户外"，
+     * 相机/灯光/阴影/房间切换都不认它，顶栏也没有入口。
+     *   parkCourt = 草地小院（image-3 的①）：x41..47 / y1..13
+     *   brickHall = 砖地大厅（image-4 的③）：x46..54 / y1..14，内部那道 x=49 分隔墙已按用户要求拆除
+     * 两者西/东各有自己的外墙，南边 y=14 一排是砖地大屋的南墙。 */
+    parkCourt: [41, 1, 7, 13],
+    brickHall: [46, 1, 9, 14]
   };
   /* 一个开关控制哪个房间：优先用条目里的 room，否则按它所在位置取最近的房间 */
   try { window.__officeRoomRects = SWITCH_ROOM_RECTS; } catch (e) {}   // v2.7：小地图复用同一份房间矩形
@@ -96,7 +104,7 @@
     var room = hit.room || roomOfProp(hit);
     if (!room) { showBubble("这个开关没连到房间（编辑器里给它选一个）", "error"); return true; }
     roomLights[room] = roomLights[room] === false ? true : false;
-    lightsOn = ["office", "bedroom", "bath", "kitchen", "nbCat", "nbChief", "nbDoc"].some(function (k) { return roomLights[k] !== false; });
+    lightsOn = ["office", "bedroom", "bath", "kitchen", "nbCat", "nbChief", "nbDoc","parkCourt","brickHall"].some(function (k) { return roomLights[k] !== false; });
     applyRoomLights(s);
     syncSwitchVisuals(s);
     flashAt(s, hit.spr.x, hit.spr.y, roomLights[room] ? 0xfff3c4 : 0x6b7385);

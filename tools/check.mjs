@@ -51,6 +51,26 @@ try {
   shSrc = read(path.join(OFFICE, "sync_web.sh"));
   try { statesJson = JSON.parse(read(path.join(OFFICE, "hub", "states.json"))); } catch { /* 由专门一项报错 */ }
   try { scheduleJson = JSON.parse(read(path.join(OFFICE, "hub", "schedule.json"))); } catch { /* 由第 18 项报错 */ }
+  /* v88：门禁必须看见自定义层的家具 —— 否则"坐席宿主 <某个编辑器里加的椅子>"会被判成
+   * "宿主不存在"，而运行时它明明在。这跟 §8 坑 12（hide/move 模型不认）是同一类病：
+   * 判据看的是 map.json，玩家看的是 map.json + map.custom.json。
+   * 这里只做最小必要的事：把自定义层的**家具条目**并进 map.furniture（floor/terrain/hide/move 不是家具）。
+   * 注意 hide 掉的件不该被当成宿主，所以先按 key 剔掉。 */
+  try {
+    const cj = JSON.parse(read(path.join(OFFICE, "hub", "map.custom.json")));
+    const hidden = new Set((cj.furniture || []).filter(f => f.a === "hide" && f.k).map(f => String(f.k)));
+    const moves = new Map((cj.furniture || []).filter(f => f.a === "move" && f.k).map(f => [String(f.k), { x: f.x, y: f.y }]));
+    const keyOf = f => (f.id ? "id:" + f.id : f.a + "@" + f.x + "," + f.y);
+    map.furniture = map.furniture.filter(f => !hidden.has(keyOf(f)));
+    map.furniture.forEach(f => { const mv = moves.get(keyOf(f)); if (mv) { f.x = mv.x; f.y = mv.y; } });
+    (cj.furniture || []).forEach(f => {
+      if (f.a === "floor" || f.a === "terrain" || f.a === "hide" || f.a === "move") return;
+      if (typeof f.x !== "number" || typeof f.y !== "number") return;
+      if (!manifest[f.a]) return;                       // 资产不认识的留给第 6 项去报
+      if (hidden.has(keyOf(f))) return;
+      map.furniture.push(f);
+    });
+  } catch { /* 自定义层缺失/损坏时保持原样，别把整条门禁带崩 */ }
 } catch (e) {
   console.error("[FAIL] 读取/解析基础文件失败: " + e.message);
   process.exit(1);
