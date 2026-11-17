@@ -1192,6 +1192,87 @@
    "x": 14.5,
    "y": 13.8,
    "id": "baPaper"
+  },
+  {
+   "a": "kitchen-counter",
+   "x": 18.2,
+   "y": 12.6,
+   "id": "kCounter2"
+  },
+  {
+   "a": "chair",
+   "x": 19.9,
+   "y": 12,
+   "id": "kStool"
+  },
+  {
+   "a": "round-table",
+   "x": 17.4,
+   "y": 10.6,
+   "id": "kNook"
+  },
+  {
+   "a": "kettle",
+   "x": 17.4,
+   "y": 10.6,
+   "id": "kNookKettle",
+   "on": "kNook",
+   "dx": 0,
+   "dy": -6
+  },
+  {
+   "a": "coffee-mug",
+   "x": 17.9,
+   "y": 10.6,
+   "id": "kNookMug",
+   "on": "kNook",
+   "dx": 9,
+   "dy": -6
+  },
+  {
+   "a": "potion-shelf",
+   "x": 23.4,
+   "y": 10.4,
+   "id": "kPantry"
+  },
+  {
+   "a": "cabinet",
+   "x": 22.6,
+   "y": 13.7,
+   "id": "kCabinet2"
+  },
+  {
+   "a": "plant-office",
+   "x": 17.2,
+   "y": 13.6,
+   "id": "kPlant2"
+  },
+  {
+   "a": "chair",
+   "x": 19,
+   "y": 6.6,
+   "id": "kChairN"
+  },
+  {
+   "a": "chair",
+   "x": 19,
+   "y": 9.4,
+   "id": "kChairS"
+  },
+  {
+   "a": "dining-table",
+   "x": 16.6,
+   "y": 6.2,
+   "id": "kSideTable"
+  },
+  {
+   "a": "fruit-bowl",
+   "x": 16.6,
+   "y": 6.2,
+   "id": "kSideBowl",
+   "on": "kSideTable",
+   "dx": 0,
+   "dy": -6
   }
  ],
  "zones": {
