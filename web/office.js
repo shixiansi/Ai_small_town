@@ -2,7 +2,7 @@
 (function () {
 "use strict";
 var TILE = 48;
-var roomLights = { office: true, bedroom: false, kitchen: false, bath: false, nbCat: true, nbChief: true, nbDoc: true, parkCourt: false, brickHall: false };   // v83：邻居三户默认开灯
+var roomLights = { office: true, bedroom: false, kitchen: false, bath: false, nbCat: true, nbChief: true, nbDoc: true, parkCourt: true, brickHall: true };   // v83：邻居三户默认开灯
 function bboxForFrame(m, frame) {
 if (!m) return [0, 0, 48, 48];
 var rows = (m.rows && m.rows.South) || 1;
@@ -1384,6 +1384,10 @@ var poolDefs = [
 { x: 47.6, y: 26.6, r: 1.3, a: 0.10, tint: 0xffedd0, room: "nbChief" },   // 村长家：西南角
 { x: 53.8, y: 27.6, r: 1.2, a: 0.10, tint: 0xffedd0, room: "nbDoc" },     // 博士家：东南角
 { x: 15.2, y: 28.2, r: 1.9, a: 0.15, tint: 0xffe2a8, room: "office" },    // 办公室南侧中带
+{ x: 44.0, y: 4.0,  r: 2.6, a: 0.20, tint: 0xffe2a8, room: "parkCourt" },  // 草地小院：北端路灯
+{ x: 44.0, y: 10.0, r: 2.6, a: 0.18, tint: 0xffe2a8, room: "parkCourt" },  // 草地小院：长椅
+{ x: 49.0, y: 3.0,  r: 2.6, a: 0.20, tint: 0xffedd0, room: "brickHall" },  // 砖地大厅：北端
+{ x: 52.5, y: 10.5, r: 2.6, a: 0.18, tint: 0xffedd0, room: "brickHall" },  // 砖地大厅：长椅
 ];
 if (/[?&]overlay=light/.test(location.search)) {
 var og = s.add.graphics().setDepth(9000);
