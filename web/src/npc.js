@@ -434,6 +434,52 @@
     return null;
   }
   var lastNpcChat = 0;
+  /* v2.6 NPC 认识鱼：对话素材来自 hub /api/npc-feed（鱼最近在 QQ/博客/空间干了什么）。
+   * 缓存 10 分钟；拿不到就退回静态台词表（fail-open）。 */
+  var npcFeed = null, npcFeedAt = 0;
+  function npcFeedFetch() {
+    if (npcFeed && Date.now() - npcFeedAt < 600000) return npcFeed;
+    fetch("/office-hub-api/npc-feed").then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (j) { if (j) { npcFeed = j; npcFeedAt = Date.now(); } })
+      .catch(function () {});
+    return npcFeed;
+  }
+  /* 按 NPC 性格把 feed 内容转成一句台词（拿不到素材返回 null，走静态池） */
+  function npcDynamicLine(npcId, feed) {
+    if (!feed) return null;
+    var evs = feed.recentEvents || [];
+    if (npcId === "chief") {
+      // 村长：消息灵通，爱打听
+      if (feed.lastShares && feed.lastShares.length && Math.random() < 0.4) {
+        var s = feed.lastShares[0];
+        if (s.type === "video") return "听说你昨天往群里甩了个视频？年轻人就是活跃。";
+        if (s.type === "qzone") return "你空间那句话我看到啦，写得不错。";
+      }
+      if (feed.friends && feed.friends.length && Math.random() < 0.5) {
+        return "群里那个" + feed.friends[0].name + "，看着挺健谈，你俩聊得来？";
+      }
+      if (evs.length && Math.random() < 0.3) return "镇口都传开了，你最近可够忙的。";
+      return null;
+    }
+    if (npcId === "doc") {
+      // 博士：只对技术/内容感兴趣
+      if (feed.memes && feed.memes.length && Math.random() < 0.35) {
+        return "你收藏的那些表情包……从传播学角度挺有意思。";
+      }
+      if (feed.qqMood != null && feed.qqMood >= 75 && Math.random() < 0.4) {
+        return "你最近状态不错，数据上看得出来。（翻了一页书）";
+      }
+      if (evs.length && Math.random() < 0.25) return "又是群里那些事吧，我看你那屋一直亮灯。";
+      return null;
+    }
+    if (npcId === "cat") {
+      // 喵酱：只关心鱼本鱼
+      if (feed.qqMood != null && feed.qqMood < 45 && Math.random() < 0.5) return "喵…（蹭蹭你，好像感觉你没精神）";
+      if (evs.length >= 3 && Math.random() < 0.4) return "喵！（你这两天热闹得很嘛）";
+      return null;
+    }
+    return null;
+  }
   function tryNpcChat() {
     var npc = npcInteractCheck();
     if (!npc) return;
@@ -441,10 +487,15 @@
     if (now - lastNpcChat < 25000) return;
     lastNpcChat = now;
     var bucket = npcHourBucket();
-    var pool = (NPC_DIALOGS[npc.def.id] || {})[bucket] || ["…"];
-    var line = pool[Math.floor(Math.random() * pool.length)];
+    var feed = npcFeedFetch();
+    // 55% 概率用动态台词（认识鱼的 NPC），其余走静态池
+    var line = (feed && Math.random() < 0.55) ? npcDynamicLine(npc.def.id, feed) : null;
+    if (!line) {
+      var pool = (NPC_DIALOGS[npc.def.id] || {})[bucket] || ["…"];
+      line = pool[Math.floor(Math.random() * pool.length)];
+    }
     showBubble(line, "idle");
-    // NPC 回应气泡（头顶白泡，2.6s 消失）——"和邻居间的对话完全没有"的补全
+    // NPC 回应气泡（头顶白泡，2.6s 消失）——鱼也回一句（静态池里挑一句通用回应）
     var replyPool = (NPC_DIALOGS[npc.def.id] || {})[bucket] || ["…"];
     var reply = replyPool[Math.floor(Math.random() * replyPool.length)];
     var bub = scene.add.text(npc.spr.x, npc.spr.y - npc.spr.displayHeight - 6, reply, {
@@ -458,6 +509,17 @@
     var mark = scene.add.text(npc.spr.x, npc.spr.y - npc.spr.displayHeight - 8, "❢", { fontSize: "16px", color: "#f59f00" }).setOrigin(0.5).setDepth(9500);
     scene.tweens.add({ targets: mark, y: mark.y - 10, alpha: 0, duration: 1200, onComplete: function () { mark.destroy(); } });
     postStatDelta({ social: 10, mood: 3 });
+    // v2.6 邻里事件回流：NPC 对话写进 hub 事件流（"最近动态"可见），agent 侧的日记/文章
+    // 素材池会经 eventsBlock 捞到它（external 事件源约定：POST /api/event 即可）。
+    try {
+      fetch("/office-hub-api/event", {
+        method: "POST", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          state: "relaxing", task: "和" + npc.def.name + "聊天",
+          detail: String(line).slice(0, 60), ts: Date.now(), priority: 1
+        })
+      }).catch(function () {});
+    } catch (e) {}
     renderStatsBar();
   }
 

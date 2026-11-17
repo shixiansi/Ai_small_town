@@ -292,6 +292,13 @@ function loadDisk() {
       const prev = recent[i - 1]
       return !(prev && e.state === prev.state && e.task === prev.task)
     })
+    // v2.6 降噪：arrive 折叠——「到办公室，开始干活」后面紧跟同 task 的工作态时，arrive 没信息量。
+    // 规则：arrive 条目的 task 与下一条的 task 相同（如都是「回复博客评论」）→ 删 arrive。
+    recent = recent.filter((e, i) => {
+      if (e.state !== "arrive" || i === recent.length - 1) return true
+      const next = recent[i + 1]
+      return !(next && next.task === e.task)
+    })
     return { cur, recent }
   } catch { return { cur: initialState(), recent: [] } }
 }
@@ -429,6 +436,31 @@ function scheduleTick() {
 }
 if (schedule) setInterval(scheduleTick, 30000).unref?.()
 
+// ---------- 数值驱动的排班外行为（v2.6）----------
+/* 作息表是"计划"，数值是"生理"。数值跌破阈值时插入一次性行为事件（优先级 1，不打断
+ * 业务态但占住空档）：hunger<35 → 加餐；energy<25 → 趴一会；hygiene<30 → 洗把脸。
+ * 每 2h 至多触发一次（NEED_EVENT_COOLDOWN），冷却结束还低就再触发。 */
+const NEED_EVENT_COOLDOWN = 2 * 3600e3
+let lastNeedEventAt = 0
+function needEventTick() {
+  if (!allowed || Date.now() - lastNeedEventAt < NEED_EVENT_COOLDOWN) return
+  if (!isAwakeHour()) return                                    // 夜里让作息表管
+  const curPrio = cur.priority || 0
+  const curAge = Date.now() - (Number(cur.ts) || 0)
+  if (curPrio >= 2 && curAge < PRIORITY_HOLD_MS) return         // 业务态进行中不打断
+  tickStats()
+  let need = null
+  if (stats.hunger < 35) need = { state: "snacking", task: "加餐", detail: "饿了，先找点吃的垫垫", stat: "hunger", value: stats.hunger }
+  else if (stats.energy < 25) need = { state: "recovering", task: "趴一会儿", detail: "太累了，眯 20 分钟", stat: "energy", value: stats.energy }
+  else if (stats.hygiene < 30) need = { state: "washing", task: "洗把脸", detail: "有点邋遢了，清爽一下", stat: "hygiene", value: stats.hygiene }
+  else if (stats.social < 25) need = { state: "replying", task: "找人聊天", detail: "好几天没跟人说话了…", stat: "social", value: stats.social }
+  if (!need) return
+  lastNeedEventAt = Date.now()
+  applyEvent({ ...need, ts: Date.now(), priority: 1 })
+  console.log(new Date().toISOString(), `[office-hub] 数值驱动事件: ${need.state}（${need.stat}=${need.value}）`)
+}
+if (allowed) setInterval(needEventTick, 60e3).unref?.()
+
 /**
  * 去抖规则：state + task + detail 三者全同 = 心跳重发，只刷新 ts，不广播也不进 recent，
  * 免得浏览器里的鱼反复重走路、最近事件列表堆满重复项；detail 变化仍会广播（状态条要更新）。
@@ -454,6 +486,13 @@ function applyEvent(ev) {
     priority: prio
   }
   const same = cur.state === next.state && cur.task === next.task && cur.detail === next.detail
+  // 工作消耗（v2.6）：业务态切换时按上一状态持续时长扣 energy——干得越久越累。
+  // 只有 5 分钟以上的工作态才算"干过活"（心跳重发不重复扣）；12 分钟扣 1 点，封顶 8 点。
+  const durMin = Math.min(120, (now - (Number(cur.ts) || now)) / 60000)
+  const WORK_STATES = new Set(["working", "writing", "rewriting", "designing", "diary", "weekly", "posting", "replying", "commenting", "organizing"])
+  if (WORK_STATES.has(cur.state) && durMin >= 5 && !same) {
+    applyStatDelta({ energy: -Math.min(8, Math.round(durMin / 12)) })
+  }
   cur = next
   if (same) { saveDiskDebounced(); return { ok: true, dedup: true } }
   // v85.5 降噪：打字机类高频事件（同 state+task、仅 detail 变化、3 分钟内）不再逐条刷屏
@@ -464,11 +503,59 @@ function applyEvent(ev) {
     saveDiskDebounced()
     return { ok: true, dedup: true }
   }
+  // v2.6 降噪：新工作态事件进列时，把刚被它打断的同 task「arrive」折叠掉（arrive 无信息量）
+  if (next.state !== "arrive") {
+    const lastRec = recent[recent.length - 1]
+    if (lastRec && lastRec.state === "arrive" && lastRec.task === next.task) {
+      recent.pop()
+    }
+  }
   recent.push({ ...next, at: now })
   if (recent.length > MAX_RECENT) recent.shift()
   broadcast({ type: "state", state: cur, stats: statsSnapshot() })
   saveDiskDebounced()
   return { ok: true, dedup: false }
+}
+
+// ---------- NPC 对话素材（v2.6）----------
+/* 读外部事件源的落盘文件，聚合成 NPC 台词可引用的"鱼最近生活"快照。
+ * 默认值按「本文件位置推导」找兄弟项目目录（office/ 与 agent/ 同级），整目录搬迁不用改；
+ * 也可以经 OFFICE_SOCIAL_FILE / OFFICE_QQ_STATE_FILE 环境变量显式覆盖。
+ * 全部 fail-open（读不到就少几个字段），hub 绝不因外部文件故障挂掉。 */
+const NPC_FEED_FILES = {
+  social: process.env.OFFICE_SOCIAL_FILE || fileURLToPath(new URL("../../agent/state/social_memory.json", import.meta.url)),
+  qq: process.env.OFFICE_QQ_STATE_FILE || fileURLToPath(new URL("../../agent/state/qq_state.json", import.meta.url)),
+}
+function readJsonSafe(p) {
+  try { return JSON.parse(fs.readFileSync(p, "utf8")) } catch { return null }
+}
+function npcFeedSnapshot() {
+  const now = Date.now()
+  const social = readJsonSafe(NPC_FEED_FILES.social) || {}
+  const qq = readJsonSafe(NPC_FEED_FILES.qq) || {}
+  // 最近 24h 的事件（挑有画面感的）
+  const dayAgo = now - 24 * 3600e3
+  const recentEvents = (social.events || [])
+    .filter(e => new Date(e.at || 0).getTime() > dayAgo)
+    .slice(-6)
+    .map(e => ({ at: e.at, who: e.who, text: e.content }))
+  // 最近互动过的人（QQ 群友）
+  const friends = Object.values(social.friends || {})
+    .sort((a, b) => (b.lastSeen || "").localeCompare(a.lastSeen || ""))
+    .slice(0, 3)
+    .map(f => ({ name: f.name, intimacy: f.intimacy || 0, lastText: (f.topics || []).slice(-1)[0] || "" }))
+  // 最新文章（从 PB 拿太重，改由事件流里的 publish 事件覆盖；这里给最近发的说说/动态）
+  const lastShares = (social.shares || []).slice(-3).map(s => ({ type: s.type, item: s.item, at: s.at }))
+  // 心情（双系统：QQ 侧 mood + 小镇 stats）
+  return {
+    ts: now,
+    recentEvents,
+    friends,
+    lastShares,
+    memes: (social.memes || []).slice(-3).map(m => m.name),
+    qqMood: Math.round(qq.mood || 60),
+    qqChatLog: (qq.chatLog || []).slice(-3).map(c => ({ who: c.who, reply: c.reply })),
+  }
 }
 
 // ---------- 地图自定义层（v37 编辑地图界面）----------
@@ -668,6 +755,13 @@ const server = http.createServer((req, res) => {
       wake: [WAKE_START, WAKE_END],
       persisted: fs.existsSync(STATE_FILE), startedAt: STARTED_AT
     }))
+    return
+  }
+  // NPC 对话素材（v2.6）：前端 npc.js 挑对话时取这里，让 NPC 的台词「知道鱼最近在干嘛」。
+  // 读外部事件源的落盘（social_memory.json / qq_state.json / posts 最近一条），fail-open。
+  if (req.url === "/api/npc-feed") {
+    res.writeHead(200, { ...CORS, "Content-Type": "application/json; charset=utf-8" })
+    res.end(JSON.stringify(npcFeedSnapshot()))
     return
   }
   // 地图自定义层（v37 编辑地图界面）：GET 读全量，POST 增删改（仅本机/调试用）

@@ -21,3 +21,8 @@ web/assets/zips/
 Thumbs.db
 *.swp
 hub/backups/
+
+# ---- 手动状态备份（运行时产物，不进库）----
+hub/*.bak
+hub/*-bak
+hub/*.manual-bak

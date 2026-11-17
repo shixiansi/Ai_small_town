@@ -640,6 +640,46 @@ if (dx < TILE * 2.2 && dy < TILE * 1.8) return npc;
 return null;
 }
 var lastNpcChat = 0;
+var npcFeed = null, npcFeedAt = 0;
+function npcFeedFetch() {
+if (npcFeed && Date.now() - npcFeedAt < 600000) return npcFeed;
+fetch("/office-hub-api/npc-feed").then(function (r) { return r.ok ? r.json() : null; })
+.then(function (j) { if (j) { npcFeed = j; npcFeedAt = Date.now(); } })
+.catch(function () {});
+return npcFeed;
+}
+function npcDynamicLine(npcId, feed) {
+if (!feed) return null;
+var evs = feed.recentEvents || [];
+if (npcId === "chief") {
+if (feed.lastShares && feed.lastShares.length && Math.random() < 0.4) {
+var s = feed.lastShares[0];
+if (s.type === "video") return "听说你昨天往群里甩了个视频？年轻人就是活跃。";
+if (s.type === "qzone") return "你空间那句话我看到啦，写得不错。";
+}
+if (feed.friends && feed.friends.length && Math.random() < 0.5) {
+return "群里那个" + feed.friends[0].name + "，看着挺健谈，你俩聊得来？";
+}
+if (evs.length && Math.random() < 0.3) return "镇口都传开了，你最近可够忙的。";
+return null;
+}
+if (npcId === "doc") {
+if (feed.memes && feed.memes.length && Math.random() < 0.35) {
+return "你收藏的那些表情包……从传播学角度挺有意思。";
+}
+if (feed.qqMood != null && feed.qqMood >= 75 && Math.random() < 0.4) {
+return "你最近状态不错，数据上看得出来。（翻了一页书）";
+}
+if (evs.length && Math.random() < 0.25) return "又是群里那些事吧，我看你那屋一直亮灯。";
+return null;
+}
+if (npcId === "cat") {
+if (feed.qqMood != null && feed.qqMood < 45 && Math.random() < 0.5) return "喵…（蹭蹭你，好像感觉你没精神）";
+if (evs.length >= 3 && Math.random() < 0.4) return "喵！（你这两天热闹得很嘛）";
+return null;
+}
+return null;
+}
 function tryNpcChat() {
 var npc = npcInteractCheck();
 if (!npc) return;
@@ -647,8 +687,12 @@ var now = Date.now();
 if (now - lastNpcChat < 25000) return;
 lastNpcChat = now;
 var bucket = npcHourBucket();
+var feed = npcFeedFetch();
+var line = (feed && Math.random() < 0.55) ? npcDynamicLine(npc.def.id, feed) : null;
+if (!line) {
 var pool = (NPC_DIALOGS[npc.def.id] || {})[bucket] || ["…"];
-var line = pool[Math.floor(Math.random() * pool.length)];
+line = pool[Math.floor(Math.random() * pool.length)];
+}
 showBubble(line, "idle");
 var replyPool = (NPC_DIALOGS[npc.def.id] || {})[bucket] || ["…"];
 var reply = replyPool[Math.floor(Math.random() * replyPool.length)];
@@ -663,6 +707,15 @@ scene.tweens.add({ targets: bub, alpha: 0, duration: 400, delay: 2800, onComplet
 var mark = scene.add.text(npc.spr.x, npc.spr.y - npc.spr.displayHeight - 8, "❢", { fontSize: "16px", color: "#f59f00" }).setOrigin(0.5).setDepth(9500);
 scene.tweens.add({ targets: mark, y: mark.y - 10, alpha: 0, duration: 1200, onComplete: function () { mark.destroy(); } });
 postStatDelta({ social: 10, mood: 3 });
+try {
+fetch("/office-hub-api/event", {
+method: "POST", headers: { "Content-Type": "application/json" },
+body: JSON.stringify({
+state: "relaxing", task: "和" + npc.def.name + "聊天",
+detail: String(line).slice(0, 60), ts: Date.now(), priority: 1
+})
+}).catch(function () {});
+} catch (e) {}
 renderStatsBar();
 }
 try {
