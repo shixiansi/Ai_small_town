@@ -1379,6 +1379,8 @@ var poolDefs = [
 { x: 19.2, y: 25.8, r: 2.0, a: 0.17, tint: 0xffe2a8, room: "office" },    // 休息角
 { x: 14.0, y: 4.2,  r: 1.9, a: 0.15, tint: 0xffe2a8, room: "bath" },      // 浴缸区（原来只有镜前灯）
 { x: 19.0, y: 7.4,  r: 2.0, a: 0.16, tint: 0xffedd0, room: "kitchen" },   // 餐桌区（原来只有操作台灯）
+{ x: 24.0, y: 22.0, r: 1.9, a: 0.15, tint: 0xffedd0, room: "office" },    // 办公室最右一列（瓶架/白板）
+{ x: 15.2, y: 28.2, r: 1.9, a: 0.15, tint: 0xffe2a8, room: "office" },    // 办公室南侧中带
 ];
 if (/[?&]overlay=light/.test(location.search)) {
 var og = s.add.graphics().setDepth(9000);
