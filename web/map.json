@@ -1117,26 +1117,26 @@
   },
   {
    "a": "plant-office",
-   "x": 8.9,
-   "y": 13.7,
+   "x": 7.4,
+   "y": 13.2,
    "id": "bdPlant"
   },
   {
    "a": "mirror",
    "x": 1.6,
-   "y": 10.4,
+   "y": 5.8,
    "id": "bdMirror"
   },
   {
    "a": "nightstand",
-   "x": 3.2,
-   "y": 13.7,
+   "x": 2.6,
+   "y": 13.2,
    "id": "bdStand2"
   },
   {
    "a": "coffee-mug",
-   "x": 3.2,
-   "y": 13.7,
+   "x": 2.6,
+   "y": 13.2,
    "id": "bdMug",
    "on": "bdStand2",
    "dx": 0,
@@ -1423,14 +1423,14 @@
   },
   {
    "a": "nightstand",
-   "x": 2.2,
-   "y": 8.4,
+   "x": 2.7,
+   "y": 6.6,
    "id": "bdStand3"
   },
   {
    "a": "desk-lamp",
-   "x": 2.2,
-   "y": 8.4,
+   "x": 2.7,
+   "y": 6.6,
    "id": "bdLamp2",
    "on": "bdStand3",
    "dx": 0,
@@ -1444,8 +1444,8 @@
   },
   {
    "a": "plant-office",
-   "x": 1.8,
-   "y": 9.8,
+   "x": 2,
+   "y": 11.4,
    "id": "bdPlant3"
   },
   {
@@ -1465,6 +1465,12 @@
    "x": 23.4,
    "y": 9.2,
    "id": "kPlant3"
+  },
+  {
+   "a": "cabinet",
+   "x": 1.7,
+   "y": 7.9,
+   "id": "bdDresser"
   }
  ],
  "zones": {
