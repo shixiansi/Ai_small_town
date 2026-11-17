@@ -27,6 +27,7 @@
       if (curPlan) curPlan.stInterrupted = true;
     }
     stopIdleLife();
+    fishAbort(null);   // v2.9：真实事件打断 = 钓鱼作废，浮标/「！」先清干净
     updateStatusbar(rawState, taskText, st.detail || "");
     // 灯光自动模式：睡觉/未开灯 → 关灯；上班干活 → 开灯（手动开关被下一次真实事件重置为自动）
     lightsManual = false;
@@ -50,6 +51,12 @@
     if (!zone) {   // 状态表引用了不存在的区域时不再让整个 onState 崩掉
       console.warn("[office] 状态 " + st.state + " 的区域 " + cfg.zone + " 不存在，回退到 sofa");
       zone = scene.mapdata.zones.sofa;
+    }
+    if (!zone) {   // v2.9 二次兜底：连 sofa 都没有（极端裁剪地图）也不能让 onState 在这行 TypeError 崩掉
+      console.warn("[office] sofa 兜底也不存在，状态 " + st.state + " 改为原地等待");
+      curPlan = null;
+      fishState = "idle";
+      return;
     }
     var ex = Math.round(zone.anchor[0]), ey = Math.round(zone.anchor[1]);
     var path = astar(px2tx(fish.x), px2ty(fish.y), ex, ey);

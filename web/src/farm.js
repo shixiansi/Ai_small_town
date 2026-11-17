@@ -243,27 +243,32 @@
       if (fishing.biteLeft <= 0) fishAbort("鱼跑掉了…下次要更快！");
     }
   }
+  /* v2.9 统一清理：浮标 / 「！」精灵连同它们的 tween 一起杀（excl 是 repeat:-1，
+   * 只 destroy 不 kill 会把僵尸 tween 永久留在 manager 里）。钓鱼被打断（真实事件、
+   * 点地走位、进邻居家）也走这里，浮标不再挂在塘面上、到点不再凭空弹「！」。 */
+  function fishCleanup() {
+    if (!fishing) return;
+    if (fishing.excl) { scene.tweens.killTweensOf(fishing.excl); fishing.excl.destroy(); }
+    if (fishing.bobber) { scene.tweens.killTweensOf(fishing.bobber); fishing.bobber.destroy(); }
+    fishing = null;
+  }
   function fishReel() {
     if (!fishing) return { ok: false, text: "先在鱼塘边点「钓鱼」抛竿" };
     if (!fishing.bite) { fishAbort("太心急了，鱼还没咬钩…"); return { ok: false, text: "太心急了，鱼还没咬钩" }; }
     // 成功！随机鱼获（80% 鱼 / 15% 偶得肥料 / 5% 宝物）
-    if (fishing.excl) { fishing.excl.destroy(); }
-    if (fishing.bobber) { fishing.bobber.destroy(); }
+    fishCleanup();
     var roll = Math.random(), got;
     if (roll < 0.78) { got = "鲜鱼"; farm.fish++; }
     else if (roll < 0.93) { got = "肥料"; farm.inv.feed++; }
     else { got = "河童的旧怀表"; farm.inv.feed += 2; }
     farmSave();
     if (farmOnline()) farmPost("fish", null, null, null);   // v2.8-a2：鱼获也记到 hub 的同一本账
-    fishing = null;
     interact("fish");
     renderStatsBar();
     return { ok: true, text: "钓到了" + got + "！" };
   }
   function fishAbort(msg) {
-    if (fishing && fishing.excl) fishing.excl.destroy();
-    if (fishing && fishing.bobber) fishing.bobber.destroy();
-    fishing = null;
+    fishCleanup();
     if (msg && bubbleText === null) showBubble(msg, "idle");
   }
 

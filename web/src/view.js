@@ -40,6 +40,7 @@
     if (!zDoor || !zLiving) return false;
     stopIdleLife();
     unsit();
+    fishAbort(null);   // v2.9：串门也是打断，钓鱼状态/浮标先清干净
     hideBubble();
     hidePerfPanel();
     var npcId = h.id;

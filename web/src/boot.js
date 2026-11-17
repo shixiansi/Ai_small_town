@@ -205,6 +205,11 @@
   }
   window.addEventListener("keydown", function (e) {
     if (e.key === "r" || e.key === "R") {
+      // v2.9：输入框里打字不触发——编辑器/调试台/留言框打个"r"就把天气翻了，纯属事故
+      var t = e.target;
+      var tag = t && t.tagName;
+      if (tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT" || (t && t.isContentEditable)) return;
+      if (e.repeat) return;
       if (scene) setWeather(scene, weather === "sunny" ? "rainy" : "sunny");
     }
   });

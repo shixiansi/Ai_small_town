@@ -136,6 +136,11 @@ function buildProps() {
 function buildGrid(props) {
   const grid = Array.from({ length: ROWS }, () => new Array(COLS).fill(0));
   for (let x = 0; x < COLS; x++) grid[0][x] = 1;
+  // v2.9 D1 修复同步：北墙正门在第 0 行开成真门洞（与 furniture.js buildBlockedGrid 一致）
+  {
+    const d = map.door || {};
+    if (d.tx !== undefined) for (let x = d.tx; x < d.tx + (d.tw || 1); x++) grid[0][x] = 0;
+  }
   /* 必须区分竖墙 / 横墙 —— 竖墙对象带 {x,y,h}，横墙带 {y,x0,x1}。
    * 这里原来丢了 isH 判定，把竖墙也按"整列全堵"处理（忽略 y/h），于是 x=10/16/25 三列
    * 在**整张图**的所有行上都是阻挡格：办公室正中凭空多出三条走不进去的走廊。
@@ -782,8 +787,11 @@ check("独立编辑器（editor.html）：三图层 / 静态可移动 / 地形�
                         "function meSetTile(", "function meEraseAt(", "function meMoveTo(", "window.__mapEditor", "editorMode", "mapEditorPointerDown"])
     if (!officeSrc.includes(needle)) bad.push(`office.js 缺 ${needle}（三图层编辑链路不完整）`);
   // 4) 地形必须参与碰撞：墙/水挡路；地板贴片放行（家具压着的格除外；v83.1 墙格最终覆写，floor 不能放行墙）
-  if (!/(terrainEdits\)\.forEach[\s\S]{0,400}grid\[e\.y\]\[e\.x\] = 1)|(solidTerrain\[e\.y \+ "," \+ e\.x\] = 1[\s\S]{0,600}grid\[gy\]\[gx\] = 1)/.test(officeSrc))
+  //    v2.9：墙格最终覆写时门洞格豁免（北门是真实出入口，编辑层不许把门焊死）
+  if (!/(terrainEdits\)\.forEach[\s\S]{0,400}grid\[e\.y\]\[e\.x\] = 1)|(solidTerrain\[e\.y \+ "," \+ e\.x\] = 1[\s\S]{0,900}grid\[gy\]\[gx\] = 1)/.test(officeSrc))
     bad.push("buildBlockedGrid 未消费 terrainEdits（墙/水不挡路）");
+  if (!/doorCells\[k\]\) return/.test(officeSrc))
+    bad.push("地形墙覆写未豁免门洞格（D1 复发：编辑层把北门焊死了）");
   if (!/floorEdits\)\.forEach[\s\S]{0,400}grid\[e\.y\]\[e\.x\] = 0/.test(officeSrc)) bad.push("buildBlockedGrid 未消费 floorEdits（地板贴片不能把墙/水改成可走）");
   if (!/solidTerrain\[e\.y \+ "," \+ e\.x\]\) return/.test(officeSrc))
     bad.push("地板放行未跳过地形墙格（v83.1：同格 floor 会把墙重新放行 → 穿墙）");
@@ -1144,14 +1152,15 @@ check("相机（死区 / 锁定）与房间矩形几何", () => {
     }
   });
 
-  // 5) 大门：门洞不许再铺"路"（第 0 行整行不可走，铺路 = 假门）
+  // 5) 大门：门洞不许再铺"路"（v2.9 起第 0 行门格已放行成真门洞，但仍不许铺 road 视觉误导到门外）
   const band = /function paintTopBand[\s\S]*?\n  \}/.exec(roomSrc);
   if (!band) bad.push("room.js 找不到 paintTopBand");
   else {
-    if (/tileTex\("road"\)/.test(band[0])) bad.push("paintTopBand 还在门洞铺 road：那是扇走不通的假门（第 0 行不可走）");
+    if (/tileTex\("road"\)/.test(band[0])) bad.push("paintTopBand 还在门洞铺 road：门洞应铺 wood 门板（v2.9 已放行门格，但仍不铺路）");
     if (!/tileTex\("wood"\)/.test(band[0])) bad.push("paintTopBand 的门洞没铺门板贴图（wood）");
   }
-  if (!/grid\[0\]\[x0\] = 1|grid\[0\]\[x\] = 1/.test(furnSrc)) warnings.push("furniture.js 里没找到「贴墙根不可走」（grid[0][*] = 1），请人工确认假门修复前提仍然成立");
+  if (!/grid\[0\]\[x0\] = 1|grid\[0\]\[x\] = 1/.test(furnSrc)) warnings.push("furniture.js 里没找到「贴墙根不可走」（grid[0][*] = 1），请人工确认门洞修复前提仍然成立");
+  if (!/d0\.tx !== undefined/.test(furnSrc)) bad.push("furniture.js buildBlockedGrid 里没找到北门放行（d0.tx 门洞开格），D1 修复被回退了？");
 
   const dz = /var CAM_DEADZONE = \[(\d+), (\d+)\]/.exec(viewSrc);
   return { problems: bad, warnings, note: `死区 ${dz ? dz[1] + "×" + dz[2] : "?"}px · ${ks.length} 个房间矩形无重叠 · 门洞已封板 · 家具落在 ${ks.filter(k => rects[k]).length} 块内` };

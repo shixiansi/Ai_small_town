@@ -244,6 +244,7 @@ if (ctx && master) ramp(master.gain, on ? 0.35 : 0.0001, 0.25);
 updateBtn();
 }
 function unlock() {
+if (!on) return;   // v2.9：静音用户别建常驻音频图——不然手势一次就烧 CPU 到永远
 build();
 if (!ctx) return;
 try { if (ctx.state === "suspended") ctx.resume(); } catch (e) {}
@@ -469,6 +470,10 @@ if (r.y > H) { r.y = -10; r.x = Math.random() * W; }
 }
 window.addEventListener("keydown", function (e) {
 if (e.key === "r" || e.key === "R") {
+var t = e.target;
+var tag = t && t.tagName;
+if (tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT" || (t && t.isContentEditable)) return;
+if (e.repeat) return;
 if (scene) setWeather(scene, weather === "sunny" ? "rainy" : "sunny");
 }
 });
@@ -570,11 +575,15 @@ var sy = Math.round((npc.spr.y - WALL_H - TILE / 2) / TILE);
 var ex = Math.round(tx), ey = Math.round(ty);
 var path = astar(sx, sy, ex, ey);
 if (!path || !path.length) { if (onDone) onDone(); return; }
+scene.tweens.killTweensOf(npc.spr);
+npc.walkGen = (npc.walkGen || 0) + 1;
+var gen = npc.walkGen;
 npc.path = path; npc.pathIdx = 0;
 if (npc.timer) { clearTimeout(npc.timer); npc.timer = null; }
 var stepMs = speed || 420;
 var advance = function () {
 if (!npc.spr || !npc.spr.active) return;
+if (gen !== npc.walkGen) return;   // 已被新的 npcWalkTo 取代，旧链静默退场
 if (!npc.path || npc.pathIdx >= npc.path.length) {
 npc.path = null;
 if (onDone) onDone();
@@ -584,7 +593,7 @@ var node = npc.path[npc.pathIdx++];
 var wx = node.x * TILE + TILE / 2, wy = WALL_H + node.y * TILE + TILE / 2;
 scene.tweens.add({
 targets: npc.spr, x: wx, y: wy, duration: stepMs, ease: "Linear",
-onUpdate: function () { positionNpcParts(npc); },
+onUpdate: function () { positionNpcParts(npc); npc.spr.setDepth(npc.spr.y + 1); },
 onComplete: advance
 });
 };
@@ -704,7 +713,10 @@ function npcSetAct(npc, act) {
 npc.act = act;
 var flat = act === "sleep";
 if (npc.spr) npc.spr.setScale(0.82, flat ? 0.45 : 0.82);
-if (npc.zzz) { npc.zzz.destroy(); npc.zzz = null; }
+if (npc.zzz) {   // v2.9：先杀 repeat:-1 tween 再销毁，否则僵尸 tween 永久留在 manager 里每帧写已销毁对象
+scene.tweens.killTweensOf(npc.zzz);
+npc.zzz.destroy(); npc.zzz = null;
+}
 if (flat && scene) {
 npc.zzz = scene.add.text(npc.spr.x + 12, npc.spr.y - 30, "z z", {
 fontFamily: "PingFang SC, Microsoft YaHei, sans-serif",
@@ -1000,6 +1012,7 @@ var zDoor = s.mapdata.zones[h.door], zLiving = s.mapdata.zones[h.living];
 if (!zDoor || !zLiving) return false;
 stopIdleLife();
 unsit();
+fishAbort(null);   // v2.9：串门也是打断，钓鱼状态/浮标先清干净
 hideBubble();
 hidePerfPanel();
 var npcId = h.id;
@@ -1627,6 +1640,12 @@ function buildBlockedGrid(s) {
 var grid = [];
 for (var y = 0; y < ROWS; y++) grid.push(new Array(COLS).fill(0));
 for (var x0 = 0; x0 < COLS; x0++) grid[0][x0] = 1;   // 贴墙根不可走
+var d0 = s.mapdata.door || null;
+if (d0 && d0.tx !== undefined) {
+for (var dx0 = d0.tx; dx0 < d0.tx + (d0.tw || 1); dx0++) {
+if (grid[0] && grid[0][dx0] !== undefined) grid[0][dx0] = 0;
+}
+}
 (s.mapdata.walls || []).forEach(function (wl) {
 var isH = wl.x0 !== undefined;   // 横墙带 x0/x1；竖墙带 x/y/h
 if (!isH) {   // 竖墙 {x, y, h, gap}
@@ -1683,7 +1702,15 @@ if (propBlocked[e.y + "," + e.x]) return;
 if (solidTerrain[e.y + "," + e.x]) return;   // v83.1：墙/水格不许地板放行
 grid[e.y][e.x] = 0;
 });
+var doorCells = {};
+(function () {
+var d = s.mapdata.door;
+if (d && d.tx !== undefined) {
+for (var ddx = d.tx; ddx < d.tx + (d.tw || 1); ddx++) doorCells["0," + ddx] = 1;
+}
+})();
 Object.keys(solidTerrain).forEach(function (k) {
+if (doorCells[k]) return;   // 门洞格不放地形墙
 var p = k.split(",");
 var gy = Number(p[0]), gx = Number(p[1]);
 if (grid[gy] && grid[gy][gx] !== undefined) grid[gy][gx] = 1;
@@ -3230,6 +3257,9 @@ return ok;
 }
 function mePatchObject(id, patch) {
 if (!id) return false;
+var target = customFurniture.find(function (f) { return f.id === id; });
+if (!target) return false;
+meBeginMutation();
 var ok = false;
 customFurniture = customFurniture.map(function (f) {
 if (f.id !== id) return f;
@@ -3237,7 +3267,6 @@ ok = true;
 return Object.assign({}, f, patch);
 });
 if (!ok) return false;
-meBeginMutation();
 rebuildCustomLayer();
 saveEditMap(false, { action: "update", item: Object.assign({ id: id }, patch) }, function () {});
 return true;
@@ -3266,13 +3295,18 @@ return fetch(hubMapUrl(), { method: "GET" })
 out.hubCount = (j.furniture || []).length;
 out.hubUpdatedAt = j.updatedAt || 0;
 out.hubReachable = true;
+var probeId = "probe" + Date.now().toString(36);
 return fetch(hubMapUrl(), { method: "POST", headers: { "Content-Type": "application/json" },
-body: JSON.stringify({ action: "set", item: customFurniture }) })
+body: JSON.stringify({ action: "add", item: { a: "paper-stack", x: 1, y: 1, id: probeId } }) })
 .then(function (r2) { return r2.json().then(function (j2) { return { s: r2.status, j: j2 }; }); })
 .then(function (res) {
 out.writeOk = !!(res.j && res.j.ok);
 out.writeError = (res.j && res.j.error) || (out.writeOk ? "" : ("HTTP " + res.s));
 out.writeCount = res.j && res.j.count;
+if (out.writeOk) {
+fetch(hubMapUrl(), { method: "POST", headers: { "Content-Type": "application/json" },
+body: JSON.stringify({ action: "remove", item: { id: probeId } }) }).catch(function () {});
+}
 return out;
 });
 })
@@ -3321,22 +3355,31 @@ addEditLog("已修正越界坐标：" + clean.fixed.join("；"));
 if (typeof renderEditList === "function" && editMode) renderEditList();
 }
 var act = payload ? String(payload.action || "") : "set";
-if (!meApplyingHistory && !meSyncLock) mePushHistory();   // v46：写操作前留快照（改前改后各留一次就够）
-meSyncLock = false;
 var item = payload ? payload.item : null;
+var historyPushed = false;
+function pushHistoryOnce() {
+if (historyPushed || meApplyingHistory || meSyncLock) return;
+mePushHistory();
+meSyncLock = false;
+historyPushed = true;
+}
+if (act === "set") pushHistoryOnce();
 var mutated = false;
 if (act === "add" && item) {
+pushHistoryOnce();
 var it = Object.assign({}, item);
 if (!it.id) it.id = "cu" + Date.now().toString(36) + Math.floor(Math.random() * 1e4).toString(36);
 if (payload) payload.item = it;              // id 由前端生成：本地与 hub 用同一个（hub 有 id 就不重发）
 customFurniture = customFurniture.concat([it]);
 mutated = true;
 } else if (act === "remove" && item) {
+pushHistoryOnce();
 var n0 = customFurniture.length;
 customFurniture = customFurniture.filter(function (f) { return f.id !== item.id; });
 mutated = customFurniture.length !== n0;
 if (!mutated) { if (cb) cb(false, "未找到 " + (item && item.id)); return; }
 } else if ((act === "move" || act === "update") && item) {
+pushHistoryOnce();
 var hit = false;
 customFurniture = customFurniture.map(function (f) {
 if (f.id !== item.id) return f;
@@ -3346,12 +3389,15 @@ return Object.assign({}, f, item);
 mutated = hit;
 if (!mutated) { if (cb) cb(false, "未找到 " + (item && item.id)); return; }
 } else if (act === "set" && Array.isArray(item)) {
+pushHistoryOnce();
 customFurniture = item.slice();
 mutated = true;
 }
 if (mutated) {
 inflightMapOps++;
 rebuildCustomLayer();     // 立刻可见，不等 WS 回显
+} else if (!historyPushed) {
+meSyncLock = false;   // 无变更也要复位同步锁，否则下一次真实编辑的快照会被跳过
 }
 var body = payload || { action: "set", item: customFurniture };
 var done = function (ok, err) {
@@ -4059,26 +4105,28 @@ fishing.biteLeft -= dt;
 if (fishing.biteLeft <= 0) fishAbort("鱼跑掉了…下次要更快！");
 }
 }
+function fishCleanup() {
+if (!fishing) return;
+if (fishing.excl) { scene.tweens.killTweensOf(fishing.excl); fishing.excl.destroy(); }
+if (fishing.bobber) { scene.tweens.killTweensOf(fishing.bobber); fishing.bobber.destroy(); }
+fishing = null;
+}
 function fishReel() {
 if (!fishing) return { ok: false, text: "先在鱼塘边点「钓鱼」抛竿" };
 if (!fishing.bite) { fishAbort("太心急了，鱼还没咬钩…"); return { ok: false, text: "太心急了，鱼还没咬钩" }; }
-if (fishing.excl) { fishing.excl.destroy(); }
-if (fishing.bobber) { fishing.bobber.destroy(); }
+fishCleanup();
 var roll = Math.random(), got;
 if (roll < 0.78) { got = "鲜鱼"; farm.fish++; }
 else if (roll < 0.93) { got = "肥料"; farm.inv.feed++; }
 else { got = "河童的旧怀表"; farm.inv.feed += 2; }
 farmSave();
 if (farmOnline()) farmPost("fish", null, null, null);   // v2.8-a2：鱼获也记到 hub 的同一本账
-fishing = null;
 interact("fish");
 renderStatsBar();
 return { ok: true, text: "钓到了" + got + "！" };
 }
 function fishAbort(msg) {
-if (fishing && fishing.excl) fishing.excl.destroy();
-if (fishing && fishing.bobber) fishing.bobber.destroy();
-fishing = null;
+fishCleanup();
 if (msg && bubbleText === null) showBubble(msg, "idle");
 }
 var RECIPES = [
@@ -4411,6 +4459,7 @@ showBubble("！", "error");
 if (curPlan) curPlan.stInterrupted = true;
 }
 stopIdleLife();
+fishAbort(null);   // v2.9：真实事件打断 = 钓鱼作废，浮标/「！」先清干净
 updateStatusbar(rawState, taskText, st.detail || "");
 lightsManual = false;
 var h = bjHour();
@@ -4431,6 +4480,12 @@ var zone = (zoneOverride && scene.mapdata.zones[zoneOverride]) || scene.mapdata.
 if (!zone) {   // 状态表引用了不存在的区域时不再让整个 onState 崩掉
 console.warn("[office] 状态 " + st.state + " 的区域 " + cfg.zone + " 不存在，回退到 sofa");
 zone = scene.mapdata.zones.sofa;
+}
+if (!zone) {   // v2.9 二次兜底：连 sofa 都没有（极端裁剪地图）也不能让 onState 在这行 TypeError 崩掉
+console.warn("[office] sofa 兜底也不存在，状态 " + st.state + " 改为原地等待");
+curPlan = null;
+fishState = "idle";
+return;
 }
 var ex = Math.round(zone.anchor[0]), ey = Math.round(zone.anchor[1]);
 var path = astar(px2tx(fish.x), px2ty(fish.y), ex, ey);
@@ -4899,7 +4954,7 @@ var idx = Number(pm[1]) || 0;
 var line = (detail || "").replace(/^\[\d+\/\d+\]\s*/, "");
 while (writerState.lines.length < idx - 1) writerState.lines.push("…");
 writerState.lines[idx - 1] = line;
-writerState.lines.length = idx;
+if (writerState.lines.length < idx) writerState.lines.length = idx;
 writerState.current = "";
 writerRender();
 writerOpen();
@@ -5071,6 +5126,10 @@ if (!scene.grid[gy2][gx2]) { walkLocalTo(gx2, gy2, null); return; }
 function goLocal(zoneKey, text, pseudoAct, face, instant, statFill, extra) {
 var zone = scene.mapdata.zones[zoneKey];
 if (!zone) return;
+if (!instant && !astar(px2tx(fish.x), px2ty(fish.y), Math.round(zone.anchor[0]), Math.round(zone.anchor[1]))) {
+showBubble("（过不去，换个地方看看）", "idle");
+return;
+}
 if (typeof Audio !== "undefined") Audio.setScene({ room: zoneKey });
 if (typeof noteDaily === "function" && text) noteDaily(text);
 if (instant) {
@@ -5084,6 +5143,7 @@ walkLocalTo(Math.round(zone.anchor[0]), Math.round(zone.anchor[1]),
 function walkLocalTo(gx, gy, act) {
 unsit();   // 本地动作开始前先起身，避免上一轮瘫坐的 scale/深度/角度带进走路
 exitNeighborHome();   // 新行为开始 = 串门结束（视角回到小镇，鱼走自己的路）
+fishAbort(null);   // v2.9：点地走位/新本地动作 = 钓鱼被打断，浮标先清干净
 if (localActTimer) { clearTimeout(localActTimer); localActTimer = null; }
 var path = astar(px2tx(fish.x), px2ty(fish.y), gx, gy);
 if (!path) return;

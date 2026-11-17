@@ -69,9 +69,31 @@ const _fnStart = roomSrcForMat.indexOf("function baseMaterialAt");
 const _fnEnd = roomSrcForMat.indexOf("\n  }", _fnStart) + 4;
 const _fnText = roomSrcForMat.slice(_fnStart, _fnEnd);
 const matAt = new Function("tx", "ty", _fnText.slice(_fnText.indexOf("{") + 1, _fnText.lastIndexOf("}")));
+// v2.9：自定义层（hub/map.custom.json 的 floor/terrain）画在 base 之上——
+// 之前不读编辑层，parkCourt/brickHall 的木地板/砖地和围墙在渲染图上"消失"，让人误判布局
+const CUSTOM_FLOOR = { wood: [176, 138, 94], tile: [159, 176, 184], grass: [126, 168, 106], stone: [169, 164, 154], road: [214, 206, 188], water: [76, 143, 214], bank: [140, 122, 96], farm: [143, 191, 90], wall: [40, 40, 48] };
+let customFloorN = 0, customTerrainN = 0;
+const customCells = [];
+try {
+  const cj = JSON.parse(read(path.join(ROOT, "hub", "map.custom.json")));
+  (cj.furniture || []).forEach(f => {
+    if (f.a !== "floor" && f.a !== "terrain") return;
+    if (typeof f.x !== "number" || typeof f.y !== "number" || !f.t) return;
+    if (!CUSTOM_FLOOR[f.t]) return;
+    if (f.x < 0 || f.x >= COLS || f.y < 0 || f.y >= ROWS) return;
+    customCells.push(f);
+    if (f.a === "terrain") customTerrainN++; else customFloorN++;
+  });
+  console.log(`自定义层：floor ${customFloorN} 格 · terrain ${customTerrainN} 格（已叠加到地板/墙）`);
+} catch (e) {
+  console.log(`自定义层未叠加（${e.message}）`);
+}
 for (let ty = 0; ty < ROWS; ty++) for (let tx = 0; tx < COLS; tx++) {
   rect(tx * S, ty * S, S, S, FLOOR[matAt(tx, ty)] || [200, 200, 200]);
 }
+customCells.forEach(f => {
+  rect(f.x * S, f.y * S, S, S, CUSTOM_FLOOR[f.t], f.a === "terrain" ? 255 : 235);
+});
 
 // ---------- 2 道路 / 池塘 / 农田 ----------
 (map.roads || []).forEach(r => rect(r.x * S, r.y * S, r.w * S, r.h * S, [214, 206, 188], 210));
@@ -102,6 +124,11 @@ rect(28 * S, 22 * S, 5 * S, 4 * S, [143, 191, 90], 130);   // 农田
   }
 });
 for (let x = 0; x < COLS; x++) rect(x * S, 0, S, S, [40, 40, 48]);   // 第 0 行墙根
+// v2.9：北门门洞画成木门板（与 room.js paintTopBand 同步，门格已放行成真门洞）
+{
+  const d = map.door || {};
+  if (d.tx !== undefined) for (let x = d.tx; x < d.tx + (d.tw || 1); x++) rect(x * S, 0, S, S, [176, 138, 94]);
+}
 // 主屋西/南外轮廓（room.js 的 paintOuterWalls：渲染层墙裙，不加碰撞）
 for (let y = 1; y < ROWS; y++) rect(0, y * S, S, S, [40, 40, 48], 235);
 for (let x = 0; x < 26; x++) rect(x * S, (ROWS - 1) * S, S, S, [40, 40, 48], 235);

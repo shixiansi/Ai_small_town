@@ -343,9 +343,10 @@
     writerState.total = Number(pm[2]) || 0;
     var idx = Number(pm[1]) || 0;
     var line = (detail || "").replace(/^\[\d+\/\d+\]\s*/, "");
+    // v2.9：只补位、不收缩——重连补发/乱序到达时，lines.length=idx 会把已收的后续行截掉
     while (writerState.lines.length < idx - 1) writerState.lines.push("…");
     writerState.lines[idx - 1] = line;
-    writerState.lines.length = idx;
+    if (writerState.lines.length < idx) writerState.lines.length = idx;
     writerState.current = "";
     writerRender();
     writerOpen();
@@ -536,6 +537,11 @@
   function goLocal(zoneKey, text, pseudoAct, face, instant, statFill, extra) {
     var zone = scene.mapdata.zones[zoneKey];
     if (!zone) return;
+    // v2.9：先探路再动嘴——寻路失败就不写「刚刚」摘要、不切声场，鱼不动也不许诺
+    if (!instant && !astar(px2tx(fish.x), px2ty(fish.y), Math.round(zone.anchor[0]), Math.round(zone.anchor[1]))) {
+      showBubble("（过不去，换个地方看看）", "idle");
+      return;
+    }
     // v2.7 音频：走到水边/花园时塘水声淡入（离开自动淡出），不用别的系统来推
     if (typeof Audio !== "undefined") Audio.setScene({ room: zoneKey });
     // v2.7 日常摘要：本地小动作不刷流水（会把 40 条上限挤爆），只进「刚刚：…」那一行
@@ -553,6 +559,7 @@
   function walkLocalTo(gx, gy, act) {
     unsit();   // 本地动作开始前先起身，避免上一轮瘫坐的 scale/深度/角度带进走路
     exitNeighborHome();   // 新行为开始 = 串门结束（视角回到小镇，鱼走自己的路）
+    fishAbort(null);   // v2.9：点地走位/新本地动作 = 钓鱼被打断，浮标先清干净
     if (localActTimer) { clearTimeout(localActTimer); localActTimer = null; }
     var path = astar(px2tx(fish.x), px2ty(fish.y), gx, gy);
     // 旧版还要求 path.length>=2，鱼恰好已在目标格时整条本地行为静默哑火（连气泡都没有）

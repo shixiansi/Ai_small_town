@@ -737,6 +737,10 @@
   }
   function mePatchObject(id, patch) {
     if (!id) return false;
+    // v2.9：先快照再改数据——否则 undo 栈里存的是改后状态，patch 永远撤不掉
+    var target = customFurniture.find(function (f) { return f.id === id; });
+    if (!target) return false;
+    meBeginMutation();
     var ok = false;
     customFurniture = customFurniture.map(function (f) {
       if (f.id !== id) return f;
@@ -744,7 +748,6 @@
       return Object.assign({}, f, patch);
     });
     if (!ok) return false;
-    meBeginMutation();
     rebuildCustomLayer();
     saveEditMap(false, { action: "update", item: Object.assign({ id: id }, patch) }, function () {});
     return true;
@@ -775,14 +778,21 @@
         out.hubCount = (j.furniture || []).length;
         out.hubUpdatedAt = j.updatedAt || 0;
         out.hubReachable = true;
-        // 写一次"原样"的 set，验证写权限（幂等，且会生成一份自动备份）
+        // v2.9：写权限自检改用"探针条目"——写一条即删，不再全量 set 覆盖 customFurniture。
+        // 全量 set 会把其他端刚存的改动一并覆盖回去（快照竞态），探针只留一条 1 秒的痕迹。
+        var probeId = "probe" + Date.now().toString(36);
         return fetch(hubMapUrl(), { method: "POST", headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ action: "set", item: customFurniture }) })
+          body: JSON.stringify({ action: "add", item: { a: "paper-stack", x: 1, y: 1, id: probeId } }) })
           .then(function (r2) { return r2.json().then(function (j2) { return { s: r2.status, j: j2 }; }); })
           .then(function (res) {
             out.writeOk = !!(res.j && res.j.ok);
             out.writeError = (res.j && res.j.error) || (out.writeOk ? "" : ("HTTP " + res.s));
             out.writeCount = res.j && res.j.count;
+            // 探针即删（删除失败也只留一条装饰物，下次 selfCheck 会再清）
+            if (out.writeOk) {
+              fetch(hubMapUrl(), { method: "POST", headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ action: "remove", item: { id: probeId } }) }).catch(function () {});
+            }
             return out;
           });
       })
@@ -834,22 +844,34 @@
       if (typeof renderEditList === "function" && editMode) renderEditList();
     }
     var act = payload ? String(payload.action || "") : "set";
-    if (!meApplyingHistory && !meSyncLock) mePushHistory();   // v46：写操作前留快照（改前改后各留一次就够）
-    meSyncLock = false;
     var item = payload ? payload.item : null;
+    /* v46 快照推迟到"确认真的要变更"之后：add/remove/move/update 在下面各分支里
+     * 首次真正改动 customFurniture 前 mePushHistory()，"set" 保持原样在开头推。
+     * 这样无变更的保存/restoreHidden/clearAll 不再往 80 上限里塞空快照、顶掉真实历史。 */
+    var historyPushed = false;
+    function pushHistoryOnce() {
+      if (historyPushed || meApplyingHistory || meSyncLock) return;
+      mePushHistory();
+      meSyncLock = false;
+      historyPushed = true;
+    }
+    if (act === "set") pushHistoryOnce();
     var mutated = false;
     if (act === "add" && item) {
+      pushHistoryOnce();
       var it = Object.assign({}, item);
       if (!it.id) it.id = "cu" + Date.now().toString(36) + Math.floor(Math.random() * 1e4).toString(36);
       if (payload) payload.item = it;              // id 由前端生成：本地与 hub 用同一个（hub 有 id 就不重发）
       customFurniture = customFurniture.concat([it]);
       mutated = true;
     } else if (act === "remove" && item) {
+      pushHistoryOnce();
       var n0 = customFurniture.length;
       customFurniture = customFurniture.filter(function (f) { return f.id !== item.id; });
       mutated = customFurniture.length !== n0;
       if (!mutated) { if (cb) cb(false, "未找到 " + (item && item.id)); return; }
     } else if ((act === "move" || act === "update") && item) {
+      pushHistoryOnce();
       var hit = false;
       customFurniture = customFurniture.map(function (f) {
         if (f.id !== item.id) return f;
@@ -859,12 +881,15 @@
       mutated = hit;
       if (!mutated) { if (cb) cb(false, "未找到 " + (item && item.id)); return; }
     } else if (act === "set" && Array.isArray(item)) {
+      pushHistoryOnce();
       customFurniture = item.slice();
       mutated = true;
     }
     if (mutated) {
       inflightMapOps++;
       rebuildCustomLayer();     // 立刻可见，不等 WS 回显
+    } else if (!historyPushed) {
+      meSyncLock = false;   // 无变更也要复位同步锁，否则下一次真实编辑的快照会被跳过
     }
     var body = payload || { action: "set", item: customFurniture };
     var done = function (ok, err) {

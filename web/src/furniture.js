@@ -190,6 +190,15 @@
     var grid = [];
     for (var y = 0; y < ROWS; y++) grid.push(new Array(COLS).fill(0));
     for (var x0 = 0; x0 < COLS; x0++) grid[0][x0] = 1;   // 贴墙根不可走
+    /* v2.9 D1 修复：北墙正门（door.tx..tx+tw）开成真门洞——第 0 行门格放行，
+     * 墙带外（-1 行不存在）按画布边缘处理：门里第 1 行本就可走，从门口往外走
+     * 会被 A* 的边界检查拦住（ny<0 不扩展），不会真的走出画布。 */
+    var d0 = s.mapdata.door || null;
+    if (d0 && d0.tx !== undefined) {
+      for (var dx0 = d0.tx; dx0 < d0.tx + (d0.tw || 1); dx0++) {
+        if (grid[0] && grid[0][dx0] !== undefined) grid[0][dx0] = 0;
+      }
+    }
 
     // 房间隔墙：竖墙 {x,y,h,gap[行]}；横墙 {y,x0,x1,gap[列]}——v24 回字形平面布局
     // 判据必须用 x0（横墙专有字段）：竖墙对象自带 y，用 y 判会把竖墙送进横墙分支（第三轮评审 P0-1）
@@ -256,7 +265,16 @@
       grid[e.y][e.x] = 0;
     });
     // 地形墙/水最后写入（v83.1）：同格 floor 不再能放行墙格
+    // v2.9：但北门门洞格例外——门是玩家看得见的出入口，编辑层的墙不许把门焊死（D1 复发防线）
+    var doorCells = {};
+    (function () {
+      var d = s.mapdata.door;
+      if (d && d.tx !== undefined) {
+        for (var ddx = d.tx; ddx < d.tx + (d.tw || 1); ddx++) doorCells["0," + ddx] = 1;
+      }
+    })();
     Object.keys(solidTerrain).forEach(function (k) {
+      if (doorCells[k]) return;   // 门洞格不放地形墙
       var p = k.split(",");
       var gy = Number(p[0]), gx = Number(p[1]);
       if (grid[gy] && grid[gy][gx] !== undefined) grid[gy][gx] = 1;

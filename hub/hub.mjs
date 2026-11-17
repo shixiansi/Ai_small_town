@@ -908,6 +908,13 @@ function saveFarm() {
 }
 let farm = loadFarm()
 const farmThrottle = Object.create(null)   // 每个 IP 的动作节流（150ms）
+/* v2.9：farmThrottle 顺手清理（同 mapWriteRate，防唯一 IP 无限涨） */
+setInterval(() => {
+  const now = Date.now()
+  for (const ip of Object.keys(farmThrottle)) {
+    if (now - farmThrottle[ip] >= 150) delete farmThrottle[ip]
+  }
+}, 60000).unref?.()
 
 /* 跨天结算 + v2.8 闭环：浇过水的地干掉；生长按存活天数推进；清晨市集补种子 */
 function farmRollDay() {
@@ -1099,6 +1106,16 @@ const CORS = {
 // v85.5 安全修复：外网经 nginx 反代可触达 hub——写操作（地图编辑/恢复）只允许本地直连
 // （nginx 反代请求带 X-Forwarded-For 时拒绝）。GET 不受限（观众面板需要）。
 const mapWriteRate = new Map()   // ip → [时间戳]
+/* v2.9：节流表顺手清理——每个唯一 IP 永久占一条，恶意刷 IP 会慢慢涨内存。
+ * 挂在已有的 WS 心跳巡检（30s）上，0 成本。 */
+setInterval(() => {
+  const now = Date.now()
+  for (const [ip, stamps] of mapWriteRate) {
+    const alive = stamps.filter(t => now - t < 10000)
+    if (alive.length) mapWriteRate.set(ip, alive)
+    else mapWriteRate.delete(ip)
+  }
+}, 60000).unref?.()
 function isLocalWrite(req) {
   if (req.headers["x-forwarded-for"] || req.headers["x-real-ip"]) return false   // 反代透传 = 外网来源
   const addr = req.socket?.remoteAddress || ""
@@ -1128,6 +1145,8 @@ const server = http.createServer((req, res) => {
   }
   if (req.method === "POST" && req.url === "/api/random-event") {
     // 调试 / 外部触发：body {key} 指定事件，或 {} 随机抽
+    // v2.9 补 v85.5 的漏网之鱼：外网可伪造随机事件（和 /api/event 同级的风险），只允许本地直连
+    if (!isLocalWrite(req)) { res.writeHead(403, CORS).end(JSON.stringify({ error: "随机事件触发仅限本地" })); return }
     let body = ""
     req.on("data", c => { body += c; if (body.length > 1024) req.destroy() })
     req.on("end", () => {
@@ -1142,6 +1161,8 @@ const server = http.createServer((req, res) => {
     return
   }
   if (req.method === "POST" && req.url === "/api/stats") {
+    // v2.9 补 v85.5 的漏网之鱼：外网可直接推数值变化污染真相源，只允许本地直连
+    if (!isLocalWrite(req)) { res.writeHead(403, CORS).end(JSON.stringify({ error: "数值上报仅限本地" })); return }
     let body = ""
     req.on("data", c => { body += c; if (body.length > 2048) req.destroy() })
     req.on("end", () => {

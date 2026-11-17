@@ -1,6 +1,7 @@
 // 功能走查：从办公室出发，验证鱼能 A* 走到花园/小镇各区（路删了不能把走法删了）
 const path = require("path");
-const pw = require(path.join("/tmp/node_modules/playwright-core"));
+// v2.9：改用项目内 node_modules（原来钉死 /tmp/node_modules，机器重启就丢）
+const pw = require("playwright-core");
 
 ;(async () => {
   const browser = await pw.chromium.launch({

@@ -175,6 +175,7 @@
     /* 自动播放策略：必须在用户手势里才能建/恢复 AudioContext。
      * 三种事件都挂 once，谁先来都行；之后再点开关不会重复建图。 */
     function unlock() {
+      if (!on) return;   // v2.9：静音用户别建常驻音频图——不然手势一次就烧 CPU 到永远
       build();
       if (!ctx) return;
       try { if (ctx.state === "suspended") ctx.resume(); } catch (e) {}

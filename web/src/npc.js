@@ -118,11 +118,18 @@
     var ex = Math.round(tx), ey = Math.round(ty);
     var path = astar(sx, sy, ex, ey);
     if (!path || !path.length) { if (onDone) onDone(); return; }
+    /* v2.9 防重入：行走中再次 npcWalkTo 会留下旧 tween 链（onComplete→advance 还挂着），
+     * 新旧链共享 npc.path/pathIdx 互相推进 → 抖动、节点跳过、tween 翻倍。
+     * 先杀掉该精灵全部 tween + 代际 token 让旧 advance 失效。 */
+    scene.tweens.killTweensOf(npc.spr);
+    npc.walkGen = (npc.walkGen || 0) + 1;
+    var gen = npc.walkGen;
     npc.path = path; npc.pathIdx = 0;
     if (npc.timer) { clearTimeout(npc.timer); npc.timer = null; }
     var stepMs = speed || 420;
     var advance = function () {
       if (!npc.spr || !npc.spr.active) return;
+      if (gen !== npc.walkGen) return;   // 已被新的 npcWalkTo 取代，旧链静默退场
       if (!npc.path || npc.pathIdx >= npc.path.length) {
         npc.path = null;
         if (onDone) onDone();
@@ -132,7 +139,7 @@
       var wx = node.x * TILE + TILE / 2, wy = WALL_H + node.y * TILE + TILE / 2;
       scene.tweens.add({
         targets: npc.spr, x: wx, y: wy, duration: stepMs, ease: "Linear",
-        onUpdate: function () { positionNpcParts(npc); },
+        onUpdate: function () { positionNpcParts(npc); npc.spr.setDepth(npc.spr.y + 1); },
         onComplete: advance
       });
     };
@@ -276,7 +283,10 @@
     npc.act = act;
     var flat = act === "sleep";
     if (npc.spr) npc.spr.setScale(0.82, flat ? 0.45 : 0.82);
-    if (npc.zzz) { npc.zzz.destroy(); npc.zzz = null; }
+    if (npc.zzz) {   // v2.9：先杀 repeat:-1 tween 再销毁，否则僵尸 tween 永久留在 manager 里每帧写已销毁对象
+      scene.tweens.killTweensOf(npc.zzz);
+      npc.zzz.destroy(); npc.zzz = null;
+    }
     if (flat && scene) {
       npc.zzz = scene.add.text(npc.spr.x + 12, npc.spr.y - 30, "z z", {
         fontFamily: "PingFang SC, Microsoft YaHei, sans-serif",

@@ -232,6 +232,12 @@ export function loadModel(opts = {}) {
   // 阻挡格：第 0 行 + 墙 + 地形墙/水 + 落地家具
   const blocked = Array.from({ length: ROWS }, () => new Array(COLS).fill(false));
   for (let x = 0; x < COLS; x++) blocked[0][x] = true;
+  /* v2.9 D1 修复同步：北墙正门在第 0 行开成真门洞（与运行时 furniture.js buildBlockedGrid 一致，
+   * 编辑层的地形墙也不许把门格焊死）。 */
+  const doorCells = new Set();
+  if (map.door && map.door.tx !== undefined) {
+    for (let x = map.door.tx; x < map.door.tx + (map.door.tw || 1); x++) { blocked[0][x] = false; doorCells.add(x + ",0"); }   // cell 键序 x,y
+  }
   (map.walls || []).forEach(wl => {
     if (wl.x0 !== undefined) {
       for (let x = wl.x0; x <= wl.x1; x++) {
@@ -247,6 +253,7 @@ export function loadModel(opts = {}) {
   });
   customTerrain.forEach((t, k) => {
     if (t !== "wall" && t !== "water") return;
+    if (doorCells.has(k)) return;   // 门洞格不放地形墙（D1 复发防线）
     const [x, y] = k.split(",").map(Number);
     if (blocked[y]) blocked[y][x] = true;
   });

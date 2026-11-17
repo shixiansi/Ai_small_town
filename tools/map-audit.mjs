@@ -75,6 +75,11 @@ const roomAt = (x, y) => Object.keys(rects).find(k => inRect(rects[k], x, y)) ||
 // ---------- 可走格（复刻 buildBlockedGrid）----------
 const grid = Array.from({ length: ROWS }, () => new Array(COLS).fill(0));
 for (let x = 0; x < COLS; x++) grid[0][x] = 1;                       // 第 0 行（墙根）不可走
+// v2.9 D1 修复同步：北墙正门在第 0 行开成真门洞（与 furniture.js buildBlockedGrid 一致）
+{
+  const d = map.door || {};
+  if (d.tx !== undefined) for (let x = d.tx; x < d.tx + (d.tw || 1); x++) grid[0][x] = 0;
+}
 (map.walls || []).forEach(wl => {
   if (wl.x0 !== undefined) {
     for (let x = wl.x0; x <= wl.x1; x++) {
@@ -89,6 +94,12 @@ for (let x = 0; x < COLS; x++) grid[0][x] = 1;                       // 第 0 �
   }
 });
 // 家具占地（bbox 底部 12px 投影）—— 【与运行时 buildBlockedGrid 同一套算式】
+// v2.9：地形墙不许覆盖门洞格（与运行时 furniture.js 同步，防 D1 复发）
+const doorCellSet = new Set();
+{
+  const d = map.door || {};
+  if (d.tx !== undefined) for (let x = d.tx; x < d.tx + (d.tw || 1); x++) doorCellSet.add(x + ",0");   // cell 键序 x,y
+}
 // 原来是 floor(f.x - wTiles/2) / floor(f.y - footH)，少了排版时的 TILE/2 中心偏移（p.x = f.x*T+24），
 // 于是每一件都往左上偏半格：整数 x 的家具会被算到 x-1 列，审计就报"家具踩在墙上""有格子不连通"，
 // 而运行时不挡。三套占格口径（运行时 / check.mjs / 这里）必须只剩一套，否则改一个位置要同时哄三个判据。
@@ -115,8 +126,10 @@ model.items.filter(model.solid).forEach(f => {
   }
 });
 // 自定义地形里的墙/水同样不可走（用户是逐格刷的，map.json 里没有）
+// v2.9：门洞格例外——编辑层的墙不许把北门焊死（与运行时 buildBlockedGrid 一致）
 customTerrain.forEach((t, k) => {
   if (t !== "wall" && t !== "water") return;
+  if (doorCellSet.has(k)) return;
   const p = k.split(","), x = Number(p[0]), y = Number(p[1]);
   if (grid[y]) grid[y][x] = 1;
 });
