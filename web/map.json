@@ -1435,6 +1435,12 @@
    "id": "ofBoard2",
    "o": true,
    "wall": true
+  },
+  {
+   "a": "bench-park",
+   "x": 15.6,
+   "y": 25.4,
+   "id": "ofBridge"
   }
  ],
  "zones": {
