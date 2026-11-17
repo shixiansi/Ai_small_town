@@ -761,9 +761,23 @@ function validateMapItem(it, existingIds) {
   return null
 }
 
-function applyMapEdit(action, item) {
+function applyMapEdit(action, item, extra) {
   if (action === "set") {
     if (!Array.isArray(item)) return { ok: false, status: 400, error: "furniture 数组缺失" }
+    /* v2.8-f 乐观并发：整表覆盖（set）必须带"我基于哪一版"的时间戳。
+     * 起因：浏览器 localStorage 里的旧副本会在每次打开页面时自动补传
+     * （mapedit.js 的 flushLocalMirror），而 hub 原来无条件接受 ——
+     * 于是"本地清掉、刷新就变回旧图"反复发作，磁盘上的正确数据被旧副本盖掉。
+     * 规则：带 force 的显式同步（__officeMapSync）放行；否则 base 必须 ≥ 当前版本。 */
+    const base = Number((extra && (extra.updatedAt != null ? extra.updatedAt : extra.baseUpdatedAt)) || 0)
+    const force = !!(extra && (extra.force === 1 || extra.force === true))
+    if (!force && base < (customMap.updatedAt || 0)) {
+      return {
+        ok: false, status: 409,
+        error: "地图已被更新（hub 版本 " + (customMap.updatedAt || 0) + " > 你推送的 " + base +
+          "），拒绝覆盖；确需以本地为准请带 force:1 或调用 __officeMapSync()"
+      }
+    }
     if (item.length > MAP_MAX_ITEMS) return { ok: false, status: 400, error: `超过上限 ${MAP_MAX_ITEMS} 条` }
     const ids = new Set()
     for (const it of item) {
@@ -1234,7 +1248,7 @@ const server = http.createServer((req, res) => {
       let d
       try { d = JSON.parse(body || "{}") }
       catch { res.writeHead(400, CORS).end("bad json"); return }
-      const r = applyMapEdit(String(d.action || ""), d.item)
+      const r = applyMapEdit(String(d.action || ""), d.item, d)
       if (!r.ok) {
         res.writeHead(r.status, { ...CORS, "Content-Type": "application/json; charset=utf-8" })
         res.end(JSON.stringify({ error: r.error }))
