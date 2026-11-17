@@ -1325,6 +1325,116 @@
    "id": "plzSign",
    "o": true,
    "wall": true
+  },
+  {
+   "a": "round-table",
+   "x": 5,
+   "y": 25.4,
+   "id": "ofMeet"
+  },
+  {
+   "a": "chair",
+   "x": 3.5,
+   "y": 25.4,
+   "id": "ofMeetC1"
+  },
+  {
+   "a": "chair",
+   "x": 6.5,
+   "y": 25.4,
+   "id": "ofMeetC2"
+  },
+  {
+   "a": "chair",
+   "x": 5,
+   "y": 24.1,
+   "id": "ofMeetC3"
+  },
+  {
+   "a": "paper-stack",
+   "x": 5,
+   "y": 25.4,
+   "id": "ofMeetPaper",
+   "on": "ofMeet",
+   "dx": 0,
+   "dy": -6
+  },
+  {
+   "a": "filing-cabinet",
+   "x": 11.2,
+   "y": 24.2,
+   "id": "ofFile1"
+  },
+  {
+   "a": "filing-cabinet",
+   "x": 11.2,
+   "y": 26.4,
+   "id": "ofFile2"
+  },
+  {
+   "a": "locker",
+   "x": 13.4,
+   "y": 25.4,
+   "id": "ofLocker"
+  },
+  {
+   "a": "paper-stack",
+   "x": 12.4,
+   "y": 27.2,
+   "id": "ofPaperFloor"
+  },
+  {
+   "a": "sofa",
+   "x": 18,
+   "y": 26.8,
+   "id": "ofRestSofa"
+  },
+  {
+   "a": "round-table",
+   "x": 18,
+   "y": 24.6,
+   "id": "ofRestTable"
+  },
+  {
+   "a": "armchair",
+   "x": 20.8,
+   "y": 25.2,
+   "id": "ofRestArm"
+  },
+  {
+   "a": "coffee-mug",
+   "x": 18,
+   "y": 24.6,
+   "id": "ofRestMug",
+   "on": "ofRestTable",
+   "dx": 0,
+   "dy": -6
+  },
+  {
+   "a": "plant-office",
+   "x": 15.6,
+   "y": 23.4,
+   "id": "ofPlant1"
+  },
+  {
+   "a": "plant-office",
+   "x": 15.6,
+   "y": 27.4,
+   "id": "ofPlant2"
+  },
+  {
+   "a": "floor-lamp",
+   "x": 16.6,
+   "y": 27,
+   "id": "ofLamp"
+  },
+  {
+   "a": "blackboard",
+   "x": 24,
+   "y": 24.6,
+   "id": "ofBoard2",
+   "o": true,
+   "wall": true
   }
  ],
  "zones": {
