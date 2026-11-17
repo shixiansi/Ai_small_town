@@ -342,7 +342,7 @@ loadErrors = [];
 this.load.off("loaderror", onLoadError);
 this.load.on("loaderror", onLoadError);
 this.load.json("manifest", "assets/manifest.json?v=eb7ab1a1");
-this.load.json("mapdata", "map.json?v=29322486");
+this.load.json("mapdata", "map.json?v=d5340dc8");
 };
 SceneBoot.prototype.create = function () {
 var manifest = this.cache.json.get("manifest");
@@ -1580,6 +1580,7 @@ if (m.anim && m.rows && m.rows.East > 1) {
 spr = s.add.sprite(p.x, p.y, f.a, f0).setOrigin(p.originX, p.originY).setDepth(p.depth);
 } else {
 spr = s.add.image(p.x, p.y, f.a, f0).setOrigin(p.originX, p.originY).setDepth(p.depth);
+if (f.flipX) spr.setFlipX(true);
 }
 if (p.scale !== 1) spr.setScale(p.scale);   // 大小关系：按格子归一化
 if (!p.wall && !p.o && !f.on) {

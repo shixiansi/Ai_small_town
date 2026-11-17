@@ -331,7 +331,8 @@
    "x": 20.8,
    "y": 27,
    "id": "armA",
-   "sc": 1.05
+   "sc": 1.05,
+   "flipX": 1
   },
   {
    "a": "nightstand",
@@ -897,7 +898,8 @@
    "a": "armchair",
    "x": 54.5,
    "y": 27.5,
-   "id": "docArm"
+   "id": "docArm",
+   "flipX": 1
   },
   {
    "a": "floor-lamp",
@@ -1336,7 +1338,8 @@
    "a": "armchair",
    "x": 20.8,
    "y": 25.2,
-   "id": "ofRestArm"
+   "id": "ofRestArm",
+   "flipX": 1
   },
   {
    "a": "coffee-mug",

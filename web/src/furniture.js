@@ -129,6 +129,10 @@
         spr = s.add.sprite(p.x, p.y, f.a, f0).setOrigin(p.originX, p.originY).setDepth(p.depth);
       } else {
         spr = s.add.image(p.x, p.y, f.a, f0).setOrigin(p.originX, p.originY).setDepth(p.depth);
+      /* v2.8-i 第 4 维·朝向：数据条目可带 flipX（水平镜像）。
+       * 现有素材都是单朝向，只能用镜像表达"朝左/朝右"；朝上/朝下需要新美术或 rot。
+       * 该不该翻由 tools/facing-audit.mjs 推导（椅子朝桌心、床头顶墙…）。 */
+      if (f.flipX) spr.setFlipX(true);
       }
       if (p.scale !== 1) spr.setScale(p.scale);   // 大小关系：按格子归一化
       // 接触阴影（评审 #3）：落地物件底部椭圆软影，宽=内容宽×1.1、深棕 25%
