@@ -402,7 +402,7 @@ applyCustomMap(j.furniture, true);
 });
 this.trophyLayer = this.add.container(0, 0).setDepth(30);      // 灯光：初始 = 关灯（hello 初始态"办公室还没开灯"）
 this.cameras.main.setBounds(0, 0, W, H);
-if (!editorMode) this.cameras.main.startFollow(fish, true, 0.08, 0.08);   // 编辑器里镜头不跟鱼
+if (!editorMode) beginFollow(this.cameras.main);   // 编辑器里镜头不跟鱼
 this.cameras.main.setDeadzone(300, 300);
 buildRoomTabs(this);    // 房间切换 UI
 buildWeather(this);     // 天气层
@@ -1006,7 +1006,7 @@ cam.setZoom(h.zm);
 cam.pan(h.cx, h.cy, 700);
 cam.once("camerapancomplete", function () {
 if (visitingHome === h) scene.time.delayedCall(1600, function () {
-if (visitingHome === h) cam.startFollow(fish, true, 0.08, 0.08);
+if (visitingHome === h) beginFollow(cam);
 });
 });
 if (v.isHome) {
@@ -1044,6 +1044,7 @@ function buildRoomTabs(s) {
 var bar = document.getElementById("room-tabs");
 if (!bar) return;
 bar.innerHTML = "";
+initCamLockButton();   // v2.7-d：顶栏「锁定视角」按钮（静态 DOM，这里接线并恢复上次状态）
 ROOMS.forEach(function (r) {
 var b = document.createElement("button");
 b.className = "room-tab";
@@ -1097,7 +1098,7 @@ fb.onclick = function () {
 exitNeighborHome();
 camDragOn = false;
 var cam = s.cameras.main;
-cam.stopFollow(); cam.startFollow(fish, true, 0.08, 0.08); cam.setZoom(1);
+beginFollow(cam); cam.setZoom(1);
 syncTabActive(fb);
 };
 bar.appendChild(fb);
@@ -1124,7 +1125,7 @@ db.setAttribute("aria-pressed", "false");
 if (editMode || editorMode) {
 cam.stopFollow();          // 编辑中：关掉"拖动视角"只是回到可落笔状态，镜头留在原地别弹回鱼身上
 } else {
-cam.startFollow(fish, true, 0.08, 0.08);
+beginFollow(cam);
 cam.setZoom(1);
 }
 }
@@ -1147,6 +1148,37 @@ bindCamWheel(s);
 SceneOffice.prototype.update = update;
 var camDragOn = false;
 var camDragSuppress = 0;   // 拖动结束后的点击抑制窗口（ms 时间戳）
+var camLocked = false;
+var CAM_DEADZONE = [120, 80];
+function beginFollow(cam) {
+if (!cam || !fish) return;
+cam.stopFollow();
+cam.startFollow(fish, true, 0.08, 0.08);
+try { cam.setDeadzone(CAM_DEADZONE[0], CAM_DEADZONE[1]); } catch (e) {}
+}
+function setCamLocked(v) {
+camLocked = !!v;
+var cam = scene && scene.cameras && scene.cameras.main;
+if (cam) {
+if (camLocked) cam.stopFollow();
+else if (!camDragOn && !editMode && !editorMode && !visitingHome) beginFollow(cam);
+}
+var b = document.getElementById("cam-lock");
+if (b) {
+b.setAttribute("aria-pressed", camLocked ? "true" : "false");
+b.textContent = camLocked ? "🔒" : "🔓";
+b.title = camLocked ? "视角已锁定：不跟随、点事件也不运镜（点击解锁）" : "锁定视角：镜头不再自动跟随/运镜";
+}
+try { localStorage.setItem("office_camlock", camLocked ? "1" : "0"); } catch (e) {}
+}
+function initCamLockButton() {
+var b = document.getElementById("cam-lock");
+if (!b) return;
+b.addEventListener("click", function (e) { e.stopPropagation(); setCamLocked(!camLocked); });
+var want = false;
+try { want = localStorage.getItem("office_camlock") === "1"; } catch (e) {}
+setCamLocked(want);
+}
 function bindCamDrag(s) {
 var cam = s.cameras.main;
 var dragging = false, moved = false, lx = 0, ly = 0;
@@ -1385,9 +1417,9 @@ office:  [0, 15, 26, 15],
 bedroom: [1, 1, 9, 13],
 bath:    [10, 1, 6, 13],
 kitchen: [16, 1, 9, 13],
-nbCat:   [39, 1, 8, 13],    // v83：喵酱家（右上左新房）
-nbChief: [48, 1, 7, 13],    // v83：村长家（右上右新房）
-nbDoc:   [51, 20, 4, 9]     // v83：博士家（右下）
+nbCat:   [39, 17, 8, 12],    // 喵酱家：房子 cottage 在 x≈42.2 / y≈19.6
+nbChief: [47, 17, 4, 12],    // 村长家：房子 house-modern 在 x≈48.2 / y≈19.6
+nbDoc:   [51, 17, 4, 12]     // 博士家：房子 farmhouse 在 x≈53.4 / y≈19.6（原 y=20 起，房子精灵会露在框外）
 };
 try { window.__officeRoomRects = SWITCH_ROOM_RECTS; } catch (e) {}   // v2.7：小地图复用同一份房间矩形
 function roomOfProp(p) {
@@ -1854,9 +1886,9 @@ var ROOM_RECTS = [
 { room: "bedroom", x: 1,  y: 1,  w: 9,  h: 13, label: "起居" },
 { room: "bath",    x: 10, y: 1,  w: 6,  h: 13, label: "卫浴" },
 { room: "kitchen", x: 16, y: 1,  w: 9,  h: 13, label: "厨房" },
-{ room: "nbCat",   x: 39, y: 1,  w: 8,  h: 13, label: "喵酱家" },
-{ room: "nbChief", x: 48, y: 1,  w: 7,  h: 13, label: "村长家" },
-{ room: "nbDoc",   x: 51, y: 20, w: 4,  h: 9,  label: "博士家" }
+{ room: "nbCat",   x: 39, y: 17, w: 8,  h: 12, label: "喵酱家" },   // v2.7-d：跟着房子本体搬家后的新室内
+{ room: "nbChief", x: 47, y: 17, w: 4,  h: 12, label: "村长家" },
+{ room: "nbDoc",   x: 51, y: 17, w: 4,  h: 12, label: "博士家" }
 ];
 function roomCovered(rr, edits) {
 var roomArea = rr.w * rr.h;
@@ -3679,7 +3711,7 @@ for (var tx = 0; tx < COLS; tx++) {
 var mat = tx < indoorRight ? "wall" : "sky";
 rt.batchDraw(tileTex(mat), tx * TILE, 0);
 }
-for (var dx = 0; dx < door.tw; dx++) rt.batchDraw(tileTex("road"), (door.tx + dx) * TILE, 0);
+for (var dx = 0; dx < door.tw; dx++) rt.batchDraw(tileTex("wood"), (door.tx + dx) * TILE, 0);
 }
 function buildRoom(s) {
 if (s.baseGfx) { try { s.baseGfx.destroy(); } catch (e) {} }   // rebuildRoomBase 旧层先拆
@@ -4242,13 +4274,14 @@ if (editMode) {
 cam.stopFollow();
 } else if (visitingHome) {
 visitSitCount = 0;   // 真实事件优先，鱼随时可以被带走
+} else if (camLocked) {
 } else {
 cam.stopFollow();
 var zx = zone.anchor[0] * TILE, zy = WALL_H + zone.anchor[1] * TILE;
 cam.pan(Phaser.Math.Clamp(zx, 624, W - 624), Phaser.Math.Clamp(zy - 96, 384, H - 384), 600);
 cam.once("camerapancomplete", function () {
 scene.time.delayedCall(1800, function () {
-if (!visitingHome) cam.startFollow(fish, true, 0.08, 0.08);   // 无条件兜底：pan 被新事件打断也能恢复跟随
+if (!visitingHome) beginFollow(cam);   // 无条件兜底：pan 被新事件打断也能恢复跟随
 });
 });
 }

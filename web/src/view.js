@@ -83,7 +83,7 @@
     cam.pan(h.cx, h.cy, 700);
     cam.once("camerapancomplete", function () {
       if (visitingHome === h) scene.time.delayedCall(1600, function () {
-        if (visitingHome === h) cam.startFollow(fish, true, 0.08, 0.08);
+        if (visitingHome === h) beginFollow(cam);
       });
     });
     // 主人在家 → 欢迎气泡（复用 NPC 对话池按时段抽一句）
@@ -122,6 +122,7 @@
     var bar = document.getElementById("room-tabs");
     if (!bar) return;
     bar.innerHTML = "";
+    initCamLockButton();   // v2.7-d：顶栏「锁定视角」按钮（静态 DOM，这里接线并恢复上次状态）
     ROOMS.forEach(function (r) {
       var b = document.createElement("button");
       b.className = "room-tab";
@@ -178,7 +179,7 @@
       exitNeighborHome();
       camDragOn = false;
       var cam = s.cameras.main;
-      cam.stopFollow(); cam.startFollow(fish, true, 0.08, 0.08); cam.setZoom(1);
+      beginFollow(cam); cam.setZoom(1);
       syncTabActive(fb);
     };
     bar.appendChild(fb);
@@ -206,7 +207,7 @@
         if (editMode || editorMode) {
           cam.stopFollow();          // 编辑中：关掉"拖动视角"只是回到可落笔状态，镜头留在原地别弹回鱼身上
         } else {
-          cam.startFollow(fish, true, 0.08, 0.08);
+          beginFollow(cam);
           cam.setZoom(1);
         }
       }
@@ -233,6 +234,43 @@
    * 没超过仍当一次点击走位）。滚轮 = 缩放 0.8~2.2，边界由 cameras.main.setBounds 钳制。 */
   var camDragOn = false;
   var camDragSuppress = 0;   // 拖动结束后的点击抑制窗口（ms 时间戳）
+
+  /* ---------- 跟随死区 + 锁定视角（v2.7-d）----------
+   * 死区：她在地图中心 120×80 的框里小范围移动时镜头不动 —— 否则观众想盯住打印机看细节，
+   *   她走两步镜头就跟着漂。这个值配合 lerp 0.08 用：框内完全静止，出框才缓动追。
+   * 锁定：连事件运镜也一起关掉（states.js 的观景 pan 会先看 camLocked）。
+   *   与「✋ 拖动」的区别：拖动是"我现在要自己动手"，锁定是"别自己动，也别替动"。 */
+  var camLocked = false;
+  var CAM_DEADZONE = [120, 80];
+  function beginFollow(cam) {
+    if (!cam || !fish) return;
+    cam.stopFollow();
+    cam.startFollow(fish, true, 0.08, 0.08);
+    try { cam.setDeadzone(CAM_DEADZONE[0], CAM_DEADZONE[1]); } catch (e) {}
+  }
+  function setCamLocked(v) {
+    camLocked = !!v;
+    var cam = scene && scene.cameras && scene.cameras.main;
+    if (cam) {
+      if (camLocked) cam.stopFollow();
+      else if (!camDragOn && !editMode && !editorMode && !visitingHome) beginFollow(cam);
+    }
+    var b = document.getElementById("cam-lock");
+    if (b) {
+      b.setAttribute("aria-pressed", camLocked ? "true" : "false");
+      b.textContent = camLocked ? "🔒" : "🔓";
+      b.title = camLocked ? "视角已锁定：不跟随、点事件也不运镜（点击解锁）" : "锁定视角：镜头不再自动跟随/运镜";
+    }
+    try { localStorage.setItem("office_camlock", camLocked ? "1" : "0"); } catch (e) {}
+  }
+  function initCamLockButton() {
+    var b = document.getElementById("cam-lock");
+    if (!b) return;
+    b.addEventListener("click", function (e) { e.stopPropagation(); setCamLocked(!camLocked); });
+    var want = false;
+    try { want = localStorage.getItem("office_camlock") === "1"; } catch (e) {}
+    setCamLocked(want);
+  }
   function bindCamDrag(s) {
     var cam = s.cameras.main;
     var dragging = false, moved = false, lx = 0, ly = 0;

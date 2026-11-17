@@ -1046,6 +1046,76 @@ check("小地图（左上 / 500ms 重绘 / 点击跳转 / 房间矩形同源）"
   return { problems: bad, warnings, note: `168×90 CSS / ${iv ? iv[1] : "?"}ms 重绘 / 房间矩形同源家具层` };
 });
 
+// ---------- 第 25 项：相机与地图几何（v2.7-d）----------
+check("相机（死区 / 锁定）与房间矩形几何", () => {
+  const bad = [], warnings = [];
+  const viewSrc = read(path.join(WEB, "src", "view.js"));
+  const roomSrc = read(path.join(WEB, "src", "room.js"));
+  const furnSrc = read(path.join(WEB, "src", "furniture.js"));
+
+  // 1) 跟随死区：没有死区时，她每走两步镜头就漂，观众盯不住细节
+  if (!/CAM_DEADZONE/.test(viewSrc)) bad.push("view.js 缺跟随死区常量（CAM_DEADZONE）");
+  if (!/function beginFollow\(/.test(viewSrc) || !/cam\.setDeadzone\(/.test(viewSrc)) bad.push("view.js 的 beginFollow 没调 setDeadzone");
+  if (/startFollow\(fish, true, 0\.08, 0\.08\)/.test(viewSrc.replace(/function beginFollow\([\s\S]*?\n  \}/, ""))) {
+    bad.push("view.js 里还有绕过 beginFollow 的裸 startFollow（那里没有死区）");
+  }
+  // 2) 锁定视角：状态 + 持久化 + 顶栏按钮 + states 的运镜要认它
+  if (!/var camLocked = false/.test(viewSrc) || !/function setCamLocked\(/.test(viewSrc)) bad.push("view.js 缺锁定视角（camLocked / setCamLocked）");
+  if (!/office_camlock/.test(viewSrc)) bad.push("锁定态没持久化（localStorage.office_camlock）");
+  if (!indexSrc.includes('id="cam-lock"')) bad.push("index.html 缺 #cam-lock 按钮");
+  if (!/else if \(camLocked\)/.test(read(path.join(WEB, "src", "states.js")))) {
+    bad.push("states.js 的观景运镜没认 camLocked：锁定后点事件还会搬镜头");
+  }
+
+  // 3) 房间矩形：互不重叠、每块至少装得下一件家具、邻居家的房子要在自己那块里
+  const keys = ["office", "bedroom", "bath", "kitchen", "nbCat", "nbChief", "nbDoc"];
+  const rects = {};
+  keys.forEach(k => {
+    const m = new RegExp(k + ":\\s*\\[(\\d+),\\s*(\\d+),\\s*(\\d+),\\s*(\\d+)\\]").exec(furnSrc);
+    if (!m) bad.push(`furniture.js 的 SWITCH_ROOM_RECTS 缺 ${k}`);
+    else rects[k] = { x: +m[1], y: +m[2], w: +m[3], h: +m[4] };
+  });
+  const inRect = (r, x, y) => r && x >= r.x && x < r.x + r.w && y >= r.y && y < r.y + r.h;
+  const ks = Object.keys(rects);
+  for (let i = 0; i < ks.length; i++) {
+    for (let j = i + 1; j < ks.length; j++) {
+      const a = rects[ks[i]], b = rects[ks[j]];
+      if (a.x < b.x + b.w && b.x < a.x + a.w && a.y < b.y + b.h && b.y < a.y + a.h) bad.push(`房间矩形重叠：${ks[i]} × ${ks[j]}`);
+    }
+  }
+  const placed = (map.furniture || []).filter(f => typeof f.x === "number" && typeof f.y === "number");
+  ks.forEach(k => {
+    const n = placed.filter(f => inRect(rects[k], f.x, f.y)).length;
+    if (!n) bad.push(`房间 ${k} 的矩形里一件家具都没有：坐标多半是旧布局留下的`);
+  });
+  [["homeCat", "nbCat"], ["homeChief", "nbChief"], ["homeDoc", "nbDoc"]].forEach(([id, room]) => {
+    const h = placed.find(f => f.id === id);
+    if (!h) { warnings.push(`map.json 找不到房子精灵 ${id}`); return; }
+    if (!inRect(rects[room], h.x, h.y)) {
+      bad.push(`房子 ${id} 在 (${h.x}, ${h.y})，却不在 ${room} 的矩形里 —— 夜里开灯/阴影会作用到别人家`);
+    }
+  });
+  // 4) NPC 的床必须在自家室内（v2.8 待清理：目前 catBed/chiefChair1 还在顶部旧位置）
+  [["猫", "catBed", "nbCat"], ["村长", "chiefChair1", "nbChief"], ["博士", "docArm", "nbDoc"]].forEach(([who, id, room]) => {
+    const b = placed.find(f => f.id === id);
+    if (b && !inRect(rects[room], b.x, b.y)) {
+      warnings.push(`${who}的床 ${id} 在 (${b.x}, ${b.y})，不在 ${room} 室内 —— 睡觉会走到空地上（v2.8 数据清理项）`);
+    }
+  });
+
+  // 5) 大门：门洞不许再铺"路"（第 0 行整行不可走，铺路 = 假门）
+  const band = /function paintTopBand[\s\S]*?\n  \}/.exec(roomSrc);
+  if (!band) bad.push("room.js 找不到 paintTopBand");
+  else {
+    if (/tileTex\("road"\)/.test(band[0])) bad.push("paintTopBand 还在门洞铺 road：那是扇走不通的假门（第 0 行不可走）");
+    if (!/tileTex\("wood"\)/.test(band[0])) bad.push("paintTopBand 的门洞没铺门板贴图（wood）");
+  }
+  if (!/grid\[0\]\[x0\] = 1|grid\[0\]\[x\] = 1/.test(furnSrc)) warnings.push("furniture.js 里没找到「贴墙根不可走」（grid[0][*] = 1），请人工确认假门修复前提仍然成立");
+
+  const dz = /var CAM_DEADZONE = \[(\d+), (\d+)\]/.exec(viewSrc);
+  return { problems: bad, warnings, note: `死区 ${dz ? dz[1] + "×" + dz[2] : "?"}px · ${ks.length} 个房间矩形无重叠 · 门洞已封板 · 家具落在 ${ks.filter(k => rects[k]).length} 块内` };
+});
+
 console.log("\noffice 静态自检\n" + "─".repeat(64));
 results.forEach(r => {
   const tag = r.problems.length ? "[FAIL]" : (r.warnings.length ? "[WARN]" : "[ OK ]");

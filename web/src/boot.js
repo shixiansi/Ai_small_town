@@ -144,7 +144,7 @@
     this.trophyLayer = this.add.container(0, 0).setDepth(30);      // 灯光：初始 = 关灯（hello 初始态"办公室还没开灯"）
     // 相机：视口 1248x768，世界 2112x768 → 跟随鱼 + 边界钳制
     this.cameras.main.setBounds(0, 0, W, H);
-    if (!editorMode) this.cameras.main.startFollow(fish, true, 0.08, 0.08);   // 编辑器里镜头不跟鱼
+    if (!editorMode) beginFollow(this.cameras.main);   // 编辑器里镜头不跟鱼
     // 死区：鱼在中间 1/3 移动时相机不动，减少晃动
     this.cameras.main.setDeadzone(300, 300);
     buildRoomTabs(this);    // 房间切换 UI

@@ -70,6 +70,9 @@
       cam.stopFollow();
     } else if (visitingHome) {
       visitSitCount = 0;   // 真实事件优先，鱼随时可以被带走
+    } else if (camLocked) {
+      /* v2.7-d 锁定视角：观众明确表示"别自己动镜头"，那就连观景运镜也不做。
+       * 鱼照常走过去干活，画面停在他正在看的地方 —— 配合左上小地图不会跟丢。 */
     } else {
       cam.stopFollow();
       var zx = zone.anchor[0] * TILE, zy = WALL_H + zone.anchor[1] * TILE;
@@ -77,7 +80,7 @@
       // 镜头在目标房间停留 ≥1.8s 再恢复跟随（复评 P1-5：600ms 完成就弹回等于甩镜头）
       cam.once("camerapancomplete", function () {
         scene.time.delayedCall(1800, function () {
-          if (!visitingHome) cam.startFollow(fish, true, 0.08, 0.08);   // 无条件兜底：pan 被新事件打断也能恢复跟随
+          if (!visitingHome) beginFollow(cam);   // 无条件兜底：pan 被新事件打断也能恢复跟随
         });
       });
     }

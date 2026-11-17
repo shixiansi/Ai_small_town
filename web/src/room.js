@@ -106,8 +106,11 @@
       var mat = tx < indoorRight ? "wall" : "sky";
       rt.batchDraw(tileTex(mat), tx * TILE, 0);
     }
-    // 大门门洞：墙带断开铺路
-    for (var dx = 0; dx < door.tw; dx++) rt.batchDraw(tileTex("road"), (door.tx + dx) * TILE, 0);
+    // 大门门洞：v2.7-d 改成「装上去的门板」而不是铺路。
+    // 原来这里铺 road，视觉上像一条能走出去的路，但第 0 行整行是不可走的（furniture.js 的
+    // buildBlockedGrid），于是观众点它永远没反应 —— level-design 里最忌讳的"用不可通过的视觉引导"。
+    // 现在铺 wood：既保持墙带不断开，也不会暗示"可以出去"。
+    for (var dx = 0; dx < door.tw; dx++) rt.batchDraw(tileTex("wood"), (door.tx + dx) * TILE, 0);
   }
 
   function buildRoom(s) {
