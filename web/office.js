@@ -3785,16 +3785,60 @@ j.plots.forEach(function (p) { p.watered = false; p.fed = false; p.progress = (p
 j.day = bjDayKey();
 }
 farm = j;
+farmSync();      // v2.8-a2：先用本地镜像把画面点亮，随后被 hub 的真相覆盖
 return;
 }
 } catch (e) {}
 farm = farmNew();
 farmSave();
+farmSync();
 }
 function farmSave() { try { localStorage.setItem("office_farm_v1", JSON.stringify(farm)); } catch (e) {} }
+var farmHubOk = false;
+function farmBase() { return (typeof hubMapBase === "function") ? hubMapBase() : "/office-hub-api"; }
+function farmUrl() {
+var b = farmBase() || "";
+return b.indexOf("://") >= 0 ? b + "/api/farm" : b + "/farm";
+}
+function farmOnline() { return farmHubOk; }
+function farmApply(snap) {
+if (!snap || !snap.plots || snap.plots.length !== FARM.cols * FARM.rows) return;
+farm = {
+plots: snap.plots,
+inv: snap.inv || { seeds: {}, crops: {}, feed: 0 },
+day: snap.day || bjDayKey(),
+fish: snap.fish || 0
+};
+farmSave();     // 同时留一份本地镜像：断网/关页后不至于回到初始的 3 粒种子
+drawFarm();
+}
+function farmSync() {
+try {
+fetch(farmUrl()).then(function (r) { return r.ok ? r.json() : null; }).then(function (j) {
+if (!j || !j.plots) { farmHubOk = false; return; }
+farmHubOk = true;
+farmApply(j);
+}).catch(function () { farmHubOk = false; });
+} catch (e) { farmHubOk = false; }
+}
+function farmPost(act, slot, extra, cb) {
+try {
+var body = { act: act };
+if (typeof slot === "number") body.slot = slot;
+if (extra) for (var k in extra) body[k] = extra[k];
+fetch(farmUrl(), { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) })
+.then(function (r) { return r.ok ? r.json() : null; })
+.then(function (j) {
+if (!j) { farmHubOk = false; cb && cb(null); return; }
+farmHubOk = true;
+if (j.farm) farmApply(j.farm);
+cb && cb(j);
+}).catch(function () { farmHubOk = false; cb && cb(null); });
+} catch (e) { farmHubOk = false; cb && cb(null); }
+}
 function plotTile(i) { return { x: FARM.x0 + (i % FARM.cols), y: FARM.y0 + Math.floor(i / FARM.cols) }; }
 function cropDef(id) { for (var i = 0; i < FARM.crops.length; i++) if (FARM.crops[i].id === id) return FARM.crops[i]; return null; }
-function farmAct(act, slot) {
+function farmActLocal(act, slot) {
 if (!farm) farmLoad();
 var plots = farm.plots, order = [];
 if (typeof slot === "number" && plots[slot]) order = [slot];
@@ -3829,6 +3873,17 @@ farmSave(); return { ok: true, slot: order[k], text: "收获了" + (cd ? cd.name
 }
 return { ok: false, text: actText(act) };
 }
+function farmAct(act, slot) {
+var r = farmActLocal(act, slot);
+if (farmOnline() && r && r.ok) {
+var extra = null;
+if (act === "sow" && typeof r.slot === "number" && farm.plots[r.slot] && farm.plots[r.slot].crop) {
+extra = { crop: farm.plots[r.slot].crop };
+}
+farmPost(act, (typeof r.slot === "number") ? r.slot : slot, extra, null);
+}
+return r;
+}
 function actText(act) {
 return {
 till: "没有可开垦的生土了", water: "没有干着的耕地", sow: "没有空耕地可播种",
@@ -3837,6 +3892,7 @@ feed: "没有可施肥的作物", harvest: "还没有成熟的作物"
 }
 function farmTick() {
 if (!farm) return;
+if (farmOnline()) return;   // v2.8-a2：在线时生长由 hub 的 30s tick 负责（一份真相）
 var dirty = false;
 farm.plots.forEach(function (p) {
 if (!p.crop || p.progress >= 1) return;
@@ -3938,6 +3994,7 @@ if (roll < 0.78) { got = "鲜鱼"; farm.fish++; }
 else if (roll < 0.93) { got = "肥料"; farm.inv.feed++; }
 else { got = "河童的旧怀表"; farm.inv.feed += 2; }
 farmSave();
+if (farmOnline()) farmPost("fish", null, null, null);   // v2.8-a2：鱼获也记到 hub 的同一本账
 fishing = null;
 postStatDelta({ mood: 5, hunger: 1 });
 renderStatsBar();

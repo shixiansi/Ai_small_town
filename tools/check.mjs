@@ -1165,6 +1165,41 @@ check("生活决策在 hub（lifeTick / 数值单点结算 / 前端不再上报�
   };
 });
 
+// ---------- 第 28 项：农场在 hub（v2.8-a2）----------
+check("农场在 hub（一份真相 / 种子闭环 / 前端只当画布）", () => {
+  const bad = [], warnings = [];
+  const farmSrc = read(path.join(WEB, "src", "farm.js"));
+
+  // 1) hub 侧：存档 + 动作 + 生长 + 跨天
+  if (!/OFFICE_FARM_FILE/.test(hubSrc)) bad.push("hub.mjs 缺 OFFICE_FARM_FILE（农场存档路径不可配）");
+  if (!/req.url === "\/api\/farm" && req.method === "GET"/.test(hubSrc)) bad.push("hub.mjs 缺 GET /api/farm");
+  if (!/req.url === "\/api\/farm" && req.method === "POST"/.test(hubSrc)) bad.push("hub.mjs 缺 POST /api/farm");
+  if (!/function farmRollDay\(/.test(hubSrc)) bad.push("hub.mjs 缺跨天结算（farmRollDay）");
+  if (!/function farmGrow\(/.test(hubSrc)) bad.push("hub.mjs 缺生长 tick（farmGrow）");
+  ["till", "water", "sow", "feed", "harvest", "fish"].forEach(a => {
+    if (!new RegExp('"' + a + '"').test(hubSrc)) bad.push(`hub.mjs 的动作表缺 ${a}`);
+  });
+
+  // 2) 种子闭环（这次修的就是「种三次后永久停摆」）
+  if (!/farm\.inv\.seeds\[crop\] = \(farm\.inv\.seeds\[crop\] \|\| 0\) \+ 2/.test(hubSrc)) {
+    bad.push("hub 没有「市集每天补 2 粒种子」：种子只减不增，17 格永远空着");
+  }
+  if (!/Math\.random\(\) < 0\.6/.test(hubSrc)) bad.push("收割没有返种子的概率（v2.8 闭环缺一半）");
+  if (!/typeof d\.crop === "string"/.test(hubSrc)) bad.push("hub 播种没接前端传来的作物偏好：两边可能种出不同的作物");
+
+  // 3) 前端：在线走 hub、离线留本地镜像；在线时生长不由前端推进（否则双倍生长）
+  if (!/function farmOnline\(/.test(farmSrc) || !/function farmPost\(/.test(farmSrc) || !/function farmApply\(/.test(farmSrc)) {
+    bad.push("farm.js 缺 hub 同步层（farmOnline / farmPost / farmApply）");
+  }
+  if (!/if \(farmOnline\(\)\) return;/.test(farmSrc)) bad.push("farm.js 的 farmTick 在线时仍在本地推进生长：会和 hub 各长一份");
+  if (!/localStorage\.setItem\("office_farm_v1"/.test(farmSrc)) bad.push("farm.js 丢了本地镜像（离线兜底没了）");
+  if (!/if \(farmOnline\(\) && r && r\.ok\)/.test(farmSrc)) bad.push("farm.js 的动作没回写 hub");
+  if (!/farmPost\("fish"/.test(farmSrc)) bad.push("钓鱼鱼获没记到 hub：多开会各钓一份");
+  if (/(farm\.inv\.feed \+=)[\s\S]{0,400}?farmPost\("fish"/.test(farmSrc) === false) warnings.push("钓鱼奖励与 hub 的概率表需人工核对一次（78/15/7）");
+
+  return { problems: bad, warnings, note: "20 格 · 6 个动作 · 每天 +2 种子 · 收割 60% 返种" };
+});
+
 console.log("\noffice 静态自检\n" + "─".repeat(64));
 results.forEach(r => {
   const tag = r.problems.length ? "[FAIL]" : (r.warnings.length ? "[WARN]" : "[ OK ]");

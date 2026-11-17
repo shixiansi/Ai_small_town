@@ -816,6 +816,141 @@ function applyMapEdit(action, item) {
   return { ok: true, count: customMap.furniture.length }
 }
 
+// ---------- 农场（v2.8-a2）：从 localStorage 搬到 hub ----------
+/* 为什么搬：原来是每个浏览器一份 localStorage，两个观众就是两个农场；而且种子只减不增
+ * （初始 wheat×2 + carrot×1），种三次之后永久停摆、其余 17 格永远空着。
+ * 现在：一份真相在 hub/farm.json，所有人共享；并且补上闭环 ——
+ *   · 每天清晨市集补 2 粒种子（按星期轮换作物）
+ *   · 收割 60% 概率返 1 粒同种种子
+ *   · 每两天补 1 份肥料（钓鱼仍会捞到）
+ * 前端 farm.js 在线时只负责画和发动作，数值以 hub 返回的为准（离线退回 localStorage）。 */
+const FARM_FILE = process.env.OFFICE_FARM_FILE
+  ? path.resolve(process.env.OFFICE_FARM_FILE)
+  : fileURLToPath(new URL("./farm.json", import.meta.url))
+const FARM_COLS = 5, FARM_ROWS = 4, FARM_PLOTS = FARM_COLS * FARM_ROWS
+const FERTILIZER_BOOST = 0.5
+const CROPS = {
+  wheat:   { name: "小麦",   stages: 4, growMin: 90 },
+  tomato:  { name: "番茄",   stages: 4, growMin: 110 },
+  carrot:  { name: "胡萝卜", stages: 3, growMin: 80 },
+  corn:    { name: "玉米",   stages: 4, growMin: 130 },
+  cabbage: { name: "卷心菜", stages: 3, growMin: 100 }
+}
+const CROP_IDS = Object.keys(CROPS)
+function bjDayKey() {
+  return new Date(Date.now() + 8 * 3600e3).toISOString().slice(0, 10)
+}
+function farmNew() {
+  const plots = []
+  for (let i = 0; i < FARM_PLOTS; i++) plots.push({ soil: false, watered: false, fed: false, crop: null, stage: 0, progress: 0 })
+  return { plots, inv: { seeds: { wheat: 2, carrot: 1 }, crops: {}, feed: 1 }, day: bjDayKey(), fish: 0 }
+}
+function loadFarm() {
+  try {
+    const j = JSON.parse(fs.readFileSync(FARM_FILE, "utf8"))
+    if (j && Array.isArray(j.plots) && j.plots.length === FARM_PLOTS && j.inv) return j
+  } catch {}
+  return farmNew()
+}
+function saveFarm() {
+  try {
+    fs.writeFileSync(FARM_FILE + ".tmp", JSON.stringify(farm))
+    fs.renameSync(FARM_FILE + ".tmp", FARM_FILE)
+  } catch (e) { console.warn(new Date().toISOString(), `[office-hub] 农场落盘失败: ${e.message}`) }
+}
+let farm = loadFarm()
+const farmThrottle = Object.create(null)   // 每个 IP 的动作节流（150ms）
+
+/* 跨天结算 + v2.8 闭环：浇过水的地干掉；生长按存活天数推进；清晨市集补种子 */
+function farmRollDay() {
+  const today = bjDayKey()
+  if (farm.day === today) return false
+  const days = Math.max(1, Math.round((Date.parse(today) - Date.parse(farm.day || today)) / 86400e3) || 1)
+  farm.plots.forEach(p => {
+    p.watered = false; p.fed = false
+    if (p.crop) p.progress = Math.min(1, p.progress + 0.5 * Math.min(days, 3))
+  })
+  // 市集每天补 2 粒种子（按星期轮换，保证五种作物都拿得到）+ 每两天 1 份肥料
+  const crop = CROP_IDS[new Date(Date.now() + 8 * 3600e3).getDay() % CROP_IDS.length]
+  farm.inv.seeds[crop] = (farm.inv.seeds[crop] || 0) + 2
+  if (new Date(Date.now() + 8 * 3600e3).getDate() % 2 === 0) farm.inv.feed = (farm.inv.feed || 0) + 1
+  farm.day = today
+  saveFarm()
+  console.log(new Date().toISOString(), `[office-hub] 农场跨天：浇水清除 · 市集补 ${crop}×2 · 肥料 ${farm.inv.feed}`)
+  return true
+}
+farmRollDay()
+
+/* 生长 tick：浇过水才长，肥料加速（与前端 farmTick 同一套公式，30s 一跳） */
+function farmGrow() {
+  let dirty = false
+  farm.plots.forEach(p => {
+    if (!p.crop || p.progress >= 1 || !p.watered) return
+    const cd = CROPS[p.crop] || { stages: 3, growMin: 100 }
+    p.progress = Math.min(1, p.progress + 1 / (cd.growMin * (p.fed ? FERTILIZER_BOOST : 1)) * 3)
+    p.stage = Math.min(cd.stages - 1, Math.floor(p.progress * cd.stages))
+    dirty = true
+  })
+  if (dirty) {
+    saveFarm()
+    broadcast({ type: "farm", farm })
+  }
+}
+setInterval(() => { farmRollDay(); farmGrow() }, 30e3).unref?.()
+
+function farmSnapshot() {
+  let tilled = 0, growing = 0, ready = 0
+  farm.plots.forEach(p => { if (p.soil) tilled++; if (p.crop) growing++; if (p.crop && p.progress >= 1) ready++ })
+  return { plots: farm.plots, inv: farm.inv, day: farm.day, fish: farm.fish || 0, tilled, growing, ready, max: FARM_PLOTS }
+}
+function farmAct(act, slot, prefer) {
+  farmRollDay()
+  const order = (typeof slot === "number" && farm.plots[slot]) ? [slot] : farm.plots.map((_, i) => i)
+  const pickIds = () => Object.keys(farm.inv.seeds).filter(id => farm.inv.seeds[id] > 0)
+  for (const i of order) {
+    const p = farm.plots[i]
+    if (act === "till" && !p.soil && !p.crop) { p.soil = true; break }
+    if (act === "water" && p.soil && !p.watered) { p.watered = true; p.progress = Math.min(1, p.progress + 0.12); break }
+    if (act === "sow" && p.soil && !p.crop) {
+      const ids = pickIds()
+      if (!ids.length) return { ok: false, text: "种子用完了（市集每天清晨会补）" }
+      // 前端本地已经随机挑过一次：它把选择一起发上来，两边就不会种出不同的作物
+      const id = (prefer && (farm.inv.seeds[prefer] || 0) > 0) ? prefer : ids[Math.floor(Math.random() * ids.length)]
+      farm.inv.seeds[id]--
+      p.crop = id; p.stage = 0; p.progress = 0; p.watered = false
+      break
+    }
+    if (act === "feed" && p.crop && !p.fed) {
+      if (!(farm.inv.feed > 0)) return { ok: false, text: "没有肥料了（钓鱼有时能捞到）" }
+      farm.inv.feed--; p.fed = true; p.progress = Math.min(1, p.progress + 0.2)
+      break
+    }
+    if (act === "harvest" && p.crop && p.progress >= 1) {
+      farm.inv.crops[p.crop] = (farm.inv.crops[p.crop] || 0) + 1
+      // v2.8 闭环：收割 60% 返 1 粒同种种子，农场才能自己转起来
+      let extra = ""
+      if (Math.random() < 0.6) { farm.inv.seeds[p.crop] = (farm.inv.seeds[p.crop] || 0) + 1; extra = "，留下 1 粒种子" }
+      p.crop = null; p.stage = 0; p.progress = 0; p.watered = false; p.fed = false
+      return finishFarm({ ok: true, text: "收获了×1" + extra })
+    }
+    if (act === "fish") break
+  }
+  if (act === "fish") {
+    /* 概率与前端 fishReel 对齐：78% 鱼 / 15% 肥料 / 7% 河童的旧怀表（肥料×2） */
+    const roll = Math.random()
+    if (roll < 0.78) { farm.fish = (farm.fish || 0) + 1; return finishFarm({ ok: true, text: "钓到了鲜鱼！" }) }
+    if (roll < 0.93) { farm.inv.feed = (farm.inv.feed || 0) + 1; return finishFarm({ ok: true, text: "钓到了肥料！" }) }
+    farm.inv.feed = (farm.inv.feed || 0) + 2
+    return finishFarm({ ok: true, text: "钓到了河童的旧怀表！（肥料×2）" })
+  }
+  return finishFarm({ ok: true })
+}
+function finishFarm(res) {
+  saveFarm()
+  broadcast({ type: "farm", farm })
+  return { ...res, farm: farmSnapshot() }
+}
+
 const CORS = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Methods": "GET,POST,OPTIONS",
@@ -876,6 +1011,36 @@ const server = http.createServer((req, res) => {
       catch { res.writeHead(400, CORS).end("bad json"); return }
       applyStatDelta(d)
       res.writeHead(204, CORS).end()
+    })
+    return
+  }
+  if (req.url === "/api/farm" && req.method === "GET") {
+    farmRollDay()
+    res.writeHead(200, { ...CORS, "Content-Type": "application/json; charset=utf-8" })
+    res.end(JSON.stringify(farmSnapshot()))
+    return
+  }
+  if (req.url === "/api/farm" && req.method === "POST") {
+    // 动作来自玩家点击：同一个 IP 150ms 内只放一条，防止连点把存档写爆
+    const ip = String(req.socket.remoteAddress || "?")
+    const now = Date.now()
+    if (farmThrottle[ip] && now - farmThrottle[ip] < 150) { res.writeHead(429, CORS).end(); return }
+    farmThrottle[ip] = now
+    let body = ""
+    req.on("data", c => { body += c; if (body.length > 2048) req.destroy() })
+    req.on("end", () => {
+      let d
+      try { d = JSON.parse(body || "{}") }
+      catch { res.writeHead(400, CORS).end("bad json"); return }
+      const act = String(d.act || d.action || "")
+      const slot = Number.isInteger(d.slot) ? d.slot : null
+      if (!["till", "water", "sow", "feed", "harvest", "fish"].includes(act)) {
+        res.writeHead(400, { ...CORS, "Content-Type": "application/json; charset=utf-8" }).end(JSON.stringify({ error: "未知动作 " + act }))
+        return
+      }
+      const r = farmAct(act, slot, typeof d.crop === "string" && CROPS[d.crop] ? d.crop : null)
+      res.writeHead(200, { ...CORS, "Content-Type": "application/json; charset=utf-8" })
+      res.end(JSON.stringify(r))
     })
     return
   }
