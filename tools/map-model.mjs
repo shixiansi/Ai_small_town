@@ -67,8 +67,13 @@ export function loadModel(opts = {}) {
   const cellsOf = f => {
     const m = man[f.a];
     if (!m) return [];
+    /* 占格要用"真实像素宽度 × sc"，不能只用 bbox[2]/48 —— 宽体家具（office-desk 等）
+     * 后者算出来比实际窄，于是"算着不压路"实际压了（E1 残留的原因）。 */
+    const sc = Number(f.sc || 1);
     const bb = m.bbox || [0, 0, 48, 48];
-    const wT = Math.max(1, bb[2] / T), fh = Math.min(12, bb[3]) / T;
+    const pxW = Number(m.frameW || m.fw || bb[2] || 48) * sc;
+    const pxH = Number(m.frameH || m.fh || bb[3] || 48) * sc;
+    const wT = Math.max(1, pxW / T), fh = Math.min(12, pxH) / T;
     const ty = Math.round(f.y - fh);              // round：与门禁一致
     const xs = [];
     for (let i = 0; i < wT; i++) xs.push(Math.round(f.x - wT / 2 + i));
