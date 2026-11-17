@@ -930,6 +930,43 @@ check("源码拆分（web/src）+ 地图贴图化 防回退", () => {
   return { problems: bad, note: `${files.length} 个片段 · 地图贴图 ${tiles.length} 张 · 底图 RenderTexture` };
 });
 
+// ---------- 第 26 项：音频层（v2.7）----------
+check("音频层（零素材合成 / 默认开 / 触发点接全）", () => {
+  const bad = [];
+  const SRC = path.join(WEB, "src");
+  const audioSrc = read(path.join(SRC, "audio.js"));
+  // 1) 默认开 + 主音量 0.35（用户 2026-11 拍板）；pref 存 localStorage
+  if (!/=== null \? true : v === "1"/.test(audioSrc)) bad.push("audio.js 的默认值不是「开」（localStorage 缺省应为 true）");
+  if (!/master\.gain\.value = on \? 0\.35/.test(audioSrc)) bad.push("audio.js 主音量默认值不是 0.35");
+  if (!/office_audio/.test(audioSrc)) bad.push("audio.js 没把开关持久化到 localStorage.office_audio");
+  // 2) 自动播放策略：必须挂在用户手势上
+  if (!/pointerdown/.test(audioSrc) || !/AudioContext/.test(audioSrc)) bad.push("audio.js 缺手势解锁（pointerdown + AudioContext）");
+  // 3) 三档事件音 + 三个高频音都要有
+  ["small", "medium", "large"].forEach(t => { if (!new RegExp(t + ":\\s*\\{").test(audioSrc)) bad.push(`音频 tier 缺 ${t}`); });
+  ["fx", "footstep", "typeTick"].forEach(fn => { if (!new RegExp("function " + fn + "\\(").test(audioSrc)) bad.push(`audio.js 缺 ${fn}()`); });
+  // 4) 触发点必须真的接上（漏一处 = 那个动作是哑的）
+  const wiring = [
+    ["states.js", /Audio\.fx\(cfg\.mood === "error" \? "large" : "medium"/, "真实事件到达没出声"],
+    ["states.js", /Audio\.typeTick\(\)/, "写作打字没声音"],
+    ["life.js", /Audio\.fx\("small", curPlan\.cfg\.act\)/, "本地小动作没声音"],
+    ["life.js", /Audio\.fx\("medium", msg\.eventKey\)/, "随机事件没声音"],
+    ["life.js", /Audio\.setScene\(\{ room: zoneKey \}\)/, "走到水边没切声场"],
+    ["npc.js", /Audio\.fx\("medium", "chat"\)/, "NPC 搭话没声音"],
+    ["net.js", /Audio\.setScene\(\{ weather: msg\.weather \}\)/, "天气没接声场"],
+    ["loop.js", /Audio\.footstep\(\)/, "走路没脚步"]
+  ];
+  wiring.forEach(([f, re, msg]) => { if (!re.test(read(path.join(SRC, f)))) bad.push(`${f}：${msg}`); });
+  // 5) DOM 开关
+  if (!indexSrc.includes('id="audio-toggle"')) bad.push("index.html 缺 #audio-toggle（顶栏声音开关）");
+  if (!/aria-pressed/.test(indexSrc) || !/\.hbtn\s*\{/.test(indexSrc)) bad.push("index.html 缺开关的 aria-pressed / .hbtn 样式");
+  // 6) 零素材：这条是设计约束 —— 有人手塞音频文件进来就直接报错（体积/许可/同步都不划算）
+  const audioFiles = fs.readdirSync(ASSETS).filter(f => /\.(mp3|ogg|wav|m4a|aac|flac)$/i.test(f));
+  if (audioFiles.length) bad.push(`assets/ 里出现音频文件（本层约定零素材合成）：${audioFiles.join(", ")}`);
+  // 7) 可自动走查的只读快照
+  if (!/__officeAudioState/.test(audioSrc)) bad.push("audio.js 没暴露 __officeAudioState（自动走查断言用）");
+  return { problems: bad, note: "3 档事件音 · 4 个环境声部 · 8 处触发 · 0 素材" };
+});
+
 console.log("\noffice 静态自检\n" + "─".repeat(64));
 results.forEach(r => {
   const tag = r.problems.length ? "[FAIL]" : (r.warnings.length ? "[WARN]" : "[ OK ]");

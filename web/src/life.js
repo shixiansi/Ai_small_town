@@ -365,6 +365,8 @@
     var script = EVENT_SCRIPTS[msg.eventKey];
     if (!script || !scene || !scene.mapdata.zones[script.zone]) return;
     if (script.outdoor && weather === "rainy" && msg.eventKey !== "rain_sudden") return;  // 雨天 gate 二次确认
+    // v2.7 音频：随机事件按 medium 档出声（和「✉」提醒气泡同时发生，观众听觉上有"出事了"）
+    if (typeof Audio !== "undefined") Audio.fx("medium", msg.eventKey);
     if (fishState === "walking" || fishState === "acting") {
       // v83.4：正事中随机事件进 pending 队列，但立刻冒一个「✉ 事件文案」提醒气泡 2.5s，
       // 之后恢复当前任务气泡——观众能看到"发生了一件事"，正事的展示也不丢。
@@ -503,6 +505,8 @@
   function goLocal(zoneKey, text, pseudoAct, face, instant, statFill, extra) {
     var zone = scene.mapdata.zones[zoneKey];
     if (!zone) return;
+    // v2.7 音频：走到水边/花园时塘水声淡入（离开自动淡出），不用别的系统来推
+    if (typeof Audio !== "undefined") Audio.setScene({ room: zoneKey });
     if (instant) {
       // 调试台「就地播放」：跳过寻路，直接把鱼放到目标格中心看动作帧。
       // 跨房间事件正常要走十几秒，不这样就没法快速逐个检查 26 条事件。
@@ -597,6 +601,7 @@
     var la = LOCAL_ACTS[curPlan.cfg.act] || { anim: "idle", dur: 1800 };
     applySit(curPlan.zone);   // 「瘫在沙发上」真的落到沙发坐垫上
     startActAnim(la.anim);
+    if (typeof Audio !== "undefined") Audio.fx("small", curPlan.cfg.act);   // v2.7：小动作落点音
     if (curPlan.bubbleText) showBubble(curPlan.bubbleText, "idle");
     // 内容画面（画中画）：翻书显示书页、打游戏显示伪像素屏（结束/新事件时收起）
     if (curPlan.cfg.act === "idle_read") showPerfPanel("read");

@@ -92,6 +92,192 @@ var SCALE_TABLE = {
 "coin": 0.4, "potion-shelf": 1.0, "fence": 0.7, "sign-inn": 1.0, "fence-picket": 0.9,
 "bush": 0.9, "flowers": 0.7
 };
+var Audio = (function () {
+var AC = window.AudioContext || window.webkitAudioContext;
+var ctx = null, master = null, ambBus = null, sfxBus = null;
+var noiseBuf = null, clickBuf = null, pinkBuf = null;
+var voices = null;                       // wind / rain / night / water 四个 GainNode
+var on = readPref();
+var scene = { weather: "sunny", hour: 12, room: "", lightsOn: true };
+var lastFoot = 0, lastType = 0, lastFx = {};
+var armed = false, built = false;
+function readPref() {
+try { var v = localStorage.getItem("office_audio"); return v === null ? true : v === "1"; }
+catch (e) { return true; }
+}
+function writePref() { try { localStorage.setItem("office_audio", on ? "1" : "0"); } catch (e) {} }
+function makeNoise(sec, pink) {
+var len = Math.floor(ctx.sampleRate * sec), buf = ctx.createBuffer(1, len, ctx.sampleRate);
+var d = buf.getChannelData(0), last = 0;
+for (var i = 0; i < len; i++) {
+var w = Math.random() * 2 - 1;
+if (pink) { last = 0.97 * last + 0.03 * w; d[i] = last * 3.2; }
+else d[i] = w;
+}
+return buf;
+}
+function loopNoise(buf) {
+var s = ctx.createBufferSource(); s.buffer = buf; s.loop = true; s.start(0); return s;
+}
+function env(g, t0, peak, attack, dur) {
+var p = Math.max(0.0002, peak);
+g.gain.setValueAtTime(0.0001, t0);
+g.gain.exponentialRampToValueAtTime(p, t0 + attack);
+g.gain.exponentialRampToValueAtTime(0.0001, t0 + dur);
+}
+function ramp(param, v, sec) {
+try { param.setTargetAtTime(Math.max(0.0001, v), ctx.currentTime, Math.max(0.2, sec || 1.2)); }
+catch (e) { try { param.value = v; } catch (e2) {} }
+}
+function build() {
+if (built || !AC) return;
+built = true;
+try { ctx = new AC(); } catch (e) { ctx = null; built = false; return; }
+master = ctx.createGain(); master.gain.value = on ? 0.35 : 0.0001; master.connect(ctx.destination);
+ambBus = ctx.createGain(); ambBus.gain.value = 1; ambBus.connect(master);
+sfxBus = ctx.createGain(); sfxBus.gain.value = 0.85; sfxBus.connect(master);
+noiseBuf = makeNoise(2, false);
+pinkBuf = makeNoise(2, true);
+clickBuf = makeNoise(0.06, false);
+var windG = ctx.createGain(); windG.gain.value = 0.05; windG.connect(ambBus);
+var windF = ctx.createBiquadFilter(); windF.type = "bandpass"; windF.frequency.value = 480; windF.Q.value = 0.7;
+loopNoise(noiseBuf).connect(windF); windF.connect(windG);
+var lfo = ctx.createOscillator(); lfo.frequency.value = 0.05;
+var lfoG = ctx.createGain(); lfoG.gain.value = 140;
+lfo.connect(lfoG); lfoG.connect(windF.frequency); lfo.start(0);
+var rainG = ctx.createGain(); rainG.gain.value = 0.0001; rainG.connect(ambBus);
+var rainH = ctx.createBiquadFilter(); rainH.type = "highpass"; rainH.frequency.value = 1800;
+var rainL = ctx.createBiquadFilter(); rainL.type = "lowpass"; rainL.frequency.value = 6200;
+loopNoise(noiseBuf).connect(rainH); rainH.connect(rainL); rainL.connect(rainG);
+var nightG = ctx.createGain(); nightG.gain.value = 0.0001; nightG.connect(ambBus);
+[4200, 4700].forEach(function (f) {
+var o = ctx.createOscillator(); o.type = "sine"; o.frequency.value = f;
+var g = ctx.createGain(); g.gain.value = 0.10;
+o.connect(g); g.connect(nightG); o.start(0);
+});
+var waterG = ctx.createGain(); waterG.gain.value = 0.0001; waterG.connect(ambBus);
+var waterF = ctx.createBiquadFilter(); waterF.type = "bandpass"; waterF.frequency.value = 1150; waterF.Q.value = 2;
+loopNoise(pinkBuf).connect(waterF); waterF.connect(waterG);
+voices = { wind: windG, rain: rainG, night: nightG, water: waterG };
+applyScene();
+}
+function applyScene() {
+if (!ctx || !voices) return;
+var h = Number(scene.hour); if (!isFinite(h)) h = 12;
+var night = (h < 6 || h >= 22);
+var rainy = (scene.weather === "rainy" || scene.weather === "storm");
+var cloudy = (scene.weather === "cloudy");
+ramp(voices.wind.gain, night ? 0.032 : (cloudy ? 0.062 : 0.05), 1.5);
+ramp(voices.rain.gain, rainy ? 0.075 : 0.0001, 2.2);
+ramp(voices.night.gain, night ? 0.011 : 0.0001, 2.5);
+ramp(voices.water.gain, (scene.room === "pond" || scene.room === "garden") ? 0.02 : 0.0001, 1.6);
+}
+function tone(freq, dur, type, peak, slideTo) {
+var t0 = ctx.currentTime;
+var o = ctx.createOscillator(), g = ctx.createGain();
+o.type = type || "triangle";
+o.frequency.setValueAtTime(freq, t0);
+if (slideTo) { try { o.frequency.exponentialRampToValueAtTime(Math.max(30, slideTo), t0 + dur); } catch (e) {} }
+env(g, t0, peak, Math.min(0.02, dur * 0.35), dur);
+o.connect(g); g.connect(sfxBus); o.start(t0); o.stop(t0 + dur + 0.05);
+}
+function hiss(dur, freq, q, peak, type) {
+var t0 = ctx.currentTime;
+var s = ctx.createBufferSource(); s.buffer = clickBuf; s.loop = true;
+var f = ctx.createBiquadFilter(); f.type = type || "lowpass"; f.frequency.value = freq; f.Q.value = q || 1;
+var g = ctx.createGain(); env(g, t0, peak, 0.004, dur);
+s.connect(f); f.connect(g); g.connect(sfxBus); s.start(t0); s.stop(t0 + dur + 0.03);
+}
+var TIER = {
+small:  { peak: 0.09, dur: 0.07 },   // 点一下、小动作：只用一个音
+medium: { peak: 0.19, dur: 0.13 },   // 真实事件到达：双音 + 轻气声
+large:  { peak: 0.32, dur: 0.24 }    // 出错 / 大事件：低频扫频 + 气声
+};
+function fx(tier, kind) {
+if (!on || !ctx) return;
+var t = TIER[tier] || TIER.small, k = kind || "x", now = Date.now();
+if (lastFx[k] && now - lastFx[k] < 90) return;   // 同类音 90ms 内只响一次，防止叠成噪音墙
+lastFx[k] = now;
+try {
+if (tier === "large") { tone(220, t.dur, "sawtooth", t.peak * 0.5, 110); hiss(t.dur, 900, 0.8, t.peak * 0.5); }
+else if (tier === "medium") { tone(660, t.dur, "triangle", t.peak, 880); hiss(t.dur * 0.6, 2400, 1.2, t.peak * 0.22, "bandpass"); }
+else { tone(880, t.dur, "triangle", t.peak); }
+} catch (e) {}
+}
+function footstep() {
+if (!on || !ctx) return;
+var now = Date.now(); if (now - lastFoot < 300) return; lastFoot = now;
+try { hiss(0.05, 780, 0.9, 0.07); } catch (e) {}
+}
+function typeTick() {
+if (!on || !ctx) return;
+var now = Date.now(); if (now - lastType < 110) return; lastType = now;
+try { hiss(0.02, 2200, 2, 0.045, "bandpass"); } catch (e) {}
+}
+function updateBtn() {
+var b = document.getElementById("audio-toggle");
+if (!b) return;
+b.setAttribute("aria-pressed", on ? "true" : "false");
+b.textContent = on ? "🔊" : "🔇";
+b.title = on ? "声音：开（点击静音）" : "声音：关（点击开启）";
+}
+function setEnabled(v) {
+on = !!v; writePref();
+if (on) build();
+if (ctx && master) ramp(master.gain, on ? 0.35 : 0.0001, 0.25);
+updateBtn();
+}
+function unlock() {
+build();
+if (!ctx) return;
+try { if (ctx.state === "suspended") ctx.resume(); } catch (e) {}
+applyScene();
+}
+function arm() {
+if (armed) return;
+armed = true;
+["pointerdown", "keydown", "touchstart"].forEach(function (ev) {
+window.addEventListener(ev, unlock, { once: true, passive: true });
+});
+window.addEventListener("click", unlock, { once: true, passive: true });
+}
+function init() {
+arm();
+updateBtn();
+var b = document.getElementById("audio-toggle");
+if (b) b.addEventListener("click", function (e) { e.stopPropagation(); setEnabled(!on); });
+scene.hour = (typeof bjHour === "function") ? bjHour() : 12;
+if (on) build();          // 没用户手势时建了也是 suspended，等 unlock 再 resume
+setInterval(function () {
+scene.hour = (typeof bjHour === "function") ? bjHour() : scene.hour;
+applyScene();
+}, 60000);
+}
+function snapshot() {
+return {
+enabled: on, built: built, ctxState: ctx ? ctx.state : "none",
+weather: scene.weather, hour: scene.hour, room: scene.room,
+levels: voices ? { wind: voices.wind.gain.value, rain: voices.rain.gain.value, night: voices.night.gain.value, water: voices.water.gain.value } : null
+};
+}
+try { window.__officeAudioState = snapshot; } catch (e) {}
+return {
+init: init,
+fx: fx,
+footstep: footstep,
+typeTick: typeTick,
+setEnabled: setEnabled,
+isOn: function () { return on; },
+snapshot: snapshot,
+setScene: function (s) {
+if (!s) return;
+for (var k in s) if (Object.prototype.hasOwnProperty.call(s, k) && s[k] !== undefined) scene[k] = s[k];
+if (s.hour === undefined && typeof bjHour === "function") scene.hour = bjHour();
+applyScene();
+}
+};
+})();
+Audio.init();
 var game = null;
 var scene = null;
 var fish = null;
@@ -707,6 +893,7 @@ scene.tweens.add({ targets: bub, alpha: 0, duration: 400, delay: 2800, onComplet
 var mark = scene.add.text(npc.spr.x, npc.spr.y - npc.spr.displayHeight - 8, "❢", { fontSize: "16px", color: "#f59f00" }).setOrigin(0.5).setDepth(9500);
 scene.tweens.add({ targets: mark, y: mark.y - 10, alpha: 0, duration: 1200, onComplete: function () { mark.destroy(); } });
 postStatDelta({ social: 10, mood: 3 });
+if (typeof Audio !== "undefined") Audio.fx("medium", "chat");   // v2.7：搭上话了一声
 try {
 fetch("/office-hub-api/event", {
 method: "POST", headers: { "Content-Type": "application/json" },
@@ -4007,7 +4194,10 @@ var cfg = STATE_MAP[rawState] || STATE_MAP.idle;
 var taskText = st.task || cfg.verb;
 lastServerTs = st.ts || Date.now();
 actCur = { state: rawState, task: taskText, at: Number(st.ts) || Date.now() };   // 最近动态窗据此解释「为什么现在是这样」
-if (rawState === "writing") writerFeed(taskText, st.detail || "");   // 打字机：去抖也要喂（每行 detail 不同）
+if (rawState === "writing") {
+writerFeed(taskText, st.detail || "");   // 打字机：去抖也要喂（每行 detail 不同）
+if (typeof Audio !== "undefined") Audio.typeTick();   // v2.7：敲字声（内部 110ms 节流）
+}
 if (!force && !zoneOverride && lastEventState === rawState && lastEventTask === taskText) {
 updateStatusbar(rawState, taskText, st.detail || "");
 renderPlan();
@@ -4064,6 +4254,7 @@ if (!visitingHome) cam.startFollow(fish, true, 0.08, 0.08);   // 无条件兜底
 updateEvidence(cfg, taskText, st.detail || "");
 if (cfg.mood === "working" || cfg.mood === "error") playFx(cfg.fx);
 else stopFx();
+if (typeof Audio !== "undefined") Audio.fx(cfg.mood === "error" ? "large" : "medium", rawState);
 if (cfg.mood === "idle") {
 setTimeout(function () {
 if (fishState === "acting" && curPlan && curPlan.cfg === cfg) {
@@ -4524,6 +4715,7 @@ function onRandomEvent(msg) {
 var script = EVENT_SCRIPTS[msg.eventKey];
 if (!script || !scene || !scene.mapdata.zones[script.zone]) return;
 if (script.outdoor && weather === "rainy" && msg.eventKey !== "rain_sudden") return;  // 雨天 gate 二次确认
+if (typeof Audio !== "undefined") Audio.fx("medium", msg.eventKey);
 if (fishState === "walking" || fishState === "acting") {
 try {
 var prevBubble = (curPlan && curPlan.task) || bubbleText;
@@ -4654,6 +4846,7 @@ if (!scene.grid[gy2][gx2]) { walkLocalTo(gx2, gy2, null); return; }
 function goLocal(zoneKey, text, pseudoAct, face, instant, statFill, extra) {
 var zone = scene.mapdata.zones[zoneKey];
 if (!zone) return;
+if (typeof Audio !== "undefined") Audio.setScene({ room: zoneKey });
 if (instant) {
 fish.x = Math.round(zone.anchor[0]) * TILE + TILE / 2;
 fish.y = WALL_H + Math.round(zone.anchor[1]) * TILE + TILE / 2;
@@ -4739,6 +4932,7 @@ lastNpcChat = 0;   // 允许立即对话
 var la = LOCAL_ACTS[curPlan.cfg.act] || { anim: "idle", dur: 1800 };
 applySit(curPlan.zone);   // 「瘫在沙发上」真的落到沙发坐垫上
 startActAnim(la.anim);
+if (typeof Audio !== "undefined") Audio.fx("small", curPlan.cfg.act);   // v2.7：小动作落点音
 if (curPlan.bubbleText) showBubble(curPlan.bubbleText, "idle");
 if (curPlan.cfg.act === "idle_read") showPerfPanel("read");
 else if (curPlan.cfg.act === "idle_play") {
@@ -4770,6 +4964,7 @@ if (fishState === "walking") stepWalk();
 if (fishState === "walking") {
 fish.bodySpr.setY(fish.baseY + Math.sin(time / 90) * 1.2);
 fish.bodySpr.setAngle(0);
+if (typeof Audio !== "undefined") Audio.footstep();   // v2.7：脚步（内部 300ms 节流）
 }
 if (bubble) bubble.setPosition(fish.x + bubbleOff.x, fish.y + bubbleOff.y);
 if (s_baseGuard && s_baseGuard !== scene) s_baseGuard = null;
@@ -5020,6 +5215,7 @@ if (msg.stats) onStats(msg.stats);
 if (msg.state) onState(msg.state);
 if (Array.isArray(msg.customMap)) applyCustomMap(msg.customMap, true, msg.updatedAt);   // v37：hub 里的自定义家具层
 if (msg.weather && window.__officeSetWeather) window.__officeSetWeather(msg.weather);   // P6：真实天气初始值
+if (msg.weather && typeof Audio !== "undefined") Audio.setScene({ weather: msg.weather });   // v2.7：雨声/风声跟着天气
 if (msg.customMap) window.__officeHubCount = msg.customMap.length;   // 排障：hub 侧家具数
 } else if (msg.type === "map" && Array.isArray(msg.furniture)) {
 applyCustomMap(msg.furniture, true, msg.updatedAt);   // v37：编辑保存后的热更新广播
@@ -5033,6 +5229,7 @@ onStats(msg.stats);              // 数值层广播（60s 节奏，方案 §1.2�
 onRandomEvent(msg);              // B 层随机事件（hub 2~6h 一掷）
 } else if (msg.type === "weather" && msg.weather) {
 if (window.__officeSetWeather) window.__officeSetWeather(msg.weather);   // P6：整点天气刷新
+if (typeof Audio !== "undefined") Audio.setScene({ weather: msg.weather });   // v2.7：整点换声场
 } else if (msg.type === "ts") {
 lastServerTs = msg.ts; updateAgo();
 } else if (msg.type === "viewers") {

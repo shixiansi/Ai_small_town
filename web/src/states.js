@@ -9,7 +9,10 @@
     // 同一 state+task 再来一遍（agent 心跳、仅 detail 变化、WS 重连补发 hello）：
     // 只刷新状态条与时间戳，不重新寻路、不重复计「今日完成」、不打断正在做的动作。
     // 调试台 emit 传 force=true，仍能一键复现走位。
-    if (rawState === "writing") writerFeed(taskText, st.detail || "");   // 打字机：去抖也要喂（每行 detail 不同）
+    if (rawState === "writing") {
+      writerFeed(taskText, st.detail || "");   // 打字机：去抖也要喂（每行 detail 不同）
+      if (typeof Audio !== "undefined") Audio.typeTick();   // v2.7：敲字声（内部 110ms 节流）
+    }
     if (!force && !zoneOverride && lastEventState === rawState && lastEventTask === taskText) {
       updateStatusbar(rawState, taskText, st.detail || "");
       renderPlan();
@@ -85,6 +88,10 @@
     // 物件特效随状态启停
     if (cfg.mood === "working" || cfg.mood === "error") playFx(cfg.fx);
     else stopFx();
+
+    // v2.7 音频：真实事件到达 → 按 tier 出声（出错用 large，其余 medium）。
+    // 放在这里而不是 WS 回调里：只有"真的开始演了"才响，心跳/去抖事件不会空响。
+    if (typeof Audio !== "undefined") Audio.fx(cfg.mood === "error" ? "large" : "medium", rawState);
 
     if (cfg.mood === "idle") {
       setTimeout(function () {

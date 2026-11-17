@@ -30,6 +30,11 @@
     header.top h1 { font-size: 20px; margin: 0; letter-spacing: 1px; }
     header.top .sub { color: var(--muted); font-size: 13px; }
     header.top .back { margin-left: auto; font-size: 13px; }
+    /* v2.7 顶栏工具按钮（声音 / 锁定视角）：和 room-tab 同色系，但更小更低调 */
+    header.top .top-tools { margin-left: auto; display: flex; align-items: center; gap: 6px; }
+    .hbtn { width: 30px; height: 30px; padding: 0; border-radius: 50%; border: 1px solid var(--line); background: var(--card); color: var(--ink); font-size: 15px; line-height: 1; cursor: pointer; transition: background .15s, border-color .15s, transform .15s; }
+    .hbtn:hover { transform: translateY(-1px); border-color: #b9b1a0; }
+    .hbtn[aria-pressed="false"] { opacity: .55; }
     /* 容器固定 1248:768 宽高比：宽屏拉宽时高度跟着长，canvas 才能铺满而不是被 FIT 居中留白 */
     #office-parent { position: relative; width: 100%; aspect-ratio: 1248 / 768; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; background: #2a2e3d; box-shadow: 0 4px 24px rgba(0,0,0,.12); }
     /* Phaser FIT 会写 inline 宽高（且 CSS 变化不触发 refresh 时用旧值），这里用 !important 让画布恒铺满容器 */
@@ -183,6 +188,9 @@
     <header class="top">
       <h1>🐟 大肥鱼的小镇</h1>
       <span class="sub">AI 居民的小镇日常 · 真实事件驱动</span>
+      <span class="top-tools">
+        <button class="hbtn" id="audio-toggle" type="button" aria-pressed="true" aria-label="声音开关" title="声音：开（点击静音）">🔊</button>
+      </span>
     </header>
 
     <div id="office-parent">
@@ -265,7 +273,7 @@
   </div>
 
   <script src="assets/phaser.min.js"></script>
-  <script src="office.js?v=7a66e9a4"></script>
+  <script src="office.js?v=1114f42b"></script>
 
   <!-- 调试工作台：默认只放一个低调入口，点击（或按 D / ?debug=1）才加载面板，线上零开销 -->
   <button id="debug-toggle" type="button" title="调试工作台（快捷键 D）" aria-label="打开调试工作台" aria-controls="dbg-panel" aria-expanded="false">🛠</button>

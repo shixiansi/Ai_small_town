@@ -30,6 +30,7 @@ export const HEAD = "/* 本文件由 office/tools/build.mjs 从 web/src/*.js 拼
  * 中间的片段之间只靠函数声明（会提升）和运行期取值，互相之间没有加载期依赖，但顺序仍要稳定可读。 */
 export const ORDER = [
   "head.js",        // IIFE 开头 + 常量 + 素材/工具函数
+  "audio.js",       // v2.7 音频层（零素材 WebAudio 合成：环境声 + 三档事件音 + 脚步/打字）
   "boot.js",        // Boot 场景（预载）+ 主场景 create()
   "npc.js",         // 小镇居民状态机 + 串门
   "view.js",        // 房间切换 tab + 拖动视角/滚轮缩放

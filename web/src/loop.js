@@ -13,6 +13,7 @@
       // 走路小颠簸：作用于 body 的局部 y 偏移（由 stopActAnim 复位）
       fish.bodySpr.setY(fish.baseY + Math.sin(time / 90) * 1.2);
       fish.bodySpr.setAngle(0);
+      if (typeof Audio !== "undefined") Audio.footstep();   // v2.7：脚步（内部 300ms 节流）
     }
     if (bubble) bubble.setPosition(fish.x + bubbleOff.x, fish.y + bubbleOff.y);
     // v36 兜底：地板层被任何代码意外隐藏/摘除时，下一帧自动恢复（防整屏变背景色的回归）
