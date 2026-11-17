@@ -507,6 +507,8 @@
     if (!zone) return;
     // v2.7 音频：走到水边/花园时塘水声淡入（离开自动淡出），不用别的系统来推
     if (typeof Audio !== "undefined") Audio.setScene({ room: zoneKey });
+    // v2.7 日常摘要：本地小动作不刷流水（会把 40 条上限挤爆），只进「刚刚：…」那一行
+    if (typeof noteDaily === "function" && text) noteDaily(text);
     if (instant) {
       // 调试台「就地播放」：跳过寻路，直接把鱼放到目标格中心看动作帧。
       // 跨房间事件正常要走十几秒，不这样就没法快速逐个检查 26 条事件。

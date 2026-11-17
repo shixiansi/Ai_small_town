@@ -4847,6 +4847,7 @@ function goLocal(zoneKey, text, pseudoAct, face, instant, statFill, extra) {
 var zone = scene.mapdata.zones[zoneKey];
 if (!zone) return;
 if (typeof Audio !== "undefined") Audio.setScene({ room: zoneKey });
+if (typeof noteDaily === "function" && text) noteDaily(text);
 if (instant) {
 fish.x = Math.round(zone.anchor[0]) * TILE + TILE / 2;
 fish.y = WALL_H + Math.round(zone.anchor[1]) * TILE + TILE / 2;
@@ -5227,6 +5228,11 @@ pushEvent(msg.state);            // 实时事件进流水
 onStats(msg.stats);              // 数值层广播（60s 节奏，方案 §1.2）
 } else if (msg.type === "event" && msg.eventKey) {
 onRandomEvent(msg);              // B 层随机事件（hub 2~6h 一掷）
+} else if (msg.type === "beat" && msg.task) {
+pushEvent({ state: "beat", task: msg.task, detail: msg.detail || "", ts: msg.ts, at: msg.ts, kind: "beat" });
+if (!bubble && fishState !== "walking" && fishState !== "acting" && !editMode) {
+try { showBubble("💭 " + msg.task, "idle"); } catch (e) {}
+}
 } else if (msg.type === "weather" && msg.weather) {
 if (window.__officeSetWeather) window.__officeSetWeather(msg.weather);   // P6：整点天气刷新
 if (typeof Audio !== "undefined") Audio.setScene({ weather: msg.weather });   // v2.7：整点换声场
@@ -5395,12 +5401,14 @@ try { localStorage.setItem(ACT_STORE, JSON.stringify({ rows: actRows.slice(-ACT_
 function pushEvent(ev) {
 if (!ev || !ev.state) return false;
 var at = Number(ev.at || ev.ts) || Date.now();
+var kind = ev.kind || (ev.state === "beat" ? "beat" : "real");
 var row = {
 key: String(ev.state) + "|" + String(ev.task || "") + "|" + String(Number(ev.ts) || at),
 at: at,
 state: String(ev.state),
 task: String(ev.task || ""),
-detail: String(ev.detail || "")
+detail: String(ev.detail || ""),
+kind: kind
 };
 for (var i = 0; i < actRows.length; i++) if (actRows[i].key === row.key) return false;
 actRows.push(row);
@@ -5425,15 +5433,45 @@ return;
 ol.innerHTML = rows.map(function (r) {
 var cfg = STATE_MAP[r.state] || STATE_MAP.idle;
 var day = bjDayKey(r.at) === today ? "" : bjDayKey(r.at).slice(5) + " ";
-return '<li class="act-row' + (cfg.mood === "error" ? " act-row-error" : "") + '">' +
+var isBeat = r.kind === "beat";
+var cls = "act-row" + (isBeat ? " act-row-beat" : (cfg.mood === "error" ? " act-row-error" : ""));
+return '<li class="' + cls + '">' +
 '<span class="act-time">' + day + bjClock(r.at) + '</span>' +
-'<span class="act-icon" aria-hidden="true">' + (ACT_ICON[r.state] || "🐟") + '</span>' +
-'<span class="act-verb">' + escHtml(cfg.verb) + '</span>' +
-'<span class="act-task">' + escHtml(r.task || cfg.verb) + '</span>' +
+'<span class="act-icon" aria-hidden="true">' + (isBeat ? "💭" : (ACT_ICON[r.state] || "🐟")) + '</span>' +
+'<span class="act-verb">' + escHtml(isBeat ? "日常" : cfg.verb) + '</span>' +
+'<span class="act-task">' + escHtml(r.task || (isBeat ? "" : cfg.verb)) + '</span>' +
 (r.detail ? '<span class="act-detail" title="' + escHtml(r.detail) + '">' + escHtml(r.detail) + '</span>' : "") +
 '<span class="act-ago">' + agoText(r.at) + '</span>' +
 '</li>';
 }).join("");
+}
+var dailyRows = [];
+var DAILY_MAX = 20, DAILY_WINDOW = 10 * 60e3, DAILY_STORE = "office_daily_v1";
+function noteDaily(text) {
+var t = String(text || "").trim();
+if (!t) return;
+var now = Date.now(), last = dailyRows[dailyRows.length - 1];
+if (last && last.text === t) { last.at = now; renderDaily(); return; }   // 连着做同一件事就并成一条
+dailyRows.push({ at: now, text: t.slice(0, 24) });
+while (dailyRows.length > DAILY_MAX) dailyRows.shift();
+try { localStorage.setItem(DAILY_STORE, JSON.stringify({ rows: dailyRows.slice(-DAILY_MAX) })); } catch (e) {}
+renderDaily();
+}
+function renderDaily() {
+var el = document.getElementById("act-daily");
+if (!el) return;
+var now = Date.now();
+dailyRows = dailyRows.filter(function (r) { return now - r.at < DAILY_WINDOW; });
+if (!dailyRows.length) { el.hidden = true; el.textContent = ""; return; }
+var tail = dailyRows.slice(-3).map(function (r) { return r.text; });
+el.hidden = false;
+el.textContent = "刚刚：" + tail.join(" → ") + (dailyRows.length > 3 ? "（共 " + dailyRows.length + " 件）" : "");
+}
+function loadDaily() {
+try {
+var j = JSON.parse(localStorage.getItem(DAILY_STORE) || "{}");
+if (Array.isArray(j.rows)) dailyRows = j.rows.filter(function (r) { return r && r.at && r.text; }).slice(-DAILY_MAX);
+} catch (e) {}
 }
 function shiftsToday() {
 var dow = bjWeekday(Date.now()), out = [];
@@ -5567,13 +5605,16 @@ tabE.addEventListener("click", function () { actSetTab("events"); });
 tabP.addEventListener("click", function () { actSetTab("plan"); });
 if (fold) fold.addEventListener("click", function () { actSetFold(!actFolded); });
 actLoad();
+loadDaily();
 actSetTab(actTab);
 actSetFold(actFolded);
 renderEvents();
 renderPlan();
+renderDaily();
 }
 setInterval(function () {
 renderEvents();
+renderDaily();
 if (actTab === "plan") renderPlan();
 }, 30000);
 if (document.readyState === "loading") window.addEventListener("DOMContentLoaded", initActivity);

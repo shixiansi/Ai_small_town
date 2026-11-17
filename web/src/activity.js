@@ -101,12 +101,14 @@
   function pushEvent(ev) {
     if (!ev || !ev.state) return false;
     var at = Number(ev.at || ev.ts) || Date.now();
+    var kind = ev.kind || (ev.state === "beat" ? "beat" : "real");
     var row = {
       key: String(ev.state) + "|" + String(ev.task || "") + "|" + String(Number(ev.ts) || at),
       at: at,
       state: String(ev.state),
       task: String(ev.task || ""),
-      detail: String(ev.detail || "")
+      detail: String(ev.detail || ""),
+      kind: kind
     };
     for (var i = 0; i < actRows.length; i++) if (actRows[i].key === row.key) return false;
     actRows.push(row);
@@ -131,15 +133,52 @@
     ol.innerHTML = rows.map(function (r) {
       var cfg = STATE_MAP[r.state] || STATE_MAP.idle;
       var day = bjDayKey(r.at) === today ? "" : bjDayKey(r.at).slice(5) + " ";
-      return '<li class="act-row' + (cfg.mood === "error" ? " act-row-error" : "") + '">' +
+      /* v2.7：微事件（beat）不是状态机事件，它没有 STATE_MAP 条目 —— 单独一套图标/动词/配色。
+       * 混排在一个流里但视觉上更轻（浅色、小一号），观众一眼能分出「真在干活」与「日常呼吸」。 */
+      var isBeat = r.kind === "beat";
+      var cls = "act-row" + (isBeat ? " act-row-beat" : (cfg.mood === "error" ? " act-row-error" : ""));
+      return '<li class="' + cls + '">' +
         '<span class="act-time">' + day + bjClock(r.at) + '</span>' +
-        '<span class="act-icon" aria-hidden="true">' + (ACT_ICON[r.state] || "🐟") + '</span>' +
-        '<span class="act-verb">' + escHtml(cfg.verb) + '</span>' +
-        '<span class="act-task">' + escHtml(r.task || cfg.verb) + '</span>' +
+        '<span class="act-icon" aria-hidden="true">' + (isBeat ? "💭" : (ACT_ICON[r.state] || "🐟")) + '</span>' +
+        '<span class="act-verb">' + escHtml(isBeat ? "日常" : cfg.verb) + '</span>' +
+        '<span class="act-task">' + escHtml(r.task || (isBeat ? "" : cfg.verb)) + '</span>' +
         (r.detail ? '<span class="act-detail" title="' + escHtml(r.detail) + '">' + escHtml(r.detail) + '</span>' : "") +
         '<span class="act-ago">' + agoText(r.at) + '</span>' +
         '</li>';
     }).join("");
+  }
+
+  /* ---------- 日常摘要行（v2.7-b）----------
+   * 31 条本地生活事件如果直接塞进流水：每 5–10 秒一条，40 条上限会在 4 分钟内被刷满，
+   * 真实事件全被顶掉。所以它们只进这条「刚刚：散步 → 翻书」的摘要（10 分钟窗口、最多 3 项），
+   * 流水本身仍然只放 hub 事件。这条摘要解决的是"她在动，但记录一直是 3 小时前"的错位。 */
+  var dailyRows = [];
+  var DAILY_MAX = 20, DAILY_WINDOW = 10 * 60e3, DAILY_STORE = "office_daily_v1";
+  function noteDaily(text) {
+    var t = String(text || "").trim();
+    if (!t) return;
+    var now = Date.now(), last = dailyRows[dailyRows.length - 1];
+    if (last && last.text === t) { last.at = now; renderDaily(); return; }   // 连着做同一件事就并成一条
+    dailyRows.push({ at: now, text: t.slice(0, 24) });
+    while (dailyRows.length > DAILY_MAX) dailyRows.shift();
+    try { localStorage.setItem(DAILY_STORE, JSON.stringify({ rows: dailyRows.slice(-DAILY_MAX) })); } catch (e) {}
+    renderDaily();
+  }
+  function renderDaily() {
+    var el = document.getElementById("act-daily");
+    if (!el) return;
+    var now = Date.now();
+    dailyRows = dailyRows.filter(function (r) { return now - r.at < DAILY_WINDOW; });
+    if (!dailyRows.length) { el.hidden = true; el.textContent = ""; return; }
+    var tail = dailyRows.slice(-3).map(function (r) { return r.text; });
+    el.hidden = false;
+    el.textContent = "刚刚：" + tail.join(" → ") + (dailyRows.length > 3 ? "（共 " + dailyRows.length + " 件）" : "");
+  }
+  function loadDaily() {
+    try {
+      var j = JSON.parse(localStorage.getItem(DAILY_STORE) || "{}");
+      if (Array.isArray(j.rows)) dailyRows = j.rows.filter(function (r) { return r && r.at && r.text; }).slice(-DAILY_MAX);
+    } catch (e) {}
   }
 
   // ---------- 时间表 ----------
@@ -289,14 +328,17 @@
     tabP.addEventListener("click", function () { actSetTab("plan"); });
     if (fold) fold.addEventListener("click", function () { actSetFold(!actFolded); });
     actLoad();
+    loadDaily();
     actSetTab(actTab);
     actSetFold(actFolded);
     renderEvents();
     renderPlan();
+    renderDaily();
   }
   // 每 30s 只刷「几分钟前 / 现在几点 / 这一班是否进行中」，不重新拉数据
   setInterval(function () {
     renderEvents();
+    renderDaily();
     if (actTab === "plan") renderPlan();
   }, 30000);
   if (document.readyState === "loading") window.addEventListener("DOMContentLoaded", initActivity);

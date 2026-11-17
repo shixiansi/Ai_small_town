@@ -48,6 +48,13 @@
         onStats(msg.stats);              // 数值层广播（60s 节奏，方案 §1.2）
       } else if (msg.type === "event" && msg.eventKey) {
         onRandomEvent(msg);              // B 层随机事件（hub 2~6h 一掷）
+      } else if (msg.type === "beat" && msg.task) {
+        /* v2.7 微事件：只做两件事 —— 写进事件流 + （手空着时）冒个 💭 气泡。
+         * 刻意不动状态机：不改 fishState、不重新寻路，所以它不会打断「上午的营生」。 */
+        pushEvent({ state: "beat", task: msg.task, detail: msg.detail || "", ts: msg.ts, at: msg.ts, kind: "beat" });
+        if (!bubble && fishState !== "walking" && fishState !== "acting" && !editMode) {
+          try { showBubble("💭 " + msg.task, "idle"); } catch (e) {}
+        }
       } else if (msg.type === "weather" && msg.weather) {
         if (window.__officeSetWeather) window.__officeSetWeather(msg.weather);   // P6：整点天气刷新
         if (typeof Audio !== "undefined") Audio.setScene({ weather: msg.weather });   // v2.7：整点换声场

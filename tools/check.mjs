@@ -20,6 +20,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { dryRun } from "./bust.mjs";
 import { build, buildRaw } from "./build.mjs";
+import { simulate } from "./beat-audit.mjs";
 
 const OFFICE = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const WEB = path.join(OFFICE, "web");
@@ -965,6 +966,50 @@ check("音频层（零素材合成 / 默认开 / 触发点接全）", () => {
   // 7) 可自动走查的只读快照
   if (!/__officeAudioState/.test(audioSrc)) bad.push("audio.js 没暴露 __officeAudioState（自动走查断言用）");
   return { problems: bad, note: "3 档事件音 · 4 个环境声部 · 8 处触发 · 0 素材" };
+});
+
+// ---------- 第 23 项：节奏（3 分钟窗口命中率）----------
+check("节奏：任意 3 分钟窗口都要有事（beat-audit 仿真）", () => {
+  const bad = [], warnings = [];
+  let r = null;
+  try { r = simulate({ days: 14 }); } catch (e) { return { problems: ["beat-audit 跑不起来：" + e.message] }; }
+  if (r.rate < 0.85) bad.push(`3 分钟窗口命中率只有 ${(r.rate * 100).toFixed(1)}%（要求 ≥85%）：观众打开页面很可能什么都没发生`);
+  if (r.perHour.micro > 40) warnings.push(`微事件 ${r.perHour.micro.toFixed(1)} 条/小时，偏密集（OFFICE_MICRO_MIN=${r.microMinSec}s）`);
+  if (r.perHour.schedule < 0.3) bad.push("排班每小时不足 0.3 条：schedule.json 的班次太少，作息撑不起一天");
+  if (r.perHour.random < 0.1) bad.push("随机事件每小时不足 0.1 条：random_events.json 的触发间隔太长");
+
+  // 微事件表本身：只允许"一句话日常"，不许碰状态机
+  let beats = null;
+  try { beats = JSON.parse(read(path.join(OFFICE, "hub", "micro_events.json"))); } catch (e) { bad.push("micro_events.json 缺失或不是合法 JSON"); }
+  const list = (beats && Array.isArray(beats.beats)) ? beats.beats : [];
+  if (list.length < 10) bad.push(`micro_events.json 只有 ${list.length} 条（要求 ≥10，太少会很快重复）`);
+  list.forEach((b, i) => {
+    if (!b.key || !b.task) bad.push(`micro_events[${i}] 缺 key/task`);
+    if (b.state) bad.push(`micro_events[${i}]（${b.key}）不该带 state：微事件只播报，不改状态机`);
+    if (b.hours && (!Array.isArray(b.hours) || b.hours.length !== 2 || b.hours.some(h => h < 0 || h > 24))) {
+      bad.push(`micro_events[${i}]（${b.key}）hours 必须是 [0..24, 0..24]`);
+    }
+    if (b.task && b.task.length > 20) warnings.push(`micro_events[${i}]「${b.task}」超过 20 字，气泡会截断`);
+  });
+
+  // 三层事件源必须都接上：hub 发、前端收、摘要行在 DOM 里
+  if (!/micro_events\.json/.test(hubSrc) || !/function beatTick\(/.test(hubSrc)) bad.push("hub.mjs 没接微事件层（micro_events.json / beatTick）");
+  if (!/type: "beat"/.test(hubSrc)) bad.push("hub.mjs 没广播 type:\"beat\"");
+  if (!/OFFICE_MICRO_MIN/.test(hubSrc)) bad.push("hub.mjs 缺 OFFICE_MICRO_MIN 环境变量（间隔不可调）");
+  const netSrc = read(path.join(WEB, "src", "net.js"));
+  if (!/msg\.type === "beat"/.test(netSrc)) bad.push("net.js 没处理 beat 报文（前端收不到微事件）");
+  if (!/pushEvent\(\{ state: "beat"/.test(netSrc)) bad.push("net.js 没把 beat 写进事件流");
+  const actSrc = read(path.join(WEB, "src", "activity.js"));
+  if (!/function noteDaily\(/.test(actSrc) || !/function renderDaily\(/.test(actSrc)) bad.push("activity.js 缺日常摘要（noteDaily / renderDaily）");
+  if (!/office_daily_v1/.test(actSrc)) bad.push("activity.js 日常摘要没落 localStorage（刷新就丢）");
+  if (!indexSrc.includes('id="act-daily"')) bad.push("index.html 缺 #act-daily 摘要行容器");
+  if (!/\.act-row-beat/.test(indexSrc)) bad.push("index.html 缺 .act-row-beat 样式（微事件和真实事件分不出来）");
+  if (!/noteDaily\(text\)/.test(read(path.join(WEB, "src", "life.js")))) bad.push("life.js 的 goLocal 没把本地小动作写进摘要");
+
+  return {
+    problems: bad, warnings,
+    note: `命中率 ${(r.rate * 100).toFixed(1)}% · ${r.totalPerHour.toFixed(1)} 条/小时（微事件 ${r.perHour.micro.toFixed(1)}，间隔 ${r.microMinSec}s）· ${list.length} 条微事件`
+  };
 });
 
 console.log("\noffice 静态自检\n" + "─".repeat(64));

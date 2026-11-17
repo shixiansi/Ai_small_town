@@ -142,6 +142,13 @@
     #act-list .act-detail { color: var(--muted); font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
     #act-list .act-ago { flex: none; margin-left: auto; color: var(--muted); font-size: 11px; }
     #act-list li.act-row-error .act-verb { color: #e03131; }
+    /* v2.7：微事件（日常呼吸）比真实事件轻一档，但仍留在同一个流里 */
+    #act-list li.act-row-beat { opacity: .78; }
+    #act-list li.act-row-beat .act-verb { color: var(--muted); }
+    #act-list li.act-row-beat .act-task { font-weight: 500; font-style: italic; }
+    /* v2.7：「刚刚：散步 → 翻书」日常摘要行（本地小动作压缩成一行，不刷爆流水） */
+    .act-daily { margin: 0; padding: 6px 12px; font-size: 12px; color: var(--muted); background: #f7f3ea; border-bottom: 1px dashed var(--line); }
+    .act-daily[hidden] { display: none; }
     .act-empty { color: var(--muted); padding: 12px; line-height: 1.7; }
     #act-plan li { display: flex; align-items: baseline; gap: 8px; padding: 6px 12px; border-bottom: 1px dashed var(--line); }
     #act-plan .plan-time { flex: none; width: 52px; font-weight: 600; font-variant-numeric: tabular-nums; }
@@ -238,6 +245,7 @@
       </div>
       <div class="act-body" id="act-body">
         <div id="act-pane-events" role="tabpanel" aria-labelledby="act-tab-events">
+          <p class="act-daily" id="act-daily" hidden></p>
           <ol id="act-list"><li class="act-empty">连接 office-hub 中…</li></ol>
         </div>
         <div id="act-pane-plan" role="tabpanel" aria-labelledby="act-tab-plan" hidden>
@@ -273,7 +281,7 @@
   </div>
 
   <script src="assets/phaser.min.js"></script>
-  <script src="office.js?v=1114f42b"></script>
+  <script src="office.js?v=1c8c513b"></script>
 
   <!-- 调试工作台：默认只放一个低调入口，点击（或按 D / ?debug=1）才加载面板，线上零开销 -->
   <button id="debug-toggle" type="button" title="调试工作台（快捷键 D）" aria-label="打开调试工作台" aria-controls="dbg-panel" aria-expanded="false">🛠</button>

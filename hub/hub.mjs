@@ -461,6 +461,60 @@ function needEventTick() {
 }
 if (allowed) setInterval(needEventTick, 60e3).unref?.()
 
+// ---------- 微事件层（v2.7-b）：保证「3 分钟内一定有事」 ----------
+/* 三层事件源的分工：
+ *   排班（scheduleTick）  小时级 · 决定"这一段时间她在干什么"（优先级 1，会占住状态）
+ *   微事件（本层）         分钟级 · 只广播 type:"beat"，**不改状态机**，所以不会打断上面那层
+ *   随机事件（2~6h）       稀有大事件，走 type:"event"，由前端排队演出
+ * 为什么单独一层而不是塞进排班：排班改状态会让她走去另一个房间；而"伸了个懒腰""接了杯水"
+ * 这类事应该是原地发生的呼吸。两者混在一起就会出现"她在工位上突然走去冰箱再走回来"。
+ * 频率由 OFFICE_MICRO_MIN 控制（默认 180s，±40% 抖动 —— 固定节拍会被人听出来）。 */
+const MICRO_MIN_MS = Math.max(30, Number(process.env.OFFICE_MICRO_MIN || 180)) * 1000
+let MICRO = []
+try {
+  const j = JSON.parse(fs.readFileSync(new URL("./micro_events.json", import.meta.url), "utf8"))
+  if (Array.isArray(j.beats)) MICRO = j.beats.filter(b => b && b.key && b.task)
+} catch (e) {
+  console.warn(new Date().toISOString(), `[office-hub] 未读到 micro_events.json (${e.message})，微事件层停用`)
+}
+let lastBeatKey = null
+let nextBeatAt = 0
+function planNextBeat() {
+  nextBeatAt = Date.now() + MICRO_MIN_MS * (0.6 + Math.random() * 0.8)
+}
+function pickBeat(weather) {
+  const h = beijingHour()
+  const pool = MICRO.filter(b => {
+    if (b.weather && b.weather !== weather) return false
+    if (b.hours && !hourInWindow(h, b.hours)) return false
+    if (b.key === lastBeatKey) return false        // 不连发同一条
+    return true
+  })
+  if (!pool.length) return null
+  const total = pool.reduce((s, b) => s + (Number(b.w) || 1), 0)
+  let r = Math.random() * total
+  for (const b of pool) { r -= (Number(b.w) || 1); if (r <= 0) return b }
+  return pool[pool.length - 1]
+}
+function beatTick() {
+  if (!MICRO.length) return
+  if (!nextBeatAt) { planNextBeat(); return }
+  if (Date.now() < nextBeatAt) return
+  if (!isAwakeHour()) { nextBeatAt = Date.now() + 60e3; return }   // 夜里闭嘴，别把睡着的人吵醒
+  const b = pickBeat(realWeather)
+  planNextBeat()
+  if (!b) return
+  lastBeatKey = b.key
+  const at = Date.now()
+  broadcast({ type: "beat", key: b.key, task: b.task, detail: b.detail || "", state: cur.state, ts: at })
+  recent.push({ state: "beat", task: String(b.task || "").slice(0, 200), detail: String(b.detail || "").slice(0, 300), ts: at, at, kind: "beat" })
+  if (recent.length > MAX_RECENT) recent.shift()
+  saveDiskDebounced()
+  console.log(new Date().toISOString(), `[office-hub] 微事件: ${b.key}（${b.task}）`)
+}
+setInterval(beatTick, 20e3).unref?.()
+planNextBeat()
+
 /**
  * 去抖规则：state + task + detail 三者全同 = 心跳重发，只刷新 ts，不广播也不进 recent，
  * 免得浏览器里的鱼反复重走路、最近事件列表堆满重复项；detail 变化仍会广播（状态条要更新）。

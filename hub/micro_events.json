@@ -1,0 +1,27 @@
+{
+  "_comment": "微事件（v2.7-b）。目的只有一个：让任意 3 分钟窗口里都有可读的一句『她刚做了什么』。与 random_events.json 分工——那边是 2~6 小时一次的稀有大事件（包裹/敲门/断电），这里是 3 分钟级的日常呼吸；与本地生活模拟（web/src/life.js 的 31 条 LOCAL_EVENTS）分工——那边只在她闲着时才演且不进事件流，这里由 hub 统一发，所有观众看到同一条。",
+  "_fields": {
+    "key": "唯一键",
+    "task": "写进事件流与气泡的那句话（第三人称、口语、不超过 20 字）",
+    "detail": "补充说明（可选）",
+    "w": "权重（默认 1）",
+    "hours": "生效时段 [起, 止]，支持跨零点（北京时间）",
+    "weather": "可选：只在指定天气生效（sunny/cloudy/rainy/snowy/storm）"
+  },
+  "beats": [
+    { "key": "stretch", "task": "伸了个懒腰", "detail": "胳膊举过头顶，骨节咔咔响", "w": 1.4, "hours": [8, 23] },
+    { "key": "water", "task": "接了杯水慢慢喝完", "detail": "杯子放在桌角，还冒着热气", "w": 1.3, "hours": [8, 23] },
+    { "key": "glance_window", "task": "望了一眼窗外", "detail": "外面的光线又变了一点", "w": 1.0, "hours": [7, 20] },
+    { "key": "tidy", "task": "顺手收拾了下桌面", "detail": "把摊开的东西码回原位", "w": 0.9, "hours": [9, 22] },
+    { "key": "check_phone", "task": "看了眼手机消息", "detail": "有人发来一条，回了个表情", "w": 0.9, "hours": [8, 24] },
+    { "key": "hum", "task": "哼了两句歌", "detail": "调子跑了，但心情不错", "w": 0.8, "hours": [10, 23] },
+    { "key": "kettle", "task": "小跑去关了水壶", "detail": "壶盖被顶得直响", "w": 0.8, "hours": [6, 10] },
+    { "key": "cat_pass", "task": "看见喵酱踩着墙头过去", "detail": "尾巴一甩就不见了", "w": 0.8, "hours": [8, 21] },
+    { "key": "bird", "task": "有只鸟落在围栏上", "detail": "停了半分钟就飞走了", "w": 0.7, "hours": [6, 17] },
+    { "key": "neighbor_light", "task": "邻居家的灯亮了", "detail": "天在慢慢暗下来", "w": 0.8, "hours": [18, 22] },
+    { "key": "yawn", "task": "打了个哈欠", "detail": "眼角挤出一滴泪", "w": 0.7, "hours": [13, 17] },
+    { "key": "hear_rain", "task": "跑到门口听雨", "detail": "雨点砸在台阶上", "w": 1.2, "hours": [0, 24], "weather": "rainy" },
+    { "key": "fold_clothes", "task": "把晾着的衣服收了", "detail": "叠好放进衣柜", "w": 0.7, "hours": [16, 19] },
+    { "key": "read_mail", "task": "拆开一封读者来信", "detail": "信纸有点软，读了两遍", "w": 0.6, "hours": [9, 22] }
+  ]
+}
