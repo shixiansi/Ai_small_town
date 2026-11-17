@@ -134,7 +134,7 @@
     return c ? c.assets.slice(0) : EDIT_PICKABLE.slice(0);
   }
   /* hub 的 HTTP 地址（不是 WS）：
-   *   本地/局域网 → 直连 hub:4321；线上 → Nginx 的 /office-hub-api/ 反代（与 postStatDelta 同一条路）。
+   *   本地/局域网 → 直连 hub:4321；线上 → Nginx 的 /office-hub-api/ 反代（与 hubApiUrl("interact") 同一条路）。
    * 注意：这个函数永远返回非空串，所以「hub 不可达」不能用它判断，
    * 状态一律看 hubMapOk（probeMapHub() / 每次保存的结果），否则会撒谎。 */
   function hubMapBase() {

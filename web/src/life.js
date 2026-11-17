@@ -382,11 +382,27 @@
     stopIdleLife();
     goLocal(script.zone, script.text, script.act, null, false, script.fills || null);
   }
-  function postStatDelta(deltas) {
+  /* ---------- 数值只由 hub 写（v2.8-b1）----------
+   * 原来前端直接 POST /api/stats 带上算好的 delta，两个问题：
+   *   ① 数值的"真相"在浏览器里；② 路径写死 "/office-hub-api/stats"，本地开发没有这个前缀 → 一直静默失败。
+   * 现在前端只发"我做了什么事"（kind + 少量参数），金额由 hub 的 INTERACT / RECIPE_STATS 表决定。 */
+  function hubApiBase() {
+    if (typeof hubBase === "function") { var b = hubBase(); if (b) return b; }
+    var host = location.hostname || "";
+    if (/^(10\.|192\.168\.|172\.(1[6-9]|2\d|3[01])\.)/.test(host)) return "http://" + host + ":4321";
+    return "/office-hub-api";
+  }
+  function hubApiUrl(name) {
+    var b = hubApiBase() || "";
+    return b.indexOf("://") >= 0 ? b + "/api/" + name : b + "/" + name;
+  }
+  function interact(kind, extra) {
     try {
-      fetch("/office-hub-api/stats", {   // nginx 需反代；失败静默（数值层是增强不是依赖）
-        method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(deltas)
-      }).catch(function () {});
+      var body = { kind: kind };
+      if (extra) for (var k in extra) if (Object.prototype.hasOwnProperty.call(extra, k)) body[k] = extra[k];
+      fetch(hubApiUrl("interact"), {
+        method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body)
+      }).catch(function () {});   // 失败静默：数值层是增强，不是依赖
     } catch (e) {}
   }
   var recentLocal = [];       // 最近触发过的 key，避免连着重复同一个小动作
@@ -576,7 +592,7 @@
         showBubble(res.text, "idle");
         if (res.ok) {
           drawFarm();
-          postStatDelta({ mood: 2, energy: -1 });
+          interact("farm_work");
           onStatsDeltaLocal({ mood: 2, energy: -1 });
           renderStatsBar();
         }

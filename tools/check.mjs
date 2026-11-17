@@ -654,7 +654,8 @@ check("数值层 stats（hub 字段 / 前端 UI / 增量上报 防回退）", ()
   if (!/"state: cur, recent, stats"/.test(hubSrc) && !/stats: statsSnapshot\(\)/.test(hubSrc))
     problems.push("hub.mjs /api/status 未带 stats");
   // 2) 前端必须有：stats 对象、onStats、WS 分支、渲染函数、EVENT_NEED
-  for (const needle of ["function onStats(", 'msg.type === "stats"', "function renderStatsBar(", "var EVENT_NEED", "function needBoost(", "function statFillFor(", "function postStatDelta("])
+  /* v2.8-b1：前端不再自己算 delta（postStatDelta 已删除），改为发"命名交互"由 hub 结算 */
+  for (const needle of ["function onStats(", 'msg.type === "stats"', "function renderStatsBar(", "var EVENT_NEED", "function needBoost(", "function statFillFor(", "function interact(", "function hubApiUrl("])
     if (!officeSrc.includes(needle))
       problems.push(`office.js 缺 ${needle}`);
   // 3) index.html 必须有 stats-bar DOM 与样式
@@ -1198,6 +1199,41 @@ check("农场在 hub（一份真相 / 种子闭环 / 前端只当画布）", () 
   if (/(farm\.inv\.feed \+=)[\s\S]{0,400}?farmPost\("fish"/.test(farmSrc) === false) warnings.push("钓鱼奖励与 hub 的概率表需人工核对一次（78/15/7）");
 
   return { problems: bad, warnings, note: "20 格 · 6 个动作 · 每天 +2 种子 · 收割 60% 返种" };
+});
+
+// ---------- 第 29 项：数值单点写入（v2.8-b1）----------
+check("数值单点写入（前端只发意图 / hub 决定金额 / 本地开发也能连上）", () => {
+  const bad = [], warnings = [];
+  const lifeSrc = read(path.join(WEB, "src", "life.js"));
+  const farmSrc = read(path.join(WEB, "src", "farm.js"));
+  const npcSrc = read(path.join(WEB, "src", "npc.js"));
+  const viewSrc2 = read(path.join(WEB, "src", "view.js"));
+
+  // 1) hub 侧：交互表 + 配方表 + 端点
+  if (hubSrc.indexOf("const INTERACT = {") < 0) bad.push("hub.mjs 缺 INTERACT 表（前端仍能自己决定加多少）");
+  if (hubSrc.indexOf("const RECIPE_STATS = {") < 0) bad.push("hub.mjs 缺 RECIPE_STATS（做菜的数值没有服务端口径）");
+  if (hubSrc.indexOf('"/api/interact"') < 0) bad.push("hub.mjs 缺 POST /api/interact");
+  ["fish", "chat", "visit_home", "visit_away", "farm_work"].forEach(k => {
+    if (hubSrc.indexOf(k + ":") < 0) bad.push("INTERACT 表缺 " + k);
+  });
+
+  // 2) 配方表两边必须对得上（少一道菜 → 那道菜做出来白吃）
+  const ids = (farmSrc.match(/\{ id: "[a-z]+",\s+name: "[^"]+",\s+need:/g) || []).map(s => (/id: "([a-z]+)"/.exec(s) || [])[1]).filter(Boolean);
+  if (ids.length < 8) bad.push("前端配方只解析出 " + ids.length + " 道（应 ≥8）");
+  ids.forEach(id => { if (hubSrc.indexOf(id + ":") < 0) bad.push("RECIPE_STATS 缺「" + id + "」：做这道菜不会加数值"); });
+
+  // 3) 前端不许再自己算 delta、也不许再写死反代前缀
+  if (lifeSrc.indexOf("postStatDelta") >= 0) bad.push("life.js 还留着 postStatDelta：数值仍可能由前端决定");
+  if ((lifeSrc + farmSrc).indexOf('fetch("/office-hub-api') >= 0) bad.push("前端仍硬编码 /office-hub-api 前缀（本地开发会静默 404）");
+  if (lifeSrc.indexOf("function interact(") < 0 || lifeSrc.indexOf("function hubApiUrl(") < 0) bad.push("life.js 缺 interact / hubApiUrl");
+  if (farmSrc.indexOf('interact("fish")') < 0) bad.push("farm.js 钓鱼没走 interact");
+  if (farmSrc.indexOf('interact("cook"') < 0) bad.push("farm.js 做菜没走 interact");
+  if (npcSrc.indexOf('interact("chat"') < 0) bad.push("npc.js 聊天没走 interact");
+  if (viewSrc2.indexOf('"visit_home" : "visit_away"') < 0) bad.push("view.js 串门没走 interact");
+  if (lifeSrc.indexOf('interact("farm_work")') < 0) bad.push("life.js 农活没走 interact");
+  if (bad.length) warnings.push("改动后请跑一次 npm run dev 点一遍：钓鱼 / 做菜 / 聊天 / 串门 / 下地，看数值条是否都涨");
+
+  return { problems: bad, warnings, note: ids.length + " 道菜的金额在 hub · 5 个交互统一结算 · 前端只剩意图" };
 });
 
 console.log("\noffice 静态自检\n" + "─".repeat(64));

@@ -50,7 +50,7 @@
     };
     fishState = "walking";
     showBubble(curPlan.bubbleText, "idle");
-    postStatDelta(isHome ? { social: 6 } : { social: 2 });
+    interact(isHome ? "visit_home" : "visit_away");
     renderStatsBar();
     return true;
   }

@@ -49,11 +49,7 @@
    * 离线：退回 localStorage，玩法不变。
    * 注意不能用 hubMapBase() 判断在线 —— 它永远返回非空串；这里看"最近一次请求有没有成功"。 */
   var farmHubOk = false;
-  function farmBase() { return (typeof hubMapBase === "function") ? hubMapBase() : "/office-hub-api"; }
-  function farmUrl() {
-    var b = farmBase() || "";
-    return b.indexOf("://") >= 0 ? b + "/api/farm" : b + "/farm";
-  }
+  function farmUrl() { return (typeof hubApiUrl === "function") ? hubApiUrl("farm") : "/office-hub-api/farm"; }
   function farmOnline() { return farmHubOk; }
   function farmApply(snap) {
     if (!snap || !snap.plots || snap.plots.length !== FARM.cols * FARM.rows) return;
@@ -260,7 +256,7 @@
     farmSave();
     if (farmOnline()) farmPost("fish", null, null, null);   // v2.8-a2：鱼获也记到 hub 的同一本账
     fishing = null;
-    postStatDelta({ mood: 5, hunger: 1 });
+    interact("fish");
     renderStatsBar();
     return { ok: true, text: "钓到了" + got + "！" };
   }
@@ -309,7 +305,7 @@
     var can = cookable().filter(function (c) { return c.id === recipeId; })[0];
     if (!can.ok) return { ok: false, text: "食材不够：" + can.missing.join("、") };
     Object.keys(r.need).forEach(function (k) { pantryUse(k, r.need[k]); });
-    postStatDelta(r.stat);
+    interact("cook", { dish: recipeId });
     onStatsDeltaLocal(r.stat);
     renderStatsBar();
     return { ok: true, text: "做好了「" + r.name + "」：" + r.verb };

@@ -907,7 +907,7 @@ scene.tweens.add({ targets: bub, alpha: 1, duration: 200, delay: 500 });
 scene.tweens.add({ targets: bub, alpha: 0, duration: 400, delay: 2800, onComplete: function () { bub.destroy(); } });
 var mark = scene.add.text(npc.spr.x, npc.spr.y - npc.spr.displayHeight - 8, "❢", { fontSize: "16px", color: "#f59f00" }).setOrigin(0.5).setDepth(9500);
 scene.tweens.add({ targets: mark, y: mark.y - 10, alpha: 0, duration: 1200, onComplete: function () { mark.destroy(); } });
-postStatDelta({ social: 10, mood: 3 });
+interact("chat", { npc: npc.def.id });
 if (typeof Audio !== "undefined") Audio.fx("medium", "chat");   // v2.7：搭上话了一声
 try {
 fetch("/office-hub-api/event", {
@@ -991,7 +991,7 @@ visit: { home: h, living: zLiving, isHome: isHome }
 };
 fishState = "walking";
 showBubble(curPlan.bubbleText, "idle");
-postStatDelta(isHome ? { social: 6 } : { social: 2 });
+interact(isHome ? "visit_home" : "visit_away");
 renderStatsBar();
 return true;
 }
@@ -3795,11 +3795,7 @@ farmSync();
 }
 function farmSave() { try { localStorage.setItem("office_farm_v1", JSON.stringify(farm)); } catch (e) {} }
 var farmHubOk = false;
-function farmBase() { return (typeof hubMapBase === "function") ? hubMapBase() : "/office-hub-api"; }
-function farmUrl() {
-var b = farmBase() || "";
-return b.indexOf("://") >= 0 ? b + "/api/farm" : b + "/farm";
-}
+function farmUrl() { return (typeof hubApiUrl === "function") ? hubApiUrl("farm") : "/office-hub-api/farm"; }
 function farmOnline() { return farmHubOk; }
 function farmApply(snap) {
 if (!snap || !snap.plots || snap.plots.length !== FARM.cols * FARM.rows) return;
@@ -3996,7 +3992,7 @@ else { got = "河童的旧怀表"; farm.inv.feed += 2; }
 farmSave();
 if (farmOnline()) farmPost("fish", null, null, null);   // v2.8-a2：鱼获也记到 hub 的同一本账
 fishing = null;
-postStatDelta({ mood: 5, hunger: 1 });
+interact("fish");
 renderStatsBar();
 return { ok: true, text: "钓到了" + got + "！" };
 }
@@ -4042,7 +4038,7 @@ if (!r) return { ok: false, text: "没有这道菜" };
 var can = cookable().filter(function (c) { return c.id === recipeId; })[0];
 if (!can.ok) return { ok: false, text: "食材不够：" + can.missing.join("、") };
 Object.keys(r.need).forEach(function (k) { pantryUse(k, r.need[k]); });
-postStatDelta(r.stat);
+interact("cook", { dish: recipeId });
 onStatsDeltaLocal(r.stat);
 renderStatsBar();
 return { ok: true, text: "做好了「" + r.name + "」：" + r.verb };
@@ -4835,11 +4831,23 @@ pendingEvent = script; return;
 stopIdleLife();
 goLocal(script.zone, script.text, script.act, null, false, script.fills || null);
 }
-function postStatDelta(deltas) {
+function hubApiBase() {
+if (typeof hubBase === "function") { var b = hubBase(); if (b) return b; }
+var host = location.hostname || "";
+if (/^(10\.|192\.168\.|172\.(1[6-9]|2\d|3[01])\.)/.test(host)) return "http://" + host + ":4321";
+return "/office-hub-api";
+}
+function hubApiUrl(name) {
+var b = hubApiBase() || "";
+return b.indexOf("://") >= 0 ? b + "/api/" + name : b + "/" + name;
+}
+function interact(kind, extra) {
 try {
-fetch("/office-hub-api/stats", {   // nginx 需反代；失败静默（数值层是增强不是依赖）
-method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(deltas)
-}).catch(function () {});
+var body = { kind: kind };
+if (extra) for (var k in extra) if (Object.prototype.hasOwnProperty.call(extra, k)) body[k] = extra[k];
+fetch(hubApiUrl("interact"), {
+method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body)
+}).catch(function () {});   // 失败静默：数值层是增强，不是依赖
 } catch (e) {}
 }
 var recentLocal = [];       // 最近触发过的 key，避免连着重复同一个小动作
@@ -5009,7 +5017,7 @@ res = farmAct(curPlan.farmJob, curPlan.farmSlot);
 showBubble(res.text, "idle");
 if (res.ok) {
 drawFarm();
-postStatDelta({ mood: 2, energy: -1 });
+interact("farm_work");
 onStatsDeltaLocal({ mood: 2, energy: -1 });
 renderStatsBar();
 }

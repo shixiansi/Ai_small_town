@@ -951,6 +951,42 @@ function finishFarm(res) {
   return { ...res, farm: farmSnapshot() }
 }
 
+// ---------- 命名交互（v2.8-b1）：数值只由 hub 写 ----------
+/* 为什么要有这一层：烹饪/聊天/串门/钓鱼/农活原来都是前端算出 delta 再 POST /api/stats。
+ * 两个问题：① 数值的"真相"在浏览器里（前端说什么就是什么）；② 前端把路径写死成
+ * "/office-hub-api/stats"，本地开发（dev.mjs 起在 4322）根本没有这个前缀，于是本地一直静默失败。
+ * 现在前端只发"我做了什么事"（kind + 少量参数），金额由 hub 这张表决定。 */
+const RECIPE_STATS = {
+  bread:     { hunger: 22, mood: 3 },
+  salad:     { hunger: 16, mood: 6 },
+  soup:      { hunger: 20, mood: 4 },
+  fishgrill: { hunger: 30, mood: 6 },
+  sushi:     { hunger: 34, mood: 8 },
+  popcorn:   { hunger: 10, mood: 8 },
+  juice:     { hunger: 8,  mood: 7 },
+  stew:      { hunger: 38, mood: 5 }
+}
+const INTERACT = {
+  fish:       { mood: 5, hunger: 1 },     // 钓上来了：小确幸
+  chat:       { social: 10, mood: 3 },    // 和邻居搭上话
+  visit_home: { social: 6 },              // 串门，主人在家
+  visit_away: { social: 2 },              // 串门，扑了个空
+  farm_work:  { mood: 2, energy: -1 }     // 下地干了一会儿
+}
+function applyInteract(kind, extra) {
+  if (kind === "cook") {
+    const id = String((extra && extra.dish) || "")
+    const st = RECIPE_STATS[id]
+    if (!st) return { ok: false, status: 400, error: "未知菜品 " + id }
+    applyStatDelta(st)
+    return { ok: true, kind, delta: st }
+  }
+  const delta = INTERACT[kind]
+  if (!delta) return { ok: false, status: 400, error: "未知交互 " + kind }
+  applyStatDelta(delta)
+  return { ok: true, kind, delta }
+}
+
 const CORS = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Methods": "GET,POST,OPTIONS",
@@ -1014,7 +1050,21 @@ const server = http.createServer((req, res) => {
     })
     return
   }
+  if (req.method === "POST" && req.url === "/api/interact") {
+    let body = ""
+    req.on("data", c => { body += c; if (body.length > 1024) req.destroy() })
+    req.on("end", () => {
+      let d
+      try { d = JSON.parse(body || "{}") }
+      catch { res.writeHead(400, CORS).end("bad json"); return }
+      const r = applyInteract(String(d.kind || ""), d)
+      res.writeHead(r.ok ? 200 : (r.status || 400), { ...CORS, "Content-Type": "application/json; charset=utf-8" })
+      res.end(JSON.stringify(r))
+    })
+    return
+  }
   if (req.url === "/api/farm" && req.method === "GET") {
+
     farmRollDay()
     res.writeHead(200, { ...CORS, "Content-Type": "application/json; charset=utf-8" })
     res.end(JSON.stringify(farmSnapshot()))

@@ -508,7 +508,7 @@
     scene.tweens.add({ targets: bub, alpha: 0, duration: 400, delay: 2800, onComplete: function () { bub.destroy(); } });
     var mark = scene.add.text(npc.spr.x, npc.spr.y - npc.spr.displayHeight - 8, "❢", { fontSize: "16px", color: "#f59f00" }).setOrigin(0.5).setDepth(9500);
     scene.tweens.add({ targets: mark, y: mark.y - 10, alpha: 0, duration: 1200, onComplete: function () { mark.destroy(); } });
-    postStatDelta({ social: 10, mood: 3 });
+    interact("chat", { npc: npc.def.id });
     if (typeof Audio !== "undefined") Audio.fx("medium", "chat");   // v2.7：搭上话了一声
     // v2.6 邻里事件回流：NPC 对话写进 hub 事件流（"最近动态"可见），agent 侧的日记/文章
     // 素材池会经 eventsBlock 捞到它（external 事件源约定：POST /api/event 即可）。
