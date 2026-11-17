@@ -1349,6 +1349,63 @@ check("朝向门禁（R1 背靠墙 / R2 头靠墙 / R3 面桌 / R4 面茶几）"
   };
 });
 
+// ---------- 第 33 项：摆放规则引擎（分区 / 挂载层 / 碰撞重叠 / 素材分类）----------
+/* 用户原话：户外摆设不许进房间；墙上除了能挂的不许有别的；地区要提前划分好；
+ * 这些要从素材层区分；违规要报错；物品要有碰撞体积，除桌上物品外全部不许重叠。
+ *
+ * 以前这些都是"提示词约束"——写在文档里、靠人看图发现、改一次错回来。
+ * 现在全部落到 tools/asset-rules.mjs（分类唯一事实源）+ map-model.layoutViolations()（判定唯一实现），
+ * 这里是它的门禁入口：**有违规就是错误，不是警告**。 */
+check("摆放规则引擎（分区 / 挂载层 / 碰撞重叠 / 素材分类）", () => {
+  let out = "";
+  try {
+    out = execFileSync(process.execPath, [path.join(OFFICE, "tools", "layout-check.mjs"), "--json"], { encoding: "utf8" });
+  } catch (e) {
+    out = String(e.stdout || "");
+  }
+  let j = null;
+  try { j = JSON.parse(out); } catch (e) { return { problems: ["layout-check --json 输出不是合法 JSON"] }; }
+  const v = j.violations || [];
+  const byCode = {};
+  v.forEach(x => byCode[x.code] = (byCode[x.code] || 0) + 1);
+  // 每类最多列 3 条，避免刷屏；但计数必须完整
+  const shown = [];
+  Object.keys(byCode).sort().forEach(code => {
+    v.filter(x => x.code === code).slice(0, 3).forEach(x => {
+      shown.push("[" + code + "] " + (x.room || "户外") + " " + (x.id || x.asset) + "(" + x.asset + ")@" + x.x + "," + x.y + "  " + x.msg);
+    });
+    if (byCode[code] > 3) shown.push("[" + code + "] …另有 " + (byCode[code] - 3) + " 处同类");
+  });
+  return {
+    problems: shown,
+    note: "素材分类 " + (j.ruleCount || 0) + " 条 · 受检 " + (j.checked || 0) + " 件 · 违规 " + v.length + " 处"
+      + (Object.keys(byCode).length ? "（" + Object.entries(byCode).map(([k, n]) => k.replace("E-", "") + " " + n).join(" / ") + "）" : "")
+  };
+});
+
+// ---------- 第 34 项：桌面落位是否与推导值一致（禁止手写 dx/dy）----------
+/* 成熟做法：桌上物品的偏移由"宿主台面高度 + 等分槽位"推导出来（tools/surface-fit.mjs），
+ * 不是人手试出来的。这一项把"手写偏移"钉死 —— 数据和推导值对不上就报错。
+ *
+ * 为什么必须做成门禁：果盘那次就是手写偏移（漏写→悬空、猜错→压到笔记本上），
+ * 而所有几何判据（占格 / 分区 / 重叠）都看不见"渲染在哪儿"这件事。 */
+check("桌面落位与推导一致（dx/dy 由台面高度推导，不许手写）", () => {
+  let out = "";
+  try {
+    out = execFileSync(process.execPath, [path.join(OFFICE, "tools", "surface-fit.mjs")], { encoding: "utf8" });
+  } catch (e) {
+    out = String(e.stdout || "");
+  }
+  const m = /共 (\d+) 件，需要修正 (\d+) 件/.exec(out);
+  const skip = /跳过 (\d+) 件/.exec(out);
+  if (!m) return { problems: ["surface-fit 输出无法解析（工具坏了吗）"] };
+  const total = Number(m[1]), bad = Number(m[2]);
+  const problems = [];
+  if (bad > 0) problems.push(bad + " 件桌上物品的 dx/dy 与推导值不一致 —— 跑 node tools/surface-fit.mjs --apply");
+  if (skip) problems.push(skip[1] + " 件的宿主缺台面高度或 host 不存在 —— 补 tools/asset-rules.mjs 的 SURFACE 表");
+  return { problems, note: "桌上物品 " + total + " 件 · 全部由 SURFACE 表推导" };
+});
+
 console.log("\noffice 静态自检\n" + "─".repeat(64));
 results.forEach(r => {
   const tag = r.problems.length ? "[FAIL]" : (r.warnings.length ? "[WARN]" : "[ OK ]");

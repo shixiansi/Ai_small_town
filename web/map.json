@@ -28,16 +28,18 @@
   },
   {
    "a": "cabinet",
-   "x": 23.6,
-   "y": 1.9,
+   "x": 24,
+   "y": 3.25,
    "id": "cabA"
   },
   {
    "a": "globe-desk",
    "on": "cabA",
    "dx": 0,
-   "dy": 2,
-   "id": "f0002"
+   "dy": 7,
+   "id": "f0002",
+   "sc": 0.556,
+   "artScale": 0.613
   },
   {
    "a": "bookshelf-office",
@@ -98,27 +100,33 @@
    "a": "computer",
    "on": "desk",
    "dx": 0,
-   "dy": 2,
-   "id": "f0008"
+   "dy": 4,
+   "id": "f0008",
+   "sc": 0.55,
+   "artScale": 0.633
   },
   {
    "a": "desk-lamp",
    "on": "desk",
-   "dx": -16,
-   "dy": 4,
-   "id": "f0009"
+   "dx": -5,
+   "dy": 9,
+   "id": "f0009",
+   "sc": 0.55,
+   "artScale": 0.633
   },
   {
    "a": "pencil-cup",
    "on": "desk",
-   "dx": 14,
-   "dy": 3,
-   "id": "f0010"
+   "dx": 5,
+   "dy": 9,
+   "id": "f0010",
+   "sc": 0.55,
+   "artScale": 0.538
   },
   {
    "a": "office-chair",
    "x": 9,
-   "y": 20.25,
+   "y": 22.25,
    "id": "chairA",
    "frame": 24
   },
@@ -131,9 +139,11 @@
   {
    "a": "laptop",
    "on": "tableA",
-   "dx": -1,
-   "dy": 9,
-   "id": "f0011"
+   "dx": -11,
+   "dy": 17,
+   "id": "f0011",
+   "sc": 0.786,
+   "artScale": 0.659
   },
   {
    "a": "paper-stack",
@@ -172,13 +182,15 @@
    "a": "book-stack",
    "on": "cabB",
    "dx": 0,
-   "dy": 2,
-   "id": "f0015"
+   "dy": 7,
+   "id": "f0015",
+   "sc": 0.55,
+   "artScale": 0.55
   },
   {
    "a": "water-cooler",
-   "x": 1.4,
-   "y": 26.8,
+   "x": 2,
+   "y": 27.25,
    "id": "f0016"
   },
   {
@@ -189,9 +201,9 @@
   },
   {
    "a": "sofa",
+   "id": "sofaA",
    "x": 5,
-   "y": 27.25,
-   "id": "sofaA"
+   "y": 27.25
   },
   {
    "a": "sofa",
@@ -203,8 +215,9 @@
    "a": "open-book",
    "on": "sofaA",
    "dx": 0,
-   "dy": 10,
-   "id": "f0019"
+   "dy": 14,
+   "id": "f0019",
+   "artScale": 1.117
   },
   {
    "a": "round-table",
@@ -216,7 +229,7 @@
    "a": "coffee-mug",
    "on": "tableB",
    "dx": 0,
-   "dy": 8,
+   "dy": 16,
    "id": "f0020"
   },
   {
@@ -229,13 +242,14 @@
    "a": "phone-desk",
    "on": "woodA",
    "dx": 0,
-   "dy": 3,
-   "id": "f0022"
+   "dy": 12,
+   "id": "f0022",
+   "artScale": 1.124
   },
   {
    "a": "chair",
-   "x": 11,
-   "y": 20.25,
+   "x": 14,
+   "y": 22.25,
    "frame": 3,
    "id": "f0023"
   },
@@ -249,19 +263,21 @@
    "a": "book-stack",
    "on": "schA",
    "dx": 0,
-   "dy": 3,
-   "id": "f0024"
+   "dy": 14,
+   "id": "f0024",
+   "sc": 0.623,
+   "artScale": 0.623
   },
   {
    "a": "desk-wood",
-   "x": 11.1,
+   "x": 13.5,
    "y": 21.25,
    "id": "woodA"
   },
   {
    "a": "double-bed",
-   "x": 5,
-   "y": 1.4,
+   "x": 4.5,
+   "y": 2.25,
    "id": "bedA",
    "sc": 1.15
   },
@@ -273,7 +289,7 @@
   },
   {
    "a": "nightstand",
-   "x": 4,
+   "x": 3,
    "y": 1.25,
    "id": "bedstandA",
    "sc": 0.9
@@ -282,13 +298,15 @@
    "a": "desk-lamp",
    "on": "bedstandA",
    "dx": 0,
-   "dy": 2,
-   "id": "f0025"
+   "dy": 6,
+   "id": "f0025",
+   "sc": 0.907,
+   "artScale": 0.894
   },
   {
    "a": "curtains",
-   "x": 5,
-   "y": 1.4,
+   "x": 4.5,
+   "y": 1.25,
    "sc": 1,
    "wall": true,
    "id": "f0026"
@@ -302,23 +320,21 @@
   },
   {
    "a": "toilet",
-   "x": 13.8,
-   "y": 13.6,
+   "x": 15,
+   "y": 13.25,
    "id": "f0027"
   },
   {
    "a": "sink",
-   "x": 12.3,
-   "y": 2.4,
-   "id": "sinkA",
-   "wall": true
+   "x": 10,
+   "y": 5.25,
+   "id": "sinkA"
   },
   {
    "a": "mirror",
-   "x": 11.2,
-   "y": 2.4,
+   "x": 11,
+   "y": 3.25,
    "sc": 0.9,
-   "wall": true,
    "id": "f0028"
   },
   {
@@ -335,31 +351,33 @@
   },
   {
    "a": "kitchen-counter",
-   "x": 23.7,
-   "y": 1.5,
+   "x": 23.5,
+   "y": 1.25,
    "id": "counterA",
    "sc": 0.95
   },
   {
    "a": "fruit-bowl",
    "on": "counterA",
-   "dx": -14,
-   "dy": 4,
-   "sc": 0.8,
-   "id": "f0029"
+   "dx": -7,
+   "dy": 7,
+   "sc": 0.607,
+   "id": "f0029",
+   "artScale": 0.636
   },
   {
    "a": "kettle",
    "on": "counterA",
-   "dx": 12,
-   "dy": 4,
-   "sc": 0.9,
-   "id": "f0030"
+   "dx": 11,
+   "dy": 7,
+   "sc": 0.683,
+   "id": "f0030",
+   "artScale": 0.629
   },
   {
    "a": "armchair",
-   "x": 18,
-   "y": 22.25,
+   "x": 21,
+   "y": 24.25,
    "id": "armA",
    "sc": 1.05,
    "flipX": 1
@@ -373,8 +391,8 @@
   },
   {
    "a": "mailbox",
-   "x": 6.6,
-   "y": 17.6,
+   "x": 27,
+   "y": 19.25,
    "wall": true,
    "id": "f0031"
   },
@@ -386,7 +404,7 @@
   },
   {
    "a": "nightstand",
-   "x": 6,
+   "x": 7,
    "y": 1.25,
    "sc": 0.85,
    "id": "f0033"
@@ -419,8 +437,8 @@
   },
   {
    "a": "bush",
-   "x": 46.2,
-   "y": 12.4,
+   "x": 30,
+   "y": 9.25,
    "o": true,
    "sc": 0.9,
    "id": "f0037"
@@ -435,18 +453,16 @@
   },
   {
    "a": "fence-picket",
-   "x": 45.3,
-   "y": 7.6,
+   "x": 38,
+   "y": 15.25,
    "o": true,
-   "wall": true,
    "id": "f0039"
   },
   {
    "a": "fence-picket",
-   "x": 54.8,
-   "y": 7.6,
+   "x": 47,
+   "y": 8.25,
    "o": true,
-   "wall": true,
    "id": "f0040"
   },
   {
@@ -458,8 +474,8 @@
   },
   {
    "a": "stall-fruit",
-   "x": 50.8,
-   "y": 15.6,
+   "x": 54,
+   "y": 15.25,
    "o": true,
    "id": "stallB"
   },
@@ -467,14 +483,14 @@
    "a": "coin",
    "on": "stallB",
    "dx": 0,
-   "dy": 6,
+   "dy": 24,
    "sc": 0.6,
    "id": "f0041"
   },
   {
    "a": "sign-inn",
-   "x": 44.7,
-   "y": 13.6,
+   "x": 46,
+   "y": 13.25,
    "o": true,
    "wall": true,
    "id": "f0042"
@@ -482,8 +498,7 @@
   {
    "a": "potion-shelf",
    "x": 15,
-   "y": 2.6,
-   "wall": true,
+   "y": 5.25,
    "id": "f0043"
   },
   {
@@ -500,8 +515,8 @@
   },
   {
    "a": "crown-cushion",
-   "x": 21.6,
-   "y": 29.6,
+   "x": 21,
+   "y": 27.25,
    "o": true,
    "sc": 0.9,
    "id": "f0044"
@@ -515,8 +530,8 @@
   },
   {
    "a": "street-lamp",
-   "x": 38.5,
-   "y": 15.2,
+   "x": 37,
+   "y": 15.25,
    "id": "f0045"
   },
   {
@@ -533,24 +548,24 @@
   },
   {
    "a": "flowers",
-   "x": 43.2,
-   "y": 13.8,
+   "x": 43.1,
+   "y": 14.25,
    "o": true,
    "sc": 0.8,
    "id": "f0047"
   },
   {
    "a": "bush",
-   "x": 26,
-   "y": 15,
+   "x": 33.1,
+   "y": 12.25,
    "o": true,
    "sc": 0.85,
    "id": "f0048"
   },
   {
    "a": "sign-inn",
-   "x": 41.3,
-   "y": 13.8,
+   "x": 41,
+   "y": 14.25,
    "o": true,
    "sc": 0.9,
    "wall": true,
@@ -572,16 +587,16 @@
   },
   {
    "a": "flowers",
-   "x": 17.2,
-   "y": 10.8,
+   "x": 27.1,
+   "y": 10.25,
    "o": true,
    "sc": 0.8,
    "id": "f0052"
   },
   {
    "a": "bush",
-   "x": 24,
-   "y": 10.6,
+   "x": 27.1,
+   "y": 12.25,
    "o": true,
    "sc": 0.8,
    "id": "f0053"
@@ -636,8 +651,8 @@
   },
   {
    "a": "flowers",
-   "x": 35.5,
-   "y": 9.5,
+   "x": 35,
+   "y": 11.25,
    "o": true,
    "sc": 0.75,
    "id": "f0059"
@@ -658,8 +673,8 @@
   },
   {
    "a": "street-lamp",
-   "x": 50.5,
-   "y": 15.2,
+   "x": 48,
+   "y": 15.25,
    "id": "f0061"
   },
   {
@@ -667,7 +682,6 @@
    "x": 27.2,
    "y": 2,
    "o": true,
-   "wall": true,
    "id": "f0062"
   },
   {
@@ -675,7 +689,6 @@
    "x": 37.8,
    "y": 2,
    "o": true,
-   "wall": true,
    "id": "f0063"
   },
   {
@@ -694,8 +707,8 @@
   },
   {
    "a": "flowers",
-   "x": 31,
-   "y": 20.5,
+   "x": 35,
+   "y": 22.25,
    "o": true,
    "sc": 0.8,
    "id": "f0066"
@@ -724,14 +737,12 @@
    "a": "fence-picket",
    "x": 27.2,
    "y": 28,
-   "wall": true,
    "id": "f0069"
   },
   {
    "a": "fence-picket",
    "x": 37.8,
    "y": 28,
-   "wall": true,
    "id": "f0070"
   },
   {
@@ -749,23 +760,24 @@
   },
   {
    "a": "sink",
-   "x": 24.2,
-   "y": 5.2,
+   "x": 24,
+   "y": 5.25,
    "sc": 0.95,
    "id": "kitchSink"
   },
   {
    "a": "fruit-bowl",
-   "x": 21,
-   "y": 6,
-   "o": true,
-   "sc": 0.7,
-   "id": "f0072"
+   "sc": 0.55,
+   "id": "f0072",
+   "on": "tableA",
+   "dx": 8,
+   "dy": 17,
+   "artScale": 0.654
   },
   {
    "a": "plant-office",
    "x": 17,
-   "y": 6.8,
+   "y": 8.25,
    "sc": 0.9,
    "id": "f0073"
   },
@@ -792,8 +804,8 @@
   },
   {
    "a": "bed",
-   "x": 41.3,
-   "y": 20,
+   "x": 41,
+   "y": 21.25,
    "id": "catBed"
   },
   {
@@ -807,9 +819,10 @@
    "a": "book-stack",
    "on": "catStand",
    "dx": 0,
-   "dy": 2,
-   "sc": 0.45,
-   "id": "f0077"
+   "dy": 6,
+   "sc": 0.445,
+   "id": "f0077",
+   "artScale": 0.55
   },
   {
    "a": "gramophone",
@@ -835,7 +848,7 @@
    "a": "coffee-mug",
    "on": "catTable",
    "dx": 0,
-   "dy": 2,
+   "dy": 16,
    "sc": 0.8,
    "id": "f0079"
   },
@@ -877,7 +890,7 @@
    "a": "fruit-bowl",
    "on": "chiefTable",
    "dx": 0,
-   "dy": 2,
+   "dy": 17,
    "sc": 0.7,
    "id": "f0082"
   },
@@ -889,8 +902,8 @@
   },
   {
    "a": "stove-kitchen",
-   "x": 49.9,
-   "y": 20.3,
+   "x": 50,
+   "y": 20.25,
    "id": "chiefStove"
   },
   {
@@ -928,18 +941,20 @@
   {
    "a": "globe-desk",
    "on": "cumw9ba88s66k",
-   "dx": -14,
-   "dy": 2,
-   "sc": 0.8,
-   "id": "f0085"
+   "dx": -7,
+   "dy": 9,
+   "sc": 0.632,
+   "id": "f0085",
+   "artScale": 0.613
   },
   {
    "a": "book-stack",
    "on": "cumw9ba88s66k",
-   "dx": 13,
-   "dy": 3,
-   "sc": 0.45,
-   "id": "f0086"
+   "dx": 8,
+   "dy": 9,
+   "sc": 0.355,
+   "id": "f0086",
+   "artScale": 0.55
   },
   {
    "a": "bookshelf-office",
@@ -1006,20 +1021,20 @@
   },
   {
    "a": "bench-park",
-   "x": 32,
-   "y": 20.25,
+   "x": 28.5,
+   "y": 21.25,
    "id": "park5"
   },
   {
    "a": "bench-park",
-   "x": 49.4,
-   "y": 5,
+   "x": 48,
+   "y": 5.25,
    "id": "park6"
   },
   {
    "a": "street-lamp",
-   "x": 31,
-   "y": 15,
+   "x": 32,
+   "y": 14.25,
    "id": "park7"
   },
   {
@@ -1068,72 +1083,63 @@
    "x": 38,
    "y": 3,
    "id": "gfence1",
-   "o": true,
-   "wall": true
+   "o": true
   },
   {
    "a": "fence-picket",
    "x": 38,
    "y": 4,
    "id": "gfence2",
-   "o": true,
-   "wall": true
+   "o": true
   },
   {
    "a": "fence-picket",
    "x": 38,
    "y": 5,
    "id": "gfence3",
-   "o": true,
-   "wall": true
+   "o": true
   },
   {
    "a": "fence-picket",
    "x": 38,
    "y": 6,
    "id": "gfence4",
-   "o": true,
-   "wall": true
+   "o": true
   },
   {
    "a": "fence-picket",
    "x": 38,
    "y": 7,
    "id": "gfence5",
-   "o": true,
-   "wall": true
+   "o": true
   },
   {
    "a": "fence-picket",
    "x": 38,
    "y": 10,
    "id": "gfence6",
-   "o": true,
-   "wall": true
+   "o": true
   },
   {
    "a": "fence-picket",
    "x": 38,
    "y": 11,
    "id": "gfence7",
-   "o": true,
-   "wall": true
+   "o": true
   },
   {
    "a": "fence-picket",
    "x": 38,
    "y": 12,
    "id": "gfence8",
-   "o": true,
-   "wall": true
+   "o": true
   },
   {
    "a": "fence-picket",
    "x": 38,
    "y": 13,
    "id": "gfence9",
-   "o": true,
-   "wall": true
+   "o": true
   },
   {
    "a": "bookshelf-office",
@@ -1173,12 +1179,12 @@
   },
   {
    "a": "coffee-mug",
-   "x": 2.6,
-   "y": 13.2,
    "id": "bdMug",
    "on": "bdStand2",
    "dx": 0,
-   "dy": -6
+   "dy": 6,
+   "sc": 0.55,
+   "artScale": 0.464
   },
   {
    "a": "toilet",
@@ -1201,7 +1207,7 @@
   },
   {
    "a": "kitchen-counter",
-   "x": 17.1,
+   "x": 17.5,
    "y": 11.25,
    "id": "kCounter2"
   },
@@ -1219,21 +1225,21 @@
   },
   {
    "a": "kettle",
-   "x": 17.4,
-   "y": 10.6,
    "id": "kNookKettle",
    "on": "kNook",
-   "dx": 0,
-   "dy": -6
+   "dx": -6,
+   "dy": 16,
+   "sc": 0.55,
+   "artScale": 0.696
   },
   {
    "a": "coffee-mug",
-   "x": 17.9,
-   "y": 10.6,
    "id": "kNookMug",
    "on": "kNook",
-   "dx": 9,
-   "dy": -6
+   "dx": 8,
+   "dy": 16,
+   "sc": 0.55,
+   "artScale": 0.412
   },
   {
    "a": "potion-shelf",
@@ -1243,8 +1249,8 @@
   },
   {
    "a": "cabinet",
-   "x": 22.6,
-   "y": 13.7,
+   "x": 24,
+   "y": 13.25,
    "id": "kCabinet2"
   },
   {
@@ -1267,23 +1273,21 @@
   },
   {
    "a": "dining-table",
-   "x": 16.6,
-   "y": 6.2,
+   "x": 20.2,
+   "y": 12.25,
    "id": "kSideTable"
   },
   {
    "a": "fruit-bowl",
-   "x": 16.6,
-   "y": 6.2,
    "id": "kSideBowl",
    "on": "kSideTable",
    "dx": 0,
-   "dy": -6
+   "dy": 17
   },
   {
    "a": "bench-park",
-   "x": 53,
-   "y": 13.25,
+   "x": 51.5,
+   "y": 15.25,
    "id": "plzBench2"
   },
   {
@@ -1295,8 +1299,8 @@
   },
   {
    "a": "flowers",
-   "x": 37,
-   "y": 15,
+   "x": 37.1,
+   "y": 14.25,
    "id": "plzFlower2",
    "o": true
   },
@@ -1309,7 +1313,7 @@
   {
    "a": "street-lamp",
    "x": 38,
-   "y": 15,
+   "y": 14.25,
    "id": "plzLamp2"
   },
   {
@@ -1320,8 +1324,8 @@
   },
   {
    "a": "sign-inn",
-   "x": 44.6,
-   "y": 11.4,
+   "x": 46,
+   "y": 11.25,
    "id": "plzSign",
    "o": true,
    "wall": true
@@ -1352,12 +1356,10 @@
   },
   {
    "a": "paper-stack",
-   "x": 5,
-   "y": 25.4,
    "id": "ofMeetPaper",
    "on": "ofMeet",
    "dx": 0,
-   "dy": -6
+   "dy": 16
   },
   {
    "a": "filing-cabinet",
@@ -1391,25 +1393,23 @@
   },
   {
    "a": "round-table",
-   "x": 20,
-   "y": 22.25,
+   "x": 22,
+   "y": 23.25,
    "id": "ofRestTable"
   },
   {
    "a": "armchair",
-   "x": 20,
+   "x": 22,
    "y": 24.25,
    "id": "ofRestArm",
    "flipX": 1
   },
   {
    "a": "coffee-mug",
-   "x": 18,
-   "y": 24.6,
    "id": "ofRestMug",
    "on": "ofRestTable",
    "dx": 0,
-   "dy": -6
+   "dy": 16
   },
   {
    "a": "plant-office",
@@ -1431,11 +1431,10 @@
   },
   {
    "a": "blackboard",
-   "x": 24,
-   "y": 24.6,
+   "x": 22,
+   "y": 25.25,
    "id": "ofBoard2",
-   "o": true,
-   "wall": true
+   "o": true
   },
   {
    "a": "bench-park",
@@ -1451,12 +1450,12 @@
   },
   {
    "a": "desk-lamp",
-   "x": 2.7,
-   "y": 6.6,
    "id": "bdLamp2",
    "on": "bdStand3",
    "dx": 0,
-   "dy": -6
+   "dy": 6,
+   "sc": 0.907,
+   "artScale": 0.894
   },
   {
    "a": "book-stack",
@@ -1478,8 +1477,8 @@
   },
   {
    "a": "cabinet",
-   "x": 23.8,
-   "y": 8.4,
+   "x": 24,
+   "y": 8.25,
    "id": "kCabinet3"
   },
   {
@@ -1496,8 +1495,8 @@
   },
   {
    "a": "crown-cushion",
-   "x": 15.2,
-   "y": 9.7,
+   "x": 14,
+   "y": 9.25,
    "id": "rechargeA"
   },
   {
@@ -1514,14 +1513,14 @@
   },
   {
    "a": "office-desk",
-   "x": 16,
-   "y": 18.25,
+   "x": 16.5,
+   "y": 21.25,
    "id": "ofDesk3"
   },
   {
    "a": "office-chair",
    "x": 16,
-   "y": 19.25,
+   "y": 20.25,
    "id": "ofChair3"
   },
   {
@@ -1598,8 +1597,8 @@
   },
   {
    "a": "double-bed",
-   "x": 42,
-   "y": 1.25,
+   "x": 41.5,
+   "y": 2.25,
    "id": "westBed"
   },
   {
@@ -1728,7 +1727,7 @@
    "label": "工位",
    "anchor": [
     9,
-    19.2
+    20
    ],
    "face": "n",
    "expect": [
@@ -1768,8 +1767,8 @@
   "tools": {
    "label": "设计台",
    "anchor": [
-    19.5,
-    23.2
+    19,
+    22
    ],
    "face": "n",
    "expect": [
@@ -1825,7 +1824,7 @@
    "label": "茶水台",
    "anchor": [
     4,
-    26.8
+    26
    ],
    "face": "n",
    "expect": [
@@ -1865,8 +1864,8 @@
   "mail": {
    "label": "信箱",
    "anchor": [
-    6.4,
-    18.2
+    27,
+    20
    ],
    "face": "n",
    "expect": [
@@ -1889,7 +1888,7 @@
   "bed": {
    "anchor": [
     5,
-    2
+    3
    ],
    "face": "n",
    "sit": {
@@ -1946,8 +1945,8 @@
   },
   "relax": {
    "anchor": [
-    17,
-    24.2
+    20,
+    24
    ],
    "face": "s",
    "sit": {
@@ -2150,8 +2149,8 @@
   },
   "kitchenprep": {
    "anchor": [
-    23.7,
-    2.7
+    23,
+    3
    ],
    "face": "n",
    "label": "料理台",

@@ -108,8 +108,14 @@ for (let py = 0; py < H; py++) {
 ROOM_KEYS.forEach(k => {
   const r = rooms[k]; if (!r) return;
   const x0 = r.x * S, y0 = r.y * S, w0 = r.w * S, h0 = r.h * S;
-  for (let x = x0; x < x0 + w0; x++) { set(x, y0, 255, 255, 255); set(x, y0 + h0 - 1, 255, 255, 255); }
-  for (let y = y0; y < y0 + h0; y++) { set(x0, y, 255, 255, 255); set(x0 + w0 - 1, y, 255, 255, 255); }
+  /* 旧版把 4 条边各画几条线就完事，但用的是 `for (x = x0; x < x0+w0)`（**不含右边界**）
+   * 和 `set(x0+w0-1, ...)`（**含**），两种口径混用；再叠上 S 不是整数时的取整，
+   * 新房间（parkCourt/brickHall 紧贴地图右缘）的描边就缺一段，看图会误判成"房间没画完"。
+   * 现在统一按"左闭右闭"描：x 取 [x0, x0+w0]，y 取 [y0, y0+h0]。 */
+  const xa = Math.round(x0), xb = Math.round(x0 + w0);
+  const ya = Math.round(y0), yb = Math.round(y0 + h0);
+  for (let x = xa; x <= xb; x++) { set(x, ya, 255, 255, 255); set(x, yb, 255, 255, 255); }
+  for (let y = ya; y <= yb; y++) { set(xa, y, 255, 255, 255); set(xb, y, 255, 255, 255); }
 });
 pools.forEach(p => {
   const cx = Math.round(p.x * S), cy = Math.round(p.y * S), rr = Math.max(2, Math.round(p.r * S));

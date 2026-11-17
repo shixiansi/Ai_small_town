@@ -341,8 +341,8 @@ SceneBoot.prototype.preload = function () {
 loadErrors = [];
 this.load.off("loaderror", onLoadError);
 this.load.on("loaderror", onLoadError);
-this.load.json("manifest", "assets/manifest.json?v=eb7ab1a1");
-this.load.json("mapdata", "map.json?v=311f01a2");
+this.load.json("manifest", "assets/manifest.json?v=e700c6bc");
+this.load.json("mapdata", "map.json?v=b2da3ec1");
 };
 SceneBoot.prototype.create = function () {
 var manifest = this.cache.json.get("manifest");
@@ -1272,6 +1272,7 @@ if (!camDragOn && !camDragWheelAlways) return;
 e.preventDefault();
 var nz = Phaser.Math.Clamp(cam.zoom * (e.deltaY < 0 ? 1.12 : 0.89), 0.8, 2.2);
 cam.setZoom(nz);
+if (typeof refreshCanvasText === "function") refreshCanvasText();
 }, { passive: false });
 }
 var camDragWheelAlways = true;   // 滚轮缩放任何视角都可用（拖动模式外也允许）
@@ -1295,10 +1296,14 @@ y = f.band ? WALL_H + (f.oy || 0) : (WALL_H + f.y * TILE + TILE / 2 + (f.oy || 0
 footY = y;
 depth = f.wall ? 60 : footY;   // v83.2：wall 开关/壁灯要盖在墙 tile（底图 RT depth 6）之上，-5 时被墙吞掉
 }
-var cap = SCALE_TABLE[f.a];
 var scale = 1;
-if (cap) {
-scale = Math.min(1.15, (cap * TILE) / Math.max(bbox[3], 1));
+if (typeof f.artScale === "number") {
+scale = f.artScale;                        // 实例级覆盖（桌面摆件按台面自动缩放用这个）
+} else if (typeof m.artScale === "number") {
+scale = m.artScale;                        // 素材级默认值
+} else {
+var cap = SCALE_TABLE[f.a];
+if (cap) scale = Math.min(1.15, (cap * TILE) / Math.max(bbox[3], 1));
 }
 return {
 m: m, key: f.a, o: !!f.o, wall: !!f.wall, floor: !!f.floor, id: f.id,
@@ -4246,7 +4251,7 @@ var lines = [
 "今日完成 " + evidence.done + " 件",
 (evidence.current || "待命中").slice(0, 12)
 ];
-var k = uiK();
+var k = uiKz();
 var t = scene.add.text(bx, by, lines.join("\n"), {
 fontFamily: "monospace", fontSize: uiFont(14) + "px", color: "#f4f1ea",
 backgroundColor: "#3a2f26ee",
@@ -4265,14 +4270,27 @@ var ty = WALL_H + 2.6 * TILE;
 scene.trophyLayer.add(scene.add.image(tx, ty, "trophy-cup", 0).setScale(0.4).setOrigin(0.5, 1));
 }
 }
+function gameCanvas() {
+var list = document.querySelectorAll("#office-parent canvas");
+var best = null, bestArea = -1;
+for (var i = 0; i < list.length; i++) {
+var c = list[i], a = (c.width || 0) * (c.height || 0);
+if (a > bestArea) { bestArea = a; best = c; }
+}
+return best;
+}
 function canvasScale() {
-var c = document.querySelector("#office-parent canvas");
+var c = gameCanvas();
 if (!c) return 1;
 var r = c.getBoundingClientRect();
 return r.width > 0 ? Math.max(0.2, Math.min(1, r.width / c.width)) : 1;
 }
 function uiK() { return 1 / canvasScale(); }              // 1 CSS px = 多少世界 px
-function uiFont(cssPx) { return Math.round(cssPx * uiK()); }
+function camZoom() {
+return (scene && scene.cameras && scene.cameras.main && scene.cameras.main.zoom) || 1;
+}
+function uiKz() { return uiK() / camZoom(); }             // 世界 px / CSS px，已扣掉 zoom
+function uiFont(cssPx) { return Math.round(cssPx * uiKz()); }
 var lastBubble = null, textResizeTimer = null;
 function refreshCanvasText() {
 if (bubble && lastBubble) { var lb = lastBubble; showBubble(lb.text, lb.mood); }
@@ -4295,7 +4313,7 @@ function showBubble(text, mood) {
 if (typeof editorMode !== "undefined" && editorMode) return;   // v48：编辑页不弹气泡
 if (!scene || !fish) return;
 hideBubble();
-var k = uiK();
+var k = uiKz();
 var txt = text.length > 20 ? text.slice(0, 19) + "…" : text;
 bubbleText = scene.add.text(0, 0, txt, {
 fontFamily: "PingFang SC, Microsoft YaHei, sans-serif",
@@ -4319,9 +4337,17 @@ bg.fillTriangle(triX - 6 * k, -1 * k, triX + 6 * k, -1 * k, triX, 8 * k);
 bubble = scene.add.container(fish.x + bubbleOff.x, fish.y + bubbleOff.y, [bg, bubbleText]);
 bubbleText.setPosition(0, -8 * k);
 bubble.setDepth(90000);
-bubble.setScale(0.6);
-scene.tweens.add({ targets: bubble, scale: 1, duration: 180, ease: "Back.Out" });
+var TARGET_H = 30;                                  // 气泡目标屏幕高度（CSS px）
+var gc = gameCanvas();
+var ratio = gc ? (gc.getBoundingClientRect().width / gc.width) : 1;
+var z = camZoom();
+var screenH = Math.max(1, bh * z * ratio);
+var fit = TARGET_H / screenH;
+fit = Math.max(0.35, Math.min(3, fit));             // 兜底夹紧，防极端比例把字挤没/炸开
+bubble.setScale(fit);
+scene.tweens.add({ targets: bubble, scale: fit, duration: 180, ease: "Back.Out" });
 lastBubble = { text: text, mood: mood };
+return fit;
 }
 function hideBubble() {
 if (bubble) { bubble.destroy(); bubble = null; }

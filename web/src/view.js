@@ -333,6 +333,10 @@
       e.preventDefault();
       var nz = Phaser.Math.Clamp(cam.zoom * (e.deltaY < 0 ? 1.12 : 0.89), 0.8, 2.2);
       cam.setZoom(nz);
+      /* 世界坐标里的 UI 文字（气泡 / 任务卡）字号里带了 1/zoom，
+       * 但已经建好的 Text 不会自己跟着 zoom 变 —— 缩放后必须重建一次，
+       * 否则"滚轮放大 → 气泡跟着变巨"（用户反馈的那个现象）。 */
+      if (typeof refreshCanvasText === "function") refreshCanvasText();
     }, { passive: false });
   }
   var camDragWheelAlways = true;   // 滚轮缩放任何视角都可用（拖动模式外也允许）

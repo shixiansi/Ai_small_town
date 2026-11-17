@@ -18,6 +18,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { execFileSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
+import { ruleOf, canMount, canPlace, bodyOf, isVegetation, ASSET_RULES } from "./asset-rules.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const WEB = path.join(ROOT, "web");
@@ -136,13 +137,42 @@ export function loadModel(opts = {}) {
     const m = man[f.a];
     if (!m) return [];
     if (f.on) return [];                       // 叠加物没有自己的坐标，跟着 host 走，不产生碰撞
+
+    /* 【碰撞口径由 asset-rules 的 body 决定，foot 只服务 body="full" 的家具】
+     *   body="none" → 无碰撞（挂墙 / 桌上 / 纯装饰）
+     *   body="cell" → 只占主干 1 格（树 / 灌木 / 花：foot=[2,2] 是**树冠**，不是根部）
+     *   body="full" → 用声明的 foot（整数格），没声明才退回 bbox 投影
+     *
+     * 踩过的坑：foot 一上来就无差别优先，结果橡树 foot=[2,2] 占了 4 格 ——
+     * 一棵树把路压断了两格（E1「路断了」），而它本来只该占树干 1 格。 */
+    const rb = ruleOf(f.a);
+    const bodyKind = rb ? rb.body : "full";
+    if (bodyKind === "none") return [];
+
+    if (bodyKind === "cell") {
+      const px2 = f.x * T + T / 2 + (f.ox || 0);
+      const py2 = f.band ? WALL_H + (f.oy || 0) : (WALL_H + f.y * T + T / 2 + (f.oy || 0));
+      return [Math.floor(px2 / T) + "," + Math.floor((py2 - WALL_H - 1) / T)];
+    }
+
+    if (Array.isArray(m.foot)) {
+      const [fw, fh] = m.foot;
+      const footRow = Math.floor(f.y);                       // y = row + 0.25 → floor 就是那一行
+      const left = Math.round(f.x - fw / 2);                 // 以 f.x 为中心横向铺开
+      const out = [];
+      for (let gy = footRow - fh + 1; gy <= footRow; gy++)
+        for (let gx = left; gx < left + fw; gx++) out.push(gx + "," + gy);
+      return out;
+    }
+
+    // 兜底：没声明 foot 的素材仍按 bbox 投影（新增素材时应该补 foot 而不是依赖这条）
     const bbox = bboxOf(f);
     const px = f.x * T + T / 2 + (f.ox || 0);
-    /* band:1 = 贴在顶部墙带（0–48px 那条北墙），脚点落在墙带底边，不按 y 换行 */
     const py = f.band ? WALL_H + (f.oy || 0) : (WALL_H + f.y * T + T / 2 + (f.oy || 0));
-    const footH = Math.min(12, bbox[3]);
-    const left = px - m.frameW / 2 + (bbox[0] || 0);
-    const right = left + bbox[2];
+    const s = typeof m.artScale === "number" ? m.artScale : 1;
+    const footH = Math.min(12, bbox[3]) * s;
+    const left = px - (bbox[2] * s) / 2;
+    const right = left + bbox[2] * s;
     const top = py - footH;
     const out = [];
     for (let gy = Math.floor((top - WALL_H) / T); gy <= Math.floor((py - WALL_H - 1) / T); gy++)
@@ -175,8 +205,12 @@ export function loadModel(opts = {}) {
   /* 应用 hide / move —— 运行时是什么样，模型就是什么样（否则后面每个判据都在算另一张图）。
    * 克隆一份再改，避免把坐标写回 map.furniture（那份是"磁盘上写的"，不是"实际显示的"）。 */
   const keyOf = f => (f.id ? "id:" + f.id : f.a + "@" + f.x + "," + f.y);
+  /* 关键：**桌上件（on）没有自己的 x/y**，旧过滤条件 `typeof f.x === "number"`
+   * 把它们整类排除出了模型 —— 于是针对 on 件的所有校验（E-HOST / E-TOP / host 是否存在）
+   * 全部是空转，永远查不到东西。这正是"果盘躺地上、引擎却 33/33 全绿"的根因。
+   * 现在 on 件也进模型（它们的坐标由 host 决定，读取时再解析）。 */
   let items = (map.furniture || []).concat(customFurn)
-    .filter(f => typeof f.x === "number" && man[f.a] && f.a !== "move")
+    .filter(f => (typeof f.x === "number" || f.on) && man[f.a] && f.a !== "move")
     .map(f => Object.assign({}, f));
   const hidden = items.filter(f => hiddenKeys.has(keyOf(f)));
   items = items.filter(f => !hiddenKeys.has(keyOf(f)));
@@ -184,6 +218,15 @@ export function loadModel(opts = {}) {
   items.forEach(f => {
     const mv = moveOverrides.get(keyOf(f));
     if (mv) { f.x = mv.x; f.y = mv.y; movedCount++; }
+  });
+
+  /* 给 on 件解析坐标：它们的 x/y 由 host 决定（运行时 makePlacement 也是这么做的）。
+   * 不解析的话后面 placeOf / roomStrict / cellsOf 全拿到 undefined，
+   * 结果就是"这件东西在哪个房间、是不是户外"永远算成户外 —— 又是一类假绿。 */
+  items.forEach(f => {
+    if (!f.on) return;
+    const host = items.find(g => g.id === f.on);
+    if (host && typeof host.x === "number") { f.x = host.x; f.y = host.y; f.hostResolved = true; }
   });
 
   // 阻挡格：第 0 行 + 墙 + 地形墙/水 + 落地家具
@@ -265,11 +308,168 @@ export function loadModel(opts = {}) {
     items.forEach(f => { if (Math.abs(f.x - a.raw[0]) <= 1.2 && Math.abs(f.y - a.raw[1]) <= 1.2) protectedSet.add(f.id); });
   });
 
+  /* ==========================================================================
+   * 摆放规则引擎（v2.9）—— 从"提示词约束"改成"引擎约束"的唯一实现
+   *
+   * 用户的原话：户外摆设不许进房间；墙上除了能挂的物品不许出现别的；
+   * 地区要提前划分好；这些要从素材层就区分；违规要报错；
+   * 物品要有碰撞体积，除了放桌上的，全部不许重叠。
+   *
+   * 于是这里给出四件事，check.mjs / place.mjs / 审计工具全部只读这里：
+   *   layerOf(f)      这件东西该在哪个层（floor / wall / top）
+   *   placeOf(f)      它现在实际在哪个层 / 室内还是室外
+   *   bodyCellsOf(f)  它的碰撞体积（植被只占主干 1 格）
+   *   layoutViolations()  全量违规清单（分区 / 层 / 重叠），违规就是错误
+   * ========================================================================== */
+
+  /** 该条目实际的挂载层：由数据字段推断，推断不出来就是 "floor" */
+  const layerOf = f => {
+    if (f.on) return "top";          // 叠在 host 上 = 桌面层
+    if (f.wall) return "wall";       // 挂墙
+    if (f.band) return "wall";       // 贴顶部墙带也属于墙面
+    return "floor";
+  };
+
+  /** 该条目所在的场所："indoor" 或 "outdoor"（房间矩形内即 indoor）。
+   * 注意用 roomStrict（严格矩形），不能用 roomOf —— 后者带 0.6 格容差，
+   * 贴墙件会被误算进房间，然后反过来报"室外件进了房间"这种假违规。 */
+  const roomStrict = (fx, fy) => {
+    for (const k of Object.keys(rooms)) {
+      const r = rooms[k];
+      if (fx >= r.x && fx < r.x + r.w && fy >= r.y && fy < r.y + r.h) return k;
+    }
+    return null;
+  };
+  const placeOf = f => (roomStrict(f.x, f.y) ? "indoor" : "outdoor");
+
+  /** 碰撞体积：
+   *   body="none" → 无碰撞（挂墙件 / 桌上件 / 纯装饰）
+   *   body="cell" → 只占主干那 1 格（树/灌木/花：树冠交叠是像素游戏的正常表现）
+   *   body="full" → 整块 bbox 底部投影（家具/设施的硬碰撞）
+   */
+  const bodyCellsOf = f => {
+    const rb = ruleOf(f.a);
+    if (!rb) return null;                     // 未登记分类 → 调用方必须当错误
+    if (rb.body === "none") return [];
+    if (rb.body === "cell") {
+      if (f.on) return [];
+      const T2 = T;
+      const px2 = f.x * T2 + T2 / 2 + (f.ox || 0);
+      const py2 = f.band ? WALL_H + (f.oy || 0) : (WALL_H + f.y * T2 + T2 / 2 + (f.oy || 0));
+      const gx = Math.floor(px2 / T2);
+      const gy = Math.floor((py2 - WALL_H - 1) / T2);
+      return [gx + "," + gy];
+    }
+    return cellsOf(f);                        // full
+  };
+  const hasBody = f => {
+    const rb = ruleOf(f.a);
+    return !!(rb && rb.body !== "none");
+  };
+
+  /* 全量违规清单。每条都带 code，方便门禁逐类统计、也方便按清单修数据。
+   *   E-UNKNOWN   素材没登记分类（无法判定 = 不许进场）
+   *   E-PLACE     室外专用件被放进房间，或室内专用件被放在户外
+   *   E-LAYER     挂载层不对（墙上出现地面件 / 地面件被标成挂墙 / 桌上件没有 host）
+   *   E-OVERLAP   家具或设施互相重叠（植被之间豁免）
+   *   E-WALL      非挂墙件占了墙格
+   *   E-ROAD      落地件压在道路上
+   *   E-HOST      桌上件引用的 host 不存在或是自身        */
+  const layoutViolations = () => {
+    const out = [];
+    const push = (code, f, msg, extra) => out.push(Object.assign({
+      code, asset: f.a, id: f.id || null, x: f.x, y: f.y,
+      room: roomStrict(f.x, f.y), msg
+    }, extra || {}));
+
+    items.forEach(f => {
+      const rb = ruleOf(f.a);
+      if (!rb) { push("E-UNKNOWN", f, "素材 " + f.a + " 没有在 tools/asset-rules.mjs 登记分类"); return; }
+
+      const layer = layerOf(f), where = placeOf(f);
+
+      // 1) 分区：室内件 / 室外件
+      if (!canPlace(f.a, where)) {
+        push("E-PLACE", f, (where === "indoor" ? "室外专用件被放进了房间（" + roomStrict(f.x, f.y) + "）"
+                                            : "室内专用件被放在了户外"), { where, want: rb.place });
+      }
+
+      // 2) 挂载层
+      if (!canMount(f.a, layer)) {
+        push("E-LAYER", f, "挂载层不对：它现在是 " + layer + "，允许 " + rb.mount.join("/"), { layer, want: rb.mount });
+      }
+
+      // 3) 桌上件必须有合法 host
+      /* 关键补充（用户截图抓到的那条）：**只能放桌上的物件，落地了要报 E-TOP**。
+       * 之前只在 f.on 存在时才查 host 是否合法，于是"果盘压根没写 on、直接躺在地上"
+       * 这种情况既不触发 E-LAYER（因为它就是 floor）、也不触发 E-HOST（因为没有 on），
+       * 整套引擎全绿，可画面上果盘就在地砖上。判定缺口就在这里。 */
+      const topOnly = rb.mount.length === 1 && rb.mount[0] === "top";
+      if (topOnly && !f.on) {
+        push("E-TOP", f, "只能放桌面/台面上的物件被直接摆在了地上（缺 on 指向一个 host）", { layer });
+      }
+      if (f.on) {
+        const host = items.find(g => g.id === f.on);
+        if (!host) push("E-HOST", f, "桌上件引用的 host 「" + f.on + "」不存在");
+        else if (host === f) push("E-HOST", f, "host 指向自己");
+        else if (!["floor", "floor_or_top"].some(mk => canMount(host.a, "floor"))) {
+          push("E-HOST", f, "host「" + f.on + "」(" + host.a + ") 本身不是可承载的家具");
+        }
+        /* E-ANCHOR（渲染定位缺口）：桌上件的**画面位置完全由 dx/dy 决定**，
+         * 运行时是 y = (host.y - host.bbox[3]) + dy。缺 dx/dy 时默认落 0，
+         * 物体会贴在"宿主内容顶边"，视觉上像是悬在半空/躺在地上 ——
+         * 而数据、碰撞、房间归属全是对的，所以任何几何判据都发现不了。
+         * 这一条是用户第二次截图"这真的改了吗"的直接原因：
+         * 我给果盘补了 on，却忘了给 dx/dy，于是 check 全绿、画面没变。
+         * 缺省时**必须显式写 0 或具体偏移**，不许留空。 */
+        if (typeof f.dx !== "number" || typeof f.dy !== "number") {
+          const miss = [typeof f.dx !== "number" ? "dx" : null, typeof f.dy !== "number" ? "dy" : null].filter(Boolean);
+          push("E-ANCHOR", f, "桌上件缺 " + miss.join("/") + "（画面位置全靠它，缺省=贴宿主顶边，看着像浮空/落地）");
+        }
+      }
+
+      // 4) 非挂墙件占墙格
+      if (layer !== "wall" && rb.body !== "none") {
+        const onWall = bodyCellsOf(f).filter(k => wallCells.has(k));
+        if (onWall.length) push("E-WALL", f, "占了墙格 " + onWall.join(" "), { cells: onWall });
+      }
+
+      // 5) 落地件压路
+      if (layer === "floor" && rb.body === "full") {
+        const onRoad = bodyCellsOf(f).filter(k => roadCells.has(k));
+        if (onRoad.length) push("E-ROAD", f, "压在道路上 " + onRoad.join(" "), { cells: onRoad });
+      }
+    });
+
+    // 6) 重叠：家具/设施一律不许重叠；植被之间豁免（用户拍板）
+    const withBody = items.filter(f => hasBody(f));
+    const occ = new Map();
+    withBody.forEach(f => bodyCellsOf(f).forEach(k => {
+      if (!occ.has(k)) occ.set(k, []);
+      occ.get(k).push(f);
+    }));
+    const reported = new Set();
+    occ.forEach((list, cell) => {
+      for (let i = 0; i < list.length; i++) for (let j = i + 1; j < list.length; j++) {
+        const A = list[i], B = list[j];
+        if (isVegetation(A.a) && isVegetation(B.a)) continue;   // 植被互叠豁免
+        const key = [(A.id || A.a), (B.id || B.a)].sort().join("|");
+        if (reported.has(key)) continue;
+        reported.add(key);
+        push("E-OVERLAP", A, "与 " + (B.id || B.a) + "(" + B.a + "@" + B.x + "," + B.y + ") 重叠于 " + cell,
+          { other: B.id || B.a, otherAsset: B.a, cell });
+      }
+    });
+
+    return out;
+  };
+
   return {
-    map, man, T, COLS, ROWS, rooms, roomOf, material, items, solid, cellsOf, roadCells, conflictsOf, protectedSet,
+    map, man, T, COLS, ROWS, rooms, roomOf, roomStrict, material, items, solid, cellsOf, roadCells, conflictsOf, protectedSet,
     customFloor, customTerrain, customFurn, anchors, anchorCells,
     wallCells, wallTouch, touchesWall,
     hiddenKeys, moveOverrides, hidden, movedCount,
+    layerOf, placeOf, bodyCellsOf, hasBody, layoutViolations,
     isBlocked: (x, y) => !blocked[y] || blocked[y][x] === true,
     blocked
   };

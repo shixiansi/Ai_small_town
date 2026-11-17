@@ -64,7 +64,13 @@ const solve = (f, cx, row) => {
       if (!cs.length) continue;
       const cols = cs.map(k => +k.split(",")[0]);
       const rows = cs.map(k => +k.split(",")[1]);
-      if (!rows.every(r => r === row)) continue;
+      /* 多行占格（如 foot=[2,2] 的双人床）必须支持：
+       * 旧判断要求"所有格都在同一行"，2×2 的床永远解不出来（报"找不到坐标"）。
+       * 现在：行必须**连续且末行 = 目标行**（脚点落在目标行），列左缘 = 目标列。 */
+      const rowSet = [...new Set(rows)].sort((a, b) => a - b);
+      const contiguous = rowSet.every((r, i) => i === 0 || r === rowSet[i - 1] + 1);
+      if (!contiguous) continue;
+      if (Math.max(...rows) !== row) continue;
       if (Math.min(...cols) !== cx) continue;
       if (new Set(cs).size !== cs.length) continue;
       return { x: Math.round(x * 100) / 100, y: Math.round(y * 100) / 100, cells: cs };
@@ -146,6 +152,20 @@ if (idx < 0) {
 const entry = mj.furniture[idx];
 const before = { x: entry.x, y: entry.y };
 console.log("\n" + arg.id + "  " + entry.a + (entry.sc ? "  sc=" + entry.sc : "") + (entry.flipX ? "  flipX=1" : ""));
+
+/* 桌上物件（mount 只有 top）没有自己的坐标，它跟着 host 走。
+ * 用 --cell 想把它"放地上"必须直接拒绝，而且要说清原因 ——
+ * 这正是用户截图里"果盘躺在地砖上"的入口：以前它只是"解不出来"，报错很难懂。 */
+{
+  const r0 = (await import("./asset-rules.mjs")).ruleOf(entry.a);
+  if (r0 && r0.mount.length === 1 && r0.mount[0] === "top") {
+    console.log("  ✗ " + entry.a + " 是**桌上物品**（mount 只有 top），它没有自己的坐标，只能挂在 host 上。");
+    console.log("     要换位置请改它的 on 指向哪件家具，例如：");
+    console.log("       在 web/map.json 里把该条目的 on 改成目标家具的 id（去掉 x/y）");
+    console.log("     若它现在就在桌上，说明它已经是合法的，不需要再用 --cell 落位。");
+    process.exit(1);
+  }
+}
 report(entry, "旧");
 
 const solved = solve(entry, cx, row);
@@ -170,6 +190,88 @@ if (arg.anchor) {
    * 真正的可走性由 bust → check（锚点落在阻挡格里）最终裁决。 */
   if (after.cs.includes(ax + "," + ay)) console.log("  ⚠ 锚点 (" + ax + "," + ay + ") 正被这件家具占着 —— 要站到占格旁边一格");
   else if (model.isBlocked(ax, ay)) console.log("  ⚠ 锚点 (" + ax + "," + ay + ") 在旧模型里就不可走 —— 门禁会拦");
+}
+
+/* ==========================================================================
+ * 摆放规则引擎：**落位前硬阻断**
+ *
+ * 这是用户要求的核心："这些应该做成硬性约束……应该有违反的摆放会报错，
+ * 应该做成引擎而不是提示词的约束。"
+ *
+ * 于是 place.mjs 不再只是"报几个 ⚠ 让人自己看"—— 它会在写盘之前，
+ * 用与门禁同一套判据（map-model.layoutViolations + asset-rules 分类）
+ * 检查"这一件挪过去之后会不会违规"，违规就**拒绝落盘**。
+ *
+ *   node tools/place.mjs --id=fence1 --cell=10,2      → ✗ 拒绝（室外件不能进房间）
+ *   node tools/place.mjs --id=fence1 --cell=10,2 --force → 明确豁免（会打印为什么危险）
+ * ========================================================================== */
+{
+  // 把待落位的这件也带进模型一起判定，才能发现"压到别人"这类问题
+  const rb = (await import("./asset-rules.mjs")).ruleOf(entry.a);
+  if (!rb) {
+    console.log("\n  ✗ 素材 " + entry.a + " 没有在 tools/asset-rules.mjs 登记分类 —— 无法判定合法性，拒绝落盘。");
+    console.log("     先补分类，再落位（未登记 = 不许进场）。");
+    process.exit(1);
+  }
+  /* 层判定必须看"这件东西落到目标位置之后会处于哪一层"，不能只看它原来的标记。
+   * 坑：窗帘 entry.wall=true，把它拖到房间中央，wall 标记还在，于是层仍算 wall、
+   * 规则放行 —— 但它其实已经悬在地面上了。判定口径与运行时的层语义对齐：
+   *   on      → top（叠在 host 上）
+   *   band    → wall（贴顶部墙带）
+   *   wall 且**目标格确实挨着/压着墙** → wall
+   *   wall 但目标格完全脱离墙面 → 它已经在空地上了，按 floor 判（会被规则拦下） */
+  const targetCells = model.cellsOf(entry);
+  const nearWall = targetCells.some(k => {
+    const [kx, ky] = k.split(",").map(Number);
+    return model.wallCells.has(k) ||
+      model.wallCells.has((kx + 1) + "," + ky) || model.wallCells.has((kx - 1) + "," + ky) ||
+      model.wallCells.has(kx + "," + (ky + 1)) || model.wallCells.has(kx + "," + (ky - 1));
+  });
+  const layer = entry.on ? "top" : entry.band ? "wall" : entry.wall ? (nearWall ? "wall" : "floor") : "floor";
+  const { canMount: cm, canPlace: cp } = await import("./asset-rules.mjs");
+  const where = model.roomStrict(entry.x, entry.y) ? "indoor" : "outdoor";
+  const probs = [];
+  if (!cp(entry.a, where)) {
+    probs.push((where === "indoor" ? "室外专用件不能放进房间" : "室内专用件不能放在户外")
+      + "（该素材 place=" + rb.place + "）");
+  }
+  if (!cm(entry.a, layer)) probs.push("挂载层不对：现在是 " + layer + "，允许 " + rb.mount.join("/") + "（墙/地/桌三层不能用错）");
+
+  // 用模型的真实判定跑一遍"落位后"的检查：临时构造一个只含本件的探测
+  const probe = Object.assign({}, entry);
+  const body = model.bodyCellsOf(probe);
+  const clash = [];
+  if (body) {
+    const others = model.items.filter(f => (f.id || f.a) !== (entry.id || entry.a) && model.hasBody(f));
+    for (const o of others) {
+      const oc = model.bodyCellsOf(o);
+      if (!oc) continue;
+      const shared = body.filter(k => oc.includes(k));
+      if (!shared.length) continue;
+      const { isVegetation: iv } = await import("./asset-rules.mjs");
+      if (iv(entry.a) && iv(o.a)) continue;     // 植被互叠豁免
+      clash.push((o.id || o.a) + "(" + o.a + ")@" + o.x + "," + o.y + " 重叠于 " + shared.join(" "));
+    }
+  }
+  const onWall = body ? body.filter(k => model.wallCells.has(k)) : [];
+  const onRoad = body ? body.filter(k => model.roadCells.has(k)) : [];
+  if (layer !== "wall" && onWall.length) probs.push("占了墙格 " + onWall.join(" ") + "（只有挂墙件能上墙）");
+  if (layer === "floor" && onRoad.length) probs.push("压在道路上 " + onRoad.join(" "));
+  clash.slice(0, 5).forEach(c => probs.push("与已有物件重叠：" + c));
+
+  if (probs.length) {
+    console.log("\n  ✗ 摆放规则不允许这个位置（引擎约束，不是建议）：");
+    probs.forEach(p => console.log("      · " + p));
+    if (arg.force) {
+      console.log("\n  ! 你用了 --force：明知违规仍然落盘。门禁 check.mjs 会把它当成错误报出来。");
+    } else {
+      console.log("\n  换一个位置，或先确认 tools/asset-rules.mjs 里该素材的分类是否正确。");
+      console.log("  确实要强行落盘：加 --force（门禁仍会报错）。");
+      process.exit(1);
+    }
+  } else {
+    console.log("  ✓ 摆放规则通过（分区 / 挂载层 / 碰撞 都合法）");
+  }
 }
 
 if (arg.apply) {

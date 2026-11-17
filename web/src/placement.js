@@ -28,12 +28,25 @@
       footY = y;
       depth = f.wall ? 60 : footY;   // v83.2：wall 开关/壁灯要盖在墙 tile（底图 RT depth 6）之上，-5 时被墙吞掉
     }
-    // 大小关系：内容高度相对 48px 格的期望比例（SCALE_TABLE 给的是"内容渲染高度目标"）
-    var cap = SCALE_TABLE[f.a];
+    /* 大小关系：**按格子归一化**，数据在 web/assets/manifest.json 的 artScale 字段。
+     *
+     * 旧写法只用一张写死在 head.js 里的 SCALE_TABLE，而且
+     *   scale = min(1.15, cap*TILE/内容高)
+     * 只按**高度**算，宽度完全不受控，还把放大锁死在 1.15 倍。
+     * 结果：餐桌渲染 1.14 格宽、沙发 1.10 格宽、衣柜 0.48 格宽 ——
+     * 大件家具基本停在原美术尺寸，看起来"没有按格子放大"。
+     *
+     * 现在：素材自己声明 foot（占几格）和 artScale（怎么缩放），
+     * 工具侧（map-model / surface-fit / 门禁）与运行时读同一份数据。
+     * SCALE_TABLE 只作兜底，防止漏标的素材突然变成 1x。 */
     var scale = 1;
-    if (cap) {
-      // 目标：内容渲染高度 = cap * TILE。当前内容高度 bbox[3] → scale = cap*TILE/bbox[3]
-      scale = Math.min(1.15, (cap * TILE) / Math.max(bbox[3], 1));
+    if (typeof f.artScale === "number") {
+      scale = f.artScale;                        // 实例级覆盖（桌面摆件按台面自动缩放用这个）
+    } else if (typeof m.artScale === "number") {
+      scale = m.artScale;                        // 素材级默认值
+    } else {
+      var cap = SCALE_TABLE[f.a];
+      if (cap) scale = Math.min(1.15, (cap * TILE) / Math.max(bbox[3], 1));
     }
     return {
       m: m, key: f.a, o: !!f.o, wall: !!f.wall, floor: !!f.floor, id: f.id,

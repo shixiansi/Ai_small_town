@@ -32,7 +32,7 @@
       "今日完成 " + evidence.done + " 件",
       (evidence.current || "待命中").slice(0, 12)
     ];
-    var k = uiK();
+    var k = uiKz();
     var t = scene.add.text(bx, by, lines.join("\n"), {
       fontFamily: "monospace", fontSize: uiFont(14) + "px", color: "#f4f1ea",
       backgroundColor: "#3a2f26ee",
@@ -60,14 +60,44 @@
    * 设的 image-rendering: pixelated（最近邻采样），中文细笔画直接被采样成灰块、带虚边重影。
    * DOM 文字不走这条路，所以状态条/说明一直是清楚的 —— 这就是「只有画里的字糊」的原因。
    * 下面按实时缩放比反算：所有画布 UI 文字与几何都乘 k，屏幕呈现尺寸不变，但笔画有足够像素。 */
+  /* 页面上有**两个** canvas，顺序是：
+   *   ① #mm-canvas   小地图，写死 336×180，CSS 约 166×88
+   *   ② 无 id         Phaser 主画布，1248×768，CSS 约 842×517
+   * `#office-parent canvas` 命中的是**第一个**，也就是小地图 ——
+   * 于是 canvasScale 拿到 166/336 = 0.494（主画布其实是 842/1248 = 0.675），
+   * uiK 被算成 2.02，字号整整大了一倍多。这正是"气泡怎么这么大"的根因，
+   * 也是 shot.mjs 里那句"按面积取最大的那个 canvas"早就踩过的同一个坑。
+   * 现在统一按**面积最大的 canvas**取。 */
+  function gameCanvas() {
+    var list = document.querySelectorAll("#office-parent canvas");
+    var best = null, bestArea = -1;
+    for (var i = 0; i < list.length; i++) {
+      var c = list[i], a = (c.width || 0) * (c.height || 0);
+      if (a > bestArea) { bestArea = a; best = c; }
+    }
+    return best;
+  }
   function canvasScale() {
-    var c = document.querySelector("#office-parent canvas");
+    var c = gameCanvas();
     if (!c) return 1;
     var r = c.getBoundingClientRect();
     return r.width > 0 ? Math.max(0.2, Math.min(1, r.width / c.width)) : 1;
   }
   function uiK() { return 1 / canvasScale(); }              // 1 CSS px = 多少世界 px
-  function uiFont(cssPx) { return Math.round(cssPx * uiK()); }
+  /* 相机 zoom 会把**世界坐标里的东西**一起放大/缩小。
+   * 气泡是画在世界坐标里的（scene.add.text + graphics），所以它的屏幕尺寸是：
+   *     屏幕字号 = uiFont(13) × zoom × canvasScale = 13 × zoom
+   * 也就是 zoom 一旦到 2.2（view.js 滚轮上限），字就变成 28.6 CSS px —— 地图放大了，
+   * 气泡比地图涨得更凶，看着就是"气泡怎么这么大"。
+   *
+   * 所以 UI 类画布文字必须**再除以 zoom**，让屏幕尺寸恒定在 cssPx：
+   *     13 × uiK()/zoom × zoom × canvasScale = 13 CSS px
+   * 这样无论放大到 2.2 还是缩小到 0.8，气泡都只有那么大。 */
+  function camZoom() {
+    return (scene && scene.cameras && scene.cameras.main && scene.cameras.main.zoom) || 1;
+  }
+  function uiKz() { return uiK() / camZoom(); }             // 世界 px / CSS px，已扣掉 zoom
+  function uiFont(cssPx) { return Math.round(cssPx * uiKz()); }
   var lastBubble = null, textResizeTimer = null;
   function refreshCanvasText() {
     if (bubble && lastBubble) { var lb = lastBubble; showBubble(lb.text, lb.mood); }
@@ -101,7 +131,7 @@
     if (typeof editorMode !== "undefined" && editorMode) return;   // v48：编辑页不弹气泡
     if (!scene || !fish) return;
     hideBubble();
-    var k = uiK();
+    var k = uiKz();
     var txt = text.length > 20 ? text.slice(0, 19) + "…" : text;
     bubbleText = scene.add.text(0, 0, txt, {
       fontFamily: "PingFang SC, Microsoft YaHei, sans-serif",
@@ -125,9 +155,24 @@
     bubble = scene.add.container(fish.x + bubbleOff.x, fish.y + bubbleOff.y, [bg, bubbleText]);
     bubbleText.setPosition(0, -8 * k);
     bubble.setDepth(90000);
-    bubble.setScale(0.6);
-    scene.tweens.add({ targets: bubble, scale: 1, duration: 180, ease: "Back.Out" });
+
+    /* 【最终纠偏：不依赖 uiK 推得对不对】
+     * 前面两版都在"把世界尺寸算准"上打转（先补 1/zoom，再修正取错 canvas），
+     * 但只要推导里任何一环不对，气泡还是会偏大。这里改成**按目标屏幕尺寸反解缩放**：
+     *   气泡最终屏幕高 = bh × scale × zoom × 主画布CSS比
+     * 直接令它等于 TARGET_H 个 CSS px，解出 scale 即可。
+     * 这样即使用户改了窗口大小 / 缩放档位 / DPR，气泡在屏幕上永远是同一个大小。 */
+    var TARGET_H = 30;                                  // 气泡目标屏幕高度（CSS px）
+    var gc = gameCanvas();
+    var ratio = gc ? (gc.getBoundingClientRect().width / gc.width) : 1;
+    var z = camZoom();
+    var screenH = Math.max(1, bh * z * ratio);
+    var fit = TARGET_H / screenH;
+    fit = Math.max(0.35, Math.min(3, fit));             // 兜底夹紧，防极端比例把字挤没/炸开
+    bubble.setScale(fit);
+    scene.tweens.add({ targets: bubble, scale: fit, duration: 180, ease: "Back.Out" });
     lastBubble = { text: text, mood: mood };
+    return fit;
   }
   function hideBubble() {
     if (bubble) { bubble.destroy(); bubble = null; }
@@ -171,3 +216,4 @@
       }
     });
   }
+
