@@ -347,9 +347,9 @@
     { room: "bath",    x: 10, y: 1,  w: 6,  h: 13, label: "卫浴" },
     { room: "kitchen", x: 16, y: 1,  w: 9,  h: 13, label: "厨房" },
     /* v2.8-c：三户矩形从 y=17 收到 y=19 —— 17~18 是主街，不该算进户内（有街灯的地方不该整体变暗） */
-    { room: "nbCat",   x: 39, y: 19, w: 8,  h: 10, label: "喵酱家" },
-    { room: "nbChief", x: 47, y: 19, w: 4,  h: 10, label: "村长家" },
-    { room: "nbDoc",   x: 51, y: 19, w: 4,  h: 10, label: "博士家" }
+    { room: "nbCat",   x: 40, y: 19, w: 5,  h: 10, label: "喵酱家" },
+    { room: "nbChief", x: 46, y: 19, w: 5,  h: 10, label: "村长家" },
+    { room: "nbDoc",   x: 52, y: 19, w: 4,  h: 10, label: "博士家" }
   ];
   /* 某块阴影区域是否覆盖了这个房间（重叠面积 > 房间的 25% 就算覆盖） */
   function roomCovered(rr, edits) {

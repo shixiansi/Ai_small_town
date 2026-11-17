@@ -1261,27 +1261,6 @@
    ],
    "face": "s"
   },
-  "npc_cat": {
-   "anchor": [
-    43.6,
-    11.4
-   ],
-   "face": "s"
-  },
-  "npc_chief": {
-   "anchor": [
-    47.6,
-    11.4
-   ],
-   "face": "s"
-  },
-  "npc_doc": {
-   "anchor": [
-    54.6,
-    11.4
-   ],
-   "face": "s"
-  },
   "town_bench": {
    "anchor": [
     47.6,

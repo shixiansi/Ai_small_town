@@ -341,7 +341,7 @@ loadErrors = [];
 this.load.off("loaderror", onLoadError);
 this.load.on("loaderror", onLoadError);
 this.load.json("manifest", "assets/manifest.json?v=eb7ab1a1");
-this.load.json("mapdata", "map.json?v=1d58be12");
+this.load.json("mapdata", "map.json?v=385bb950");
 };
 SceneBoot.prototype.create = function () {
 var manifest = this.cache.json.get("manifest");
@@ -1456,9 +1456,9 @@ office:  [0, 15, 26, 15],
 bedroom: [1, 1, 9, 13],
 bath:    [10, 1, 6, 13],
 kitchen: [16, 1, 9, 13],
-nbCat:   [39, 19, 8, 10],    // 喵酱家：房子 cottage 在 x≈42.2 / y≈19.6
-nbChief: [47, 19, 4, 10],    // 村长家：房子 house-modern 在 x≈48.2 / y≈19.6
-nbDoc:   [51, 19, 4, 10]     // 博士家：房子 farmhouse 在 x≈53.4 / y≈19.6（原 y=20 起，房子精灵会露在框外）
+nbCat:   [40, 19, 5, 10],    // 喵酱家：房子 cottage 在 x≈42.2 / y≈19.6
+nbChief: [46, 19, 5, 10],    // 村长家：房子 house-modern 在 x≈48.2 / y≈19.6
+nbDoc:   [52, 19, 4, 10]     // 博士家：房子 farmhouse 在 x≈53.4 / y≈19.6（原 y=20 起，房子精灵会露在框外）
 };
 try { window.__officeRoomRects = SWITCH_ROOM_RECTS; } catch (e) {}   // v2.7：小地图复用同一份房间矩形
 function roomOfProp(p) {
@@ -1925,9 +1925,9 @@ var ROOM_RECTS = [
 { room: "bedroom", x: 1,  y: 1,  w: 9,  h: 13, label: "起居" },
 { room: "bath",    x: 10, y: 1,  w: 6,  h: 13, label: "卫浴" },
 { room: "kitchen", x: 16, y: 1,  w: 9,  h: 13, label: "厨房" },
-{ room: "nbCat",   x: 39, y: 19, w: 8,  h: 10, label: "喵酱家" },
-{ room: "nbChief", x: 47, y: 19, w: 4,  h: 10, label: "村长家" },
-{ room: "nbDoc",   x: 51, y: 19, w: 4,  h: 10, label: "博士家" }
+{ room: "nbCat",   x: 40, y: 19, w: 5,  h: 10, label: "喵酱家" },
+{ room: "nbChief", x: 46, y: 19, w: 5,  h: 10, label: "村长家" },
+{ room: "nbDoc",   x: 52, y: 19, w: 4,  h: 10, label: "博士家" }
 ];
 function roomCovered(rr, edits) {
 var roomArea = rr.w * rr.h;
@@ -5775,7 +5775,7 @@ nbCat: "#b08a5e", nbChief: "#b08a5e", nbDoc: "#b08a5e"
 function roomRects() {
 return window.__officeRoomRects || {
 office: [0, 15, 26, 15], bedroom: [1, 1, 9, 13], bath: [10, 1, 6, 13],
-kitchen: [16, 1, 9, 13], nbCat: [39, 19, 8, 10], nbChief: [47, 19, 4, 10], nbDoc: [51, 19, 4, 10]
+kitchen: [16, 1, 9, 13], nbCat: [40, 19, 5, 10], nbChief: [46, 19, 5, 10], nbDoc: [52, 19, 4, 10]
 };
 }
 function paintBase() {
