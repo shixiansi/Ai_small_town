@@ -28,6 +28,7 @@
     nbDoc:   [51, 20, 4, 9]     // v83：博士家（右下）
   };
   /* 一个开关控制哪个房间：优先用条目里的 room，否则按它所在位置取最近的房间 */
+  try { window.__officeRoomRects = SWITCH_ROOM_RECTS; } catch (e) {}   // v2.7：小地图复用同一份房间矩形
   function roomOfProp(p) {
     var want = p.f && p.f.room;
     if (want === "none") return null;

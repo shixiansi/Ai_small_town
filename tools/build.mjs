@@ -47,6 +47,7 @@ export const ORDER = [
   "loop.js",        // 主循环 + 点击语义
   "net.js",         // WebSocket + 状态条
   "activity.js",    // 最近动态窗 / 今日时间表
+  "minimap.js",     // v2.7 小地图（左上，相机只装得下 24.8% 地图时的"她在哪"）
   "start.js",       // new Phaser.Game 启动
   "api.js"          // window.__office / __officeCtl + IIFE 收尾
 ];

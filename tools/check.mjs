@@ -1012,6 +1012,40 @@ check("节奏：任意 3 分钟窗口都要有事（beat-audit 仿真）", () =>
   };
 });
 
+// ---------- 第 24 项：小地图（v2.7）----------
+check("小地图（左上 / 500ms 重绘 / 点击跳转 / 房间矩形同源）", () => {
+  const bad = [], warnings = [];
+  const mmSrc = read(path.join(WEB, "src", "minimap.js"));
+  // 1) DOM 与样式
+  if (!indexSrc.includes('id="minimap"')) bad.push("index.html 缺 #minimap 容器");
+  if (!indexSrc.includes('id="mm-canvas"')) bad.push("index.html 缺 #mm-canvas（小地图画布）");
+  if (!indexSrc.includes('id="mm-fold"')) bad.push("index.html 缺 #mm-fold（折叠按钮）");
+  if (!/#minimap\s*\{[^}]*position:\s*absolute/.test(indexSrc)) bad.push("#minimap 没做绝对定位（会挤跑画布布局）");
+  if (!/#minimap\s*\{[^}]*left:\s*\d/.test(indexSrc)) bad.push("#minimap 没靠左（v2.7 决定的位置是左上）");
+  // 2) 重绘节奏：太慢会顿、太快没必要（1680 格不该逐格画）
+  const iv = /setInterval\(draw,\s*(\d+)\)/.exec(mmSrc);
+  if (!iv) bad.push("minimap.js 缺 setInterval(draw, N)（没有定时重绘）");
+  else {
+    const ms = Number(iv[1]);
+    if (ms < 250) bad.push(`小地图重绘间隔 ${ms}ms 太密（≥250ms，500ms 最好）`);
+    if (ms > 1000) warnings.push(`小地图重绘间隔 ${ms}ms 偏慢，移动会跳格`);
+  }
+  // 3) 数据来源：她 / NPC / 视口框都要真的读运行时状态
+  if (!/fishXY/.test(mmSrc)) bad.push("minimap.js 没读 __office.fishXY（画不出她在哪）");
+  if (!/window\.__office\.npcs/.test(mmSrc)) bad.push("minimap.js 没读 __office.npcs（NPC 点缺失）");
+  if (!/worldView/.test(mmSrc)) bad.push("minimap.js 没画视口框（worldView）：看不出镜头在哪一块");
+  // 4) 点击跳转：必须停跟随，否则下一帧就被拉回去
+  if (!/addEventListener\("click", onClick\)/.test(mmSrc)) bad.push("小地图没绑点击");
+  if (!/stopFollow\(\)/.test(mmSrc) || !/\.pan\(/.test(mmSrc)) bad.push("小地图点击没有 stopFollow + pan（会被跟随立刻拉回）");
+  // 5) 房间矩形必须与家具层同源（防止以后改房间尺寸时小地图变成一张假图）
+  if (!/__officeRoomRects/.test(read(path.join(WEB, "src", "furniture.js")))) bad.push("furniture.js 没暴露 __officeRoomRects（小地图会画在旧坐标上）");
+  if (!/window\.__officeRoomRects \|\|/.test(mmSrc)) bad.push("minimap.js 没有 __officeRoomRects 的兜底（加载顺序变化时会画空）");
+  // 6) 折叠态记忆 + 自动走查快照
+  if (!/office_minimap/.test(mmSrc)) bad.push("小地图折叠态没持久化（localStorage.office_minimap）");
+  if (!/__officeMinimap/.test(mmSrc)) bad.push("小地图没暴露 __officeMinimap（自动走查断言用）");
+  return { problems: bad, warnings, note: `168×90 CSS / ${iv ? iv[1] : "?"}ms 重绘 / 房间矩形同源家具层` };
+});
+
 console.log("\noffice 静态自检\n" + "─".repeat(64));
 results.forEach(r => {
   const tag = r.problems.length ? "[FAIL]" : (r.warnings.length ? "[WARN]" : "[ OK ]");

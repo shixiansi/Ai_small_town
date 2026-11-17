@@ -188,6 +188,14 @@
     #debug-toggle { position: fixed; right: 16px; bottom: 16px; z-index: 60; width: 38px; height: 38px; border-radius: 50%; border: 1px solid var(--line); background: var(--card); color: var(--ink); font-size: 17px; line-height: 1; cursor: pointer; box-shadow: 0 2px 10px rgba(0,0,0,.18); opacity: .75; }
     #debug-toggle:hover { opacity: 1; transform: translateY(-1px); }
     #debug-toggle[hidden] { display: none; }
+    /* v2.7 小地图（左上）：56:30 等比 168×90；点击可把镜头跳过去（相机一次只装得下 24.8% 地图） */
+    #minimap { position: absolute; left: 10px; top: 10px; z-index: 22; width: 168px; height: 90px; border-radius: 8px; overflow: hidden; border: 1px solid #ffffff44; box-shadow: 0 2px 10px rgba(0,0,0,.28); background: #1b2233; }
+    #minimap canvas { display: block; width: 100%; height: 100%; cursor: crosshair; }
+    #minimap #mm-fold { position: absolute; right: 3px; top: 3px; width: 18px; height: 18px; padding: 0; border: 0; border-radius: 4px; background: #00000066; color: #fff; font-size: 11px; line-height: 1; cursor: pointer; }
+    #minimap.folded { width: 40px; height: 24px; }
+    #minimap.folded canvas { opacity: .3; }
+    #minimap.folded #mm-fold { position: static; margin: 3px; }
+    @media (max-width: 600px) { #minimap { width: 132px; height: 71px; left: 6px; top: 6px; } }
   </style>
 </head>
 <body>
@@ -214,6 +222,10 @@
         <div class="pp-body" id="pp-body"></div>
       </div>
       <div id="room-tabs" style="position:absolute;top:8px;right:12px;display:flex;gap:6px;z-index:20;"></div>
+      <div id="minimap" aria-label="小镇地图，点击可把视角跳过去">
+        <canvas id="mm-canvas" width="336" height="180"></canvas>
+        <button id="mm-fold" type="button" aria-expanded="true" aria-controls="mm-canvas" title="收起 / 展开小地图">▾</button>
+      </div>
       <script>
         // 兜底：8 秒后场景仍未就绪则提示刷新（弱网/缓存异常时不至于永久卡死）
         setTimeout(function () {
@@ -281,7 +293,7 @@
   </div>
 
   <script src="assets/phaser.min.js"></script>
-  <script src="office.js?v=1c8c513b"></script>
+  <script src="office.js?v=ebe9daa7"></script>
 
   <!-- 调试工作台：默认只放一个低调入口，点击（或按 D / ?debug=1）才加载面板，线上零开销 -->
   <button id="debug-toggle" type="button" title="调试工作台（快捷键 D）" aria-label="打开调试工作台" aria-controls="dbg-panel" aria-expanded="false">🛠</button>
