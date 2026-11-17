@@ -92,6 +92,7 @@
     tilling:   { zone: "farm",       act: "craft",  verb: "下地看看",  mood: "idle" },
     wellside:  { zone: "town",       act: "drink",  verb: "井边打水",  mood: "idle" },
     bench_sit: { zone: "town_bench", act: "sit",    verb: "坐一会儿",  mood: "idle" },
+    park_walk: { zone: "park",       act: "walk",   verb: "公园散步",  mood: "idle" },
   };
   var ACTIVE_STATES = ["arrive", "working", "browsing", "watching", "organizing", "writing", "rewriting",
     "diary", "designing", "posting", "mailing", "replying", "commenting", "weekly",
@@ -139,7 +140,7 @@
     recovering: "🔋", listening: "🎵", gaming: "🎮", celebrating: "🎉", tired: "🥱",
     tea_time: "☕", gaze: "🪟", reading: "📖", thinking: "💡", noting: "📋",
     breathe: "🌤", dressing: "👗", preening: "🪞", resting: "🪑", tilling: "🌱",
-    wellside: "🪣", bench_sit: "🌳"
+    wellside: "🪣", bench_sit: "🌳", park_walk: "🌲"
   };
 
   /* ---------- 大小关系 ----------

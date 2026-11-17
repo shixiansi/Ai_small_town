@@ -947,6 +947,161 @@
    "x": 54.9,
    "y": 24.3,
    "sc": 0.8
+  },
+  {
+   "a": "oak-tree",
+   "x": 41.5,
+   "y": 3.2,
+   "id": "park1"
+  },
+  {
+   "a": "oak-tree",
+   "x": 53.5,
+   "y": 3.2,
+   "id": "park2"
+  },
+  {
+   "a": "oak-tree",
+   "x": 44.5,
+   "y": 6.4,
+   "id": "park3"
+  },
+  {
+   "a": "oak-tree",
+   "x": 50.5,
+   "y": 6.2,
+   "id": "park4"
+  },
+  {
+   "a": "bench-park",
+   "x": 45.6,
+   "y": 5.2,
+   "id": "park5"
+  },
+  {
+   "a": "bench-park",
+   "x": 49.4,
+   "y": 5,
+   "id": "park6"
+  },
+  {
+   "a": "street-lamp",
+   "x": 43.5,
+   "y": 4.6,
+   "id": "park7"
+  },
+  {
+   "a": "street-lamp",
+   "x": 51.5,
+   "y": 5.2,
+   "id": "park8"
+  },
+  {
+   "a": "bush",
+   "x": 40.6,
+   "y": 6.8,
+   "id": "park9",
+   "o": true
+  },
+  {
+   "a": "bush",
+   "x": 52.8,
+   "y": 8.6,
+   "id": "park10",
+   "o": true
+  },
+  {
+   "a": "bush",
+   "x": 43.2,
+   "y": 9.4,
+   "id": "park11",
+   "o": true
+  },
+  {
+   "a": "flowers",
+   "x": 46.5,
+   "y": 3.6,
+   "id": "park12",
+   "o": true
+  },
+  {
+   "a": "flowers",
+   "x": 52.2,
+   "y": 5.6,
+   "id": "park13",
+   "o": true
+  },
+  {
+   "a": "fence-picket",
+   "x": 38,
+   "y": 3,
+   "id": "gfence1",
+   "o": true,
+   "wall": true
+  },
+  {
+   "a": "fence-picket",
+   "x": 38,
+   "y": 4,
+   "id": "gfence2",
+   "o": true,
+   "wall": true
+  },
+  {
+   "a": "fence-picket",
+   "x": 38,
+   "y": 5,
+   "id": "gfence3",
+   "o": true,
+   "wall": true
+  },
+  {
+   "a": "fence-picket",
+   "x": 38,
+   "y": 6,
+   "id": "gfence4",
+   "o": true,
+   "wall": true
+  },
+  {
+   "a": "fence-picket",
+   "x": 38,
+   "y": 7,
+   "id": "gfence5",
+   "o": true,
+   "wall": true
+  },
+  {
+   "a": "fence-picket",
+   "x": 38,
+   "y": 10,
+   "id": "gfence6",
+   "o": true,
+   "wall": true
+  },
+  {
+   "a": "fence-picket",
+   "x": 38,
+   "y": 11,
+   "id": "gfence7",
+   "o": true,
+   "wall": true
+  },
+  {
+   "a": "fence-picket",
+   "x": 38,
+   "y": 12,
+   "id": "gfence8",
+   "o": true,
+   "wall": true
+  },
+  {
+   "a": "fence-picket",
+   "x": 38,
+   "y": 13,
+   "id": "gfence9",
+   "o": true,
+   "wall": true
   }
  ],
  "zones": {
@@ -1341,6 +1496,13 @@
    ],
    "face": "n",
    "label": "料理台"
+  },
+  "park": {
+   "anchor": [
+    42.5,
+    11.6
+   ],
+   "face": "s"
   }
  },
  "walls": [
@@ -1490,6 +1652,20 @@
    "w": 2,
    "h": 3,
    "note": "办公室东门外的石板小院"
+  },
+  {
+   "x": 36,
+   "y": 8,
+   "w": 8,
+   "h": 2,
+   "note": "花园 → 公园小径（穿过 x=38 篱笆口）"
+  },
+  {
+   "x": 42,
+   "y": 10,
+   "w": 2,
+   "h": 6,
+   "note": "公园 → 主街小径"
   }
  ],
  "lights": [

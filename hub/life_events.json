@@ -31,6 +31,7 @@
     { "key": "cook_dinner", "state": "eating",    "task": "认真做了顿晚饭",    "detail": "厨房里全是香味",          "w": 1.0, "hours": [17, 20], "fills": { "hunger": 18, "mood": 4 }, "need": "hunger" },
     { "key": "wash_hands",  "state": "washing",   "task": "洗了把脸",          "detail": "水有点凉",                "w": 1.0, "hours": [7, 23], "fills": { "hygiene": 10, "mood": 2 }, "need": "hygiene" },
     { "key": "nap_pad",     "state": "recovering", "task": "在充电垫上趴了会儿","detail": "迷迷糊糊睡过去了",      "w": 1.0, "hours": [12, 17], "fills": { "energy": 10 }, "need": "energy" },
+    { "key": "park_round",  "state": "park_walk", "task": "在公园里走了一圈",    "detail": "树影在地上晃来晃去",      "w": 1.1, "hours": [9, 19], "fills": { "mood": 4, "energy": -1 }, "need": "mood" },
     { "key": "tidy_desk",   "state": "organizing", "task": "把桌上的东西归位", "detail": "顺便擦了下桌面",          "w": 0.8, "hours": [9, 22], "fills": { "mood": 2 } }
   ]
 }

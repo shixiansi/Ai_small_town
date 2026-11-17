@@ -56,6 +56,7 @@ resting:   { zone: "stroll",     act: "rest",   verb: "长椅歇脚",  mood: "id
 tilling:   { zone: "farm",       act: "craft",  verb: "下地看看",  mood: "idle" },
 wellside:  { zone: "town",       act: "drink",  verb: "井边打水",  mood: "idle" },
 bench_sit: { zone: "town_bench", act: "sit",    verb: "坐一会儿",  mood: "idle" },
+park_walk: { zone: "park",       act: "walk",   verb: "公园散步",  mood: "idle" },
 };
 var ACTIVE_STATES = ["arrive", "working", "browsing", "watching", "organizing", "writing", "rewriting",
 "diary", "designing", "posting", "mailing", "replying", "commenting", "weekly",
@@ -86,7 +87,7 @@ eating: "🍚", snacking: "🧊", relaxing: "😌", strolling: "🌳", browsing_
 recovering: "🔋", listening: "🎵", gaming: "🎮", celebrating: "🎉", tired: "🥱",
 tea_time: "☕", gaze: "🪟", reading: "📖", thinking: "💡", noting: "📋",
 breathe: "🌤", dressing: "👗", preening: "🪞", resting: "🪑", tilling: "🌱",
-wellside: "🪣", bench_sit: "🌳"
+wellside: "🪣", bench_sit: "🌳", park_walk: "🌲"
 };
 var SCALE_TABLE = {
 "coffee-mug": 0.32, "stapler": 0.4, "calculator": 0.4, "open-book": 0.45,
@@ -341,7 +342,7 @@ loadErrors = [];
 this.load.off("loaderror", onLoadError);
 this.load.on("loaderror", onLoadError);
 this.load.json("manifest", "assets/manifest.json?v=eb7ab1a1");
-this.load.json("mapdata", "map.json?v=385bb950");
+this.load.json("mapdata", "map.json?v=da1c6791");
 };
 SceneBoot.prototype.create = function () {
 var manifest = this.cache.json.get("manifest");
@@ -3675,6 +3676,7 @@ return "wood";
 }
 if (tx <= 38) return "grass";                            // 花园草地
 if (ty >= 19 && tx >= 39) return "wood";
+if (tx >= 39 && ty < 19) return "grass";
 return "stone";                                          // 小镇石板街
 }
 function paintRoads(s, rt) {
@@ -3748,6 +3750,10 @@ rt.batchDraw(tileTex(mat), tx * TILE, 0);
 }
 for (var dx = 0; dx < door.tw; dx++) rt.batchDraw(tileTex("wood"), (door.tx + dx) * TILE, 0);
 }
+function paintOuterWalls(s, rt) {
+for (var ty = 1; ty < ROWS; ty++) rt.batchDraw(tileTex("wall"), 0, WALL_H + ty * TILE);
+for (var tx = 0; tx < 26; tx++) rt.batchDraw(tileTex("wall"), tx * TILE, WALL_H + (ROWS - 1) * TILE);
+}
 function buildRoom(s) {
 if (s.baseGfx) { try { s.baseGfx.destroy(); } catch (e) {} }   // rebuildRoomBase 旧层先拆
 var rt = s.add.renderTexture(0, 0, W, H).setOrigin(0, 0).setDepth(-100);
@@ -3763,6 +3769,7 @@ paintRoads(s, rt);
 paintPond(rt);
 paintFarm(rt);
 paintWalls(s, rt);
+paintOuterWalls(s, rt);
 paintTopBand(s, rt);
 rt.endDraw();
 }

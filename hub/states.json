@@ -40,7 +40,8 @@
   "resting",
   "tilling",
   "wellside",
-  "bench_sit"
+  "bench_sit",
+  "park_walk"
  ],
  "active": [
   "arrive",

@@ -62,16 +62,13 @@ function dot(cx, cy, r, c, a = 255) {
 const FLOOR = {
   wood: [176, 138, 94], tile: [159, 176, 184], grass: [126, 168, 106], stone: [169, 164, 154]
 };
-function matAt(tx, ty) {
-  if (tx <= 26) {
-    if (ty < 15 && tx >= 10 && tx <= 15) return "tile";
-    if (ty < 15 && tx >= 17 && tx <= 24) return "tile";
-    return "wood";
-  }
-  if (tx <= 38) return "grass";
-  if (ty >= 19 && tx >= 39) return "wood";
-  return "stone";
-}
+/* 地板规则直接取 room.js（唯一事实源）—— 之前这里手抄了一份镜像，
+ * v2.8-d 把广场改成草坪时就漂了（渲染图还是灰石板）。现在 eval 真实函数，杜绝漂移。 */
+const roomSrcForMat = read(path.join(WEB, "src", "room.js"));
+const _fnStart = roomSrcForMat.indexOf("function baseMaterialAt");
+const _fnEnd = roomSrcForMat.indexOf("\n  }", _fnStart) + 4;
+const _fnText = roomSrcForMat.slice(_fnStart, _fnEnd);
+const matAt = new Function("tx", "ty", _fnText.slice(_fnText.indexOf("{") + 1, _fnText.lastIndexOf("}")));
 for (let ty = 0; ty < ROWS; ty++) for (let tx = 0; tx < COLS; tx++) {
   rect(tx * S, ty * S, S, S, FLOOR[matAt(tx, ty)] || [200, 200, 200]);
 }
@@ -105,6 +102,9 @@ rect(28 * S, 22 * S, 5 * S, 4 * S, [143, 191, 90], 130);   // 农田
   }
 });
 for (let x = 0; x < COLS; x++) rect(x * S, 0, S, S, [40, 40, 48]);   // 第 0 行墙根
+// 主屋西/南外轮廓（room.js 的 paintOuterWalls：渲染层墙裙，不加碰撞）
+for (let y = 1; y < ROWS; y++) rect(0, y * S, S, S, [40, 40, 48], 235);
+for (let x = 0; x < 26; x++) rect(x * S, (ROWS - 1) * S, S, S, [40, 40, 48], 235);
 
 // ---------- 4 房间矩形 ----------
 const ROOM_COLORS = {

@@ -16,8 +16,12 @@
     }
     if (tx <= 38) return "grass";                            // 花园草地
     /* v2.8-c 地图修复：三户邻居室内统一木地板。原来按 x 分段给 wood/tile/stone，
-     * 同一间屋子三种材质，看着像地板被切成三块；街道（ty<19）仍旧石板 stone。 */
+     * 同一间屋子三种材质，看着像地板被切成三块。 */
     if (ty >= 19 && tx >= 39) return "wood";
+    /* v2.8-d：主街以北（ty<19 的东侧）做成公园草坪 —— 原来这里是一大片灰石板空地，
+     * 只有零星几件东西，看着像"地图没画完"。改成草地后，已有的树/灌木/长椅/路灯立刻读成公园；
+     * 主街（y16~18）由 roads 铺在草地之上，仍然是石板路。 */
+    if (tx >= 39 && ty < 19) return "grass";
     return "stone";                                          // 小镇石板街
   }
 
@@ -111,6 +115,15 @@
     for (var dx = 0; dx < door.tw; dx++) rt.batchDraw(tileTex("wood"), (door.tx + dx) * TILE, 0);
   }
 
+  /* v2.8-d：主屋西侧与南侧的外墙裙。
+   * 原来木地板一直铺到画布边缘，看起来像"房子只有一个角有墙"（北侧有墙带，西/南是断的）。
+   * 只在**渲染层**补一圈墙贴图，不往 mapdata.walls 里加碰撞 —— 因为南排 y=29 上已经摆着
+   * 街机/茶水台/沙发的脚，真加碰撞会把它们埋进墙里。鱼很少走到这两列/行（没有 zone 指向那里）。 */
+  function paintOuterWalls(s, rt) {
+    for (var ty = 1; ty < ROWS; ty++) rt.batchDraw(tileTex("wall"), 0, WALL_H + ty * TILE);
+    for (var tx = 0; tx < 26; tx++) rt.batchDraw(tileTex("wall"), tx * TILE, WALL_H + (ROWS - 1) * TILE);
+  }
+
   function buildRoom(s) {
     if (s.baseGfx) { try { s.baseGfx.destroy(); } catch (e) {} }   // rebuildRoomBase 旧层先拆
     var rt = s.add.renderTexture(0, 0, W, H).setOrigin(0, 0).setDepth(-100);
@@ -126,6 +139,7 @@
     paintPond(rt);
     paintFarm(rt);
     paintWalls(s, rt);
+    paintOuterWalls(s, rt);
     paintTopBand(s, rt);
     rt.endDraw();
   }
