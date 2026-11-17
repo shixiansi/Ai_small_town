@@ -1441,6 +1441,51 @@
    "x": 15.6,
    "y": 25.4,
    "id": "ofBridge"
+  },
+  {
+   "a": "nightstand",
+   "x": 2.2,
+   "y": 8.4,
+   "id": "bdStand3"
+  },
+  {
+   "a": "desk-lamp",
+   "x": 2.2,
+   "y": 8.4,
+   "id": "bdLamp2",
+   "on": "bdStand3",
+   "dx": 0,
+   "dy": -6
+  },
+  {
+   "a": "book-stack",
+   "x": 8.2,
+   "y": 8.6,
+   "id": "bdBooks"
+  },
+  {
+   "a": "plant-office",
+   "x": 1.8,
+   "y": 9.8,
+   "id": "bdPlant3"
+  },
+  {
+   "a": "potion-shelf",
+   "x": 23.5,
+   "y": 6.2,
+   "id": "kShelf2"
+  },
+  {
+   "a": "cabinet",
+   "x": 22.6,
+   "y": 8.4,
+   "id": "kCabinet3"
+  },
+  {
+   "a": "plant-office",
+   "x": 23.4,
+   "y": 9.2,
+   "id": "kPlant3"
   }
  ],
  "zones": {
