@@ -139,8 +139,11 @@ async function main() {
   for (const s of SHOTS) {
     if (only && !only.includes(s.id)) continue;
     // 这块棋盘的几何：世界像素矩形 → zoom 让高度正好填满画布 → 裁剪居中那条带
-    const zx = s.w * TILE, zy = s.h * TILE;                 // 672 / 720
-    const zoom = 768 / zy;                                   // ≈1.0667
+    // 每块四周再留 M 像素余量：地图最外圈的墙（北墙带/west 墙裙/y=29 墙裙）正好压在
+    // 块的边界上，不留余量就会被切掉一半（用户反馈"边缘的墙看不到"）。
+    const M = Number(arg.margin || 1.5) * TILE;               // 默认 1.5 格 = 72px
+    const zx = s.w * TILE + 2 * M, zy = s.h * TILE + 2 * M;
+    const zoom = 768 / zy;
     const cx = s.x0 * TILE + zx / 2;
     const cy = WALL_H + s.y0 * TILE + zy / 2;
     const drawnW = zx * zoom;                                // 画布里实际占用宽度
