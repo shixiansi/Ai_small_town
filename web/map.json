@@ -1445,7 +1445,7 @@
    "label": "工位",
    "anchor": [
     9,
-    23.6
+    19.8
    ],
    "face": "n",
    "expect": [
@@ -1457,27 +1457,30 @@
     "host": "chairA",
     "dx": 0,
     "dy": -14
-   }
+   },
+   "host": "desk"
   },
   "window": {
    "label": "窗边",
    "anchor": [
-    3.3,
-    4.4
+    3.4,
+    4
    ],
    "face": "n",
-   "feature": "window"
+   "feature": "window",
+   "host": "bedstandA"
   },
   "library": {
    "label": "书架",
    "anchor": [
-    10.7,
-    18.2
+    8.5,
+    18.3
    ],
    "face": "n",
    "expect": [
     "bookshelf-office"
-   ]
+   ],
+   "host": "shelfA"
   },
   "tools": {
    "label": "设计台",
@@ -1495,29 +1498,31 @@
    "label": "看板",
    "anchor": [
     13.8,
-    18.9
+    18.3
    ],
    "face": "n",
    "expect": [
     "whiteboard"
-   ]
+   ],
+   "host": "whiteboardA"
   },
   "printer": {
    "label": "打印机",
    "anchor": [
     21.8,
-    22.8
+    22.2
    ],
    "face": "n",
    "expect": [
     "printer"
-   ]
+   ],
+   "host": "printA"
   },
   "dining": {
    "label": "餐桌",
    "anchor": [
-    19,
-    8
+    18,
+    7.7
    ],
    "face": "n",
    "expect": [
@@ -1529,7 +1534,8 @@
     "dx": 0,
     "dy": -14,
     "face": "n"
-   }
+   },
+   "host": "tableA"
   },
   "tea": {
    "label": "茶水台",
@@ -1595,7 +1601,7 @@
   "bed": {
    "anchor": [
     5,
-    4.8
+    4.2
    ],
    "face": "n",
    "sit": {
@@ -1609,7 +1615,8 @@
    "expect": [
     "double-bed",
     "chair"
-   ]
+   ],
+   "host": "bedA"
   },
   "washup": {
    "anchor": [
@@ -1666,13 +1673,14 @@
   "wardrobe": {
    "anchor": [
     2.3,
-    4
+    3.7
    ],
    "face": "n",
    "label": "衣柜",
    "expect": [
     "wardrobe"
-   ]
+   ],
+   "host": "wardA"
   },
   "garden": {
    "anchor": [
