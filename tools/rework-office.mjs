@@ -11,14 +11,7 @@ const { items, cellsOf, solid, anchorCells, roadCells, map } = model;
 // 办公室内部：x1..25 / y16..29（y=15 是隔墙，y=29 南墙裙，x=25 东墙）
 const X0 = 1, X1 = 25, YN = 17.4, YS = 27.6;
 
-const wall = new Set();
-(map.walls || []).forEach(wl => {
-  if (wl.x0 !== undefined) { for (let x = wl.x0; x <= wl.x1; x++) if (!(wl.gap && x >= wl.gap[0] && x <= wl.gap[1])) wall.add(x + "," + wl.y); }
-  else { for (let y = wl.y; y < wl.y + wl.h; y++) if (!(wl.gap && y >= wl.gap[0] && y <= wl.gap[1])) wall.add(wl.x + "," + y); }
-});
-model.customTerrain.forEach((t, k) => { if (t === "wall") wall.add(k); });
-for (let y = 1; y <= 29; y++) wall.add("0," + y);
-for (let x = 0; x <= 25; x++) wall.add(x + ",29");
+const wall = model.wallCells;   // 墙格唯一实现在 map-model（第 0 行墙带 + 隔墙 + 地形墙 + 外墙裙）
 
 const inOffice = f => f.x >= 0.5 && f.x <= 25.5 && f.y >= 15.5 && f.y <= 29.5;
 const distToWall = f => {

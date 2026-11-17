@@ -63,6 +63,29 @@ export function loadModel(opts = {}) {
 
   const material = (tx, ty) => customFloor.get(tx + "," + ty) || customTerrain.get(tx + "," + ty) || baseMat(tx, ty);
 
+  /* 墙格（唯一实现）—— 之前 facing-check / facing-audit / layout-audit / rework-office 各抄了一份，
+   * 改一处忘三处。墙有四个来源，全都得算：
+   *   ① 第 0 行墙带（room.js paintTopBand：室内段是墙，只留大门门洞，但整行不可走）
+   *   ② mapdata.walls（隔墙，跳过 gap 门洞）
+   *   ③ 自定义层 terrain=wall（编辑器刷的墙，map.json 里看不到）
+   *   ④ room.js paintOuterWalls 的外墙裙：西边 x=0 整列、南边 y=ROWS-1 的 x<26 段
+   *      —— 只画贴图不加碰撞，所以 buildBlockedGrid 里没有它们；不补进来"贴墙率"会系统性偏低。 */
+  const wallCells = new Set();
+  for (let x = 0; x < COLS; x++) wallCells.add(x + ",0");
+  (map.walls || []).forEach(wl => {
+    if (wl.x0 !== undefined) {
+      for (let x = wl.x0; x <= wl.x1; x++) if (!(wl.gap && x >= wl.gap[0] && x <= wl.gap[1])) wallCells.add(x + "," + wl.y);
+    } else {
+      for (let y = wl.y; y < wl.y + wl.h; y++) if (!(wl.gap && y >= wl.gap[0] && y <= wl.gap[1])) wallCells.add(wl.x + "," + y);
+    }
+  });
+  customTerrain.forEach((t, k) => { if (t === "wall") wallCells.add(k); });
+  /* 外墙裙的南段长度直接读 room.js，避免"渲染改了墙、审计还在用 26"这种漂移 */
+  const outer = /function paintOuterWalls[\s\S]{0,400}?for \(var tx = 0; tx < (\d+);/.exec(roomSrc);
+  const SOUTH_WALL_RIGHT = outer ? Number(outer[1]) : 26;
+  for (let y = 1; y < ROWS; y++) wallCells.add("0," + y);
+  for (let x = 0; x < SOUTH_WALL_RIGHT; x++) wallCells.add(x + "," + (ROWS - 1));
+
   // 每件家具的占格（与 check.mjs 同口径：round + bbox 底部 12px 投影）
   const cellsOf = f => {
     const m = man[f.a];
@@ -80,6 +103,27 @@ export function loadModel(opts = {}) {
     return xs.map(x => x + "," + ty);
   };
   const solid = f => !(f.o || f.wall || f.on);
+
+  /* §5.1「贴墙」的唯一实现 —— 三种结果，别混成布尔：
+   *   "ok"      本件占的格没有一格是墙，且至少一格上下左右 1 格内有墙  → 真的背靠墙
+   *   "on-wall" 本件有占格本身就是墙                                    → 被推进墙里了（丑且违规）
+   *   "none"    不挨墙                                                  → 悬在房间中间
+   * 旧实现只问"上下左右 1 格内有墙"，于是"自己就在墙格上"也被算成贴墙 → 家具被推进墙里还判通过。
+   * 旧实现还只看 Math.round(f.x),Math.round(f.y) 一格，宽体家具（office-desk 等占 2~3 格）
+   * 靠墙那一格挨着墙也会判失败 → 反向漏判。现在一律走 cellsOf（占格口径与门禁同源）。 */
+  const wallTouch = f => {
+    const cs = cellsOf(f);
+    if (!cs.length) return "none";
+    if (cs.some(k => wallCells.has(k))) return "on-wall";
+    const near = cs.some(k => {
+      const [x, y] = k.split(",").map(Number);
+      return wallCells.has((x + 1) + "," + y) || wallCells.has((x - 1) + "," + y) ||
+             wallCells.has(x + "," + (y + 1)) || wallCells.has(x + "," + (y - 1));
+    });
+    return near ? "ok" : "none";
+  };
+  const touchesWall = f => wallTouch(f) === "ok";
+
   const items = (map.furniture || []).concat(customFurn)
     .filter(f => typeof f.x === "number" && man[f.a] && f.a !== "move");
 
@@ -151,6 +195,7 @@ export function loadModel(opts = {}) {
   return {
     map, man, T, COLS, ROWS, rooms, roomOf, material, items, solid, cellsOf, roadCells, conflictsOf, protectedSet,
     customFloor, customTerrain, customFurn, anchors, anchorCells,
+    wallCells, wallTouch, touchesWall,
     isBlocked: (x, y) => !blocked[y] || blocked[y][x] === true,
     blocked
   };

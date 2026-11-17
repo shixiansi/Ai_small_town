@@ -39,17 +39,8 @@ const FACES = {
   "kitchen-counter": { target: "wall", need: "back-to-wall" }
 };
 
-// 墙格
-const wall = new Set();
-for (let x = 0; x < COLS; x++) wall.add(x + ",0");
-(map.walls || []).forEach(wl => {
-  if (wl.x0 !== undefined) { for (let x = wl.x0; x <= wl.x1; x++) if (!(wl.gap && x >= wl.gap[0] && x <= wl.gap[1])) wall.add(x + "," + wl.y); }
-  else { for (let y = wl.y; y < wl.y + wl.h; y++) if (!(wl.gap && y >= wl.gap[0] && y <= wl.gap[1])) wall.add(wl.x + "," + y); }
-});
-model.customTerrain.forEach((t, k) => { if (t === "wall") wall.add(k); });
-// v2.8-i：加上 room.js 画的外墙裙（西 x=0 整列、南 y=29 的 x<26 段），否则朝向判不出
-for (let y = 1; y <= 29; y++) wall.add("0," + y);
-for (let x = 0; x <= 25; x++) wall.add(x + ",29");
+// 墙格：唯一实现在 map-model（第 0 行墙带 + 隔墙 + 地形墙 + room.js 外墙裙）
+const wall = model.wallCells;
 
 const dirFrom = (fx, fy, tx, ty) => {
   const dx = tx - fx, dy = ty - fy;
