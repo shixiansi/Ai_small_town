@@ -37,6 +37,21 @@ try {
   });
 } catch {}
 const allFurn = (map.furniture || []).concat(customFurn);
+/* v2.8-e：地面也有自定义层。
+ *   {a:"floor",   t:"tile|stone|grass|wood|road", x,y}  逐格改写地板
+ *   {a:"terrain", t:"wall|water", x,y}                  逐格叠地形（wall/water 同时意味着不可走）
+ * 实测：381 块 floor + 132 格自定义墙 + 28 格水 —— 所以 baseMaterialAt 改草坪在画面上看不见。
+ * 下面把两层叠上去，得到"这一格现在到底是什么"。 */
+const customFloor = new Map(), customTerrain = new Map();
+try {
+  const cj2 = JSON.parse(fs.readFileSync(path.join(ROOT, "hub", "map.custom.json"), "utf8"));
+  (cj2.furniture || []).forEach(f => {
+    if (typeof f.x !== "number" || typeof f.y !== "number" || !f.t) return;
+    if (f.a === "floor") customFloor.set(f.x + "," + f.y, f.t);
+    else if (f.a === "terrain") customTerrain.set(f.x + "," + f.y, f.t);
+  });
+} catch {}
+const effMat = (tx, ty) => customFloor.get(tx + "," + ty) || customTerrain.get(tx + "," + ty) || matOf(tx, ty);
 const roomSrc = read(path.join(WEB, "src", "room.js"));
 const furnSrc = read(path.join(WEB, "src", "furniture.js"));
 const npcSrc = read(path.join(WEB, "src", "npc.js"));
@@ -94,6 +109,12 @@ allFurn.forEach(f => {
       if (dx * dx + dy * dy <= 1 && grid[y]) grid[y][x] = 1;
     }
   }
+});
+// 自定义地形里的墙/水同样不可走（用户是逐格刷的，map.json 里没有）
+customTerrain.forEach((t, k) => {
+  if (t !== "wall" && t !== "water") return;
+  const p = k.split(","), x = Number(p[0]), y = Number(p[1]);
+  if (grid[y]) grid[y][x] = 1;
 });
 const walk = (x, y) => grid[y] && grid[y][x] === 0;
 
@@ -224,7 +245,7 @@ ks.forEach(k => {
     if (x >= COLS || y >= ROWS) continue;
     if (!walk(x, y)) continue;
     if (roomAt(x, y) !== k) continue;
-    const m = matOf(x, y);
+    const m = effMat(x, y);   // v2.8-e：算上自定义 floor/terrain 之后的真实材质
     if (m !== wantMat(k)) { bad++; worst = worst || (x + "," + y + " 是 " + m); }
   }
   if (bad > 4) add("P2", "F1", "房间 " + k + " 里有 " + bad + " 格地面材质不对（应为 " + wantMat(k) + "）", { 例: worst });

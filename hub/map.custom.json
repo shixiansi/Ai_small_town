@@ -1450,27 +1450,6 @@
    "a": "terrain",
    "t": "wall",
    "x": 26,
-   "y": 16,
-   "id": "eterqzgwa1di8"
-  },
-  {
-   "a": "terrain",
-   "t": "wall",
-   "x": 26,
-   "y": 17,
-   "id": "eterqzhwa1eti"
-  },
-  {
-   "a": "terrain",
-   "t": "wall",
-   "x": 26,
-   "y": 18,
-   "id": "eterqziwa1fv2"
-  },
-  {
-   "a": "terrain",
-   "t": "wall",
-   "x": 26,
    "y": 19,
    "id": "eterqzjwa1goo"
   },
@@ -1687,20 +1666,6 @@
    "x": 39,
    "y": 7,
    "id": "eter13z7wa2bpc"
-  },
-  {
-   "a": "terrain",
-   "t": "wall",
-   "x": 39,
-   "y": 8,
-   "id": "eter13z8wa2ccz"
-  },
-  {
-   "a": "terrain",
-   "t": "wall",
-   "x": 39,
-   "y": 9,
-   "id": "eter13z9wa2dev"
   },
   {
    "a": "terrain",
@@ -2058,20 +2023,6 @@
    "x": 44,
    "y": 14,
    "id": "eter18zewa58c3"
-  },
-  {
-   "a": "terrain",
-   "t": "wall",
-   "x": 43,
-   "y": 14,
-   "id": "eter17zewa5970"
-  },
-  {
-   "a": "terrain",
-   "t": "wall",
-   "x": 42,
-   "y": 14,
-   "id": "eter16zewa5a1p"
   },
   {
    "a": "terrain",
@@ -3990,20 +3941,6 @@
    "x": 55,
    "y": 19,
    "id": "eter1jzjwa3k8e"
-  },
-  {
-   "a": "terrain",
-   "t": "wall",
-   "x": 54,
-   "y": 19,
-   "id": "eter1izjwa3ltv"
-  },
-  {
-   "a": "terrain",
-   "t": "wall",
-   "x": 53,
-   "y": 19,
-   "id": "eter1hzjwa3m3p"
   },
   {
    "a": "terrain",
