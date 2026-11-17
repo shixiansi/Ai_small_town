@@ -18,6 +18,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { execFileSync } from "node:child_process";
 import { dryRun } from "./bust.mjs";
 import { build, buildRaw } from "./build.mjs";
 import { simulate } from "./beat-audit.mjs";
@@ -1265,6 +1266,30 @@ check("NPC 关系值（聊天累计 / 三个档位 / 台词与主动程度跟着
   if (!/Math\.min\(AFFINITY_CAP,/.test(hubSrc)) bad.push("bumpAffinity 没做上限钳制");
 
   return { problems: bad, warnings, note: "3 档（<3 陌生 / 3~7 熟面 / >=8 亲近）· 上限 20 · 随 feed 下发" };
+});
+
+// ---------- 第 31 项：地图审计（v2.8-c）----------
+check("地图审计（可走性 / 锚点 / 房间矩形 / 路网 / 地形 / NPC 活动区）", () => {
+  const bad = [], warnings = [];
+  let out = "";
+  try {
+    out = execFileSync(process.execPath, [path.join(OFFICE, "tools", "map-audit.mjs"), "--json"], { encoding: "utf8" });
+  } catch (e) {
+    return { problems: ["map-audit 跑不起来：" + (e.message || "").slice(0, 120)] };
+  }
+  let j = null;
+  try { j = JSON.parse(out); } catch (e) { return { problems: ["map-audit --json 输出不是合法 JSON"] }; }
+  const issues = j.issues || [];
+  const p0 = issues.filter(i => i.sev === "P0");
+  const p1 = issues.filter(i => i.sev === "P1");
+  p0.concat(p1).forEach(i => bad.push("[" + i.sev + "] " + i.code + " " + i.msg));
+  issues.filter(i => i.sev === "P2").forEach(i => warnings.push("[" + i.code + "] " + i.msg));
+  // NPC 漫游区必须是矩形（v2.8-c 起）——旧的 [x0,x1] 会让三个邻居飘到房子北侧空草地上
+  const npcSrc2 = read(path.join(WEB, "src", "npc.js"));
+  const roamRects = npcSrc2.match(/roam: \{ x0:/g) || [];
+  if (roamRects.length < 3) bad.push("npc.js 里少于 3 个矩形漫游区（还是旧的横向带格式：邻居会飘在离家很远的空地上）");
+  let out2 = "";
+  return { problems: bad, warnings, note: "可走 " + j.walkable + " 格 · 连通区 " + j.components + " 个 · P0 " + p0.length + " / P1 " + p1.length + " / P2 " + (issues.length - p0.length - p1.length) };
 });
 
 console.log("\noffice 静态自检\n" + "─".repeat(64));

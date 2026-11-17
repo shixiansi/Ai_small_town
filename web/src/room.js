@@ -15,11 +15,9 @@
       return "wood";
     }
     if (tx <= 38) return "grass";                            // 花园草地
-    if (ty >= 19) {                                          // 三户邻居室内
-      if (tx >= 40 && tx <= 45) return "wood";
-      if (tx >= 46 && tx <= 50) return "tile";
-      if (tx >= 51) return "stone";
-    }
+    /* v2.8-c 地图修复：三户邻居室内统一木地板。原来按 x 分段给 wood/tile/stone，
+     * 同一间屋子三种材质，看着像地板被切成三块；街道（ty<19）仍旧石板 stone。 */
+    if (ty >= 19 && tx >= 39) return "wood";
     return "stone";                                          // 小镇石板街
   }
 

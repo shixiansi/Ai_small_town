@@ -10,9 +10,9 @@
    *  - 博士 → docArm（扶手椅）
    * bedAt 只是兜底，运行时用 npcBedPos() 按 id 从 mapdata 取真实坐标。 */
   var NPCS = [
-    { id: "cat",   name: "喵酱", skin: "whale_cat",   bed: "catBed",      bedAt: [41.3, 21.2], roam: [40, 54], homeHours: [23, 7],  desc: "镇上的橘猫" },
-    { id: "chief", name: "村长", skin: "whale_chief", bed: "chiefChair1", bedAt: [47.4, 23.3], roam: [41, 54], homeHours: [20, 8],  desc: "热心的水豚村长" },
-    { id: "doc",   name: "博士", skin: "whale_doc",   bed: "docArm",      bedAt: [54.3, 27.2], roam: [42, 54], homeHours: [21, 13], desc: "研究潮汐的章鱼" }
+    { id: "cat",   name: "喵酱", skin: "whale_cat",   bed: "catBed",      bedAt: [41.3, 21.2], roam: { x0: 39, y0: 16.2, x1: 46.4, y1: 18.6 }, homeHours: [23, 7],  desc: "镇上的橘猫" },
+    { id: "chief", name: "村长", skin: "whale_chief", bed: "chiefChair1", bedAt: [47.4, 23.3], roam: { x0: 46.6, y0: 16.2, x1: 50.4, y1: 18.6 }, homeHours: [20, 8],  desc: "热心的水豚村长" },
+    { id: "doc",   name: "博士", skin: "whale_doc",   bed: "docArm",      bedAt: [54.3, 27.2], roam: { x0: 50.6, y0: 16.2, x1: 54.4, y1: 18.6 }, homeHours: [21, 13], desc: "研究潮汐的章鱼" }
   ];
   /* 从 mapdata 查这张床的真实格坐标；查不到就用兜底 bedAt */
   function npcBedPos(def) {
@@ -380,8 +380,8 @@
       if (!shouldHome) {                       // 起床出门
         npc.indoor = false;
         npcSetAct(npc, "idle");
-        var gx = npc.def.roam[0] + Math.random() * (npc.def.roam[1] - npc.def.roam[0]);
-        var gy = 8.5 + Math.random() * 4.5;
+        var rp = roamPoint(npc.def), gx = rp.x;
+        var gy = rp.y;
         npc.state = "roaming";
         npcWalkTo(npc, gx, gy, 420, function () { npcSetAct(npc, "idle"); });
         scheduleNpc(npc, 9500 + Math.random() * 8000);
@@ -406,8 +406,7 @@
     // 在外面：闲逛 / 发呆
     if (npc.state === "roaming") {
       if (Math.random() < 0.55) {
-        var gx2 = npc.def.roam[0] + Math.random() * (npc.def.roam[1] - npc.def.roam[0]);
-        var gy2 = 8.5 + Math.random() * 4.5;
+        var rp2 = roamPoint(npc.def), gx2 = rp2.x, gy2 = rp2.y;
         npcSetAct(npc, "wander");
         npcWalkTo(npc, gx2, gy2, 430, function () { npcSetAct(npc, "idle"); });
         scheduleNpc(npc, 8000 + Math.random() * 7000);
@@ -432,6 +431,17 @@
       if (dx < TILE * 2.2 && dy < TILE * 1.8) return npc;
     }
     return null;
+  }
+  /* v2.8-c 地图修复：漫游区从「一整条横向带 + 固定随机 y」改成矩形。
+   * 原来 y 写死在 8.5~13（房子北侧那片空草地），三个邻居全飘在自己家门外的马路对面，
+   * 回家要横穿半张图 —— 地图上看着就是"人不在自己家门口"。现在各自围着门前街道走。 */
+  function roamPoint(def) {
+    var r = def && def.roam;
+    if (!r) return { x: 46.5, y: 17.4 };
+    if (!Array.isArray(r)) {
+      return { x: r.x0 + Math.random() * (r.x1 - r.x0), y: r.y0 + Math.random() * (r.y1 - r.y0) };
+    }
+    return { x: r[0] + Math.random() * (r[1] - r[0]), y: 8.5 + Math.random() * 4.5 };   // 旧格式兜底
   }
   var lastNpcChat = 0;
   /* v2.6 NPC 认识鱼：对话素材来自 hub /api/npc-feed（鱼最近在 QQ/博客/空间干了什么）。

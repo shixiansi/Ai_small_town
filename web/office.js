@@ -341,7 +341,7 @@ loadErrors = [];
 this.load.off("loaderror", onLoadError);
 this.load.on("loaderror", onLoadError);
 this.load.json("manifest", "assets/manifest.json?v=eb7ab1a1");
-this.load.json("mapdata", "map.json?v=d22b591a");
+this.load.json("mapdata", "map.json?v=1d58be12");
 };
 SceneBoot.prototype.create = function () {
 var manifest = this.cache.json.get("manifest");
@@ -472,9 +472,9 @@ if (scene) setWeather(scene, weather === "sunny" ? "rainy" : "sunny");
 }
 });
 var NPCS = [
-{ id: "cat",   name: "喵酱", skin: "whale_cat",   bed: "catBed",      bedAt: [41.3, 21.2], roam: [40, 54], homeHours: [23, 7],  desc: "镇上的橘猫" },
-{ id: "chief", name: "村长", skin: "whale_chief", bed: "chiefChair1", bedAt: [47.4, 23.3], roam: [41, 54], homeHours: [20, 8],  desc: "热心的水豚村长" },
-{ id: "doc",   name: "博士", skin: "whale_doc",   bed: "docArm",      bedAt: [54.3, 27.2], roam: [42, 54], homeHours: [21, 13], desc: "研究潮汐的章鱼" }
+{ id: "cat",   name: "喵酱", skin: "whale_cat",   bed: "catBed",      bedAt: [41.3, 21.2], roam: { x0: 39, y0: 16.2, x1: 46.4, y1: 18.6 }, homeHours: [23, 7],  desc: "镇上的橘猫" },
+{ id: "chief", name: "村长", skin: "whale_chief", bed: "chiefChair1", bedAt: [47.4, 23.3], roam: { x0: 46.6, y0: 16.2, x1: 50.4, y1: 18.6 }, homeHours: [20, 8],  desc: "热心的水豚村长" },
+{ id: "doc",   name: "博士", skin: "whale_doc",   bed: "docArm",      bedAt: [54.3, 27.2], roam: { x0: 50.6, y0: 16.2, x1: 54.4, y1: 18.6 }, homeHours: [21, 13], desc: "研究潮汐的章鱼" }
 ];
 function npcBedPos(def) {
 var md = scene && scene.mapdata;
@@ -792,8 +792,8 @@ if (npc.state === "home") {
 if (!shouldHome) {                       // 起床出门
 npc.indoor = false;
 npcSetAct(npc, "idle");
-var gx = npc.def.roam[0] + Math.random() * (npc.def.roam[1] - npc.def.roam[0]);
-var gy = 8.5 + Math.random() * 4.5;
+var rp = roamPoint(npc.def), gx = rp.x;
+var gy = rp.y;
 npc.state = "roaming";
 npcWalkTo(npc, gx, gy, 420, function () { npcSetAct(npc, "idle"); });
 scheduleNpc(npc, 9500 + Math.random() * 8000);
@@ -815,8 +815,7 @@ return;
 }
 if (npc.state === "roaming") {
 if (Math.random() < 0.55) {
-var gx2 = npc.def.roam[0] + Math.random() * (npc.def.roam[1] - npc.def.roam[0]);
-var gy2 = 8.5 + Math.random() * 4.5;
+var rp2 = roamPoint(npc.def), gx2 = rp2.x, gy2 = rp2.y;
 npcSetAct(npc, "wander");
 npcWalkTo(npc, gx2, gy2, 430, function () { npcSetAct(npc, "idle"); });
 scheduleNpc(npc, 8000 + Math.random() * 7000);
@@ -839,6 +838,14 @@ var dx = Math.abs(npc.spr.x - fish.x), dy = Math.abs(npc.spr.y - fish.y);
 if (dx < TILE * 2.2 && dy < TILE * 1.8) return npc;
 }
 return null;
+}
+function roamPoint(def) {
+var r = def && def.roam;
+if (!r) return { x: 46.5, y: 17.4 };
+if (!Array.isArray(r)) {
+return { x: r.x0 + Math.random() * (r.x1 - r.x0), y: r.y0 + Math.random() * (r.y1 - r.y0) };
+}
+return { x: r[0] + Math.random() * (r[1] - r[0]), y: 8.5 + Math.random() * 4.5 };   // 旧格式兜底
 }
 var lastNpcChat = 0;
 var npcFeed = null, npcFeedAt = 0;
@@ -1449,9 +1456,9 @@ office:  [0, 15, 26, 15],
 bedroom: [1, 1, 9, 13],
 bath:    [10, 1, 6, 13],
 kitchen: [16, 1, 9, 13],
-nbCat:   [39, 17, 8, 12],    // 喵酱家：房子 cottage 在 x≈42.2 / y≈19.6
-nbChief: [47, 17, 4, 12],    // 村长家：房子 house-modern 在 x≈48.2 / y≈19.6
-nbDoc:   [51, 17, 4, 12]     // 博士家：房子 farmhouse 在 x≈53.4 / y≈19.6（原 y=20 起，房子精灵会露在框外）
+nbCat:   [39, 19, 8, 10],    // 喵酱家：房子 cottage 在 x≈42.2 / y≈19.6
+nbChief: [47, 19, 4, 10],    // 村长家：房子 house-modern 在 x≈48.2 / y≈19.6
+nbDoc:   [51, 19, 4, 10]     // 博士家：房子 farmhouse 在 x≈53.4 / y≈19.6（原 y=20 起，房子精灵会露在框外）
 };
 try { window.__officeRoomRects = SWITCH_ROOM_RECTS; } catch (e) {}   // v2.7：小地图复用同一份房间矩形
 function roomOfProp(p) {
@@ -1918,9 +1925,9 @@ var ROOM_RECTS = [
 { room: "bedroom", x: 1,  y: 1,  w: 9,  h: 13, label: "起居" },
 { room: "bath",    x: 10, y: 1,  w: 6,  h: 13, label: "卫浴" },
 { room: "kitchen", x: 16, y: 1,  w: 9,  h: 13, label: "厨房" },
-{ room: "nbCat",   x: 39, y: 17, w: 8,  h: 12, label: "喵酱家" },   // v2.7-d：跟着房子本体搬家后的新室内
-{ room: "nbChief", x: 47, y: 17, w: 4,  h: 12, label: "村长家" },
-{ room: "nbDoc",   x: 51, y: 17, w: 4,  h: 12, label: "博士家" }
+{ room: "nbCat",   x: 39, y: 19, w: 8,  h: 10, label: "喵酱家" },
+{ room: "nbChief", x: 47, y: 19, w: 4,  h: 10, label: "村长家" },
+{ room: "nbDoc",   x: 51, y: 19, w: 4,  h: 10, label: "博士家" }
 ];
 function roomCovered(rr, edits) {
 var roomArea = rr.w * rr.h;
@@ -3667,11 +3674,7 @@ if (ty < 15 && tx >= 17 && tx <= 24) return "tile";   // 厨房地砖
 return "wood";
 }
 if (tx <= 38) return "grass";                            // 花园草地
-if (ty >= 19) {                                          // 三户邻居室内
-if (tx >= 40 && tx <= 45) return "wood";
-if (tx >= 46 && tx <= 50) return "tile";
-if (tx >= 51) return "stone";
-}
+if (ty >= 19 && tx >= 39) return "wood";
 return "stone";                                          // 小镇石板街
 }
 function paintRoads(s, rt) {
@@ -5772,7 +5775,7 @@ nbCat: "#b08a5e", nbChief: "#b08a5e", nbDoc: "#b08a5e"
 function roomRects() {
 return window.__officeRoomRects || {
 office: [0, 15, 26, 15], bedroom: [1, 1, 9, 13], bath: [10, 1, 6, 13],
-kitchen: [16, 1, 9, 13], nbCat: [39, 1, 8, 13], nbChief: [48, 1, 7, 13], nbDoc: [51, 20, 4, 9]
+kitchen: [16, 1, 9, 13], nbCat: [39, 19, 8, 10], nbChief: [47, 19, 4, 10], nbDoc: [51, 19, 4, 10]
 };
 }
 function paintBase() {
