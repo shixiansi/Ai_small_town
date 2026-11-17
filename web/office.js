@@ -343,7 +343,7 @@ loadErrors = [];
 this.load.off("loaderror", onLoadError);
 this.load.on("loaderror", onLoadError);
 this.load.json("manifest", "assets/manifest.json?v=e700c6bc");
-this.load.json("mapdata", "map.json?v=b2da3ec1");
+this.load.json("mapdata", "map.json?v=7d06cbe5");
 };
 SceneBoot.prototype.create = function () {
 var manifest = this.cache.json.get("manifest");
@@ -1386,21 +1386,21 @@ var poolDefs = [
 { x: 1.9,  y: 9.2,  r: 1.6, a: 0.13, tint: 0xffedd0, room: "bedroom" },  // 卧室换衣站（立镜）
 { x: 12.7, y: 3.2,  r: 1.8, a: 0.18, tint: 0xffe2a8, room: "bath" },     // 卫浴镜前灯
 { x: 20.5, y: 3.2,  r: 2.0, a: 0.18, tint: 0xffe2a8, room: "kitchen" },  // 厨房操作台灯
-{ x: 41.4, y: 21.6, r: 1.6, a: 0.17, tint: 0xffe2a8, room: "nbCat" },     // 喵酱家：床边
-{ x: 43.0, y: 24.4, r: 1.5, a: 0.13, tint: 0xffedd0, room: "nbCat" },     // 喵酱家：起居桌
-{ x: 47.4, y: 21.2, r: 1.5, a: 0.13, tint: 0xffe2a8, room: "nbChief" },   // 村长家：床区
-{ x: 48.6, y: 23.2, r: 1.7, a: 0.16, tint: 0xffedd0, room: "nbChief" },   // 村长家：餐桌
-{ x: 53.2, y: 21.6, r: 1.5, a: 0.15, tint: 0xffe2a8, room: "nbDoc" },     // 博士家：书桌
-{ x: 54.0, y: 25.2, r: 1.4, a: 0.12, tint: 0xffedd0, room: "nbDoc" },     // 博士家：起居角
+{ x: 41.4, y: 21.8, r: 1.8, a: 0.19, tint: 0xffe2a8, room: "nbCat" },     // 大屋·西卧室（床区）
+{ x: 43.0, y: 24.4, r: 1.7, a: 0.16, tint: 0xffedd0, room: "nbCat" },     // 大屋·西起居桌
+{ x: 48.0, y: 21.0, r: 1.8, a: 0.18, tint: 0xffe2a8, room: "nbCat" },     // 大屋·中厨房（灶台/冰箱）
+{ x: 48.6, y: 23.8, r: 1.8, a: 0.18, tint: 0xffedd0, room: "nbCat" },     // 大屋·中餐桌
+{ x: 53.2, y: 21.6, r: 1.7, a: 0.17, tint: 0xffe2a8, room: "nbCat" },     // 大屋·东书房
+{ x: 54.0, y: 25.2, r: 1.6, a: 0.15, tint: 0xffedd0, room: "nbCat" },     // 大屋·东起居角
 { x: 5.0,  y: 25.6, r: 2.0, a: 0.17, tint: 0xffe2a8, room: "office" },    // 会议角
 { x: 12.4, y: 25.2, r: 1.9, a: 0.16, tint: 0xffedd0, room: "office" },    // 文件区
 { x: 19.2, y: 25.8, r: 2.0, a: 0.17, tint: 0xffe2a8, room: "office" },    // 休息角
 { x: 14.0, y: 4.2,  r: 1.9, a: 0.15, tint: 0xffe2a8, room: "bath" },      // 浴缸区（原来只有镜前灯）
 { x: 19.0, y: 7.4,  r: 2.0, a: 0.16, tint: 0xffedd0, room: "kitchen" },   // 餐桌区（原来只有操作台灯）
 { x: 24.0, y: 22.0, r: 1.9, a: 0.15, tint: 0xffedd0, room: "office" },    // 办公室最右一列（瓶架/白板）
-{ x: 41.2, y: 26.4, r: 1.3, a: 0.10, tint: 0xffedd0, room: "nbCat" },     // 喵酱家：西南角
-{ x: 47.6, y: 26.6, r: 1.3, a: 0.10, tint: 0xffedd0, room: "nbChief" },   // 村长家：西南角
-{ x: 53.8, y: 27.6, r: 1.2, a: 0.10, tint: 0xffedd0, room: "nbDoc" },     // 博士家：东南角
+{ x: 41.2, y: 26.8, r: 1.5, a: 0.12, tint: 0xffedd0, room: "nbCat" },     // 大屋·西南角
+{ x: 50.0, y: 26.6, r: 1.5, a: 0.12, tint: 0xffedd0, room: "nbCat" },     // 大屋·中南角
+{ x: 53.8, y: 27.4, r: 1.5, a: 0.12, tint: 0xffedd0, room: "nbCat" },     // 大屋·东南角
 { x: 15.2, y: 28.2, r: 1.9, a: 0.15, tint: 0xffe2a8, room: "office" },    // 办公室南侧中带
 { x: 44.0, y: 4.0,  r: 2.6, a: 0.20, tint: 0xffe2a8, room: "parkCourt" },  // 草地小院：北端路灯
 { x: 44.0, y: 10.0, r: 2.6, a: 0.18, tint: 0xffe2a8, room: "parkCourt" },  // 草地小院：长椅
@@ -1511,9 +1511,9 @@ office:  [0, 15, 26, 15],
 bedroom: [1, 1, 9, 13],
 bath:    [10, 1, 6, 13],
 kitchen: [16, 1, 9, 13],
-nbCat:   [40, 19, 5, 10],    // 喵酱家：房子 cottage 在 x≈42.2 / y≈19.6
-nbChief: [46, 19, 5, 10],    // 村长家：房子 house-modern 在 x≈48.2 / y≈19.6
-nbDoc:   [52, 19, 4, 10],    // 博士家：房子 farmhouse 在 x≈53.4 / y≈19.6（原 y=20 起，房子精灵会露在框外）
+nbCat:   [40, 19, 16, 10],   // 大屋：三户合并（门垫在 42/48/53）
+nbChief: [40, 19, 16, 10],   // 别名 → 同 nbCat
+nbDoc:   [40, 19, 16, 10],   // 别名 → 同 nbCat
 parkCourt: [41, 1, 4, 13],
 brickHall: [49, 1, 6, 14]
 };
@@ -1739,6 +1739,9 @@ var BUILTIN_SHADOWS = [
 { id: "b_bedroom", label: "卧室",   room: "bedroom", x: 1,  y: 1,  w: 9,  h: 13, night: 0.60, lit: 0.00, day: 0.00 },
 { id: "b_bath",    label: "卫浴",   room: "bath",    x: 10, y: 1,  w: 6,  h: 13, night: 0.60, lit: 0.00, day: 0.00 },
 { id: "b_kitchen", label: "厨房",   room: "kitchen", x: 16, y: 1,  w: 9,  h: 13, night: 0.60, lit: 0.00, day: 0.00 },
+{ id: "b_nbCat",   label: "大屋（三户合并）", room: "nbCat",   x: 40, y: 19, w: 16, h: 10, night: 0.60, lit: 0.00, day: 0.00 },
+{ id: "b_parkCourt", label: "西厢房", room: "parkCourt", x: 41, y: 1, w: 4,  h: 13, night: 0.60, lit: 0.00, day: 0.00 },
+{ id: "b_brickHall", label: "东大厅", room: "brickHall", x: 49, y: 1, w: 6,  h: 14, night: 0.60, lit: 0.00, day: 0.00 },
 { id: "b_outdoor", label: "户外（花园/街道）", room: null, x: 26, y: 0, w: 30, h: 30, night: 0.00, lit: 0.00, day: 0.00 }
 ];
 var SHADOW_DEFAULTS = { night: 0.60, lit: 0.15, day: 0.00 };   // 新拉一块的默认浓度
@@ -2003,9 +2006,9 @@ var ROOM_RECTS = [
 { room: "bedroom", x: 1,  y: 1,  w: 9,  h: 13, label: "起居" },
 { room: "bath",    x: 10, y: 1,  w: 6,  h: 13, label: "卫浴" },
 { room: "kitchen", x: 16, y: 1,  w: 9,  h: 13, label: "厨房" },
-{ room: "nbCat",   x: 40, y: 19, w: 5,  h: 10, label: "喵酱家" },
-{ room: "nbChief", x: 46, y: 19, w: 5,  h: 10, label: "村长家" },
-{ room: "nbDoc",   x: 52, y: 19, w: 4,  h: 10, label: "博士家" },
+{ room: "nbCat",   x: 40, y: 19, w: 16, h: 10, label: "大屋（三户合并）" },
+{ room: "nbChief", x: 40, y: 19, w: 16, h: 10, label: "大屋·别名" },
+{ room: "nbDoc",   x: 40, y: 19, w: 16, h: 10, label: "大屋·别名" },
 { room: "parkCourt", x: 41, y: 1, w: 4, h: 13, label: "西厢房" },
 { room: "brickHall", x: 49, y: 1, w: 6, h: 14, label: "东大厅" }
 ];
@@ -2065,8 +2068,11 @@ rt.erase(er, Math.round(Math.max(0, r.x * TILE)), Math.round(Math.max(0, WALL_H 
 }
 var autoRegions = [];
 if (pv !== "day") {
+var seen = [];
 ROOM_RECTS.forEach(function (rr) {
 if (roomCovered(rr, shadowEdits)) return;
+if (seen.some(function (g) { return g.x === rr.x && g.y === rr.y && g.w === rr.w && g.h === rr.h; })) return;
+seen.push({ x: rr.x, y: rr.y, w: rr.w, h: rr.h });
 var on = roomLights[rr.room] !== false;
 autoRegions.push({
 x: rr.x, y: rr.y, w: rr.w, h: rr.h,

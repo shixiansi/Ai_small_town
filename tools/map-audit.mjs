@@ -181,17 +181,21 @@ Object.keys(map.zones || {}).forEach(k => {
   else if (grid[y] && grid[y][x] === 1) add("P1", "B2", "zone " + k + " 锚点落在阻挡格（家具/墙/水里）→ 走过去站在原地", { anchor: a });
   else if (!mainSet.has(x + "," + y)) add("P1", "B3", "zone " + k + " 锚点不可达（不在主连通区）", { anchor: a });
   // 房间内的 zone 必须在自己房间矩形内
+  // v2.10：三户合并成大屋后，living_chief/living_doc 落在 nbCat 是正确行为——别名期望也豁免
   const r = roomAt(x, y);
-  const roomKey = /^nbCat|^doorCat|^living_cat/.test(k) ? "nbCat" : /^nbChief|^doorChief|^living_chief/.test(k) ? "nbChief"
-    : /^nbDoc|^doorDoc|^living_doc/.test(k) ? "nbDoc" : null;
-  if (roomKey && r && r !== roomKey) add("P2", "B4", "zone " + k + " 的房间不匹配：锚点实际落在 " + (r || "户外/无房间"), { anchor: a, 期望: roomKey });
+  const roomKey = /^nbCat|^doorCat|^living_cat/.test(k) ? "nbCat" : /^nbChief|^doorChief|^living_chief/.test(k) ? ["nbChief", "nbCat"]
+    : /^nbDoc|^doorDoc|^living_doc/.test(k) ? ["nbDoc", "nbCat"] : null;
+  const okRooms = Array.isArray(roomKey) ? roomKey : (roomKey ? [roomKey] : []);
+  if (okRooms.length && r && !okRooms.includes(r)) add("P2", "B4", "zone " + k + " 的房间不匹配：锚点实际落在 " + (r || "户外/无房间"), { anchor: a, 期望: okRooms[0] });
 });
 
 // ---------- C 房间矩形 ----------
 const ks = Object.keys(rects);
 for (let i = 0; i < ks.length; i++) for (let j = i + 1; j < ks.length; j++) {
   const a = rects[ks[i]], b = rects[ks[j]];
-  if (a.x < b.x + b.w && b.x < a.x + a.w && a.y < b.y + b.h && b.y < a.y + a.h) add("P0", "C1", "房间矩形重叠：" + ks[i] + " × " + ks[j]);
+  // v2.10：完全相同的矩形是"同一间房"的别名（nbChief/nbDoc → nbCat 大屋），豁免
+  const alias = a.x === b.x && a.y === b.y && a.w === b.w && a.h === b.h;
+  if (!alias && a.x < b.x + b.w && b.x < a.x + a.w && a.y < b.y + b.h && b.y < a.y + a.h) add("P0", "C1", "房间矩形重叠：" + ks[i] + " × " + ks[j]);
 }
 const placed = allFurn.filter(f => typeof f.x === "number" && typeof f.y === "number");
 ks.forEach(k => {

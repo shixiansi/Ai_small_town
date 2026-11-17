@@ -1124,7 +1124,9 @@ check("相机（死区 / 锁定）与房间矩形几何", () => {
   for (let i = 0; i < ks.length; i++) {
     for (let j = i + 1; j < ks.length; j++) {
       const a = rects[ks[i]], b = rects[ks[j]];
-      if (a.x < b.x + b.w && b.x < a.x + a.w && a.y < b.y + b.h && b.y < a.y + a.h) bad.push(`房间矩形重叠：${ks[i]} × ${ks[j]}`);
+      // v2.10：完全相同的矩形是"同一间房"的别名（nbChief/nbDoc → nbCat 大屋），豁免
+      const alias = a.x === b.x && a.y === b.y && a.w === b.w && a.h === b.h;
+      if (!alias && a.x < b.x + b.w && b.x < a.x + a.w && a.y < b.y + b.h && b.y < a.y + a.h) bad.push(`房间矩形重叠：${ks[i]} × ${ks[j]}`);
     }
   }
   const placed = (map.furniture || []).filter(f => typeof f.x === "number" && typeof f.y === "number");

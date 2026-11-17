@@ -27,6 +27,7 @@ const arg = Object.fromEntries(process.argv.slice(2).map(a => {
   return i > 0 ? [a.slice(2, i), a.slice(i + 1)] : [a.slice(2), true];
 }));
 const URL_ = String(arg.url || "http://127.0.0.1:4322/");
+const NIGHT = arg.night === undefined ? null : (arg.night === "0" || arg.night === "day" ? "day" : "night");
 const SCALE = Number(arg.scale || 1);
 const OUT = path.resolve(ROOT, arg.out || path.join("logs", "shots"));
 
@@ -93,7 +94,7 @@ async function main() {
   const profile = fs.mkdtempSync(path.join(os.tmpdir(), "town-shot-"));
   console.log("浏览器: " + bin);
   const child = spawn(bin, [
-    "--headless=new", "--disable-gpu", "--hide-scrollbars", "--no-first-run",
+    "--headless=new", "--disable-gpu", "--hide-scrollbars", "--no-first-run", "--no-sandbox",
     "--no-default-browser-check", "--mute-audio", "--window-size=1500,1000",
     "--remote-debugging-port=" + port, "--user-data-dir=" + profile, URL_
   ], { stdio: "ignore", detached: false });
@@ -115,6 +116,15 @@ async function main() {
 
   await cdp(ws, "Page.enable");
   await cdp(ws, "Runtime.enable");
+  if (NIGHT) {
+    await cdp(ws, "Runtime.evaluate", {
+      expression: `try { localStorage.setItem("office_night_cfg", JSON.stringify({ preview: "${NIGHT}" })); } catch (e) {}`,
+      returnByValue: true
+    });
+    console.log("昼夜预览: " + NIGHT);
+    await cdp(ws, "Page.reload");
+    await sleep(800);   // 等 reload 开始，后面场景就绪轮询会接管
+  }
   await cdp(ws, "Emulation.setDeviceMetricsOverride", {
     width: 1500, height: 1000, deviceScaleFactor: SCALE, mobile: false
   });
