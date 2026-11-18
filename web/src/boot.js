@@ -53,7 +53,7 @@
     this.load.off("loaderror", onLoadError);
     this.load.on("loaderror", onLoadError);
     this.load.json("manifest", "assets/manifest.json?v=e700c6bc");
-    this.load.json("mapdata", "map.json?v=4e5f24c1");
+    this.load.json("mapdata", "map.json?v=c65859e1");
   };
   SceneBoot.prototype.create = function () {
     var manifest = this.cache.json.get("manifest");
