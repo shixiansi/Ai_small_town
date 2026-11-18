@@ -261,7 +261,7 @@ const matOf = (tx, ty) => {
   if (ty >= 19 && tx >= 39) return "wood";
   return "stone";
 };
-const wantMat = room => (room === "bath" || room === "kitchen" ? "tile" : "wood");
+const wantMat = room => (room === "bath" || room === "kitchen" || room === "brickHall" || room === "nbDoc" ? "tile" : "wood");   // v2.12：东大厅（nbDoc 别名）实际铺的是瓷砖
 ks.forEach(k => {
   const r = rects[k];
   let bad = 0, worst = null;

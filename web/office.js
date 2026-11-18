@@ -343,7 +343,7 @@ loadErrors = [];
 this.load.off("loaderror", onLoadError);
 this.load.on("loaderror", onLoadError);
 this.load.json("manifest", "assets/manifest.json?v=e700c6bc");
-this.load.json("mapdata", "map.json?v=16127002");
+this.load.json("mapdata", "map.json?v=9c07b89b");
 };
 SceneBoot.prototype.create = function () {
 var manifest = this.cache.json.get("manifest");
@@ -479,8 +479,8 @@ if (scene) setWeather(scene, weather === "sunny" ? "rainy" : "sunny");
 });
 var NPCS = [
 { id: "cat",   name: "喵酱", skin: "whale_cat",   bed: "catBed",      bedAt: [41.3, 21.2], roam: { x0: 40.2, y0: 20.2, x1: 44.8, y1: 27.6 }, homeHours: [23, 7],  desc: "镇上的橘猫" },
-{ id: "chief", name: "村长", skin: "whale_chief", bed: "chiefBed",     bedAt: [44.5, 21.2], roam: { x0: 44.2, y0: 20.2, x1: 50.4, y1: 27.6 }, homeHours: [20, 8],  desc: "热心的水豚村长" },
-{ id: "doc",   name: "博士", skin: "whale_doc",   bed: "docBed",       bedAt: [51.5, 21.2], roam: { x0: 50.8, y0: 20.2, x1: 54.6, y1: 27.6 }, homeHours: [21, 13], desc: "研究潮汐的章鱼" }
+{ id: "chief", name: "村长", skin: "whale_chief", bed: "westBed",       bedAt: [41.5, 2.2],  roam: { x0: 40.4, y0: 1.4,  x1: 44.4, y1: 13.4 }, homeHours: [20, 8],  desc: "热心的水豚村长（西厢房）" },
+{ id: "doc",   name: "博士", skin: "whale_doc",   bed: "docBed",        bedAt: [53.5, 1.2],  roam: { x0: 49.4, y0: 1.4,  x1: 54.4, y1: 13.4 }, homeHours: [21, 13], desc: "研究潮汐的章鱼（东大厅）" }
 ];
 function npcBedPos(def) {
 var md = scene && scene.mapdata;
@@ -1402,10 +1402,10 @@ var poolDefs = [
 { x: 50.0, y: 26.6, r: 1.5, a: 0.12, tint: 0xffedd0, room: "nbCat" },     // 大屋·中南角
 { x: 53.8, y: 27.4, r: 1.5, a: 0.12, tint: 0xffedd0, room: "nbCat" },     // 大屋·东南角
 { x: 15.2, y: 28.2, r: 1.9, a: 0.15, tint: 0xffe2a8, room: "office" },    // 办公室南侧中带
-{ x: 44.0, y: 4.0,  r: 2.6, a: 0.20, tint: 0xffe2a8, room: "parkCourt" },  // 草地小院：北端路灯
-{ x: 44.0, y: 10.0, r: 2.6, a: 0.18, tint: 0xffe2a8, room: "parkCourt" },  // 草地小院：长椅
-{ x: 49.0, y: 3.0,  r: 2.6, a: 0.20, tint: 0xffedd0, room: "brickHall" },  // 砖地大厅：北端
-{ x: 52.5, y: 10.5, r: 2.6, a: 0.18, tint: 0xffedd0, room: "brickHall" },  // 砖地大厅：长椅
+{ x: 42.5, y: 4.0,  r: 2.6, a: 0.20, tint: 0xffe2a8, room: "parkCourt" },  // 村长家（西厢房）：北端
+{ x: 42.5, y: 10.0, r: 2.6, a: 0.18, tint: 0xffe2a8, room: "parkCourt" },  // 村长家：南段
+{ x: 51.0, y: 4.0,  r: 2.6, a: 0.20, tint: 0xffedd0, room: "brickHall" },  // 博士家（东大厅）：北端
+{ x: 52.5, y: 10.5, r: 2.6, a: 0.18, tint: 0xffedd0, room: "brickHall" },  // 博士家：南段
 ];
 if (/[?&]overlay=light/.test(location.search)) {
 var og = s.add.graphics().setDepth(9000);
@@ -1512,9 +1512,9 @@ office:  [0, 15, 26, 15],
 bedroom: [1, 1, 9, 13],
 bath:    [10, 1, 6, 13],
 kitchen: [16, 1, 9, 13],
-nbCat:   [40, 19, 16, 10],   // 大屋：三户合并（门垫在 42/48/53）
-nbChief: [40, 19, 16, 10],   // 别名 → 同 nbCat
-nbDoc:   [40, 19, 16, 10],   // 别名 → 同 nbCat
+nbCat:   [40, 19, 16, 10],   // 大屋：喵酱家
+nbChief: [41, 1, 4, 13],     // 西厢房 = 村长家（同 parkCourt）
+nbDoc:   [49, 1, 6, 14],     // 东大厅 = 博士家（同 brickHall）
 parkCourt: [41, 1, 4, 13],
 brickHall: [49, 1, 6, 14]
 };
@@ -1748,9 +1748,9 @@ var BUILTIN_SHADOWS = [
 { id: "b_bedroom", label: "卧室",   room: "bedroom", x: 1,  y: 1,  w: 9,  h: 13, night: 0.60, lit: 0.00, day: 0.00 },
 { id: "b_bath",    label: "卫浴",   room: "bath",    x: 10, y: 1,  w: 6,  h: 13, night: 0.60, lit: 0.00, day: 0.00 },
 { id: "b_kitchen", label: "厨房",   room: "kitchen", x: 16, y: 1,  w: 9,  h: 13, night: 0.60, lit: 0.00, day: 0.00 },
-{ id: "b_nbCat",   label: "大屋（三户合并）", room: "nbCat",   x: 40, y: 19, w: 16, h: 10, night: 0.60, lit: 0.00, day: 0.00 },
-{ id: "b_parkCourt", label: "西厢房", room: "parkCourt", x: 41, y: 1, w: 4,  h: 13, night: 0.60, lit: 0.00, day: 0.00 },
-{ id: "b_brickHall", label: "东大厅", room: "brickHall", x: 49, y: 1, w: 6,  h: 14, night: 0.60, lit: 0.00, day: 0.00 },
+{ id: "b_nbCat",   label: "喵酱家（大屋）", room: "nbCat",   x: 40, y: 19, w: 16, h: 10, night: 0.60, lit: 0.00, day: 0.00 },
+{ id: "b_parkCourt", label: "村长家（西厢房）", room: "parkCourt", x: 41, y: 1, w: 4,  h: 13, night: 0.60, lit: 0.00, day: 0.00 },
+{ id: "b_brickHall", label: "博士家（东大厅）", room: "brickHall", x: 49, y: 1, w: 6,  h: 14, night: 0.60, lit: 0.00, day: 0.00 },
 { id: "b_outdoor", label: "户外（花园/街道）", room: null, x: 26, y: 0, w: 30, h: 30, night: 0.00, lit: 0.00, day: 0.00 }
 ];
 var SHADOW_DEFAULTS = { night: 0.60, lit: 0.15, day: 0.00 };   // 新拉一块的默认浓度
@@ -2015,9 +2015,9 @@ var ROOM_RECTS = [
 { room: "bedroom", x: 1,  y: 1,  w: 9,  h: 13, label: "起居" },
 { room: "bath",    x: 10, y: 1,  w: 6,  h: 13, label: "卫浴" },
 { room: "kitchen", x: 16, y: 1,  w: 9,  h: 13, label: "厨房" },
-{ room: "nbCat",   x: 40, y: 19, w: 16, h: 10, label: "大屋（三户合并）" },
-{ room: "nbChief", x: 40, y: 19, w: 16, h: 10, label: "大屋·别名" },
-{ room: "nbDoc",   x: 40, y: 19, w: 16, h: 10, label: "大屋·别名" },
+{ room: "nbCat",   x: 40, y: 19, w: 16, h: 10, label: "喵酱家（大屋）" },
+{ room: "nbChief", x: 41, y: 1,  w: 4,  h: 13, label: "村长家（西厢房）" },
+{ room: "nbDoc",   x: 49, y: 1,  w: 6,  h: 14, label: "博士家（东大厅）" },
 { room: "parkCourt", x: 41, y: 1, w: 4, h: 13, label: "西厢房" },
 { room: "brickHall", x: 49, y: 1, w: 6, h: 14, label: "东大厅" }
 ];
@@ -4843,15 +4843,15 @@ townWell:  { name: "镇口水井", desc: "据说扔硬币能许愿。博士说�
 townBench: { name: "街边长椅", desc: "喵酱的地盘。坐之前要跟它打招呼。" },
 homeCat:   { name: "喵酱家", desc: "门垫上永远有鱼干渣。主人是只好脾气的橘猫。点门或沙发可以进去串门。",
 dyn: function () { return npcHomeState("cat") === "home" ? "● 喵酱在家（点房子进屋）" : "○ 喵酱出门遛弯了"; } },
-homeChief: { name: "村长家", desc: "水豚村长的宅子，门口的灯是全镇最亮的。点门或餐椅可以进去串门。",
+homeChief: { name: "村长家", desc: "水豚村长的宅子（右上西厢房）。点门可以进去串门。",
 dyn: function () { return npcHomeState("chief") === "home" ? "● 村长在家（点房子进屋）" : "○ 村长在镇上转悠"; } },
-homeDoc:   { name: "博士家", desc: "章鱼博士的研究所，墙壁里贴满潮汐表。点门或沙发可以进去串门。",
+homeDoc:   { name: "博士家", desc: "章鱼博士的研究所（右上东大厅），墙壁里贴满潮汐表。点门或沙发可以进去串门。",
 dyn: function () { return npcHomeState("doc") === "home" ? "● 博士在家（点房子进屋）" : "○ 博士去海边观测了"; } },
 signCat:   { name: "喵酱家", desc: "西卧室区那扇门。门垫上永远有鱼干渣。",
 dyn: function () { return npcHomeState("cat") === "home" ? "● 喵酱在家" : "○ 喵酱出门遛弯了"; } },
-signChief: { name: "村长家", desc: "中间那扇门，厨房香味就是从这儿飘出来的。",
+signChief: { name: "村长家", desc: "右上西厢房那扇门，屋里飘着饭菜香。",
 dyn: function () { return npcHomeState("chief") === "home" ? "● 村长在家" : "○ 村长在镇上转悠"; } },
-signDoc:   { name: "博士家", desc: "东书房区那扇门，屋里贴满潮汐表。",
+signDoc:   { name: "博士家", desc: "右上东大厅那扇门，屋里贴满潮汐表。",
 dyn: function () { return npcHomeState("doc") === "home" ? "● 博士在家" : "○ 博士去海边观测了"; } },
 farmField: { name: "自家农田", desc: "五列四排的耕地：锄地 → 播种 → 浇水 → 施肥 → 等它熟。点田地就会干对应的活。",
 dyn: function () { var s = farmSummary(); return "熟了 " + s.ready + " 株 · 在长 " + s.growing + " 株 · 已开垦 " + s.tilled + " 块"; } },

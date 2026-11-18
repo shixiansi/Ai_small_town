@@ -45,11 +45,11 @@
     { id: "b_bedroom", label: "卧室",   room: "bedroom", x: 1,  y: 1,  w: 9,  h: 13, night: 0.60, lit: 0.00, day: 0.00 },
     { id: "b_bath",    label: "卫浴",   room: "bath",    x: 10, y: 1,  w: 6,  h: 13, night: 0.60, lit: 0.00, day: 0.00 },
     { id: "b_kitchen", label: "厨房",   room: "kitchen", x: 16, y: 1,  w: 9,  h: 13, night: 0.60, lit: 0.00, day: 0.00 },
-    /* v2.10：右下大屋（三户合并）与右上两间此前没有内置阴影块 → autoRegion 开灯也压 0.15 黑，
-     * 夜里比别的房间黑一倍。补齐内置块（night 0.6 / lit 0 / day 0，与四大房间同待遇）。 */
-    { id: "b_nbCat",   label: "大屋（三户合并）", room: "nbCat",   x: 40, y: 19, w: 16, h: 10, night: 0.60, lit: 0.00, day: 0.00 },
-    { id: "b_parkCourt", label: "西厢房", room: "parkCourt", x: 41, y: 1, w: 4,  h: 13, night: 0.60, lit: 0.00, day: 0.00 },
-    { id: "b_brickHall", label: "东大厅", room: "brickHall", x: 49, y: 1, w: 6,  h: 14, night: 0.60, lit: 0.00, day: 0.00 },
+    /* v2.10：三间补齐内置阴影块（night 0.6 / lit 0 / day 0，与四大房间同待遇）。
+     * v2.12：b_nbCat 仍是大屋（喵酱家），b_parkCourt=村长家、b_brickHall=博士家。 */
+    { id: "b_nbCat",   label: "喵酱家（大屋）", room: "nbCat",   x: 40, y: 19, w: 16, h: 10, night: 0.60, lit: 0.00, day: 0.00 },
+    { id: "b_parkCourt", label: "村长家（西厢房）", room: "parkCourt", x: 41, y: 1, w: 4,  h: 13, night: 0.60, lit: 0.00, day: 0.00 },
+    { id: "b_brickHall", label: "博士家（东大厅）", room: "brickHall", x: 49, y: 1, w: 6,  h: 14, night: 0.60, lit: 0.00, day: 0.00 },
     { id: "b_outdoor", label: "户外（花园/街道）", room: null, x: 26, y: 0, w: 30, h: 30, night: 0.00, lit: 0.00, day: 0.00 }
   ];
   var SHADOW_DEFAULTS = { night: 0.60, lit: 0.15, day: 0.00 };   // 新拉一块的默认浓度
@@ -351,11 +351,10 @@
     { room: "bedroom", x: 1,  y: 1,  w: 9,  h: 13, label: "起居" },
     { room: "bath",    x: 10, y: 1,  w: 6,  h: 13, label: "卫浴" },
     { room: "kitchen", x: 16, y: 1,  w: 9,  h: 13, label: "厨房" },
-    /* v2.10：右下三小间合并为一个大房间（x40..55 × y19..28，隔墙已拆）。
-     * nbChief/nbDoc 别名指向同一矩形，灯开关/阴影签名照常工作。 */
-    { room: "nbCat",   x: 40, y: 19, w: 16, h: 10, label: "大屋（三户合并）" },
-    { room: "nbChief", x: 40, y: 19, w: 16, h: 10, label: "大屋·别名" },
-    { room: "nbDoc",   x: 40, y: 19, w: 16, h: 10, label: "大屋·别名" },
+    /* v2.12：右下大屋 = 喵酱家；村长（西厢房）/博士（东大厅）搬右上，矩形各归各位。 */
+    { room: "nbCat",   x: 40, y: 19, w: 16, h: 10, label: "喵酱家（大屋）" },
+    { room: "nbChief", x: 41, y: 1,  w: 4,  h: 13, label: "村长家（西厢房）" },
+    { room: "nbDoc",   x: 49, y: 1,  w: 6,  h: 14, label: "博士家（东大厅）" },
     /* v88：右上角两块被墙隔开的室内空间（原来 45 件家具全被判成"户外"） */
     { room: "parkCourt", x: 41, y: 1, w: 4, h: 13, label: "西厢房" },
     { room: "brickHall", x: 49, y: 1, w: 6, h: 14, label: "东大厅" }
