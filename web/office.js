@@ -343,7 +343,7 @@ loadErrors = [];
 this.load.off("loaderror", onLoadError);
 this.load.on("loaderror", onLoadError);
 this.load.json("manifest", "assets/manifest.json?v=e700c6bc");
-this.load.json("mapdata", "map.json?v=0c005f8f");
+this.load.json("mapdata", "map.json?v=4e5f24c1");
 };
 SceneBoot.prototype.create = function () {
 var manifest = this.cache.json.get("manifest");
@@ -3790,6 +3790,8 @@ return "wood";
 }
 if (tx <= 38) return "grass";                            // 花园草地
 if (ty >= 19 && tx >= 39) return "wood";
+if (tx >= 41 && tx <= 44 && ty >= 1 && ty <= 14) return "wood";   // 村长家室内
+if (tx >= 49 && tx <= 54 && ty >= 1 && ty <= 14) return "wood";   // 博士家室内
 if (tx >= 39 && ty < 19) return "grass";
 return "stone";                                          // 小镇石板街
 }
