@@ -529,7 +529,7 @@ NPCS.forEach(function (def) {
 var bp = npcBedPos(def);                     // v77：真实床位（map.json）
 def._bed = bp;
 var bx = bp.x * TILE + TILE / 2;
-var by = WALL_H + bp.y * TILE + TILE * 0.72;   // v83.3：初始也在床上（与 npcWalkHome 一致）
+var by = WALL_H + bp.y * TILE + TILE * 0.62;   // v2.12：与 npcWalkHome 同步
 var spr = s.add.sprite(bx, by, def.skin || "whale")
 .setScale(0.82).setOrigin(0.5, 1).setDepth(by + 1);
 var tag = null;
@@ -734,7 +734,7 @@ npc.indoor = true;
 var bp = npcBedPos(npc.def);          // v77：每次都取真实床位（床可被编辑移动）
 npc.def._bed = bp;
 npc.homeX = bp.x * TILE + TILE / 2;
-npc.homeY = WALL_H + bp.y * TILE + TILE * 0.72;
+npc.homeY = WALL_H + bp.y * TILE + TILE * 0.62;   // v2.12：0.72 偏出床下缘，视觉"站床下"
 npcWalkTo(npc, bp.x, bp.y + 0.6, 360, function () {
 npc.spr.x = npc.homeX;
 npc.spr.y = npc.homeY;
@@ -813,16 +813,17 @@ scheduleNpc(npc, 9500 + Math.random() * 8000);
 return;
 }
 var t = npcTileOf(npc);
-var farFromBed = Math.abs(t.x - (npc.def._bed || npc.def.bedAt)[0]) + Math.abs(t.y - (npc.def._bed || npc.def.bedAt)[1]) > 2;
-if (!farFromBed && Math.random() < 0.35) {
-var ax = (npc.def._bed || npc.def.bedAt)[0] + (Math.random() < 0.5 ? -1 : 1) * (1 + Math.floor(Math.random() * 2));
-var ay = (npc.def._bed || npc.def.bedAt)[1] + (Math.random() < 0.5 ? -1 : 1) * (1 + Math.floor(Math.random() * 2));
+var bedPos = npc.def._bed || npc.def.bedAt;
+var farFromBed = Math.abs(t.x - bedPos[0]) + Math.abs(t.y - bedPos[1]) > 2;
+if (!farFromBed && Math.random() < 0.18) {   // 起身率 35%→18%
+var ax = bedPos[0] + (Math.random() < 0.5 ? -1 : 1) * 1;
+var ay = bedPos[1] + 1;                     // 只在床脚那一格活动
 npcSetAct(npc, "wander");
 npcWalkTo(npc, ax, ay, 420, function () { npcSetAct(npc, "look"); });
-scheduleNpc(npc, 6000 + Math.random() * 6000);
+scheduleNpc(npc, 5000 + Math.random() * 4000);   // 起身停留更短
 } else {
 npcSetAct(npc, "sleep");
-scheduleNpc(npc, 9000 + Math.random() * 8000);
+scheduleNpc(npc, 12000 + Math.random() * 9000);  // 睡得更沉
 }
 return;
 }
@@ -994,8 +995,8 @@ var ROOMS = [
 ];
 var NEIGHBOR_HOMES = [
 { id: "cat",   home: "homeCat",   door: "doorCat",   living: "living_cat",   cx: 42.4 * TILE, cy: WALL_H + 23.2 * TILE, zm: 1.25 },
-{ id: "chief", home: "homeChief", door: "doorChief", living: "living_chief", cx: 48.5 * TILE, cy: WALL_H + 23.6 * TILE, zm: 1.25 },
-{ id: "doc",   home: "homeDoc",   door: "doorDoc",   living: "living_doc",   cx: 53.0 * TILE, cy: WALL_H + 24.0 * TILE, zm: 1.25 }
+{ id: "chief", home: "homeChief", door: "doorChief", living: "living_chief", cx: 42.5 * TILE, cy: WALL_H + 7.5 * TILE, zm: 1.25 },
+{ id: "doc",   home: "homeDoc",   door: "doorDoc",   living: "living_doc",   cx: 52.0 * TILE, cy: WALL_H + 7.5 * TILE, zm: 1.25 }
 ];
 function npcHomeState(npcId) {
 for (var i = 0; i < npcLayer.length; i++) {

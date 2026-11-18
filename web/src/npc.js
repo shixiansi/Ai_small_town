@@ -64,7 +64,7 @@
         var bp = npcBedPos(def);                     // v77：真实床位（map.json）
         def._bed = bp;
         var bx = bp.x * TILE + TILE / 2;
-        var by = WALL_H + bp.y * TILE + TILE * 0.72;   // v83.3：初始也在床上（与 npcWalkHome 一致）
+        var by = WALL_H + bp.y * TILE + TILE * 0.62;   // v2.12：与 npcWalkHome 同步
         var spr = s.add.sprite(bx, by, def.skin || "whale")
           .setScale(0.82).setOrigin(0.5, 1).setDepth(by + 1);
       var tag = null;
@@ -309,7 +309,7 @@
     // v83.3：睡觉显示「在床上」——贴床格本身（床中心），深度压床 sprite（床 depth=footY，
     // NPC 深度=homeY+1 高于床 → 角色盖在床上）。原 homeY 多偏一格导致角色站床下方格。
     npc.homeX = bp.x * TILE + TILE / 2;
-    npc.homeY = WALL_H + bp.y * TILE + TILE * 0.72;
+    npc.homeY = WALL_H + bp.y * TILE + TILE * 0.62;   // v2.12：0.72 偏出床下缘，视觉"站床下"
     // 先寻路到床附近，再"贴"到床中心（床格本身是阻挡格，A* 到不了正中心）
     npcWalkTo(npc, bp.x, bp.y + 0.6, 360, function () {
       npc.spr.x = npc.homeX;
@@ -397,18 +397,20 @@
         scheduleNpc(npc, 9500 + Math.random() * 8000);
         return;
       }
-      // 还在家里时段：睡一会儿就起来伸个懒腰，再回去睡
+      // 还在家里时段：绝大多数时间躺床上睡，偶尔起身在床边伸个懒腰后【必回床】
+      // v2.12 修复：原来 35% 概率起身 wander 且不回床（结束原地 look）→ 观感"睡觉没在床上"。
       var t = npcTileOf(npc);
-      var farFromBed = Math.abs(t.x - (npc.def._bed || npc.def.bedAt)[0]) + Math.abs(t.y - (npc.def._bed || npc.def.bedAt)[1]) > 2;
-      if (!farFromBed && Math.random() < 0.35) {
-        var ax = (npc.def._bed || npc.def.bedAt)[0] + (Math.random() < 0.5 ? -1 : 1) * (1 + Math.floor(Math.random() * 2));
-        var ay = (npc.def._bed || npc.def.bedAt)[1] + (Math.random() < 0.5 ? -1 : 1) * (1 + Math.floor(Math.random() * 2));
+      var bedPos = npc.def._bed || npc.def.bedAt;
+      var farFromBed = Math.abs(t.x - bedPos[0]) + Math.abs(t.y - bedPos[1]) > 2;
+      if (!farFromBed && Math.random() < 0.18) {   // 起身率 35%→18%
+        var ax = bedPos[0] + (Math.random() < 0.5 ? -1 : 1) * 1;
+        var ay = bedPos[1] + 1;                     // 只在床脚那一格活动
         npcSetAct(npc, "wander");
         npcWalkTo(npc, ax, ay, 420, function () { npcSetAct(npc, "look"); });
-        scheduleNpc(npc, 6000 + Math.random() * 6000);
+        scheduleNpc(npc, 5000 + Math.random() * 4000);   // 起身停留更短
       } else {
         npcSetAct(npc, "sleep");
-        scheduleNpc(npc, 9000 + Math.random() * 8000);
+        scheduleNpc(npc, 12000 + Math.random() * 9000);  // 睡得更沉
       }
       return;
     }

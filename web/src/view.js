@@ -20,8 +20,9 @@
    * 只是少了敲门那一下 ❢ 特效，其余全走 living/door zone 与 cx/cy。 */
   var NEIGHBOR_HOMES = [
     { id: "cat",   home: "homeCat",   door: "doorCat",   living: "living_cat",   cx: 42.4 * TILE, cy: WALL_H + 23.2 * TILE, zm: 1.25 },
-    { id: "chief", home: "homeChief", door: "doorChief", living: "living_chief", cx: 48.5 * TILE, cy: WALL_H + 23.6 * TILE, zm: 1.25 },
-    { id: "doc",   home: "homeDoc",   door: "doorDoc",   living: "living_doc",   cx: 53.0 * TILE, cy: WALL_H + 24.0 * TILE, zm: 1.25 }
+    /* v2.12：村长→右上西厢房、博士→右上东大厅（视角停靠 cx/cy 跟着搬） */
+    { id: "chief", home: "homeChief", door: "doorChief", living: "living_chief", cx: 42.5 * TILE, cy: WALL_H + 7.5 * TILE, zm: 1.25 },
+    { id: "doc",   home: "homeDoc",   door: "doorDoc",   living: "living_doc",   cx: 52.0 * TILE, cy: WALL_H + 7.5 * TILE, zm: 1.25 }
   ];
   function npcHomeState(npcId) {
     for (var i = 0; i < npcLayer.length; i++) {
