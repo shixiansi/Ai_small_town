@@ -17,6 +17,7 @@
  * 判定与墙格都走 map-model，本文件不再自己拼墙（那是 4 份副本漂移的根源）。
  */
 import { loadModel } from "./map-model.mjs";
+import fs from "node:fs";
 
 const arg = Object.fromEntries(process.argv.slice(2).map(a => {
   const i = a.indexOf("="); return i > 0 ? [a.slice(2, i), a.slice(i + 1)] : [a.slice(2), true];
@@ -34,6 +35,31 @@ const COFFEE = new Set(["round-table", "dining-table"]);
 
 const nearAny = (f, set, r) => items.some(g => g !== f && set.has(g.a) && Math.hypot(g.x - f.x, g.y - f.y) <= r);
 
+/* R3' v2.13：chair/office-chair 的 frame 必须朝向最近桌子。
+ * frame 行序 South/East/West/North（v45）：chair 单帧行 → frame 0=South 1=East 2=West 3=North；
+ * office-chair 8 帧行 → frame 0-7=South 8-15=East 16-23=West 24-31=North。
+ * "朝向桌" = 椅子中心相对最近桌中心的方向向量主轴与 frame 行一致。 */
+const manRaw = JSON.parse(fs.readFileSync(new URL("../web/assets/manifest.json", import.meta.url), "utf8"));
+function facingOf(f) {
+  const per = (manRaw[f.a] && manRaw[f.a].rows) ? manRaw[f.a].rows.South : 1;
+  const frame = f.frame || 0;
+  const row = Math.floor(frame / per);   // 0 South 1 East 2 West 3 North
+  return ["s", "e", "w", "n"][row];
+}
+function nearestTable(f) {
+  let best = null, bestD = Infinity;
+  for (const g of items) {
+    if (g === f || !TABLES.has(g.a)) continue;
+    const d = Math.hypot(g.x - f.x, g.y - f.y);
+    if (d < bestD) { bestD = d; best = g; }
+  }
+  return best ? { g: best, d: bestD } : null;
+}
+function facingWant(f, t) {
+  const dx = t.x - f.x, dy = t.y - f.y;
+  return Math.abs(dx) > Math.abs(dy) ? (dx > 0 ? "e" : "w") : (dy > 0 ? "s" : "n");
+}
+
 const only = arg.room ? String(arg.room) : null;
 const bad = [];
 items.filter(f => solid(f)).forEach(f => {
@@ -49,6 +75,16 @@ items.filter(f => solid(f)).forEach(f => {
     bad.push([rk, f, "R2 头靠墙：1 格内没有墙", "no-wall"]);
   } else if (FACE_TABLE.has(f.a) && !nearAny(f, TABLES, 2)) {
     bad.push([rk, f, "R3 面桌：2 格内没有桌子", "no-table"]);
+  } else if (FACE_TABLE.has(f.a)) {
+    // R3' v2.13：frame 必须朝向最近桌（方向向量主轴一致）。无 frame 数据（frame=0 但需 East/West）也报。
+    const nt = nearestTable(f);
+    if (nt) {
+      const want = facingWant(f, nt.g);
+      const dir = facingOf(f);
+      if (dir !== want) {
+        bad.push([rk, f, `R3' 朝向：椅子 frame 面向 ${dir}，最近桌在 ${want} 方（${nt.g.id || nt.g.a} @${nt.g.x},${nt.g.y}）`, "wrong-facing"]);
+      }
+    }
   } else if (FACE_COFFEE.has(f.a) && !nearAny(f, COFFEE, 2.5)) {
     bad.push([rk, f, "R4 面茶几：2.5 格内没有茶几", "no-coffee"]);
   }
